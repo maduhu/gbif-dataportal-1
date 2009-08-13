@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Author: davejmartin $ -->
+<!-- 
+This schema is still in development and is based on the TDWG Natural Collection Description.
+See http://rs.tdwg.org/ontology/voc/Collection.rdf
+ -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://rs.tdwg.org/ontology/voc/Collection#"
+    xmlns:dcterm="http://purl.org/dc/terms/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#" 
+    xmlns:tn="http://rs.tdwg.org/ontology/voc/TaxonName#"
+    xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:tcom="http://rs.tdwg.org/ontology/voc/Common#">
+    <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="dc.xsd"/>
+    <xs:import namespace="http://purl.org/dc/terms/" schemaLocation="dcterms.xsd"/>
+    <xs:import namespace="http://rs.tdwg.org/ontology/voc/Common#" schemaLocation="tcom.xsd"/>
+    <xs:import namespace="http://www.w3.org/2002/07/owl#" schemaLocation="owl.xsd"/>
+    <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="rdf.xsd"/>
+    <xs:import namespace="http://rs.tdwg.org/ontology/voc/TaxonName#" schemaLocation="TaxonName.xsd"/>
+    <xs:import namespace="http://rs.tdwg.org/ontology/voc/TaxonConcept#" schemaLocation="TaxonConcept.xsd"/>
+    <xs:element name="Collection">
+        <xs:complexType>
+            <xs:sequence>
+           
+                <!-- external vocabularies -->
+                <xs:element ref="dc:title" minOccurs="0" maxOccurs="unbounded"/>
+                
+                <!-- onotology elements as described by http://rs.tdwg.org/ontology/voc/Collection.rdf -->
+                <xs:element name="alternativeId" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                <xs:element name="citeAs" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                <!--TODO this is the complex type collectionTypeTerm: treat like basis of record -->
+                <xs:element name="collectionType" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                <xs:element name="collectorNameCoverage" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="collectorName" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>    
+                </xs:element>
+                <xs:element name="commonNameCoverage" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="commonName" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>    
+                </xs:element>
+                <xs:element name="conservationStatus" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>                 
+                <xs:element name="conservationStatusDate" minOccurs="0" maxOccurs="unbounded" type="xs:dateTime"/>
+                <xs:element name="descriptionForSpecialists" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                <xs:element name="developmentStatus" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                <xs:element name="expeditionNameCoverage" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                <xs:element name="formationPeriod" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                <xs:element name="geospatialCoverage" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <!-- refer to Darwing Core geospatial extension ? -->
+                            <xs:element name="FootPrintWKT" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>  
+                </xs:element>    
+                <!-- should be typed -->
+                <xs:element name="kingdomCoverage" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="kingdom" minOccurs="0" maxOccurs="1" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>                       
+                </xs:element>
+                <xs:element name="knownToContainTypes" minOccurs="0" maxOccurs="unbounded" type="xs:boolean"/>
+                <xs:element name="livingTimePeriodCoverage" minOccurs="0" maxOccurs="unbounded" type="xs:duration"/>
+                <xs:element name="physicalLocation" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+                <xs:element name="taxonCoverage" minOccurs="0" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="tc:TaxonConcept" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                    </xs:complexType>                       
+                </xs:element>    
+                <xs:element name="usageRestrictions" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute ref="rdf:about" use="optional"/>
+        </xs:complexType>
+    </xs:element>    
+</xs:schema>

@@ -1,0 +1,2 @@
+<%@ page contentType="text/plain" %><%@ include file="/common/taglibs.jsp"%><c:forEach items="${searchResults}" var="country">${country.key}	<gbif:capitalize>${country.name}</gbif:capitalize>	http://${header.host}${pageContext.request.contextPath}/country/${country.key}
+</c:forEach>

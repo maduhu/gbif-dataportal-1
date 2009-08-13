@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Basis of Record types</comment>
+<entry key="basis.of.record.observation">관찰자료</entry>
+<entry key="basis.of.record.specimen">표본</entry>
+<entry key="basis.of.record.living">살아있는 객체</entry>
+<entry key="basis.of.record.germplasm">생식(세포)질 (Germplasm)</entry>
+<entry key="basis.of.record.fossil">화석</entry>
+<entry key="basis.of.record.unknown">알려져있지 않음</entry>
+<entry key="basis.of.record.taxonomy">분류</entry>
+<entry key="basis.of.record.literature">문헌</entry>
+<entry key="basis.of.record.nomenclator">명명자</entry>
+<entry key="basis.of.record.regional_checklist">지역적 점검목록</entry>
+<entry key="basis.of.record.legislative_list">법적 목록</entry>
+
+<!--  Basis of record descriptions -->
+<entry key="basis.of.record.description.unknown">이 레코드가 보존된 또는 살아있는 물리적 수집물의 객체, 관찰의 문서, 또는 개체의 어떤 특징을 나타내는 것인지에 대한 정보가 알려져 있지 않음.</entry>
+<entry key="basis.of.record.description.observation">한 개체가 특정 장소와 특정 시간에 존재하였다는 것을 나타내는 알려진 관찰자 또는 모니터링 기관의 보고 또는 그 자료.</entry>
+<entry key="basis.of.record.description.specimen">하나 또는 그 이상의 개체, 개체의 부분 또는 개체의 모형을 나타내는 물리적인 객체.</entry>
+<entry key="basis.of.record.description.living">자연 발생지에서 이탈되어 현재 사육 또는 재배되어 생존하는 개체.</entry>
+<entry key="basis.of.record.description.germplasm">새로운 개체를 번식시키고 기존 종의 보전에 사용되는 식물, 동물 그리고 박테리아의 유전 물질.</entry>
+<entry key="basis.of.record.description.fossil">하나 또는 그 이상의 화석 개체, 화석 개체의 부분, 또는 화석 개체의 모형을 나타내는 물리적인 객체.</entry>
+</properties>

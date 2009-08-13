@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans default-autowire="no" default-dependency-check="none"
+	default-lazy-init="false">
+	<description>
+		This is configuration of the Web services servlet
+	</description>
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="urlMap">
+			<map>
+				<!-- 
+				<entry key="/soap/occurrence/**/*">
+					<ref bean="occurrenceSoapService" />
+				</entry>
+				<entry key="/soap/taxon/**/*">
+					<ref bean="taxonSoapService" />
+				</entry>
+				<entry key="/soap/network/**/*">
+					<ref bean="networkSoapService" />
+				</entry>
+				<entry key="/rest/**/*">
+					<ref bean="wsRestRewriteController" />
+				</entry>
+				<entry key="/wfs/**/*">
+					<ref bean="wsRestRewriteController" />
+				</entry>
+				<entry key="/rest/*">
+					<ref bean="wsRestRewriteController" />
+				</entry>
+				<entry key="/wfs/*">
+					<ref bean="wsRestRewriteController" />
+				</entry>
+				-->
+				<entry key="/rest/**/*">
+					<ref bean="wsRestRewriteController" />
+				</entry>
+				<entry key="/rest/*">
+					<ref bean="wsRestRewriteController" />
+				</entry>
+				<entry key="/ws/*">
+					<ref bean="wsRestRewriteController" />
+				</entry>
+				<entry key="/">
+					<ref bean="webserviceController" />
+				</entry>
+				<!-- 
+				<entry key="/guid/occurrence/*">
+					<ref bean="occurrenceWebserviceController" />
+				</entry>
+				 -->
+			</map>
+		</property>
+	</bean>
+ 
+	   <!--  Webservice occurrence controller
+	  <bean id="occurrenceWebserviceController" class="org.gbif.portal.web.controller.webservices.OccurrenceWebserviceController"
+	    abstract="true">
+	    <property name="geospatialManager" ref="geospatialManager" />
+	    <property name="scientificNameFilter" ref="scientificNameFilter" />
+	    <property name="dataProviderServices" ref="dataProviderServices" />
+	    <property name="urlRoot" value="occurrences" />
+	    <property name="viewNamePrefix" value="occurrenceRecord" />
+	    <property name="defaultView" value="/welcome.htm" />
+	    <property name="queryViewUrl" value="/occurrences/search.htm?" />
+	    <property name="cellWidth" value="1" />
+	    <property name="messageSource" ref="messageSource" />
+	    <property name="userUtils" ref="userUtils" />
+	    <property name="supportedPatterns">
+	      <list>
+	        <list>
+	          <value>key</value>
+	        </list>
+	        <list>
+	          <value>key</value>
+	          <value>view</value>
+	        </list>
+	        <list>
+	          <value>institutionCode</value>
+	          <value>collectionCode</value>
+	          <value>catalogueNumber</value>
+	        </list>
+	        <list>
+	          <value>institutionCode</value>
+	          <value>collectionCode</value>
+	          <value>catalogueNumber</value>
+	          <value>view</value>
+	        </list>
+	      </list>
+	    </property>
+	  </bean>
+	-->
+	
+	<!-- Declare an xfire service factory -->
+	<!-- 
+	<bean id="xfire.xmlbeansServiceFactory"
+		class="org.codehaus.xfire.xmlbeans.XmlBeansServiceFactory"
+		singleton="true">
+		<property name="transportManager">
+			<ref bean="xfire.transportManager" />
+		</property>
+	</bean>
+
+	<bean id="baseWSDef"
+		class="org.codehaus.xfire.spring.remoting.XFireExporter"
+		abstract="true">
+		<property name="serviceFactory">
+			<ref bean="xfire.xmlbeansServiceFactory" />
+		</property>
+		<property name="style" value="wrapped" />
+		<property name="use" value="literal" />
+	</bean>
+
+	<bean id="occurrenceSoapService" parent="baseWSDef">
+		<property name="serviceBean">
+			<ref bean="occurrenceAction" />
+		</property>
+		<property name="serviceInterface">
+			<value>
+				org.gbif.portal.ws.soap.Occurrence
+			</value>
+		</property>
+	</bean>
+
+	<bean id="taxonSoapService" parent="baseWSDef">
+		<property name="serviceBean">
+			<ref bean="taxonAction" />
+		</property>
+		<property name="serviceInterface">
+			<value>org.gbif.portal.ws.soap.Taxon</value>
+		</property>
+	</bean>
+
+	<bean id="networkSoapService" parent="baseWSDef">
+		<property name="serviceBean">
+			<ref bean="networkAction" />
+		</property>
+		<property name="serviceInterface">
+			<value>org.gbif.portal.ws.soap.Network</value>
+		</property>
+	</bean>
+
+	<bean id="wsRestRewriteController" class="org.gbif.portal.web.controller.RedirectToUrlParamsController">
+		<property name="targetController" ref="wsRestDispatcher" />
+		<property name="pathMapping" ref="wsRestPathMapping" />
+	</bean>
+	 -->
+	 
+	<bean id="wsRestRewriteController" class="org.gbif.portal.web.controller.RedirectToUrlParamsController">
+		<property name="targetController" ref="wsRestDispatcher" />
+		<property name="pathMapping" ref="wsRestPathMapping" />
+	</bean>
+
+	<bean id="wsRestDispatcher" class="org.gbif.portal.webservices.rest.Dispatcher">
+		<property name="occurrenceAction" ref="occurrenceAction" />
+		<property name="providerAction" ref="providerAction" />
+		<property name="resourceAction" ref="resourceAction" />
+		<property name="taxonAction" ref="taxonAction" />
+		<property name="networkAction" ref="networkAction" />
+		<property name="densityAction" ref="densityAction" />
+		<!-- <property name="xmlOptions" ref="xmlOptions" /> -->
+		<property name="templateUtils" ref="templateUtils"/>
+		<property name="pathMapping" ref="wsRestPathMapping" />
+	</bean>	
+	
+	<bean id="occurrenceAction"
+		class="org.gbif.portal.webservices.actions.OccurrenceAction">
+		<property name="occurrenceManager" ref="occurrenceManager" />
+		<property name="taxonomyManager" ref="taxonomyManager" />
+		<property name="tripletOccurrenceManager" ref="tripletFullDetailedOccurrenceManager" />
+		<property name="tripletOccurrenceKMLManager" ref="tripletOccurrenceKMLManager" />
+		<property name="tripletOccurrenceCountsManager" ref="tripletOccurrenceCountsManager" />
+		<property name="dataResourceManager" ref="dataResourceManager" />
+		<property name="pathMapping" ref="wsRestPathMapping" />
+		<property name="kmlIcons">
+			<list>
+				<value>/images/GE1.png</value>
+				<value>/images/GE2.png</value>
+				<value>/images/GE3.png</value>
+				<value>/images/GE4.png</value>
+				<value>/images/GE5.png</value>
+				<value>/images/GEcube1.png</value>
+				<value>/images/GEcube2.png</value>
+				<value>/images/GEcube3.png</value>
+				<value>/images/GEcube4.png</value>
+				<value>/images/GEcube5.png</value>
+				<value>/images/GErc1.png</value>
+				<value>/images/GErc2.png</value>
+				<value>/images/GErc3.png</value>
+				<value>/images/GEfl1.png</value>
+				<value>/images/GEcil1.png</value>
+				<value>/images/GEcil2.png</value>
+				<value>/images/GEcil3.png</value>
+				<value>/images/GEcil4.png</value>
+				<value>/images/GEcil5.png</value>
+				<value>/images/GEslp1.png</value>
+				<value>/images/GEslp2.png</value>
+				<value>/images/GEslp3.png</value>
+				<value>/images/GEslp4.png</value>
+				<value>/images/GEslp5.png</value>
+			</list>
+		</property>		
+	</bean>		
+	
+	<bean id="taxonAction"
+		class="org.gbif.portal.webservices.actions.TaxonAction">
+		<property name="taxonomyManager" ref="taxonomyManager" />
+		<property name="dataResourceManager" ref="dataResourceManager" />
+		<property name="pathMapping" ref="wsRestPathMapping" />
+	</bean>
+
+	<bean id="networkAction"
+		class="org.gbif.portal.webservices.actions.NetworkAction">
+		<property name="dataResourceManager" ref="dataResourceManager" />
+		<property name="pathMapping" ref="wsRestPathMapping" />
+	</bean>
+
+	<bean id="providerAction"
+		class="org.gbif.portal.webservices.actions.ProviderAction">
+		<property name="dataResourceManager" ref="dataResourceManager" />
+		<property name="pathMapping" ref="wsRestPathMapping" />
+	</bean>
+
+	<bean id="resourceAction"
+		class="org.gbif.portal.webservices.actions.ResourceAction">
+		<property name="dataResourceManager" ref="dataResourceManager" />
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="pathMapping" ref="wsRestPathMapping" />
+	</bean>
+	
+	<bean id="densityAction"
+		class="org.gbif.portal.webservices.actions.DensityAction">
+		<property name="geospatialManager" ref="geospatialManager" />
+		<property name="taxonomyManager" ref="taxonomyManager" />
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="pathMapping" ref="wsRestPathMapping" />
+	</bean>
+	
+	<bean id="wsRestPathMapping" class="org.gbif.portal.util.path.PathMapping">
+		<property name="urlRoot" value="rest" />	
+		<property name="supportedPatterns">
+			<list>
+				<list>
+					<value>service</value>
+					<value>request</value>
+					<value>key</value>
+				</list>
+				<list>
+					<value>service</value>
+					<value>request</value>
+				</list>
+				<list>
+					<value>service</value>
+				</list>
+			</list>
+		</property>				
+	</bean>
+	
+	
+	
+	<!-- Tutorial Controller -->
+	<bean id="webserviceController" class="org.gbif.portal.web.controller.webservices.WebservicesController">
+		<property name="urlRoot" value="ws"/>
+		<property name="viewNamePrefix" value="tutorialView"/>
+		<property name="defaultView" value="/welcome.htm"/>
+	</bean>		 
+	 
+	 
+	 
+	 
+</beans>

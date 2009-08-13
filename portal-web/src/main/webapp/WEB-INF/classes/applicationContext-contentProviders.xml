@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>	
+
+	<!-- Helper for the occurrence filter pages -->
+	<bean id="occurrenceFilterProvider" class="org.gbif.portal.web.content.filter.PagingTripletQueryProvider">
+		<property name="namespace" value="http://gbif.org/schema/webapp/2006/1.0"/>
+		<property name="webappPropertyStore" ref="webappPropertyStore"/>
+		<property name="tripletQueryManager" ref="tripletDisplayOccurrenceManager"/>
+		<property name="queryHelper" ref="occurrenceQueryHelper"/>
+		<property name="filterSet" value="occurrenceFilters"/>
+	</bean>
+	
+	<!-- Helper for the taxonomy filter pages -->
+	<bean id="taxonomyFilterProvider" class="org.gbif.portal.web.content.filter.PagingTripletQueryProvider">
+		<property name="namespace" value="http://gbif.org/schema/webapp/2006/1.0"/>
+		<property name="webappPropertyStore" ref="webappPropertyStore"/>
+		<property name="tripletQueryManager" ref="tripletTaxonomyManager"/>
+		<property name="queryHelper" ref="taxonomyQueryHelper"/>
+		<property name="filterSet" value="taxonomyFilters"/>
+	</bean>
+
+	<!-- Helper for filter related functions -->
+	<bean id="filterContentProvider" class="org.gbif.portal.web.content.filter.FilterContentProvider">
+		<property name="namespace" value="http://gbif.org/schema/webapp/2006/1.0"/>
+		<property name="webappPropertyStore" ref="webappPropertyStore"/>		
+		<!-- service layer managers -->
+		<property name="geospatialManager" ref="geospatialManager"/>
+		<property name="taxonomyManager" ref="taxonomyManager"/>		
+		<!-- filter groups-->
+		<property name="occurrenceTaxonFilters" ref="occurrenceTaxonFilters"/>		
+		<property name="occurrenceFilters" ref="occurrenceFilters"/>
+		<property name="taxonomyFilters" ref="taxonomyFilters"/>
+		<!-- occurrence filters -->
+		<property name="scientificNameOccurrenceFilter" ref="scientificNameFilter"/>
+		<property name="boundingBoxOccurrenceFilter" ref="boundingBoxFilter"/>						
+		<property name="classificationOccurrenceFilter" ref="classificationFilter"/>						
+		<property name="countryOccurrenceFilter" ref="countryFilter"/>
+		<property name="geoConsistencyOccurrenceFilter" ref="geoConsistencyFilter"/>		
+		<property name="georeferencedOccurrenceFilter" ref="georeferencedFilter"/>		
+		<property name="regionOccurrenceFilter" ref="regionFilter"/>		
+		<!-- taxonomy filters -->		
+		<property name="taxonTaxonomyFilter" ref="conceptNameFilter"/>
+		<property name="rankTaxonomyFilter" ref="rankTaxonFilter"/>
+		<property name="taxonEntityType" value="taxon"/>				
+		<property name="triplet2EntityTypeMappings">
+			<map>
+				<!-- taxon ranks -->
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.KINGDOM" value="taxon"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.PHYLUM" value="taxon"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.CLASS" value="taxon"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.ORDER" value="taxon"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.FAMILY" value="taxon"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.GENUS" value="taxon"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.SPECIES" value="taxon"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.CLASSIFICATION" value="taxon"/>				
+				<!-- other entity types -->				
+        <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.HOSTCOUNTRYCODE" value="homeCountry"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.ISOCOUNTRYCODE" value="country"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATARESOURCEID" value="resource"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATAPROVIDERID" value="provider"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.RESOURCENETWORKID" value="network"/>				
+			</map>	
+		</property>
+	</bean>	
+
+	<!-- Helper for map related functions -->	
+	<bean id="mapContentProvider" class="org.gbif.portal.web.content.map.MapContentProvider">	
+		<property name="geospatialManager" ref="geospatialManager"/>		
+		<property name="mapLayerServerURL" value="http://data.gbif.org/maplayer/"/>
+		<property name="defaultMapServerKey" value="map_server_url"/>	
+		<property name="defaultGeoServerValue" value="http://db3:8080/geoserver/wms"/>
+		<property name="defaultMapServerValue" value="http://maps.gbif.org/mapserver/draw.pl"/>				
+		<property name="defaultMapLayerKey" value="map_server_layers_url"/>	
+	</bean>	
+	
+	<!-- Helper Beans -->
+	<bean id="queryHelper" class="org.gbif.portal.web.util.QueryHelper">
+		<property name="supportedWildcards" value="%,*"/>
+		<property name="wildcard" value="%"/>
+		<property name="isLikePredicate" value="SERVICE.QUERY.PREDICATE.LIKE"/>
+		<property name="equalPredicate" value="SERVICE.QUERY.PREDICATE.EQUAL"/>
+		<property name="queryNamespace" value="http://gbif.org/portal-service/2006/1.0"/>
+	</bean>	
+
+	<!-- Used for Occurrence Queries -->		
+	<bean id="occurrenceQueryHelper" parent="queryHelper">
+		<property name="filters" ref="occurrenceFilters"/>
+		<property name="preProcessors">
+			<map>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.SCIENTIFICNAME">
+					<ref bean="scientificNameFilterHelper"/>
+				</entry>						
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.COMMONNAME">
+					<ref bean="commonNameFilterHelper"/>
+				</entry>						
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.BOUNDINGBOX">
+					<ref bean="boundingBoxFilterHelper"/>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.CLASSIFICATION">
+					<ref bean="classificationFilterHelper"/>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEDATE">
+					<ref bean="occurrenceDateFilterHelper"/>
+				</entry>
+				<!-- not in use 				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.FAMILY">
+					<ref bean="familyFilterHelper"/>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.GENUS">
+					<ref bean="genusFilterHelper"/>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.SPECIES">
+					<ref bean="speciesFilterHelper"/>
+				</entry>
+				-->	
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATARESOURCEID">
+					<ref bean="dataResourceIdFilterHelper"/>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATAPROVIDERID">
+					<ref bean="dataProviderIdFilterHelper"/>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.RESOURCENETWORKID">
+					<ref bean="resourceNetworkIdFilterHelper"/>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.YEARRANGE">
+					<ref bean="yearRangeFilterHelper"/>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.HOSTCOUNTRYCODE">
+					<ref bean="hostCountryPicklistHelper"/>
+				</entry>
+                <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.LATITUDE">
+                  <ref bean="latitudeFilterHelper"/>
+                </entry>
+                <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.LONGITUDE">
+                  <ref bean="longitudeFilterHelper"/>
+                </entry>  
+                <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.ALTITUDE">
+                  <ref bean="altitudeFilterHelper"/>
+                </entry>  
+                <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DEPTH">
+                  <ref bean="depthFilterHelper"/>
+                </entry>                                  
+				<!-- not in use 
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.RESTRICTIONS">
+					<ref bean="restrictionsFilterHelper"/>
+				</entry>				
+				-->
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOSPATIALISSUES">
+					<ref bean="geoConsistencyFilterHelper"/>
+				</entry>	
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOREFERENCED">
+					<ref bean="georeferencedFilterHelper"/>
+				</entry>						
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUSCOUNT">
+					<ref bean="isTypeStatusFilterHelper"/>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.IMAGES">
+					<ref bean="imageFilterHelper"/>
+				</entry>										
+			</map>
+		</property>
+	</bean>
+
+	<!-- Used for Taxonomic Concept Queries -->
+	<bean id="taxonomyQueryHelper" parent="queryHelper">
+		<property name="filters" ref="taxonomyFilters"/>		
+	</bean>	
+	
+	<!-- Taxon Concept Utilities -->
+	<bean id="taxonConceptUtils" class="org.gbif.portal.web.util.TaxonConceptUtils">
+		<property name="taxonomyManager" ref="taxonomyManager"/>			
+		<property name="messageSource" ref="messageSource"/>				
+	</bean>
+
+	<!-- Download Utilities -->
+	<bean id="downloadUtils" class="org.gbif.portal.web.download.DownloadUtils">
+		<property name="dataResourceManager" ref="dataResourceManager"/>			
+		<property name="messageSource" ref="messageSource"/>				
+		<property name="gbifLogUtils" ref="gbifLogUtils"/>			
+	</bean>	
+	
+	<!-- User Utilities -->
+	<bean id="userUtils" class="org.gbif.portal.web.util.UserUtils">
+		<property name="robotAgents">
+			<set>
+			   <value>GOOGLEBOT</value>
+	           <value>YAHOO!</value>
+              <value>INDY LIBRARY</value>
+              <value>MSNBOT</value>				
+              <value>ASK JEEVES</value>
+              <value>TWICELER</value>
+              <value>BOT</value>
+			</set>
+		</property>
+	</bean>
+		
+	<!-- Map Widget Controller -->
+	<bean id="mapWidgetController" class="org.gbif.portal.web.view.map.MapWidgetController"/>	
+	
+	<!--Resource viewer that resolves virtual file paths such as /overviewMap.png-->
+	<bean id="resourceViewResolver" class="org.gbif.portal.web.view.GenericViewResolver">
+		<property name="order" value="1"/>
+		<property name="viewMappings">
+			<map>
+				<entry key="overviewmap.png">
+					<bean class="org.gbif.portal.web.view.ExternalRedirectView">
+						<property name="externalUrlAttribute" value="overviewMapUrl"/>
+						<property name="widgetName" value="overviewMap"/>
+						<property name="widgetController" ref="mapWidgetController"/>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>	
+</beans>

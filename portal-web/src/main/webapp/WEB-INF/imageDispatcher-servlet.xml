@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!--  Application context definition for Main DispatcherServlet -->
+<beans>
+	<!--  Define how the dispatcher will select the contollers -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/**/*">imageController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- The Image Controller -->
+	<bean id="imageController" class="org.gbif.portal.web.controller.images.ImageController">
+		<property name="urlRoot" value="image"/>
+		<property name="defaultView" value="/welcome.htm"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="supportedPatterns">
+			<list>
+				<list>
+					<value>id</value>
+				</list>
+				<list>
+					<value>id</value>
+					<value>width</value>
+					<value>height</value>
+				</list>
+			</list>
+		</property>		
+	</bean>
+</beans>

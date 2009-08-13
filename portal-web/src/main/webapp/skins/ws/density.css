@@ -1,0 +1,15 @@
+h2.leftIcon {
+ background: transparent url(images/countriesIcon.gif) no-repeat;
+}
+
+th {
+ background-color: #fff0e4;
+ border-top: 1px solid #ffe1ca;
+ border-left: 1px solid #ffe1ca;
+ border-bottom: 1px solid #ffbd8b;
+ border-right: 1px solid #ffbd8b;
+}
+
+div.provider, div.resource, div.occurrence {
+ border-left: 1px dashed #ffe1ca
+}

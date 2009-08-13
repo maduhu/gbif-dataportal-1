@@ -1,0 +1,58 @@
+<p>The maps within the data portal are deep linkable using the provided HTML in the <b>"Embed"</b> text box below the map.</p>
+
+<p>See the species page <a href="../species/species/Puma_concolor">Puma concolor</a> for an example.</p>
+
+<p>	
+<h4>Screenshot</h4>
+<img id="deepLinkingScreenshot" src="../help/images/mapWidget.jpg"/>	
+</p>
+
+<p>	
+They are available in 3 sizes (width by height):
+<ul class="noBorder">
+	<li>Small: 360px by 226px</li>
+	<li>Medium: 548px by 320px</li>	
+	<li>Full: 730px by 410px</li>	
+</ul>	
+</p>
+
+<br/>
+
+<p>				
+The default within the <b>"Embed"</b> text box is	<b>730px by 410px</b>. <br/>
+This can be adjusted by appending "?size=small" or "?size=medium" to the <b>src</b> attribute,<br/> 
+and adjusting the <b>width</b> and <b>height</b> attributes to the values listed above.
+	
+e.g.
+<p>
+<h1>Small size</h1>	
+<textarea readonly="true" class="deeplinks">&lt;iframe src="http://data.gbif.org/datasets/provider/4/mapWidget?size=small" 
+frameborder="0" 
+hspace="1" 
+vspace="1" 
+scrolling="no" 
+width="360px" height="226px">&lt;/iframe&gt;
+</textarea>		
+</p>
+<p>	
+<h4>Medium size</h4>	
+<textarea readonly="true" class="deeplinks">&lt;iframe src="http://data.gbif.org/datasets/provider/4/mapWidget?size=medium" 
+frameborder="0" 
+hspace="1" 
+vspace="1" 
+scrolling="no"
+width="548px" height="320px">&lt;/iframe&gt;
+</textarea>	
+</p>
+</p>	
+<br/>
+<p>
+The end result should appear like so:
+</p>
+
+<iframe src="../datasets/provider/4/mapWidget?size=full" 
+frameborder="0" 
+hspace="1" 
+vspace="1" 
+scrolling="no"
+width="730px" height="410px"></iframe>

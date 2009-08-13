@@ -1,0 +1,2 @@
+<%@ page contentType="text/plain" %><%@ include file="/common/taglibs.jsp"%><c:forEach items="${searchResults}" var="country">${country.isoCountryCode}	<gbif:capitalize>${country.name}</gbif:capitalize>
+</c:forEach>

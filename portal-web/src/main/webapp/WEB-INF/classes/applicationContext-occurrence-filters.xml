@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!--
+		3 Types of filter
+		0) Plain string search
+		1) Dropdown combo
+		2) Wizard - leading to a read-only value
+
+		The filters require a unique numeric id (for use in javascript arrays). 
+	-->
+		
+	<!-- Occurrence Filters-->
+	<bean id="occurrenceFilters" class="org.gbif.portal.web.filter.FilterMapWrapper">
+		<property name="filters">
+			<list>
+				<!--taxonomy filters-->
+				<ref bean="scientificNameFilter"/>
+				<ref bean="commonNameFilter"/>
+				<ref bean="classificationFilter"/>
+				<ref bean="isTypeStatusFilter"/>
+				<!-- geospatial filters-->
+				<ref bean="countryFilter"/>
+				<ref bean="regionFilter"/>
+				<ref bean="boundingBoxFilter"/>
+				<ref bean="latitudeFilter"/>
+				<ref bean="longitudeFilter"/>
+                <ref bean="altitudeFilter"/>
+                <ref bean="depthFilter"/>
+				<ref bean="georeferencedFilter"/>
+				<ref bean="geoConsistencyFilter"/>
+                <ref bean="geoRegionFilter"/>
+				<!-- dataset filters-->
+				<ref bean="dataProviderIdFilter"/>
+				<ref bean="dataResourceIdFilter"/>
+				<ref bean="hostCountryCodeFilter"/>
+				<ref bean="resourceNetworkIdFilter"/>
+				<!-- other details filters -->
+				<ref bean="occurrenceDateFilter"/>
+				<ref bean="yearRangeFilter"/>
+				<ref bean="yearFilter"/>
+				<ref bean="monthFilter"/>
+				<ref bean="institutionCodeFilter"/>
+				<ref bean="collectionCodeFilter"/>
+				<ref bean="identifierFilter"/>
+				<ref bean="basisOfRecordFilter"/>
+				<ref bean="imageURLFilter"/>
+				<!--ref bean="restrictionsFilter"/-->
+			</list>
+		</property>
+	</bean>
+	<bean id="occurrenceTaxonFilters" class="org.gbif.portal.web.filter.FilterMapWrapper">
+		<property name="filters">
+			<list>
+				<ref bean="kingdomFilter"/>
+				<ref bean="phylumFilter"/>
+				<ref bean="classFilter"/>
+				<ref bean="orderFilter"/>
+				<ref bean="familyFilter"/>
+				<ref bean="genusFilter"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="taxonomyFilters" class="org.gbif.portal.web.filter.FilterMapWrapper">
+		<property name="filters">
+			<list>
+				<ref bean="conceptNameFilter"/>
+				<ref bean="rankTaxonFilter"/>
+				<ref bean="dataProvidersTaxonFilter"/>
+				<ref bean="kingdomTaxonFilter"/>
+				<ref bean="phylumTaxonFilter"/>
+				<ref bean="classTaxonFilter"/>
+				<ref bean="orderTaxonFilter"/>
+				<ref bean="familyTaxonFilter"/>
+				<ref bean="genusTaxonFilter"/>
+				<ref bean="speciesTaxonFilter"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- This is inherited by all the major rank filter definition -->
+	<bean id="baseTaxonRankFilter" abstract="true" parent="baseTaxonomyFilter">
+		<property name="subcategory" value="TaxonRank"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+				<ref bean="predicateIsLike"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+	</bean>
+	
+	<!--Base abstract category filter definitions for extending -->
+	<bean id="baseTaxonomyFilter" abstract="true" class="org.gbif.portal.web.filter.FilterDTO">
+		<property name="category" value="occurrence.search.filter.category.taxonomy"/>
+		<property name="categoryId" value="0"/>
+	</bean>
+	<bean id="baseGeospatialFilter" abstract="true" class="org.gbif.portal.web.filter.FilterDTO">
+		<property name="category" value="occurrence.search.filter.category.geospatial"/>
+		<property name="categoryId" value="1"/>
+	</bean>
+	<bean id="baseDatasetsFilter" abstract="true" class="org.gbif.portal.web.filter.FilterDTO">
+		<property name="category" value="occurrence.search.filter.category.datasets"/>
+		<property name="categoryId" value="2"/>
+	</bean>
+	<bean id="baseOtherDetailsFilter" abstract="true" class="org.gbif.portal.web.filter.FilterDTO">
+		<property name="category" value="occurrence.search.filter.category.other.details"/>
+		<property name="categoryId" value="3"/>
+	</bean>	
+	
+  <!--Occurrence Filters-->
+	<bean id="scientificNameFilter" parent="baseTaxonomyFilter">
+		<property name="id" value="0"/>
+		<property name="displayName" value="occurrence.search.filter.taxonomy.scientificname"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.SCIENTIFICNAME"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+		<property name="autoCompleteUrl" value="taxonomy/taxonName/ajax/view/ajaxTaxonName"/>
+		<property name="helpView" value="/occurrence/scientificNameHelp.htm"/>
+	</bean>
+	<bean id="latitudeFilter" parent="baseGeospatialFilter">
+		<property name="id" value="1"/>
+		<property name="displayName" value="occurrence.search.filter.geospatial.latitude"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.LATITUDE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+				<bean class="org.gbif.portal.web.filter.PredicateDTO">
+					<property name="id" value="1"/>
+					<property name="value" value="filter.predicate.greater.than"/>
+					<property name="key" value="SERVICE.QUERY.PREDICATE.GE"/>
+				</bean>
+				<bean class="org.gbif.portal.web.filter.PredicateDTO">
+					<property name="id" value="2"/>
+					<property name="value" value="filter.predicate.less.than"/>
+					<property name="key" value="SERVICE.QUERY.PREDICATE.LE"/>
+				</bean>
+			</list>
+		</property>
+		<property name="filterHelper" ref="latitudeFilterHelper"/>
+		<property name="valueType" value="java.lang.Float"/>
+		<property name="i18nMultipleConditionKey" value="and"/>
+		<property name="helpView" value="/occurrence/latitudeHelp.htm"/>
+	</bean>
+	<bean id="longitudeFilter" parent="baseGeospatialFilter">
+		<property name="id" value="2"/>
+		<property name="displayName" value="occurrence.search.filter.geospatial.longitude"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.LONGITUDE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+				<bean class="org.gbif.portal.web.filter.PredicateDTO">
+					<property name="id" value="1"/>
+					<property name="value" value="filter.predicate.greater.than"/>
+					<property name="key" value="SERVICE.QUERY.PREDICATE.GE"/>
+				</bean>
+				<bean class="org.gbif.portal.web.filter.PredicateDTO">
+					<property name="id" value="2"/>
+					<property name="value" value="filter.predicate.less.than"/>
+					<property name="key" value="SERVICE.QUERY.PREDICATE.LE"/>
+				</bean>
+			</list>
+		</property>
+		<property name="filterHelper" ref="longitudeFilterHelper"/>
+		<property name="valueType" value="java.lang.Float"/>
+		<property name="i18nMultipleConditionKey" value="and"/>
+		<property name="helpView" value="/occurrence/longitudeHelp.htm"/>
+	</bean>
+	<bean id="dataResourceFilter" parent="baseDatasetsFilter">
+		<property name="id" value="3"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.dataresource"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATARESOURCE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+				<ref bean="predicateIsLike"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+	</bean>	
+	<bean id="occurrenceDateFilter" parent="baseOtherDetailsFilter">
+		<property name="id" value="4"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.occurrencedate"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEDATE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="2"/>
+		<property name="filterHelper" ref="occurrenceDateFilterHelper"/>
+		<property name="wizardView" value="occurrence.wizard.daterange"/>
+		<property name="allowMultiple" value="false"/>
+	</bean>
+	<bean id="countryFilter" parent="baseGeospatialFilter">
+		<property name="id" value="5"/>
+		<property name="displayName" value="occurrence.search.filter.geospatial.country"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.ISOCOUNTRYCODE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+		<property name="filterType" value="1"/>
+		<property name="dropDownValues" ref="iso-country-codes"/>
+		<property name="helpView" value="/occurrence/countryHelp.htm"/>
+	</bean>
+	<!--taxonomic ranks-->
+	<bean id="kingdomFilter" parent="baseTaxonRankFilter">
+		<property name="id" value="6"/>
+		<property name="name"  value="kingdom"/>
+		<property name="displayName" value="taxonrank.kingdom"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.KINGDOM"/>
+	</bean>
+	<bean id="phylumFilter" parent="baseTaxonRankFilter">
+		<property name="id" value="7"/>
+		<property name="name"  value="phylum"/>
+		<property name="displayName" value="taxonrank.phylum"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.PHYLUM"/>
+	</bean>
+	<bean id="classFilter" parent="baseTaxonRankFilter">
+		<property name="id" value="8"/>
+		<property name="name"  value="class"/>
+		<property name="displayName" value="taxonrank.class"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.CLASS"/>
+	</bean>
+	<bean id="orderFilter" parent="baseTaxonRankFilter">
+		<property name="id" value="9"/>
+		<property name="name"  value="order"/>
+		<property name="displayName" value="taxonrank.order"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.ORDER"/>
+	</bean>											
+	<bean id="familyFilter" parent="baseTaxonRankFilter">
+		<property name="id" value="10"/>
+		<property name="name"  value="family"/>
+		<property name="displayName" value="taxonrank.family"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.FAMILY"/>
+		<property name="autoCompleteUrl" value="taxonomy/taxonName/ajax/rank/family/view/ajaxTaxonName"/>
+		<property name="filterHelper" ref="familyFilterHelper"/>
+	</bean>
+	<bean id="genusFilter" parent="baseTaxonRankFilter">
+		<property name="id" value="11"/>
+		<property name="name"  value="genus"/>
+		<property name="displayName" value="taxonrank.genus"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.GENUS"/>
+		<property name="autoCompleteUrl" value="taxonomy/taxonName/ajax/rank/genus/view/ajaxTaxonName"/>
+		<property name="filterHelper" ref="genusFilterHelper"/>
+	</bean>
+	<bean id="speciesFilter" parent="baseTaxonRankFilter">
+		<property name="id" value="23"/>
+		<property name="name"  value="species"/>
+		<property name="displayName" value="taxonrank.species"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.SPECIES"/>
+		<property name="autoCompleteUrl" value="taxonomy/taxonName/ajax/rank/species/view/ajaxTaxonName"/>
+		<property name="filterHelper" ref="speciesFilterHelper"/>
+	</bean>
+
+	<!--dataset filters-->
+	<bean id="institutionCodeFilter" parent="baseOtherDetailsFilter">
+		<property name="id" value="12"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.institutioncode"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.INSTITUTIONCODE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+		<property name="helpView" value="/occurrence/institutionCodeHelp.htm"/>
+	</bean>
+	<bean id="collectionCodeFilter" parent="baseOtherDetailsFilter">
+		<property name="id" value="13"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.collectioncode"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.COLLECTIONCODE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+		<property name="helpView" value="/occurrence/collectionCodeHelp.htm"/>						
+	</bean>
+	<bean id="identifierFilter" parent="baseOtherDetailsFilter">
+		<property name="id" value="14"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.identifier"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.CATALOGUENUMBER"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+		<property name="helpView" value="/occurrence/catalogueNoHelp.htm"/>
+	</bean>
+	<!-- This is not exposed -->
+	<bean id="isoCountryCodeFilter" parent="baseGeospatialFilter">
+		<property name="id" value="15"/>
+		<property name="displayName" value="occurrence.search.filter.geospatial.isocountrycode"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.ISOCOUNTRYCODE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+		<property name="editable" value="false"/>
+	</bean>
+	<bean id="hostCountryCodeFilter" parent="baseDatasetsFilter">
+		<property name="id" value="32"/>
+		<property name="displayName" value="occurrence.search.filter.geospatial.hostcountrycode"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.HOSTCOUNTRYCODE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+		<property name="filterType" value="1"/>
+		<!--property name="dropDownValues" ref="providerHostCountryMap"/-->
+		<property name="picklistHelper" ref="hostCountryPicklistHelper"/>
+		<property name="helpView" value="/occurrence/hostCountryHelp.htm"/>								
+	</bean>
+	<bean id="dataProviderFilter" parent="baseDatasetsFilter">
+		<property name="id" value="16"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.dataprovider"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATAPROVIDER"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+				<ref bean="predicateIsLike"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+		<property name="helpView" value="/occurrence/dataProviderHelp.htm"/>												
+	</bean>
+    <!-- basis of record filter -->
+	<bean id="basisOfRecordFilter" parent="baseOtherDetailsFilter">
+		<property name="id" value="17"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.basisofrecord"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.BASISOFRECORD"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="1"/>
+		<property name="dropDownValues">
+			<map>
+				<entry key="1" value="basis.of.record.observation"/>
+				<entry key="2" value="basis.of.record.specimen"/>
+				<entry key="3" value="basis.of.record.living"/>
+				<entry key="4" value="basis.of.record.germplasm"/>
+				<entry key="5" value="basis.of.record.fossil"/>
+			</map>
+		</property>
+		<property name="valueType" value="java.lang.Integer"/>
+		<property name="helpView" value="/occurrences/basisOfRecordHelp.htm"/>														
+	</bean>
+	<bean id="regionFilter" parent="baseGeospatialFilter">
+		<property name="id" value="18"/>
+		<property name="displayName" value="occurrence.search.filter.geospatial.region"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.REGIONCODE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="1"/>
+		<property name="dropDownValues" ref="region-codes"/>
+		<property name="helpView" value="/occurrences/regionHelp.htm"/>																
+	</bean>
+	<bean id="boundingBoxFilter" parent="baseGeospatialFilter">
+		<property name="id" value="19"/>
+		<property name="displayName" value="occurrence.search.filter.geospatial.boundingbox"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.BOUNDINGBOX"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="2"/>
+		<property name="wizardView" value="occurrence.wizard.boundingbox"/>
+		<property name="filterHelper" ref="boundingBoxFilterHelper"/>
+		<property name="allowMultiple" value="false"/>
+	</bean>
+	<bean id="classificationFilter" parent="baseTaxonomyFilter">
+		<property name="id" value="20"/>
+		<property name="displayName" value="occurrence.search.filter.taxonomy.classification"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.CLASSIFICATION"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIncludes"/>
+			</list>
+		</property>
+		<property name="filterType" value="2"/>
+		<property name="filterHelper" ref="classificationFilterHelper"/>
+		<property name="wizardView" value="occurrence.wizard.classification"/>
+	</bean>
+	<bean id="yearFilter" parent="baseOtherDetailsFilter">
+		<property name="id" value="21"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.year"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.YEAR"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="0"/>
+		<property name="valueType" value="java.lang.Integer"/>
+		<property name="helpView" value="/occurrences/yearHelp.htm"/>		
+	</bean>
+	<bean id="monthFilter" parent="baseOtherDetailsFilter">
+		<property name="id" value="22"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.month"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.MONTH"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="1"/>
+		<property name="dropDownValues">
+			<map>
+				<entry key="1" value="month.jan"/>
+				<entry key="2" value="month.feb"/>
+				<entry key="3" value="month.mar"/>
+				<entry key="4" value="month.apr"/>
+				<entry key="5" value="month.may"/>
+				<entry key="6" value="month.jun"/>
+				<entry key="7" value="month.jul"/>
+				<entry key="8" value="month.aug"/>
+				<entry key="9" value="month.sep"/>
+				<entry key="10" value="month.oct"/>
+				<entry key="11" value="month.nov"/>
+				<entry key="12" value="month.dec"/>
+			</map>
+		</property>
+		<property name="valueType" value="java.lang.Integer"/>
+		<property name="helpView" value="/occurrences/monthHelp.htm"/>
+	</bean>
+	<bean id="dataResourceIdFilter" parent="baseDatasetsFilter">
+		<property name="id" value="24"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.dataresource"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATARESOURCEID"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="valueType" value="java.lang.Long"/>
+		<property name="filterHelper" ref="dataResourceIdFilterHelper"/>
+		<property name="filterType" value="2"/>
+		<property name="wizardView" value="occurrence.wizard.dataresource"/>
+	</bean>
+	<bean id="dataProviderIdFilter" parent="baseDatasetsFilter">
+		<property name="id" value="25"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.dataprovider"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATAPROVIDERID"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="valueType" value="java.lang.Long"/>
+		<property name="filterHelper" ref="dataProviderIdFilterHelper"/>
+		<property name="filterType" value="1"/>
+		<property name="picklistHelper" ref="dataProviderIdFilterHelper"/>
+		<property name="helpView" value="/occurrence/dataProviderHelp.htm"/>			
+	</bean>
+	<bean id="resourceNetworkIdFilter" parent="baseDatasetsFilter">
+		<property name="id" value="26"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.resourcenetwork"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.RESOURCENETWORKID"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterHelper" ref="resourceNetworkIdFilterHelper"/>
+		<property name="editable" value="false"/>
+	</bean>
+	<bean id="restrictionsFilter" parent="baseDatasetsFilter">
+		<property name="id" value="27"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.restrictions"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.RESTRICTIONS"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateAre"/>
+			</list>
+		</property>
+		<property name="filterType" value="2"/>
+		<property name="wizardView" value="occurrence.wizard.restrictions"/>
+		<property name="filterHelper" ref="restrictionsFilterHelper"/>
+		<property name="allowMultiple" value="false"/>
+	</bean>
+	<bean id="georeferencedFilter" parent="baseGeospatialFilter">
+		<property name="id" value="28"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.georeferenced"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOREFERENCED"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="1"/>
+		<property name="dropDownValues">
+			<map>
+				<entry key="0" value="georeferenced"/>
+				<entry key="1" value="not.georeferenced"/>
+			</map>
+		</property>
+		<property name="valueType" value="java.lang.Integer"/>
+		<property name="allowMultiple" value="false"/>
+		<property name="filterHelper" ref="georeferencedFilterHelper"/>
+		<property name="helpView" value="/occurrences/coordinateStatusHelp.htm"/>
+	</bean>
+	<bean id="geoConsistencyFilter" parent="baseGeospatialFilter">
+		<property name="id" value="29"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.geo.consistency"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOSPATIALISSUES"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="1"/>
+		<property name="dropDownValues">
+			<map>
+				<entry key="0" value="geo.consistent.with.country"/>
+				<entry key="1" value="geo.not.consistent.with.country"/>
+			</map>
+		</property>
+		<property name="valueType" value="java.lang.Integer"/>
+		<property name="allowMultiple" value="false"/>
+		<property name="filterHelper" ref="geoConsistencyFilterHelper"/>
+		<property name="helpView" value="/occurrences/coordinateIssuesHelp.htm"/>
+	</bean>
+	<bean id="isTypeStatusFilter" parent="baseTaxonomyFilter">
+		<property name="id" value="30"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.type.status"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUSCOUNT"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="1"/>
+		<property name="dropDownValues">
+			<map>
+				<entry key="0" value="type.specimen"/>
+			</map>
+		</property>
+		<property name="valueType" value="java.lang.Integer"/>
+		<property name="allowMultiple" value="false"/>
+		<property name="filterHelper" ref="isTypeStatusFilterHelper"/>
+		<property name="helpView" value="/occurrences/typeStatusHelp.htm"/>
+	</bean>
+	<bean id="commonNameFilter" parent="baseTaxonomyFilter">
+		<property name="id" value="31"/>
+		<property name="displayName" value="occurrence.search.filter.taxonomy.commonname"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.COMMONNAME"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true"/>
+		<property name="autoCompleteUrl" value="taxonomy/taxonName/ajax/returnType/commonName/view/ajaxTaxonName"/>
+		<property name="filterHelper" ref="commonNameFilterHelper"/>
+		<property name="helpView" value="/occurrences/commonNameHelp.htm"/>
+	</bean>
+	<bean id="yearRangeFilter" parent="baseOtherDetailsFilter">
+		<property name="id" value="33"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.yearrange"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.YEARRANGE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="2"/>
+		<property name="filterHelper" ref="yearRangeFilterHelper"/>
+		<property name="wizardView" value="occurrence.wizard.yearrange"/>
+		<property name="allowMultiple" value="false"/>
+		<property name="helpView" value="/occurrences/yearHelp.htm"/>
+	</bean>
+    <bean id="altitudeFilter" parent="baseGeospatialFilter">
+      <property name="id" value="34"/>
+      <property name="displayName" value="occurrence.search.filter.geospatial.altitude"/>
+      <property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.ALTITUDE"/>
+      <property name="predicates">
+        <list>
+          <ref bean="predicateIs"/>
+          <bean class="org.gbif.portal.web.filter.PredicateDTO">
+            <property name="id" value="1"/>
+            <property name="value" value="filter.predicate.greater.than"/>
+            <property name="key" value="SERVICE.QUERY.PREDICATE.GE"/>
+          </bean>
+          <bean class="org.gbif.portal.web.filter.PredicateDTO">
+            <property name="id" value="2"/>
+            <property name="value" value="filter.predicate.less.than"/>
+            <property name="key" value="SERVICE.QUERY.PREDICATE.LE"/>
+          </bean>
+        </list>
+      </property>
+      <property name="valueType" value="java.lang.Float"/>
+      <property name="filterHelper" ref="altitudeFilterHelper"/>
+      <property name="i18nMultipleConditionKey" value="and"/>
+      <property name="helpView" value="/occurrence/altitudeHelp.htm"/>
+    </bean>
+    <bean id="depthFilter" parent="baseGeospatialFilter">
+      <property name="id" value="35"/>
+      <property name="displayName" value="occurrence.search.filter.geospatial.depth"/>
+      <property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.DEPTH"/>
+      <property name="predicates">
+        <list>
+          <ref bean="predicateIs"/>
+          <bean class="org.gbif.portal.web.filter.PredicateDTO">
+            <property name="id" value="1"/>
+            <property name="value" value="filter.predicate.greater.than"/>
+            <property name="key" value="SERVICE.QUERY.PREDICATE.GE"/>
+          </bean>
+          <bean class="org.gbif.portal.web.filter.PredicateDTO">
+            <property name="id" value="2"/>
+            <property name="value" value="filter.predicate.less.than"/>
+            <property name="key" value="SERVICE.QUERY.PREDICATE.LE"/>
+          </bean>
+        </list>
+      </property>
+      <property name="valueType" value="java.lang.Float"/>
+      <property name="filterHelper" ref="depthFilterHelper"/>
+      <property name="i18nMultipleConditionKey" value="and"/>
+      <property name="helpView" value="/occurrence/depthHelp.htm"/>
+    </bean>
+    <!-- 
+    <bean id="geoRegionFilter" parent="baseGeospatialFilter">
+      <property name="id" value="36"/>
+      <property name="displayName" value="occurrence.search.filter.geospatial.georegion"/>
+      <property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOREGION"/>
+      <property name="predicates">
+        <list>
+          <ref bean="predicateIs"/>
+        </list>
+      </property>
+      <property name="filterType" value="1"/>
+      <property name="filterHelper" ref="geoRegionFilterHelper"/>
+      <property name="picklistHelper" ref="geoRegionFilterHelper"/>
+      <property name="valueType" value="java.lang.Long"/>
+      <property name="i18nMultipleConditionKey" value="or"/>
+      <property name="helpView" value="/occurrence/geoRegionHelp.htm"/>
+    </bean>
+     -->
+	<bean id="geoRegionFilter" parent="baseGeospatialFilter">
+		<property name="id" value="36"/>
+		<property name="displayName" value="occurrence.search.filter.geospatial.georegion"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOREGION"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="valueType" value="java.lang.Long"/>
+		<property name="filterHelper" ref="geoRegionFilterHelper"/>
+		<property name="filterType" value="2"/>
+		<property name="wizardView" value="occurrence.wizard.georegion"/>
+	</bean>    
+		<!-- 
+	<bean id="dataResourceIdFilter" parent="baseDatasetsFilter">
+		<property name="id" value="24"/>
+		<property name="displayName" value="occurrence.search.filter.dataset.dataresource"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATARESOURCEID"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="valueType" value="java.lang.Long"/>
+		<property name="filterHelper" ref="dataResourceIdFilterHelper"/>
+		<property name="filterType" value="2"/>
+		<property name="wizardView" value="occurrence.wizard.dataresource"/>
+	</bean>	
+	 -->	
+	<bean id="imageURLFilter" parent="baseOtherDetailsFilter">
+		<property name="id" value="37"/>
+		<property name="displayName" value="occurrence.search.filter.other.details.imageurl"/>
+		<property name="subject" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.IMAGE"/>
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs"/>
+			</list>
+		</property>
+		<property name="filterType" value="1"/>
+		<property name="dropDownValues">
+			<map>
+				<entry key="0" value="imageurl.with.url"/>
+			</map>
+		</property>
+		<property name="filterHelper" ref="imageFilterHelper"/>
+		<property name="valueType" value="java.lang.Integer"/>
+		<property name="allowMultiple" value="false"/>
+		<property name="helpView" value="/occurrences/imageURLHelp.htm"/>
+	</bean>	 
+			
+	<!-- Filter Helpers -->
+	<bean id="boundingBoxFilterHelper" class="org.gbif.portal.web.content.geospatial.BoundingBoxFilterHelper"/>
+	<bean id="classificationFilterHelper" class="org.gbif.portal.web.content.taxonomy.ClassificationFilterHelper">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="messageSource" ref="messageSource"/>
+		<property name="taxonConceptUtils" ref="taxonConceptUtils"/>
+	</bean>
+	<bean id="occurrenceDateFilterHelper" class="org.gbif.portal.web.content.dataset.OccurrenceDateFilterHelper">
+		<property name="messageSource" ref="messageSource"/>
+	</bean>
+	<!-- Taxon Rank Filter Helpers -->
+	<bean id="familyFilterHelper" class="org.gbif.portal.web.content.taxonomy.TaxonRankFilterHelper">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="queryHelper" ref="occurrenceQueryHelper"/>
+		<property name="rank" value="family"/>
+		<property name="rankTriplet" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.FAMILY"/>
+		<property name="rankIdTriplet" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.FAMILYID"/>
+	</bean>
+	<bean id="genusFilterHelper" class="org.gbif.portal.web.content.taxonomy.TaxonRankFilterHelper">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="queryHelper" ref="occurrenceQueryHelper"/>
+		<property name="rank" value="genus"/>
+		<property name="rankTriplet" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.GENUS"/>
+		<property name="rankIdTriplet" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.GENUSID"/>
+	</bean>
+	<bean id="speciesFilterHelper" class="org.gbif.portal.web.content.taxonomy.TaxonRankFilterHelper">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="queryHelper" ref="occurrenceQueryHelper"/>
+		<property name="rank" value="species"/>
+		<property name="rankTriplet" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.SPECIES"/>
+		<property name="rankIdTriplet" value="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.SPECIESID"/>
+	</bean>
+  <!-- Data Resource Filter Helper -->
+	<bean id="dataResourceIdFilterHelper" class="org.gbif.portal.web.content.dataset.DataResourceIdFilterHelper">
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+	</bean>
+	<bean id="dataProviderIdFilterHelper" class="org.gbif.portal.web.content.dataset.DataProviderIdFilterHelper">
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+	</bean>
+	<bean id="resourceNetworkIdFilterHelper" class="org.gbif.portal.web.content.dataset.ResourceNetworkIdFilterHelper">
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+	</bean>
+	<bean id="restrictionsFilterHelper" class="org.gbif.portal.web.content.dataset.RestrictionsFilterHelper">
+		<property name="filterContentProvider" ref="filterContentProvider"/>
+		<property name="messageSource" ref="messageSource"/>
+		<property name="restrictionI18nKeys">
+			<list>
+				<value>occurrence.search.filter.option.show.georeferenced</value>
+				<value>occurrence.search.filter.option.hide.geospatial.issues</value>
+				<value>occurrence.search.filter.option.hide.taxonomy.issues</value>	
+			</list>
+		</property>
+		<property name="tripletSubjectKeys">
+			<list>
+				<value>SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOREFERENCEDONLY</value>
+				<value>SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOSPATIALISSUES</value>
+				<value>SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONOMICISSUES</value>	
+			</list>
+		</property>
+	</bean>
+	<bean id="georeferencedFilterHelper" class="org.gbif.portal.web.content.geospatial.GeoreferencedFilterHelper">
+		<property name="filterContentProvider" ref="filterContentProvider"/>
+	</bean>
+	<bean id="isTypeStatusFilterHelper" class="org.gbif.portal.web.content.taxonomy.TypificationFilterHelper">
+		<property name="filterContentProvider" ref="filterContentProvider"/>
+	</bean>
+	<bean id="geoConsistencyFilterHelper" class="org.gbif.portal.web.content.geospatial.GeoConsistencyFilterHelper"/>
+
+	<!-- Pick list for getting the host provider countries -->
+	<bean id="hostCountryPicklistHelper" class="org.gbif.portal.web.content.dataset.HostCountryPicklistHelper">
+		<property name="isoCountryCodeToI18NKey" ref="iso-country-codes"/>
+		<property name="geospatialManager" ref="geospatialManager"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="messageSource" ref="messageSource"/>
+	</bean>
+	<bean id="scientificNameFilterHelper" class="org.gbif.portal.web.content.taxonomy.ScientificNameFilterHelper">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="messageSource" ref="messageSource"/>
+		<property name="queryHelper" ref="occurrenceQueryHelper"/>
+		<property name="taxonConceptUtils" ref="taxonConceptUtils"/>
+        <property name="rankToTripletSubjectMappings" ref="rankToTripletSubjectMappings"/>
+	</bean>
+	<bean id="commonNameFilterHelper" class="org.gbif.portal.web.content.taxonomy.CommonNameFilterHelper">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="queryHelper" ref="occurrenceQueryHelper"/>
+		<property name="rankToTripletSubjectMappings" ref="rankToTripletSubjectMappings"/>
+	</bean>
+	<bean id="yearRangeFilterHelper" class="org.gbif.portal.web.content.dataset.YearRangeFilterHelper">
+		<property name="messageSource" ref="messageSource"/>
+	</bean>
+    <bean id="longitudeFilterHelper" class="org.gbif.portal.web.content.geospatial.LongitudeFilterHelper"/>
+    <bean id="latitudeFilterHelper" class="org.gbif.portal.web.content.geospatial.LatitudeFilterHelper"/>
+    <bean id="altitudeFilterHelper" class="org.gbif.portal.web.content.geospatial.AltitudeFilterHelper"/>
+    <bean id="depthFilterHelper" class="org.gbif.portal.web.content.geospatial.DepthFilterHelper"/>
+    <bean id="geoRegionFilterHelper" class="org.gbif.portal.web.content.geospatial.GeoRegionFilterHelper">
+        <property name="geospatialManager" ref="geospatialManager"/>
+    </bean>
+    
+    <bean id="imageFilterHelper" class="org.gbif.portal.web.content.occurrence.ImageFilterHelper">
+    	<property name="filterContentProvider" ref="filterContentProvider" />
+    </bean>
+    
+    
+</beans>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>	
+	<!-- Scheduled tasks -->	
+	<bean id="timerFactory" class="org.springframework.scheduling.timer.TimerFactoryBean" lazy-init="false">
+		<property name="scheduledTimerTasks">
+			<list>
+				<ref bean="fileExpiryTask"/>
+				<ref bean="longQueryTask"/>
+			</list>
+		</property>
+	</bean> 	
+
+	<!-- Scheduled long query task -->
+	<bean id="longQueryTask" lazy-init="false" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<!-- wait 10 seconds before starting repeated execution -->
+		<property name="delay" value="10000"/>
+		<!-- run every half hour -->
+		<property name="period" value="1800000"/>
+		<property name="timerTask" ref="longQuery"/>
+	</bean>	
+
+	<!-- Scheduled file expiry task -->
+	<bean id="fileExpiryTask" lazy-init="false" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+		<!-- wait 10 seconds before starting repeated execution -->
+		<property name="delay" value="10000"/>
+		<!-- run every hour -->
+		<property name="period" value="3600000"/>
+		<property name="timerTask" ref="fileExpiry"/>
+	</bean>	
+
+	<!-- Long Running Query -->
+	<bean id="longQuery" class="org.gbif.portal.web.download.LongRunningQueryTask">
+		<property name="maxProcessLengthInSecs" value="3600"/>
+		<property name="systemManager" ref="systemManager"/>
+	</bean>
+	
+	<!-- File expiry task -->	
+	<bean id="fileExpiry" class="org.gbif.portal.web.download.ExpiredFileTask">
+		<property name="fileTypes">
+			<list>
+				<!-- occurrence downloads (48 hours expiry time) -->	
+				<bean class="org.gbif.portal.web.download.FileType">
+					<property name="fileNamePrefix" value="occurrence-search-"/>
+					<property name="expiryTimeInSecs" value="172800"/>	
+				</bean>
+				<!-- taxonomy downloads (48 hours expiry time) -->						
+				<bean class="org.gbif.portal.web.download.FileType">
+					<property name="fileNamePrefix" value="taxonomy-search-"/>
+					<property name="expiryTimeInSecs" value="172800"/>	
+				</bean>
+        <!-- log messages downloads (48 hours expiry time) -->            
+        <bean class="org.gbif.portal.web.download.FileType">
+          <property name="fileNamePrefix" value="log-messages-"/>
+          <property name="expiryTimeInSecs" value="172800"/>  
+        </bean>		
+        <!-- niche modelling (24 hours expiry time) -->            
+        <bean class="org.gbif.portal.web.download.FileType">
+          <property name="fileNamePrefix" value="openModeller-"/>
+          <property name="expiryTimeInSecs" value="86400"/>  
+        </bean>           		
+				<!-- species charts (30 mins) -->												
+				<bean class="org.gbif.portal.web.download.FileType">
+					<property name="fileNamePrefix" value="species-"/>
+					<property name="expiryTimeInSecs" value="1800"/>	
+				</bean>
+				<!-- indexing history charts (30 mins) -->												
+				<bean class="org.gbif.portal.web.download.FileType">
+					<property name="fileNamePrefix" value="indexing-history"/>
+					<property name="expiryTimeInSecs" value="1800"/>	
+				</bean>					
+			</list>
+		</property>
+	</bean>
+</beans>

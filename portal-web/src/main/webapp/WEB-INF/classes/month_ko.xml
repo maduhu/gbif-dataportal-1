@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="month.jan">1월</entry>
+<entry key="month.feb">2월</entry>
+<entry key="month.mar">3월</entry>
+<entry key="month.apr">4월</entry>
+<entry key="month.may">5월</entry>
+<entry key="month.jun">6월</entry>
+<entry key="month.jul">7월</entry>
+<entry key="month.aug">8월</entry>
+<entry key="month.sep">9월</entry>
+<entry key="month.oct">10월</entry>
+<entry key="month.nov">11월</entry>
+<entry key="month.dec">12월</entry>
+
+<entry key="month.1">1월</entry>
+<entry key="month.2">2월</entry>
+<entry key="month.3">3월</entry>
+<entry key="month.4">4월</entry>
+<entry key="month.5">5월</entry>
+<entry key="month.6">6월</entry>
+<entry key="month.7">7월</entry>
+<entry key="month.8">8월</entry>
+<entry key="month.9">9월</entry>
+<entry key="month.10">10월</entry>
+<entry key="month.11">11월</entry>
+<entry key="month.12">12월</entry>
+</properties>

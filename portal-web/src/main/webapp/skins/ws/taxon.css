@@ -1,0 +1,15 @@
+h2.leftIcon {
+ background: transparent url(images/taxonomyIcon.gif) no-repeat;
+}
+
+th {
+ background-color: #fae4ff;
+ border-top: 1px solid #f0d2f7;
+ border-left: 1px solid #f0d2f7;
+ border-bottom: 1px solid #cda2d7;
+ border-right: 1px solid #cda2d7;
+}
+
+div.provider, div.resource, div.occurrence {
+ border-left: 1px dashed #f0d2f7
+}

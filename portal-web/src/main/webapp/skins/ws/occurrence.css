@@ -1,0 +1,15 @@
+h2.leftIcon {
+ background: transparent url(images/occurrenceIcon.gif) no-repeat;
+}
+
+th {
+ background-color: #ffd7d5;
+ border-top: 1px solid #ffe4df;
+ border-left: 1px solid #ffe4df;
+ border-bottom: 1px solid #ffb2ae;
+ border-right: 1px solid #ffb2ae;
+}
+
+div.provider, div.resource, div.occurrence {
+ border-left: 1px dashed #ffeae9
+}

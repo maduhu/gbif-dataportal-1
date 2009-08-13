@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!--  Taxonomy controllers moved out of dispatcher xml to be shared across contexts -->
+<beans>
+	<!-- classification search controller - 	defaultReturnType-->
+	<bean id="classificationSearchController" class="org.gbif.portal.web.controller.taxonomy.ClassificationSearchController">
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="defaultReturnType" value="full"/>
+		<property name="viewNamePrefix" value="classification"/>
+		<property name="defaultSubView" value="text"/>		
+		<property name="supportedReturnTypes">
+			<list>
+				<value>full</value>				
+			</list>		
+		</property>	
+		<property name="supportedSubViews">
+			<list>
+				<value>text</value>				
+				<value>json</value>
+				<value>xml</value>								
+				<value>pygmy</value>						
+			</list>
+		</property>		
+	</bean>
+	
+	<!-- Name search controller -->
+	<bean id="nameSearchController" class="org.gbif.portal.web.controller.taxonomy.ScientificNameSearchController">
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="defaultSubView" value="text"/>
+		<property name="viewNamePrefix" value="scientificNames"/>		
+		<property name="supportedReturnTypes">
+			<list>
+				<value>name</value>				
+				<value>nameId</value>
+				<value>nameIdMap</value>								
+				<value>nameIdUrl</value>												
+				<value>commonName</value>																
+			</list>
+		</property>		
+		<property name="supportedSubViews">
+			<list>
+				<value>text</value>				
+				<value>json</value>
+				<value>xml</value>								
+			</list>
+		</property>
+	</bean>	
+		
+	<!-- Filter components controller -->
+	<bean id="filterComponentsController" class="org.gbif.portal.web.controller.filter.FilterComponentsController">
+		<property name="filterMapWrapper" ref="taxonomyFilters"/>
+		<property name="filterAction" value="/taxonomy/search.htm"/>
+		<property name="filterHelpView" value="taxonomyFilterHelp"/>
+	</bean>
+	
+	<!-- Wizard controller -->
+	<bean id="taxonomyWizardFilterController" class="org.gbif.portal.web.controller.taxonomy.TaxonomyFilterWizardController">
+		<property name="filterMapWrapper" ref="taxonomyFilters"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="dataResourceTaxonFilter" ref="dataResourceTaxonFilter"/>
+	</bean>
+	
+	<!-- The Filter Querying controller for Taxonomic Concepts -->
+	<bean id="taxonomyFilterController" class="org.gbif.portal.web.controller.ConfigurableContentController">
+		<property name="viewName" value="taxonomyFilter"/>
+		<property name="contentProviders">
+			<list>
+				<ref bean="taxonomyFilterProvider"/>
+			</list>
+		</property>
+		<property name="attributesToAdd">
+			<map>
+				<entry key="rootWizardUrl" value="/species/wizards"/>				
+			</map>
+		</property>
+	</bean>
+	
+	<!-- Redirecting Controller for the Taxonomy download -->
+	<bean id="taxonomyDownloadSelectController" class="org.gbif.portal.web.controller.taxonomy.TaxonomyDownloadController">
+		<property name="taxonomyFilters" ref="taxonomyFilters"/>
+		<property name="mandatoryDownloadFields" ref="mandatoryTaxonomyDownloadFields"/>
+		<property name="classificationDownloadFields" ref="classificationTaxonomyDownloadFields"/>						
+		<property name="otherDownloadFields" ref="otherTaxonomyDownloadFields"/>				
+		<property name="downloadSpreadsheetView" value="taxonomyDownloadSpreadsheet"/>
+	</bean>
+		
+	<!-- Redirecting Controller for the Taxonomy selection -->
+	<bean id="taxonomyRedirectController" class="org.gbif.portal.web.controller.RedirectToRestUrlController">
+		<property name="redirectRootUrl" value="/taxonomy/browse/"/>
+		<property name="requestParamName" value="taxonomy"/>
+	</bean>
+	
+	<!-- Pygmy Style Taxonomy Tree Browser -->
+	<bean id="taxonomyBrowseController" class="org.gbif.portal.web.controller.taxonomy.TaxonomyBrowseController">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="taxonConceptUtils" ref="taxonConceptUtils"/>
+		<property name="filterContentProvider" ref="filterContentProvider"/>
+		<property name="urlRoot" value="browse"/>
+		<property name="viewNamePrefix" value="taxonomyBrowse"/>
+		<property name="defaultView" value="/welcome.htm"/>
+		<property name="messageSource" ref="messageSource"/>
+	</bean>
+
+	<!-- Pygmy Style Taxonomy Tree Browser -->
+	<bean id="countryTaxonomyBrowseController" class="org.gbif.portal.web.controller.taxonomy.CountryTaxonomyBrowseController">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="geospatialManager" ref="geospatialManager"/>
+		<property name="taxonConceptUtils" ref="taxonConceptUtils"/>		
+		<property name="urlRoot" value="browse"/>
+		<property name="viewNamePrefix" value="countryTaxonomyBrowse"/>
+		<property name="defaultView" value="/welcome.htm"/>
+		<property name="messageSource" ref="messageSource"/>
+	</bean>	
+		
+	<!--  Common Name Resolving Controller -->
+	<bean id="commonNameResolvingController" class="org.gbif.portal.web.controller.taxonomy.CommonNameResolvingController">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="urlRoot" value="commonName"/>
+		<property name="defaultView" value="/welcome.htm"/>
+		<property name="supportedPatterns">
+			<list>
+				<list>
+					<value>name</value>
+				</list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Old taxon name search support  -->
+	<bean id="taxonNameSearchController" class="org.gbif.portal.web.controller.taxonomy.TaxonNameSearchController">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="urlRoot" value="taxonName/ajax"/>	
+	</bean>	
+		
+	<!--Taxon Concept Resolving Controller - resolving using Scientific Name -->
+	<bean id="taxonResolvingController" class="org.gbif.portal.web.controller.taxonomy.TaxonResolvingController">
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="geospatialManager" ref="geospatialManager"/>		
+		<property name="occurrenceManager" ref="occurrenceManager"/>
+		<property name="messageSource" ref="messageSource"/>				
+		<property name="mapContentProvider" ref="mapContentProvider"/>
+		<property name="filterContentProvider" ref="filterContentProvider"/>								
+		<property name="taxonConceptUtils" ref="taxonConceptUtils"/>
+		<property name="userUtils" ref="userUtils"/>
+		<property name="urlRoot" value="species"/>
+		<property name="viewNamePrefix" value="species"/>
+		<property name="defaultView" value="/welcome.htm"/>
+		<property name="showCharts" value="true"/>		
+		<property name="supportedSubViews">
+			<list>
+				<value>mapWidget</value>
+			</list>
+		</property>
+	</bean>
+				
+	<!-- Widget controller for taxonomy widgets -->
+	<bean id="taxonWidgetResolvingController" class="org.gbif.portal.web.controller.RestController">
+		<property name="urlRoot" value="species"/>
+		<property name="supportedPatterns">
+			<list>
+				<list>
+					<value>key</value>
+					<value>view</value>					
+				</list>
+			</list>
+		</property>
+		<property name="additionalProperties">
+			<map>
+				<entry key="entityType" value="taxon"/>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- TaxonomyDataAgreementInterceptor - Ignore urls for bypassing security agreement  -->
+	<bean id="taxonomyDataAgreementInterceptor" class="org.gbif.portal.web.controller.user.CookieAndSessionCheckInterceptor">	
+		<property name="ignoreUrlPatterns">
+			<list>
+				<value>/ajax</value>				
+				<value>/taxonName/ajax/</value>
+				<value>/overviewMap.png</value>					
+				<value>/overviewmap.png</value>		
+				<value>/mapWidget</value>
+				<value>/nameSearch</value>				
+				<value>/classificationSearch</value>							
+			</list>
+		</property>
+		<!-- uppercase -->
+		<property name="robotsAgentsAllowedToBypassCookies">
+			<set>
+				<value>GOOGLEBOT</value>
+			</set>
+		</property>		
+	</bean>	
+	
+	<!-- The filter query controller for taxon concepts -->
+	<bean id="taxonomyDownloadController" class="org.gbif.portal.web.controller.filter.FilterDownloadController">
+		<!-- service layer managers -->
+		<property name="queryHelper" ref="taxonomyQueryHelper"/>
+		<property name="messageSource" ref="messageSource"/>
+		<!-- setting to 1.2 million = the size of IPNI classification -->		
+		<property name="maxResultsDownload" value="500000"/>			
+		<property name="searchUrl" value="/species/search.htm?"/>
+		<property name="downloadFileType" value="download.file.type.taxonconcept"/>
+		<!-- filters -->
+		<property name="filters" ref="taxonomyFilters"/>
+		<property name="downloadFields" ref="taxonomyDownloadFields"/>					
+		<property name="propertyStore" ref="servicePropertyStore"/>					
+		<property name="namespace" value="http://gbif.org/portal-service/taxonomyOutput/2006/1.0"/>							
+		<property name="downloadFilenamePrefix" value="taxonomy-search-"/>					
+		<property name="format2TripletQueryManager">
+			<map>
+				<entry key="tsv">
+						<ref bean="tripletTaxonomyManager"/>							
+				</entry>
+				<entry key="csv">
+						<ref bean="tripletTaxonomyManager"/>							
+				</entry>
+				<entry key="excel">
+						<ref bean="tripletTaxonomyManager"/>							
+				</entry>				
+			</map>
+		</property>		
+		<property name="format2FileWriterFactories">
+			<map>
+				<entry key="tsv">
+					<bean class="org.gbif.portal.web.download.DelimitedFileWriterFactory">
+						<property name="delimiter" value="&#x9;"/>
+						<property name="endOfRecord" value="&#xD;&#xA;"/>			
+						<property name="messageSource" ref="messageSource"/>												
+						<property name="fileExtension" value=".txt"/>
+						<property name="addCitation" value="true"/>		
+						<property name="downloadUtils" ref="downloadUtils"/>			
+						<property name="logEventId" value="3009"/>																																						
+					</bean>
+				</entry>
+				<entry key="csv">
+					<bean class="org.gbif.portal.web.download.DelimitedFileWriterFactory">
+						<property name="delimiter" value=","/>
+						<property name="endOfRecord" value="&#xD;&#xA;"/>				
+						<property name="messageSource" ref="messageSource"/>												
+						<property name="fileExtension" value=".csv"/>
+						<property name="addCitation" value="true"/>												
+						<property name="downloadUtils" ref="downloadUtils"/>							
+						<property name="logEventId" value="3009"/>																								
+					</bean>					
+				</entry>
+				<entry key="excel">
+					<bean class="org.gbif.portal.web.download.ExcelFileWriterFactory">
+						<property name="messageSource" ref="messageSource"/>												
+						<property name="fileExtension" value=".xls"/>
+						<property name="addCitation" value="true"/>												
+						<property name="sheetName" value="occurrence.search.results"/>
+						<property name="downloadUtils" ref="downloadUtils"/>							
+						<property name="logEventId" value="3009"/>												
+					</bean>					
+				</entry>				
+			</map>
+		</property>		
+	</bean>	
+	
+	<!-- Simple form for retrieving the taxon concept ids -->
+	<bean id="taxonIdRetrievalController" class="org.gbif.portal.web.controller.taxonomy.NameIdMapperController">
+		<property name="commandClass" value="org.gbif.portal.web.controller.taxonomy.bean.NamesList"/>
+		<property name="formView" value="taxon.id.form"/>
+		<property name="successView" value="taxon.id.names"/>
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="exportViews">
+			<map>		
+				<entry key="csv">
+					<bean class="org.gbif.portal.web.view.DelimitedView">
+						<property name="messageSource" ref="messageSource"/>
+						<property name="delimiter" value=","/>
+						<property name="contentType" value="text/csv"/>						
+					</bean>
+				</entry>
+				<entry key="tab">
+					<bean class="org.gbif.portal.web.view.DelimitedView">
+						<property name="messageSource" ref="messageSource"/>
+						<property name="contentType" value="application/excel"/>							
+					</bean>
+				</entry>
+			</map>
+		</property>	
+	</bean>	
+</beans>

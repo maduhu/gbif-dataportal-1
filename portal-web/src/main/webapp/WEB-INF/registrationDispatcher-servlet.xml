@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!-- Application context definition for registration DispatcherServlet -->
+<beans>
+
+	<!--  Define how the dispatcher will select the contollers -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor"/>
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+				 <prop key="/">registrationController</prop>					
+				 <prop key="/*">registrationController</prop>
+				 <prop key="/*.htm">urlFilenameController</prop>						
+			</props>
+		</property>
+	</bean>
+
+	<!-- Controller for the registration wizard steps -->
+	<bean id="registrationController" class="org.gbif.portal.web.controller.registration.RegistrationController">
+		<property name="uddiUtils" ref="adminUddiUtils"/>
+		<property name="ldapUtils" ref="adminLdapUtils"/>		
+		<property name="propertyStore" ref="indexPropertyStore"/>
+		<property name="geospatialManager" ref="geospatialManager"/>
+		<property name="taxonomyManager" ref="taxonomyManager"/>
+		<property name="dataResourceManager" ref="dataResourceManager"/>
+		<property name="resourceExtractionUtils" ref="adminResourceExtractionUtils"/>
+    <property name="mailSender" ref="mailSender"/>
+    <property name="messageSource" ref="messageSource"/>
+    <property name="userTemplateMessage">
+    	<bean class="org.springframework.mail.SimpleMailMessage">
+				<property name="from" value="portal@gbif.org"/>
+			</bean>
+    </property>
+		<!-- List of protocols supported - please add any new supported protocols to this list for convenience -->
+		<property name="resourceType2namespaceList">		
+			<map>
+				<entry key="DiGIR" value="http://digir.net/schema/protocol/2003/1.0"/>
+				<entry key="TAPIR" value="http://rs.tdwg.org/tapir/1.0"/>				
+			</map>
+		</property>		
+		<property name="resourceTypes">				
+			<list>
+				<value>DiGIR</value>
+				<value>TAPIR</value>				
+				<value>TabDelimitedData</value>								
+				<!-- value>PDFDocument</value>												
+				<value>HTMLDocument</value-->																
+			</list>
+		</property>
+		<property name="basisOfRecordTypes">
+			<list>
+				<value>observation</value>
+				<value>specimen</value>												
+				<value>living</value>																
+				<value>germplasm</value>																				
+				<value>fossil</value>																								
+				<value>literature</value>																												
+				<value>nomenclator</value>																																
+				<value>taxonomy</value>				
+				<value>regional_checklist</value>
+				<value>legislative_list</value>								
+			</list>			
+		</property>
+	</bean>
+</beans>

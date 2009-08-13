@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!-- Application context definition for Main DispatcherServlet -->
+<beans>
+	<!-- Define how the dispatcher will select the contollers -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor"/>
+        <ref bean="sessionHistoryInterceptor"/>
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+				<prop key="/">toolsUrlFilenameController</prop>								
+			</props>
+		</property>
+	</bean>
+	
+	
+  <!-- For pulling up pages that are hidden but need no model - e.g. in WEB-INF
+     The full path is used so that a "/occurrences/search.htm" returns
+     "occurrences/search" and not just "search" -->
+  <bean id="toolsUrlFilenameController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController">
+    <property name="prefix" value="tools."/>
+  </bean>	
+</beans>

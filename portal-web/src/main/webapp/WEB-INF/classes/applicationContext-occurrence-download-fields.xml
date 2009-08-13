@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<!-- Bean lists used in webapp to construct downloads page-->
+
+	<!-- list of downloadable fields -->
+	<bean id="downloadField" abstract="true" class="org.gbif.portal.web.download.Field"/>
+
+	<!-- full list of occurrence download fields -->
+	<util:list id="occurrenceDownloadFields">
+		<ref bean="dataProviderName"/>
+		<ref bean="dataResourceName"/>
+		<ref bean="rawCollectorName"/>
+		<ref bean="rawCollectorNumber"/>
+		<ref bean="fieldNumber"/>
+		<ref bean="guid"/>
+		<ref bean="occurrenceDate"/>
+		<ref bean="rawInstitutionCode"/>
+		<ref bean="rawCollectionCode"/>
+		<ref bean="rawCatalogueNumber"/>
+		<ref bean="basisOfRecord"/>
+		<ref bean="imageUrl"/>
+		<ref bean="rawModified"/>
+		<!--raw fields -->
+		<ref bean="rawIdentifierName"/>
+		<ref bean="rawIdentificationDate"/>
+		<ref bean="rawScientificName"/>
+		<ref bean="rawAuthor"/>
+		<ref bean="taxonName"/>
+		<ref bean="rawKingdom"/>
+		<ref bean="rawPhylum"/>
+		<ref bean="rawBioClass"/>
+		<ref bean="rawOrder"/>
+		<ref bean="rawFamily"/>
+		<ref bean="rawGenus"/>
+		<ref bean="rawCountry"/>
+		<ref bean="isoCountryCode"/>
+		<ref bean="rawLocality"/>
+		<!-- raw fields -->
+		<ref bean="rawCounty"/>
+		<ref bean="rawContinentOrOcean"/>
+		<ref bean="rawStateOrProvince"/>
+		<ref bean="region"/>
+		<ref bean="providerIsoCountryCode"/>
+		<ref bean="latitude"/>
+		<ref bean="longitude"/>
+		<ref bean="rawLatLongPrecision"/>
+		<ref bean="cellId"/>
+		<ref bean="centiCellId"/>
+		<ref bean="rawMinDepth"/>
+		<ref bean="rawMaxDepth"/>
+		<ref bean="rawDepthPrecision"/>
+		<ref bean="rawMinAltitude"/>
+		<ref bean="rawMaxAltitude"/>
+		<ref bean="rawAltitudePrecision"/>
+		<!-- portal urls -->
+		<ref bean="portalUrl"/>
+		<ref bean="webserviceUrl"/>
+		<!-- <ref bean="resourceWSUrl"/>-->
+		<!--ref bean="providerWSUrl"/>-->
+		<!-- ref bean="taxonPageWSUrl"/>-->
+	</util:list>
+	
+	<!-- categorized lists of download fields - for rendering in webapp -->
+	<!-- mandatory download fields -->
+	<util:list id="mandatoryOccurrenceDownloadFields">
+		<ref bean="dataProviderName"/>
+		<ref bean="dataResourceName"/>
+		<ref bean="rawScientificName"/>
+		<ref bean="portalUrl"/>
+	</util:list>
+	<!-- dataset download fields -->
+	<util:list id="datasetOccurrenceDownloadFields">
+		<ref bean="rawInstitutionCode"/>
+		<ref bean="rawCollectionCode"/>
+		<ref bean="rawCatalogueNumber"/>
+		<ref bean="basisOfRecord"/>
+		<ref bean="rawCollectorName"/>
+		<ref bean="occurrenceDate"/>
+		<ref bean="rawCollectorNumber"/>
+		<ref bean="fieldNumber"/>
+		<ref bean="guid"/>
+		<ref bean="imageUrl"/>
+		<ref bean="rawModified"/>
+		<ref bean="rawIdentifierName"/>
+		<ref bean="rawIdentificationDate"/>
+		<ref bean="webserviceUrl"/>
+	</util:list>
+	<!-- taxonomic download fields -->	
+	<util:list id="taxonomyOccurrenceDownloadFields">
+		<ref bean="taxonName"/>
+		<ref bean="rawAuthor"/>
+		<ref bean="rawKingdom"/>
+		<ref bean="rawPhylum"/>
+		<ref bean="rawBioClass"/>
+		<ref bean="rawOrder"/>
+		<ref bean="rawFamily"/>
+		<ref bean="rawGenus"/>
+	</util:list>
+	<!-- geospatial download fields -->
+	<util:list id="geospatialOccurrenceDownloadFields">
+		<ref bean="rawCountry"/>
+		<ref bean="isoCountryCode"/>
+		<ref bean="rawLocality"/>
+		<ref bean="rawCounty"/>
+		<ref bean="rawContinentOrOcean"/>
+		<ref bean="rawStateOrProvince"/>
+		<ref bean="region"/>
+		<ref bean="providerIsoCountryCode"/>
+		<ref bean="latitude"/>
+		<ref bean="longitude"/>
+		<ref bean="rawLatLongPrecision"/>
+		<ref bean="cellId"/>
+		<ref bean="centiCellId"/>
+		<ref bean="rawMinDepth"/>
+		<ref bean="rawMaxDepth"/>
+		<ref bean="rawDepthPrecision"/>
+		<ref bean="rawMinAltitude"/>
+		<ref bean="rawMaxAltitude"/>
+		<ref bean="rawAltitudePrecision"/>
+	</util:list>
+		
+	<!-- The beans described below contain 2 things:
+		1) fieldName - this points to a field that is listed in the spring file "portal-service/src/main/resources/org/gbif/portal/dao/applicationContext-occurrence-output.xml"
+		This file outlines the fields available for download and the beans from which they are acquired. Hence all field described in here must have an analogue in this file.
+		
+		2) fieldI18nNameKey - the i18n key used for label display in the webapp
+	 -->
+	<!-- occurrence fields -->
+	<bean id="taxonName" parent="downloadField">
+		<property name="fieldName" value="taxonName"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.interpreted.scientificname"/>
+	</bean>
+	<bean id="dataProviderName" parent="downloadField">
+		<property name="fieldName" value="dataProviderName"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.dataprovider"/>
+	</bean>
+	<bean id="dataResourceName" parent="downloadField">
+		<property name="fieldName" value="dataResourceName"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.dataresource"/>
+	</bean>
+	<bean id="occurrenceDate" parent="downloadField">
+		<property name="fieldName" value="occurrenceDate"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.dateCollected"/>
+	</bean>
+	<bean id="basisOfRecord" parent="downloadField">
+		<property name="fieldName" value="basisOfRecord"/>
+		<property name="fieldI18nNameKey" value="basis.of.record"/>
+		<property name="useI18nOnValue" value="true"/>
+		<property name="i18nPrefix" value="basis.of.record"/>
+	</bean>
+	<bean id="isoCountryCode" parent="downloadField">
+		<property name="fieldName" value="isoCountryCode"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.interpreted.country"/>
+		<property name="useI18nOnValue" value="true"/>
+		<property name="i18nPrefix" value="country"/>
+	</bean>
+	<bean id="region" parent="downloadField">
+		<property name="fieldName" value="region"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.region"/>
+		<property name="useI18nOnValue" value="true"/>
+		<property name="i18nPrefix" value="region"/>
+	</bean>
+	<bean id="providerIsoCountryCode" parent="downloadField">
+		<property name="fieldName" value="providerIsoCountryCode"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.providerCountry"/>
+		<property name="useI18nOnValue" value="true"/>
+		<property name="i18nPrefix" value="country"/>
+	</bean>
+	<bean id="latitude" parent="downloadField">
+		<property name="fieldName" value="latitude"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.geospatial.latitude"/>
+	</bean>
+	<bean id="longitude" parent="downloadField">
+		<property name="fieldName" value="longitude"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.geospatial.longitude"/>
+	</bean>
+	<bean id="cellId" parent="downloadField">
+		<property name="fieldName" value="cellId"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.cellId"/>
+	</bean>
+	<bean id="centiCellId" parent="downloadField">
+		<property name="fieldName" value="centiCellId"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.centiCellId"/>
+	</bean>
+	<bean id="typeStatus" parent="downloadField">
+		<property name="fieldName" value="typeStatus"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.typeStatus"/>
+	</bean>
+	<bean id="imageUrl" parent="downloadField">
+		<property name="fieldName" value="imageUrl"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.image.url"/>
+	</bean>
+	<bean id="guid" parent="downloadField">
+		<property name="fieldName" value="guid"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.guid"/>
+	</bean>
+	<bean id="fieldNumber" parent="downloadField">
+		<property name="fieldName" value="fieldNumber"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.field.number"/>
+	</bean>
+		
+	<!-- raw fields -->
+	<bean id="rawModified" parent="downloadField">
+		<property name="fieldName" value="rawModified"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.modified"/>
+	</bean>
+	<bean id="rawInstitutionCode" parent="downloadField">
+		<property name="fieldName" value="rawInstitutionCode"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.institutioncode"/>
+	</bean>
+	<bean id="rawCollectionCode" parent="downloadField">
+		<property name="fieldName" value="rawCollectionCode"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.collectioncode"/>
+	</bean>
+	<bean id="rawCatalogueNumber" parent="downloadField">
+		<property name="fieldName" value="rawCatalogueNumber"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.identifier"/>
+	</bean>
+	<bean id="rawCollectorName" parent="downloadField">
+		<property name="fieldName" value="rawCollectorName"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.collectorName"/>
+	</bean>
+	<bean id="rawCollectorNumber" parent="downloadField">
+		<property name="fieldName" value="imageUrl"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.collector.number"/>
+	</bean>
+	<bean id="rawKingdom" parent="downloadField">
+		<property name="fieldName" value="rawKingdom"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.kingdom"/>
+	</bean>
+	<bean id="rawPhylum" parent="downloadField">
+		<property name="fieldName" value="rawPhylum"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.phylum"/>
+	</bean>
+	<bean id="rawBioClass" parent="downloadField">
+		<property name="fieldName" value="rawBioClass"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.class"/>
+	</bean>
+	<bean id="rawOrder" parent="downloadField">
+		<property name="fieldName" value="rawOrder"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.order"/>
+	</bean>
+	<bean id="rawFamily" parent="downloadField">
+		<property name="fieldName" value="rawFamily"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.family"/>
+	</bean>
+	<bean id="rawGenus" parent="downloadField">
+		<property name="fieldName" value="rawGenus"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.genus"/>
+	</bean>
+	<bean id="rawScientificName" parent="downloadField">
+		<property name="fieldName" value="rawScientificName"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.scientificname"/>
+	</bean>
+	<bean id="rawAuthor" parent="downloadField">
+		<property name="fieldName" value="rawAuthor"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.author"/>
+	</bean>
+	<bean id="rawContinentOrOcean" parent="downloadField">
+		<property name="fieldName" value="rawContinentOrOcean"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.continent.ocean"/>
+	</bean>
+	<bean id="rawCountry" parent="downloadField">
+		<property name="fieldName" value="rawCountry"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.country"/>
+	</bean>
+	<bean id="rawStateOrProvince" parent="downloadField">
+		<property name="fieldName" value="rawStateOrProvince"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.state.province"/>
+	</bean>
+	<bean id="rawCounty" parent="downloadField">
+		<property name="fieldName" value="rawCounty"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.county"/>
+	</bean>
+	<bean id="rawLocality" parent="downloadField">
+		<property name="fieldName" value="rawLocality"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.locality"/>
+	</bean>
+	<bean id="rawLatLongPrecision" parent="downloadField">
+		<property name="fieldName" value="rawLatLongPrecision"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.geospatial.latLongPrecision"/>
+	</bean>	
+	<bean id="rawMinDepth" parent="downloadField">
+		<property name="fieldName" value="rawMinDepth"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.mindepth"/>
+	</bean>
+	<bean id="rawMaxDepth" parent="downloadField">
+		<property name="fieldName" value="rawMaxDepth"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.maxdepth"/>
+	</bean>
+	<bean id="rawDepthPrecision" parent="downloadField">
+		<property name="fieldName" value="rawDepthPrecision"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.maxdepth"/>
+	</bean>
+	<bean id="rawMinAltitude" parent="downloadField">
+		<property name="fieldName" value="rawMinAltitude"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.minaltitude"/>
+	</bean>
+	<bean id="rawMaxAltitude" parent="downloadField">
+		<property name="fieldName" value="rawMaxAltitude"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.maxaltitude"/>
+	</bean>
+	<bean id="rawAltitudePrecision" parent="downloadField">
+		<property name="fieldName" value="altitudePrecision"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.geospatial.altitude.precision"/>
+	</bean>
+	<bean id="rawIdentifierName" parent="downloadField">
+		<property name="fieldName" value="rawIdentifierName"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.identifiername"/>
+	</bean>
+	<bean id="rawIdentificationDate" parent="downloadField">
+		<property name="fieldName" value="rawIdentificationDate"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.raw.identificationdate"/>
+	</bean>
+		
+	<!-- generated fields -->
+	<bean id="portalUrl" class="org.gbif.portal.web.download.UrlField">
+		<property name="fieldName" value="portalUrl"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.portal.url"/>
+		<property name="prefix" value="/occurrences/"/>
+		<property name="beanProperty" value="key"/>
+		<property name="postfix" value=""/>
+	</bean>
+	<bean id="webserviceUrl" class="org.gbif.portal.web.download.UrlField">
+		<property name="fieldName" value="webserviceUrl"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.webservice.url"/>
+		<property name="prefix" value="/ws/rest/occurrence/get?key="/>
+		<property name="beanProperty" value="key"/>
+		<property name="postfix" value=""/>
+	</bean>
+	<bean id="providerWSUrl" class="org.gbif.portal.web.download.UrlField">
+		<property name="fieldName" value="providerWSUrl"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.webservice.url"/>
+		<property name="prefix" value="/ws/rest/provider/get?key="/>
+		<property name="beanProperty" value="key"/>
+		<property name="postfix" value=""/>
+	</bean>
+	<bean id="resourceWSUrl" class="org.gbif.portal.web.download.UrlField">
+		<property name="fieldName" value="resourceWSUrl"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.webservice.url"/>
+		<property name="prefix" value="/ws/rest/resource/get?key="/>
+		<property name="beanProperty" value="key"/>
+		<property name="postfix" value=""/>
+	</bean>
+	<bean id="taxonPageWSUrl" class="org.gbif.portal.web.download.UrlField">
+		<property name="fieldName" value="taxonPageWSUrl"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.webservice.url"/>
+		<property name="prefix" value="/ws/rest/taxon/get?key="/>
+		<property name="beanProperty" value="key"/>
+		<property name="postfix" value=""/>
+	</bean>
+</beans>

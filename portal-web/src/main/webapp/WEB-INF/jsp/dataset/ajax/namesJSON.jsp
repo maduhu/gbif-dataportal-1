@@ -1,0 +1,3 @@
+<%@ page contentType="text/javascript" %><%@ include file="/common/taglibs.jsp"%><c:if test="${not empty callback}">${callback}(</c:if>{ "Resultset":{
+	"totalResultsReturned":"${fn:length(searchResults)}"
+	"Result":[<c:forEach items="${searchResults}" var="dataset" varStatus="nameStatus"><c:if test="${nameStatus.index>0}">,</c:if>"${dataset.name}"</c:forEach>] }}<c:if test="${not empty callback}">)</c:if>

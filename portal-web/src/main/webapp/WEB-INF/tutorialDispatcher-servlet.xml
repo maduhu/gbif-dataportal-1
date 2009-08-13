@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<!--  Application context definition for Tutorial DispatcherServlet -->
+<beans>
+	
+	<!--  Defines how the dispatcher will select the contollers -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor"/>
+				<ref bean="dataAgreementInterceptor"/>
+        <ref bean="sessionHistoryInterceptor"/>				
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+				<prop key="/*">tutorialController</prop>
+				<prop key="/">tutorialController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Tutorial Controller -->
+	<bean id="tutorialController" class="org.gbif.portal.web.controller.tutorial.TutorialController">
+		<property name="urlRoot" value="tutorial"/>
+		<property name="viewNamePrefix" value="tutorialView"/>
+		<property name="defaultView" value="/welcome.htm"/>
+		<property name="supportedLocales">
+			<list>
+				<value>en</value>
+			</list>
+		</property>
+		<property name="supportedPatterns">
+			<list>
+				<list>
+					<value>tutorialPageName</value>
+				</list>
+			</list>
+		</property>
+	</bean>
+</beans>

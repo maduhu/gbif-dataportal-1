@@ -1,0 +1,1174 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<!-- Reusable constants -->
+<entry key="Y">Y</entry>
+<entry key="N">N</entry>
+<entry key="create">생성하다</entry>
+<entry key="delete">삭제하다</entry>
+<entry key="once">한 번</entry>
+<entry key="daily">매일</entry>
+<entry key="weekly">매주</entry>
+<entry key="biweekly">매 2주</entry>
+<entry key="monthly">매달</entry>
+<entry key="bimonthly">매 2달</entry>
+<entry key="yearly">매년</entry>
+<entry key="next">다음</entry>
+<entry key="second">초(second)</entry>
+<entry key="seconds">초(seconds)</entry>
+<entry key="minute">분(minute)</entry>
+<entry key="minutes">분(minutes)</entry>
+<entry key="hour">시(hour)</entry>
+<entry key="hours">시(hours)</entry>
+<entry key="day">일(day)</entry>
+<entry key="days">일(days)</entry>
+<entry key="admin">관리</entry>
+<entry key="edit">편집</entry>
+<entry key="save">저장</entry>
+<entry key="details">세부사항</entry>
+<entry key="view">보기</entry>
+<entry key="show">보이다</entry>
+<entry key="hide">감추다</entry>
+<entry key="minimum">최소</entry>
+<entry key="maximum">최대</entry>
+<entry key="day">일</entry>
+<entry key="month">월</entry>
+<entry key="year">년</entry>
+<entry key="between">between</entry>
+<entry key="and">and</entry>
+<entry key="or">or</entry>
+<entry key="start.date">시작일</entry>
+<entry key="end.date">종료일</entry>
+<entry key="all">모두</entry>
+<entry key="page">페이지</entry>
+<entry key="of">의</entry>
+
+<!-- Accessibility -->
+<entry key="accessibility.title">접근성 옵션</entry>
+<entry key="accessibility.skip.to.content">콘텐트로 건너뛰기</entry>
+<entry key="accessibility.skip.to.sidebar">사이드바로 건너뛰기</entry>
+
+<!-- Breadcrumbs -->
+<entry key="breadcrumbs.title">최근에 본 것</entry>
+
+<!-- Reusable Taxonomic messages -->
+<entry key="taxon">분류군</entry>
+<entry key="rank">순위</entry>
+<entry key="author">저자</entry>
+<entry key="accepted.name">수용된 이름</entry>
+<entry key="accepted">수용된</entry>
+<entry key="scientificName">학명</entry>
+<entry key="gbif.id">GBIF ID</entry>
+<entry key="gbif.parent.id">GBIF Parent ID</entry>
+
+<!-- Major ranks -->
+<entry key="taxonrank.kingdom">계(Kingdom)</entry>
+<entry key="taxonrank.phylum">문(Phylum)</entry>
+<entry key="taxonrank.class">강(Class)</entry>
+<entry key="taxonrank.order">목(Order)</entry>
+<entry key="taxonrank.family">과(Family)</entry>
+<entry key="taxonrank.genus">속(Genus)</entry>
+<entry key="taxonrank.species">종(Species)</entry>
+<entry key="taxonrank.subspecies">아종(Subspecies)</entry>
+<entry key="generic">속명(Generic)</entry>
+<entry key="specificEpithet">종소명(Specific epithet)</entry>
+
+<!-- Non major ranks -->
+<entry key="taxonrank.suborder">아목(Suborder)</entry>
+<entry key="taxonrank.infraorder">목이하(Infraorder)</entry>
+<entry key="taxonrank.superfamily">상과(Superfamily)</entry>
+<entry key="taxonrank.subfamily">아과(subfamily)</entry>
+<entry key="taxonrank.tribe">류(Tribe)</entry>
+<entry key="taxonrank.subtribe">아류(Subtribe)</entry>
+<entry key="taxonrank.nothogenus">Nothogenus</entry>
+<entry key="taxonrank.subgenus">아속(subgenus)</entry>
+<entry key="taxonrank.section">Section</entry>
+<entry key="taxonrank.subsection">Subsection</entry>
+<entry key="taxonrank.series">Series</entry>
+<entry key="taxonrank.subseries">Subseries</entry>
+<entry key="taxonrank.nothospecies">Nothospecies</entry>
+<entry key="taxonrank.subspecies">아종(Subspecies)</entry>
+<entry key="taxonrank.nothosubspecies">Nothosubspecies</entry>
+<entry key="taxonrank.variety">변종(Variety)</entry>
+<entry key="taxonrank.nothovariety">Nothovariety</entry>
+<entry key="taxonrank.form">품종(Form)</entry>
+<entry key="taxonrank.nothoform">Nothoform</entry>
+<entry key="taxonrank.biovar">Biovar</entry>
+<entry key="taxonrank.serovar">Serovar</entry>
+<entry key="taxonrank.cultivar">재배변종(Cultivar)</entry>
+<entry key="taxonrank.pathovar">Pathovar</entry>
+<entry key="taxonrank.infraspecific">종이하(Infraspecific)</entry>
+<entry key="taxonrank.aberration">Aberration</entry>
+<entry key="taxonrank.mutation">돌연변이(Mutation)</entry>
+<entry key="taxonrank.race">Race</entry>
+<entry key="taxonrank.confersubspecies">Confersubspecies</entry>
+<entry key="taxonrank.formaspecialis">Formaspecialis</entry>
+<entry key="taxonrank.hybrid">잡종(Hybrid)</entry>
+
+<!-- Reusable Actions -->
+<entry key="search">검색</entry>
+<entry key="refine.search">상세 검색</entry>
+<entry key="actions.for">Actions for</entry>
+<entry key="actions">활동</entry>
+<entry key="explore.occurrences">발생데이터 탐험</entry>
+<entry key="moreactions">더 많은 활동</entry>
+<entry key="next">다음</entry>
+<entry key="previous">이전</entry>
+<entry key="interpreted.from">에서 해석됨</entry>
+
+<!-- Reusable labels -->
+<entry key="name">이름</entry>
+<entry key="description">설명</entry>
+<entry key="role">역할</entry>
+<entry key="address">주소</entry>
+<entry key="country">국가</entry>
+<entry key="email">이메일</entry>
+<entry key="telephone">전화</entry>
+<entry key="website">웹사이트</entry>
+<entry key="date.added">포탈에 추가됨</entry>
+<entry key="last.modified">갱신 정보</entry>
+<entry key="basis.of.record">레코드의 단위</entry>
+<entry key="occurrences">발생데이터</entry>
+<entry key="occurrence">발생</entry>
+<entry key="occurrence.record">발생</entry>
+<entry key="dataset">데이터집합</entry>
+<entry key="data.provider">데이터제공자</entry>
+<entry key="type.status">타입 상태(Type Status)</entry>
+<entry key="type.scientific.name">대표적인 이름(Typified Name)</entry>
+<entry key="catalogue.number">카탈로그 번호</entry>
+
+<!-- Reusable error messages -->
+<entry key="errors.must.be.specified">명시되어야 함</entry>
+<entry key="errors.uddi.communication">(UDDI와 통신할 때) 기술적 어려움에 봉착함</entry>
+<entry key="errors.invalid">*유효하지 않음</entry>
+<entry key="errors.username.in.use">*사용자이름이 사용중에 있습니다</entry>
+<entry key="errors.tooshort">*너무 짧음</entry>
+<entry key="errors.invalid.chars">*유효하지 않음 문자를 포함하고 있습니다</entry>
+<entry key="errors.invalid.latitude">*유효하지 않은 위도</entry>
+<entry key="errors.invalid.longitude">*유효하지 않은 경도</entry>
+<entry key="errors.west.greater.east">*서쪽 값이 동쪽 값보다 큽니다</entry>
+<entry key="errors.south.greater.north">*남쪽 값이 북쪽 값보다 큽니다</entry>
+
+<!-- Reusable titles -->
+<entry key="occurrence.overview">발생 개관</entry>
+<entry key="occurrences.of">발생 개관</entry>
+<entry key="image.overview">사진</entry>
+<entry key="image">사진</entry>
+
+<!-- The decorators for dates -->
+<entry key="I18nDateDecorator.date.format">dd/MM/yyyy</entry>
+<entry key="I18nDateTimeDecorator.date.format">dd/MM/yyyy - HH:mm</entry>
+
+<!-- Page Header titles -->
+<entry key="portal.title">GBIF 포탈</entry>
+<entry key="portal.subtitle.welcome">환영</entry>
+<entry key="portal.subtitle.search">검색</entry>
+<entry key="heading.stats1">건의 발생 레코드 - </entry>
+<entry key="heading.stats2">개 데이터 제공자</entry>
+<entry key="welcome.tip.of.the.day.title">GBIF 데이터 포탈 방문을 환영합니다</entry>
+<entry key="welcome.tip.of.the.day.1">GBIF 네트워크를 통해 공유되는 수백만 개의 데이터 레코드를 접근하십시오.</entry>
+<entry key="welcome.tip.of.the.day.2">이 사이트를 이용하는 방법을 알기 위해서는 {0}를 보십시오.</entry>
+<entry key="welcome.tip.of.the.day.3">조금 더 작게 이 사이트의 내용을 표시하려면, {0}을 보십시오.</entry>
+
+<entry key="copyright.2">데이터 제공자가 데이터에 대한 모든 권리를 보유합니다.</entry>
+<entry key="contact.us">이메일 연락처</entry>
+
+<!-- Blanket Search -->
+<entry key="blanket.search">검색</entry>
+<entry key="blanket.search.go">검색</entry>
+<entry key="blanket.search.hint">종/국가/데이터집합</entry>
+<entry key="blanket.search.placeholder">검색을 새로이 시작합니다</entry>
+<entry key="blanket.search.header">검색 결과:</entry>
+<entry key="blanket.search.names.title">이름</entry>
+<entry key="blanket.search.scientific.names.title">학명</entry>
+<entry key="blanket.search.common.names.title">일반 이름</entry>
+<entry key="blanket.search.geographical.areas.title">국가</entry>
+<entry key="blanket.search.data.resources.title">데이터집합</entry>
+<entry key="blanket.search.name.nomatches">이름과 일치하는 것이 없음</entry>
+<entry key="blanket.search.scientific.name.nomatches">학명과 일치하는 것이 없음</entry>
+<entry key="blanket.search.common.name.nomatches">일반 이름과 일치하는 것이 없음</entry>
+<entry key="blanket.search.names.viewall">일치하는 모든 이름을 보기</entry>
+<entry key="blanket.search.scientific.names.viewall">일치하는 모든 학명을 보기</entry>
+<entry key="blanket.search.common.names.viewall">일치하는 모든 일반 이름을 보기</entry>
+<entry key="blanket.search.countries.viewall">이름과 일치하는 모든 국가를 보기</entry>
+<entry key="blanket.search.datasets.viewall">이름과 일치하는 모든 데이터집합을 보기</entry>
+<entry key="blanket.search.geospatial.nomatches">이름과 일치하는 국가가 없음</entry>
+<entry key="blanket.search.publication.nomatches">이름과 일치하는 데이터집합이 없음</entry>
+<entry key="blanket.search.name.did.you.mean">이것을 의도했는가?:</entry>
+
+<!-- Naming -->
+<entry key="ambiguous.synonym.for"> 대해 모호한 동의어</entry>
+<entry key="misapplied.name.for"> 대해 잘못 적용된 이름</entry>
+<entry key="provisionally.applied.name">예비적으로 수용된 이름</entry>
+<entry key="synonym.for"> 대한 동의어</entry>
+<entry key="accepted.name">수용된 이름</entry>
+<entry key="specimen.types">기준(모식) 표본</entry>
+
+<!-- Top Menu -->
+<entry key="topmenu.home">홈</entry>
+<entry key="topmenu.species">종(Species)</entry>
+<entry key="topmenu.countries">국가</entry>
+<entry key="topmenu.datasets">데이터집합</entry>
+<entry key="topmenu.occurrences">발생데이터</entry>
+<entry key="topmenu.settings">설정</entry>
+<entry key="topmenu.about">포탈정보</entry>
+
+<!-- Top Menu - titles -->
+<entry key="topmenu.home.title">GBIF 홈페이지로 돌아가기</entry>
+<entry key="topmenu.species.title">분류 내에서 종 찾기</entry>
+<entry key="topmenu.countries.title">국가 찾기</entry>
+<entry key="topmenu.datasets.title">데이터집합, 데이터 제공자 또는 데이터 네트워크 찾기</entry>
+<entry key="topmenu.occurrences.title">발생 레코드에 대해 검색</entry>
+<entry key="topmenu.settings.title">이 포탈의 설정을 조정하기</entry>
+<entry key="topmenu.about.title">이 포탈의 정보</entry>
+
+<!-- Introduction Sections -->
+
+<!-- Species pane -->
+<entry key="taxonomy.intro.heading">종(species) 탐험</entry>
+<entry key="taxonomy.intro.description">종(species) 또는 다른 개체 그룹에 대한 데이터 찾기.</entry>
+<entry key="taxonomy.intro.speciesoftheday">오늘의 종(species)</entry>
+<entry key="taxonomy.intro.latestspeciesadded">예제 종(species)</entry>
+<entry key="taxonomy.intro.description1">종(species), 종 발생 레코드를 포함하는 식물, 동물, 곰팡이, 미생물의 그룹, 그리고 분류 정보, 학명, 일반 이름에 대한 정보</entry>
+<entry key="taxonomy.intro.explore">탐험</entry>
+<entry key="taxonomy.intro.summary">종(Species)</entry>
+<!-- Country pane -->
+<entry key="geography.intro.heading">국가 탐험</entry>
+<entry key="geography.intro.description">특정 국가에서 기록된 조에 관한 데이터를 찾기.</entry>
+<entry key="geography.intro.description1">각 국가에서 기록된 종에 관한 정보 (GBIF 네트워크의 제공자들이 공유하는 레코드를 포함).</entry>
+<entry key="geography.intro.countryoftheday">오늘의 국가</entry>
+<entry key="geography.intro.ecoregionoftheday">오늘의 생태지역</entry>
+<entry key="geography.intro.latestresourceadded">최근 추가된 데이터집합</entry>
+<entry key="geography.intro.explore">탐험</entry>
+<entry key="geography.intro.seedatafor"> 데이터 참고</entry>
+<entry key="geography.intro.summary">국가</entry>
+<!-- Dataset pane -->
+<entry key="dataset.intro.heading">데이터집합 탐험</entry>
+<entry key="dataset.intro.description">데이터 제공자, 데이터집합 또는 데이터 네트워크에서 데이터를 찾기.</entry>
+<entry key="dataset.intro.description.counts">GBIF를 통해 데이터를 공유하는 데이터 제공자, 데이터집합 그리고 데이터 네트워크에 관한 정보 ({1} 개 데이터 제공자의 {0} 개 데이터집합에 관한 요약정보를 포함).</entry>
+<entry key="dataset.intro.latestresourceadded">최근 추가된 데이터집합</entry>
+<entry key="dataset.intro.explore">탐험</entry>
+<entry key="dataset.intro.summary">데이터집합</entry>
+
+<!-- Settings -->
+<entry key="settings.title">설정</entry>
+<entry key="settings.apply.changes">변경사항 적용</entry>
+<entry key="settings.lookandfeel">겉모양</entry>
+<entry key="settings.theme.standard">큰 화면 (1024x768 또는 이보다 큰 화면에 적합)</entry>
+<entry key="settings.theme.800x600">작음 화면 (800x600 또는 이보다 큰 화면에 적합)</entry>
+<entry key="settings.language">언어</entry>
+<entry key="settings.language.english">영어</entry>
+<entry key="settings.language.french">프랑스어</entry>
+
+<!-- Search Filter -->
+<entry key="search.filter.currentsearch.title">현재 검색</entry>
+<entry key="search.filter.removefilter">이 필터를 제거</entry>
+<entry key="search.filter.empty">현재 검색내용이 비어 있습니다.</entry>
+<entry key="search.filter.minus.signs">마이너스(-) 기호를 클릭하여 필터를 제거할 수 있습니다.</entry>
+
+<!-- Quick taxon search  -->
+<entry key="quick.taxon.search">이름으로 이동</entry>
+<entry key="quick.taxon.search.explanation">분류내에서 학명을 찾기: {0}</entry>
+<entry key="quick.taxon.search.explanation.this.classification">이 분류내에서 학명을 찾기</entry>
+
+<!-- Occurrence Search Filters -->
+<entry key="occurrence.search.filter.searchresults">검색 결과:</entry>
+<entry key="occurrence.search.filter.max.results.exceeded">이 검색은 {0} 결과를 반환하였습니다.</entry>
+<entry key="occurrence.search.filter.nonefound">발생레코드가 발견되지 않았습니다. 검색 필터를 조정하십시오.</entry>
+<entry key="occurrence.search.filter.main.title">발생데이터 검색</entry>
+<entry key="occurrence.search.filter.view">보기</entry>
+<entry key="occurrence.search.filter.add">추가</entry>
+<entry key="occurrence.search.filter.tofilter">필터로</entry>
+<entry key="occurrence.search.filter.addfilter">새로운 필터 추가</entry>
+<entry key="occurrence.search.filter.removethisfilter">이 필터를 제거</entry>
+<entry key="occurrence.search.filter.matchAll">일치</entry>
+<entry key="occurrence.search.filter.matchAll.following">다음 규칙에 따라:</entry>
+<entry key="occurrence.search.filter.matchAll.true">모두</entry>
+<entry key="occurrence.search.filter.matchAll.false">임의의 한 개</entry>
+<entry key="occurrence.search.filter.retrievingcount">검색에 대한 개수를 가져오는 중.....</entry>
+<entry key="occurrence.search.filter.matched.over">이 검색은 {0} 개의 발생 레크드에 대해 일치합니다.</entry>
+<entry key="occurrence.search.filter.matched.one">이 검색은 한 개의 발생 레코드와 일치합니다.</entry>
+<entry key="occurrence.search.filter.matched.many">이 검색은 {0} 개의 발생 레코드와 일치합니다.</entry>
+
+<!-- Occurrence Search Results Table -->
+<entry key="occurrence.search.results">발생 데이터 검색 결과</entry>
+<entry key="occurrence.search.details">세부내용 검색</entry>
+<entry key="occurrence.search.description">서술정보 검색</entry>
+<entry key="occurrence.search.url">URL 검색</entry>
+<entry key="occurrence.search.download.url">URL 페이지 다운로드</entry>
+<entry key="occurrence.search.download.date">다운로드한 날짜</entry>
+<entry key="occurrence.search.results.provider">데이터집합</entry>
+<entry key="occurrence.search.results.dataprovider">제공자</entry>
+<entry key="occurrence.search.results.dataresource">데이터집합</entry>
+<entry key="occurrence.search.results.isocountrycode">ISO 국가 코드</entry>
+<entry key="occurrence.search.results.name">학명</entry>
+<entry key="occurrence.search.results.institutioncode">기관 코드</entry>
+<entry key="occurrence.search.results.collectioncode">수집물 코드</entry>
+<entry key="occurrence.search.results.catalogueno">카탈로그 번호</entry>
+<entry key="occurrence.search.results.basisofrecord">레코드의 단위</entry>
+<entry key="occurrence.search.results.coordinates">좌표</entry>
+<entry key="occurrence.search.results.date">날짜</entry>
+<entry key="occurrence.search.results.country">국가</entry>
+<entry key="occurrence.search.results.url">url</entry>
+<entry key="occurrence.switchto.provider.countview">검색에 포함될 데이터 제공자</entry>
+<entry key="occurrence.switchto.resources.countview">검색에 포함될 데이터집합</entry>
+<entry key="occurrence.switchto.country.countview">검색에 포함될 국가</entry>
+<entry key="occurrence.switchto.species.countview">결과에 포함될 종</entry>
+
+<!-- Occurrence Search Results Counts -->
+<entry key="occurrence.search.filter.results.countsheader.provider">검색에 포함될 데이터 제공자를 명시하십시오</entry>
+<entry key="occurrence.search.filter.results.countsmessage.provider">아래는 당신의 현재 검색과 일치하는 발생 레코드를 제공한 데이터 제공자의 목록입니다. 특정 제공자의 레코드만을 보기 원할 경우 해당 체크박스를 선택하고 "상세 검색"을 클릭하십시오.</entry>
+<entry key="occurrence.search.filter.results.countsheader.resource">검색에 포함될 데이터집합을 명시하십시오</entry>
+<entry key="occurrence.search.filter.results.countsmessage.resource">아래는 당신의 현재 검색과 일치하는 발생 레코드를 제공한 데이터집합의 목록입니다. 특정 데이터집합의 레코드만을 보기 원할 경우 해당 체크박스를 선택하고 "상세 검색"을 클릭하십시오.</entry>
+<entry key="occurrence.search.filter.results.countsheader.country">검색에 포함될 국가를 명시하십시오</entry>
+<entry key="occurrence.search.filter.results.countsmessage.country">아래는 당신의 현재 검색과 일치하는 발생 레코드를 제공한 국가의 목록입니다. 특정 국가의 레코드만을 보기 원할 경우 해당 체크 박스를 선택하고 "상세 검색"을 클릭하십시오.</entry>
+<entry key="occurrence.search.filter.results.countsheader.species">결과에 대한 종 목록을 나열하십시오</entry>
+<entry key="occurrence.search.filter.results.countsmessage.species">아래는 당신의 현재 검색과 일치하는 발생 레코드를 가진 종 목록입니다. 특정 종에 대한 레코드만을 보기 원할 경우, "{0}"을 클릭하십시오</entry>
+<entry key="occurrence.search.filter.results.countsmessage.species.justthis">발생 레코드를 보기</entry>
+<entry key="occurrence.search.filter.results.table.counts.provider">제공자</entry>
+<entry key="occurrence.search.filter.results.table.counts.resource">데이터집합</entry>
+<entry key="occurrence.search.filter.results.table.counts.country">국가</entry>
+<entry key="occurrence.search.filter.results.table.counts.species">종</entry>
+<entry key="occurrence.search.filter.results.table.counts.include">포함하기</entry>
+<entry key="occurrence.search.filter.option.show.georeferenced">지리참조연산된 레코드만을 보기</entry>
+<entry key="occurrence.search.filter.option.hide.geospatial.issues">지리공간적인 문제(issues)가 있는 레코드를 감추기</entry>
+<entry key="occurrence.search.filter.option.hide.taxonomy.issues">분류학적인 문제(issues)가 있는 레코드를 감추기</entry>
+
+<!-- Occurrence - Start your search -->
+<entry key="occurrence.search.filter.start.search">검색 시작하기...</entry>
+<entry key="occurrence.search.filter.currentsearch.title">현재 검색</entry>
+<entry key="occurrence.search.filter.example.searches">검색 예제:</entry>
+<entry key="occurrence.search.filter.example.searches.strixaluco">폴란드의 Strix aluco 관찰데이터</entry>
+<entry key="occurrence.search.filter.example.searches.pumaconcolor">북아메리카의 Puma concolor 관찰데이터</entry>
+
+<!-- Occurrence filter editor -->
+<entry key="search.filter.editor.title">검색 필터에 추가하기</entry>
+<entry key="occurrence.search.filter.furtheractions.title">더 많은 활동</entry>
+<entry key="occurrence.search.filter.whattodo.title">활동</entry>
+<entry key="occurrence.search.filter.resultsmap.title">결과에 대한 지도</entry>
+<entry key="occurrence.search.filter.resultsmap.this.search">이 검색</entry>
+<entry key="occurrence.search.filter.resultstable.title">결과 테이블</entry>
+<entry key="occurrence.search.filter.sampleresults.title">샘플 결과</entry>
+
+<!-- Occurrence actions -->
+<entry key="occurrence.search.filter.action.viewmap">지도상의 일치하는 레코드</entry>
+<entry key="occurrence.search.filter.action.viewtable">테이블 형식의 일치하는 레코드</entry>
+<entry key="occurrence.search.filter.action.download.xml">XML 형식으로 일치하는 결과</entry>
+<entry key="occurrence.search.filter.action.download.spreadsheet">스프레드 형식의 결과</entry>
+<entry key="search.filter.action.changesearch">현재 검색을 변경</entry>
+<entry key="search.filter.add.filter">필터 추가</entry>
+
+<!-- Occurrence Record -->
+<entry key="occurrence.record.details.title">발생 세부사항:</entry>
+<entry key="occurrence.record.inferred">(추론됨)</entry>
+<entry key="occurrence.record.interpreted.as">({0}로 해석됨)</entry>
+<entry key="occurrence.record.interpreted.coordinates">(위도로 해석: {0}, 경도: {1}{2})</entry>
+<entry key="occurrence.record.inferred.from.country">(국가에서 추론됨)</entry>
+<entry key="occurrence.record.inferred.from.coordinates">(좌표에서 추론됨)</entry>
+<entry key="occurrence.record.coordinate.issues">(있을 수 있는 좌표 문제가 발견됨)</entry>
+<entry key="occurrence.record.dataset.legend">데이터집합</entry>
+<entry key="occurrence.record.dataresource">데이터집합</entry>
+<entry key="occurrence.record.dataprovider">데이터 제공자</entry>
+<entry key="occurrence.record.taxonomy.legend">분류학</entry>
+<entry key="occurrence.record.scientificName">학명</entry>
+<entry key="occurrence.record.continent">대륙</entry>
+<entry key="occurrence.record.country">국가</entry>
+<entry key="occurrence.record.isocountrycode">ISO 국가 코드</entry>
+<entry key="occurrence.record.country">국가</entry>
+<entry key="occurrence.record.region">지역</entry>
+<entry key="occurrence.record.providerIsoCountryCode">제공자의 ISO 국가 코드</entry>
+<entry key="occurrence.record.providerCountry">제공자의 국가</entry>
+<entry key="occurrence.record.cellId">Cell id</entry>
+<entry key="occurrence.record.centiCellId">Centi cell id</entry>
+<entry key="occurrence.record.county">시 또는 군</entry>
+<entry key="occurrence.record.state.or.province">주(State)/도(Province)</entry>
+<entry key="occurrence.record.locality">장소</entry>
+<entry key="occurrence.record.coordinates">좌표</entry>
+<entry key="occurrence.record.identifierName">동정자 이름</entry>
+<entry key="occurrence.record.dateIdentified">동정된 날짜</entry>
+<entry key="occurrence.record.collectorName">수집자 이름</entry>
+<entry key="occurrence.record.dateCollected">수집된 날짜</entry>
+<entry key="occurrence.record.institutioncode">기관 코드</entry>
+<entry key="occurrence.record.collectioncode">수집물 코드</entry>
+<entry key="occurrence.record.identifier">카탈로그 번호</entry>
+<entry key="occurrence.record.modified">최종 수정 날짜</entry>
+<entry key="occurrence.record.taxatreelink">{1}에 따른 {0}의 분류</entry>
+<entry key="occurrence.record.dataprovider.findmore">{0}에서 {1}의 레코드</entry>
+<entry key="occurrence.record.taxonomy.exploreall">모든 레코드에 대해 탐험</entry>
+<entry key="occurrence.record.taxonomy.search">발생 데이터를 찾기</entry>
+<entry key="occurrence.record.taxonomy.global.search">{0}에 대한 모든 발생 데이터를 탐험</entry>
+<entry key="occurrence.record.taxonomy.list.countries">발생 데이터를 가진 국가</entry>
+<entry key="occurrence.record.taxonomy.list.dataproviders">발생 데이터를 가진 데이터집합</entry>
+<entry key="occurrence.record.taxonomy.dataprovider.search"> 발생 데이터를 검색</entry>
+<entry key="occurrence.record.taxonomy.dataprovider.search1">에서</entry>
+<entry key="occurrence.record.taxonomy.viewconcept">{0}에 대한 정보 보기</entry>
+<entry key="occurrence.record.taxonomy.issues">분류학적 이슈: </entry>
+<entry key="occurrence.record.geospatial.legend">지리공간</entry>
+<entry key="occurrence.record.geospatial.altitude">고도</entry>
+<entry key="occurrence.record.geospatial.latitude">위도</entry>
+<entry key="occurrence.record.geospatial.longitude">경도</entry>
+<entry key="occurrence.record.geospatial.altitude.precision">고도 정밀도</entry>
+<entry key="occurrence.record.geospatial.depth">깊이</entry>
+<entry key="occurrence.record.geospatial.latLongPrecision">좌표 정밀도</entry>
+<entry key="occurrence.record.geospatial.altitudePrecision">고도 정밀도</entry>
+<entry key="occurrence.record.geospatial.google.earth">이 발생데이터에 대한 Google Earth (KML) 파일을 다운로드</entry>
+<entry key="occurrence.record.geospatial.findmore.country">더 많은 발생데이터를 찾기</entry>
+<entry key="occurrence.record.geospatial.findall.country">{0}에 있는 모든 발생데이터를 찾기</entry>
+<entry key="occurrence.record.geospatial.findmore.latlong"> 더 많은 발생데이터를 찾기</entry>
+<entry key="occurrence.record.geospatial.findall.latlong"> 임의의 종에 대한 모든 레코드</entry>
+<entry key="occurrence.record.geospatial.locations">다른 발생데이터는 기록되었습니다</entry>
+<entry key="occurrence.record.geospatial.findall.onedeg">동일한 1도 셀 ({1})에서 {0}의 모든 레코드</entry>
+<entry key="occurrence.record.geospatial.findall.viewarea">지금 보고 있는 ({1}) 지역에서 {0}의 모든 발생데이터를 보기</entry>
+<entry key="occurrence.record.geospatial.issues">지리공간에 대한 쟁점사항:</entry>
+<entry key="occurrence.record.dynamic.legend">원시 XML 데이터를 얻기</entry>
+<entry key="occurrence.record.dynamic.details">데이터 제공자에서 원본 레코드를 가져오기</entry>
+<entry key="occurrence.record.dynamic.details.disclaimer">(이 연산은 이용 가능한 제공자 시스템에 의존적입니다)</entry>
+<entry key="occurrence.record.dynamic.link.request">요청 세부사항</entry>
+<entry key="occurrence.record.dynamic.failure">지금은 요청을 수행할 수 없음. 나중에 다시 시도해 보십시오</entry>
+<entry key="occurrence.record.link.record">제공자의 포탈에서 이 레코드를 보기</entry>
+<entry key="occurrence.record.with.precision"> 정밀도를 가진</entry>
+<entry key="occurrence.record.portal.url">GBIF 포탈 url</entry>
+<entry key="occurrence.record.webservice.url">GBIF 웹서비스 url</entry>
+<entry key="occurrence.record.gbif.taxonomy">GBIF 분류</entry>
+<entry key="occurrence.record.parse.unavailable">이 레코드의 처리되지 않은 데이터만이 현재 이용 가능합니다.</entry>
+
+<entry key="specimen.type.status">표본 타입 상태(type status)</entry>
+<entry key="specimen.type.for">for ({0})</entry>
+
+<entry key="occurrence.record.raw.kingdom">계</entry>
+<entry key="occurrence.record.raw.phylum">문</entry>
+<entry key="occurrence.record.raw.class">강</entry>
+<entry key="occurrence.record.raw.order">목</entry>
+<entry key="occurrence.record.raw.family">과</entry>
+<entry key="occurrence.record.raw.genus">속</entry>
+<entry key="occurrence.record.raw.scientificname">학명</entry>
+<entry key="occurrence.record.raw.author">저자</entry>
+<entry key="occurrence.record.interpreted.scientificname">학명 (해석됨)</entry>
+<entry key="occurrence.record.raw.continent.ocean">대륙 또는 대양</entry>
+<entry key="occurrence.record.raw.country">국가</entry>
+<entry key="occurrence.record.raw.state.province">주(State)/도(Province)</entry>
+<entry key="occurrence.record.interpreted.country">구가 (해석됨)</entry>
+<entry key="occurrence.record.raw.county">시 또는 군</entry>
+<entry key="occurrence.record.raw.locality">장소</entry>
+<entry key="occurrence.record.raw.collector">수집자</entry>
+<entry key="occurrence.record.interpreted.depth">깊이(미터) (해석됨)</entry>
+<entry key="occurrence.record.raw.mindepth">최소 깊이</entry>
+<entry key="occurrence.record.raw.maxdepth">최대 깊이</entry>
+<entry key="occurrence.record.interpreted.altitude">고도 (미터) (해석됨)</entry>
+<entry key="occurrence.record.raw.minaltitude">최소 고도</entry>
+<entry key="occurrence.record.raw.maxaltitude">최대 고도</entry>
+<entry key="occurrence.record.raw.identifiername">동정자</entry>
+<entry key="occurrence.record.raw.identificationdate">동정 날짜</entry>
+<entry key="occurrence.record.typeStatus">타입 상태(Type status)</entry>
+<entry key="occurrence.record.image.url">이미지 url</entry>
+<entry key="occurrence.record.guid">GUID</entry>
+<entry key="occurrence.record.field.number">필드번호</entry>
+<entry key="occurrence.record.collector.number">수집자 번호</entry>
+
+<!-- Taxonomy Browser -->
+<entry key="taxonomy.browser.heading">분류군 트리 브라우저</entry>
+<entry key="taxonomy.browser.tentative.concept">(승인되지 않은 이름)</entry>
+<entry key="taxonomy.browser.subtitle">분류군 브라우저</entry>
+<entry key="taxonomy.browser.notree.for"> 분류군 트리가 이용가능하지 않음</entry>
+<entry key="taxonomy.browser.notree">분류군 트리가 현재 이용가능하지 않음.</entry>
+<entry key="taxonomy.browser.overview.of"> 관한 정보</entry>
+<entry key="taxonomy.browser.classification">분류</entry>
+<entry key="taxonomy.browser.occurrence.search">의 발생데이터</entry>
+<entry key="taxonomy.browser.compare.classifications">의 분류</entry>
+<entry key="taxonomy.browser.title.accordingto">According to</entry>
+<entry key="taxonomy.browser.classification.of">의 분류</entry>
+<entry key="taxonomy.browser.overviewlink">개관 페이지를 보기</entry>
+<entry key="taxonomy.browser.overviewlink.title">의 개관을 클릭</entry>
+<entry key="taxonomy.browser.all.kingdom">모든 계(Kingdoms)</entry>
+<entry key="taxonomy.browser.all.phylum">모든 문(Phyla)</entry>
+<entry key="taxonomy.browser.all.class">모든 강(Classes)</entry>
+<entry key="taxonomy.browser.all.order">모든 목(Orders)</entry>
+<entry key="taxonomy.browser.all.superfamily">모든 상과(All Super Families)</entry>
+<entry key="taxonomy.browser.all.family">모든 과(Families)</entry>
+<entry key="taxonomy.browser.all.genus">모든 문(Genera)</entry>
+<entry key="taxonomy.browser.all.species">모든 종(Species)</entry>
+<entry key="taxonomy.browser.all.subspecies">모든 아종(Subspecies)</entry>
+<entry key="taxonomy.browser.all.highestranks">모든 상위 분류군</entry>
+<entry key="taxonomy.browser.all.unknown">모든 최상위 분류군</entry>
+<entry key="taxonomy.browser.all.expand.node">노드를 확장</entry>
+<entry key="taxonomy.browser.species.recorded.in">기록된 종</entry>
+<entry key="taxonomy.browser.taxa.recorded.in">기록된 분류군</entry>
+<entry key="taxonomy.browser.unconfirmed.names">승인되지 않은 이름</entry>
+<entry key="taxonomy.browser.uncertain.positions">불확실한 위치</entry>
+<entry key="taxonomy.browser.url">분류 트리 url</entry>
+<entry key="taxon.page.url">분류군 페이지 url</entry>
+
+<!-- Taxonomy Concept -->
+<entry key="taxonconcept.details.title">분류군 개념 세부사항</entry>
+<entry key="taxonconcept.search.subtitle">분류군 개념 검색</entry>
+<entry key="explore.occurrences">발생데이터</entry>
+<entry key="taxonconcept.drilldown.explore.names">이름과 분류</entry>
+<entry key="taxonconcept.drilldown.warnings.title">경고</entry>
+<entry key="taxonconcept.drilldown.warnings.ambiguous.name"> {0} 이름은 모호하며 또한 다음을 참고하기 바람:</entry>
+<entry key="taxonconcept.drilldown.warnings.presentation.accepted">GBIF 네트워크는 이러한 분류군 사이를 구분하기에 충분한 정보가 포함되지 않은 일부 레코드를 포함합니다. 이러한 레코드는 이 출력에 제외되었지만 다음에서 볼 수 있습니다:</entry>
+<entry key="taxonconcept.drilldown.warnings.presentation.accepted.viewed.at">이러한 레코드는 이번 출력에서 제외되었지만 다음에서 볼 수 있습니다:</entry>
+<entry key="taxonconcept.drilldown.warnings.presentation.notaccepted">여기에서 출력되는 레코드는 GBIF 네트워크가 이러한 것들의 정확한 위치를 확인하기에는 충분한 정보를 가지고 있지 않은 것들로만 이루어져 있습니다.</entry>
+<entry key="taxonconcept.drilldown.resources">데이터집합</entry>
+<entry key="taxonconcept.drilldown.distributions">배포</entry>
+<entry key="taxonconcept.map.allsubspecies.species">지도는 종에 포함되어 있는 모든 아종에서 공유되는 데이터를 포함합니다</entry>
+<entry key="taxonconcept.map.allspecies.genus">지도는 속에 포함되어 있는 모든 종에서 공유되는 데이터를 포함합니다</entry>
+<entry key="taxonconcept.map.allsubspecies.species.title">종의 아종인 {0}를 보기</entry>
+<entry key="taxonconcept.map.allspecies.genus.title">속의 종인 {0}를 보기</entry>
+<entry key="taxonconcept.map.allspecies.family.title">과(family)에 있는 {0} 속(genera)을 보기</entry>
+<entry key="taxonconcept.map.allgenera">지도는 모든 속에서 공유되는 데이터를 포함합니다.</entry>
+<entry key="taxonconcept.genus">속에 포함되어 있는</entry>
+<entry key="taxonconcept.genera">속에 포함되어 있는</entry>
+
+<entry key="taxonomy.relatedconcepts">다른 분류에서</entry>
+
+<!-- Taxonomy Search Filters -->
+<entry key="taxonomy.search.searchTitle">분류 개념 검색</entry>
+<entry key="taxonomy.search.results">검색 결과</entry>
+<entry key="taxonomy.search.results.viewlink.message">보기</entry>
+<entry key="taxonomy.search.results.viewlink.title">분류 트리 {1}에서 분류군 {0}을 보기</entry>
+<entry key="taxonomy.search.filter.main.title">분류 개념 검색</entry>
+<entry key="taxonomy.search.filter.start.search">분류군 검색 시작...</entry>
+<entry key="taxonomy.search.filter.pleaseadd">필터를 추가한 후 분류군에 대한 검색을 위해 {0}를 클릭하십시오. 더욱 정확한 결과를 얻을 수 있도록 검색을 제한하려면 더 많은 필터를 지정하십시오.</entry>
+<entry key="taxonomy.search.filter.download.help">필요로 하는 필드와 형식을 선택하십시오.</entry>
+<entry key="taxonomy.search.filter.example.searches">검색 사례</entry>
+<entry key="taxonomy.search.filter.example.searches.oenanthe.genus">속(Genus) 순위를 가진 Oenanthe 분류군에 대한 검색</entry>
+<entry key="taxonomy.search.filter.example.searches.pumaconcolor">"Puma concolor"와 같은 분류군 에 대한 검색</entry>
+<entry key="taxonomy.search.filter.nonefound">발견된 개념이 없음.</entry>
+<entry key="taxonomy.search.filter.noofrecords">발견됨 </entry>
+<entry key="taxonomy.search.filter.singularrecord"> 개념.</entry>
+<entry key="taxonomy.search.filter.pluralrecord"> 개념.</entry>
+<entry key="taxonomy.search.filter.dataset.dataresource">데이터집합</entry>
+<entry key="taxonomy.search.filter.dataset.dataprovider">데이터 제공자</entry>
+<entry key="taxonomy.search.filter.accepted">수용된 상태</entry>
+<entry key="taxonomy.search.filter.accepted.is.accepted">수용된 이름</entry>
+<entry key="taxonomy.search.filter.accepted.is.not.accepted">수용되지 않은 이름</entry>
+<entry key="taxonomy.search.searchTitle.download.spreadsheet">분류 개념 검색 - 스프레드시트를 다운로드</entry>
+<entry key="taxonomy.search.searchTitle.download.xml">분류 개념 검색 - XML을 다운로드</entry>
+
+<!-- Occurrence Search Filters -->
+<entry key="occurrence.search.filter.pleaseadd">발생 레코드 검색을 수행하기 위해 필터를 추가하고 {0}를 클릭하십시오. 관심있는 종, 지역, 또는 시간대에 대한 더욱 정확한 결과를 얻을 수 있도록 검색을 제한하기 위해 더 많은 필터를 지정하십시오.</entry>
+<entry key="occurrence.search.searchTitle">발생데이터 검색</entry>
+<entry key="occurrence.search.searchTitle.map.view">발생데이터 검색 - 지도 보기</entry>
+<entry key="occurrence.search.searchTitle.table.view">발생데이터 검색 - 테이블 보기</entry>
+<entry key="occurrence.search.searchTitle.download.spreadsheet">발생데이터 검색 - 스프레드시트 다운로드</entry>
+<entry key="occurrence.search.searchTitle.download.xml">발생데이터 검색 - XML 다운로드</entry>
+<entry key="occurrence.search.searchTitle.download.citation">발생데이터 검색 - 인용문 다운로드</entry>
+<entry key="occurrence.search.searchTitle.data.providers">발생데이터 검색 - 레코드가 있는 데이터 제공자</entry>
+<entry key="occurrence.search.searchTitle.datasets">발생데이터 검색 - 레코드가 있는 데이터집합</entry>
+<entry key="occurrence.search.searchTitle.species">발생데이터 검색 - 종</entry>
+<entry key="occurrence.search.searchTitle.countries">발생데이터 검색 - 레코드가 있는 국가</entry>
+<entry key="occurrence.search.filter.category.taxonomy">분류</entry>
+<entry key="occurrence.search.filter.category.geospatial">지리공간</entry>
+<entry key="occurrence.search.filter.category.datasets">데이터집합</entry>
+<entry key="occurrence.search.filter.dataset.dataresource">데이터집합</entry>
+<entry key="occurrence.search.filter.dataset.dataprovider">데이터 제공자</entry>
+<entry key="occurrence.search.filter.dataset.resourcenetwork">데이터 네트워크</entry>
+<entry key="occurrence.search.filter.dataset.institutioncode">기관 코드</entry>
+<entry key="occurrence.search.filter.dataset.collectioncode">수집물 코드</entry>
+<entry key="occurrence.search.filter.dataset.identifier">카탈로그 번호</entry>
+<entry key="occurrence.search.filter.dataset.basisofrecord">레코드의 단위</entry>
+<entry key="occurrence.search.filter.dataset.occurrencedate">발생 날짜</entry>
+<entry key="occurrence.search.filter.dataset.month">월</entry>
+<entry key="occurrence.search.filter.dataset.year">년도</entry>
+<entry key="occurrence.search.filter.dataset.yearrange">년도 범위</entry>
+<entry key="occurrence.search.filter.dataset.restrictions">제한사항</entry>
+<entry key="occurrence.search.filter.geospatial.boundingbox">바운딩박스(Bounding Box)</entry>
+<entry key="occurrence.search.filter.geospatial.longitude">경도</entry>
+<entry key="occurrence.search.filter.geospatial.latitude">위도</entry>
+<entry key="occurrence.search.filter.geospatial.country">국가</entry>
+<entry key="occurrence.search.filter.geospatial.isocountrycode">ISO 국가 코드</entry>
+<entry key="occurrence.search.filter.geospatial.hostcountrycode">호스트 국가</entry>
+<entry key="occurrence.search.filter.geospatial.continent">대륙</entry>
+<entry key="occurrence.search.filter.geospatial.region">지역</entry>
+<entry key="occurrence.search.filter.taxonomy.scientificname">학명</entry>
+<entry key="occurrence.search.filter.taxonomy.commonname">일반 이름</entry>
+<entry key="occurrence.search.filter.taxonomy.classification">분류 계층</entry>
+
+<!-- Filter predicates -->
+<entry key="filter.predicate.includes">: 다음을 포함하기</entry>
+<entry key="filter.predicate.of">의</entry>
+<entry key="filter.predicate.are">은(는):</entry>
+<entry key="filter.predicate.is">은(는)</entry>
+<entry key="filter.predicate.is.like">와(과) 비슷한 것</entry>
+<entry key="filter.predicate.is.exactly">와(과) 일치하는 것</entry>
+<entry key="filter.predicate.is.not">와(과) 같지 않은 것</entry>
+<entry key="filter.predicate.greater.than"> - 다음보다 큰 것: </entry>
+<entry key="filter.predicate.less.than"> - 다음보다 작은 것: </entry>
+<entry key="filter.predicate.before">까지 (포함하여)</entry>
+<entry key="filter.predicate.after">부터 시작 (포함하여)</entry>
+<entry key="filter.or">또는</entry>
+
+<!-- Countries Browser -->
+<entry key="geography.list.main.title">국가</entry>
+<entry key="geography.list.title">국가</entry>
+<entry key="geography.list.subtitle">국가</entry>
+<entry key="geography.list.record.count">발생 레코드</entry>
+<entry key="geography.list.species.count">종의 개수</entry>
+<entry key="geography.list.browsecountry">국가 레코드를 브라우징하기</entry>
+<entry key="geography.list.nonefound">현재 색인된 국가가 없음</entry>
+
+<!-- Countries Drilldown -->
+<entry key="geography.drilldown.main.title">국가</entry>
+<entry key="geography.drilldown.subtitle">국가 세부사항</entry>
+<entry key="geography.drilldown.species">종</entry>
+<entry key="geography.drilldown.species.count">{1}에 기록된 {0} 종 (발생 데이터와 이용가능한 국가 점검목록에 기반함)</entry>
+<entry key="geography.drilldown.species.explore">{0}에서 발생데이터가 있는 종</entry>
+<entry key="geography.drilldown.list.providers">{0}에서 발생데이터를 가진 제공자</entry>
+<entry key="geography.drilldown.list.resources">{0}에서 발생데이터를 가진 데이터집합</entry>
+<entry key="geography.drilldown.list.exploreall">{0}에 있는 모든 발생데이터를 탐험</entry>
+<entry key="geography.drilldown.findall.viewarea">지금 보고 있는 ({1}) 지역내에서 {0}에 있는 모든 발생데이터를 보기</entry>
+<entry key="geography.drilldown.view.taxonomy">에 기록된 종</entry>
+
+<!-- Datasets Browser -->
+<entry key="dataset.list.main.title">데이터집합</entry>
+<entry key="dataset.list.subtitle">데이터집합</entry>
+<entry key="dataset.list.title">데이터집합</entry>
+<entry key="dataset.list.viewrecords">발생 레코드를 탐험</entry>
+<entry key="dataset.networks.list.title">데이터 네트워크</entry>
+<entry key="dataset.providers.list.title">데이터 제공자</entry>
+<entry key="dataset.resources.list.title">데이터집합</entry>
+<entry key="dataset.not.yet.indexed">아직 색인되지 않음</entry>
+<entry key="dataset.not.applicable">해당사항 없음</entry>
+<entry key="dataset.provider.no.records.indexed.yet">이 제공자의 데이터집합은 아직 색인되지 않았음.</entry>
+<entry key="dataset.resource.no.records.indexed.yet">이 데이터집합은 아직 색인되지 않았음.</entry>
+
+<!-- Dataset Drilldown -->
+<entry key="dataset.resource">데이터집합</entry>
+<entry key="dataset.provider">데이터 제공자</entry>
+<entry key="dataset.network">데이터 네트워크</entry>
+<entry key="dataset.provider.resources">데이터집합</entry>
+<entry key="dataset.drilldown.main.title">데이터집합</entry>
+<entry key="dataset.drilldown.subtitle">데이터집합 세부사항</entry>
+<entry key="dataset.legend">데이터집합 세부사항</entry>
+<entry key="dataset.list.occurrence.count">(지리참조연산된) 발생데이터</entry>
+<entry key="dataset.list.host.country">호스트 국가</entry>
+<entry key="dataset.list.taxonconcept.count">분류군</entry>
+<entry key="dataset.recordCount">발생데이터</entry>
+<entry key="dataset.kingdomCount">계</entry>
+<entry key="dataset.phylumCount">문</entry>
+<entry key="dataset.classCount">강</entry>
+<entry key="dataset.orderCount">목</entry>
+<entry key="dataset.familyCount">과</entry>
+<entry key="dataset.genusCount">속</entry>
+<entry key="dataset.speciesCount">종</entry>
+<entry key="dataset.taxonomytreelink">이름과 분류</entry>
+<entry key="dataset.providedby">의해 제공된</entry>
+<entry key="dataset.accessPointUrl">접근점(access point) URL</entry>
+<entry key="dataset.information">정보</entry>
+<entry key="dataset.occurrences">발생데이터</entry>
+<entry key="dataset.list.countries">{0}에 포함된 발생데이터를 가진 국가</entry>
+<entry key="dataset.list.species">{0}에 포함되어 있는 발생데이터</entry>
+<entry key="dataset.findall.viewarea">지금 보고 있는 ({1}) 지역내에서 {0}가 제공하는 모든 발생데이터를 보기</entry>
+
+<!-- Taxon Name Resolving -->
+<entry key="taxonnameresolve.subtitle">다수 이름이 일치</entry>
+<entry key="taxonnameresolve.clashes.for">분류군에 대해 이름이 충돌됨: </entry>
+<entry key="taxonnameresolve.heading">분류군에 대해 다수 이름이 충돌됨: </entry>
+<entry key="commonnameresolve.heading.nomatches">이 분류군에 대해 일치하는 것이 없습니다:</entry>
+<entry key="taxonnameresolve.text.linked">이 학명은 하나 이상의 분류군에 링크됩니다.</entry>
+<entry key="taxonnameresolve.text.select">아래 목록 가운데에 관심있는 분류군을 선택하십시오.</entry>
+<entry key="taxonnameresolve.text.nomatches">해당 이름에 대하여 일치하는 분류군이 없습니다.</entry>
+
+<!--Generic Name Resolving-->
+<entry key="nameresolve.text.nomatches.search">해당 이름을 전체 데이터 포탈에서 검색하기</entry>
+
+<!-- Common Name Resolving -->
+<entry key="commonnameresolve.subtitle">다수 이름이 일치</entry>
+<entry key="commonnameresolve.clashes.for">일반 이름에 대해 이름이 충돌됨: </entry>
+<entry key="commonnameresolve.heading">일반 이름에 대해 다수 이름이 충돌됨: </entry>
+<entry key="commonnameresolve.heading.nomatches">이 일반 이름에 대해 일치하는 것이 없습니다: </entry>
+<entry key="commonnameresolve.text.linked">이 일반 이름은 하나 이상의 분류군에 링크됩니다.</entry>
+<entry key="commonnameresolve.text.select">아래 목록 가운데에 관심있는 분류군을 선택하십시오.</entry>
+<entry key="commonnameresolve.text.nomatches">해당 이름에 대하여 일치하는 분류군이 없습니다 </entry>
+
+<!-- maps -->
+<entry key="maps.no.georeferenced.points">이용 가능한 지리참조연산된 레코드가 현재 없음</entry>
+<entry key="maps.records.with.no.geospatial.issues">지리공간적인 문제가 없는 레코드들만 표시되었음</entry>
+<entry key="maps.records.with.coordinates.fullcount">이 지도는 좌표값이 있는 레코드만을 보여주고 있습니다 (총 {1} 개 레코드중에서 {0} 개 레코드).</entry>
+<entry key="maps.records.with.coordinates.fullcount.one">이 지도는 좌표값이 있는 레코드만을 표시합니다 (총 {0} 개 레코드중에서 한 개).</entry>
+<entry key="maps.records.with.coordinates">이 지도는 좌표값이 있는 레코드만을 표시합니다 (좌표값이 있는 {0} 개 레코드).</entry>
+<entry key="maps.records.not.full.distribution">이것은 GBIF 네트워크의 레코드만을 표시하며 {0}의 전체 분포를 제대로 나타내고 있지 않을 수 있습니다.</entry>
+<entry key="maps.records.provider.composite">이것은 이 데이터 제공자가 공유하는 모든 데이터집합의 레코드를 포함합니다.</entry>
+<entry key="maps.records.network.composite">이것은 네트워크의 모든 데이터집합의 레코드를 포함합니다.</entry>
+<entry key="maps.points.total">검색으로 좌표값을 가진 {0} 개의 발생데이터가 반환되었습니다.</entry>
+<entry key="maps.points.total.one">검색으로 좌표값을 가진 한 개 발생데이터가 반환되었습니다.</entry>
+<entry key="maps.points.total.non.viewable">지금 보고 있는 지역내에서 이러한 발생데이터를 가진 데이터가 아무 것도 없습니다.</entry>
+<entry key="maps.points.total.non.viewable.one">이 발생데이터는 지금 보고 있는 지역내에 있지 않습니다.</entry>
+<entry key="maps.points.total.all.viewable">모든 발생데이터는 지금 보고 있는 지역내에 있습니다.</entry>
+<entry key="maps.points.viewed.area">지금 보고 있는 지역내에 {0} 개의 발생데이터가 있습니다.</entry>
+<entry key="maps.points.viewed.area.one">지금 보고 있는 지역내에 한 개의 발생데이터가 있습니다. </entry>
+<entry key="maps.count.pointone.cell">개수 / 0.1도 셀</entry>
+<entry key="maps.count.onedeg.cell">개수 / 1도 셀</entry>
+<entry key="maps.move.onedegree.north">북쪽으로 1도 이동</entry>
+<entry key="maps.move.onedegree.east">동쪽으로 1도 이동</entry>
+<entry key="maps.move.onedegree.west">서쪽으로 1도 이동</entry>
+<entry key="maps.move.onedegree.south">남쪽으로 1도 이동</entry>
+<entry key="maps.move.fivedegree.north">동쪽으로 5도 이동</entry>
+<entry key="maps.move.fivedegree.east">동쪽으로 5도 이동</entry>
+<entry key="maps.move.fivedegree.west">서쪽으로 5도 이동</entry>
+<entry key="maps.move.fivedegree.south">남족으로 5도 이동</entry>
+
+<!-- Registration -->
+<entry key="registration.title">등록</entry>
+<entry key="registration.header">등록</entry>
+<entry key="registration.provider.details">제공자 세부사항</entry>
+<entry key="registration.provider.list">제공자 목록</entry>
+<entry key="registration.provider.selectprovider">갱신할 제공자를 선택하시오</entry>
+<entry key="registration.provider">제공자</entry>
+<entry key="registration.provider.name">이름</entry>
+<entry key="registration.provider.country">국가</entry>
+<entry key="registration.provider.description">설명</entry>
+<entry key="registration.provider.logoUrl">로그의 URL</entry>
+<entry key="registration.provider.primarycontact">일차 연락처</entry>
+<entry key="registration.provider.secondarycontact">이차 연락처</entry>
+<entry key="registration.provider.contact.useType">종류</entry>
+<entry key="registration.provider.contact.administrative">행정</entry>
+<entry key="registration.provider.contact.technical">기술</entry>
+<entry key="registration.provider.link.create.secondary">이차 연락처를 추가</entry>
+<entry key="registration.provider.resource.list">데이터집합</entry>
+<entry key="registration.provider.resource.current.resources">{0}가 서비스하고 있으면서 현재 등록된 데이터집합</entry>
+<entry key="registration.provider.resource.no.resources">{0}가 제공하고 있는 것으로 등록된 데이터집합이 현재 없습니다.</entry>
+<entry key="registration.provider.issue.metadata.1">서비스에 직접 연락하고 세부사항을 조작하는 것이 가능할 수 있습니다. 이것은 인터넷상으로 현재 이용 가능한 서비스에 의존적입니다.</entry>
+<entry key="registration.provider.issue.metadata.2">노트: 이것은 인터넷에서 현재 이용가능한 서비스에 의존적입니다.</entry>
+<entry key="registration.provider.issue.metadata.3">당신이 등록하기를 원하는 자원에 대한 URL을 입력하고 "연락처 서비스(Contact service)"를 클릭하십시오</entry>
+<entry key="registration.provider.issue.metadata.4">예제 urls:</entry>
+<entry key="registration.resource.url">자원에 대한 url을 입력하십시오</entry>
+<entry key="registration.resource.description">설명</entry>
+<entry key="registration.resource.owner.name">소유자 이름</entry>
+<entry key="registration.resource.owner.address">소유자 주소</entry>
+<entry key="registration.resource.owner.country">소유자 국가</entry>
+<entry key="registration.resource.already.registered">등록됨</entry>
+<entry key="registration.resource.highestTaxa">최상위 분류군</entry>
+<entry key="registration.register.resource">등록</entry>
+<entry key="registration.header.resources.offered.by">에 등록된 자원</entry>
+<entry key="registration.contact.provider.for.metadata">연락처 서비스</entry>
+<entry key="registration.metadata.resources">서비스는 다음 자원들이 이용 가능한 것으로 보고하고 있습니다 (표본/관찰 자원에 대해서만 적용됩니다):</entry>
+<entry key="registration.metdata.supplied">*</entry>
+<entry key="registration.not.specified">지정되지 않음</entry>
+<entry key="registration.not.applicable">적용할 수 없음</entry>
+
+<!-- Login -->
+<entry key="admin.login">로그인</entry>
+<entry key="admin.login.name">이름</entry>
+<entry key="admin.login.password">암호</entry>
+<entry key="admin.login.error">부정확한 사용자이름 또는 암호</entry>
+
+<!-- Download -->
+<entry key="download.google.earth.celldensity">Google Earth의 1-도 셀 밀도 오버레이</entry>
+<entry key="download.google.earth.placemarks">Google Earth에 대한 장소표지 (10,000 개 제한)</entry>
+<entry key="download.darwin.core">다윈코어(Darwin Core) 레코드</entry>
+<entry key="download.darwin.core.from">에 대한 다윈코어 레코드</entry>
+<entry key="download.metadata.for.providers">데이터 제공자의 메타데이터</entry>
+<entry key="download.darwin.core.from.served.by.providers">제공자의 데이터에 대한 다윈코어 레코드</entry>
+
+<!-- Filter wizards -->
+<entry key="filter.wizard.loading">마법사 로딩중....</entry>
+<entry key="filter.wizard.nullvalue">....................................................</entry>
+
+<!-- Actions -->
+<entry key="actions.specify">명시하기:</entry>
+<entry key="actions.list">나열하기:</entry>
+<entry key="actions.download">다운로드:</entry>
+<entry key="actions.retrieve">가져오기:</entry>
+<entry key="actions.view">보기:</entry>
+<entry key="actions.explore">탐험하기:</entry>
+<entry key="actions.select">선택하기:</entry>
+<entry key="actions.find">찾기:</entry>
+<entry key="actions.send">보내기:</entry>
+
+<!-- Agents -->
+<entry key="agents.title">연락처</entry>
+<entry key="agents.role.technical">기술</entry>
+<entry key="agents.role.administrative">행정</entry>
+<entry key="agents.role.administrative.description">행정 연락처: 과학적 데이터 콘텐트와 특정 데이터집합 또는 데이터 제공자의 사용과 관련된 모든 문제에 대해 연락해야 할 사람.</entry>
+<entry key="agents.role.technical.description">기술 연락처: 데이터집합 또는 데이터 제공자 측면에서 기술적인 이용 또는 자원 설정 문제과 관련된 문제에 대해 연락해야 할 사람</entry>
+
+<!-- Resource/Provider/Network statistics -->
+<entry key="occurrences.indexed">색인된 발생 레코드</entry>
+<entry key="occurrences.georeferenced">좌표값이 있는 발생데이터</entry>
+<entry key="occurrences.no.geo.issues">지리공간적인 문제가 없는 발생데이터</entry>
+<entry key="occurrences.resources">데이터집합</entry>
+<entry key="provider.record.count">제공자가 공유하는 레크드의 개수</entry>
+<entry key="count.species">종의 개수</entry>
+<entry key="count.taxa">분류군의 개수</entry>
+
+<entry key="indexed.data">색인된 데이터</entry>
+<entry key="system.details">시스템 세부사항</entry>
+
+<entry key="rights">권리</entry>
+<entry key="citation">인용</entry>
+<entry key="how.to.cite">이 데이터집합을 인용하는 방법</entry>
+<entry key="scope.country">국가 범위</entry>
+<entry key="scope.continent">대륙 범위</entry>
+<entry key="scope.taxonomic">분류군 범위</entry>
+<entry key="gbif.participant">GBIF 참여회원</entry>
+
+<!-- logs -->
+<entry key="portal.logs">포탈 로그</entry>
+
+<!-- Logging event -->
+<entry key="unknown">알수없는 것</entry>
+<entry key="logGroupClose">로그 그룹 닫힘</entry>
+<entry key="harvestAll">데이터 수집 - 모두</entry>
+<entry key="harvestBegin">데이터 수집 - 시작</entry>
+<entry key="harvestEnd">데이터 수집 - 종료</entry>
+<entry key="harvestMultiplePreferredIdentifications">데이터 수집 - 다수의 선호되는 동정</entry>
+<entry key="harvestMultipleUnpreferredIdentifications">데이터 수집 - 다수의 선호되지 않는 동정</entry>
+
+<!-- Extracter messages -->
+<entry key="extractAll">처리중 - 전체</entry>
+<entry key="extractAllIssues">처리중 - 전체 쟁점사항</entry>
+<entry key="extractBegin">처리중 - 시작</entry>
+<entry key="extractEnd">처리중 - 종료</entry>
+<entry key="extractScientificNameParseIssue">추출 - 학명 파싱 문제</entry>
+<entry key="extractScientificNameParseCount">추출 - 학명 파싱 개수</entry>
+<entry key="extractTaxonRankParseIssue">추출 - 분류군 순위 파싱 문제</entry>
+<entry key="extractBasisOfRecordParseIssue">추출 - 레코드의 단위 파싱 문제</entry>
+<entry key="extractCountryNameParseIssue">추출 - 국가 이름 파싱 문제</entry>
+<entry key="extractGeospatialParseIssue">추출 - 지리공간 파싱 문제</entry>
+<entry key="extractDuplicateRemoteConceptId">추출 - 중복된 원격 개념 식별자</entry>
+<entry key="extractMissingParentTaxon">추출 - 상위 분류군이 누락됨</entry>
+<entry key="extractMissingAcceptedTaxon">추출 - 수용되는 분류군이 누락됨</entry>
+<entry key="extractAmbiguousScientificName">추출 - 모호한 학명</entry>
+
+<!-- User messages -->
+<entry key="userAll">사용자 - 모두</entry>
+<entry key="userSessionBegin">사용자 - 세션 시작</entry>
+<entry key="userSessionEnd">사용자 - 세션 끝</entry>
+<entry key="userFeedbackOccurrence">사용자 - 발생데이터 피드백</entry>
+<entry key="userFeedbackTaxon">사용자 - 분류군 피드백</entry>
+
+<!-- Usage message -->
+<entry key="usageAll">사용법 - 모두</entry>
+<entry key="occurrenceSearch">사용법 - 발생데이터 검색</entry>
+<entry key="datasetMetadataView">사용법 - 데이터집합 메타데이터</entry>
+<entry key="taxonView">사용법 - 분류군 보이기</entry>
+<entry key="taxonBrowse">사용법 - 분류 둘러보기</entry>
+<entry key="occurrenceView">사용법 - 세부 발생데이터 보이기</entry>
+<entry key="dataproviderMetadataView">사용법 - 데이터 제공자 메타데이터</entry>
+<entry key="datasetLogDownload">사용법 - 이벤트 로그 다운로드</entry>
+<entry key="datasetOccurrenceDownload">사용법 - 발생데이터 다운로드</entry>
+<entry key="datasetTaxonomyDownload">사용법 - 분류정보 다운로드</entry>
+
+<!-- Feedback messages -->
+<entry key="feedback">피드백</entry>
+<entry key="feedback.link">이 페이지에 관한 피드백을 제공</entry>
+<entry key="feedback.to.provider.link">{0}에게 피드백하기</entry>
+<entry key="feedback.to.provider.on.classification.link">분류에 관해 {0}에게 피드백</entry>
+<entry key="feedback.title">피드백(Feedback)</entry>
+<entry key="feedback.blurb">데이터 품질을 향상시킬 수 있도록 피드백을 제공하여 주어 감사합니다 - 피드백이 처리되기까지는 시간이 걸린다는 것을 이해하여 주십시오</entry>
+<entry key="feedback.on.page">에 관한 피드백</entry>
+<entry key="feedback.type">피드백 종류</entry>
+<entry key="feedback.type.taxon">학명 또는 분류 관련한 피드백</entry>
+<entry key="feedback.type.resource">데이터집합 관련한 피드백</entry>
+<entry key="feedback.type.occurrence">표본 또는 관찰 레코드 관련한 피드백</entry>
+<entry key="feedback.type.other">일반적인 피드백</entry>
+<entry key="feedback.data.provider.name">데이터 제공자</entry>
+<entry key="feedback.data.resource.name">데이터집합</entry>
+<entry key="feedback.taxon.scientific.name">학명</entry>
+<entry key="feedback.data.resource.agent.name">연락처</entry>
+<entry key="feedback.data.resource.agent.email">이메일</entry>
+<entry key="feedback.occurrence.institution.code">기관 코드</entry>
+<entry key="feedback.occurrence.collection.code">수집물 코드</entry>
+<entry key="feedback.occurrence.catalogue.number">카탈로그 번호</entry>
+<entry key="feedback.submitter.name">당신의 이름</entry>
+<entry key="feedback.submitter.email">당신의 이메일 주소</entry>
+<entry key="feedback.details">피드백</entry>
+<entry key="feedback.submit">피드백 전송</entry>
+<entry key="feedback.continue">계속</entry>
+<entry key="feedback.submitted">피드백 제공에 감사드립니다. 이것은 즉시 관련된 수신인들에게 전달될 것입니다</entry>
+<entry key="verification.successful">이메일 주소를 확인하여 주어 감사합니다.</entry>
+<entry key="verification.unsuccessful">이메일 확인에 실패하였습니다.</entry>
+
+<!-- Tutorial messages -->
+<entry key="tutorial.title">정보</entry>
+<entry key="tutorial.introduction">이 웹사이트에 대한 정보</entry>
+<entry key="tutorial.tutorial">GBIF 포탈 소개</entry>
+<entry key="tutorial.country">국가에 관한 정보를 찾기</entry>
+<entry key="tutorial.dataset">데이터집합에 관한 정보를 찾기</entry>
+<entry key="tutorial.species">종에 관한 정보를 찾기</entry>
+<entry key="tutorial.taxonomy">GBIF 포탈에서의 학명과 분류</entry>
+<entry key="tutorial.maps">GBIF 포탈에서의 지도</entry>
+<entry key="tutorial.occurrence">발생데이터를 검색하기</entry>
+<entry key="tutorial.detail">발생 레코드의 세부사항을 보기</entry>
+<entry key="tutorial.services">GBIF 포탈의 데이터를 사용하기</entry>
+<entry key="tutorial.provider">GBIF 네트워크를 통해 데이터를 공유하기</entry>
+<entry key="tutorial.kangaroorat">사막 캥거루 쥐(Desert Kangaroo Rat (Dipodomys deserti)에 관한 정보를 찾기</entry>
+<entry key="tutorial.ecuadorplants">적도 식물(Ecuadorian plants)에 관한 정보를 찾기</entry>
+<entry key="tutorial.indonesiarecords">인도네시아의 레코드를 포함하는 데이터집합에 관한 정보를 찾기</entry>
+<entry key="tutorial.denmarkproviders">덴마크의 데이터 제공자를 찾기</entry>
+<entry key="tutorial.migratorybirds">제비(Barn Swallow) (Hirundo rustica)에 대한 계절적 분포를 비교하기 </entry>
+<entry key="tutorial.hummingbirds">1도 셀 밀도로 벌새(hummingbird) 발생 레코드를 보기(Google Earth)</entry>
+<entry key="tutorial.mimosa">Mimosa 속(genus)의 모든 종에 대한 발생데이터를 보기(Google Earth)</entry>
+<entry key="tutorial.datauseagreement">GBIF 데이터 사용 협약</entry>
+<entry key="tutorial.datasharingagreement">GBIF 데이터 공유 협약</entry>
+<entry key="tutorial.deeplinking">Deeplinking to maps</entry>
+
+<!-- Other messages -->
+<entry key="otherAll">다른 것들 - 모두</entry>
+
+<!-- Data resource wizard -->
+<entry key="dataresource.wizard.select.network.provider">데이터 네트워크 또는 데이터 제공자를 선택하십시오: </entry>
+<entry key="dataresource.wizard.select.dataset">데이터집합을 선택하기: </entry>
+<entry key="dataresource.wizard.submit.search">이 데이터집합을 사용하기</entry>
+<entry key="dataresource.wizard.no.resources">이용가능한 데이터집합이 없음</entry>
+<entry key="dataresource.wizard.select.resource">데이터집합을 선택하기...</entry>
+
+<!-- Classification wizard -->
+<entry key="classification.wizard.help">아래 트리에서 분류군을 선택하고 {0}를 클릭하십시오</entry>
+<entry key="classification.wizard.tree.unavailable">GBIF 분류 트리가 현재 이용 가능하지 않습니다.</entry>
+
+<!-- Bounding box wizard -->
+<entry key="boundingbox.wizard.latitude">위도</entry>
+<entry key="boundingbox.wizard.longitude">경도</entry>
+<entry key="boundingbox.wizard.min.latitude">최소 위도</entry>
+<entry key="boundingbox.wizard.max.latitude">최대 위도</entry>
+<entry key="boundingbox.wizard.min.longitude">최소 경도</entry>
+<entry key="boundingbox.wizard.max.longitude">최대 경도</entry>
+
+<!-- Remote concept types -->
+<entry key="remote.concept.localid">레코드 식별자</entry>
+<entry key="remote.concept.url">레코드 URL</entry>
+<entry key="remote.concept.specialist">에 의해 검토됨</entry>
+<entry key="remote.concept.scrutinydate">검토 날짜</entry>
+<entry key="remote.concept.guid">지구전역식별자(Globally unique identifier)</entry>
+
+<!-- Taxonomy-related strings -->
+<entry key="taxonomy.status">상태</entry>
+<entry key="taxonomy.classification">분류</entry>
+<entry key="taxonomy.according.to">According to</entry>
+<entry key="taxonomy.synonyms">동의어</entry>
+<entry key="taxonomy.common.names">일반 이름</entry>
+
+<!-- Filters -->
+<entry key="occurrence.search.filter.dataset.georeferenced">좌표 상태</entry>
+<entry key="georeferenced">좌표값을 포함</entry>
+<entry key="not.georeferenced">좌표값을 포함하지 않음</entry>
+
+<entry key="occurrence.search.filter.dataset.geo.consistency">좌표 관련</entry>
+<entry key="geo.consistent.with.country">문제(issues)가 탐지되지 않음</entry>
+<entry key="geo.not.consistent.with.country">문제(issues)가 탐지됨</entry>
+
+<entry key="occurrence.search.filter.dataset.type.status">타입 상태</entry>
+<entry key="type.specimen">기준(모식) 표본</entry>
+<entry key="type.not.specimen">기준(모식) 표본이 아님</entry>
+
+<entry key="no.matches.with.taxonomy">이 분류에서 일치되는 것이 없음</entry>
+
+<!-- Year range filter -->
+<entry key="year.filter.starting.from">부터 시작하여</entry>
+<entry key="year.filter.and.including">(포함하여)</entry>
+<entry key="year.filter.up.to"> 까지</entry>
+<entry key="year.filter.default.value">2000년에서 2007년 사이</entry>
+<entry key="occurrencedate.filter.default.value">2000년 1월 1일에서 2007년 1월 1일 사이</entry>
+
+<!-- Downloads -->
+<entry key="occurrence.record.download.xml.title">XML로 일치되는 레코드를 다운로드</entry>
+<entry key="occurrence.record.download.spreadsheet.title">스프레드시트로 결과를 다운로드</entry>
+<entry key="occurrence.record.download.citation">이러한 검색 결과에 대한 인용 텍스트를 다운로드 할 수 있습니다</entry>
+<entry key="occurrence.record.download.citation.here">여기</entry>
+<entry key="occurrence.record.download.your.query">질의에 대한 레코드를 지금 다운로드합니다:</entry>
+<entry key="occurrence.record.download.format.ge">Google Earth (KML, 최대 50,000 개 레코드)</entry>
+<entry key="occurrence.record.download.format.darwin.brief">다윈코어 (페이지당 최대 100,000 개 레코드)</entry>
+<entry key="occurrence.record.download.format.darwin.full">다윈코어 (XML, 브라우저에서 쉽게 볼 수 있음, 페이지당 최대 1,000 개 레코드)</entry>
+<entry key="occurrence.record.download.fields.to.include">포함되어야 할 필드:</entry>
+<entry key="occurrence.record.download.maximum.message">이 다운로드는 최대 250,000 개의 레코드를 반환합니다. 여러분의 다운로드는 zip형태이며 별도의 텍스트 파일에 검색 결과에 대한 인용문이 포함되어 있습니다.</entry>
+<entry key="occurrence.record.download.no.of.records">레코드의 개수:</entry>
+<entry key="occurrence.record.download.no.of.records.100">처음 일치하는 100 개의 레코드</entry>
+<entry key="occurrence.record.download.no.of.records.1000">처음 일치하는 1,000 개의 레코드</entry>
+<entry key="occurrence.record.download.no.of.records.10000">처음 일치하는 10,000 개의 레코드 (최대)</entry>
+
+<entry key="occurrence.search.filter.action.download.xml">결과에 대한 XML 레코드</entry>
+<entry key="occurrence.search.filter.action.download.spreadsheet">스프레드시트 결과</entry>
+<entry key="occurrence.search.filter.action.download.citation">결과에 대한 인용 텍스트</entry>
+
+<!-- Generic download messages -->
+<entry key="download.now">지금 다운로드</entry>
+<entry key="select.all">모두 선택</entry>
+<entry key="deselect.all">모두 선택 취소</entry>
+<entry key="download.format.options">포맷 옵션</entry>
+<entry key="download.format.tab">탭으로 구분</entry>
+<entry key="download.format.csv">콤마로 구분된 값</entry>
+<entry key="download.format.excel">엑셀</entry>
+
+<entry key="occurrence.record.raw.xml.title">제공자 XML 메시지</entry>
+<entry key="occurrence.record.view.large.map">큰 지도로 보기</entry>
+<entry key="occurrence.record.back.to.details">발생데이터 세부사항으로 돌아가기</entry>
+
+<entry key="geospatial.issues">지리공간적 이슈</entry>
+<entry key="geospatial.negated.latitude">위도가 아마도 반대일 것임</entry>
+<entry key="geospatial.negated.longitude">경도가 아마도 반대일 것임</entry>
+<entry key="geospatial.inverted">위도와 경도가 아마도 뒤바뀌어 있을 것임</entry>
+<entry key="geospatial.zero.coordinates">좌표값이 (0.0, 0.0)으로 제공됨</entry>
+<entry key="geospatial.out.of.range">범위 밖의 좌표값이 제공됨</entry>
+<entry key="geospatial.mismatch">좌표값이 지정된 국가 밖에 있음</entry>
+
+<entry key="other.issues">사소한 문제들</entry>
+<entry key="other.missing.catalogue.number">카탈로그 번호가 누락됨</entry>
+<entry key="other.missing.basis.of.record">레코드의 단위가 알려져 있지 않음</entry>
+<entry key="other.invalid.date">제공된 날짜가 유효하지 않음</entry>
+<entry key="other.country.inferred">좌표값에서 추론된 국가</entry>
+
+<entry key="taxonomic.issues">분류학적 쟁점사항</entry>
+<entry key="taxonomic.not.valid">유효하지 않은 형태의 학명</entry>
+<entry key="taxonomic.unknown.kingdom">레코드의 계(Kingdom)가 알려져 있지 않음</entry>
+<entry key="taxonomic.ambiguous">이름이 모호하게 제공됨");</entry>
+
+<!-- Data Usage Agreement -->
+<entry key="dataagreement.title">데이터 사용 협약</entry>
+<entry key="dataagreement.cookie.warning">브라우저의 설정에 따라, 위의 약관에 대해 동의하는 쿠키(cookie)가 저장될 수 있습니다.</entry>
+<entry key="dataagreement.accept">약관에 동의</entry>
+<entry key="dataagreement.cancel">취소</entry>
+
+<!-- Filter Warnings -->
+<entry key="warnings.filter.scientific.name.unsupportedrank">{0}에 대한 발생데이터 검색을 현재 지원하고 있지 않음, 따라서 {0} {1}에 대해 검색을 수행할 수 없습니다. </entry>
+<entry key="warnings.filter.scientific.name.accepted">{2}는 {1}의 인지된 동의어입니다. 이 검색은 {2}과 {1} 모두에 대한 레코드를 찾습니다.</entry>
+<entry key="warnings.filter.scientific.name.synonym">{1}는 {0}의 인지된 동의어입니다. 이 검색은 {0}과 {1} 모두에 대한 레코드를 찾습니다.</entry>
+<entry key="warnings.filter.scientific.name.synonyms">{0}는 다음과 같은 인지된 동의어가 있습니다: {1}. 이 검색은 {0}과 이러한 동의어 모두에 대한 레코드를 검색합니다.</entry>
+
+<!-- Occurrence Filter Help messages -->
+<entry key="occurrence.scientificName.help1">학명을 입력하고 {0}를 클릭하십시오.</entry>
+<entry key="occurrence.scientificName.help2">이 필터는 개체가 분류된 방법에 관계없이 동정된 개체에 대해 이름이 일치하는 모든 레코드를 반환합니다.</entry>
+<entry key="occurrence.basisOfRecord.help1">선택 리스트에서 레코드의 단위를 선택하고 {0}를 클릭하십시오.</entry>
+<entry key="occurrence.basisOfRecord.help2">이 필터는 선택된 객체 또는 관찰 종류에 기반하여 레코드를 반환합니다.</entry>
+<entry key="occurrence.basisOfRecord.observation">관찰데이터</entry>
+<entry key="occurrence.basisOfRecord.observation.description"> - 알려진 관찰자에 의한 보고자료</entry>
+<entry key="occurrence.basisOfRecord.specimen">표본</entry>
+<entry key="occurrence.basisOfRecord.specimen.description"> - 하나 또는 그 이상의 개체를 나타내는 물리적인 객체</entry>
+<entry key="occurrence.basisOfRecord.living">살아있는 객체</entry>
+<entry key="occurrence.basisOfRecord.living.description"> - 자연 발생에서 제거되어 생포 또는 사육되고 있는 개체.</entry>
+<entry key="occurrence.basisOfRecord.germplasm">생식(세포)질(Germplasm)</entry>
+<entry key="occurrence.basisOfRecord.germplasm.description"> - 새로운 개체의 번식에 사용되는 식물, 동물 및 박테리아의 유전 물질</entry>
+<entry key="occurrence.basisOfRecord.fossil">화석</entry>
+<entry key="occurrence.basisOfRecord.fossil.description"> - 하나 또는 그 이상의 화석 개체를 나타내는 물리적 객체</entry>
+<entry key="occurrence.catalogueno.help1">카탈로그 번호를 입력하고 {0}를 클릭하십시오.</entry>
+<entry key="occurrence.catalogueno.help2">이 필터는 지정된 카탈로그 번호를 가진 레코드를 반환합니다.</entry>
+<entry key="occurrence.collectioncode.help1">수집물 코드와 "은(는)" 또는 "비슷한 것"을 입력하십시오.</entry>
+<entry key="occurrence.collectioncode.help2">이 필터는 지정된 수집물 코드를 가진 레코드를 반환합니다.</entry>
+<entry key="occurrence.commonName.help1">일반 이름 (또는 이름의 일부)를 입력하고 {0}를 클릭하십시오.</entry>
+<entry key="occurrence.commonName.help2">이 필터는 입력된 일반 이름과 연관된 종에 대한 모든 레코드를 반환합니다.</entry>
+<entry key="occurrence.coordinateIssues.help">미심쩍은 좌표값을 가진 레코드를 찾기 위해서는 "문제(issues)가 탐지됨"을 선택하십시오; 그렇지 않다면 "문제(issues)가 탐지되지 않음"을 선택하십시오</entry>
+<entry key="occurrence.coordinateStatus.help">지리참조연산되지 않은 레코드가 걸러질 수 있도록 "좌표값을 포함"을 선택하십시오; 다른 방법으로, 지리참조연산된 레코드를 배제하기 위해서는 "좌표값을 포함하지 않음"을 선택하십시오. 모든 레코드를 보려면 필터를 사용하지 마십시오.</entry>
+<entry key="occurrence.country.help1">하나 또는 그 이상의 국가에 대해 검색을 제한하려면 선택 리스트에서 국가를 선택하고 {0}를 클릭하십시오.</entry>
+<entry key="occurrence.country.help2">이 필터는 레코드가 좌표값을 가지고 있든지 없든지간에 식별된 국가의 레코드를 반환합니다; 그러나 좌표 필터(경계범위 박스, 위도 또는 경도)를 추가하면 그 결과를 지리참조연산된 레코드만으로 제한합니다.</entry>
+<entry key="occurrence.dataprovider.help">선택 리스트에서 데이터 제공자를 선택하고 {0}를 클릭하십시오. 이 필터는 지정된 제공자의 레코드를 반환합니다.</entry>
+<entry key="occurrence.hostcountry.help1">선택 리스트에서 국가를 선택하고 {0}를 클릭하십시오.</entry>
+<entry key="occurrence.hostcountry.help2">이 필터는 해당 국가의 데이터 제공자가 공유하고 있는 레코드를 반환합니다.</entry>
+<entry key="occurrence.institutioncode.help">기관 코드와 "은(는)" 또는 "비슷한 것"을 입력하십시오. 이 필터는 지정된 기관 코드를 가진 레코드를 반환합니다.</entry>
+<entry key="occurrence.latitude.help">위도를 입력하고 "은(는)", "다음보다 큰 것" 그리고 "다음보다 작은 것"을 선택하십시오. 이 필터는 선택 영역과 일치하는 지리참조연산된 레코드만을 반환합니다.</entry>
+<entry key="occurrence.longitude.help">경도를 입력하고 "은(는)", "다음보다 큰 것" 그리고 "다음보다 작은 것"을 선택하십시오. 이 필터는 선택 영역과 일치하는 지리참조연산된 레코드만을 반환합니다.</entry>
+<entry key="occurrence.month.help">선택 리스트에서 월을 선택하고 {0}를 클릭하십시오. 이 필터는 년도에 관계없이 지정된 월의 레코드를 반환합니다.</entry>
+<entry key="occurrence.region.help">선택 리스트에서 지형적인 지역을 선택하고 {0}를 클릭하십시오. 이 필터는 선택된 대륙, 대양 등에서 모든 국가의 레코드를 반환합니다</entry>
+<entry key="occurrence.typeStatus.help">기준(모식) 표본(types)으로 표시된 표본을 찾기 위해 이 필터를 사용하십시오. 이것을 위해 {0}를 클릭하십시오.</entry>
+<entry key="occurrence.year.help">년도를 입력하고 {0}를 클릭하십시오. 이 필터는 선택 년도와 일치하는 년도의 레코드를 반환합니다.</entry>
+
+<!-- Taxonomy Filter Help messages -->
+<entry key="taxonomy.taxon.help1">분류군 이름을 입력하고 {0}를 클릭하십시오. </entry>
+<entry key="taxonomy.taxon.help2">이 필터는 반환되는 개념을 특정 분류군으로 한정시킵니다.</entry>
+<entry key="taxonomy.rank.help1">분류 순위를 선택하고 {0}를 클릭하십시오. </entry>
+<entry key="taxonomy.rank.help2">이 필터는 반환되는 개념을 특정 순위로 한정시킨다 (예, "종(species)"을 선택하면 종 개념에 대해서만 반환하다).</entry>
+<entry key="taxonomy.kingdom.help1">계의 이름을 입력하고 {0}를 클릭하십시오. </entry>
+<entry key="taxonomy.kingdom.help2">이 필터는 반환되는 개념을 특정 계로 한정시킵니다.</entry>
+<entry key="taxonomy.phylum.help1">문을 입력하고 {0}를 클릭하십시오. </entry>
+<entry key="taxonomy.phylum.help2">이 필터는 반환되는 개념을 특정 문로 한정시킵니다.</entry>
+<entry key="taxonomy.class.help1">강을 입력하고 {0}를 클릭하십시오. </entry>
+<entry key="taxonomy.class.help2">이 필터는 반환되는 개념을 특정 강으로 한정시킵니다.</entry>
+<entry key="taxonomy.order.help1">목을 입력하고 {0}를 클릭하십시오. </entry>
+<entry key="taxonomy.order.help2">이 필터는 반환되는 개념을 특정 목으로 한정시킵니다.</entry>
+<entry key="taxonomy.family.help1">과를 입력하고 {0}를 클릭하십시오. </entry>
+<entry key="taxonomy.family.help2">이 필터는 반환되는 개념을 특정 과로 한정시킵니다.</entry>
+<entry key="taxonomy.genus.help1">속을 입력하고 {0}를 클릭하십시오. </entry>
+<entry key="taxonomy.genus.help2">이 필터는 반환되는 개념을 특정 속으로 한정시킵니다.</entry>
+<entry key="taxonomy.species.help1">종 이름을 입력하고 {0}를 클릭하십시오. </entry>
+<entry key="taxonomy.species.help2">이 필터는 반환되는 개념을 특정 종으로 한정시킵니다.</entry>
+<entry key="taxonomy.provider.help1">분류학 데이터 제공자를 선택하고 {0}를 클릭하십시오.</entry>
+<entry key="taxonomy.provider.help2">이 필터는 반환되는 개념을 특정한 분류학적 제공자로 한정시킵니다.</entry>
+<entry key="taxonomy.accepted.help">수용된 개념만을 반환하기 위해 {0}를 선택하십시오.</entry>
+<entry key="taxonomy.country.help1">이 필터는 반환되는 개념을 지정된 국가에서 기록된 분류군으로 한정시킵니다.</entry>
+<entry key="taxonomy.country.help2">예를 들어, 미국에서 기록된 발생데이터의 분류군만을 선택하기 위해 "미국(United States)"을 선택하십시오.</entry>
+<entry key="taxonomy.country.help3">노트: 이 필터를 사용하면 검색을 GBIF 분류 개념으로만 검색을 한정시킵니다.</entry>
+
+<!-- Log Table -->
+<entry key="log.console">로그 콘솔(Log console)</entry>
+<entry key="all">모두</entry>
+<entry key="log.console.dataset">데이터집합</entry>
+<entry key="log.console.event">이벤트(Event)</entry>
+<entry key="log.console.harvesting">데이터 수집중</entry>
+<entry key="log.console.extraction">추출</entry>
+<entry key="log.console.user">사용자</entry>
+<entry key="log.console.loggroup">로그 그룹</entry>
+<entry key="log.console.level">수준</entry>
+<entry key="log.console.start.date">시작일</entry>
+<entry key="log.console.end.date">종료일</entry>
+<entry key="log.console.submit">새로 고침</entry>
+<entry key="log.console.taxon">분류군</entry>
+<entry key="log.console.message">메시지</entry>
+<entry key="log.console.record">레코드</entry>
+<entry key="log.console.count">개수</entry>
+
+<!-- Indexing history -->
+<entry key="harvesting">데이터 수집중</entry>
+<entry key="harvesting.description">데이터 제공자의 레코드를 추출하는 프로세스.</entry>
+<entry key="extraction">처리중</entry>
+<entry key="extraction.description">학명 파싱, 지리공간 분석 등을 포함하여 이러한 레코드를 확장하는 프로세스.</entry>
+<entry key="indexing.history.title">데이터 추적중</entry>
+<entry key="indexing.history.summary">추적 요약(Tracking summary)</entry>
+<entry key="indexing.history.summary.total.time">전체 색인 시간</entry>
+<entry key="indexing.history.summary.processing.time">전체 처리 시간</entry>
+<entry key="indexing.history.summary.harvesting.time">전체 데이터 수집 시간</entry>
+<entry key="indexing.history.log.messages.available">노트: 로그 메시지는 현재 {0}과 {1}의 날짜 사이에서만 제공됩니다.</entry>	
+<entry key="indexing.history.log.messages.earliest">이러한 요약자료는 이러한 날짜 사이의 레코드에 포함된 정보만을 반영합니다. 따라서 {0} 이전의 색인은 여기에 표시되어 있지 않습니다.</entry>
+<entry key="indexing.history.view.unprocessed">처리되지 않은 데이터를 보기</entry>
+<entry key="indexing.history.processing.timeline">처리 순서</entry>
+<entry key="indexing.history.processid">프로세스(Process) ID</entry>
+<entry key="indexing.history.event">이벤트(Event)</entry>
+<entry key="indexing.history.start">시작 시간</entry>
+<entry key="indexing.history.end">종료 시간</entry>
+<entry key="indexing.history.duration">기간</entry>
+<entry key="indexing.history.no.available">이 데이터집합에 대한 색인 이력이 없음.</entry>
+<entry key="indexing.history.manually.terminated">수동으로 종료됨</entry>
+
+<!-- Raw data view -->
+<entry key="raw.data.title">처리되지 않은 발생 데이터</entry>
+<entry key="raw.data.info">노트: 이것은 데이터수집 과정동안 해당 자원에서 추출되었지만 처리되지 않은 데이터입니다.</entry>
+<entry key="raw.data.record.viewer">이 레코드 뷰어(viewer)는 분류 및 지리공간적인 특징들을 일부 또는 모두 레코드에 대해 분석이 되지 않았기 때문에 극히 제한된 검색을 제공합니다.</entry>
+
+<!-- Citation -->
+<entry key="citation.introduction">이 데이터를 다음과 같이 인용하여 주십시오:\n\n</entry>
+<entry key="citation.entry">{0} (GBIF 데이터 포탈을 통해 접근, {1} {2})</entry>
+
+<!-- Registration resource types -->
+<entry key="registration.resource.DiGIR">DiGIR</entry>
+<entry key="registration.resource.TAPIR">TAPIR</entry>	    
+<entry key="registration.resource.TabDelimitedData">탭(Tab)으로 구분된 데이터</entry>	            	            
+<entry key="registration.resource.PDFDocument">PDF 문서</entry>	            	            	            	            
+<entry key="registration.resource.HTMLDocument">웹 페이지</entry>	          
+
+<!-- Charts -->
+<entry key="charts.georeferenced.with.coordinates">좌표가 있는 것</entry>
+<entry key="charts.georeferenced.without.coordinates">좌표가 없는 것</entry>
+<entry key="charts.country.other">그 외의 것</entry>
+<entry key="charts.region.other">그 외의 것</entry>
+
+<!-- Raw data -->
+<entry key="unprocessed">(처리되지 않음)</entry>
+
+<!-- Downloads -->
+<entry key="download.preparing">다운로드 준비중.....</entry>
+<entry key="download.preparing.subheader">다운로드가 준비중에 있습니다</entry>
+<entry key="download.preparing.wait">다운로드가 준비되는 동안 기다려 주십시오. 이것은 30분 정도까지 소요될 수 있습니다.</entry>
+<entry key="download.preparing.check.back">이 url을 복사하여 저장한 후에 나중에 체크하여 주십시오. 그렇지 않을 경우 이 브라우저를 닫지 말고 그대로 두십시오.</entry>
+<entry key="download.preparing.zip">이 결과는 zip 파일로 묶어집니다.</entry>
+<entry key="download.preparing.redirect">zip 파일이 준비될 때, 이 페이지는 자동으로 다운로드 페이지로 이동합니다.</entry>
+<entry key="download.ready">다운로드 준비</entry>
+<entry key="download.ready.subheader">다운로드가 이제 준비되었습니다</entry>
+<entry key="download.approx.file.size">대략적인 파일 크기</entry>
+<entry key="download.start.download.link">검색 결과를 다운로드하려면 이 링크를 클릭하십시오. 이 링크는 24시간 동안만 유효합니다.</entry> 
+<entry key="download.generation.time">다운로드가 완료됨</entry> 
+<entry key="download.file.type.occurrences">발생데이터 다운로드:</entry>
+<entry key="download.file.type.taxonconcept">분류학 개념 다운로드:</entry>
+<entry key="download.original.search">원래의 검색</entry>
+<entry key="download.expired">다운로드 링크가 만료됨</entry>
+<entry key="download.expired.detail">이 다운로드는 현재 만료되었습니다.</entry>
+
+</properties>

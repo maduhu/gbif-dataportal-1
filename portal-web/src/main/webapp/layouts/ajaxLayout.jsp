@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><%@ page contentType="text/xml" %><%@ include file="/common/taglibs.jsp"%><tiles:insert name="taglibs"/><tiles:insert name="content"/>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+				http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+				http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+	<!-- Bean lists used in webapp to construct downloads page-->
+
+	<!-- list of downloadable fields -->
+	<bean id="downloadField" abstract="true" class="org.gbif.portal.web.download.Field"/>
+	
+	<!-- full list of taxonomy download fields -->	
+	<util:list id="taxonomyDownloadFields">	
+		<ref bean="dataProviderName"/>
+		<ref bean="dataResourceName"/>
+		<ref bean="canonical"/>		
+		<ref bean="rank"/>
+		<ref bean="author"/>
+		<ref bean="generic"/>				
+		<ref bean="specificEpithet"/>
+		<ref bean="kingdom"/>
+		<ref bean="phylum"/>
+		<ref bean="class"/>
+		<ref bean="order"/>
+		<ref bean="family"/>
+		<ref bean="genus"/>
+		<ref bean="species"/>			
+    <ref bean="gbifId"/>			
+		<ref bean="accepted"/>	
+    <ref bean="treeBrowseUrl"/>	
+    <ref bean="taxonPageUrl"/>																			
+	</util:list>
+  <!-- mandatory download fields -->
+	<util:list id="mandatoryTaxonomyDownloadFields">	
+		<ref bean="dataProviderName"/>
+		<ref bean="dataResourceName"/>
+		<ref bean="canonical"/>		
+		<ref bean="rank"/>
+		<ref bean="author"/>		
+	</util:list>
+	<!-- classification download fields -->		
+	<util:list id="classificationTaxonomyDownloadFields">	
+		<ref bean="kingdom"/>
+		<ref bean="phylum"/>
+		<ref bean="class"/>
+		<ref bean="order"/>
+		<ref bean="family"/>
+		<ref bean="genus"/>
+		<ref bean="species"/>
+	</util:list>
+	<!-- other fields -->
+	<util:list id="otherTaxonomyDownloadFields">	
+		<ref bean="specificEpithet"/>
+		<ref bean="accepted"/>				
+    <ref bean="gbifId"/>						
+    <ref bean="treeBrowseUrl"/>		
+    <ref bean="taxonPageUrl"/>										
+	</util:list>	
+	
+	<!-- The available download fields -->		
+	<bean id="dataProviderName" parent="downloadField">
+		<property name="fieldName" value="dataProviderName"/>
+		<property name="fieldI18nNameKey" value="taxonomy.search.filter.dataset.dataprovider"/>							
+	</bean>								
+	<bean id="dataResourceName" parent="downloadField">
+		<property name="fieldName" value="dataResourceName"/>
+		<property name="fieldI18nNameKey" value="taxonomy.search.filter.dataset.dataresource"/>
+	</bean>				
+	<!-- name fields-->
+	<bean id="gbifId" parent="downloadField">
+		<property name="fieldName" value="id"/>
+		<property name="fieldI18nNameKey" value="gbif.id"/>
+	</bean>		
+	<bean id="parentGbifId" parent="downloadField">
+		<property name="fieldName" value="id"/>
+		<property name="fieldI18nNameKey" value="gbif.parent.id"/>
+	</bean>		
+	<bean id="canonical" parent="downloadField">
+		<property name="fieldName" value="canonical"/>
+		<property name="fieldI18nNameKey" value="scientificName"/>
+	</bean>		
+	<bean id="author" parent="downloadField">
+		<property name="fieldName" value="author"/>
+		<property name="fieldI18nNameKey" value="author"/>
+	</bean>		
+	<bean id="rank" parent="downloadField">
+		<property name="fieldName" value="rank"/>
+		<property name="fieldI18nNameKey" value="rank"/>
+	</bean>		
+	<bean id="generic" parent="downloadField">
+		<property name="fieldName" value="generic"/>
+		<property name="fieldI18nNameKey" value="generic"/>
+	</bean>	
+	<bean id="specificEpithet" parent="downloadField">
+		<property name="fieldName" value="specificEpithet"/>
+		<property name="fieldI18nNameKey" value="specificEpithet"/>
+	</bean>			
+	<!-- higher ranks -->
+	<bean id="kingdom" parent="downloadField">
+		<property name="fieldName" value="kingdom"/>
+		<property name="fieldI18nNameKey" value="taxonrank.kingdom"/>
+	</bean>				
+	<bean id="phylum" parent="downloadField">
+		<property name="fieldName" value="phylum"/>
+		<property name="fieldI18nNameKey" value="taxonrank.phylum"/>
+	</bean>				
+	<bean id="class" parent="downloadField">
+		<property name="fieldName" value="class"/>
+		<property name="fieldI18nNameKey" value="taxonrank.class"/>
+	</bean>				
+	<bean id="order" parent="downloadField">
+		<property name="fieldName" value="order"/>
+		<property name="fieldI18nNameKey" value="taxonrank.order"/>
+	</bean>				
+	<bean id="family" parent="downloadField">
+		<property name="fieldName" value="family"/>
+		<property name="fieldI18nNameKey" value="taxonrank.family"/>
+	</bean>				
+	<bean id="genus" parent="downloadField">
+		<property name="fieldName" value="genus"/>
+		<property name="fieldI18nNameKey" value="taxonrank.genus"/>
+	</bean>				
+	<bean id="species" parent="downloadField">
+		<property name="fieldName" value="species"/>
+		<property name="fieldI18nNameKey" value="taxonrank.species"/>
+	</bean>				
+	<bean id="accepted" class="org.gbif.portal.web.download.BooleanField">
+		<property name="fieldName" value="isAccepted"/>
+		<property name="fieldI18nNameKey" value="accepted"/>
+	</bean>		
+	<!-- taxonomy tree browse url -->	
+	<bean id="treeBrowseUrl" class="org.gbif.portal.web.download.UrlField">
+		<property name="fieldName" value="treeBrowseUrl"/>
+		<property name="fieldI18nNameKey" value="taxonomy.browser.url"/>
+		<property name="prefix" value="/species/browse/taxon/"/>
+		<property name="beanProperty" value="key"/>
+		<property name="postfix" value=""/>
+	</bean>
+	<!-- taxon page url -->	
+	<bean id="taxonPageUrl" class="org.gbif.portal.web.download.UrlField">
+		<property name="fieldName" value="taxonPageUrl"/>
+		<property name="fieldI18nNameKey" value="taxon.page.url"/>
+		<property name="prefix" value="/species/"/>
+		<property name="beanProperty" value="key"/>
+		<property name="postfix" value=""/>
+	</bean>						
+</beans>
