@@ -1,0 +1,2 @@
+<%@ page contentType="text/plain" %><%@ include file="/common/taglibs.jsp"%><c:forEach items="${searchResults}" var="taxonConcept">${taxonConcept.key}	${taxonConcept.taxonName}	${taxonConcept.commonName}
+</c:forEach>
