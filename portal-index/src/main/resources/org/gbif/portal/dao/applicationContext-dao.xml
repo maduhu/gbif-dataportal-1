@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- Configuration overriding  - as used in webapp  -->
+    <bean id="indexingPropertyOverrideConfigurer"
+      class="org.springframework.beans.factory.config.PropertyOverrideConfigurer"
+      lazy-init="false">
+      <property name="location" value="indexing.properties"/>
+      <property name="ignoreResourceNotFound" value="true"/>
+      <property name="ignoreInvalidKeys" value="true"/>
+    </bean> 
+
+	<!-- Please note that these will be overridden by any PropertyOverrideConfigurer that are wired up -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/portal"/>
+		<property name="username" value="root"/>
+		<property name="password" value="password"/>
+		<property name="initialSize" value="1"/>
+		<property name="maxActive" value="25"/>
+		<property name="maxIdle" value="10"/>
+		<property name="maxWait" value="30000"/>
+		<property name="poolPreparedStatements" value="true"/>
+	</bean>
+	
+	<!-- Please note that these will be overridden by any PropertyOverrideConfigurer that are wired up -->
+	<bean id="logDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/portal"/>
+		<property name="username" value="root"/>
+		<property name="password" value="password"/>
+		<property name="initialSize" value="1"/>
+		<property name="maxActive" value="25"/>
+		<property name="maxIdle" value="10"/>
+		<property name="maxWait" value="30000"/>
+		<property name="poolPreparedStatements" value="true"/>
+	</bean>
+	<!-- Note that this has a special DAO -->
+	<bean id="gbifLogMessageDAO" class="org.gbif.portal.util.log.impl.GbifLogMessageDAOImpl">
+		<property name="dataSource" ref="logDataSource"/>
+	</bean>
+	<!-- Now override any previously configured DAO in a GBIF logging appender -->
+	<bean id="gbifAppenderDaoOverride" class="org.gbif.portal.util.log.GbifAppenderDaoOverride">
+		<property name="gbifLogMessageDAO" ref="gbifLogMessageDAO"/>
+	</bean>
+	
+	<bean id="baseDAO" abstract="true">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="rawOccurrenceRecordDAO" class="org.gbif.portal.dao.impl.jdbc.RawOccurrenceRecordDAOImpl" parent="baseDAO">
+		<property name="rawIdentifierDAO" ref="rawIdentifierDAO"/>
+		<property name="institutionCodeDAO" ref="institutionCodeDAO"/>
+		<property name="collectionCodeDAO" ref="collectionCodeDAO"/>
+		<property name="catalogueNumberDAO" ref="catalogueNumberDAO"/>
+	</bean>
+	<bean id="occurrenceRecordDAO" class="org.gbif.portal.dao.impl.jdbc.OccurrenceRecordDAOImpl" parent="baseDAO">
+		<property name="namedParameterTemplate">
+			<bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+				<constructor-arg ref="dataSource"/>
+			</bean>
+		</property>
+	</bean>
+	<bean id="indexDataDAO" class="org.gbif.portal.dao.impl.jdbc.IndexDataDAOImpl" parent="baseDAO">
+		<property name="namedParameterTemplate">
+			<bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+				<constructor-arg ref="dataSource"/>
+			</bean>
+		</property>
+	</bean>
+	<bean id="dataProviderDAO" class="org.gbif.portal.dao.impl.jdbc.DataProviderDAOImpl" parent="baseDAO"/>
+	<bean id="dataResourceDAO" class="org.gbif.portal.dao.impl.jdbc.DataResourceDAOImpl" parent="baseDAO"/>
+	<bean id="taxonNameDAO" class="org.gbif.portal.dao.impl.jdbc.TaxonNameDAOImpl" parent="baseDAO"/>
+	<bean id="taxonomyDenormaliserDAO" class="org.gbif.portal.dao.impl.jdbc.TaxonomyDenormaliserDAOImpl" parent="baseDAO"/>
+	<bean id="agentDAO" class="org.gbif.portal.dao.impl.jdbc.AgentDAOImpl" parent="baseDAO">	
+		<property name="namedParameterTemplate">
+			<bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+				<constructor-arg ref="dataSource"/>
+			</bean>
+		</property>
+	</bean>		
+	<bean id="resourceAccessPointDAO" class="org.gbif.portal.dao.impl.jdbc.ResourceAccessPointDAOImpl" parent="baseDAO">
+		<property name="propertyStoreNamespaceDAO" ref="propertyStoreNamespaceDAO"/>
+	</bean>
+	<bean id="relationshipAssertionDAO" class="org.gbif.portal.dao.impl.jdbc.RelationshipAssertionDAOImpl" parent="baseDAO"/>
+	<bean id="propertyStoreNamespaceDAO" class="org.gbif.portal.dao.impl.jdbc.PropertyStoreNamespaceDAOImpl" parent="baseDAO"/>
+	<bean id="taxonConceptDAO" class="org.gbif.portal.dao.impl.jdbc.TaxonConceptDAOImpl" parent="baseDAO">
+		<property name="taxonNameDAO" ref="taxonNameDAO"/>
+	</bean>
+	<bean id="rawIdentifierDAO" class="org.gbif.portal.dao.impl.jdbc.RawIdentifierDAOImpl" parent="baseDAO"/>
+	<bean id="institutionCodeDAO" class="org.gbif.portal.dao.impl.jdbc.InstitutionCodeDAOImpl" parent="baseDAO"/>
+	<bean id="collectionCodeDAO" class="org.gbif.portal.dao.impl.jdbc.CollectionCodeDAOImpl" parent="baseDAO"/>
+	<bean id="catalogueNumberDAO" class="org.gbif.portal.dao.impl.jdbc.CatalogueNumberDAOImpl" parent="baseDAO"/>
+	<bean id="cellCountryDAO" class="org.gbif.portal.dao.impl.jdbc.CellCountryDAOImpl" parent="baseDAO"/>
+	<bean id="countryDAO" class="org.gbif.portal.dao.impl.jdbc.CountryDAOImpl" parent="baseDAO"/>
+	<bean id="imageRecordDAO" class="org.gbif.portal.dao.impl.jdbc.ImageRecordDAOImpl" parent="baseDAO"/>
+	<bean id="linkRecordDAO" class="org.gbif.portal.dao.impl.jdbc.LinkRecordDAOImpl" parent="baseDAO"/>
+	<bean id="identifierRecordDAO" class="org.gbif.portal.dao.impl.jdbc.IdentifierRecordDAOImpl" parent="baseDAO"/>
+	<bean id="typificationRecordDAO" class="org.gbif.portal.dao.impl.jdbc.TypificationRecordDAOImpl" parent="baseDAO"/>
+	<bean id="remoteConceptDAO" class="org.gbif.portal.dao.impl.jdbc.RemoteConceptDAOImpl" parent="baseDAO"/>
+	<bean id="commonNameDAO" class="org.gbif.portal.dao.impl.jdbc.CommonNameDAOImpl" parent="baseDAO"/>
+</beans>

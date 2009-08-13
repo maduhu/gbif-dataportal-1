@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean abstract="true" id="abstractStartHarvestActivity"
+		class="org.gbif.portal.harvest.workflow.activity.control.StartHarvestActivity">
+		<property name="resourceAccessPointDAO" ref="resourceAccessPointDAO"/>
+	</bean>
+	<bean abstract="true" id="abstractStartExtractActivity"
+		class="org.gbif.portal.harvest.workflow.activity.control.StartExtractActivity">
+		<property name="resourceAccessPointDAO" ref="resourceAccessPointDAO"/>
+	</bean>
+</beans>

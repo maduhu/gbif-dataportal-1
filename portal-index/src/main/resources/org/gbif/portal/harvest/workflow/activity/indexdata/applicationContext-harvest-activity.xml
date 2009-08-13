@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractIndexDataIteratorActivity"
+		class="org.gbif.portal.harvest.workflow.activity.indexdata.IndexDataIteratorActivity">
+		<property name="contextKeyResourceAccessPointId" value="resourceAccessPointId"/>
+		<property name="contextKeyLowerLimit" value="lowerLimit"/>
+		<property name="contextKeyUpperLimit" value="upperLimit"/>
+		<property name="indexDataDAO" ref="indexDataDAO"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractDeactivateIncompleteIndexDataActivity"
+		class="org.gbif.portal.harvest.workflow.activity.indexdata.DeactivateIncompleteIndexDataActivity">
+		<property name="contextKeyResourceAccessPointId" value="resourceAccessPointId"/>
+		<property name="indexDataDAO" ref="indexDataDAO"/>
+	</bean>
+	
+	<!-- For use outside workflows -->
+	<bean id="vanillaIndexDataCreatorActivity" parent="abstractIndexDataCreatorActivity"/>
+</beans>

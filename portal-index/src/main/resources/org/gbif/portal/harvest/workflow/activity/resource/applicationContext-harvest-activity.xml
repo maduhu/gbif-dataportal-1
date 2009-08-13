@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractDataProviderFromContextSynchroniserActivity"
+		class="org.gbif.portal.harvest.workflow.activity.resource.DataProviderFromContextSynchroniserActivity">
+		<property name="contextKeyProviderName" value="dataProviderName"/>
+		<property name="contextKeyDataProviderId" value="dataProviderId"/>
+		<property name="dataProviderDAO" ref="dataProviderDAO"/>
+	</bean>
+	
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractDataResourceFromContextSynchroniserActivity"
+		class="org.gbif.portal.harvest.workflow.activity.resource.DataResourceFromContextSynchroniserActivity">
+		<property name="basisOfRecordMapping" ref="basisOfRecordMapping"/>		
+		<property name="contextKeyResourceName" value="dataResourceName"/>
+		<property name="contextKeyDisplayName" value="displayName"/>
+		<property name="contextKeyDataProviderId" value="dataProviderId"/>
+		<property name="contextKeyDataResourceId" value="dataResourceId"/>
+		<property name="contextKeyBasisOfRecord" value="basisOfRecord"/>
+		<property name="contextKeyWebsiteUrl" value="websiteUrl"/>
+		<property name="contextKeyLogoUrl" value="logoUrl"/>
+		<property name="contextKeyDescription" value="description"/>
+		<property name="contextKeyCitation" value="citation"/>
+		<property name="contextKeyRights" value="rights"/>
+		<property name="contextKeyTaxonomicPriorityText" value="taxonomicPriorityText"/>
+		<property name="contextKeyTaxonomicPriority" value="taxonomicPriority"/>
+		<property name="dataResourceDAO" ref="dataResourceDAO"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractAgentSynchroniserActivity"
+		class="org.gbif.portal.harvest.workflow.activity.resource.AgentSynchroniserActivity">
+		<property name="contextKeyPsNamespaces" value="psNamespaces"/>
+		
+		<property name="contextKeyId" value="dataResourceId"/>
+		<property name="providerAgent" value="false"/>
+		
+		<property name="agentUtils" ref="agentUtils"/>
+		<property name="messageUtils" ref="messageUtils"/>
+		
+		<!-- The things needing adding -->
+		<!--property name="psKeyName" value="override_me"/>
+		<property name="psKeyEmail" value="override_me"/>
+		<property name="psKeyAddress" value="override_me"/>
+		<property name="psKeyTelephone" value="override_me"/>
+		<property name="psKeyType" value="override_me"/>
+		<property name="psAgentRoot" value="override_me"/-->
+		<property name="contextKeyMessage" value="responseMessage"/>
+	</bean>
+</beans>

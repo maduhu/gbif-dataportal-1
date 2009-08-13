@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractMockActivity"
+		class="org.gbif.portal.workflow.activity.MockActivity">
+	</bean>
+	
+	<!-- The test for the hard limit in the simple paging activity -->
+	<bean id="test:simplePagingActivityWorkflow" parent="abstractWorkflow">
+		<property name="activities">
+			<list>
+				<!-- Should only run 10 times -->
+				<bean parent="abstractSimplePagingActivity">
+					<property name="contextKeyLoopCount" value="loopCount"/>					
+					<property name="maximumLoopCountToPerform" value="10"/>					
+					<property name="contextKeyRecordsFinished" value="flagToFinish"/>
+					<property name="workflow">
+						<bean parent="abstractWorkflow">
+							<property name="activities">
+								<list>	
+									<bean parent="abstractMockActivity"/>
+								</list>
+							</property>
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

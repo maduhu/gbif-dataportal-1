@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractStringConcatinationActivity"
+		class="org.gbif.portal.harvest.workflow.activity.util.StringConcatinationActivity">
+	</bean>
+	<!-- Takes the last harvest start date from the context and puts it in the date last modified -->
+	<bean abstract="true" id="abstractDateLastModifiedSetActivity"
+		class="org.gbif.portal.harvest.workflow.activity.util.FormatDateActivity">
+		<property name="format" value="yyyy-MM-dd"/>
+		<property name="contextKeyDate" value="dateLastHarvestStarted"/>
+		<property name="contextKeyNewDate" value="dateLastModified"/>
+	</bean>
+</beans>

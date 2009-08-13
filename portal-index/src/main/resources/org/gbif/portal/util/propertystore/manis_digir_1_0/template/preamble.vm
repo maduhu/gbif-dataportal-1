@@ -1,0 +1,9 @@
+## Preamble for all Digir requests
+<request xmlns='http://digir.net/schema/protocol/2003/1.0' 
+	xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+	xmlns:digir='http://digir.net/schema/protocol/2003/1.0' 
+	xmlns:darwin='http://digir.net/schema/conceptual/darwin/2003/1.0' 
+	xmlns:dwc='http://digir.net/schema/conceptual/darwin/2003/1.0' 
+	xsi:schemaLocation='http://digir.net/schema/protocol/2003/1.0 http://digir.sourceforge.net/schema/protocol/2003/1.0/digir.xsd http://digir.net/schema/conceptual/darwin/2003/1.0 http://bnhm.berkeley.edu/manis/DwC/darwin2jrw030315.xsd'>
+#parse("org/gbif/portal/util/propertystore/manis_digir_1_0/template/constants.vm")

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	
+	<!-- Schedules the harvest of the RAP -->
+	<bean id="rapMetadataScheduler"
+		parent="abstractRAPWorkflowCreatorActivity">
+		<property name="workflowKeyToLaunch" value="GBIF:INDEX:1.0:metadataOfResourceAccessPoint"/>
+		<property name="jobType" value="METADATA"/>
+		<property name="rapParamForScheduleInDays" value="intervalMetadataDays"/>
+	</bean>									
+
+	<!-- Schedules the inventory workflow of the RAP
+		 This will fire after the next 60 seconds as it is called after an metadata,
+		 thus does not need to used the harvest interval - it is assumed that interval 
+		 expired before the metadataa -->
+	<bean id="rapImmediateInventoryScheduler"
+		parent="abstractRAPWorkflowCreatorActivity">
+		<property name="workflowKeyToLaunch" value="GBIF:INDEX:1.0:inventoryOfNamesAtResourceAccessPoint"/>
+		<property name="jobType" value="INVENTORY"/>
+		<!--property name="rapParamForScheduleInDays" value="intervalHarvestDays"/-->
+		<property name="secondsFromNowToFire" value="60"/>
+	</bean>									
+	
+	<!-- Schedules the inventory workflow of the RAP using the harvest interval in the RAP -->
+	<bean id="rapInventoryScheduler"
+		parent="abstractRAPWorkflowCreatorActivity">
+		<property name="workflowKeyToLaunch" value="GBIF:INDEX:1.0:inventoryOfNamesAtResourceAccessPoint"/>
+		<property name="jobType" value="INVENTORY"/>
+		<property name="rapParamForScheduleInDays" value="intervalHarvestDays"/>
+	</bean>									
+	
+	<!-- Schedules the harvest of the RAP 
+		 This will fire after the next 60 seconds as it is called after an inventory,
+		 thus does not need to used the harvest interval - it is assumed that interval 
+		 expired before the inventory -->
+	<bean id="rapImmediateHarvestScheduler"
+		parent="abstractRAPWorkflowCreatorActivity">
+		<property name="workflowKeyToLaunch" value="GBIF:INDEX:1.0:harvestResourceAccessPoint"/>
+		<property name="jobType" value="HARVEST"/>
+		<property name="secondsFromNowToFire" value="60"/>
+	</bean>									
+	
+	<!-- Schedules the extract of the RAP 
+		 Defaults to 60 seconds time -->
+	<bean id="rapExtractScheduler"
+		parent="abstractRAPWorkflowCreatorActivity">
+		<property name="workflowKeyToLaunch" value="GBIF:INDEX:1.0:extractOccurrence"/>
+		<property name="jobType" value="EXTRACT"/>
+		<property name="secondsFromNowToFire" value="60"/>
+	</bean>									
+	
+		
+	<!-- The bean for extending for scheduling a new WF to launch-->
+	<bean id="abstractRAPWorkflowCreatorActivity"
+		class="org.gbif.portal.harvest.workflow.activity.schedule.RAPWorkflowCreatorActivity"
+		abstract="true">
+		<property name="scheduler" ref="scheduleFactoryBean"/>		
+		<property name="contextKeyPsNamespaces" value="psNamespaces"/>
+		<property name="contextKeyResourceAccessPointId" value="resourceAccessPointId"/>
+		<!--property name="rapParamForScheduleInDays" value="TO_DEFINE"/-->
+		<!--property name="jobType" value="TO_DEFINE one of (HARVEST, METADATA, INVENTORY)"/-->
+		<!--property name="workflowKeyToLaunch" value="TO_DEFINE - E.g. : GBIF:INDEX:1.0:harvestResourceAccessPoint"/-->
+		<!--property name="secondsFromNowToFire" value="TO_DEFINE - if set will override any value from rapParamForScheduleInDays"/-->
+		<property name="resourceAccessPointDAO" ref="resourceAccessPointDAO"/>
+	</bean>
+	
+</beans>

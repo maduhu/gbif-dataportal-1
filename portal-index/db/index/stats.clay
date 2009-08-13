@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<clay-model clay-version="1.2.0">
+<database-model alias="" author="" begin-script="" end-script="" name="stats" remarks="" sql-dialect-id="jp.azzurri.clay.model.physical.dialect.MySQL_4_0_Dialect" version="1.0">
+<database-model-description></database-model-description>
+<schema-list>
+<schema alias="" name="DEFAULT_SCHEMA" remarks="">
+<schema-description></schema-description>
+<domain-list/>
+<table-list>
+<table alias="" name="index_stats" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="148" width="214" x="295" y="210"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="id" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n)"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED ZEROFILL"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) ZEROFILL"/>
+<variant type-name-pattern="INT UNSIGNED"/>
+<variant type-name-pattern="INT UNSIGNED ZEROFILL"/>
+<variant type-name-pattern="INT ZEROFILL"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="data_provider_id" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n)"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED ZEROFILL"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) ZEROFILL"/>
+<variant type-name-pattern="INT UNSIGNED"/>
+<variant type-name-pattern="INT UNSIGNED ZEROFILL"/>
+<variant type-name-pattern="INT ZEROFILL"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="data_resource_id" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n)"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED ZEROFILL"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) ZEROFILL"/>
+<variant type-name-pattern="INT UNSIGNED"/>
+<variant type-name-pattern="INT UNSIGNED ZEROFILL"/>
+<variant type-name-pattern="INT ZEROFILL"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="10" decimal-digits="0" default-value="" mandatory="false" name="resource_access_point_id" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="1" literal-prefix="'" literal-suffix="'" name="CHAR" selected-variant-pattern="CHAR(%n)">
+<variant type-name-pattern="CHAR"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n)"/>
+<variant precision-max="255" precision-min="0" precision-variable="%n" type-name-pattern="CHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="255" decimal-digits="0" default-value="" mandatory="false" name="provider_name" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="255" decimal-digits="0" default-value="" mandatory="false" name="resource_code" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="255" decimal-digits="0" default-value="" mandatory="false" name="resource_name" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="12" literal-prefix="'" literal-suffix="'" name="VARCHAR" selected-variant-pattern="VARCHAR(%n)">
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n)"/>
+<variant precision-max="255" precision-min="1" precision-variable="%n" type-name-pattern="VARCHAR(%n) BINARY"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="false" mandatory="false" name="indexing" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-7" name="BOOL" selected-variant-pattern="BOOL">
+<variant type-name-pattern="BOOL"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="resource_record_count" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n)"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED ZEROFILL"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) ZEROFILL"/>
+<variant type-name-pattern="INT UNSIGNED"/>
+<variant type-name-pattern="INT UNSIGNED ZEROFILL"/>
+<variant type-name-pattern="INT ZEROFILL"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="provider_record_count" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n)"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) UNSIGNED ZEROFILL"/>
+<variant precision-max="10" precision-min="0" precision-variable="%n" type-name-pattern="INT(%n) ZEROFILL"/>
+<variant type-name-pattern="INT UNSIGNED"/>
+<variant type-name-pattern="INT UNSIGNED ZEROFILL"/>
+<variant type-name-pattern="INT ZEROFILL"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_INDEX_STATS" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="id"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+</table-list>
+</schema>
+</schema-list>
+</database-model>
+</clay-model>

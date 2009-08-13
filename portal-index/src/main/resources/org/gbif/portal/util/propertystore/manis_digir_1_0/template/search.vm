@@ -1,0 +1,19 @@
+## This is a Digir Search Request template
+##
+## Required Input  
+## - concept
+## See included templates for further requirements
+##
+## Define the type of request for the header
+#set($type="search")
+##
+#parse("org/gbif/portal/util/propertystore/manis_digir_1_0/template/preamble.vm")
+#parse("org/gbif/portal/util/propertystore/manis_digir_1_0/template/header.vm")
+<search>
+	#parse("org/gbif/portal/util/propertystore/manis_digir_1_0/template/filter.vm")
+	<records limit="$maxResults"#if($startAt) start="$startAt"#else start="0"#end>		
+		<structure schemaLocation="${contentNamespace}"/>
+	</records>
+	<count>$count</count>
+</search>
+#parse("org/gbif/portal/util/propertystore/manis_digir_1_0/template/postamble.vm")

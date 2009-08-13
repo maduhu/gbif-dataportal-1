@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- TAB file 1.0 Mappings -->
+	<bean id="propertyStore:namespace:TAB:1.0" class="org.gbif.portal.util.propertystore.impl.spring.PropertyBag">
+		<!-- The namespace that the PropertyStore will key this bag on -->
+		<property name="namespace" value="http://gbif.org/tab/dwc"/>
+		<property name="properties">
+			<map>
+				<!-- The harvesting workflow -->
+				<entry key="RESOURCE.ACCESS.POINT.HARVESTER.WORKFLOW" value-ref="TAB:1.0:harvester"/>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- The harvest workflow definition -->
+	<bean id="TAB:1.0:harvester" parent="abstractWorkflow">
+		<property name="activities">
+			<list>
+				<!-- Populate the required values for indexing -->
+				<!--bean parent="abstractHarvestLaunchActivity">
+					<property name="contextKeyCount" value="recordProcessedCount"/>
+				</bean-->				
+				<!-- Start logging -->
+				<!--bean parent="abstractGbifMessageLoggerActivity">
+					<property name="event" value="harvestBegin"/>
+				</bean-->
+				<!-- -->
+				<bean parent="abstractMultipleTabFileIteratorActivity">
+					<property name="contextKeyPrefix" value=""/>
+					<property name="lowerCaseFirstLetterForContext" value="true"/>					
+					<property name="seedDataContextKeys">
+						<list>
+							<value>dataProviderId</value>
+							<value>dataResourceId</value>
+							<value>resourceAccessPointId</value>
+							<value>taxonomicPriority</value>
+							<value>defaultClassificationList</value>
+							<value>logGroup</value>
+							<!-- http://wiki.tdwg.org/twiki/bin/view/DarwinCore/DarwinCoreDraftStandard -->
+							<value>globalUniqueIdentifier</value>
+							<value>dateLastModified</value>
+							<value>basisOfRecord</value>
+							<value>institutionCode</value>
+							<value>collectionCode</value>
+							<value>catalogNumber</value>
+							<value>scientificName</value>
+							<value>higherTaxon</value>
+							<value>kingdom</value>
+							<value>phylum</value>
+							<value>class</value>
+							<value>order</value>
+							<value>family</value>
+							<value>genus</value>
+							<value>specificEpithet</value>
+							<value>infraspecificRank</value>
+							<value>infraSpecificEpithet</value>
+							<value>authorYearOfScientificName</value>
+							<value>nomenclaturalCode</value>
+							<value>identificationQualifer</value>
+							<value>higherGeography</value>
+							<value>continent</value>
+							<value>waterBody</value>
+							<value>islandGroup</value>
+							<value>island</value>
+							<value>country</value>
+							<value>stateProvince</value>
+							<value>county</value>
+							<value>locality</value>
+							<value>minimumElevationInMeters</value>
+							<value>maximumElevationInMeters</value>
+							<value>minimumDepthInMeters</value>
+							<value>maximumDepthInMeters</value>
+							<value>collectingMethod</value>
+							<value>validDistributionFlag</value>
+							<value>earliestDateCollected</value>
+							<value>latestDateCollected</value>
+							<value>dayOfYear</value>
+							<value>collector</value>
+							<value>sex</value>
+							<value>lifeStage</value>
+							<value>attributes</value>
+							<value>imageURL</value>
+							<value>relatedInformation</value>	
+							<!-- http://wiki.tdwg.org/twiki/bin/view/DarwinCore/GeospatialExtension -->													
+							<value>decimalLatitude</value>
+							<value>decimalLongitude</value>
+							<!-- and some older DWC values -->
+							<value>year</value>
+							<value>month</value>
+							<value>day</value>
+						</list>
+					</property>
+					<property name="workflow">
+						<bean parent="abstractWorkflow">
+							<property name="activities">
+								<list>	
+									<bean parent="abstractRawOccurrenceRecordSynchroniserActivity">
+										<property name="contextKeyLatitude" value="decimalLatitude"/>
+										<property name="contextKeyLongitude" value="decimalLongitude"/>
+									</bean>									
+								</list>
+							</property>
+						</bean>
+
+					</property>
+				</bean>								
+				<bean parent="rapExtractScheduler"/>
+			</list>
+		</property>
+	</bean>
+</beans>

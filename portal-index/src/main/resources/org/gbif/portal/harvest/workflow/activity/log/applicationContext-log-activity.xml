@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractGbifMessageLoggerActivity"
+		class="org.gbif.portal.harvest.workflow.activity.log.GbifMessageLoggerActivity">
+		<property name="contextKeyDataProviderId" value="dataProviderId"/>
+		<property name="contextKeyDataResourceId" value="dataResourceId"/>
+		<property name="contextKeyResourceAccessPointId" value="resourceAccessPointId"/>
+		<property name="contextKeyLogGroup" value="logGroup"/>
+		<property name="gbifLogUtils" ref="gbifLogUtils"/>
+		<property name="dataResourceDAO" ref="dataResourceDAO"/>
+		<property name="resourceAccessPointDAO" ref="resourceAccessPointDAO"/>
+	</bean>
+    <!-- reused harvest begin message -->
+    <bean name="harvestBeginLog" parent="abstractGbifMessageLoggerActivity">
+      <property name="event" value="harvestBegin" />
+      <property name="messageText" value="Harvesting from url {0}" />
+      <property name="messageTextArguments">
+        <list>
+          <value>url</value>
+        </list>
+      </property>
+    </bean>  
+    <!-- reused harvest end message -->    
+    <bean name="harvestEndLog" parent="abstractGbifMessageLoggerActivity">
+      <property name="contextKeyRecordCount" value="recordProcessedCount" />
+      <property name="event" value="harvestEnd" />
+      <property name="endLogGroup" value="true" />
+      <!-- bit of a hack - this ensures the end event is the last message to be logged 
+      for the process -->
+      <property name="countOnly" value="true" />
+      <property name="messageText" value="Total harvested {0}, records added {1}, records updated {2}" />
+      <property name="messageTextArguments">
+        <list>
+          <value>recordProcessedCount</value>
+          <value>recordAddedCount</value>
+          <value>recordUpdatedCount</value>
+        </list>
+      </property>
+    </bean>    
+
+    <!-- reused extract end message -->    
+    <bean name="extractEndLog" parent="abstractGbifMessageLoggerActivity">
+      <property name="contextKeyRecordCount" value="recordProcessedCount"/>
+      <property name="event" value="extractEnd" />
+      <property name="endLogGroup" value="true" />
+      <!-- bit of a hack - this ensures the end event is the last message to be logged 
+      for the process -->
+      <property name="countOnly" value="true" />
+      <property name="messageText" value="Total processed {0}, records added {1}, records updated {2}" />
+      <property name="messageTextArguments">
+        <list>
+          <value>recordProcessedCount</value>
+          <value>recordAddedCount</value>
+          <value>recordUpdatedCount</value>
+        </list>
+      </property>
+    </bean>  
+    
+	<bean id="gbifLogUtils" class="org.gbif.portal.util.log.GbifLogUtils">
+		<property name="contextKeyDataProviderId" value="dataProviderId"/>
+		<property name="contextKeyDataResourceId" value="dataResourceId"/>
+		<property name="contextKeyLogGroup" value="logGroup"/>
+	</bean>
+</beans>

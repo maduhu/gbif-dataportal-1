@@ -1,0 +1,15 @@
+## This is a TAPIR scan template
+##
+## Required Input  
+## - concept
+## See included templates for further requirements
+##
+## Define the type of request for the header
+#set($type="inventory")
+##
+#parse("org/gbif/portal/util/propertystore/tapir_1_0/template/preamble.vm")
+#parse("org/gbif/portal/util/propertystore/tapir_1_0/template/header.vm")
+<inventory>
+	<concept>$concept</concept>
+</inventory>
+#parse("org/gbif/portal/util/propertystore/tapir_1_0/template/postamble.vm")

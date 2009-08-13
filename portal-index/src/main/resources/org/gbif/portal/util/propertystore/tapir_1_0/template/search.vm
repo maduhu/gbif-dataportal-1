@@ -1,0 +1,16 @@
+## This is a TAPIR search template
+##
+## Required Input  
+## - concept
+## See included templates for further requirements
+##
+## Define the type of request for the header
+#set($type="search")
+##
+#parse("org/gbif/portal/util/propertystore/tapir_1_0/template/preamble.vm")
+#parse("org/gbif/portal/util/propertystore/tapir_1_0/template/header.vm")
+<search count="true" #if($startAt) start="$startAt"#else start="0"#end limit="$maxResults">
+<externalOutputModel location="${contentNamespace}"/>
+#parse("org/gbif/portal/util/propertystore/tapir_1_0/template/filter.vm")
+</search>
+#parse("org/gbif/portal/util/propertystore/tapir_1_0/template/postamble.vm")

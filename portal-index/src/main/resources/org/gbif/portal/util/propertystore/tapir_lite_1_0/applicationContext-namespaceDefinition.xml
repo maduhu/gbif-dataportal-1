@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <!-- Allow the XPath accessors to reuse the prefix -->
+  <bean id="abstractXPath:TAPIR:1.0" abstract="true" class="org.dom4j.xpath.DefaultXPath">
+    <property name="namespaceURIs">
+      <map>
+        <entry key="tapir" value="http://rs.tdwg.org/tapir/1.0" />
+        <entry key="dc" value="http://purl.org/dc/elements/1.1/" />
+        <entry key="dct" value="http://purl.org/dc/terms/" />
+        <entry key="vcard" value="http://www.w3.org/2001/vcard-rdf/3.0" />
+        <entry key="geo" value="http://www.w3.org/2003/01/geo/wgs84_pos" />
+      </map>
+    </property>
+  </bean>
+
+  <!-- TAPIR 1.0 Mappings -->
+  <bean id="propertyStore:namespace:TAPIRLite:1.0" class="org.gbif.portal.util.propertystore.impl.spring.PropertyBag">
+    <!-- The namespace that the PropertyStore will key this bag on -->
+    <property name="namespace" value="http://rs.tdwg.org/tapir_lite/1.0" />
+    <property name="properties">
+      <map>
+        <!-- To create a message around the raw data -->
+        <entry key="MESSAGE.FACTORY" value-ref="propertyStore:XMLMessageFactory" />
+
+        <!-- For pulling out of Inventory responses -->
+
+        <!-- To indicate that there are no more records -->
+        <entry key="RESPONSE.END.OF.RECORDS">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="not(//tapir:summary/@next)" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+
+        <entry key="RESPONSE.TOTALRETURNED.RECORD">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:summary/@totalReturned" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+
+        <!-- To specify start of next page of records -->
+        <entry key="RESPONSE.NEXT.RECORD">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:summary/@next" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+
+        <entry key="RESPONSE.START.RECORD">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:summary/@start" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+
+        <!-- The resource (from the metadata) concepts -->
+        <entry key="METADATA.RESOURCE">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.ListMessageFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:response/tapir:metadata" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+        <entry key="METADATA.RESOURCE.NAME">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:metadata/dc:title" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+        <entry key="METADATA.RESOURCE.CODE">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:DIGIR:1.0">
+                <constructor-arg value="//tapir:metadata/dc:subject" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+        <entry key="METADATA.RESOURCE.DESCRIPTION">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:metadata/dc:description" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+        <entry key="METADATA.RESOURCE.CITATION">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:metadata/dc:bibliographicCitation" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+        <entry key="METADATA.RESOURCE.RIGHTS">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:metadata/dc:rights" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+        <entry key="METADATA.RESOURCE.INDEXINGSTARTTIME">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:metadata/tapir:indexingPreferences/@startTime" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+        <entry key="METADATA.RESOURCE.INDEXINGMAXDURATION">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:metadata/tapir:indexingPreferences/@maxDuration" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+        <entry key="METADATA.RESOURCE.INDEXINGFREQUENCY">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:metadata/tapir:indexingPreferences/@frequency" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+        <entry key="METADATA.CONCEPTUAL.SCHEMA">
+          <bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.ListStringFromXPathAccessor">
+            <property name="XPath">
+              <bean parent="abstractXPath:TAPIR:1.0">
+                <constructor-arg value="//tapir:response/tapir:capabilities/tapir:concepts/tapir:schema/@namespace" />
+              </bean>
+            </property>
+          </bean>
+        </entry>
+
+        <!-- Template location for builing searches -->
+        <entry key="REQUEST.SEARCH.TEMPLATE" value="org/gbif/portal/util/propertystore/tapir_1_0/template/search.vm" />
+
+        <!-- The metadata request when registering -->
+        <entry key="REGISTRATION.METADATA.WORKFLOW" value-ref="TAPIR:1.0:registrationMetadata" />
+
+        <!-- The metadata request -->
+        <entry key="RESOURCE.ACCESS.POINT.METADATA.WORKFLOW" value-ref="TAPIR:1.0:metadata" />
+
+        <!-- The harvesting workflow -->
+        <entry key="RESOURCE.ACCESS.POINT.HARVESTER.WORKFLOW" value-ref="TAPIRLite:1.0:harvester" />
+
+        <!-- The harvesting workflow -->
+        <entry key="RESOURCE.ACCESS.POINT.INVENTORY.WORKFLOW" value-ref="TAPIRLite:1.0:inventory" />
+      </map>
+    </property>
+  </bean>
+
+  <!-- Issue an inventory of the sci names and then... TODO -->
+  <bean id="TAPIRLite:1.0:inventory" parent="abstractWorkflow">
+    <property name="activities">
+      <list>
+        <bean parent="abstractHarvestLaunchActivity" />
+      </list>
+    </property>
+  </bean>
+
+  <!-- The harvest workflow definition -->
+  <bean id="TAPIRLite:1.0:harvester" parent="abstractWorkflow">
+    <property name="activities">
+      <list>
+        <!-- Populate the required values for indexing -->
+        <bean name="harvestLaunchActivity" parent="abstractHarvestLaunchActivity" />
+        <!-- Start logging -->
+        <ref bean="harvestBeginLog"/>
+        <!-- Check the url isnt being bombarded -->
+        <bean name="dosCheck" parent="abstractDOSThrottleActivity">
+          <property name="seedDataContextKeys">
+            <list>
+              <value>url</value>
+              <value>resourceAccessPointId</value>
+              <value>psNamespaces</value>
+              <value>recordProcessedCount</value>
+              <value>recordAddedCount</value>
+              <value>recordUpdatedCount</value>
+            </list>
+          </property>
+          <!--If url is being bombarded, create a job for later -->
+          <property name="workflow">
+            <bean parent="abstractWorkflow">
+              <property name="activities">
+                <list>
+                  <bean parent="abstractQuartzJobToLaunchWorkflowCreatorActivity">
+                    <property name="contextKeyForJobName" value="resourceAccessPointId" />
+                    <property name="contextKeyForTriggerName" value="resourceAccessPointId" />
+                    <property name="jobGroupName" value="harvesting" />
+                    <property name="triggerGroupName" value="dosThrottleRescheduledFor1Min" />
+                    <property name="secondsFromNowToFire" value="60" />
+                    <property name="contextKeysForJob">
+                      <list>
+                        <value>resourceAccessPointId</value>
+                        <value>psNamespaces</value>
+                        <value>recordProcessedCount</value>
+                        <value>recordAddedCount</value>
+                        <value>recordUpdatedCount</value>
+                      </list>
+                    </property>
+                    <property name="workflowKeyToLaunch" value="RESOURCE.ACCESS.POINT.HARVESTER.WORKFLOW" />
+                  </bean>
+                </list>
+              </property>
+            </bean>
+          </property>
+        </bean>
+        <!-- Start the paging with use of TAPIR next/start parameters -->
+        <bean parent="abstractSimplePagingActivity">
+          <property name="seedDataContextKeys">
+            <list>
+              <value>startIndex</value>
+              <value>url</value>
+              <value>psNamespaces</value>
+              <value>recordProcessedCount</value>
+              <value>recordAddedCount</value>
+              <value>recordUpdatedCount</value>
+              <value>dataProviderId</value>
+              <value>dataResourceId</value>
+              <value>resourceAccessPointId</value>
+              <value>remoteIdentifier</value>
+              <value>unparsableResponseCount</value>
+            </list>
+          </property>
+          <property name="resultDataContextKeys">
+            <list>
+              <value>startIndex</value>
+              <value>responseMessage</value>
+              <value>recordProcessedCount</value>
+              <value>recordAddedCount</value>
+              <value>recordUpdatedCount</value>
+              <value>endOfRecords</value>
+              <value>unparsableResponseCount</value>
+            </list>
+          </property>
+          <property name="workflow">
+            <bean parent="abstractWorkflow">
+              <property name="activities">
+                <list>
+                  <!-- Select the output model -->
+                  <bean parent="abstractSelectTapirOutputModelActivity" />
+                  <!-- Fire the tapirlite request, supplying the template and operation params -->
+                  <bean class="org.gbif.portal.harvest.workflow.activity.SimplePageRequestActivity">
+                    <property name="contextKeyPsNamespaces" value="psNamespaces" />
+                    <property name="contextKeyRequest" value="request" />
+                    <property name="contextKeyUrl" value="url" />
+                    <property name="contextKeyMessage" value="responseMessage" />
+                    <property name="contextKeyRecordsFinished" value="endOfRecords" />
+                    <property name="initialStartIndex" value="0" />
+                    <property name="messageUtils" ref="messageUtils" />
+                    <property name="propertyStore" ref="indexPropertyStore" />
+                    <property name="propertyStoreKeyMessageFactory" value="MESSAGE.FACTORY" />
+                    <property name="requestUtils" ref="requestUtils" />
+                    <property name="requestParameters">
+                      <map>
+                        <entry key="template"
+                          value="http://rs.tdwg.org/tapir/cs/dwc/1.4/template/dwc_unfiltered_search.xml" />
+                        <entry key="op" value="s" />
+                      </map>
+                    </property>
+                    <property name="errorHandler">
+                      <bean class="org.gbif.portal.util.workflow.errorhandler.ActivityLaunchErrorHandler">
+                        <property name="contextKeyExceptionName" value="exceptionName" />
+                        <property name="errorActivityMapping">
+                          <map>
+                            <!-- Exceptions that cause a reschedule -->
+                            <entry>
+                              <key>
+                                <set>
+                                  <value>java.net.SocketTimeoutException</value>
+                                  <value>java.net.ConnectException</value>
+                                  <value>java.net.UnknownHostException</value>
+                                  <value>java.net.NoRouteToHostException</value>
+                                </set>
+                              </key>
+                              <bean parent="abstractQuartzJobToLaunchWorkflowCreatorActivity">
+                                <property name="contextKeyForJobName" value="resourceAccessPointId" />
+                                <property name="contextKeyForTriggerName" value="resourceAccessPointId" />
+                                <property name="contextKeyTriggerGroupNamePostfix" value="exceptionName" />
+                                <property name="jobGroupName" value="harvesting" />
+                                <property name="triggerGroupName" value="rescheduledFor1Hour" />
+                                <property name="secondsFromNowToFire" value="3600" />
+                                <property name="contextKeysForJob">
+                                  <list>
+                                    <value>resourceAccessPointId</value>
+                                    <value>psNamespaces</value>
+                                    <value>recordProcessedCount</value>
+                                    <value>recordAddedCount</value>
+                                    <value>recordUpdatedCount</value>
+                                  </list>
+                                </property>
+                                <property name="workflowKeyToLaunch" value="RESOURCE.ACCESS.POINT.HARVESTER.WORKFLOW" />
+                              </bean>
+                            </entry>
+                            <!-- Message Parsing errors warrants an increment if not null (e.g. skip page) -->
+                            <entry>
+                              <key>
+                                <set>
+                                  <value>org.gbif.portal.util.mhf.message.MessageParseException</value>
+                                </set>
+                              </key>
+                              <bean parent="abstractIncrementCountActivity">
+                                <property name="contextKeyCount" value="recordProcessedCount" />
+                                <property name="contextKeyFlagToSet" value="endOfRecords" />
+                                <property name="flagValue" value="FALSE" />
+                                <property name="incrementBy" value="1000" />
+                                <property name="contextKeyErrorCount" value="unparsableResponseCount" />
+                              </bean>
+                            </entry>
+                          </map>
+                        </property>
+                      </bean>
+                    </property>
+                  </bean>
+
+                  <!-- Log the response -->
+                  <bean parent="messageLoggerActivity">
+                    <property name="contextKeyMessage" value="responseMessage" />
+                  </bean>
+
+                  <!-- Determine whether there are more records to process -->
+                  <bean parent="abstractConceptListToContextActivity">
+                    <property name="contextKeyMessage" value="responseMessage" />
+                    <property name="conceptToContext">
+                      <map>
+                        <entry key="RESPONSE.END.OF.RECORDS" value="endOfRecords" />
+                      </map>
+                    </property>
+                  </bean>
+
+                  <!-- Extract the Records in the response -->
+                  <bean class="org.gbif.portal.harvest.workflow.activity.SubMessageIteratorActivity">
+                    <property name="messageUtils" ref="messageUtils" />
+                    <property name="propertyStore" ref="indexPropertyStore" />
+                    <property name="contextKeyMessage" value="responseMessage" />
+                    <property name="conceptToIterate" value="RESPONSE.RECORD" />
+                    <property name="contextKeyTotalCount" value="recordProcessedCount" />
+                    <property name="contextKeyPsNamespaces" value="psNamespaces" />
+                    <property name="seedDataContextKeys">
+                      <list>
+                        <value>psNamespaces</value>
+                        <value>dataProviderId</value>
+                        <value>dataResourceId</value>
+                        <value>resourceAccessPointId</value>
+                        <value>recordProcessedCount</value>
+                        <value>recordAddedCount</value>
+                        <value>recordUpdatedCount</value>
+                        <value>rawOccurrenceRecordList</value>
+                      </list>
+                    </property>
+                    <property name="resultDataContextKeys">
+                      <list>
+                        <value>recordProcessedCount</value>
+                        <value>recordAddedCount</value>
+                        <value>recordUpdatedCount</value>
+                        <value>rawOccurrenceRecordList</value>
+                      </list>
+                    </property>
+                    <!-- Delegate to a workflow within the content namespaces (different versions may differ)-->
+                    <property name="psWorkflowKey" value="WORKFLOW.HARVEST.RECORD.MESSAGE" />
+                  </bean>
+                </list>
+              </property>
+              <property name="defaultErrorHandler">
+                <bean class="org.gbif.portal.util.workflow.errorhandler.ActivityLaunchForUnmappedErrorHandler">
+                  <property name="contextKeyExceptionName" value="exceptionName" />
+                  <property name="activity">
+                    <bean parent="abstractQuartzJobToLaunchWorkflowCreatorActivity">
+                      <property name="contextKeyForJobName" value="resourceAccessPointId" />
+                      <property name="contextKeyForTriggerName" value="resourceAccessPointId" />
+                      <property name="contextKeyTriggerGroupNamePostfix" value="exceptionName" />
+                      <property name="jobGroupName" value="harvesting" />
+                      <property name="triggerGroupName" value="rescheduledFor1Week" />
+                      <property name="secondsFromNowToFire" value="604800" />
+                      <property name="contextKeysForJob">
+                        <list>
+                          <value>resourceAccessPointId</value>
+                          <value>psNamespaces</value>
+                          <value>recordProcessedCount</value>
+                          <value>recordAddedCount</value>
+                          <value>recordUpdatedCount</value>
+                        </list>
+                      </property>
+                      <property name="workflowKeyToLaunch" value="RESOURCE.ACCESS.POINT.HARVESTER.WORKFLOW" />
+                    </bean>
+                  </property>
+                </bean>
+              </property>
+            </bean>
+          </property>
+        </bean>
+        <!-- Log Harvest End event -->
+        <ref bean="harvestEndLog"/>
+      </list>
+    </property>
+  </bean>
+</beans>

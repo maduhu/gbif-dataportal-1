@@ -1,0 +1,16 @@
+## Template for a biocase metadata request
+## This is a bit of a hack as it actually does a scan
+## for the datasets
+##
+## See included templates for requirements
+##
+## Define the type of request for the header
+#set($type="scan")
+##
+#parse("org/gbif/portal/util/propertystore/biocase_1_3/template/preamble.vm")
+#parse("org/gbif/portal/util/propertystore/biocase_1_3/template/header.vm")
+<scan>
+	<requestFormat>${contentNamespace}</requestFormat>
+	<concept>/DataSets/DataSet/OriginalSource/SourceInstitutionCode</concept>
+</scan>
+#parse("org/gbif/portal/util/propertystore/biocase_1_3/template/postamble.vm")

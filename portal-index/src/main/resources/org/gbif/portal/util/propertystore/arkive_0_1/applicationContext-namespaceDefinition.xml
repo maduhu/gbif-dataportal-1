@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Allow the XPath accessors to reuse the prefix -->
+	<bean id="abstractXPath:ARKive:0.1" abstract="true" class="org.dom4j.xpath.DefaultXPath">
+		<property name="namespaceURIs">
+			<map>
+				<entry key="arkive" value="http://www.arkive.org/0.1"/>
+			</map>
+		</property>
+	</bean>
+
+	<!-- ARKive 0.1 Data -->
+	<bean id="propertyStore:namespace:ARKive:0.1" class="org.gbif.portal.util.propertystore.impl.spring.PropertyBag">
+		<!-- The namespace that the PropertyStore will key this bag on -->
+		<property name="namespace" value="http://www.arkive.org/0.1"/>
+		<property name="properties">
+			<map>
+				<!-- To create a message around the raw data -->
+				<entry key="MESSAGE.FACTORY" value-ref="propertyStore:XMLMessageFactory"/>
+				
+				<!-- The message concepts -->
+				<entry key="MESSAGE.RECORD">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.ListMessageFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ARKive:0.1">
+								<constructor-arg value="//species_media"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				
+				<!-- The record concepts -->
+				<entry key="RECORD.GENUS">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ARKive:0.1">
+								<constructor-arg value="/species_media/genus"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RECORD.SPECIES">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ARKive:0.1">
+								<constructor-arg value="/species_media/species"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RECORD.COMMON.NAME">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ARKive:0.1">
+								<constructor-arg value="/species_media/common_name"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RECORD.URL">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ARKive:0.1">
+								<constructor-arg value="/species_media/url"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RECORD.PORTLET">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ARKive:0.1">
+								<constructor-arg value="/species_media/portlet"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RECORD.WIDTH">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ARKive:0.1">
+								<constructor-arg value="/species_media/portlet[@name='portrait']/@width"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="RECORD.HEIGHT">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ARKive:0.1">
+								<constructor-arg value="/species_media/portlet[@name='portrait']/@height"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				
+			</map>
+		</property>
+	</bean>
+
+	<!-- The ARKive data load -->
+	<bean id="ARKive:0.1:dataLoad" parent="abstractWorkflow">
+		<property name="activities">
+			<list>
+				<bean parent="abstractDataProviderFromContextSynchroniserActivity"/>								
+				<bean parent="abstractDataResourceFromContextSynchroniserActivity"/>								
+				<bean parent="abstractRequestIssueActivity"/>								
+				<!-- Log the response -->
+				<bean parent="messageLoggerActivity">
+					<property name="contextKeyMessage" value="responseMessage"/>
+				</bean>
+				<!-- Extract the records in the response -->
+				<bean class="org.gbif.portal.harvest.workflow.activity.SubMessageIteratorActivity">
+					<property name="messageUtils" ref="messageUtils"/>
+					<property name="propertyStore" ref="indexPropertyStore"/>
+					<property name="contextKeyMessage" value="responseMessage"/>
+					<property name="conceptToIterate" value="MESSAGE.RECORD"/>
+					<property name="contextKeyTotalCount" value="resourceProcessedCount"/>										
+					<property name="contextKeyPsNamespaces" value="psNamespaces"/>
+					<property name="seedDataContextKeys">
+						<list>
+							<value>psNamespaces</value>
+							<value>dataProviderId</value>
+							<value>dataResourceId</value>
+						</list>
+					</property>
+					<property name="workflow">
+						<bean parent="abstractWorkflow">
+							<property name="activities">
+								<list>
+									<!-- Extract the supported schemas -->
+									<bean parent="abstractConceptListToContextActivity">
+										<property name="contextKeyMessage" value="responseMessage"/>
+										<property name="conceptToContext">
+											<map>
+												<entry key="RECORD.GENUS" value="genus"/>
+												<entry key="RECORD.SPECIES" value="species"/>
+												<!-- TODO - create common name -->
+												<entry key="RECORD.COMMON.NAME" value="description"/>
+												<entry key="RECORD.URL" value="url"/>
+												<entry key="RECORD.PORTLET" value="htmlForDisplay"/>
+											</map>
+										</property>
+									</bean>	
+									<!-- Extract higher taxa from URL-->
+									<bean parent="abstractArkiveHigherTaxaToClassificationActivity"/>
+									<!-- Genus Parser This will just get the genus-->
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="genus"/>
+										<property name="defaultParsedRank" value="6000"/>
+										<property name="parser">
+											<bean class="org.gbif.portal.harvest.taxonomy.ScientificNameParser">
+												<property name="taxonNameDAO" ref="taxonNameDAO"/>
+												<property name="gbifLogUtils" ref="gbifLogUtils"/>
+												<property name="orderedRegularExpresionsMapping">
+													<list>
+														<bean parent="genericExtractor"/>
+													</list>													
+												</property>												
+											</bean>
+										</property>
+									</bean>
+									<!-- Scientific Name -->
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="species"/>
+										<property name="parser" ref="scientificNameParser"/>
+									</bean>
+									<!-- deduce a species if needed (e.g. it is a subspecies) -->
+									<bean parent="abstractSpeciesInClassificationCheckActivity"/>
+									<!--bean parent="abstractClassificationLoggerActivity"/-->
+									<bean parent="abstractClassificationSynchroniserActivity"/>
+									<!--bean parent="abstractClassificationLoggerActivity"/-->
+									<bean parent="abstractImageSynchroniserActivity"/>
+								</list>
+							</property>
+						</bean>												
+					</property>
+				</bean>												
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 
+		This is the mapping for the DwC archive 
+		Initially this will be written to support the IPT occurrence resources, and in the future
+		this might be extended to support other sources.
+		
+		This deviates from the existing harvesters in that it does not make as heavy use of the 
+		workflow which proved to be difficult to maintain over time.  Instead this mapping makes 
+		more use of "simple" Java code.
+	-->
+	<bean id="propertyStore:namespace:DWC-TA:1.0" class="org.gbif.portal.util.propertystore.impl.spring.PropertyBag">
+		<!-- The namespace that the PropertyStore will key this bag on 
+			 - NOTE THIS IS NOT A TRUE NAMESPACE SINCE DWC AS TEXT IS SIMPLY PUBLISHED AS GUIDELINES -->
+		<property name="namespace" value="http://rs.tdwg.org/dwc/text-archive/1.0"/>
+		
+		<property name="properties">
+			<map>
+				<!-- The harvesting workflow -->
+				<entry key="RESOURCE.ACCESS.POINT.HARVESTER.WORKFLOW" value-ref="DWC-TA:1.0:harvester"/>
+			</map>
+		</property>
+	</bean>
+
+	<!-- 
+		Not making heavy use of the workflow and logic encapsulated in the activity itself
+		-->
+	<bean id="DWC-TA:1.0:harvester" parent="abstractWorkflow">
+		<property name="activities">
+			<list>
+				<!-- This will prefill the context with all the parameters of the Resource Access Point (URL etc.) -->
+				<bean parent="abstractHarvestLaunchActivity"/>								
+				
+				<!-- The activity which is capable of harvesting the archive -->
+				<bean class="org.gbif.portal.harvest.workflow.activity.dwc.text.TextArchiveHarvesterActivity">
+					
+					<property name="textArchiveHarvester">
+						<bean class="org.gbif.portal.harvest.workflow.activity.dwc.text.TextArchiveHarvester">
+							<!-- DAOs -->
+							<property name="rawOccurrenceRecordDAO" ref="rawOccurrenceRecordDAO"/>
+							<property name="dataResourceDAO" ref="dataResourceDAO"/>
+							<property name="resourceAccessPointDAO" ref="resourceAccessPointDAO"/>
+							<!-- the row types that will result in occurrence records -->
+							<property name="occurrenceTypes">
+								<set>
+									<value>http://rs.tdwg.org/dwc/terms/DarwinCore</value>
+									<value>http://rs.tdwg.org/dwc/terms/Sample</value>
+								</set>
+							</property>
+							<!-- Maps the metafile term to the RawOccurrenceRecord term -->
+							<property name="dwc2occurrenceMapping">
+								<map>
+									<entry key="http://rs.tdwg.org/dwc/terms/InstitutionCode" value="institutionCode"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/CollectionCode" value="collectionCode"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/CatalogNumber" value="catalogueNumber"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/ScientificName" value="scientificName"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/ScientificNameAuthorship" value="author"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/TaxonRank" value="rank"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Kingdom" value="kingdom"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Phylum" value="phylum"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Class" value="klass"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Order" value="order"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Family" value="family"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Genus" value="genus"/>
+									<!-- Not 100% sure on Binomial -->
+									<entry key="http://rs.tdwg.org/dwc/terms/Binomial" value="species"/>
+									<!-- Not 100% sure on InfraspecificEpithet -->
+									<entry key="http://rs.tdwg.org/dwc/terms/InfraspecificEpithet" value="subspecies"/>
+									<!-- TODO - ordered checking of DecimalLatitude, VerbatimLatitude etc -->
+									<entry key="http://rs.tdwg.org/dwc/terms/DecimalLatitude" value="latitude"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/DecimalLongitude" value="longitude"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/CoordinatePrecision" value="latLongPrecision"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/MinimumElevationInMeters" value="minAltitude"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/MaximumElevationInMeters" value="maxAltitude"/>
+									<!-- Not found in DwC
+										entry key="http://rs.tdwg.org/dwc/terms/" value="altitudePrecision"/-->
+									<entry key="http://rs.tdwg.org/dwc/terms/MinimumDepthInMeters" value="minDepth"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/MaximumDepthInMeters" value="maxDepth"/>
+									<!-- Not found in DwC
+										entry key="http://rs.tdwg.org/dwc/terms/" value="depthPrecision"/-->
+									<!-- Continent and ocean are now 2 things in DwC 
+										 I am making a terrible assumption that only one will be found so won't be overriden
+										-->
+									<entry key="http://rs.tdwg.org/dwc/terms/Continent" value="continentOrOcean"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Ocean" value="continentOrOcean"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Country" value="country"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/StateProvince" value="stateOrProvince"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/County" value="county"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Collector" value="collectorName"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/Locality" value="locality"/>
+									<!-- what about all the other types of year that are on offer? -->
+									<entry key="http://rs.tdwg.org/dwc/terms/YearSampled" value="year"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/MonthOfYear" value="month"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/DayOfYear" value="day"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/BasisOfRecord" value="basisOfRecord"/>
+									<entry key="http://rs.tdwg.org/dwc/terms/IdentifiedBy" value="identifierName"/>
+									<!-- TODO - Date handling
+									<entry key="http://rs.tdwg.org/dwc/terms/" value="dateIdentified"/>
+										-->
+									<!-- Not applicable to the core record, as this is many identifications...
+										entry key="http://rs.tdwg.org/dwc/terms/" value="unitQualifier"/-->									
+									
+								</map>
+							</property>
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

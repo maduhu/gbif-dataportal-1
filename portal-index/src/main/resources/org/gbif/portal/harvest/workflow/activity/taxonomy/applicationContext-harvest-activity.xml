@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractGenusFromNameActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.GenusFromNameActivity">
+		<property name="contextKeyName" value="RECORD:Name"/>
+		<property name="contextKeyGenus" value="RECORD:Genus"/>
+		<property name="plantaeNameParser" ref="scientificNameParser"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractTaxonNameToClassificationActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.TaxonNameToClassificationActivity">
+		<property name="contextKeyClassificationList" value="classificationList"/>
+		<property name="contextKeyRawOccurrenceRecord" value="rawOccurrenceRecord"/>
+		<property name="gbifLogUtils" ref="gbifLogUtils"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractRankedTaxonNameToClassificationActivity"
+		parent="abstractTaxonNameToClassificationActivity">
+		<property name="contextKeyParsedRank" value="parsedRank"/>
+		<property name="parser" ref="higherTaxonParser"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractClassificationLoggerActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.ClassificationLoggerActivity">
+		<property name="contextKeyClassificationList" value="classificationList"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractClassificationSynchroniserActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.ClassificationSynchroniserActivity">
+		<property name="taxonomyUtils" ref="taxonomyUtils"/>
+		<property name="gbifLogUtils" ref="gbifLogUtils"/>
+		<property name="contextKeyClassificationList" value="classificationList"/>
+		<property name="contextKeyDataProviderId" value="dataProviderId"/>
+		<property name="contextKeyDataResourceId" value="dataResourceId"/>
+		<property name="contextKeyTaxonConceptId" value="taxonConceptId"/>
+		<property name="contextKeyTaxonNameId" value="taxonNameId"/>
+		<property name="contextKeyRemoteConceptMap" value="remoteConceptMap"/>
+		<property name="contextKeyAcceptedConceptMap" value="acceptedConceptMap"/>
+		<property name="contextKeyRemoteId" value="RECORD:Id"/>
+		<property name="contextKeyRemoteParentId" value="RECORD:ParentId"/>
+		<property name="contextKeyRemoteAcceptedId" value="RECORD:AcceptedId"/>
+		<property name="contextKeyCommonName" value="RECORD:CommonName"/>
+		<property name="contextKeyLanguage" value="RECORD:Language"/>
+		<property name="contextKeyTimer" value="timer"/>
+		<property name="contextKeyTaxonomicPriority" value="taxonomicPriority"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractGenusInClassificationCheckActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.GenusInClassificationCheckActivity">
+		<property name="contextKeyClassificationList" value="classificationList"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractSpeciesInClassificationCheckActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.SpeciesInClassificationCheckActivity">
+		<property name="contextKeyClassificationList" value="classificationList"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractResourceClassificationDenormaliserActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.ResourceClassificationDenormaliserActivity">
+		<property name="taxonomyUtils" ref="taxonomyUtils"/>
+		<property name="contextKeyDataResourceId" value="dataResourceId"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractClassificationFromDefaultClassificationActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.ClassificationFromDefaultClassificationActivity">
+		<property name="contextKeyDefaultClassificationList" value="defaultClassificationList"/>
+		<property name="contextKeyClassificationList" value="classificationList"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractScientificNameFromPartsActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.ScientificNameFromPartsActivity">
+		<property name="contextKeyPreviousClassificationContainer" value="previousClassificationContainer"/>
+		<property name="contextKeyParsedRank" value="parsedRank"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractRankAndScientificNameHandlerActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.RankAndScientificNameHandlerActivity">
+		<property name="taxonRankMapping" ref="taxonRankMapping"/>
+		<property name="contextKeyParsedRank" value="parsedRank"/>
+		<property name="contextKeyRawOccurrenceRecord" value="rawOccurrenceRecord"/>
+		<property name="gbifLogUtils" ref="gbifLogUtils"/>
+		<property name="ranksToInfraspecificMarkers">
+			<map>
+				<!-- Include subsp. to assist in recognition later -->
+				<entry key="8000" value="subsp."/>
+				<entry key="8010" value="var."/>
+			    <entry key="8020" value="f."/>
+			</map>
+		</property>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractPreviousClassificationHandlerActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.PreviousClassificationHandlerActivity">
+		<property name="contextKeyPreviousClassificationContainer" value="previousClassificationContainer"/>
+		<property name="contextKeyClassificationList" value="classificationList"/>
+		<property name="contextKeyParsedRank" value="parsedRank"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractRemoteConceptCleanupActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.RemoteConceptCleanupActivity">
+		<property name="taxonomyUtils" ref="taxonomyUtils"/>
+		<property name="gbifLogUtils" ref="gbifLogUtils"/>
+		<property name="contextKeyTimer" value="timer"/>
+		<property name="contextKeyDataResourceId" value="dataResourceId"/>
+		<property name="contextKeyRemoteConceptMap" value="remoteConceptMap"/>
+		<property name="contextKeyAcceptedConceptMap" value="acceptedConceptMap"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractMarkSecondaryTaxaActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.MarkSecondaryTaxaActivity">
+		<property name="contextKeyDataResourceId" value="dataResourceId"/>
+		<property name="taxonConceptDAO" ref="taxonConceptDAO"/>
+		<property name="dataResourceDAO" ref="dataResourceDAO"/>
+	</bean>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractSpeciesInClassificationForSubspeciesActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.SpeciesInClassificationForSubspeciesActivity">
+		<property name="contextKeyClassificationList" value="classification"/>	
+		<property name="speciesParser" ref="binomialMatcherPlusNoise"/>
+	</bean>
+	<bean id="speciesInClassificationForSubspeciesActivity"
+		parent="abstractSpeciesInClassificationForSubspeciesActivity"/>
+	
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractCommonNameSynchroniserActivity"
+		class="org.gbif.portal.harvest.workflow.activity.taxonomy.CommonNameSynchroniserActivity">
+		<property name="contextKeyLanguage" value="language"/>	
+		<property name="contextKeyTaxonConceptId" value="taxonConceptId"/>	
+		<property name="contextKeyISOLanguageCode" value="isoLanguageCode"/>	
+		<property name="contextKeyCommonName" value="commonName"/>	
+		<property name="commonNameDAO" ref="commonNameDAO"/>
+	</bean>
+	
+</beans>

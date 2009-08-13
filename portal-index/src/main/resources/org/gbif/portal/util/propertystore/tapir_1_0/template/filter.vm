@@ -1,0 +1,25 @@
+## This is a Digir Search Filter template
+## 
+## REMOVED tabs because of buffer limit with TapirLink
+##
+## Required Input  
+## - criteria
+##
+#macro( writeTapirCriteria $filterCriteria)
+#if($filterCriteria.subject)## then it can't be a collection
+<$filterCriteria.predicate>
+<concept id="$filterCriteria.subject"/>
+<literal value="$filterCriteria.object"/>
+</$filterCriteria.predicate>
+#else 
+<$filterCriteria.predicate>
+#foreach($criterion in $filterCriteria.criteria)
+#writeTapirCriteria( $criterion )
+#end
+</$filterCriteria.predicate>
+#end
+#end
+##
+<filter>
+#writeTapirCriteria( $criteria )
+</filter>

@@ -1,0 +1,10 @@
+## This is a BioCASE capabilites template
+##
+## See included templates for further requirements
+##
+## Define the type of request for the header
+#set($type="capabilities")
+##
+#parse("org/gbif/portal/util/propertystore/biocase_1_3/template/preamble.vm")
+#parse("org/gbif/portal/util/propertystore/biocase_1_3/template/header.vm")
+#parse("org/gbif/portal/util/propertystore/biocase_1_3/template/postamble.vm")

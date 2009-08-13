@@ -1,0 +1,7 @@
+## The TAPIR header element
+## 
+## Fields
+## - type - a String that represents the request type
+<header>
+<source sendtime="$DateFormatter.currentDateTimeAsXMLString()"/>
+</header>

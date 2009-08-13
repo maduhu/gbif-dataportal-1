@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- The mapping from basis of record string to code -->
+	<bean id="basisOfRecordMapping" class="org.gbif.portal.util.mapping.impl.MapCodeMapping">
+	  <property name="map">
+		  <map>
+			<!-- They are capitalised, trimmed and whitespace removed in code... -->
+			<entry key="OBSERVATION" value="1"/>
+			<entry key="OBSERVATIONS" value="1"/>
+			<entry key="HUMANOBSERVATION" value="1"/>
+			<entry key="MACHINEOBSERVATION" value="1"/>
+			<entry key="DRAWINGORPHOTOGRAPH" value="1"/>
+			<entry key="MULTIMEDIAOBJECT" value="1"/>
+			<entry key="PHOTOGRAPH" value="1"/>
+			<entry key="STILLIMAGE" value="1"/>
+			<entry key="MOVINGIMAGE" value="1"/>			
+			<entry key="SOUNDRECORDING" value="1"/>
+			<entry key="O" value="1"/>
+			<entry key="OBS" value="1"/>
+			<entry key="OBS." value="1"/>
+			<entry key="SPECIMEN" value="2"/>
+            <entry key="(S)SPECIMEN" value="2"/>
+			<entry key="PRESERVEDSPECIMEN" value="2"/>
+			<entry key="OTHERSPECIMEN" value="2"/>
+			<entry key="HERBARIUMSPECIMEN" value="2"/>
+			<entry key="HERBARIUMSHEET" value="2"/>
+			<entry key="S" value="2"/>
+			<entry key="SP" value="2"/>
+			<entry key="SP." value="2"/>
+			<entry key="VOUCHER" value="2"/>
+			<entry key="OTHERSPECIMEN" value="2"/>
+			<entry key="L" value="3"/>
+			<entry key="LIVING" value="3"/>
+			<entry key="LIVINGSPECIMEN" value="3"/>
+			<entry key="L S" value="3"/>
+			<entry key="G" value="4"/>
+			<entry key="GERMPLASM" value="4"/>
+			<entry key="F" value="5"/>
+			<entry key="FOSSIL" value="5"/>
+			<entry key="FOSSILESPECIMEN" value="5"/>
+			<entry key="FOSSILSPECIMEN" value="5"/>
+			<entry key="NOMENCLATOR" value="101"/>
+            <entry key="LITERATUREDATA" value="6"/>      
+            <entry key="LITERATURE" value="6"/>            
+            <entry key="LIT." value="6"/>
+            <entry key="BOOK" value="6"/>            
+            <entry key="JOURNAL" value="6"/>            
+		</map>
+	  </property>
+	  <property name="defaultCode" value="0"/>
+	</bean>
+</beans>

@@ -1,0 +1,15 @@
+## The Digir header element
+## 
+## Fields
+## - version - a String to represent the digir version 
+## - DateFormatter - an instance of the org.gbif.utils.text.DateFormatter
+## - resource - a String that if included will be included on the destination
+## - destination - a String that represents the destination
+## - type - a String that represents the request type
+<header>
+	<version>$version</version>
+	<sendTime>$DateFormatter.currentDateTimeAsXMLString()</sendTime>
+	<source>$hostAddress</source>
+	<destination#if($resource) resource='$resource'#end>$destination</destination>
+	<type>$type</type>
+</header>

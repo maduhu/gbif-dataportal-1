@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Allow the XPath accessors to reuse the prefix -->
+	<bean id="abstractXPath:DWC-GE:0.4" abstract="true" class="org.dom4j.xpath.DefaultXPath">
+		<property name="namespaceURIs">
+			<map>
+				<entry key="geo" value="http://rs.tdwg.org/dwc/geospatial/"/>
+			</map>
+		</property>
+	</bean>
+
+	<!-- DWC 1.4 Mappings -->
+	<bean id="propertyStore:namespace:DWC-GE:0.4" class="org.gbif.portal.util.propertystore.impl.spring.PropertyBag">
+		<!-- The namespace that the PropertyStore will key this bag on -->
+		<property name="namespace" value="http://rs.tdwg.org/dwc/geospatial/"/>
+		<property name="properties">
+			<map>
+				<entry key="RECORD.GEOSPATIAL.LATITUDE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathListAccessor">
+						<property name="XPathList">
+							<list>
+							    <bean parent="abstractXPath:DWC-GE:0.4">
+								    <constructor-arg value="//geo:DecimalLatitude"/>
+							    </bean>
+							    <bean parent="abstractXPath:DWC-GE:0.4">
+								    <constructor-arg value="//geo:VerbatimLatitude"/>
+							    </bean>
+							</list>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="RECORD.GEOSPATIAL.LONGITUDE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathListAccessor">
+						<property name="XPathList">
+							<list>
+							    <bean parent="abstractXPath:DWC-GE:0.4">
+								    <constructor-arg value="//geo:DecimalLongitude"/>
+							    </bean>
+							    <bean parent="abstractXPath:DWC-GE:0.4">
+								    <constructor-arg value="//geo:VerbatimLongitude"/>
+							    </bean>
+							</list>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="RECORD.GEOSPATIAL.LATLONG.PRECISION">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:DWC-GE:0.4">
+								<constructor-arg value="//geo:CoordinateUncertaintyInMeters"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+			</map>
+		</property>
+	</bean>
+</beans>

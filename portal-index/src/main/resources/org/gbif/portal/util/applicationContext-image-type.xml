@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- The mapping from image type string to code -->
+	<bean id="imageTypeMapping" class="org.gbif.portal.util.mapping.impl.MapCodeMapping">
+	  <property name="map">
+		  <map>
+			<!-- They are capitalised, trimmed and whitespace removed in code... -->
+			<entry key="PRODUCT" value="1"/>
+		  </map>
+	  </property>
+	  <property name="defaultCode" value="0"/>
+	</bean>
+
+</beans>

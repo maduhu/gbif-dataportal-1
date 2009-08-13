@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Allow the XPath accessors to reuse the prefix -->
+	<bean id="abstractXPath:ABCD:1.2" abstract="true" class="org.dom4j.xpath.DefaultXPath">
+		<property name="namespaceURIs">
+			<map>
+				<entry key="abcd" value="http://www.tdwg.org/schemas/abcd/1.2"/>
+			</map>
+		</property>
+	</bean>
+
+	<!-- ABCD 1.2 Mappings -->
+	<bean id="propertyStore:namespace:ABCD:1.2" class="org.gbif.portal.util.propertystore.impl.spring.PropertyBag">
+		<!-- The namespace that the PropertyStore will key this bag on -->
+		<property name="namespace" value="http://www.tdwg.org/schemas/abcd/1.2"/>
+		<property name="properties">
+			<map>
+				<!-- To create a message around the raw data -->
+				<entry key="MESSAGE.FACTORY" value-ref="propertyStore:XMLMessageFactory"/>
+				
+				<!-- Entities to build requests -->
+				<entry key="REQUEST.SCIENTIFIC.NAME" value="/DataSets/DataSet/Units/Unit/Identifications/Identification/TaxonIdentified/NameAuthorYearString"/>
+				<entry key="REQUEST.INSTITUTION.CODE" value="/DataSets/DataSet/OriginalSource/SourceInstitutionCode"/> 
+				<entry key="REQUEST.COLLECTION.CODE" value="/DataSets/DataSet/OriginalSource/SourceName"/> 
+				<entry key="REQUEST.CATALOGUE.NUMBER" value="/DataSets/DataSet/Units/Unit/UnitID"/> 
+				<entry key="REQUEST.DATE.LAST.MODIFIED" value="/DataSets/DataSet/Units/Unit/DateLastEdited"/>
+												
+				<!-- From capabilities -->
+				<entry key="CAPABILITIES.SUPPORTS.DATE.LAST.MODIFIED">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="//Concept='/DataSets/DataSet/Units/Unit/UnitID'"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>				
+				
+				<!-- Unknown response message accessors 
+					 For example, to get concepts from a Biocase response -->
+				<entry key="RESPONSE.DATASET">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.ListMessageFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="//abcd:DataSets/abcd:DataSet"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+
+				<!-- Dataset message accessors -->
+				<entry key="DATASET.DATASET.NAME">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:OriginalSource/abcd:SourceName"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.DATASET.DESCRIPTION">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Description"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.DATASET.CITATION">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Statements/abcd:Acknowledgement"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.DATASET.TERMS.OF.USE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Rights/abcd:TermsOfUse"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.DATASET.COPYRIGHT.DECLARATION">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Rights/abcd:CopyrightDeclaration"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.DATASET.IPR.DECLARATION">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Rights/abcd:IPRDeclaration"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.DATASET.RIGHTS.URL">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Rights/abcd:RightsURL"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.INSTITUTION.CODE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:OriginalSource/abcd:SourceInstitutionCode"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.LOGO.URL">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Statements/abcd:LogoURL"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.WEBSITE.URL">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSets/abcd:DataSet/abcd:OriginalSource/abcd:SourceWebAddress"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.RECORD.COUNT">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSets/abcd:DataSet/abcd:OriginalSource/abcd:SourceNumberOfRecords"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.UNIT">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.ListMessageFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:Units/abcd:Unit"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				
+				
+				<!-- UNIT level mappings -->
+				<entry key="UNIT.CATALOGUE.NUMBER">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:UnitID"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				
+				<entry key="UNIT.IDENTIFICATIONS">
+					<bean class="org.gbif.portal.harvest.workflow.activity.identification.ListIdentificationRecordFromIdentificationXPathsAccessor">
+						<property name="rootXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Identifications/abcd:Identification"/>
+							</bean>
+						</property>
+						<property name="preferredXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Identification/@PreferredIdentificationFlag"/>
+							</bean>
+						</property>
+						<property name="scientificNameXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Identification/abcd:TaxonIdentified/abcd:NameAuthorYearString"/>
+							</bean>
+						</property>
+						<property name="alternateScientificNameXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Identification/abcd:TaxonIdentified/abcd:ScientificNameString"/>
+							</bean>
+						</property>
+						<property name="identifierXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Identification/abcd:Identifier/abcd:IdentifierPersonName/abcd:PersonName"/>
+							</bean>
+						</property>
+						<property name="dateXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Identification/abcd:IdentificationDate/abcd:ISODateTimeEnd"/>
+							</bean>
+						</property>
+						<property name="alternateDateXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Identification/abcd:IdentificationDate/abcd:ISODateTimeBegin"/>
+							</bean>
+						</property>
+						<property name="higherTaxaXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Identification/abcd:TaxonIdentified/abcd:HigherTaxa/abcd:HigherTaxon"/>
+							</bean>
+						</property>
+						<property name="higherTaxonNameXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:HigherTaxon"/>
+							</bean>
+						</property>
+						<property name="higherTaxonRankXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:HigherTaxon/@TaxonRank"/>
+							</bean>
+						</property>
+						<property name="genusXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Identification/abcd:TaxonIdentified/abcd:ScientificNameAtomized//abcd:Genus"/>
+							</bean>
+						</property>
+						<property name="rankXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:TaxonIdentified/abcd:IdentificationQualifier/@Rank"/>
+							</bean>
+						</property>
+						<property name="taxonRankMapping" ref="taxonRankMapping"/>
+					</bean>
+				</entry>			
+				
+				<entry key="DATASET.CONTACT.NAME">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Supplier/abcd:Person/abcd:PersonName"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.CONTACT.EMAIL">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Supplier/abcd:EmailAddresses/abcd:EmailAddress"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.CONTACT.ADDRESS">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Supplier/abcd:Addresses/abcd:Address"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+				<entry key="DATASET.CONTACT.PHONE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:DataSet/abcd:DatasetDerivations/abcd:DatasetDerivation/abcd:Supplier/abcd:TelephoneNumbers/abcd:TelephoneNumber"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>
+
+				<entry key="UNIT.TYPIFICATIONS">
+					<bean class="org.gbif.portal.harvest.workflow.activity.typification.ListTypificationRecordFromTypificationXPathsAccessor">
+						<property name="rootXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:UnitStateDomain/abcd:SpecimenUnit/abcd:NomenclaturalTypeDesignations/abcd:NomenclaturalTypeDesignation"/>
+							</bean>
+						</property>
+						<property name="scientificNameXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:NomenclaturalTypeDesignation/abcd:TypifiedName"/>
+							</bean>
+						</property>
+						<property name="publicationXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:NomenclaturalTypeDesignation/abcd:NomenclaturalReference/abcd:ReferenceCitation"/>
+							</bean>
+						</property>
+						<property name="typeStatusXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:NomenclaturalTypeDesignation/abcd:TypeStatus"/>
+							</bean>
+						</property>
+						<property name="notesXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:NomenclaturalTypeDesignation/abcd:VerificationNotes"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+
+				<entry key="UNIT.GEOSPATIAL.LATITUDE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:LatitudeDecimal"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.LONGITUDE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:LongitudeDecimal"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.LATLONG.PRECISION">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:CoordinateErrorDistanceInMeters"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.MIN.ALTITUDE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Altitude/abcd:MeasurementAtomized/abcd:MeasurementLowerValue"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.MAX.ALTITUDE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Altitude/abcd:MeasurementAtomized/abcd:MeasurementUpperValue"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.ALTITUDE.PRECISION">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Altitude/abcd:MeasurementAtomized/abcd:MeasurementAccuracy"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.MIN.DEPTH">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Depth/abcd:MeasurementAtomized/abcd:MeasurementLowerValue"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.MAX.DEPTH">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Depth/abcd:MeasurementAtomized/abcd:MeasurementUpperValue"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.DEPTH.PRECISION">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Depth/abcd:MeasurementAtomized/abcd:MeasurementAccuracy"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.COUNTRY">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathListAccessor">
+						<property name="XPathList">
+							<list>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								    <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Country/abcd:ISO2Letter"/>
+							    </bean>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								    <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Country/abcd:CountryNameDerived"/>
+							    </bean>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								    <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Country/abcd:CountryName"/>
+							    </bean>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								    <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:Country/abcd:ISO3Letter"/>
+							    </bean>
+							</list>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.GEOSPATIAL.LOCALITY">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringSite/abcd:LocalityText"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.COLLECTOR">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathListAccessor">
+						<property name="XPathList">
+							<list>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								    <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringAgents/abcd:GatheringAgent/abcd:Person/abcd:PersonName"/>
+							    </bean>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								    <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringAgents/abcd:GatheringAgent/abcd:AgentText"/>
+							    </bean>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								   <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringAgents/abcd:GatheringAgentsText"/>
+							    </bean>
+							</list>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.TEMPORAL.DATE">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathListAccessor">
+						<property name="XPathList">
+							<list>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								    <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringDateTime/abcd:ISODateTimeBegin"/>
+							    </bean>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								    <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringDateTime/abcd:ISODateTimeEnd"/>
+							    </bean>
+							    <bean parent="abstractXPath:ABCD:1.2">
+								    <constructor-arg value="/abcd:Unit/abcd:Gathering/abcd:GatheringDateTime/abcd:DateText"/>
+							    </bean>
+							</list>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.BASIS.OF.RECORD">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:RecordBasis"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.FIELD.NUMBER">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.StringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:CollectorsFieldNumber"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.ACCESSION.NUMBERS">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.ListStringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:UnitStateDomain/abcd:SpecimenUnit/abcd:Accessions/abcd:AccessionNumber"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.PREVIOUS.UNITIDS">
+					<bean class="org.gbif.portal.util.mhf.message.impl.xml.accessor.ListStringFromXPathAccessor">
+						<property name="XPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:UnitStateDomain/abcd:SpecimenUnitHistory/abcd:PreviousUnit/abcd:PreviousUnitID"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				<entry key="UNIT.IMAGES">
+					<bean class="org.gbif.portal.harvest.workflow.activity.image.ListImageRecordFromImageXPathsAccessor">
+						<property name="rootXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:Unit/abcd:UnitDigitalImages/abcd:UnitDigitalImage"/>
+							</bean>
+						</property>
+						<property name="urlXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:UnitDigitalImage/abcd:ImageURI"/>
+							</bean>
+						</property>
+						<property name="typeXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:UnitDigitalImage/abcd:ImageFormat"/>
+							</bean>
+						</property>
+						<property name="descriptionXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:UnitDigitalImage/abcd:Comment"/>
+							</bean>
+						</property>
+						<property name="rightsXPath">
+							<bean parent="abstractXPath:ABCD:1.2">
+								<constructor-arg value="/abcd:UnitDigitalImage/abcd:ImageIPR/abcd:TermsOfUse"/>
+							</bean>
+						</property>
+					</bean>
+				</entry>			
+				
+				<!-- Dataset message handler workfow 
+					 The harvesting calls this with a DATASET level message -->
+				<entry key="WORKFLOW.HARVEST.DATASET.MESSAGE">
+					<bean parent="abstractWorkflow">
+						<property name="activities">
+							<list>
+								<!-- Log the data set message -->
+								<!--bean parent="messageLoggerActivity">
+									<property name="contextKeyMessage" value="responseMessage"/>
+								</bean-->
+								<!-- Get the dataset data -->
+								<bean parent="abstractConceptListToContextActivity">
+									<property name="contextKeyMessage" value="responseMessage"/>
+									<property name="conceptToContext">
+										<map>
+											<entry key="DATASET.DATASET.NAME" value="dataResourceName"/>
+											<entry key="DATASET.DATASET.DESCRIPTION" value="description"/>
+											<entry key="DATASET.DATASET.CITATION" value="citation"/>
+											<entry key="DATASET.DATASET.TERMS.OF.USE" value="termsOfUse"/>
+											<entry key="DATASET.DATASET.COPYRIGHT.DECLARATION" value="copyrightDeclaration"/>
+											<entry key="DATASET.DATASET.IPR.DECLARATION" value="IPRDeclaration"/>
+											<entry key="DATASET.INSTITUTION.CODE" value="institutionCode"/>
+											<entry key="DATASET.LOGO.URL" value="logoUrl"/>
+											<entry key="DATASET.WEBSITE.URL" value="websiteUrl"/>
+											<entry key="DATASET.RECORD.COUNT" value="providerRecordCount"/>
+										</map>
+									</property>
+								</bean>
+								<!-- Because it is a map, it can't be put in twice above... -->
+								<bean parent="abstractConceptListToContextActivity">
+									<property name="contextKeyMessage" value="responseMessage"/>
+									<property name="conceptToContext">
+										<map>
+											<entry key="DATASET.DATASET.NAME" value="collectionCode"/>
+										</map>
+									</property>
+								</bean>
+								<!-- Concatinate all the values for the rights -->
+								<bean parent="abstractStringConcatinationActivity">
+									<property name="contextKeyTokensToConcatinate">
+										<list>
+											<value>termsOfUse</value>
+											<value>copyrightDeclaration</value>
+											<value>IPRDeclaration</value>
+										</list>
+									</property>
+									<property name="contextKeyTarget" value="rights"/>
+								</bean>
+								<!-- Ensure the data resource exists -->
+								<bean parent="abstractDataResourceInContextCheckActivity"/>
+								
+								<!-- "sync" the agents for the resource created/in use -->
+								<bean parent="abstractAgentSynchroniserActivity">										
+									<property name="psKeyName" value="DATASET.CONTACT.NAME"/>
+									<property name="psKeyEmail" value="DATASET.CONTACT.EMAIL"/>
+									<property name="psKeyAddress" value="DATASET.CONTACT.ADDRESS"/>
+									<property name="psKeyTelephone" value="DATASET.CONTACT.PHONE"/>
+									<property name="contextKeyMessage" value="responseMessage"/>
+								</bean>
+								
+								<!-- Extract the record messages and iterate over them -->
+								<bean class="org.gbif.portal.harvest.workflow.activity.SubMessageIteratorActivity">
+									<property name="messageUtils" ref="messageUtils"/>
+									<property name="contextKeyMessage" value="responseMessage"/>
+									<property name="conceptToIterate" value="DATASET.UNIT"/>
+									<property name="contextKeyTotalCount" value="recordProcessedCount"/>										
+									<property name="contextKeyPsNamespaces" value="psNamespaces"/>
+									<property name="seedDataContextKeys">
+										<list>
+											<value>psNamespaces</value>
+											<value>recordProcessedCount</value>
+											<value>dataProviderId</value>
+											<value>dataResourceId</value>
+											<value>resourceAccessPointId</value>
+											<value>institutionCode</value>																	
+											<value>dataResourceName</value>																	
+											<value>collectionCode</value>																	
+											<value>logoUrl</value>																	
+										</list>
+									</property>
+									<property name="resultDataContextKeys">
+										<list>
+											<value>recordProcessedCount</value>										
+										</list>
+									</property>									
+									<property name="workflow">
+										<bean parent="abstractWorkflow">
+											<property name="activities">
+												<list>
+													<bean parent="abstractConceptListToContextActivity">
+														<property name="contextKeyMessage" value="responseMessage"/>
+														<property name="conceptToContext">
+															<map>
+																<entry key="UNIT.CATALOGUE.NUMBER" value="catalogueNumber"/>
+																<entry key="UNIT.IDENTIFICATIONS" value="identifications"/>
+																<entry key="UNIT.GEOSPATIAL.LATITUDE" value="latitude"/>
+																<entry key="UNIT.GEOSPATIAL.LONGITUDE" value="longitude"/>
+																<entry key="UNIT.GEOSPATIAL.LATLONG.PRECISION" value="latLongPrecision"/>
+																<entry key="UNIT.GEOSPATIAL.MIN.ALTITUDE" value="minAltitude"/>
+																<entry key="UNIT.GEOSPATIAL.MAX.ALTITUDE" value="maxAltitude"/>
+																<entry key="UNIT.GEOSPATIAL.ALTITUDE.PRECISION" value="altitudePrecision"/>
+																<entry key="UNIT.GEOSPATIAL.MIN.DEPTH" value="minDepth"/>
+																<entry key="UNIT.GEOSPATIAL.MAX.DEPTH" value="maxDepth"/>
+																<entry key="UNIT.GEOSPATIAL.DEPTH.PRECISION" value="depthPrecision"/>
+																<entry key="UNIT.GEOSPATIAL.COUNTRY" value="country"/>
+																<entry key="UNIT.GEOSPATIAL.LOCALITY" value="locality"/>
+																<entry key="UNIT.COLLECTOR" value="collectorName"/>
+																<entry key="UNIT.TEMPORAL.DATE" value="date"/>
+																<entry key="UNIT.BASIS.OF.RECORD" value="basisOfRecord"/>
+																<entry key="UNIT.FIELD.NUMBER" value="fieldNumber"/>
+																<entry key="UNIT.ACCESSION.NUMBERS" value="accessionNumbers"/>
+																<entry key="UNIT.PREVIOUS.UNITIDS" value="otherCatalogNumbers"/>
+																<entry key="UNIT.IMAGES" value="images"/>
+																<entry key="UNIT.TYPIFICATIONS" value="typifications"/>
+                                                            </map>
+														</property>
+													</bean>
+													<!-- Process the date string -->
+													<bean parent="abstractParseDateToContextActivity"/>
+													<!--bean parent="abstractRawOccurrenceRecordCreatorActivity"/-->
+													<bean parent="abstractRawOccurrenceRecordSynchroniserActivity"/>
+												</list>
+											</property>
+										</bean>
+									</property>
+								</bean>
+							</list>
+						</property>
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractConceptInRangeRequestBuilderActivity"
+		class="org.gbif.portal.harvest.workflow.activity.request.ConceptInRangeRequestBuilderActivity">
+		<property name="templateUtils" ref="templateUtils"/>
+		<property name="propertyStore" ref="indexPropertyStore"/>
+		<property name="lowerLimit" value="AAA"/>
+		<property name="upperLimit" value="zzz"/>
+		<property name="searchAnd" value="and"/>
+		<property name="searchGreaterThanOrEquals" value="greaterThanOrEquals"/>
+		<property name="searchLessThanOrEquals" value="lessThanOrEquals"/>
+		<property name="contextKeyRequest" value="requestToIssue"/>
+		<property name="contextKeyProcessedCount" value="processedCount"/>
+		<property name="contextKeyPsNamespaces" value="psNamespaces"/>
+		<property name="contextKeyRemoteIdentifier" value="remoteIdentifier"/>
+		<property name="contextKeyURL" value="url"/>
+		<property name="concept" value="TO_BE_DEFINED"/>
+		<property name="templateLocation" value="TO_BE_DEFINED"/>
+		<property name="contextKeySupportsDateLastModified" value="supportsDateLastModified"/>		
+	</bean>
+	
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractInventoryOfConceptRequestBuilderActivity"
+		class="org.gbif.portal.harvest.workflow.activity.request.InventoryOfConceptRequestBuilderActivity">
+		<property name="templateUtils" ref="templateUtils"/>
+		<property name="propertyStore" ref="indexPropertyStore"/>
+		<property name="contextKeyRequest" value="requestToIssue"/>
+		<property name="contextKeyPsNamespaces" value="psNamespaces"/>
+		<property name="contextKeyRemoteIdentifier" value="remoteIdentifier"/>
+		<property name="contextKeyURL" value="url"/>
+		<property name="conceptKey" value="TO_BE_DEFINED"/>
+		<property name="templateLocation" value="TO_BE_DEFINED"/>
+		<property name="searchGreaterThan" value="greaterThan"/>
+		<property name="searchGreaterThanOrEquals" value="greaterThanOrEquals"/>
+		<property name="searchAnd" value="and"/>
+	</bean>
+	
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractCheckSupportsDateLastModifiedActivity"
+		class="org.gbif.portal.harvest.workflow.activity.request.CheckSupportsDateLastModifiedActivity"
+		parent="abstractInventoryOfConceptRequestBuilderActivity">
+		<property name="messageUtils" ref="messageUtils"/>
+		<property name="requestUtils" ref="requestUtils"/>
+		<property name="propertyStoreKeyMessageFactory" value="MESSAGE.FACTORY"/>
+		<property name="psKeyConceptMessage" value="INVENTORY.SCIENTIFIC.NAME.CONCEPT"/>
+		<property name="resourceAccessPointDAO" ref="resourceAccessPointDAO"/>
+		<property name="contextKeyResourceAccessPointId" value="resourceAccessPointId"/>
+	</bean>
+	
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractConceptEqualsRequestBuilderActivity"
+		class="org.gbif.portal.harvest.workflow.activity.request.ConceptEqualsRequestBuilderActivity">
+		<property name="templateUtils" ref="templateUtils"/>
+		<property name="propertyStore" ref="indexPropertyStore"/>
+		<property name="searchEquals" value="equals"/>
+		<property name="contextKeyRequest" value="requestToIssue"/>
+		<property name="contextKeyProcessedCount" value="processedCount"/>
+		<property name="contextKeyPsNamespaces" value="psNamespaces"/>
+		<property name="contextKeyRemoteIdentifier" value="remoteIdentifier"/>
+		<property name="contextKeyURL" value="url"/>
+		<property name="contextKeyConceptValue" value="scientificName"/>
+		<property name="concept" value="TO_BE_DEFINED"/>
+		<property name="templateLocation" value="TO_BE_DEFINED"/>
+	</bean>
+</beans>

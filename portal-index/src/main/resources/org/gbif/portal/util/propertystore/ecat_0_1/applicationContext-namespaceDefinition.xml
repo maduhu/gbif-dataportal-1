@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- ECAT 0.1 Data -->
+	<bean id="propertyStore:namespace:ECAT:0.1" class="org.gbif.portal.util.propertystore.impl.spring.PropertyBag">
+		<!-- The namespace that the PropertyStore will key this bag on -->
+		<property name="namespace" value="http://ecat.gbif.org/0.1"/>
+	</bean>
+	
+	<!-- The ECAT data load -->
+	<bean id="ECAT:0.1:dataLoad" parent="abstractWorkflow">
+		<property name="activities">
+			<list>
+				<bean parent="abstractStartTimerActivity"/>								
+				<bean parent="abstractDataProviderFromContextSynchroniserActivity"/>								
+				<bean parent="abstractDataResourceFromContextSynchroniserActivity"></bean>								
+				<bean parent="abstractGbifMessageLoggerActivity">
+					<property name="event" value="extractBegin"/>
+				</bean>
+				<bean parent="abstractTaxonNameToClassificationActivity">
+					<property name="contextKeyName" value="kingdom"/>
+					<property name="parser" ref="kingdomParser"/>
+					<property name="contextKeyClassificationList" value="defaultClassificationList"/>
+				</bean>
+				<bean parent="abstractTaxonNameToClassificationActivity">
+					<property name="contextKeyName" value="phylum"/>
+					<property name="parser" ref="phylumParser"/>
+					<property name="contextKeyClassificationList" value="defaultClassificationList"/>
+				</bean>
+				<bean parent="abstractTaxonNameToClassificationActivity">
+					<property name="contextKeyName" value="class"/>
+					<property name="parser" ref="classParser"/>
+					<property name="contextKeyClassificationList" value="defaultClassificationList"/>
+				</bean>
+				<bean parent="abstractTaxonNameToClassificationActivity">
+					<property name="contextKeyName" value="order"/>
+					<property name="parser" ref="orderParser"/>
+					<property name="contextKeyClassificationList" value="defaultClassificationList"/>
+				</bean>
+				<bean parent="abstractTaxonNameToClassificationActivity">
+					<property name="contextKeyName" value="family"/>
+					<property name="parser" ref="familyParser"/>
+					<property name="contextKeyClassificationList" value="defaultClassificationList"/>
+				</bean>
+				<!-- Genus Parser This will just get the genus-->
+				<bean parent="abstractTaxonNameToClassificationActivity">
+					<property name="contextKeyName" value="genus"/>
+					<property name="defaultParsedRank" value="6000"/>
+					<property name="parser">
+						<bean class="org.gbif.portal.harvest.taxonomy.ScientificNameParser">
+							<property name="taxonNameDAO" ref="taxonNameDAO"/>
+							<property name="gbifLogUtils" ref="gbifLogUtils"/>
+							<property name="orderedRegularExpresionsMapping">
+								<list>
+									<bean parent="genericMatcher"/>
+								</list>													
+							</property>												
+						</bean>
+					</property>
+					<property name="contextKeyClassificationList" value="defaultClassificationList"/>
+				</bean>
+				<bean parent="abstractMultipleTabFileIteratorActivity">
+					<property name="seedDataContextKeys">
+						<list>
+							<value>dataProviderId</value>
+							<value>dataResourceId</value>
+							<value>taxonomicPriority</value>
+							<value>defaultClassificationList</value>
+							<value>previousClassificationContainer</value>
+							<value>logGroup</value>
+							<value>remoteConceptMap</value>
+							<value>RECORD:Id</value>
+							<value>RECORD:ParentId</value>
+							<value>RECORD:Rank</value>
+							<value>RECORD:Kingdom</value>
+							<value>RECORD:Phylum</value>
+							<value>RECORD:Class</value>
+							<value>RECORD:Order</value>
+							<value>RECORD:Suborder</value>
+							<value>RECORD:Infraorder</value>
+							<value>RECORD:Superfamily</value>
+							<value>RECORD:Family</value>
+							<value>RECORD:Subfamily</value>
+							<value>RECORD:Tribe</value>
+							<value>RECORD:Genus</value>
+							<value>RECORD:Subgenus</value>
+							<value>RECORD:ScientificName</value>									
+							<value>RECORD:SpecificEpithet</value>									
+							<value>RECORD:InfaspecificEpithet</value>									
+							<value>RECORD:InfaspecificMarker</value>									
+							<value>RECORD:GenusAuthor</value>									
+							<value>RECORD:Author</value>									
+							<value>RECORD:Status</value>									
+							<value>RECORD:CommonName</value>									
+							<value>RECORD:Language</value>									
+							<value>RECORD:AcceptedId</value>									
+						</list>
+					</property>
+					<property name="resultDataContextKeys">
+						<list>
+							<value>remoteConceptMap</value>
+						</list>
+					</property>
+					<property name="workflow">
+						<bean parent="abstractWorkflow">
+							<property name="activities">
+								<list>	
+									<bean parent="abstractClassificationFromDefaultClassificationActivity"/>
+									<bean parent="abstractRankAndScientificNameHandlerActivity">
+										<property name="contextKeyScientificName" value="RECORD:ScientificName"/>
+										<property name="contextKeyAuthor" value="RECORD:Author"/>
+										<property name="contextKeyRank" value="RECORD:Rank"/>
+										<property name="contextKeyInfraspecificMarker" value="RECORD:InfraspecificMarker"/>
+										<property name="ranksToNameContextKeys">
+											<map>
+												<entry key="0" value="RECORD:Unranked"/>
+												<entry key="800" value="RECORD:Superkingdom"/>
+												<entry key="1000" value="RECORD:Kingdom"/>
+												<entry key="1200" value="RECORD:Subkingdom"/>
+												<entry key="1800" value="RECORD:Superphylum"/>
+												<entry key="2000" value="RECORD:Phylum"/>
+												<entry key="2200" value="RECORD:Subphylum"/>
+												<entry key="2800" value="RECORD:Superclass"/>
+												<entry key="3000" value="RECORD:Class"/>
+												<entry key="3200" value="RECORD:Subclass"/>
+												<entry key="3350" value="RECORD:Infraclass"/>
+												<entry key="3800" value="RECORD:Superorder"/>
+												<entry key="4000" value="RECORD:Order"/>
+												<entry key="4200" value="RECORD:Suborder"/>
+												<entry key="4350" value="RECORD:Infraorder"/>
+												<entry key="4400" value="RECORD:Parvorder"/>
+												<entry key="4500" value="RECORD:Superfamily"/>
+												<entry key="5000" value="RECORD:Family"/>
+												<entry key="5500" value="RECORD:Subfamily"/>
+												<entry key="5600" value="RECORD:Tribe"/>
+												<entry key="5700" value="RECORD:Subtribe"/>
+												<entry key="6000" value="RECORD:Genus"/>
+												<entry key="6500" value="RECORD:Subgenus"/>
+												<entry key="6600" value="RECORD:Section"/>
+												<entry key="6700" value="RECORD:Subsection"/>
+												<entry key="6800" value="RECORD:Series"/>
+												<entry key="6900" value="RECORD:Subseries"/>
+												<entry key="6950" value="RECORD:SpeciesGroup"/>
+												<entry key="6975" value="RECORD:SpeciesSubgroup"/>
+												<entry key="7000" value="RECORD:SpecificEpithet"/>
+												<entry key="8000" value="RECORD:InfraspecificEpithet"/>
+												<entry key="8010" value="RECORD:InfraspecificEpithet"/>
+												<entry key="8020" value="RECORD:InfraspecificEpithet"/>
+												</map>
+										</property>
+										<property name="ranksToAuthorContextKeys">
+											<map>
+												<entry key="800" value="RECORD:SuperkingdomAuthor"/>
+												<entry key="1000" value="RECORD:KingdomAuthor"/>
+												<entry key="1200" value="RECORD:SubkingdomAuthor"/>
+												<entry key="1800" value="RECORD:SuperphylumAuthor"/>
+												<entry key="2000" value="RECORD:PhylumAuthor"/>
+												<entry key="2200" value="RECORD:SubphylumAuthor"/>
+												<entry key="2800" value="RECORD:SuperclassAuthor"/>
+												<entry key="3000" value="RECORD:ClassAuthor"/>
+												<entry key="3200" value="RECORD:SubclassAuthor"/>
+												<entry key="3350" value="RECORD:InfraclassAuthor"/>
+												<entry key="3800" value="RECORD:SuperorderAuthor"/>
+												<entry key="4000" value="RECORD:OrderAuthor"/>
+												<entry key="4200" value="RECORD:SuborderAuthor"/>
+												<entry key="4350" value="RECORD:InfraorderAuthor"/>
+												<entry key="4400" value="RECORD:ParvorderAuthor"/>
+												<entry key="4500" value="RECORD:SuperfamilyAuthor"/>
+												<entry key="5000" value="RECORD:FamilyAuthor"/>
+												<entry key="5500" value="RECORD:SubfamilyAuthor"/>
+												<entry key="5600" value="RECORD:TribeAuthor"/>
+												<entry key="5700" value="RECORD:SubtribeAuthor"/>
+												<entry key="6000" value="RECORD:GenusAuthor"/>
+												<entry key="6500" value="RECORD:SubgenusAuthor"/>
+												<entry key="6600" value="RECORD:SectionAuthor"/>
+												<entry key="6700" value="RECORD:SubsectionAuthor"/>
+												<entry key="6800" value="RECORD:SeriesAuthor"/>
+												<entry key="6900" value="RECORD:SubseriesAuthor"/>
+											</map>
+										</property>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Superkingdom"/>
+										<property name="contextKeyAuthor" value="RECORD:SuperkingdomAuthor"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Kingdom"/>
+										<property name="contextKeyAuthor" value="RECORD:KingdomAuthor"/>
+										<property name="parser" ref="kingdomParser"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Subkingdom"/>
+										<property name="contextKeyAuthor" value="RECORD:SubkingdomAuthor"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Superphylum"/>
+										<property name="contextKeyAuthor" value="RECORD:SuperphylumAuthor"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Phylum"/>
+										<property name="contextKeyAuthor" value="RECORD:PhylumAuthor"/>
+										<property name="parser" ref="phylumParser"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Subphylum"/>
+										<property name="contextKeyAuthor" value="RECORD:SubphylumAuthor"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Superclass"/>
+										<property name="contextKeyAuthor" value="RECORD:SuperclassAuthor"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Class"/>
+										<property name="contextKeyAuthor" value="RECORD:ClassAuthor"/>
+										<property name="parser" ref="classParser"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Subclass"/>
+										<property name="contextKeyAuthor" value="RECORD:SubclassAuthor"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Infraclass"/>
+										<property name="contextKeyAuthor" value="RECORD:InfraclassAuthor"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Superorder"/>
+										<property name="contextKeyAuthor" value="RECORD:SuperorderAuthor"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Order"/>
+										<property name="contextKeyAuthor" value="RECORD:OrderAuthor"/>
+										<property name="parser" ref="orderParser"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Suborder"/>
+										<property name="contextKeyAuthor" value="RECORD:SuborderAuthor"/>
+										<property name="parser" ref="suborderParser"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Infraorder"/>
+										<property name="contextKeyAuthor" value="RECORD:InfraorderAuthor"/>
+										<property name="parser" ref="infraorderParser"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Parvorder"/>
+										<property name="contextKeyAuthor" value="RECORD:ParvorderAuthor"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Superfamily"/>
+										<property name="contextKeyAuthor" value="RECORD:SuperfamilyAuthor"/>
+										<property name="parser" ref="superfamilyParser"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Family"/>
+										<property name="contextKeyAuthor" value="RECORD:FamilyAuthor"/>
+										<property name="parser" ref="familyParser"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Subfamily"/>
+										<property name="contextKeyAuthor" value="RECORD:SubfamilyAuthor"/>
+										<property name="parser" ref="subfamilyParser"/>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Tribe"/>
+										<property name="contextKeyAuthor" value="RECORD:TribeAuthor"/>
+										<property name="parser" ref="tribeParser"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Subtribe"/>
+										<property name="contextKeyAuthor" value="RECORD:SubtribeAuthor"/>
+									</bean>
+									<!-- Genus Parser This will just get the genus-->
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Genus"/>
+										<property name="contextKeyAuthor" value="RECORD:GenusAuthor"/>
+										<property name="defaultParsedRank" value="6000"/>
+										<property name="parser">
+											<bean class="org.gbif.portal.harvest.taxonomy.ScientificNameParser">
+												<property name="taxonNameDAO" ref="taxonNameDAO"/>
+												<property name="gbifLogUtils" ref="gbifLogUtils"/>
+												<property name="orderedRegularExpresionsMapping">
+													<list>
+														<bean parent="genericMatcher"/>
+													</list>													
+												</property>												
+											</bean>
+										</property>
+									</bean>
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Subgenus"/>
+										<property name="contextKeyAuthor" value="RECORD:SubgenusAuthor"/>
+										<property name="defaultParsedRank" value="6500"/>
+										<property name="parser" ref="subgenusParser"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Section"/>
+										<property name="contextKeyAuthor" value="RECORD:SectionAuthor"/>
+										<property name="defaultParsedRank" value="6600"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Subsection"/>
+										<property name="contextKeyAuthor" value="RECORD:SubsectionAuthor"/>
+										<property name="defaultParsedRank" value="6700"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Series"/>
+										<property name="contextKeyAuthor" value="RECORD:SeriesAuthor"/>
+										<property name="defaultParsedRank" value="6800"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Subseries"/>
+										<property name="contextKeyAuthor" value="RECORD:SubseriesAuthor"/>
+										<property name="defaultParsedRank" value="6900"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:SpeciesGroup"/>
+										<property name="contextKeyAuthor" value="RECORD:SpeciesGroupAuthor"/>
+										<property name="defaultParsedRank" value="6950"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:SpeciesSubgroup"/>
+										<property name="contextKeyAuthor" value="RECORD:SpeciesSubgroupAuthor"/>
+										<property name="defaultParsedRank" value="6975"/>
+									</bean>
+									<bean parent="abstractRankedTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:Unranked"/>
+										<property name="parser" ref="unrankedParser"/>
+									</bean>
+									<!-- Sets scientific name if parts present but full name missing -->
+									<bean parent="abstractScientificNameFromPartsActivity">
+										<property name="contextKeyScientificName" value="RECORD:ScientificName"/>
+										<property name="contextKeyGenus" value="RECORD:Genus"/>
+										<property name="contextKeySpecificEpithet" value="RECORD:SpecificEpithet"/>
+										<property name="contextKeyInfraspecificEpithet" value="RECORD:InfraspecificEpithet"/>
+										<property name="contextKeyInfraspecificMarker" value="RECORD:InfraspecificMarker"/>
+									</bean>
+									<!-- Scientific Name -->
+									<bean parent="abstractTaxonNameToClassificationActivity">
+										<property name="contextKeyName" value="RECORD:ScientificName"/>
+										<property name="contextKeyAuthor" value="RECORD:Author"/>
+										<property name="parser" ref="scientificNameParser"/>
+									</bean>
+									<!-- deduce the genus -->
+									<bean parent="abstractGenusInClassificationCheckActivity"/>
+									<!-- deduce a species if needed (e.g. it is a subspecies) -->
+									<bean parent="abstractSpeciesInClassificationCheckActivity"/>
+									<bean parent="abstractPreviousClassificationHandlerActivity">
+										<property name="contextKeyGenus" value="RECORD:Genus"/>
+										<property name="contextKeySpecificEpithet" value="RECORD:SpecificEpithet"/>
+									</bean>
+									<!--bean parent="abstractClassificationLoggerActivity"/-->
+									<bean parent="abstractClassificationSynchroniserActivity"/>
+									<bean parent="abstractCommonNameSynchroniserActivity">
+										<property name="contextKeyTaxonConceptId" value="taxonConceptId"/>	
+										<property name="contextKeyLanguage" value="RECORD:Language"/>	
+										<property name="contextKeyCommonName" value="RECORD:CommonName"/>	
+									</bean>
+								</list>
+							</property>
+						</bean>
+					</property>					
+				</bean>
+				<bean parent="abstractRemoteConceptCleanupActivity"/>
+				<bean parent="abstractResourceClassificationDenormaliserActivity"/>
+				<bean parent="abstractGbifMessageLoggerActivity">
+					<property name="event" value="extractEnd"/>
+					<property name="endLogGroup" value="true"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractIndexDataCreatorActivity"
+		class="org.gbif.portal.harvest.workflow.activity.inventory.CreateIndexDataActivity">
+		<property name="contextKeyResourceAccessPointId" value="resourceAccessPointId"/>
+		<property name="contextKeyInventoryMessage" value="responseMessage"/>		
+		<property name="contextKeyPsNamespaces" value="psNamespaces"/>		
+		<property name="contextKeyProcessedCount" value="recordProcessedCount"/>		
+		<property name="contextKeyLastConcept" value="lastConcept"/>
+		<property name="psKeyConceptMessage" value="INVENTORY.SCIENTIFIC.NAME.CONCEPT"/>
+		<property name="psKeyConcept" value="INVENTORY.SCIENTIFIC.NAME.CONCEPT.VALUE"/>
+		<property name="psKeyCount" value="INVENTORY.CONCEPT.COUNT"/>
+		<property name="indexDataDAO" ref="indexDataDAO"/>
+		<property name="messageUtils" ref="messageUtils"/>
+	</bean>
+</beans>

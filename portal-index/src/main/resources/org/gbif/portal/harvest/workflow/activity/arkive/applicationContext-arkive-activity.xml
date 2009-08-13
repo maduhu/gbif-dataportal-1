@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractArkiveHigherTaxaToClassificationActivity"
+		class="org.gbif.portal.harvest.workflow.activity.arkive.ArkiveHigherTaxaToClassificationActivity">
+		<property name="contextKeyUrl" value="url"/>
+		<property name="contextKeyClassificationList" value="classificationList"/>
+		<property name="kingdomParser" ref="kingdomParser"/>
+		<property name="phylumParser" ref="phylumParser"/>
+		<property name="classParser" ref="classParser"/>
+	</bean>
+</beans>

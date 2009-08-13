@@ -1,0 +1,2941 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- The mapping from english to code plus 3 letter to 2 letter plus prototype portal mapping -->
+	<bean id="isoCountryCodeMap_EN" class="org.springframework.beans.factory.config.MapFactoryBean">
+	  <property name="sourceMap">
+		  <map>
+			<entry key="AFGHANISTAN" value="AF"/>
+			<entry key="ÅLAND ISLANDS" value="AX"/>
+			<entry key="ALBANIA" value="AL"/>
+			<entry key="ALGERIA" value="DZ"/>
+			<entry key="AMERICAN SAMOA" value="AS"/>
+			<entry key="ANDORRA" value="AD"/>
+			<entry key="ANGOLA" value="AO"/>
+			<entry key="ANGUILLA" value="AI"/>
+			<entry key="ANTARCTICA" value="AQ"/>
+			<entry key="ANTIGUA AND BARBUDA" value="AG"/>
+			<entry key="ARGENTINA" value="AR"/>
+			<entry key="ARMENIA" value="AM"/>
+			<entry key="ARUBA" value="AW"/>
+			<entry key="AUSTRALIA" value="AU"/>
+			<entry key="AUSTRIA" value="AT"/>
+			<entry key="AZERBAIJAN" value="AZ"/>
+			<entry key="BAHAMAS" value="BS"/>
+			<entry key="BAHRAIN" value="BH"/>
+			<entry key="BANGLADESH" value="BD"/>
+			<entry key="BARBADOS" value="BB"/>
+			<entry key="BELARUS" value="BY"/>
+			<entry key="BELGIUM" value="BE"/>
+			<entry key="BELIZE" value="BZ"/>
+			<entry key="BENIN" value="BJ"/>
+			<entry key="BERMUDA" value="BM"/>
+			<entry key="BHUTAN" value="BT"/>
+			<entry key="BOLIVIA" value="BO"/>
+			<entry key="BOSNIA AND HERZEGOVINA" value="BA"/>
+			<entry key="BOTSWANA" value="BW"/>
+			<entry key="BOUVET ISLAND" value="BV"/>
+			<entry key="BRAZIL" value="BR"/>
+			<entry key="BRITISH INDIAN OCEAN TERRITORY" value="IO"/>
+			<entry key="BRUNEI DARUSSALAM" value="BN"/>
+			<entry key="BULGARIA" value="BG"/>
+			<entry key="BURKINA FASO" value="BF"/>
+			<entry key="BURUNDI" value="BI"/>
+			<entry key="CAMBODIA" value="KH"/>
+			<entry key="CAMEROON" value="CM"/>
+			<entry key="CANADA" value="CA"/>
+			<entry key="CAPE VERDE" value="CV"/>
+			<entry key="CAYMAN ISLANDS" value="KY"/>
+			<entry key="CENTRAL AFRICAN REPUBLIC" value="CF"/>
+			<entry key="CHAD" value="TD"/>
+			<entry key="CHILE" value="CL"/>
+			<entry key="CHINA" value="CN"/>
+			<entry key="CHRISTMAS ISLAND" value="CX"/>
+			<entry key="COCOS (KEELING) ISLANDS" value="CC"/>
+			<entry key="COLOMBIA" value="CO"/>
+			<entry key="COMOROS" value="KM"/>
+			<entry key="CONGO" value="CG"/>
+			<entry key="CONGO, THE DEMOCRATIC REPUBLIC OF THE" value="CD"/>
+			<entry key="COOK ISLANDS" value="CK"/>
+			<entry key="COSTA RICA" value="CR"/>
+			<entry key="COTE D'IVOIRE" value="CI"/>
+			<entry key="CROATIA" value="HR"/>
+			<entry key="CUBA" value="CU"/>
+			<entry key="CYPRUS" value="CY"/>
+			<entry key="CZECH REPUBLIC" value="CZ"/>
+			<entry key="DENMARK" value="DK"/>
+			<entry key="DJIBOUTI" value="DJ"/>
+			<entry key="DOMINICA" value="DM"/>
+			<entry key="DOMINICAN REPUBLIC" value="DO"/>
+			<entry key="ECUADOR" value="EC"/>
+			<entry key="EGYPT" value="EG"/>
+			<entry key="EL SALVADOR" value="SV"/>
+			<entry key="EQUATORIAL GUINEA" value="GQ"/>
+			<entry key="ERITREA" value="ER"/>
+			<entry key="ESTONIA" value="EE"/>
+			<entry key="ETHIOPIA" value="ET"/>
+			<entry key="FALKLAND ISLANDS (MALVINAS)" value="FK"/>
+			<entry key="FAROE ISLANDS" value="FO"/>
+			<entry key="FIJI" value="FJ"/>
+			<entry key="FINLAND" value="FI"/>
+			<entry key="FRANCE" value="FR"/>
+			<entry key="FRENCH GUIANA" value="GF"/>
+			<entry key="FRENCH POLYNESIA" value="PF"/>
+			<entry key="FRENCH SOUTHERN TERRITORIES" value="TF"/>
+			<entry key="GABON" value="GA"/>
+			<entry key="GAMBIA" value="GM"/>
+			<entry key="GEORGIA" value="GE"/>
+			<entry key="GERMANY" value="DE"/>
+			<entry key="GHANA" value="GH"/>
+			<entry key="GIBRALTAR" value="GI"/>
+			<entry key="GREECE" value="GR"/>
+			<entry key="GREENLAND" value="GL"/>
+			<entry key="GRENADA" value="GD"/>
+			<entry key="GUADELOUPE" value="GP"/>
+			<entry key="GUAM" value="GU"/>
+			<entry key="GUATEMALA" value="GT"/>
+			<entry key="GUERNSEY" value="GG"/>
+			<entry key="GUINEA" value="GN"/>
+			<entry key="GUINEA-BISSAU" value="GW"/>
+			<entry key="GUYANA" value="GY"/>
+			<entry key="HAITI" value="HT"/>
+			<entry key="HEARD ISLAND AND MCDONALD ISLANDS" value="HM"/>
+			<entry key="HOLY SEE (VATICAN CITY STATE)" value="VA"/>
+			<entry key="HONDURAS" value="HN"/>
+			<entry key="HONG KONG" value="HK"/>
+			<entry key="HUNGARY" value="HU"/>
+			<entry key="ICELAND" value="IS"/>
+			<entry key="INDIA" value="IN"/>
+			<entry key="INDONESIA" value="ID"/>
+			<entry key="IRAN, ISLAMIC REPUBLIC OF" value="IR"/>
+			<entry key="IRAQ" value="IQ"/>
+			<entry key="IRELAND" value="IE"/>
+			<entry key="ISLE OF MAN" value="IM"/>
+			<entry key="ISRAEL" value="IL"/>
+			<entry key="ITALY" value="IT"/>
+			<entry key="JAMAICA" value="JM"/>
+			<entry key="JAPAN" value="JP"/>
+			<entry key="JERSEY" value="JE"/>
+			<entry key="JORDAN" value="JO"/>
+			<entry key="KAZAKHSTAN" value="KZ"/>
+			<entry key="KENYA" value="KE"/>
+			<entry key="KIRIBATI" value="KI"/>
+			<entry key="KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF" value="KP"/>
+			<entry key="KOREA, REPUBLIC OF" value="KR"/>
+			<entry key="KOREA,REPUBLIC OF" value="KR"/>
+			<entry key="KUWAIT" value="KW"/>
+			<entry key="KYRGYZSTAN" value="KG"/>
+			<entry key="LAO PEOPLE'S DEMOCRATIC REPUBLIC" value="LA"/>
+			<entry key="LATVIA" value="LV"/>
+			<entry key="LEBANON" value="LB"/>
+			<entry key="LESOTHO" value="LS"/>
+			<entry key="LIBERIA" value="LR"/>
+			<entry key="LIBYAN ARAB JAMAHIRIYA" value="LY"/>
+			<entry key="LIECHTENSTEIN" value="LI"/>
+			<entry key="LITHUANIA" value="LT"/>
+			<entry key="LUXEMBOURG" value="LU"/>
+			<entry key="MACAO" value="MO"/>
+			<entry key="MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF" value="MK"/>
+			<entry key="MADAGASCAR" value="MG"/>
+			<entry key="MALAWI" value="MW"/>
+			<entry key="MALAYSIA" value="MY"/>
+			<entry key="MALDIVES" value="MV"/>
+			<entry key="MALI" value="ML"/>
+			<entry key="MALTA" value="MT"/>
+			<entry key="MARSHALL ISLANDS" value="MH"/>
+			<entry key="MARTINIQUE" value="MQ"/>
+			<entry key="MAURITANIA" value="MR"/>
+			<entry key="MAURITIUS" value="MU"/>
+			<entry key="MAYOTTE" value="YT"/>
+			<entry key="MEXICO" value="MX"/>
+			<entry key="MICRONESIA, FEDERATED STATES OF" value="FM"/>
+			<entry key="MOLDOVA, REPUBLIC OF" value="MD"/>
+			<entry key="MONACO" value="MC"/>
+			<entry key="MONGOLIA" value="MN"/>
+			<entry key="MONTENEGRO" value="ME"/>
+			<entry key="MONTSERRAT" value="MS"/>
+			<entry key="MOROCCO" value="MA"/>
+			<entry key="MOZAMBIQUE" value="MZ"/>
+			<entry key="MYANMAR" value="MM"/>
+			<entry key="NAMIBIA" value="NA"/>
+			<entry key="NAURU" value="NR"/>
+			<entry key="NEPAL" value="NP"/>
+			<entry key="NETHERLANDS" value="NL"/>
+			<entry key="NETHERLANDS ANTILLES" value="AN"/>
+			<entry key="NEW CALEDONIA" value="NC"/>
+			<entry key="NEW ZEALAND" value="NZ"/>
+			<entry key="NICARAGUA" value="NI"/>
+			<entry key="NIGER" value="NE"/>
+			<entry key="NIGERIA" value="NG"/>
+			<entry key="NIUE" value="NU"/>
+			<entry key="NORFOLK ISLAND" value="NF"/>
+			<entry key="NORTHERN MARIANA ISLANDS" value="MP"/>
+			<entry key="NORWAY" value="NO"/>
+			<entry key="OMAN" value="OM"/>
+			<entry key="PAKISTAN" value="PK"/>
+			<entry key="PALAU" value="PW"/>
+			<entry key="PALESTINIAN TERRITORY, OCCUPIED" value="PS"/>
+			<entry key="PANAMA" value="PA"/>
+			<entry key="PAPUA NEW GUINEA" value="PG"/>
+			<entry key="PARAGUAY" value="PY"/>
+			<entry key="PERU" value="PE"/>
+			<entry key="PHILIPPINES" value="PH"/>
+			<entry key="PITCAIRN" value="PN"/>
+			<entry key="POLAND" value="PL"/>
+			<entry key="PORTUGAL" value="PT"/>
+			<entry key="PUERTO RICO" value="PR"/>
+			<entry key="QATAR" value="QA"/>
+			<entry key="REUNION" value="RE"/>
+			<entry key="ROMANIA" value="RO"/>
+			<entry key="RUSSIAN FEDERATION" value="RU"/>
+			<entry key="RWANDA" value="RW"/>
+			<entry key="SAINT HELENA" value="SH"/>
+			<entry key="SAINT KITTS AND NEVIS" value="KN"/>
+			<entry key="SAINT LUCIA" value="LC"/>
+			<entry key="SAINT PIERRE AND MIQUELON" value="PM"/>
+			<entry key="SAINT VINCENT AND THE GRENADINES" value="VC"/>
+			<entry key="SAMOA" value="WS"/>
+			<entry key="SAN MARINO" value="SM"/>
+			<entry key="SAO TOME AND PRINCIPE" value="ST"/>
+			<entry key="SAUDI ARABIA" value="SA"/>
+			<entry key="SENEGAL" value="SN"/>
+			<entry key="SERBIA" value="RS"/>
+			<entry key="SEYCHELLES" value="SC"/>
+			<entry key="SIERRA LEONE" value="SL"/>
+			<entry key="SINGAPORE" value="SG"/>
+			<entry key="SLOVAKIA" value="SK"/>
+			<entry key="SLOVENIA" value="SI"/>
+			<entry key="SOLOMON ISLANDS" value="SB"/>
+			<entry key="SOMALIA" value="SO"/>
+			<entry key="SOUTH AFRICA" value="ZA"/>
+			<entry key="SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS" value="GS"/>
+			<entry key="SPAIN" value="ES"/>
+			<entry key="SRI LANKA" value="LK"/>
+			<entry key="SUDAN" value="SD"/>
+			<entry key="SURINAME" value="SR"/>
+			<entry key="SVALBARD AND JAN MAYEN" value="SJ"/>
+			<entry key="SWAZILAND" value="SZ"/>
+			<entry key="SWEDEN" value="SE"/>
+			<entry key="SWITZERLAND" value="CH"/>
+			<entry key="SYRIAN ARAB REPUBLIC" value="SY"/>
+			<entry key="TAIWAN, PROVINCE OF CHINA" value="TW"/>
+			<entry key="TAJIKISTAN" value="TJ"/>
+			<entry key="TANZANIA, UNITED REPUBLIC OF" value="TZ"/>
+			<entry key="THAILAND" value="TH"/>
+			<entry key="TIMOR-LESTE" value="TL"/>
+			<entry key="TOGO" value="TG"/>
+			<entry key="TOKELAU" value="TK"/>
+			<entry key="TONGA" value="TO"/>
+			<entry key="TRINIDAD AND TOBAGO" value="TT"/>
+			<entry key="TUNISIA" value="TN"/>
+			<entry key="TURKEY" value="TR"/>
+			<entry key="TURKMENISTAN" value="TM"/>
+			<entry key="TURKS AND CAICOS ISLANDS" value="TC"/>
+			<entry key="TUVALU" value="TV"/>
+			<entry key="UGANDA" value="UG"/>
+			<entry key="UKRAINE" value="UA"/>
+			<entry key="UNITED ARAB EMIRATES" value="AE"/>
+			<entry key="UNITED KINGDOM" value="GB"/>
+			<entry key="UNITED STATES" value="US"/>
+			<entry key="UNITED STATES MINOR OUTLYING ISLANDS" value="UM"/>
+			<entry key="URUGUAY" value="UY"/>
+			<entry key="UZBEKISTAN" value="UZ"/>
+			<entry key="VANUATU" value="VU"/>
+			<entry key="VENEZUELA" value="VE"/>
+			<entry key="VIET NAM" value="VN"/>
+			<entry key="VIRGIN ISLANDS, BRITISH" value="VG"/>
+			<entry key="VIRGIN ISLANDS, U.S." value="VI"/>
+			<entry key="WALLIS AND FUTUNA" value="WF"/>
+			<entry key="WESTERN SAHARA" value="EH"/>
+			<entry key="YEMEN" value="YE"/>
+			<entry key="ZAMBIA" value="ZM"/>
+			<entry key="ZIMBABWE" value="ZW"/>
+			  
+			<!-- "Custom" mappings -->
+			<entry key="UK" value="GB"/>
+			<entry key="WALES" value="GB"/>
+			<entry key="SCOTLAND" value="GB"/>
+			<entry key="ENGLAND" value="GB"/>
+			<entry key="UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND" value="GB"/>
+			<entry key="SVALBARD AND JAN MAYEN ISLANDS" value="SJ"/>
+			<entry key="UNITED STATES VIRGIN ISLANDS" value="VI"/>
+			<entry key="VENEZUELA (BOLIVARIAN REPUBLIC OF)" value="VI"/>
+			<entry key="HONG KONG SPECIAL ADMINISTRATIVE REGION OF CHINA" value="HK"/>
+			<entry key="MACAO SPECIAL ADMINISTRATIVE REGION OF CHINA" value="MO"/>
+			<entry key="DEMOCRATIC PEOPLE'S REPUBLIC OF KOREA" value="KP"/>
+			<entry key="REPUBLIC OF KOREA" value="KR"/>
+			<entry key="OCCUPIED PALESTINIAN TERRITORY" value="PS"/>
+			<entry key="REPUBLIC OF MOLDOVA" value="MD"/>
+			<entry key="CHANNEL ISLANDS" value="GB"/>
+			<entry key="FAEROE ISLANDS" value="FO"/>
+			<entry key="SVALBARD AND JAN MAYEN ISLANDS" value="SJ"/>
+			<entry key="HOLY SEE" value="VA"/>
+			<entry key="THE FORMER YUGOSLAV REPUBLIC OF MACEDONIA" value="MK"/>
+			
+			  			  
+			<!-- ISO 3 to 2 code mappings -->
+			<entry key="ABW" value="AW"/>
+			<entry key="AFG" value="AF"/>
+			<entry key="AGO" value="AO"/>
+			<entry key="AIA" value="AI"/>
+			<entry key="ALA" value="AX"/>
+			<entry key="ALB" value="AL"/>
+			<entry key="AND" value="AD"/>
+			<entry key="ANT" value="AN"/>
+			<entry key="ARE" value="AE"/>
+			<entry key="ARG" value="AR"/>
+			<entry key="ARM" value="AM"/>
+			<entry key="ASM" value="AS"/>
+			<entry key="ATA" value="AQ"/>
+			<entry key="ATF" value="TF"/>
+			<entry key="ATG" value="AG"/>
+			<entry key="AUS" value="AU"/>
+			<entry key="AUT" value="AT"/>
+			<entry key="AZE" value="AZ"/>
+			<entry key="BDI" value="BI"/>
+			<entry key="BEL" value="BE"/>
+			<entry key="BEN" value="BJ"/>
+			<entry key="BFA" value="BF"/>
+			<entry key="BGD" value="BD"/>
+			<entry key="BGR" value="BG"/>
+			<entry key="BHR" value="BH"/>
+			<entry key="BHS" value="BS"/>
+			<entry key="BIH" value="BA"/>
+			<entry key="BLR" value="BY"/>
+			<entry key="BLZ" value="BZ"/>
+			<entry key="BMU" value="BM"/>
+			<entry key="BOL" value="BO"/>
+			<entry key="BRA" value="BR"/>
+			<entry key="BRB" value="BB"/>
+			<entry key="BRN" value="BN"/>
+			<entry key="BTN" value="BT"/>
+			<entry key="BVT" value="BV"/>
+			<entry key="BWA" value="BW"/>
+			<entry key="CAF" value="CF"/>
+			<entry key="CAN" value="CA"/>
+			<entry key="CCK" value="CC"/>
+			<entry key="CHE" value="CH"/>
+			<entry key="CHL" value="CL"/>
+			<entry key="CHN" value="CN"/>
+			<entry key="CIV" value="CI"/>			   
+			<entry key="CMR" value="CM"/>
+			<entry key="COD" value="CD"/>
+			<entry key="COG" value="CG"/>
+			<entry key="COK" value="CK"/>
+			<entry key="COL" value="CO"/>
+			<entry key="COM" value="KM"/>
+			<entry key="CPV" value="CV"/>
+			<entry key="CRI" value="CR"/>
+			<entry key="CUB" value="CU"/>
+			<entry key="CXR" value="CX"/>
+			<entry key="CYM" value="KY"/>
+			<entry key="CYP" value="CY"/>
+			<entry key="CZE" value="CZ"/>
+			<entry key="DEU" value="DE"/>
+			<entry key="DJI" value="DJ"/>
+			<entry key="DMA" value="DM"/>
+			<entry key="DNK" value="DK"/>
+			<entry key="DOM" value="DO"/>
+			<entry key="DZA" value="DZ"/>
+			<entry key="ECU" value="EC"/>
+			<entry key="EGY" value="EG"/>
+			<entry key="ERI" value="ER"/>
+			<entry key="ESH" value="EH"/>
+			<entry key="ESP" value="ES"/>
+			<entry key="EST" value="EE"/>
+			<entry key="ETH" value="ET"/>
+			<entry key="FIN" value="FI"/>
+			<entry key="FJI" value="FJ"/>
+			<entry key="FLK" value="FK"/>
+			<entry key="FRA" value="FR"/>
+			<entry key="FRO" value="FO"/>
+			<entry key="FSM" value="FM"/>
+			<entry key="GAB" value="GA"/>
+			<entry key="GBR" value="GB"/>
+			<entry key="GEO" value="GE"/>
+			<entry key="GGY" value="GG"/>
+			<entry key="GHA" value="GH"/>
+			<entry key="GIB" value="GI"/>
+			<entry key="GIN" value="GN"/>
+			<entry key="GLP" value="GP"/>
+			<entry key="GMB" value="GM"/>
+			<entry key="GNB" value="GW"/>
+			<entry key="GNQ" value="GQ"/>
+			<entry key="GRC" value="GR"/>
+			<entry key="GRD" value="GD"/>
+			<entry key="GRL" value="GL"/>
+			<entry key="GTM" value="GT"/>
+			<entry key="GUF" value="GF"/>
+			<entry key="GUM" value="GU"/>
+			<entry key="GUY" value="GY"/>
+			<entry key="HKG" value="HK"/>
+			<entry key="HMD" value="HM"/>
+			<entry key="HND" value="HN"/>
+			<entry key="HRV" value="HR"/>
+			<entry key="HTI" value="HT"/>
+			<entry key="HUN" value="HU"/>
+			<entry key="IDN" value="ID"/>
+			<entry key="IMN" value="IM"/>
+			<entry key="IND" value="IN"/>
+			<entry key="IOT" value="IO"/>
+			<entry key="IRL" value="IE"/>
+			<entry key="IRN" value="IR"/>
+			<entry key="IRQ" value="IQ"/>
+			<entry key="ISL" value="IS"/>
+			<entry key="ISR" value="IL"/>
+			<entry key="ITA" value="IT"/>
+			<entry key="JAM" value="JM"/>
+			<entry key="JEY" value="JE"/>
+			<entry key="JOR" value="JO"/>
+			<entry key="JPN" value="JP"/>
+			<entry key="KAZ" value="KZ"/>
+			<entry key="KEN" value="KE"/>
+			<entry key="KGZ" value="KG"/>
+			<entry key="KHM" value="KH"/>
+			<entry key="KIR" value="KI"/>
+			<entry key="KNA" value="KN"/>
+			<entry key="KOR" value="KR"/>
+			<entry key="KWT" value="KW"/>
+			<entry key="LAO" value="LA"/>
+			<entry key="LBN" value="LB"/>
+			<entry key="LBR" value="LR"/>
+			<entry key="LBY" value="LY"/>
+			<entry key="LCA" value="LC"/>
+			<entry key="LIE" value="LI"/>
+			<entry key="LKA" value="LK"/>
+			<entry key="LSO" value="LS"/>
+			<entry key="LTU" value="LT"/>
+			<entry key="LUX" value="LU"/>
+			<entry key="LVA" value="LV"/>
+			<entry key="MAC" value="MO"/>
+			<entry key="MAR" value="MA"/>
+			<entry key="MCO" value="MC"/>
+			<entry key="MDA" value="MD"/>
+			<entry key="MDG" value="MG"/>
+			<entry key="MDV" value="MV"/>
+			<entry key="MEX" value="MX"/>
+			<entry key="MHL" value="MH"/>
+			<entry key="MKD" value="MK"/>
+			<entry key="MLI" value="ML"/>
+			<entry key="MLT" value="MT"/>
+			<entry key="MMR" value="MM"/>
+			<entry key="MNE" value="ME"/>
+			<entry key="MNG" value="MN"/>
+			<entry key="MNP" value="MP"/>
+			<entry key="MOZ" value="MZ"/>
+			<entry key="MRT" value="MR"/>
+			<entry key="MSR" value="MS"/>
+			<entry key="MTQ" value="MQ"/>
+			<entry key="MUS" value="MU"/>
+			<entry key="MWI" value="MW"/>
+			<entry key="MYS" value="MY"/>
+			<entry key="MYT" value="YT"/>
+			<entry key="NAM" value="NA"/>
+			<entry key="NCL" value="NC"/>
+			<entry key="NER" value="NE"/>
+			<entry key="NFK" value="NF"/>
+			<entry key="NGA" value="NG"/>
+			<entry key="NIC" value="NI"/>
+			<entry key="NIU" value="NU"/>
+			<entry key="NLD" value="NL"/>
+			<entry key="NOR" value="NO"/>
+			<entry key="NPL" value="NP"/>
+			<entry key="NRU" value="NR"/>
+			<entry key="NZL" value="NZ"/>
+			<entry key="OMN" value="OM"/>
+			<entry key="PAK" value="PK"/>
+			<entry key="PAN" value="PA"/>
+			<entry key="PCN" value="PN"/>
+			<entry key="PER" value="PE"/>
+			<entry key="PHL" value="PH"/>
+			<entry key="PLW" value="PW"/>
+			<entry key="PNG" value="PG"/>
+			<entry key="POL" value="PL"/>
+			<entry key="PRI" value="PR"/>
+			<entry key="PRK" value="KP"/>
+			<entry key="PRT" value="PT"/>
+			<entry key="PRY" value="PY"/>
+			<entry key="PSE" value="PS"/>
+			<entry key="PYF" value="PF"/>
+			<entry key="QAT" value="QA"/>
+			<entry key="REU" value="RE"/>
+			<entry key="ROU" value="RO"/>
+			<entry key="RUS" value="RU"/>
+			<entry key="RWA" value="RW"/>
+			<entry key="SAU" value="SA"/>
+			<entry key="SDN" value="SD"/>
+			<entry key="SEN" value="SN"/>
+			<entry key="SGP" value="SG"/>
+			<entry key="SGS" value="GS"/>
+			<entry key="SHN" value="SH"/>
+			<entry key="SJM" value="SJ"/>
+			<entry key="SLB" value="SB"/>
+			<entry key="SLE" value="SL"/>
+			<entry key="SLV" value="SV"/>
+			<entry key="SMR" value="SM"/>
+			<entry key="SOM" value="SO"/>
+			<entry key="SPM" value="PM"/>
+			<entry key="SRB" value="RS"/>
+			<entry key="STP" value="ST"/>
+			<entry key="SUR" value="SR"/>
+			<entry key="SVK" value="SK"/>
+			<entry key="SVN" value="SI"/>
+			<entry key="SWE" value="SE"/>
+			<entry key="SWZ" value="SZ"/>
+			<entry key="SYC" value="SC"/>
+			<entry key="SYR" value="SY"/>
+			<entry key="TCA" value="TC"/>
+			<entry key="TCD" value="TD"/>
+			<entry key="TGO" value="TG"/>
+			<entry key="THA" value="TH"/>
+			<entry key="TJK" value="TJ"/>
+			<entry key="TKL" value="TK"/>
+			<entry key="TKM" value="TM"/>
+			<entry key="TLS" value="TL"/>
+			<entry key="TON" value="TO"/>
+			<entry key="TTO" value="TT"/>
+			<entry key="TUN" value="TN"/>
+			<entry key="TUR" value="TR"/>
+			<entry key="TUV" value="TV"/>
+			<entry key="TWN" value="TW"/>
+			<entry key="TZA" value="TZ"/>
+			<entry key="UGA" value="UG"/>
+			<entry key="UKR" value="UA"/>
+			<entry key="UMI" value="UM"/>
+			<entry key="URY" value="UY"/>
+			<entry key="USA" value="US"/>
+			<entry key="UZB" value="UZ"/>
+			<entry key="VAT" value="VA"/>
+			<entry key="VCT" value="VC"/>
+			<entry key="VEN" value="VE"/>
+			<entry key="VGB" value="VG"/>
+			<entry key="VIR" value="VI"/>
+			<entry key="VNM" value="VN"/>
+			<entry key="VUT" value="VU"/>
+			<entry key="WLF" value="WF"/>
+			<entry key="WSM" value="WS"/>
+			<entry key="YEM" value="YE"/>
+			<entry key="ZAF" value="ZA"/>
+			<entry key="ZMB" value="ZM"/>
+			<entry key="ZWE" value="ZW"/>			  
+			  
+			<!-- OLD portal mappings -->
+			<entry key="IREL." value="IE"/>
+			<entry key="SCOT., IREL., ENG." value="GB"/>
+			<entry key="ENGL." value="GB"/>
+			<entry key="ICEL." value="IS"/>
+			<entry key="JAP." value="JP"/>
+			<entry key="ENG." value="GB"/>
+			<entry key="SCOTL." value="GB"/>
+			<entry key="ENGL., IREL." value="GB"/>
+			<entry key="NORW." value="NO"/>
+			<entry key="OLD NORW." value="NO"/>
+			<entry key="ENGLISH" value="GB"/>
+			<entry key="GAEIL." value="GB"/>
+			<entry key="IREL" value="GB"/>
+			<entry key="MALDIVES" value="MV"/>
+			<entry key="INDONESIA" value="ID"/>
+			<entry key="SOUTH AFRICA" value="ZA"/>
+			<entry key="CHRISTMAS I." value="CX"/>
+			<entry key="MAURITIUS" value="MU"/>
+			<entry key="MICRONESIA" value="FM"/>
+			<entry key="MARSHALL IS" value="MH"/>
+			<entry key="KIRIBATI" value="KI"/>
+			<entry key="PHILIPPINES" value="PH"/>
+			<entry key="MALAYSIA" value="MY"/>
+			<entry key="NEW CALEDONIA" value="NC"/>
+			<entry key="SOLOMON IS." value="SB"/>
+			<entry key="SAMOA" value="WS"/>
+			<entry key="N MARIANAS" value="US"/>
+			<entry key="TUAMOTO IS." value="PF"/>
+			<entry key="TAHITI" value="PF"/>
+			<entry key="JAPAN" value="JP"/>
+			<entry key="PAPUA N GUIN" value="PG"/>
+			<entry key="AUSTRALIA" value="AU"/>
+			<entry key="GUAM" value="GU"/>
+			<entry key="NIUE" value="NU"/>
+			<entry key="POLAND" value="PL"/>
+			<entry key="SEYCHELLES" value="SC"/>
+			<entry key="CAN BR COLUM" value="CA"/>
+			<entry key="CANADA" value="CA"/>
+			<entry key="ALASKA" value="US"/>
+			<entry key="FRANCE" value="FR"/>
+			<entry key="PORTUGAL" value="PT"/>
+			<entry key="GERMANY" value="DE"/>
+			<entry key="MALAWI" value="MW"/>
+			<entry key="HONG KONG" value="HK"/>
+			<entry key="BANGLADESH" value="BD"/>
+			<entry key="SRI LANKA" value="LK"/>
+			<entry key="QATAR" value="QA"/>
+			<entry key="SPAIN" value="ES"/>
+			<entry key="INDIA" value="IN"/>
+			<entry key="OMAN" value="OM"/>
+			<entry key="CAMBODIA" value="KH"/>
+			<entry key="PERU" value="PE"/>
+			<entry key="GALAPAGOS IS." value="EC"/>
+			<entry key="MEXICO" value="MX"/>
+			<entry key="ECUADOR" value="EC"/>
+			<entry key="NICARAGUA" value="NI"/>
+			<entry key="ZIMBABWE" value="ZW"/>
+			<entry key="TANZANIA" value="TZ"/>
+			<entry key="MOZAMBIQUE" value="MZ"/>
+			<entry key="FR GUIANA" value="GF"/>
+			<entry key="BRAZIL" value="BR"/>
+			<entry key="GREECE" value="GR"/>
+			<entry key="HAWAII" value="US"/>
+			<entry key="HUNGARY" value="HU"/>
+			<entry key="ROMANIA" value="RO"/>
+			<entry key="ITALY" value="IT"/>
+			<entry key="RUSSIAN FED" value="RU"/>
+			<entry key="KAZAKHSTAN" value="KZ"/>
+			<entry key="TAIWAN" value="TW"/>
+			<entry key="UZBEKISTAN" value="UZ"/>
+			<entry key="NETHERLANDS" value="NL"/>
+			<entry key="DENMARK" value="DK"/>
+			<entry key="SWEDEN" value="SE"/>
+			<entry key="NORWAY" value="NO"/>
+			<entry key="UKRAINE" value="UA"/>
+			<entry key="TURKEY" value="TR"/>
+			<entry key="FINLAND" value="FI"/>
+			<entry key="NEW ZEALAND" value="NZ"/>
+			<entry key="SWITZERLAND" value="CH"/>
+			<entry key="ALBANIA" value="AL"/>
+			<entry key="BELGIUM" value="BE"/>
+			<entry key="BULGARIA" value="BG"/>
+			<entry key="BELARUS" value="BY"/>
+			<entry key="LATVIA" value="LV"/>
+			<entry key="ESTONIA" value="EE"/>
+			<entry key="KYRGYZSTAN" value="KG"/>
+			<entry key="AUSTRIA" value="AT"/>
+			<entry key="MONGOLIA" value="MN"/>
+			<entry key="SLOVENIA" value="SI"/>
+			<entry key="COSTA RICA" value="CR"/>
+			<entry key="VENEZUELA" value="VE"/>
+			<entry key="MAURITANIA" value="MR"/>
+			<entry key="ST HELENA" value="SH"/>
+			<entry key="AZORES IS." value="PT"/>
+			<entry key="BELIZE" value="BZ"/>
+			<entry key="TRINIDAD TOB" value="TT"/>
+			<entry key="MALTA" value="MT"/>
+			<entry key="SURINAME" value="SR"/>
+			<entry key="FORMER USSR" value="RU"/>
+			<entry key="ARGENTINA" value="AR"/>
+			<entry key="PARAGUAY" value="PY"/>
+			<entry key="COLOMBIA" value="CO"/>
+			<entry key="BAHAMAS" value="BS"/>
+			<entry key="GUYANA" value="GY"/>
+			<entry key="PUERTO RICO" value="PR"/>
+			<entry key="KERMADEC IS." value="NZ"/>
+			<entry key="FIJI" value="FJ"/>
+			<entry key="VANUATU" value="VU"/>
+			<entry key="CHILE" value="CL"/>
+			<entry key="CUBA" value="CU"/>
+			<entry key="DOMINICAN RP" value="DO"/>
+			<entry key="JAMAICA" value="JM"/>
+			<entry key="LAOS" value="LA"/>
+			<entry key="THAILAND" value="TH"/>
+			<entry key="ICELAND" value="IS"/>
+			<entry key="IRELAND" value="IE"/>
+			<entry key="DJIBOUTI" value="DJ"/>
+			<entry key="KUWAIT" value="KW"/>
+			<entry key="SAUDI ARABIA" value="SA"/>
+			<entry key="URUGUAY" value="UY"/>
+			<entry key="CZECH REP" value="CZ"/>
+			<entry key="US VIRGIN IS" value="VI"/>
+			<entry key="IRAN" value="IR"/>
+			<entry key="ISRAEL" value="IL"/>
+			<entry key="PANAMA" value="PA"/>
+			<entry key="MADEIRA IS." value="PT"/>
+			<entry key="SOMALIA" value="SO"/>
+			<entry key="VIET NAM" value="VN"/>
+			<entry key="UK SCOTLAND" value="GB"/>
+			<entry key="UK ENGLD WAL" value="GB"/>
+			<entry key="PAKISTAN" value="PK"/>
+			<entry key="NETHANTILLES" value="AN"/>
+			<entry key="NIGERIA" value="NG"/>
+			<entry key="CHINA MAIN" value="CN"/>
+			<entry key="NEPAL" value="NP"/>
+			<entry key="NAMIBIA" value="NA"/>
+			<entry key="ZAMBIA" value="ZM"/>
+			<entry key="CAN QUEBEC" value="CA"/>
+			<entry key="KOREA REP" value="KR"/>
+			<entry key="BOLIVIA" value="BO"/>
+			<entry key="RYUKYU IS." value="JP"/>
+			<entry key="BURUNDI" value="BI"/>
+			<entry key="CONGO DEM REP" value="CD"/>
+			<entry key="REUNION" value="RE"/>
+			<entry key="ANGOLA" value="AO"/>
+			<entry key="TONGA" value="TO"/>
+			<entry key="PITCAIRN" value="PN"/>
+			<entry key="FR POLYNESIA" value="PF"/>
+			<entry key="PALAU" value="PW"/>
+			<entry key="KENYA" value="KE"/>
+			<entry key="CAPE VERDE" value="CV"/>
+			<entry key="TUNISIA" value="TN"/>
+			<entry key="EGYPT" value="EG"/>
+			<entry key="MOROCCO" value="MA"/>
+			<entry key="MONACO" value="MC"/>
+			<entry key="SAINT LUCIA" value="LC"/>
+			<entry key="ISLE OF MAN" value="GB"/>
+			<entry key="LEBANON" value="LB"/>
+			<entry key="GUADELOUPE" value="GP"/>
+			<entry key="MARTINIQUE" value="MQ"/>
+			<entry key="CAMEROON" value="CM"/>
+			<entry key="FAEROE IS" value="FO"/>
+			<entry key="CANARY IS." value="ES"/>
+			<entry key="GREENLAND" value="GL"/>
+			<entry key="CAN NEWFOUNL" value="CA"/>
+			<entry key="MYANMAR" value="MM"/>
+			<entry key="SAO TOME PRN" value="ST"/>
+			<entry key="UNTD ARAB EM" value="AE"/>
+			<entry key="BARBADOS" value="BB"/>
+			<entry key="LIBYA" value="LY"/>
+			<entry key="AZERBAIJAN" value="AZ"/>
+			<entry key="SUDAN" value="SD"/>
+			<entry key="REVILLAGIGEDO" value="MX"/>
+			<entry key="HAITI" value="HT"/>
+			<entry key="GUATEMALA" value="GT"/>
+			<entry key="HONDURAS" value="HN"/>
+			<entry key="EL SALVADOR" value="SV"/>
+			<entry key="OGASAWARA IS." value="JP"/>
+			<entry key="MADAGASCAR" value="MG"/>
+			<entry key="ANGUILLA" value="AI"/>
+			<entry key="ANTIGUA BARB" value="AG"/>
+			<entry key="GRENADA" value="GD"/>
+			<entry key="MONTSERRAT" value="MS"/>
+			<entry key="ST VINCENT" value="VC"/>
+			<entry key="KURIL IS." value="RU"/>
+			<entry key="COMOROS" value="KM"/>
+			<entry key="SENEGAL" value="SN"/>
+			<entry key="SIERRA LEONE" value="SL"/>
+			<entry key="GHANA" value="GH"/>
+			<entry key="CARGADOS CARAJOS" value="MU"/>
+			<entry key="AMER SAMOA" value="AS"/>
+			<entry key="BERMUDA" value="BM"/>
+			<entry key="TOKELAU" value="TK"/>
+			<entry key="BENIN" value="BJ"/>
+			<entry key="GUINEABISSAU" value="GW"/>
+			<entry key="GUINEA" value="GN"/>
+			<entry key="COTE D'IVOIRE" value="CI"/>
+			<entry key="GEORGIA" value="GE"/>
+			<entry key="ST KITTS NEV" value="KN"/>
+			<entry key="DOMINICA" value="DM"/>
+			<entry key="SYRIA" value="SY"/>
+			<entry key="CYPRUS" value="CY"/>
+			<entry key="ALGERIA" value="DZ"/>
+			<entry key="US MISC PAC" value="UM"/>
+			<entry key="ETHIOPIA" value="ET"/>
+			<entry key="UGANDA" value="UG"/>
+			<entry key="BAHRAIN" value="BH"/>
+			<entry key="ASCENSION I." value="SH"/>
+			<entry key="CURAÃ§AO I." value="AN"/>
+			<entry key="RODRIGUEZ" value="MU"/>
+			<entry key="YEMEN" value="YE"/>
+			<entry key="BR IND OC TR" value="IO"/>
+			<entry key="ANDAMAN IS." value="IN"/>
+			<entry key="PAC IS TR TR" value="UM"/>
+			<entry key="CHAD" value="TD"/>
+			<entry key="KOREA D P RP" value="KP"/>
+			<entry key="TUVALU" value="TV"/>
+			<entry key="LESOTHO" value="LS"/>
+			<entry key="LIBERIA" value="LR"/>
+			<entry key="EQ GUINEA" value="GQ"/>
+			<entry key="GABON" value="GA"/>
+			<entry key="NORFOLK I." value="NF"/>
+			<entry key="IRAQ" value="IQ"/>
+			<entry key="JORDAN" value="JO"/>
+			<entry key="NIGER" value="NE"/>
+			<entry key="GAMBIA" value="GM"/>
+			<entry key="BURKINA FASO" value="BF"/>
+			<entry key="CENT AFR REP" value="CF"/>
+			<entry key="MALI" value="ML"/>
+			<entry key="SINGAPORE" value="SG"/>
+			<entry key="LITHUANIA" value="LT"/>
+			<entry key="CROATIA" value="HR"/>
+			<entry key="FALKLAND IS" value="FK"/>
+			<entry key="UK NO IRELD" value="GB"/>
+			<entry key="MARQUESAS IS" value="PF"/>
+			<entry key="ARMENIA" value="AM"/>
+			<entry key="ADMIRALTY IS." value="US"/>
+			<entry key="CONGO REP" value="CD"/>
+			<entry key="TOGO" value="TG"/>
+			<entry key="ANTARCTICA" value="AQ"/>
+			<entry key="CAN MARITIMS" value="CA"/>
+			<entry key="SLOVAKIA" value="SK"/>
+			<entry key="EASTER I." value="CL"/>
+			<entry key="COCOS IS" value="CC"/>
+			<entry key="JOHNSTON I." value="US"/>
+			<entry key="BOTSWANA" value="BW"/>
+			<entry key="CHINA" value="CN"/>
+			<entry key="AFGHANISTAN" value="AF"/>
+			<entry key="UNITED KINGDOM" value="GB"/>
+			<entry key="PAPUA NEW GUINEA" value="PG"/>
+			<entry key="VIETNAM" value="VN"/>
+			<entry key="SOUTH KOREA" value="KR"/>
+			<entry key="DOMINICAN REPUBLIC" value="DO"/>
+			<entry key="ZAIRE" value="CD"/>
+			<entry key="RUSSIAN FEDERATION" value="RU"/>
+			<entry key="UNITED STATES" value="US"/>
+			<entry key="RÏ¿½UNION" value="RE"/>
+			<entry key="FEDERATED STATES OF MICRONESIA" value="FM"/>
+			<entry key="TANZANIA, UNITED REPUBLIC OF" value="TZ"/>
+			<entry key="RUSSIA" value="RU"/>
+			<entry key="CZECH REPUBLIC" value="CZ"/>
+			<entry key="CONGO, THE DEMOCRATIC REPUBLIC OF THE" value="CD"/>
+			<entry key="IVORY COAST" value="CI"/>
+			<entry key="PENINSULAR MALAYSIA" value="MY"/>
+			<entry key="WEST GERMANY" value="DE"/>
+			<entry key="GREAT BRITAIN" value="GB"/>
+			<entry key="GALAPAGOS IDS" value="EC"/>
+			<entry key="LUXEMBOURG" value="LU"/>
+			<entry key="SIBERIA" value="RU"/>
+			<entry key="BURMA" value="MM"/>
+			<entry key="FRENCH GUIANA" value="GF"/>
+			<entry key="CONGO" value="CD"/>
+			<entry key="EQUATORIAL GUINEA" value="GQ"/>
+			<entry key="SOLOMON IDS" value="SB"/>
+			<entry key="ENGLAND" value="GB"/>
+			<entry key="UPPER VOLTA" value="BF"/>
+			<entry key="MEXICO;" value="MX"/>
+			<entry key="SOLOMON ISLANDS" value="SB"/>
+			<entry key="CELEBES" value="ID"/>
+			<entry key="HAWAIIAN IDS" value="US"/>
+			<entry key="LIECHTENSTEIN" value="LI"/>
+			<entry key="BORNEO" value="ID"/>
+			<entry key="CENTRAL AFRICAN REPUBLIC" value="CF"/>
+			<entry key="WESTERN SAMOA" value="WS"/>
+			<entry key="MALAY PENINSULA" value="MY"/>
+			<entry key="IRAN, ISLAMIC REPUBLIC OF" value="IR"/>
+			<entry key="FAROE ISLANDS" value="FO"/>
+			<entry key="SYRIAN ARAB REPUBLIC" value="SY"/>
+			<entry key="MICRONESIA, FEDERATED STATES OF" value="FM"/>
+			<entry key="CLIPPERTON ISLAND" value="PF"/>
+			<entry key="KOREA, REPUBLIC OF" value="KR"/>
+			<entry key="PAPUA NEW GUINEA ?" value="PG"/>
+			<entry key="PAASEILAND" value="CL"/>
+			<entry key="LIBYE" value="LY"/>
+			<entry key="REP. MALAGASIA" value="MG"/>
+			<entry key="COAS OF LIBERIA" value="LR"/>
+			<entry key="MOSSAMBIQUE" value="MZ"/>
+			<entry key="LIBANON" value="LB"/>
+			<entry key="S.-YEMEN" value="YE"/>
+			<entry key="ALGERIÃ«" value="DZ"/>
+			<entry key="KASACH.SSR" value="KZ"/>
+			<entry key="KIRG.S.S.R" value="KG"/>
+			<entry key="ST.VINCENT" value="VC"/>
+			<entry key="NETHERLANDS ANTILLES" value="AN"/>
+			<entry key="ARGENTIÃ«" value="AR"/>
+			<entry key="NETHERLAND" value="NL"/>
+			<entry key="NDERLAND" value="NL"/>
+			<entry key="CHECH REPUBLIC" value="CZ"/>
+			<entry key="QUADELOUPE" value="GP"/>
+			<entry key="ARUBA" value="AW"/>
+			<entry key="E.-DOMINICA" value="DM"/>
+			<entry key="PORT.ANGOLA" value="AO"/>
+			<entry key="GUATAMALA" value="GT"/>
+			<entry key=" PERU" value="PE"/>
+			<entry key="COSTA ROCA" value="CR"/>
+			<entry key="ERITREA" value="ER"/>
+			<entry key="DUITLAND" value="DE"/>
+			<entry key="ARGENTANIÃ«" value="AR"/>
+			<entry key="SURINA" value="SR"/>
+			<entry key="ANTAGUA" value="AG"/>
+			<entry key="AUNUU ISLAND" value="AS"/>
+			<entry key="S.RODESIA" value="ZW"/>
+			<entry key="SOUTHERN RODESIA" value="ZW"/>
+			<entry key="EL SALVODOR" value="SV"/>
+			<entry key="RUSLAND" value="RU"/>
+			<entry key="CHINEES-TURKESTAN" value="CN"/>
+			<entry key="W.MALAYSIA" value="MY"/>
+			<entry key="NEW HIBRIDES" value="VU"/>
+			<entry key="CARANISCHE EILANDEN" value="ES"/>
+			<entry key="TALAIA" value="PT"/>
+			<entry key="W.PALKISTAN" value="PK"/>
+			<entry key="RUANDA" value="RW"/>
+			<entry key="POTUGAL" value="PT"/>
+			<entry key="TRINIDAD AND TOBAGO" value="TT"/>
+			<entry key="EAST TURKEY" value="TR"/>
+			<entry key="TADJ.SSR" value="TJ"/>
+			<entry key="W.-NORTH-AMERICA" value="US"/>
+			<entry key="ASERB.SSR" value="AZ"/>
+			<entry key="PHILIPIJNEN" value="PH"/>
+			<entry key="PISANG ISLAND" value="IN"/>
+			<entry key="INDENESIA" value="ID"/>
+			<entry key="EQUADOR" value="EC"/>
+			<entry key="TANAZANIA" value="TZ"/>
+			<entry key="THURSDAY ISLAND" value="AU"/>
+			<entry key="BRASIL" value="BR"/>
+			<entry key="BARBUDA" value="AG"/>
+			<entry key="LES SAINTES" value="GP"/>
+			<entry key="ANTIQUA" value="AG"/>
+			<entry key="N.HEBRIDEN" value="VU"/>
+			<entry key="BRUNEI DARUSSALAM" value="BN"/>
+			<entry key="AM.-SAMOA" value="AS"/>
+			<entry key="MAJORCA" value="ES"/>
+			<entry key="N.W.-ECUADOR" value="EC"/>
+			<entry key="FUENTEVENTURA" value="ES"/>
+			<entry key="FUERTEVENTURA" value="ES"/>
+			<entry key="POLYNESIÃ«" value="PF"/>
+			<entry key="ARIZONA" value="US"/>
+			<entry key="SOUTH-CHINA" value="CN"/>
+			<entry key="NORFOLK ISLAND" value="NF"/>
+			<entry key="SANDWICH ISLAND" value="GS"/>
+			<entry key="HAWAÃ¯" value="US"/>
+			<entry key="ROEMENIE" value="RO"/>
+			<entry key="CAMBODJA" value="KH"/>
+			<entry key="PLILIPPIJNEN" value="PH"/>
+			<entry key="HONGARY" value="HU"/>
+			<entry key="ANDORRA" value="AD"/>
+			<entry key=" INDONESIA" value="ID"/>
+			<entry key="TEXAS" value="US"/>
+			<entry key="NORTH-BRAZILIA" value="BR"/>
+			<entry key="E.BOLIVIA" value="BO"/>
+			<entry key="OPER VOLTA" value="BF"/>
+			<entry key="LEGON" value="GH"/>
+			<entry key="COTE D" value="CI"/>
+			<entry key="BOSNIA AND HERZEGOVINA" value="BA"/>
+			<entry key="RODESIA" value="ZW"/>
+			<entry key="W.-ALGERIA" value="DZ"/>
+			<entry key="AMSTERDAM" value="NL"/>
+			<entry key="DENEMARKEN" value="DK"/>
+			<entry key="SYRIE" value="SY"/>
+			<entry key="CAMBODGE" value="KH"/>
+			<entry key="CAMBOGE" value="KH"/>
+			<entry key="NORTH PERZIÃ«" value="IR"/>
+			<entry key="BELUDSCHISTAN" value="PK"/>
+			<entry key="ZUID PERZIÃ«" value="IR"/>
+			<entry key="BAY OF PANAMA" value="PA"/>
+			<entry key="CABRERA ISLAND" value="ES"/>
+			<entry key="SOEDAN" value="SD"/>
+			<entry key="ABESSINIÃ«" value="ET"/>
+			<entry key="BENIM" value="BJ"/>
+			<entry key="E.-AUSTRALIA" value="AU"/>
+			<entry key="MIDDEN-FRANKRIJK" value="FR"/>
+			<entry key="SAINT HELENA" value="SH"/>
+			<entry key="MEIDERA" value="PT"/>
+			<entry key="MEIDERA ARCHIPEL" value="PT"/>
+			<entry key="VOGEZEN" value="FR"/>
+			<entry key="NEDERALND" value="NL"/>
+			<entry key="S. OF GERMANY" value="DE"/>
+			<entry key="FRANKCE" value="FR"/>
+			<entry key="CALIFORNIÃ«" value="US"/>
+			<entry key="NORTH CAROLINA" value="US"/>
+			<entry key="WEST-PAKISTAN" value="PK"/>
+			<entry key="RWANDA" value="RW"/>
+			<entry key="TUNESIÃ«" value="TN"/>
+			<entry key="KANARISCHE EILANDEN" value="ES"/>
+			<entry key="TUNIS" value="TN"/>
+			<entry key="MALORCA" value="ES"/>
+			<entry key="ROEMENIÃ«" value="RO"/>
+			<entry key="FRNCE" value="FR"/>
+			<entry key="S.E.TURKEY" value="TR"/>
+			<entry key="DUISTLAND" value="DE"/>
+			<entry key="BURGARIJE" value="BG"/>
+			<entry key="PARAQUANA" value="VE"/>
+			<entry key="MOCAMBIQUE" value="MZ"/>
+			<entry key="TADZHIKISTAN" value="TJ"/>
+			<entry key="ZR (?)" value="CD"/>
+			<entry key="TRISTAN DA CUNHA" value="SH"/>
+			<entry key="EC CF." value="EC"/>
+			<entry key="SR ?" value="SR"/>
+			<entry key="NE BOSNIA-HERZEGOVINA" value="BA"/>
+			<entry key="SR CF." value="SR"/>
+			<entry key="[ID]" value="ID"/>
+			<entry key="ID CF." value="ID"/>
+			<entry key="[JP]" value="JP"/>
+			<entry key="ID CF" value="ID"/>
+			<entry key="TURKMENISTAN" value="TM"/>
+			<entry key="INACCESSIBLE ISLAND" value="SH"/>
+			<entry key="NIGHTINGALE ISLAND" value="SH"/>
+			<entry key="COOK ISLANDS" value="CK"/>
+			<entry key="SR C.F." value="SR"/>
+			<entry key="ID ?" value="ID"/>
+			<entry key="FR/MARQUESAS ISLANDS" value="PF"/>
+			<entry key="AU CF." value="AU"/>
+			<entry key="SAMOA ISLANDS" value="WS"/>
+			<entry key="US/MARIANAS ISLANDS" value="US"/>
+			<entry key="NL CF." value="NL"/>
+			<entry key="ET (ABESSINIE)" value="ET"/>
+			<entry key="[US]" value="US"/>
+			<entry key="USSR" value="RU"/>
+			<entry key="U.S. VIRGIN ISLANDS" value="VI"/>
+			<entry key="ECUADOR, GALAPAGOS ISLANDS" value="EC"/>
+			<entry key="U.S.A." value="US"/>
+			<entry key="CAPE VERDE ISLANDS" value="CV"/>
+			<entry key="TIMOR-LESTE" value="TL"/>
+			<entry key="ST. LUCIA" value="LC"/>
+			<entry key="ST VINCENT AND THE GRENADINES" value="VC"/>
+			<entry key="ASCENSION" value="SH"/>
+			<entry key="CANARY ISLANDS" value="ES"/>
+			<entry key="VIRGIN ISLANDS, U.S." value="VI"/>
+			<entry key="JAVA" value="ID"/>
+			<entry key="FORMOSA" value="TW"/>
+			<entry key="(INDONESIA)" value="ID"/>
+			<entry key="CAMEROUN" value="CM"/>
+			<entry key="(INDIA)" value="IN"/>
+			<entry key="SUMATRA" value="ID"/>
+			<entry key="GERMANY (?)" value="DE"/>
+			<entry key="RUMANIA" value="RO"/>
+			<entry key="(GERMANY)" value="DE"/>
+			<entry key="TIBET" value="CN"/>
+			<entry key="INDONESIAN" value="ID"/>
+			<entry key="INDONESIA?" value="ID"/>
+			<entry key="ERITHREA" value="ER"/>
+			<entry key=" YEMEN" value="YE"/>
+			<entry key="N. KOREA" value="KP"/>
+			<entry key="KIRGIZIYA" value="KG"/>
+			<entry key="CHINA?" value="CN"/>
+			<entry key="BOSNIA" value="BA"/>
+			<entry key="ITALY?" value="IT"/>
+			<entry key="ITALY/" value="IT"/>
+			<entry key="ROMANIA?" value="RO"/>
+			<entry key="HUNGARIA" value="HU"/>
+			<entry key="AZERBAYDZHAN" value="AZ"/>
+			<entry key="JAPAN?" value="JP"/>
+			<entry key="UZBEKISTAN?" value="UZ"/>
+			<entry key="SPAIN?" value="ES"/>
+			<entry key="S. KOREA" value="KR"/>
+			<entry key="NORTH KOREA" value="KP"/>
+			<entry key="KIRGYZIYA" value="KG"/>
+			<entry key="TADZHIKISTAN?" value="TJ"/>
+			<entry key="RUSSIA?" value="RU"/>
+			<entry key="BOSNIA?" value="BA"/>
+			<entry key="CHINA (KITAY)" value="CN"/>
+			<entry key="TURKEY?" value="TR"/>
+			<entry key="HERCEGOVINA" value="BA"/>
+			<entry key="SWITSERLAND" value="CH"/>
+			<entry key="IRAN?" value="IR"/>
+			<entry key="CZECHIA" value="CZ"/>
+			<entry key="SPAIN??" value="ES"/>
+			<entry key="SLOVACIA" value="SK"/>
+			<entry key="IAUSTRIA" value="AT"/>
+			<entry key="GERMANY?" value="DE"/>
+			<entry key="SLOVAKIA?" value="SK"/>
+			<entry key="TIBET?" value="CN"/>
+			<entry key="ARMENIYA" value="AM"/>
+			<entry key="BOSNIA AND HERCEGOVINA" value="BA"/>
+			<entry key="CROATIA?" value="HR"/>
+			<entry key="HERCEGOVINA??" value="BA"/>
+			<entry key="GEORGIA?" value="GE"/>
+			<entry key="HERZEGOVINA" value="BA"/>
+			<entry key="ITALIA" value="IT"/>
+			<entry key="UNITED STATES?" value="US"/>
+			<entry key="SAO TOME AND PRINCIPE" value="ST"/>
+			<entry key="TAIWAN, PROVINCE OF CHINA" value="TW"/>
+			<entry key="U S A" value="US"/>
+			<entry key="PHILIPPINE ISLANDS" value="PH"/>
+			<entry key="U S S R" value="RU"/>
+			<entry key="TRINIDAD &amp; TOBAGO" value="TT"/>
+			<entry key="ST LUCIA" value="LC"/>
+			<entry key="MARIE-GALANTE" value="GP"/>
+			<entry key="CAYMAN ISLANDS" value="KY"/>
+			<entry key="ANTIGUA" value="AG"/>
+			<entry key="SEYCHELLES REPUBLIC" value="SC"/>
+			<entry key="TAJIKISTAN" value="TJ"/>
+			<entry key="AMERICAN SAMOA" value="AS"/>
+			<entry key="UNITED ARAB EMIRATES" value="AE"/>
+			<entry key="GRENADINE ISLANDS" value="VC"/>
+			<entry key="WEST CAROLINE ISLAND" value="PW"/>
+			<entry key="NAVASSA" value="US"/>
+			<entry key="SCOTLAND" value="GB"/>
+			<entry key="ST EUSTATIUS" value="AN"/>
+			<entry key="MARIANAS ISLANDS" value="US"/>
+			<entry key="RIUKIU ISLANDS" value="JP"/>
+			<entry key="KURILE ISLANDS" value="RU"/>
+			<entry key="SOUTH VIETNAM" value="VN"/>
+			<entry key="NEW HEBRIDES" value="VU"/>
+			<entry key="KENYA?" value="KE"/>
+			<entry key="BHUTAN" value="BT"/>
+			<entry key="THE BAHAMAS" value="BS"/>
+			<entry key="UNITED REPUBLIC OF TANZANIA" value="TZ"/>
+			<entry key="CENTRAL AFRICA REPUBLIC" value="CF"/>
+			<entry key="MARSHALL ISLANDS" value="MH"/>
+			<entry key="MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF" value="MK"/>
+			<entry key="LIBYAN ARAB JAMAHIRIYA" value="LY"/>
+			<entry key="MACEDONIA" value="MK"/>
+			<entry key="SAUDI ARABIA ?" value="SA"/>
+			<entry key="EGYPT?" value="EG"/>
+			<entry key="SOUTH AFRICA ?" value="ZA"/>
+			<entry key="JAPAN/R P CHINA" value="CN"/>
+			<entry key="MADEIRA" value="PT"/>
+			<entry key="FALKLAND ISLANDS" value="FK"/>
+			<entry key="NETHERLAND ANTILLES" value="AN"/>
+			<entry key="CURACAO" value="AN"/>
+			<entry key="SOUTH GEORGIA" value="GS"/>
+			<entry key="ANTARCTIC" value="AQ"/>
+			<entry key="CENTRAL AFRICAN REP" value="CF"/>
+			<entry key="COCOS ISLANDS" value="CC"/>
+			<entry key="ST. CROIX" value="US"/>
+			<entry key="GUINEA-BISSAU" value="GW"/>
+			<entry key="SWEDEN?" value="SE"/>
+			<entry key="TUAMOTU ISLANDS" value="PF"/>
+			<entry key="SOUTH GEORGIA ?" value="GS"/>
+			<entry key="SAUDIARABIA" value="SA"/>
+			<entry key="P R CHINA ?" value="CN"/>
+			<entry key="RUSSIA ?" value="RU"/>
+			<entry key="SVALBARD AND JAN MAYEN" value="SJ"/>
+			<entry key="ST. HELENA" value="SH"/>
+			<entry key="[ISRAEL?]" value="IL"/>
+			<entry key="EASTER ISLAND" value="CL"/>
+			<entry key="[NEW ZEALAND??]" value="NZ"/>
+			<entry key="SHETLAND ISLANDS" value="GB"/>
+			<entry key="GAMBIA?" value="GM"/>
+			<entry key="CENTRAL AFRICAN REP?" value="CF"/>
+			<entry key="SOCIETY ISLANDS" value="PF"/>
+			<entry key="ST. THOMAS" value="VI"/>
+			<entry key="BEAR ISLAND" value="NO"/>
+			<entry key="CONGO LEOPOLDVILLE" value="CD"/>
+			<entry key="NORWAY?" value="NO"/>
+			<entry key="SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS" value="GS"/>
+			<entry key="THAILAND?" value="TH"/>
+			<entry key="DANDERYD SWEDEN" value="SE"/>
+			<entry key="ZWOLLE THE NETHERLANDS" value="NL"/>
+			<entry key="AICHI JAPAN" value="JP"/>
+			<entry key="FORMER U.S.S.R." value="RU"/>
+			<entry key="U.K." value="GB"/>
+			<entry key="BRISTOL U.K." value="GB"/>
+			<entry key="LEIDEN THE NETHERLANDS" value="NL"/>
+			<entry key="BECQUEVOORT BELGIUM" value="BE"/>
+			<entry key="THE NETHERLANDS" value="NL"/>
+			<entry key="OSAKA JAPAN" value="JP"/>
+			<entry key="RECIFE BRAZIL" value="BR"/>
+			<entry key="ALBERTON SOUTH AFRICA" value="ZA"/>
+			<entry key="DELFT THE NETHERLANDS" value="NL"/>
+			<entry key="ESSLINGEN GERMANY" value="DE"/>
+			<entry key="MADRID AREA SPAIN" value="ES"/>
+			<entry key="NEWCASTLE-UPON-TYNE ENGLAND" value="GB"/>
+			<entry key="STOKE-ON-TRENT ENGLAND" value="GB"/>
+			<entry key="LONDON ENGLAND" value="GB"/>
+			<entry key="WARWICK ENGLAND" value="GB"/>
+			<entry key="SALISBURY ENGLAND" value="GB"/>
+			<entry key="BURMINGHAM ENGLAND" value="GB"/>
+			<entry key="CARDIFF WALES" value="GB"/>
+			<entry key="ABERDEEN SCOTLAND" value="GB"/>
+			<entry key="WORTHING ENGLAND" value="GB"/>
+			<entry key="BRADFORT U.K." value="GB"/>
+			<entry key="DUBLIN IRELAND" value="IE"/>
+			<entry key="LONDON U.K." value="GB"/>
+			<entry key="ALASKA U.S.A." value="US"/>
+			<entry key="WALES" value="GB"/>
+			<entry key="LEIPZIG GERMANY" value="DE"/>
+			<entry key="REUNION ISLAND" value="RE"/>
+			<entry key="IWATA JAPAN" value="JP"/>
+			<entry key="FLORIDA U.S.A." value="US"/>
+			<entry key="LUDHIANA INDIA" value="IN"/>
+			<entry key="DEHLI INDIA" value="IN"/>
+			<entry key="BERKELEY U.S.A." value="US"/>
+			<entry key="GÃ¶TEBORG SWEDEN" value="SE"/>
+			<entry key="SKÃ¶VDE SWEDEN" value="SE"/>
+			<entry key="HALMSTAD SWEDEN" value="SE"/>
+			<entry key="SHIZUOKA PREFECTURE JAPAN" value="JP"/>
+			<entry key="OREBRO SWEDEN" value="SE"/>
+			<entry key="GRENOBLE FRANCE" value="FR"/>
+			<entry key="GÃ¤VLE SWEDEN" value="SE"/>
+			<entry key="STOCKHOLM SWEDEN" value="SE"/>
+			<entry key="DEPT. BACT. COUNTY HOSPITAL GYULA HUNGARY" value="HU"/>
+			<entry key="MALMÃ¶ SWEDEN" value="SE"/>
+			<entry key="LEEDS U.K." value="GB"/>
+			<entry key="OFF NORTH CAPE NORWAY" value="NO"/>
+			<entry key="HEIDELBERG GERMANY" value="DE"/>
+			<entry key="UPPSALA SWEDEN" value="SE"/>
+			<entry key="SUNDSVALL SWEDEN" value="SE"/>
+			<entry key="ZÃ¼RICH SWITZERLAND" value="CH"/>
+			<entry key="ANTWERP BELGIUM" value="BE"/>
+			<entry key="SOUTH CAROLINA U.S.A." value="US"/>
+			<entry key="KARLSKRONA SWEDEN" value="SE"/>
+			<entry key="SEATTLE U.S.A." value="US"/>
+			<entry key="SLAGELSE DENMARK" value="DK"/>
+			<entry key="ESBJERG DENMARK" value="DK"/>
+			<entry key="LAJAS VALLEY PUERTO RICO" value="PR"/>
+			<entry key="POLINYA DEL JUCAR VALENCIA SPAIN" value="ES"/>
+			<entry key="GHENT BELGIUM" value="BE"/>
+			<entry key="LYON FRANCE" value="FR"/>
+			<entry key="ARDENNES BELGIUM" value="BE"/>
+			<entry key="NEW YORK U.S.A." value="US"/>
+			<entry key="VALENCIA SPAIN" value="ES"/>
+			<entry key="BOEKHOUT BELGIUM" value="BE"/>
+			<entry key="OREGON U.S.A." value="US"/>
+			<entry key="MARYLAND U.S.A." value="US"/>
+			<entry key="HONOLULU HAWAII U.S.A." value="US"/>
+			<entry key="RIVER AVON HAMPSHIRE ENGLAND" value="GB"/>
+			<entry key="OELEGEM BELGIUM" value="BE"/>
+			<entry key="DE BLANKAART BELGIUM" value="BE"/>
+			<entry key="SNELLEGEM BELGIUM" value="BE"/>
+			<entry key="EEKLO BELGIUM" value="BE"/>
+			<entry key="UDNY STATION SCOTLAND U.K." value="GB"/>
+			<entry key="TURRIFF SCOTLAND U.K." value="GB"/>
+			<entry key="RIVER SPEY ABERLOUR SCOTLAND" value="GB"/>
+			<entry key="RIVER CLETTER U.K." value="GB"/>
+			<entry key="MADRID SPAIN" value="ES"/>
+			<entry key="TERRAGONA PROVINCE SPAIN" value="ES"/>
+			<entry key="TEXAS U.S.A." value="US"/>
+			<entry key="LOUISIANA U.S.A." value="US"/>
+			<entry key="VARASANI INDIA" value="IN"/>
+			<entry key="CALIFORNIA U.S.A." value="US"/>
+			<entry key="MICHIGAN U.S.A." value="US"/>
+			<entry key="NEW MEXICO U.S.A." value="US"/>
+			<entry key="CONNECTICUT U.S.A." value="US"/>
+			<entry key="PENNSYLVANIA U.S.A." value="US"/>
+			<entry key="STUTTGART-HOHENHEIM GERMANY" value="DE"/>
+			<entry key="SOUTH AUSTRALIA" value="AU"/>
+			<entry key="ARIZONA U.S.A." value="US"/>
+			<entry key="MIYAGI PREFECTURE JAPAN" value="JP"/>
+			<entry key="MOSCOW RUSSIA" value="RU"/>
+			<entry key="RINGVASSÃ¸Y NORWAY" value="NO"/>
+			<entry key="SANDNESSUNDET NORWAY" value="NO"/>
+			<entry key="NYMPH CREEK YELLOWSTONE NATIONAL PARK U.S.A." value="US"/>
+			<entry key="OFF COAST OF OAHU HAWAII U.S.A." value="US"/>
+			<entry key="LA JOLLA CALIFORNIA U.S.A." value="US"/>
+			<entry key="OFF THE COAST OF KANAGAWA PREFECTURE JAPAN" value="JP"/>
+			<entry key="RYSTRÃ¸MMEN NORWAY" value="NO"/>
+			<entry key="COLORADO SPRINGS COLORADO U.S.A." value="US"/>
+			<entry key="COPENHAGEN DENMARK" value="DK"/>
+			<entry key="LEOPOLDSDORF AUSTRIA" value="AT"/>
+			<entry key="SPIRIT LAKE WASHINGTON U.S.A." value="US"/>
+			<entry key="DAVIS CALIFORNIA U.S.A." value="US"/>
+			<entry key="WEST BENGAL INDIA" value="IN"/>
+			<entry key="LONDON ONTARIO CANADA" value="CA"/>
+			<entry key="NORTHERN IRELAND" value="GB"/>
+			<entry key="DEN HAAG THE NETHERLANDS" value="NL"/>
+			<entry key="SOUTH CHINA SEA CHINA" value="CN"/>
+			<entry key="UTAH U.S.A." value="US"/>
+			<entry key="CITY AIRPORT GUATEMALA" value="GT"/>
+			<entry key="PUNJAB PAKISTAN" value="PK"/>
+			<entry key="FLANNAN ISLES SCOTLAND" value="GB"/>
+			<entry key="RIO DE JANEIRO BRAZIL" value="BR"/>
+			<entry key="BOGOR INDONESIA" value="ID"/>
+			<entry key="DOEL BELGIUM" value="BE"/>
+			<entry key="ST.-PIETERSVOEREN BELGIUM" value="BE"/>
+			<entry key="ZWEVEGEM BELGIUM" value="BE"/>
+			<entry key="HEVERLEE BELGIUM" value="BE"/>
+			<entry key="DIWANIYAH (QADISYA) AREA IRAQ" value="IQ"/>
+			<entry key="SEEBURG GERMANY" value="DE"/>
+			<entry key="GÃ¶TTINGEN GERMANY" value="DE"/>
+			<entry key="HANNOVER GERMANY" value="DE"/>
+			<entry key="KIESSEE GÃ¶TTINGEN GERMANY" value="DE"/>
+			<entry key="VERMONT U.S.A." value="US"/>
+			<entry key="LEICESTER ENGLAND U.K." value="GB"/>
+			<entry key="COLORADO U.S.A." value="US"/>
+			<entry key="MARSEILLE FRANCE" value="FR"/>
+			<entry key="NEAR LAKE TAUPO NEW ZEALAND" value="NZ"/>
+			<entry key="GEOTHERMAL AREA ICELAND" value="IS"/>
+			<entry key="HVERAGERTHI ICELAND" value="IS"/>
+			<entry key="KASUMI DISTRICT NUMAZU JAPAN" value="JP"/>
+			<entry key="CÃ©VENNES FRANCE" value="FR"/>
+			<entry key="LIMOUSIN FRANCE" value="FR"/>
+			<entry key="DARTMOOR U.K." value="GB"/>
+			<entry key="RIVER PLYM DARTMOOR" value="GB"/>
+			<entry key="OKLAHOMA U.S.A." value="US"/>
+			<entry key="BRAUNSCHWEIG GERMANY" value="DE"/>
+			<entry key="FLORIDA EVERGLADES U.S.A." value="US"/>
+			<entry key="MOUNT RITTMANN ANTARCTICA" value="AQ"/>
+			<entry key="CLINKER GULCH SOUTH SANDWICH ISLANDS" value="GS"/>
+			<entry key="WADI NATRUN EGYPT" value="EG"/>
+			<entry key="NAURA ISLAND PACIFIC OCEAN JAPAN" value="JP"/>
+			<entry key="ATSUMA HOKKAIDO JAPAN" value="JP"/>
+			<entry key="KOFU JAPAN" value="JP"/>
+			<entry key="ROTHAMSTED U.K." value="GB"/>
+			<entry key="NORMANDY FRANCE" value="FR"/>
+			<entry key="NEAR NORDMALUNG SWEDEN" value="SE"/>
+			<entry key="CANADIAN FAR NORTH" value="CA"/>
+			<entry key="CAMBRIDGE U.K." value="GB"/>
+			<entry key="MALABAR COAST" value="IN"/>
+			<entry key="MOJAVE DESERT ROSAMOND CALIFORNIA U.S.A." value="US"/>
+			<entry key="KISO DISTRICT NAGANO PREF. JAPAN" value="JP"/>
+			<entry key="FORT PRINCE OF WALES HUDSON BAY CANADA" value="CA"/>
+			<entry key="BURNT CREEK CANADIAN FAR NORTH" value="CA"/>
+			<entry key="BAWANA NEAR DELHI INDIA" value="IN"/>
+			<entry key="HOLSTEIN GERMANY" value="DE"/>
+			<entry key="PUSAKANEGARA W.JAVA INDONESIA" value="ID"/>
+			<entry key="LA ROCHELLE FRANCE" value="FR"/>
+			<entry key="SOUDAN" value="SD"/>
+			<entry key="CROIX SCAILLE BELGIUM" value="BE"/>
+			<entry key="BURKINO FASO" value="BF"/>
+			<entry key="CROIX-SCAILLE BELGIUM" value="BE"/>
+			<entry key="MAURETANIA" value="MR"/>
+			<entry key="RUFISQUE (NEAR DAKAR) SENEGAL" value="SN"/>
+			<entry key="SAN FREDERIGO TUSCANY ITALY" value="IT"/>
+			<entry key="DEATH VALLEY CALIFORNIA U.S.A." value="US"/>
+			<entry key="QUEBEC CANADA" value="CA"/>
+			<entry key="JAVA INDONESIA" value="ID"/>
+			<entry key="NEBRASKA U.S.A." value="US"/>
+			<entry key="?U.S.A." value="US"/>
+			<entry key="?U.K." value="GB"/>
+			<entry key="UMEA SWEDEN" value="SE"/>
+			<entry key="KARLSTAD SWEDEN" value="SE"/>
+			<entry key="BEIJING CHINA" value="CN"/>
+			<entry key="PLUSSEE HOLSTEIN" value="DE"/>
+			<entry key="DREISAM RIVER FREIBURG GERMANY" value="DE"/>
+			<entry key="BLANKVANN NORWAY" value="NO"/>
+			<entry key="CLARKE RESERVATION NEW YORK U.S.A." value="US"/>
+			<entry key="TORHOUT BELGIUM" value="BE"/>
+			<entry key="BORÃ¥S SWEDEN" value="SE"/>
+			<entry key="WASHINGTON U.S.A." value="US"/>
+			<entry key="LEUVEN BELGIUM" value="BE"/>
+			<entry key="BUFFALO NEW YORK U.S.A." value="US"/>
+			<entry key="VÃ¤XJÃ¶ SWEDEN" value="SE"/>
+			<entry key="CINCINNATI U.S.A." value="US"/>
+			<entry key="KREFELD GERMANY" value="DE"/>
+			<entry key="WISCONSIN U.S.A." value="US"/>
+			<entry key="NORTH CAROLINA U.S.A." value="US"/>
+			<entry key="HEILONGJIANG PROVINCE CHINA" value="CN"/>
+			<entry key="LIAONING PROVINCE CHINA" value="CN"/>
+			<entry key="OLLIGNIES BELGIUM" value="BE"/>
+			<entry key="ZELE BELGIUM" value="BE"/>
+			<entry key="HOEK BELGIUM" value="BE"/>
+			<entry key="HAMME BELGIUM" value="BE"/>
+			<entry key="OEDELEM BELGIUM" value="BE"/>
+			<entry key="ST. GHISLAINE BELGIUM" value="BE"/>
+			<entry key="WESTKERKE BELGIUM" value="BE"/>
+			<entry key="ZEVEKOTE BELGIUM" value="BE"/>
+			<entry key="AALTER BELGIUM" value="BE"/>
+			<entry key="BEERNEM BELGIUM" value="BE"/>
+			<entry key="ST. AMANDS BELGIUM" value="BE"/>
+			<entry key="VAUDIGNIES BELGIUM" value="BE"/>
+			<entry key="ELLIGNIES BELGIUM" value="BE"/>
+			<entry key="OOSTERZELE BELGIUM" value="BE"/>
+			<entry key="GIJZENZELE BELGIUM" value="BE"/>
+			<entry key="KWATRECHT BELGIUM" value="BE"/>
+			<entry key="GONTRODE BELGIUM" value="BE"/>
+			<entry key="KNOKKE BELGIUM" value="BE"/>
+			<entry key="RUDDERVOORDE BELGIUM" value="BE"/>
+			<entry key="VEURNE BELGIUM" value="BE"/>
+			<entry key="GEEL BELGIUM" value="BE"/>
+			<entry key="BORGLOON BELGIUM" value="BE"/>
+			<entry key="LONDERZEEL BELGIUM" value="BE"/>
+			<entry key="BORSTEL GERMANY" value="DE"/>
+			<entry key="VÃ¥LBERG SWEDEN" value="SE"/>
+			<entry key="LEICESTER U.K." value="GB"/>
+			<entry key="CHICAGO U.S.A." value="US"/>
+			<entry key="VÃ¤STERAS SWEDEN" value="SE"/>
+			<entry key="HAWAII U.S.A." value="US"/>
+			<entry key="NASHVILLE U.S.A." value="US"/>
+			<entry key="MANCHESTER U.K." value="GB"/>
+			<entry key="BLACKPOOL U.K." value="GB"/>
+			<entry key="EDINBURGH U.K." value="GB"/>
+			<entry key="MARTINIQUE - FRENCH WEST INDIES" value="MQ"/>
+			<entry key="TRINIDAD" value="TT"/>
+			<entry key="TABASCO MEXICO" value="MX"/>
+			<entry key="KAPUNDA AUSTRALIA" value="AU"/>
+			<entry key="KAPUNDA AUTRALIA" value="AU"/>
+			<entry key="TASMANIA AUSTRALIA" value="AU"/>
+			<entry key="GIESSEN GERMANY" value="DE"/>
+			<entry key="EHIME JAPAN" value="JP"/>
+			<entry key="CÃ´TE SAINT ANDRÃ© FRANCE" value="FR"/>
+			<entry key="KAPUNDA NEAR ADELAIDE AUSTRALIA" value="AU"/>
+			<entry key="KURURI CHIBA PREFECTURE JAPAN" value="JP"/>
+			<entry key="HUDDINGE SWEDEN" value="SE"/>
+			<entry key="UMEÃ¥ SWEDEN" value="SE"/>
+			<entry key="BERKELEY CALIFORNIA U.S.A." value="US"/>
+			<entry key="BRUSSEL BELGIUM" value="BE"/>
+			<entry key="JETTE BELGIUM" value="BE"/>
+			<entry key="ANTWERPEN BELGIUM" value="BE"/>
+			<entry key="UBON RATCHATHANI THAILAND" value="TH"/>
+			<entry key="SUKAMANDI INDONESIA" value="ID"/>
+			<entry key="BINH THANH VIETNAM" value="VN"/>
+			<entry key="ST. PIETERSHOSPITAAL BRUSSEL BELGIUM" value="BE"/>
+			<entry key="MELBOURNE AUSTRALIA" value="AU"/>
+			<entry key="Ã–REBRO SWEDEN" value="SE"/>
+			<entry key="OTTAWA CANADA" value="CA"/>
+			<entry key="PERTH WESTERN AUSTRALIA" value="AU"/>
+			<entry key="PRESTON U.K." value="GB"/>
+			<entry key="ONTARIO CANADA" value="CA"/>
+			<entry key="MINNESOTA U.S.A." value="US"/>
+			<entry key="IDAHO U.S.A." value="US"/>
+			<entry key="MONTANA U.S.A." value="US"/>
+			<entry key="BORDEAUX FRANCE" value="FR"/>
+			<entry key="BRUSSELS BELGIUM" value="BE"/>
+			<entry key="MÃ¶LNDAL SWEDEN" value="SE"/>
+			<entry key="ONTARIO TORONTO CANADA" value="CA"/>
+			<entry key="NOVA SCOTI HALIFAX CANADA" value="CA"/>
+			<entry key="VIRGINIA U.S.A." value="US"/>
+			<entry key="BOSTON MASSACHUSETTS U.S.A." value="US"/>
+			<entry key="ACE LAKE VESTFOLD HILLS ANTARCTICA" value="AQ"/>
+			<entry key="COOS COUNTRY OREGON U.S.A." value="US"/>
+			<entry key="HOT CREEK HATCHERY BISHOP CALIFORNIA" value="US"/>
+			<entry key="NEW JERSEY U.S.A." value="US"/>
+			<entry key="LOGAN UTAH U.S.A." value="US"/>
+			<entry key="MONAUBERT FRANCE" value="FR"/>
+			<entry key="STORRS CONN. U.S.A." value="US"/>
+			<entry key="BORNHOLM BALTIC SEA" value="DK"/>
+			<entry key="HIRSHOLM DENMARK" value="DK"/>
+			<entry key="LIMON COSTA RICA" value="CR"/>
+			<entry key="CANAL ZONE PANAMA" value="PA"/>
+			<entry key="ALDERLEY BRISBANE AUSTRALIA" value="AU"/>
+			<entry key="MENTEKAB MALAYA" value="MY"/>
+			<entry key="KLUANG MALAYSIA" value="MY"/>
+			<entry key="MALACCA MALAYSIA" value="MY"/>
+			<entry key="SERDANG MALAYSIA" value="MY"/>
+			<entry key="KUANTAN MALAYSIA" value="MY"/>
+			<entry key="JAKARTA INDONESIA" value="ID"/>
+			<entry key="SUNGEI BULOH MALAYSIA" value="MY"/>
+			<entry key="BEHRANG MALAYSIA" value="MY"/>
+			<entry key="GEORGIA U.S.A." value="US"/>
+			<entry key="SINGAPORE MALAYA" value="SN"/>
+			<entry key="IPOH MALAYSIA" value="MY"/>
+			<entry key="DEAD SEA ISRAEL" value="IL"/>
+			<entry key="DEAD SEA" value="IL"/>
+			<entry key="?LONDON U.K." value="GB"/>
+			<entry key="LOS ANGELES U.S.A." value="US"/>
+			<entry key="ROCKDALE U.K." value="GB"/>
+			<entry key="UDDEVALLA SWEDEN" value="SE"/>
+			<entry key="MASSACHUSETTS GEORGIA U.S.A." value="US"/>
+			<entry key="CEYLON" value="LK"/>
+			<entry key="ST. NARAIRE FRANCE" value="FR"/>
+			<entry key="DAR-ES-SALAAM" value="TZ"/>
+			<entry key="ARKANSAS U.S.A." value="US"/>
+			<entry key="ODENSE DENMARK" value="DK"/>
+			<entry key="SICILY ITALY" value="IT"/>
+			<entry key="CHANNEL ISLANDS U.K." value="GB"/>
+			<entry key="BRITISH COLUMBIA CANADA" value="CA"/>
+			<entry key="WINSLOW NEW ZEALAND" value="NZ"/>
+			<entry key="GIPPSLAND NEW ZEALAND" value="NZ"/>
+			<entry key="NEW SOUTH WALES AUSTRALIA" value="AU"/>
+			<entry key="OKAIA NEW ZEALAND" value="NZ"/>
+			<entry key="HAVELOCK NORTH NEW ZEALAND" value="NZ"/>
+			<entry key="WAIRAKEI NEW ZEALAND" value="NZ"/>
+			<entry key="ILLINOIS U.S.A." value="US"/>
+			<entry key="LEUSDEN THE NETHERLANDS" value="NL"/>
+			<entry key="CHARLEVILLE FRANCE" value="FR"/>
+			<entry key="NEWCASTLE U.K." value="GB"/>
+			<entry key="NICE FRANCE" value="FR"/>
+			<entry key="OSSEMEERSEN GHENT BELGIUM" value="BE"/>
+			<entry key="MANOORA SOUTH AUSTRALIA" value="AU"/>
+			<entry key="MURRAY BRIDGE SOUTH AUSTRALIA" value="AU"/>
+			<entry key="KATANNING WEST AUSTRALIA" value="AU"/>
+			<entry key="GNOWANGERUP WEST AUSTRALIA" value="AU"/>
+			<entry key="PT. GAWLER SOUTH AUSTRALIA" value="AU"/>
+			<entry key="WHARMINDA SOUTH AUSTRALIA" value="AU"/>
+			<entry key="WELLESBOURNE U.K." value="GB"/>
+			<entry key="IOWA U.S.A." value="US"/>
+			<entry key="NOTTINGHAM U.K." value="GB"/>
+			<entry key="WAREGEM BELGIUM" value="BE"/>
+			<entry key="ROYAL RESEARCH STATION OF GORSEM SINT-TRUIDEN BELGIUM" value="BE"/>
+			<entry key="SOUTH ESSEX U.K." value="GB"/>
+			<entry key="LINDHORST HANNOVER GERMANY" value="DE"/>
+			<entry key="NEAR HILDENBOROUGH KENT U.K." value="GB"/>
+			<entry key="COLCHESTER ENGLAND" value="GB"/>
+			<entry key="LÃ¶NKÃ¶PING SWEDEN" value="SE"/>
+			<entry key="ST. LOUIS U.S.A." value="US"/>
+			<entry key="ARGENTINE" value="AR"/>
+			<entry key="SOUTH-AFRICA" value="ZA"/>
+			<entry key="SARDINIA ITALY" value="IT"/>
+			<entry key="CAGLIARI ITALY" value="IT"/>
+			<entry key="PASKOV CZECH REPUBLIC" value="CZ"/>
+			<entry key="SOUTH-ITALY" value="IT"/>
+			<entry key="FRYDEK-MISTEK CZECH REPUBLIC" value="CZ"/>
+			<entry key="TENNESSEE U.S.A." value="US"/>
+			<entry key="KENTUCKY U.S.A." value="US"/>
+			<entry key="TOULOUSE FRANCE" value="FR"/>
+			<entry key="OHIO U.S.A." value="US"/>
+			<entry key="CHALK REGION KENT U.K." value="GB"/>
+			<entry key="GUMMA JAPAN" value="JP"/>
+			<entry key="BONNEVILLE DAM COLUMBIA RIVER WASHINGTON U.S.A." value="US"/>
+			<entry key="SNAKE RIVER WASHINGTON STATE U.S.A." value="US"/>
+			<entry key="LAKE IJSSELMEER THE NETHERLANDS" value="NL"/>
+			<entry key="PLATTE RIVER FISH HATCHERY MICHIGAN U.S.A." value="US"/>
+			<entry key="MANITOBA CANADA" value="CA"/>
+			<entry key="MINNEAPOLIS U.S.A." value="US"/>
+			<entry key="MINTER CREEK FISH HATCHERY WASHINGTON STATE U.S.A." value="US"/>
+			<entry key="WASHINGTON STATE U.S.A." value="US"/>
+			<entry key="TOURAINE FRANCE" value="FR"/>
+			<entry key="RIVER WESER GERMANY" value="DE"/>
+			<entry key="MIGAYI PREFECTURE JAPAN" value="JP"/>
+			<entry key="RIVER WEY GUILFORD SURREY U.K." value="GB"/>
+			<entry key="UNIVERSITY OF WASHINGTON HATCHERY U.S.A." value="US"/>
+			<entry key="SHOWA STATION ANTARCTICA" value="AQ"/>
+			<entry key="CANOE BEACH TEMA GHANA" value="GH"/>
+			<entry key="ERNAKULUM INDIA" value="IN"/>
+			<entry key="ROTORUA NEW ZEALAND" value="NZ"/>
+			<entry key="SAN JOSE COSTA RICA" value="CR"/>
+			<entry key="RIRRILET COSTA RICA" value="CR"/>
+			<entry key="GEYSIR ICELAND" value="IS"/>
+			<entry key="NHATRAND VIETNAM" value="VN"/>
+			<entry key="ORNE ESTUARY NORMANDY FRANCE" value="FR"/>
+			<entry key="AUGUSTA U.S.A." value="US"/>
+			<entry key="SOUTHERN URAL RUSSIA" value="RU"/>
+			<entry key="SHIMOGAMO KYOTO JAPAN" value="JP"/>
+			<entry key="BETHLEHEM U.S.A." value="US"/>
+			<entry key="ALAGOAS BRAZIL" value="BR"/>
+			<entry key="PERNAMBUCO BRAZIL" value="BR"/>
+			<entry key="LJUBLJANA SLOVENIA" value="SI"/>
+			<entry key="NISHINOMIYA JAPAN" value="JP"/>
+			<entry key="JERUSALEM ISRAEL" value="IL"/>
+			<entry key="MANILA PHILIPPINES" value="PH"/>
+			<entry key="QUEENSLAND AUSTRALIA" value="AU"/>
+			<entry key="NAIROBI KENYA" value="KE"/>
+			<entry key="TOKYO JAPAN" value="JP"/>
+			<entry key="BOTANICAL GARDEN KYOTO JAPAN" value="JP"/>
+			<entry key="HERBAL GARDEN KYOTO JAPAN" value="JP"/>
+			<entry key="ZOTTEGEM BELGIUM" value="BE"/>
+			<entry key="NEAR LAKE LERMA MEXICO" value="MX"/>
+			<entry key="NEEROETEREN BELGIUM" value="BE"/>
+			<entry key="NEAR ZOTTEGEM BELGIUM" value="BE"/>
+			<entry key="LUND SWEDEN" value="SE"/>
+			<entry key="MASSACHUSETTS U.S.A." value="US"/>
+			<entry key="OSS THE NETHERLANDS" value="NL"/>
+			<entry key="GREAT SALT LAKE UTAH U.S.A." value="US"/>
+			<entry key="BONAIRE THE NETHERLANDS ANTILLES" value="AN"/>
+			<entry key="GREAT BAY ESTUARY" value="US"/>
+			<entry key="NEAR ALICANTE SPAIN" value="ES"/>
+			<entry key="OFF COAST OF HAWAII U.S.A." value="US"/>
+			<entry key="LAKE OF VENERE AT PANTELLERIA ISLAND SOUTH OF SICILY ITALY" value="IT"/>
+			<entry key="MENAI STRAIT U.K." value="GB"/>
+			<entry key="SAPELO ISLAND GEORGIA U.S.A." value="US"/>
+			<entry key="SASKATCHEWAN SASKATOON CANADA" value="CA"/>
+			<entry key="TRURO U.S.A." value="US"/>
+			<entry key="BERNE SWITZERLAND" value="CH"/>
+			<entry key="PERTH AUSTRALIA" value="AU"/>
+			<entry key="RIVER WEENDE GÃ¶TTINGEN GERMANY" value="DE"/>
+			<entry key="RIVER MOSCWA FORMER U.S.S.R." value="RU"/>
+			<entry key="NEAR RIVER NISCHENKA MOSCOW REGION FORMER U.S.S.R." value="RU"/>
+			<entry key="MUSEO CORRER VENICE ITALY" value="IT"/>
+			<entry key="NEW HAMPSHIRE U.S.A." value="US"/>
+			<entry key="ALABAMA U.S.A." value="US"/>
+			<entry key="SUMATRA INDONESIA" value="ID"/>
+			<entry key="BALI" value="ID"/>
+			<entry key="SIBERIA RUSSIA" value="RU"/>
+			<entry key="MUNICH GERMANY" value="DE"/>
+			<entry key="MÃ¼NCHEN GERMANY" value="DE"/>
+			<entry key="FREISING GERMANY" value="DE"/>
+			<entry key="PASSAU GERMANY" value="DE"/>
+			<entry key="KARLSRUHE GERMANY" value="DE"/>
+			<entry key="NÃ¼RNBERG GERMANY" value="DE"/>
+			<entry key="NEUMARKT GERMANY" value="DE"/>
+			<entry key="MOOS GERMANY" value="DE"/>
+			<entry key="ASCHAFFENBURG GERMANY" value="DE"/>
+			<entry key="WREXHAM U.K." value="GB"/>
+			<entry key="PONT L'EVÃ¨QUE NORMANDY FRANCE" value="FR"/>
+			<entry key="?GERMANY" value="DE"/>
+			<entry key="DELTA AREA EGYPT" value="EG"/>
+			<entry key="MINDEN GERMANY" value="DE"/>
+			<entry key="COLUMBIA" value="CO"/>
+			<entry key="LIVNO YUGOSLAVIA" value="BA"/>
+			<entry key="SOUTH NIGERIA" value="NG"/>
+			<entry key="SELTA AREA EGYPT" value="EG"/>
+			<entry key="ALEXANDRIA EGYPT" value="EG"/>
+			<entry key="STUTTGART GERMANY" value="DE"/>
+			<entry key="CAIRO EGYPT" value="EG"/>
+			<entry key="KALMAR SWEDEN" value="SE"/>
+			<entry key="ATSUGI-SHI KANAGAWA JAPAN" value="JP"/>
+			<entry key="TOSASHIMIZU KOCHI PREF. JAPAN" value="JP"/>
+			<entry key="SHINFIELD U.K." value="GB"/>
+			<entry key="SOFIA BULGARIA" value="BG"/>
+			<entry key="ITHACA U.S.A." value="US"/>
+			<entry key="CHIEMSEE BAVARIA GERMANY" value="DE"/>
+			<entry key="VANTAA FINLAND" value="FI"/>
+			<entry key="HELSINKI FINLAND" value="FI"/>
+			<entry key="LAKE CHIEMSEE BAVARIA GERMANY" value="DE"/>
+			<entry key="ENGLAND U.K." value="GB"/>
+			<entry key="FJORDS NORWAY" value="NO"/>
+			<entry key="OAHU HAWAII U.S.A." value="US"/>
+			<entry key="CENTRAL EXPERIMENTAL FARM OTTAWA ONTARIO CANADA" value="CA"/>
+			<entry key="MARTIN HOUSE NORTHWEST TERRITORIES CANADA" value="CA"/>
+			<entry key="SIVASH LAKE CRIMEA UKRAINE" value="UA"/>
+			<entry key="ALICANTE SPAIN" value="ES"/>
+			<entry key="SHAANXI NORTH-WESTERN CHINA" value="CN"/>
+			<entry key="NANJING CHINA" value="CN"/>
+			<entry key="EL OBEID SUDAN" value="SD"/>
+			<entry key="XINJIANG CHINA" value="CN"/>
+			<entry key="LAKE MENDOTA MADISON U.S.A." value="US"/>
+			<entry key="KANAGAWA JAPAN" value="JP"/>
+			<entry key="KATASE JAPAN" value="JP"/>
+			<entry key="PAULINENAUE BRANDENBURG GERMANY" value="DE"/>
+			<entry key="LAKE SODON" value="US"/>
+			<entry key="NORSE BEACH PUERTO PEÃ±ASCO SONORA MEXICO" value="MX"/>
+			<entry key="NARBONNE FRANCE" value="FR"/>
+			<entry key="NORTH GERMAN NORTH SEA COAST GERMANY" value="DE"/>
+			<entry key="GUERET FRANCE" value="FR"/>
+			<entry key="BONDY FRANCE" value="FR"/>
+			<entry key="COLMAR FRANCE" value="FR"/>
+			<entry key="ST. MAURICE FRANCE" value="FR"/>
+			<entry key="BEAUNE FRANCE" value="FR"/>
+			<entry key="BOURG-EN-BRESSE FRANCE" value="FR"/>
+			<entry key="SKOVDE SWEDEN" value="SE"/>
+			<entry key="HARROGATE U.K." value="GB"/>
+			<entry key="EXETER U.K." value="GB"/>
+			<entry key="BANGOR U.K." value="GB"/>
+			<entry key="WATFORD U.K." value="GB"/>
+			<entry key="LALIBELIA ETHIOPIA" value="ET"/>
+			<entry key="PENINSULA TIHANY HUNGARY" value="HU"/>
+			<entry key="TIHANY HUNGARY" value="HU"/>
+			<entry key="KHARTOUM SUDAN" value="SD"/>
+			<entry key="HIROSHIMA JAPAN" value="JP"/>
+			<entry key="SAMUGAWA BEACH JAPAN" value="JP"/>
+			<entry key="HOSOGI HIROSHIMA JAPAN" value="JP"/>
+			<entry key="RHODE ISLAND U.S.A." value="US"/>
+			<entry key="WASHINGTON D.C. U.S.A." value="US"/>
+			<entry key="NORTH DAKOTA U.S.A." value="US"/>
+			<entry key="GRIGNON FRANCE" value="FR"/>
+			<entry key="KANSAS U.S.A." value="US"/>
+			<entry key="AVIAN U.K." value="GB"/>
+			<entry key="PLUMCHIAU FRANCE" value="FR"/>
+			<entry key="SOMEREN THE NETHERLANDS" value="NL"/>
+			<entry key="PARANA STATE BRAZIL" value="BR"/>
+			<entry key="RAMONVILLE-SAINT-AGNE, HAUTE-GARONNE FRANCE" value="FR"/>
+			<entry key="SLOVAK REPUBLIC" value="SK"/>
+			<entry key="TASMANIA" value="AU"/>
+			<entry key="NEW SOUTH WALES" value="AU"/>
+			<entry key="MACQUARIE ISLAND ANTARCTICA" value="AQ"/>
+			<entry key="DIEU LOUARD MEURTHE ET MOSELLE FRANCE" value="FR"/>
+			<entry key="DIEULOUARD FRANCE" value="FR"/>
+			<entry key="LAKE SILBERSEE NÃ¼RNBERG GERMANY" value="DE"/>
+			<entry key="VANCOUVER CANADA" value="CA"/>
+			<entry key="PIET RETIEF MPUMALANGA SOUTH AFRICA" value="ZA"/>
+			<entry key="HARDING KWAZULU/NATAL SOUTH AFRICA" value="ZA"/>
+			<entry key="PIETERMARITZBURG KWAZULU/NATAL SOUTH AFRICA" value="ZA"/>
+			<entry key="TZANEEN NORTHERN PROVINCE SOUTH AFRICA" value="ZA"/>
+			<entry key="NORWICH U.K." value="GB"/>
+			<entry key="LOT FRANCE" value="FR"/>
+			<entry key="WINDHOEK NAMIBIA" value="NA"/>
+			<entry key="PRETORIA SOUTH AFRICA" value="ZA"/>
+			<entry key="WESTERN CAPRIVI NAMIBIA" value="NA"/>
+			<entry key="EASTERN KAVANGO NAMIBIA" value="NA"/>
+			<entry key="BELFAST EASTERN TRANSVAAL SOUTH AFRICA" value="ZA"/>
+			<entry key="RÃ¼DESHEIM GERMANY" value="DE"/>
+			<entry key="EPHESUS TURKEY" value="TR"/>
+			<entry key="LANGKLOOF EASTERN CAPE SOUTH AFRICA" value="ZA"/>
+			<entry key="SAMBYU KAVANGO NAMIBIA" value="NA"/>
+			<entry key="SWARTKOPPIES TRANSVAAL SOUTH AFRICA" value="ZA"/>
+			<entry key="AMSTERDAM THE NETHERLANDS" value="NL"/>
+			<entry key="ROODEPLAAT PRETORIA SOUTH AFRICA" value="ZA"/>
+			<entry key="BOMBAY INDIA" value="IN"/>
+			<entry key="LINCOLN NEBRASKA U.S.A." value="US"/>
+			<entry key="APPALACHICOLA BAY TALLAHASSEE" value="US"/>
+			<entry key="OFF CAPE TOWN SOUTH AFRICA" value="ZA"/>
+			<entry key="BURTON LAKE ANTARTICA" value="AQ"/>
+			<entry key="FRYDEK-MISTEK CZECHOSLOVAKIA" value="CZ"/>
+			<entry key="BLACKSBURG U.S.A." value="US"/>
+			<entry key="DURHAM U.S.A." value="US"/>
+			<entry key="OFF THE COAST OF NICE FRANCE" value="FR"/>
+			<entry key="NEAR NICE FRANCE" value="FR"/>
+			<entry key="THE GREAT PETER GULF THE SEA OF JAPAN RUSSIA" value="RU"/>
+			<entry key="OFF THE COAST OF NORTHERN CALIFORNIA U.S.A." value="US"/>
+			<entry key="OFF THE IMMEDIATE COAST OF OAHU HAWAII U.S.A." value="US"/>
+			<entry key="KURIL ISLANDS SEA OF OKHOTSK" value="RU"/>
+			<entry key="NERITIC ZONE NEAR NICE FRANCE" value="FR"/>
+			<entry key="CORAL SEA AUSTRALIA" value="AU"/>
+			<entry key="GULF OF PETER THE GREAT SEA OF JAPAN RUSSIA" value="RU"/>
+			<entry key="CANAS PUERTO RICO" value="PR"/>
+			<entry key="MELLE BELGIUM" value="BE"/>
+			<entry key="CRETE GREECE" value="GR"/>
+			<entry key="RHODOS GREECE" value="GR"/>
+			<entry key="OKINAWA JAPAN" value="JP"/>
+			<entry key="MALLORCA SPAIN" value="ES"/>
+			<entry key="CEYLON SRI LANKA" value="LK"/>
+			<entry key="NORTHERN VIRGINIA U.S.A." value="US"/>
+			<entry key="DEE RIVER CHESHIRE U.K." value="GB"/>
+			<entry key="ORINDA CALIFORNIA U.S.A." value="US"/>
+			<entry key="DRESUND DENMARK" value="DK"/>
+			<entry key="SOUTH COPENHAGEN DENMARK" value="DK"/>
+			<entry key="HADERSLEV JETLAND DENMARK" value="DK"/>
+			<entry key="FRDERIKSBERG COPENHAGEN DENMARK" value="DK"/>
+			<entry key="GISHA BURUNDI" value="BI"/>
+			<entry key="MOSCWA RIVER FORMER U.S.S.R." value="RU"/>
+			<entry key="LOWER HUTT NEW ZEALAND" value="NZ"/>
+			<entry key="VANCOUVER BRITISH COLUMBIA CANADA" value="CA"/>
+			<entry key="EVIAN CACHAT SPRING FRANCE" value="FR"/>
+			<entry key="HANN-MÃ¼NDEN GERMANY" value="DE"/>
+			<entry key="SOUTHERN CHINA" value="CN"/>
+			<entry key="GUERNSEY U.K." value="GB"/>
+			<entry key="WEST SUMATRA INDONESIA" value="ID"/>
+			<entry key="WEST JAVA INDONESIA" value="ID"/>
+			<entry key="SAUMUR MAINE ET LOIRE FRANCE" value="FR"/>
+			<entry key="SOISSONS AISNE FRANCE" value="FR"/>
+			<entry key="SIREUIL CHARENTES FRANCE" value="FR"/>
+			<entry key="VILLEGOUGE GIRONDE FRANCE" value="FR"/>
+			<entry key="BORDEAUX GIRONDE FRANCE" value="FR"/>
+			<entry key="HAUT RHIN FRANCE" value="FR"/>
+			<entry key="CONTREXEVILLE PAVILLON SPRING FRANCE" value="FR"/>
+			<entry key="VOLVIC CLAIRVIC SPRING FRANCE" value="FR"/>
+			<entry key="CAUGHT OFF THE NORTH CAPE OF NORWAY" value="NO"/>
+			<entry key="PROBABLY ISOLATED IN NORWAY" value="NO"/>
+			<entry key="ISOLATED AT TORRY RESEARCH STATION, CAUGHT OFF THE NORTH CAPE OF NORWAY" value="NO"/>
+			<entry key="ASTORP SWEDEN" value="SE"/>
+			<entry key="ADMIRALTY BAY KING GEORGE ISLAND SOUTH SHETLAND ISLANDS ANTARCTICA" value="AQ"/>
+			<entry key="VESTFOLD HILLS ANTARCTICA" value="AQ"/>
+			<entry key="AMPONVILLE FRANCE" value="FR"/>
+			<entry key="OVERPELT BELGIUM" value="BE"/>
+			<entry key="LOMMEL BELGIUM" value="BE"/>
+			<entry key="TIENEN BELGIUM" value="BE"/>
+			<entry key="BEERSE BELGIUM" value="BE"/>
+			<entry key="LIKASI-SUD CONGO" value="CD"/>
+			<entry key="HOLZMINDEN GERMANY" value="DE"/>
+			<entry key="SHITURU CONGO" value="CD"/>
+			<entry key="VASTERAS SWEDEN" value="SE"/>
+			<entry key="MOL-RAUW BELGIUM" value="BE"/>
+			<entry key="FIDJI" value="FJ"/>
+			<entry key="PING-TUNG TAIWAN" value="TW"/>
+			<entry key="ASHBURTON NEW ZEALAND" value="NZ"/>
+			<entry key="LEADBURG-HATCHERY OREGON U.S.A." value="US"/>
+			<entry key="GUANAJUATO MEXICO" value="MX"/>
+			<entry key="SIERRA DE HUAUTLA MEXICO" value="MX"/>
+			<entry key="OTAGO NEW ZEALAND" value="NZ"/>
+			<entry key="XILINHOT MONGOLIA CHINA" value="MN"/>
+			<entry key="DAQING VALLEY TONGLIAO MONGOLIA CHINA" value="MN"/>
+			<entry key="HUHEHOT MONGOLIA CHINA" value="MN"/>
+			<entry key="GEMBLOUX BELGIUM" value="BE"/>
+			<entry key="SOUTHERN BULGARIA" value="BG"/>
+			<entry key="NORTHERN BULGARIA" value="BG"/>
+			<entry key="UNIVERSITY OF WISCONSIN U.S.A." value="US"/>
+			<entry key="VICTORIA AUSTRALIA" value="AU"/>
+			<entry key="EPIRUS GREECE" value="GR"/>
+			<entry key="LAMIA GREECE" value="GR"/>
+			<entry key="?NEW ZEALAND" value="NZ"/>
+			<entry key="BERLIN-BUCH GERMANY" value="DE"/>
+			<entry key="AMALIAS GREECE" value="GR"/>
+			<entry key="MACDONALD COLLEGE QUEBEC CANADA" value="CA"/>
+			<entry key="NEAR TOKYO JAPAN" value="JP"/>
+			<entry key="CORINTH GREECE" value="GR"/>
+			<entry key="PENNSYLVANIA STATE UNIVERSITY U.S.A." value="US"/>
+			<entry key="MISSOURI U.S.A." value="US"/>
+			<entry key="NORTH KAOLACK SENEGAL" value="SN"/>
+			<entry key="KAOLACK SENEGAL" value="SN"/>
+			<entry key="SOUTH KAOLACK SENEGAL" value="SN"/>
+			<entry key="DAKAR BEL AIR SENEGAL" value="SN"/>
+			<entry key="GANSU REPUBLIC OF CHINA" value="CN"/>
+			<entry key="FRESNO COUNTY CALIFORNIA U.S.A." value="US"/>
+			<entry key="STANISLAUS COUNTY CALIFORNIA U.S.A." value="US"/>
+			<entry key="BELLE GLADE FLORIDA U.S.A." value="US"/>
+			<entry key="OSWEGO COUNTY NEW YORK U.S.A." value="US"/>
+			<entry key="MAASLAND THE NETHERLANDS" value="NL"/>
+			<entry key="KENT U.K." value="GB"/>
+			<entry key="WARWICK UNIVERSITY U.K." value="GB"/>
+			<entry key="ST.LOUIS U.S.A." value="US"/>
+			<entry key="RIVER YVETTE FRANCE" value="FR"/>
+			<entry key="CRYSTAL LAKE ILLINOIS U.S.A." value="US"/>
+			<entry key="BLELHAM TARN U.K." value="GB"/>
+			<entry key="HAWKSWORTH MERE WEST YORKSHIRE U.K." value="GB"/>
+			<entry key="MOERBEKE BELGIUM" value="BE"/>
+			<entry key="YELLOWSTONE PARK U.S.A." value="US"/>
+			<entry key="FREIBURG GERMANY" value="DE"/>
+			<entry key="HOUGHTON U.K." value="GB"/>
+			<entry key="VIGO SPAIN" value="ES"/>
+			<entry key="KIEL FJORD BALTIC SEA" value="DE"/>
+			<entry key="UNIVERSITY LAKE BATON ROUGE U.S.A." value="US"/>
+			<entry key="VESTFOLD HILLS ANTARTICA" value="AQ"/>
+			<entry key="PALESTINE" value="PS"/>
+			<entry key="WOODS HOLE MASSACHUSETTS U.S.A." value="US"/>
+			<entry key="NORTH SEA ABERDEEN U.K." value="GB"/>
+			<entry key="KING GEORGE ISLAND SOUTH SHETLAND ISLANDS ANTARCTICA" value="AQ"/>
+			<entry key="LIVINGSTON ISLAND SOUTH SHETLAND ISLANDS ANTARCTICA" value="AQ"/>
+			<entry key="SEA OF JAPAN FAR EAST OF RUSSIA" value="RU"/>
+			<entry key="ONEIDA LAKE NEW YORK U.S.A." value="US"/>
+			<entry key="RYUKYU TRENCH" value="JP"/>
+			<entry key="KOSTI SUDAN" value="SD"/>
+			<entry key="EL FAU SUDAN" value="SD"/>
+			<entry key="TENDELTI SUDAN" value="SD"/>
+			<entry key="SHANGHAI CHINA" value="CN"/>
+			<entry key="HONAN CHINA" value="CN"/>
+			<entry key="RESURRECTION BAY NEAR SEWARD ALASKA" value="US"/>
+			<entry key="ST. THOMAS HOSPITAL LONDON U.K." value="GB"/>
+			<entry key="MONTEREY COUNTY CALIFORNIA U.S.A." value="US"/>
+			<entry key="S.E. QUEENSLAND AUSTRALIA" value="AU"/>
+			<entry key="KYOTO JAPAN" value="JP"/>
+			<entry key="NAGOYA JAPAN" value="JP"/>
+			<entry key="LEICESTER ENGLAND" value="GB"/>
+			<entry key="EKHO LAKE VESTFOLD HILLS EAST ANTARCTICA" value="AQ"/>
+			<entry key="DOUALA CAMEROON" value="CM"/>
+			<entry key="ATLANTA U.S.A." value="US"/>
+			<entry key="GEORGIA ATLANTA U.S.A." value="US"/>
+			<entry key="DOWNE U.K." value="GB"/>
+			<entry key="JÃ¶NKÃ¶PING SWEDEN" value="SE"/>
+			<entry key="NOUZILLY FRANCE" value="FR"/>
+			<entry key="PITTEM BELGIUM" value="BE"/>
+			<entry key="EGEM BELGIUM" value="BE"/>
+			<entry key="TIELT BELGIUM" value="BE"/>
+			<entry key="NEW HAVEN U.S.A." value="US"/>
+			<entry key="?AUSTRALIA" value="AU"/>
+			<entry key="ARHUS DENMARK" value="DK"/>
+			<entry key="HIROO TOKYO JAPAN" value="JP"/>
+			<entry key="OSLO NORWAY" value="NO"/>
+			<entry key="ST. BRIEUC FRANCE" value="FR"/>
+			<entry key="AALST BELGIUM" value="BE"/>
+			<entry key="CHARLEROI BELGIUM" value="BE"/>
+			<entry key="Ã–STERSUND SWEDEN" value="SE"/>
+			<entry key="MÃ¤LMO SWEDEN" value="SE"/>
+			<entry key="ABUARBI SHIGA PREF. JAPAN" value="JP"/>
+			<entry key="AMAKUSA NAGASAKI PREF. JAPAN" value="JP"/>
+			<entry key="BAMBERG GERMANY" value="DE"/>
+			<entry key="EMIGRATION CANYON SALT LAKE CITY UTAH U.S.A." value="US"/>
+			<entry key="NEAR SYRACUSE NEW YORK U.S.A." value="US"/>
+			<entry key="ORLY FRANCE" value="FR"/>
+			<entry key="CAUCASUS RUSSIA" value="RU"/>
+			<entry key="MITAKA TOKYO JAPAN" value="JP"/>
+			<entry key="NEAR HALE CENTER TEXAS U.S.A." value="US"/>
+			<entry key="NAGANO PREFECTURE JAPAN" value="JP"/>
+			<entry key="DORO WAKAYAMA PREF. JAPAN" value="JP"/>
+			<entry key="NEAR HUDSON NEW YORK U.S.A." value="US"/>
+			<entry key="INADA-NOBORITO KAWASAKI KANAGAWA JAPAN" value="JP"/>
+			<entry key="ORINOCO RIVER REGION VENEZUELA" value="VE"/>
+			<entry key="FAUQUIER COUNTY VIRGINIA U.S.A." value="US"/>
+			<entry key="PORT CRISTO MALLORCA SPAIN" value="ES"/>
+			<entry key="DALLAS U.S.A." value="US"/>
+			<entry key="TENDE FRANCE" value="FR"/>
+			<entry key="HERMISILLO SONORA MEXICO" value="MX"/>
+			<entry key="MOBARA CHIBA PREF. JAPAN" value="JP"/>
+			<entry key="ARMENIA RUSSIA" value="AM"/>
+			<entry key="WESTERN MEDITERRANEAN SEA FRANCE" value="FR"/>
+			<entry key="BLACK SEA RUSSIA" value="RU"/>
+			<entry key="LOCKYER VALLEY QUEENSLAND AUSTRALIA" value="AU"/>
+			<entry key="AYRSHIRE SCOTLAND" value="GB"/>
+			<entry key="CORSICA FRANCE" value="FR"/>
+			<entry key="AUSTEVOLL NORWAY" value="NO"/>
+			<entry key="YELLOWSTONE NATIONAL PARK WYOMING U.S.A." value="US"/>
+			<entry key="PORVOO FINLAND" value="FI"/>
+			<entry key="ISLE OF MULL SCOTLAND U.K." value="GB"/>
+			<entry key="RIVER ELBE" value="DE"/>
+			<entry key="PORT HUENEME U.S.A." value="US"/>
+			<entry key="NOVA SCOTIA CANADA" value="CA"/>
+			<entry key="CHETNEY MARSHES KENT U.K." value="GB"/>
+			<entry key="HOKKAIDO JAPAN" value="JP"/>
+			<entry key="BALTIMORE U.S.A." value="US"/>
+			<entry key="OFF COAST OAHU HAWAII U.S.A." value="US"/>
+			<entry key="MANDAPAM INDIA" value="IN"/>
+			<entry key="A FEW MILES OFFSHORE OF LA SPEZIA ITALY" value="IT"/>
+			<entry key="SALTON SEA CALIFORNIA U.S.A." value="US"/>
+			<entry key="SURUGA BAY JAPAN" value="JP"/>
+			<entry key="PORT ORCHARD WASHINGTON U.S.A." value="US"/>
+			<entry key="CHESAPEAKE BAY MARYLAND U.S.A." value="US"/>
+			<entry key="VILLAFRANCA NAVARRA SPAIN" value="ES"/>
+			<entry key="FRANKLIN CITY CHESAPEAKE BAY U.S.A." value="US"/>
+			<entry key="ARGETON BRITTANY FRANCE" value="FR"/>
+			<entry key="MEDITERRANEAN SEA ISRAEL" value="IL"/>
+			<entry key="SOUTH EAST OF ABERDEEN 10 MILES EAST" value="GB"/>
+			<entry key="SCOTLAND WEST COAST" value="GB"/>
+			<entry key="WEST SCOTLAND SEA LOCH" value="GB"/>
+			<entry key="NEW SOUTH WALES SYDNEY AUSTRALIA" value="AU"/>
+			<entry key="MILFORD CONNECTICUT U.S.A." value="US"/>
+			<entry key="CROYDON U.K." value="GB"/>
+			<entry key="SOUTHERN ENGLAND U.K." value="GB"/>
+			<entry key="MISSISSIPI RIVER U.S.A." value="US"/>
+			<entry key="POTOMAC RIVER U.S.A." value="US"/>
+			<entry key="BRUGGE BELGIUM" value="BE"/>
+			<entry key="SOUTH WEST AFRICA" value="NA"/>
+			<entry key="URBANA ILLINOIS U.S.A." value="US"/>
+			<entry key="NEAR NEUCHÃ¢TEL SWITZERLAND" value="CH"/>
+			<entry key="ST.LUCIA" value="LC"/>
+			<entry key="MALAGASY REPUBLIC" value="MG"/>
+			<entry key="ORLÃ©ANS FRANCE" value="FR"/>
+			<entry key="DEUX SÃ¨VRES FRANCE" value="FR"/>
+			<entry key="GUÃ©MÃ©NÃ© FRANCE" value="FR"/>
+			<entry key="GERAARDSBERGEN BELGIUM" value="BE"/>
+			<entry key="ZHEJIANG CHINA" value="CN"/>
+			<entry key="COOK ISLAND" value="CK"/>
+			<entry key="CAMPINAS BRAZIL" value="BR"/>
+			<entry key="KIJAKA ZAIRE" value="CD"/>
+			<entry key="IBADAN NIGERIA" value="NG"/>
+			<entry key="BAHIA BRAZIL" value="BR"/>
+			<entry key="KINANIRA BURUNDI" value="BI"/>
+			<entry key="RHODESIA" value="ZW"/>
+			<entry key="NOCAKIRO IVORY COAST" value="CI"/>
+			<entry key="SOUSS MOROCCO" value="MA"/>
+			<entry key="CAMBERENE SENEGAL" value="SN"/>
+			<entry key="AZERBAIDZHAN" value="AZ"/>
+			<entry key="PORTO RICO" value="PR"/>
+			<entry key="HAMME-MILLE BELGIUM" value="BE"/>
+			<entry key="MUNANIRA BURUNDI" value="BI"/>
+			<entry key="RUTEGAMA BURUNDI" value="BI"/>
+			<entry key="LONG ISLAND U.S.A." value="US"/>
+			<entry key="CLEVELAND U.S.A." value="US"/>
+			<entry key="KANAKAKAI HAWAII U.S.A." value="US"/>
+			<entry key="MOLOKAI HAWAII U.S.A." value="US"/>
+			<entry key="KULA HAWAII U.S.A." value="US"/>
+			<entry key="CARIMAGUA COLOMBIA" value="CO"/>
+			<entry key="MAUI HAWAII U.S.A." value="US"/>
+			<entry key="BUGGENHOUT BELGIUM" value="BE"/>
+			<entry key="CENTRAL JAVA INDONESIA" value="ID"/>
+			<entry key="STA. CRUZ BOLIVIA" value="BO"/>
+			<entry key="BUGUEY CAGAYAN PHILIPPINES" value="PH"/>
+			<entry key="CULAPE LUCBAN QUEZON PHILIPPINES" value="PH"/>
+			<entry key="TILIB LUCBAN QUEZON PHILIPPINES" value="PH"/>
+			<entry key="PALAWAN PHILIPPINES" value="PH"/>
+			<entry key="CASIGAN NARRA PALAWAN PHILIPPINES" value="PH"/>
+			<entry key="MALINAO NARRA PALAWAN PHILIPPINES" value="PH"/>
+			<entry key="ISABELA PHILIPPINES" value="PH"/>
+			<entry key="AJUY ILTOILO PHILIPPINES" value="PH"/>
+			<entry key="MIDSAYAG NORTH CATABATO PHILIPPINES" value="PH"/>
+			<entry key="NUEVA ECIJA PHILIPPINES" value="PH"/>
+			<entry key="SAN ENRIQUE NEGROS OCC. PHILIPPINES" value="PH"/>
+			<entry key="PANABO DAVAO PHILIPPINES" value="PH"/>
+			<entry key="BRCES PILI CAMARINES SUR PHILIPPINES" value="PH"/>
+			<entry key="LOPEZ BOHOL PHILIPPINES" value="PH"/>
+			<entry key="POLANGUI ALBAY PHILIPPINES" value="PH"/>
+			<entry key="SORSOGON SORSOGON PHILIPPINES" value="PH"/>
+			<entry key="PAIWA TABACO ALBAY PHILIPPINES" value="PH"/>
+			<entry key="LOS BANOS LAGUNA PHILIPPINES" value="PH"/>
+			<entry key="BANAUE (SIK 1) IFUGAO PHILIPPINES" value="PH"/>
+			<entry key="LA GRANJA EXPT. STATION NEGRON OCCIDENTAL PHILIPPINES" value="PH"/>
+			<entry key="APARRI CAGAYAN PHILIPPINES" value="PH"/>
+			<entry key="FUZHOU CHINA" value="CN"/>
+			<entry key="PAWA MALINAW ALBAY PHILIPPINES" value="PH"/>
+			<entry key="MES MIDSAYAP NORTH COTABATO PHILIPPINES" value="PH"/>
+			<entry key="LUCTUGAN ROXAS CITY PHILIPPINES" value="PH"/>
+			<entry key="CAPOY SORSOGON SORSOGON PHILIPPINES" value="PH"/>
+			<entry key="PANGIL LAGUNA PHILIPPINES" value="PH"/>
+			<entry key="BANTUG MUNOZ NUEVA ECIJA PHILIPPINES" value="PH"/>
+			<entry key="SAN FABIAN ISABELA PHILIPPINES" value="PH"/>
+			<entry key="BALINGKAWAYAN SAN JOSE TARLAC TARLAC PHILIPPINES" value="PH"/>
+			<entry key="MAKATKATUIT GUIMBA NUEVA ECIJA PHILIPPINES" value="PH"/>
+			<entry key="MAROUA CAMEROON" value="CM"/>
+			<entry key="KOGONI NIONO MALI" value="ML"/>
+			<entry key="KAYES MALI" value="ML"/>
+			<entry key="DIABALI NIONO MALI" value="ML"/>
+			<entry key="FINISTÃ¨RE FRANCE" value="FR"/>
+			<entry key="FRÃ©VENT FRANCE" value="FR"/>
+			<entry key="EU FRANCE" value="FR"/>
+			<entry key="SEINE MARITIME FRANCE" value="FR"/>
+			<entry key="MONTREUIL FRANCE" value="FR"/>
+			<entry key="ROOSDAAL BELGIUM" value="BE"/>
+			<entry key="MARKE BELGIUM" value="BE"/>
+			<entry key="LEMBERGE BELGIUM" value="BE"/>
+			<entry key="MERELBEKE BELGIUM" value="BE"/>
+			<entry key="HERZELE BELGIUM" value="BE"/>
+			<entry key="PAMEL BELGIUM" value="BE"/>
+			<entry key="LESSINES BELGIUM" value="BE"/>
+			<entry key="MESLIN L'EVÃªQUE BELGIUM" value="BE"/>
+			<entry key="HABAY LA NEUVE BELGIUM" value="BE"/>
+			<entry key="SENSIN BELGIUM" value="BE"/>
+			<entry key="MAFFLE BELGIUM" value="BE"/>
+			<entry key="HAUTRAGE BELGIUM" value="BE"/>
+			<entry key="BRUGELETTE BELGIUM" value="BE"/>
+			<entry key="PETIT ENGHIEN BELGIUM" value="BE"/>
+			<entry key="HALLE BELGIUM" value="BE"/>
+			<entry key="POLLARE BELGIUM" value="BE"/>
+			<entry key="NEDERBOELARE BELGIUM" value="BE"/>
+			<entry key="ZONDEREIGEN BELGIUM" value="BE"/>
+			<entry key="TURNHOUT BELGIUM" value="BE"/>
+			<entry key="GOSSELIES BELGIUM" value="BE"/>
+			<entry key="VÃ©ZON BELGIUM" value="BE"/>
+			<entry key="IEPER BELGIUM" value="BE"/>
+			<entry key="RAMSKAPELLE BELGIUM" value="BE"/>
+			<entry key="EERNEGEM GISTEL BELGIUM" value="BE"/>
+			<entry key="MALDEGEM BELGIUM" value="BE"/>
+			<entry key="SCHOONAARDE BELGIUM" value="BE"/>
+			<entry key="WOMMELGEM BELGIUM" value="BE"/>
+			<entry key="ZOERSEL BELGIUM" value="BE"/>
+			<entry key="RIJKEVORSEL BELGIUM" value="BE"/>
+			<entry key="RETIE BELGIUM" value="BE"/>
+			<entry key="ROUVEROY BELGIUM" value="BE"/>
+			<entry key="ERQUELINES BELGIUM" value="BE"/>
+			<entry key="POTTES BELGIUM" value="BE"/>
+			<entry key="ST.-REMY BELGIUM" value="BE"/>
+			<entry key="CALLENELLE BELGIUM" value="BE"/>
+			<entry key="RILLAAR BELGIUM" value="BE"/>
+			<entry key="NETHEN BELGIUM" value="BE"/>
+			<entry key="DROGENBOS BELGIUM" value="BE"/>
+			<entry key="HOEGAARDEN BELGIUM" value="BE"/>
+			<entry key="ASSE BELGIUM" value="BE"/>
+			<entry key="BRAINE L'ALLEUD BELGIUM" value="BE"/>
+			<entry key="GENAPPE BELGIUM" value="BE"/>
+			<entry key="YVOIR BELGIUM" value="BE"/>
+			<entry key="NETTET BELGIUM" value="BE"/>
+			<entry key="YVES GOMEZÃ©E WALCOURT BELGIUM" value="BE"/>
+			<entry key="JANIOLLE BELGIUM" value="BE"/>
+			<entry key="VYLE EN THAROUL BELGIUM" value="BE"/>
+			<entry key="VERLAINE BELGIUM" value="BE"/>
+			<entry key="AISNE FRANCE" value="FR"/>
+			<entry key="SURREY U.K." value="GB"/>
+			<entry key="BEDFORDSHIRE U.K." value="GB"/>
+			<entry key="OISE FRANCE" value="FR"/>
+			<entry key="HAINAULT BELGIUM" value="BE"/>
+			<entry key="WAGENINGEN THE NETHERLANDS" value="NL"/>
+			<entry key="RODRIGUES ISLAND" value="MU"/>
+			<entry key="EAST CHINA" value="CN"/>
+			<entry key="TIFTON U.S.A." value="US"/>
+			<entry key="FT.VALLEY U.S.A." value="US"/>
+			<entry key="GRIFFIN U.S.A." value="US"/>
+			<entry key="SOUTH DAKOTA U.S.A." value="US"/>
+			<entry key="HORTICULTURAL CROPS RESEARCH STATION CASTLE HAYNE NORTH CAROLINA U.S.A." value="US"/>
+			<entry key="CENTRAL CROPS RESEARCH STATION CLAYTON NORTH CAROLINA U.S.A." value="US"/>
+			<entry key="AUDE FRANCE" value="FR"/>
+			<entry key="ARDÃ¨CHE FRANCE" value="FR"/>
+			<entry key="CHARENTES MARITIMES FRANCE" value="FR"/>
+			<entry key="PYRENÃ©ES ORIENTALES FRANCE" value="FR"/>
+			<entry key="RIVER MOSCOW RUSSIA" value="RU"/>
+			<entry key="FREEHOLD NEW YERSEY U.S.A." value="US"/>
+			<entry key="BWAMANDA ZAIRE" value="CD"/>
+			<entry key="MOBAYI ZAIRE" value="CD"/>
+			<entry key="KINSHASA ZAIRE" value="CD"/>
+			<entry key="TSHELA ZAIRE" value="CD"/>
+			<entry key="BANDOENG INDONESIA" value="ID"/>
+			<entry key="SARAWAK" value="MY"/>
+			<entry key="TURKMENIYA" value="TM"/>
+			<entry key="SWEDEN(?)" value="SE"/>
+			<entry key="CAP VERDE ISLANDS" value="CV"/>
+			<entry key="SAUDIARABIA ?" value="SA"/>
+			<entry key="ARGENTINA?" value="AR"/>
+			<entry key="FALKLAND IDS" value="FK"/>
+			<entry key="EAST GERMANY" value="DE"/>
+			<entry key="MARSHALL IDS" value="MH"/>
+			<entry key="MOLDOVA" value="MD"/>
+			<entry key="SURINAM" value="SR"/>
+			<entry key="REP. SOUTH AFRICA" value="ZA"/>
+			<entry key="SWA-NAMIBIA" value="NA"/>
+			<entry key="SVALBARD" value="SJ"/>
+			<entry key="ST. VINCENT" value="VC"/>
+			<entry key="BOSNIA-HERCEGOVINA" value="BA"/>
+			<entry key="ST. KITTS &amp; NEVIS" value="KN"/>
+			<entry key="PHILLIPINES" value="PH"/>
+			<entry key="U.S. TRUST TERRITORY OF THE PACIFIC" value="UM"/>
+			<entry key="NAMIBIA (SWA)" value="NA"/>
+			<entry key="GRENADINES" value="VC"/>
+			<entry key="ELSALVATOR" value="SV"/>
+			<entry key="DEMOCRATIC REPUBLIC OF THE CONGO" value="CD"/>
+			<entry key="COMMONWEALTH OF THE NORTHERN MARIANA ISLANDS" value="US"/>
+			<entry key="REPUBLIC OF THE MARSHALL ISLANDS" value="MH"/>
+			<entry key="REPUBLIC OF SOUTH AFRICA" value="ZA"/>
+			<entry key="ALGERIA?" value="DZ"/>
+			<entry key="REPUBLIC OF PALAU" value="PW"/>
+			<entry key="TANGANYIKA" value="TZ"/>
+			<entry key="PLANTS OF CHINA" value="CN"/>
+			<entry key="PLANTS OF USA" value="US"/>
+			<entry key="BULG" value="BG"/>
+			<entry key="KIRG" value="KG"/>
+			<entry key="MAKE" value="MK"/>
+			<entry key="UKRA" value="UA"/>
+			<entry key="GERMANY; WEST GERMANY" value="DE"/>
+			<entry key="GERMANY; EAST GERMANY" value="DE"/>
+			<entry key="CANADA ?" value="CA"/>
+			<entry key="GERMANY ?; EAST GERMANY ?" value="DE"/>
+			<entry key="GERMAY" value="DE"/>
+			<entry key="LINE ISLANDS" value="KI"/>
+			<entry key="ROMANIA ?" value="RO"/>
+			<entry key="U.S.A. ?" value="US"/>
+			<entry key="BOSNIA HERCEGOVINA; YUGOSLAVIA" value="BA"/>
+			<entry key="ZIMBABWE; RHODESIA" value="ZW"/>
+			<entry key="SOUTH AFRICAN" value="ZA"/>
+			<entry key="NORWAY ?" value="NO"/>
+			<entry key="DENMARK; GREENLAND" value="GL"/>
+			<entry key="ZIMBABWE (RHODESIA)" value="ZW"/>
+			<entry key="GUYANA; BRITISH GUIANA" value="GY"/>
+			<entry key="SURINAME; DUTCH GUIANA" value="SR"/>
+			<entry key="FINLANDE" value="FI"/>
+			<entry key="DENMARK; FAEROE ISLANDS" value="FO"/>
+			<entry key="MYANMAR; BURMA" value="MM"/>
+			<entry key="ESTONIA; USSR" value="EE"/>
+			<entry key="PHOENIX ISLANDS" value="KI"/>
+			<entry key="SEYCHELLE ISLANDS" value="SC"/>
+			<entry key="INDIA ?" value="IN"/>
+			<entry key="AUSTRALIA ?" value="AU"/>
+			<entry key="MARIANA ISLANDS" value="MP"/>
+			<entry key="NETHERLANDS ?" value="NL"/>
+			<entry key="GREECE?" value="GR"/>
+			<entry key="ALGIERS" value="DZ"/>
+			<entry key="WAKE ATOLL" value="US"/>
+			<entry key="GERMANY ?; WEST GERMANY ?" value="DE"/>
+			<entry key="SRI LANKA; CEYLON" value="LK"/>
+			<entry key="SAINT PIERRE" value="PM"/>
+			<entry key="KENYA (LUO)" value="KE"/>
+			<entry key="RUSIZI, KIVU (ZAÃ¯RE) (RÃ©PUBLIQUE DÃ©MOCRATIQUE\
+								DU CONGO)" value="CD"/>
+			<entry key="BURUNDI (CRÃªTES ZAÃ¯RE-NIL)" value="BI"/>
+			<entry key="TANZANIE" value="TZ"/>
+			<entry key="BURKINA FASO (PLATEAU CENTRAL)" value="BF"/>
+			<entry key="KENYA (RÃ©GION DU NORD)" value="KE"/>
+			<entry key="TANZANIE (MBEYA DISTRICT)" value="TZ"/>
+			<entry key="KENYA (SOMALI)" value="KE"/>
+			<entry key="KENYA (MASAI)" value="KE"/>
+			<entry key="KENYA (SAMBURU)" value="KE"/>
+			<entry key="ERYTHRÃ©E" value="ER"/>
+			<entry key="SOUDAN (RÃ©GION DE L'EST)" value="SD"/>
+			<entry key="UGANDA (SO)" value="UG"/>
+			<entry key="SÃ©NÃ©GAL (PEUPLE PEUL DE LA RÃ©GION DU SINE SALUM)" value="SN"/>
+			<entry key="TCHAD" value="TD"/>
+			<entry key="MAURITANIE" value="MR"/>
+			<entry key="KENYA (POKOT)" value="KE"/>
+			<entry key="KENYA (CHAMU)" value="KE"/>
+			<entry key="KIVU, BUSHI (ZAÃ¯RE) (RÃ©PUBLIQUE DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="BURUNDI, (CRÃªTES ZAÃ¯RE-NIL)" value="BI"/>
+			<entry key="KENYA (TURKANA)" value="KE"/>
+			<entry key="TANZANIE (SENYA JUU HAI DISTRICT)" value="TZ"/>
+			<entry key="SOUDAN (KORDOFAN)" value="SD"/>
+			<entry key="KENYA (KIPSIGIS)" value="KE"/>
+			<entry key="AFRIQUE DU SUD, BASUTOLAND (SOTHO)" value="ZA"/>
+			<entry key="TANZANIE (SAMYA JUU HAI DISTRICT)" value="TZ"/>
+			<entry key="TURKANA (KENYA)" value="KE"/>
+			<entry key="KENYA (SAMBURU, TURKANA)" value="KE"/>
+			<entry key="TANZANIE (MOSHI RURAL DISTRICT)" value="TZ"/>
+			<entry key="TANZANIE (MARANGU DISTRICT)" value="TZ"/>
+			<entry key="ETHIOPIE (VALLÃ©E DE L'AWASH)" value="ET"/>
+			<entry key="KENYA (MASAÃ¯ &amp; KIPSIGIS)" value="KE"/>
+			<entry key="BÃ©NIN" value="BJ"/>
+			<entry key="ZAÃ¯RE, SUD - KIVU (RÃ©PUBLIQUE DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="CONGO (RÃ©P. POPULAIRE DU CONGO)" value="CG"/>
+			<entry key="GUINÃ©E" value="GN"/>
+			<entry key="ETHIOPIE" value="ET"/>
+			<entry key="KENYA (EMBU)" value="KE"/>
+			<entry key="ZAMBIE" value="ZM"/>
+			<entry key="AFRIQUE DU SUD (ZULU)" value="ZA"/>
+			<entry key="ZAÃ¯RE, ITURI (RÃ©PUBLIQUE DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="ETHIOPIE CENTRALE" value="ET"/>
+			<entry key="TANZANIE (MOSHI, SANJA JUU-HAI DIST.)" value="TZ"/>
+			<entry key="RÃ©PUBLIQUE DÃ©MOCRATIQUE DU CONGO (RÃ©GION DU\
+								BUSHI, SUD - KIVU )" value="CD"/>
+			<entry key="TANZANIE (SANYA JUU DISTRICT)" value="TZ"/>
+			<entry key="AFRIQUE DU SUD (SOTHO)" value="ZA"/>
+			<entry key="NIGERIA ?" value="NG"/>
+			<entry key="NIGÃ©RIA" value="NG"/>
+			<entry key="ITURI (LES BAHEMA, ZAÃ¯RE)" value="CD"/>
+			<entry key="AFRIQUE SUD" value="ZA"/>
+			<entry key="KENYA (EMBU) (SAMBURU) (TURKANA) (KAMBA) (GIKUYU)" value="KE"/>
+			<entry key="TANZANIE (PAYS DU SIMANJIRO)" value="TZ"/>
+			<entry key="TANZANIE (MARANGU MOSHI DISTRICT)" value="TZ"/>
+			<entry key="KENYA (KAMBA)" value="KE"/>
+			<entry key="ZAÃ¯RE (RÃ©P. DÃ©MOCRATIQUE DU CONGO) (SUD - KIVU)" value="CD"/>
+			<entry key="GUINÃ©E CONAKRY (RÃ©G. FOUTA-DJALLON)" value="GN"/>
+			<entry key="BÃ©NIN - MONO" value="BJ"/>
+			<entry key="ZAÃ¯RE (BAS-CONGO)" value="CD"/>
+			<entry key="AFRIQUE DU SUD (SWAZILAND-SWATI)" value="ZA"/>
+			<entry key="EMPIRE CENTRAFRICAIN (RÃ©PUBLIQUE CENTRAFRICAINE)" value="CF"/>
+			<entry key="ZAÃ¯RE, KATANGA (RÃ©PUBLIQUE DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="MOZAMBIQUE (MAPUTO)" value="MZ"/>
+			<entry key="RÃ©PUBLIQUE DE GUINÃ©E" value="GN"/>
+			<entry key="ZAÃ¯RE (RÃ©P. DÃ©MOCRATIQUE DU CONGO) (CONGO BELGE)" value="CD"/>
+			<entry key="ZAÃ¯RE, ITURI" value="CD"/>
+			<entry key="SOUDAN (FULANI)" value="SD"/>
+			<entry key="NIGERIA (SUD)" value="NG"/>
+			<entry key="SÃ©NÃ©GAL" value="SN"/>
+			<entry key="TANZANIE (CHAGGA)" value="TZ"/>
+			<entry key="CÃ´TE D'IVOIRE" value="CI"/>
+			<entry key="BURKINA-FASO" value="BF"/>
+			<entry key="SOMALIE" value="SO"/>
+			<entry key="NORD-KIVU (ZAÃ¯RE) (RÃ©PUBLIQUE DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="ZAÃ¯RE (RÃ©P. DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="NORD CT-IV." value="CI"/>
+			<entry key="ZAÃ¯RE, NDUYE, ZONE DE MAMBASA, FORÃªT DE L'ITURI" value="CD"/>
+			<entry key="TANZANIE (ARUSHA, KILIMANDJARO )" value="TZ"/>
+			<entry key="TANZANIE DE L'EST" value="TZ"/>
+			<entry key="KENYA (KIPSIGIS) (KAMBA) (EMBU, KIPSIGIS)" value="KE"/>
+			<entry key="KENYA (LUO) (EMBU) (GIKUYU, KAMBA, KIPSIGIS, MASAI)" value="KE"/>
+			<entry key="SIERRA LEONE (RÃ©GION DE LA KARINA)" value="SL"/>
+			<entry key="BOTSWANA KALAHARI" value="BW"/>
+			<entry key="OUGANDA" value="UG"/>
+			<entry key="NIGERIA (FULANI)" value="NG"/>
+			<entry key="BURUNDI OCCIDENTAL" value="BI"/>
+			<entry key="EGYPTE ???" value="EG"/>
+			<entry key="TANZANIE (RUJEWA-MBARALI DISTRICT)" value="TZ"/>
+			<entry key="SÃ©NÃ©GAL (RÃ©GION ENTRE LES VILLES KÃ©DOUGOU ET YUKUNKUN)" value="SN"/>
+			<entry key="SOUDAN (EST)" value="SD"/>
+			<entry key="AFRIQUE SUD ET EST, GUINÃ©E CONAKRY (FOUTA-DJALLON)" value="GN"/>
+			<entry key="AFRIQUE DU SUD (SOTHO), (LOBEDU), (ZULU)" value="ZA"/>
+			<entry key="AFRIQUE DU SUD (MFENGU)" value="ZA"/>
+			<entry key="SÃ©NÃ©GAL (OUOLOF)" value="SN"/>
+			<entry key="NORD CTE IV (LATAHA) AFR. OUEST." value="CI"/>
+			<entry key="ZAÃ¯RE, AUTOUR DU VILLAGE ANDIRI, PRÃ¨S DE NDUYE, ITURI" value="CD"/>
+			<entry key="RÃ©PUBLIQUE CENTRAFRICAINE" value="CF"/>
+			<entry key="RÃ©UNION" value="RE"/>
+			<entry key="MAURITANIE (RÃ©GION DE CHINGETTI)" value="MR"/>
+			<entry key="AFRIQUE DU SUD (LOBEDU)" value="ZA"/>
+			<entry key="ZAÃ¯RE (RÃ©PUBLIQUE DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="AFRIQUE DU SUD (XHOSA ET MFENGU)" value="ZA"/>
+			<entry key="KONGO DU ZAÃ¯RE (RÃ©P. DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="AFRIQUE DU SUD (BOTSWANA, KGATHA)" value="BW"/>
+			<entry key="KENYA (EMBU, GIKUYU, KISIGIS)" value="KE"/>
+			<entry key="KENYA (EMBU, GIKUYU, KISIGIS) (MERU, SAMBURU)" value="KE"/>
+			<entry key="KENYA (PRAIRIE ET BUSH)" value="KE"/>
+			<entry key="KENYA (LUO) (EMBU, KIPSIGIS)" value="KE"/>
+			<entry key="ZAÃ¯RE ORIENTAL (RÃ©PUBLIQUE DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="NAMIBIE" value="NA"/>
+			<entry key="CONGO BELGE (RÃ©P. DÃ©MOCRATIQUE DU CONGO)\
+								(RÃ©GION DES MONGO)" value="CD"/>
+			<entry key="KENYA (BUSH DES COLLINES)" value="KE"/>
+			<entry key="CENTRE AFRIQUE (RÃ©GION DE LA LOBAYE, OUBANGI-CHARI)" value="CF"/>
+			<entry key="TANZANIE (MAMBA-MOSHI DISTRICT)" value="TZ"/>
+			<entry key="OUGANDA (RÃ©GION DU PARC DE BWINDI)" value="UG"/>
+			<entry key="AFRIQUE DU SUD (XHOSA)" value="ZA"/>
+			<entry key="TANZANIE (SANYA JUU HAI DISTRICT)" value="TZ"/>
+			<entry key="TANZANIE (SAJA JUU MOSHI DISTRICT)" value="TZ"/>
+			<entry key="CONGO BELGE (RÃ©P. DÃ©MOCRATIQUE DU CONGO)\
+								(RÃ©GION DE STANLEYVILLE (KISANGANI) )" value="CD"/>
+			<entry key="AFRIQUE DU SUD (SOTHO DU BASUTOLAND)" value="ZA"/>
+			<entry key="ZAIRE,TETURI , FORÃªT DE L'ITURI" value="CD"/>
+			<entry key="RWANDA (PRÃ©FECTURE DE GISENYI)" value="RW"/>
+			<entry key="AFRIQUE DU SUD (BANTU)" value="ZA"/>
+			<entry key="ETHIOPIE (NORD-EST) (RÃ©GION DU GONDAR)" value="ET"/>
+			<entry key="KENYA (GABBRA)" value="KE"/>
+			<entry key="MAROC" value="MA"/>
+			<entry key="RÃ©PUBLIQUE CENTRAFRICAINE (OUBANGUI)" value="CF"/>
+			<entry key="AFRIQUE DU SUD (MPONDO)(ZULU) (LALA)" value="ZA"/>
+			<entry key="CAMEROUN (NORD-EST)" value="CM"/>
+			<entry key="GUINÃ©E-CONAKRY" value="GN"/>
+			<entry key="TANZANIE (URU-MOSHI DISTRICT)" value="TZ"/>
+			<entry key="KENYA (CIKUYU, MARAGOLI)" value="KE"/>
+			<entry key="TANZANIE (MOSHI DISTRICT)" value="TZ"/>
+			<entry key="ZAÃ¯RE" value="CD"/>
+			<entry key="NIGERIA (NORD)" value="NG"/>
+			<entry key="TANZANIE (IWAMBI-MBEYA DISTRICT)" value="TZ"/>
+			<entry key="KENYA (RECETTE PROVENANT D'EGYPTE?)" value="KE"/>
+			<entry key="AFRIQUE DU SUD (ZULU, SWATI)" value="ZA"/>
+			<entry key="CAMEROUN (PROVINCE DU NORD-OUEST) (PEUPLE FULANI)" value="CM"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="TANZANIE (MBOZI DISTRICT)" value="TZ"/>
+			<entry key="MAURICE" value="MU"/>
+			<entry key="SOUDAN ET SOUDAN (FULANI)" value="SD"/>
+			<entry key="AFRIQUE DU SUD (TRANSVAAL ORIENTAL)" value="ZA"/>
+			<entry key="AFRIQUE DU SUD (ZULU, KWENA)" value="ZA"/>
+			<entry key="SÃ©NÃ©GAL (TOUTE LA ZONE Ã  PARTIR DU NORD SÃ©NÃ©GAL" value="SN"/>
+			<entry key="BURKINA-FASO (PROVINCE DU PASSORÃ©)" value="BF"/>
+			<entry key="AFRIQUE DU SUD (PAYS VENDA)" value="ZA"/>
+			<entry key="TANZANIE (RUJEWA-MBARALI)" value="TZ"/>
+			<entry key="TANZANIE (MASAI)" value="TZ"/>
+			<entry key="CONGO BELGE (RÃ©P. DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="KENYA (MARAGOLI)" value="KE"/>
+			<entry key="ZAÃ¯RE (KISANGANI) (RÃ©P. DÃ©MOCRATIQUE DU CONGO)" value="CD"/>
+			<entry key="GUINÃ©E CONAKRY" value="GN"/>
+			<entry key="TANZANIE (MARANGU-MOSHI DISTRICT)" value="TZ"/>
+			<entry key="AFRIQUE DU SUD, ZIMBABWE (NDEBELE)" value="ZW"/>
+			<entry key="RÃ©PUBLIQUE CENTRAFRICAINE, RÃ©PUBLIQUE DU CONGO-BRAZZAVILLE" value="CF"/>
+			<entry key="NIGER(DOSSO)" value="NE"/>
+			<entry key="BURKINA FASO (ZONE SAHEL. &amp; SOUDANO-SAHEL.)" value="BF"/>
+			<entry key="TANZANIE (MWIKA-MOSHI DISTRICT)" value="TZ"/>
+			<entry key="BOTSWANA (KALAHARI CENTRAL)" value="BW"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="SÃ©NÃ©GAL (RÃ©GION DE THIES) (PEUPLE DES SÃ©RÃ¨RES SAFÃ¨N)" value="SN"/>
+			<entry key="TANZANIE (SANJA JUU HAI DISTRICT)" value="TZ"/>
+			<entry key="MADAGASCAR (HAUTS-PLATEAUX)" value="MG"/>
+			<entry key="UGANDA (ITESO)" value="UG"/>
+			<entry key="KENYA (GIKUYU, MERU)" value="KE"/>
+			<entry key="KENYA (EMBU, GIKUYU) (KIPSIGIS)" value="KE"/>
+			<entry key="RWANDA (NORD)" value="RW"/>
+			<entry key="MADAGASCAR (TANANARIVE)" value="MG"/>
+			<entry key="AFRIQUE DU SUD (SOTHO, NGUNI)" value="ZA"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO" value="CG"/>
+			<entry key="TANZANIE (SANJA JUU DISTRICT)" value="TZ"/>
+			<entry key="TCHAD (PAYS SAR)" value="TD"/>
+			<entry key="NIGER(HAUSA)" value="NE"/>
+			<entry key="TANZANIE (HAYA)" value="TZ"/>
+			<entry key="LUO DU SIAYA , KENYA" value="KE"/>
+			<entry key="ITURI (ZAÃ¯RE)" value="CD"/>
+			<entry key="TANZANIE (WEST KILIMANJARO)" value="TZ"/>
+			<entry key="BURUNDI, (KIRIMIRO-NORD)." value="BI"/>
+			<entry key="KENYA ((KIPSIGIS)" value="KE"/>
+			<entry key="SÃ©NÃ©GAL (FULANI)" value="SN"/>
+			<entry key="TANZANIE(MASAI, CHAGGA, SUKUMA)" value="TZ"/>
+			<entry key="TANZANIE (MBARALI DISTRICT)" value="TZ"/>
+			<entry key="BOTSWANA (KGATHA)" value="BW"/>
+			<entry key="SENEGAL (CASAMANCE)" value="SN"/>
+			<entry key="MALI (RÃ©GIONS: SIKASSO, BOUGOUNI)" value="ML"/>
+			<entry key="ZAÃ¯RE (SHABA)" value="CD"/>
+			<entry key="TANZANIE (RUJAWA-MBARALI DISTRICT)" value="TZ"/>
+			<entry key="SOUTH SHETLAND ISLANDS" value="AQ"/>
+			<entry key="BRITISH INDIAN OCEAN TERRITORY" value="IO"/>
+			<entry key="NEW  CALEDONIA" value="NC"/>
+			<entry key="AÃ§ORES" value="PT"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="UNITED STATE" value="US"/>
+			<entry key="CANADA, ALBERTA, COLD CREE" value="CA"/>
+			<entry key="CANAD" value="CA"/>
+			<entry key="CANADA, CAVEN LAK" value="CA"/>
+			<entry key="CANADA, ALBERTA, PROSPECT CREE" value="CA"/>
+			<entry key="TERR. NEW GUINEA" value="PN"/>
+			<entry key="PAPUA" value="PG"/>
+			<entry key="PRESUMED PAPUA NEW GUINEA" value="PG"/>
+			<entry key="POSSIBLY NEW ZEALAND" value="NZ"/>
+			<entry key="PRESUMED LAOS" value="LA"/>
+			<entry key="PRESUMED TERR. NEW GUINEA" value="PN"/>
+			<entry key="FRENCH POLYNESIA" value="PF"/>
+			<entry key="PRESUMED AUSTRALIA" value="AU"/>
+			<entry key="PROBABLY THAILAND" value="TH"/>
+			<entry key="PAPUA NEW GUINEA (POSSIBLY)" value="PG"/>
+			<entry key="PRESUMED NEW GUINEA" value="ID"/>
+			<entry key="MACAU" value="CN"/>
+			<entry key="NORTHERN MARIANA ISLANDS" value="US"/>
+			<entry key="POSSIBLY PALAU" value="PW"/>
+			<entry key="POSSIBLY FED ST OF MICRONESIA" value="FM"/>
+			<entry key="PRESUMED TONGA" value="TO"/>
+			<entry key="PITCAIRN ISLANDS" value="PN"/>
+			<entry key="PRESUMED NEPAL" value="NP"/>
+			<entry key="SANTO DOMINGO" value="DO"/>
+			<entry key="MONT-ST GUIBERT" value="BE"/>
+			<entry key="LUXEMBURG" value="LU"/>
+			<entry key="BELGIUM AALTER" value="BE"/>
+			<entry key="MASSACHUSETTS" value="US"/>
+			<entry key="FRENCH GUYANA" value="GF"/>
+			<entry key="WESTERN MALAYSIA" value="MY"/>
+			<entry key="BRUXELLES" value="BE"/>
+			<entry key="SALOMON ISLANDS" value="SB"/>
+			<entry key="THAÃ¯LAND" value="TH"/>
+			<entry key="MORROCCO" value="MA"/>
+			<entry key="ISRAÃ«L" value="IL"/>
+			<entry key="IRISH REPUBLIC" value="IE"/>
+			<entry key="PAPUA - NEW GUINEA" value="PG"/>
+			<entry key="PAPUA-NEW GUINEA" value="PG"/>
+			<entry key="IVORY COST" value="CI"/>
+			<entry key="ANTACTICA" value="AQ"/>
+			<entry key="QUEBEC" value="CA"/>
+			<entry key="INDE" value="IN"/>
+			<entry key="DEUTSCHLAND" value="DE"/>
+			<entry key="NORTH WALES" value="GB"/>
+			<entry key="CENTRAFRICA REPUBLIC" value="CF"/>
+			<entry key="FRANEC" value="FR"/>
+			<entry key="BELGIQUE" value="BE"/>
+			<entry key="PAPUA- NEW GUINEA" value="PG"/>
+			<entry key="ZAÃRE" value="CD"/>
+			<entry key="SKOCJAUSKE JAME" value="SI"/>
+			<entry key="UNITED KINGKOM" value="GB"/>
+			<entry key="FRANCE (PROGIL LAB.)" value="FR"/>
+			<entry key="CENTRAFRICAN REPUBLIC" value="CF"/>
+			<entry key="SUISSE" value="CH"/>
+			<entry key="LITTLE CARPATHIANS" value="SK"/>
+			<entry key="NANCY" value="FR"/>
+			<entry key="TAÃ¯WAN" value="TW"/>
+			<entry key="REPUBLIC OF MACEDONIA" value="MK"/>
+			<entry key="ANTARTICA" value="AQ"/>
+			<entry key="CENTRAL LITHUANIA" value="LT"/>
+			<entry key="JAPON" value="JP"/>
+			<entry key="AUSTRALIA EASTERN" value="AU"/>
+			<entry key="CLERMONT-FERRAND" value="FR"/>
+			<entry key="ANTARCTICA (74Â°51S" value="AQ"/>
+			<entry key="ANTARCTICA (74Â°42'S" value="AQ"/>
+			<entry key="TURQUIA" value="TR"/>
+			<entry key="ZAÃ®RE" value="CD"/>
+			<entry key="ANTARCTICA (74Â°55S" value="AQ"/>
+			<entry key="SARDINIA" value="IT"/>
+			<entry key="BELGIUM (AMYLUM)" value="BE"/>
+			<entry key="NEW BRITAIN" value="PG"/>
+			<entry key="CERNIKA" value="SI"/>
+			<entry key="CRETE" value="GR"/>
+			<entry key="CANADA ONTARIO" value="CA"/>
+			<entry key="WESTERN AUSTRALIA" value="AU"/>
+			<entry key="BRITISH GUIANA" value="GY"/>
+			<entry key="NEBRASKA" value="US"/>
+			<entry key="FLOREFFE" value="BE"/>
+			<entry key="RHODE ISLAND" value="US"/>
+			<entry key="CHIMAY" value="BE"/>
+			<entry key="LA MARTINIQUE" value="MQ"/>
+			<entry key="KORNIK" value="PL"/>
+			<entry key="GALAPAGOS ISLAND" value="EC"/>
+			<entry key="SICILY" value="IT"/>
+			<entry key="WESTERN PAKISTAN" value="PK"/>
+			<entry key="MANCHURIA" value="CN"/>
+			<entry key="WEST INDIESSAINT-THOMAS" value="VI"/>
+			<entry key="ISLAND" value="IS"/>
+			<entry key="LIAONING" value="CN"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="AZORERNA" value="PT"/>
+			<entry key="SPETSBERGEN" value="SJ"/>
+			<entry key="RÃ‰UNION" value="RE"/>
+			<entry key="GIBRALTAR" value="GI"/>
+			<entry key="SWEDEN ?" value="SE"/>
+			<entry key="NEW ZEALAND ?" value="NZ"/>
+			<entry key="BRAZIL?" value="BR"/>
+			<entry key="BR VIRGIN IS" value="VG"/>
+			<entry key="US MINOR IS" value="UM"/>
+			<entry key="WAKE I." value="US"/>
+			<entry key="CHAGOS IS." value="IO"/>
+			<entry key="COOK IS." value="CK"/>
+			<entry key="MIDWAY IS" value="UM"/>
+			<entry key="TURKS CAICOS" value="TC"/>
+			<entry key="CAYMAN IS" value="KY"/>
+			<entry key="AMSTERDAM I." value="TF"/>
+			<entry key="SWAZILAND" value="SZ"/>
+			<entry key="GUINEA BISSAU" value="GW"/>
+			<entry key="UNITED STATES OF AMERICA" value="US"/>
+			<entry key="KONGO" value="CG"/>
+			<entry key="REPUBLIC OF GEORGIA" value="GE"/>
+			<entry key="LESSER SUNDA ISL" value="ID"/>
+			<entry key="ALGERIE" value="DZ"/>
+			<entry key="BOSNIÃ«" value="BA"/>
+			<entry key="BRUNEI" value="BN"/>
+			<entry key="EIRE" value="IE"/>
+			<entry key="AUSTRALIA?" value="AU"/>
+			<entry key="TIMOR" value="TL"/>
+			<entry key="KAZAKSTAN" value="KZ"/>
+			<entry key="MARQUESAS" value="PF"/>
+			<entry key="HAWAIIAN ISL" value="US"/>
+			<entry key="GAMBIER ISL" value="CA"/>
+			<entry key="SABAH" value="MY"/>
+			<entry key="SULAWESI" value="ID"/>
+			<entry key="NORFOLK ISL" value="NF"/>
+			<entry key="MOLUCCAS" value="ID"/>
+			<entry key="FALKLAND ISL" value="FK"/>
+			<entry key="NORTHERN MARIANAS" value="US"/>
+			<entry key="CORSICA" value="FR"/>
+			<entry key="SOCIETY ISL" value="PF"/>
+			<entry key="TUAMOTU ISL" value="PF"/>
+			<entry key="SARDEGNA" value="IT"/>
+			<entry key="KERGUELEN" value="TF"/>
+			<entry key="CABINDA" value="AO"/>
+			<entry key="PITCAIRN ISL" value="PN"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="SOUTH AFRICA?" value="ZA"/>
+			<entry key="[SWEDEN?]" value="SE"/>
+			<entry key="COLOMBIA ?" value="CO"/>
+			<entry key="NEW ZEALAND (AOTEAROA)" value="NZ"/>
+			<entry key="COTE D'IVOIRE (IVORY COAST)" value="CI"/>
+			<entry key="KOREA (SOUTH)" value="KR"/>
+			<entry key="CONGO, DEMOCRATIC REPUBLIC" value="CD"/>
+			<entry key="SVALBARD &amp; JAN MAYEN ISLANDS" value="SJ"/>
+			<entry key="SAINT VINCENT &amp; THE GRENADINES" value="VC"/>
+			<entry key="CROATIA (HRVATSKA)" value="HR"/>
+			<entry key="FALKLAND ISLANDS (MALVINAS)" value="FK"/>
+			<entry key="CZECH RUPUBLIC" value="CZ"/>
+			<entry key="SOUTH AFICA" value="ZA"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="WALLIS AND FUTUNA" value="WF"/>
+			<entry key="GILBERT ISLANDS" value="KI"/>
+			<entry key="NAURU" value="NR"/>
+			<entry key="KIRGHIZSTAN" value="KG"/>
+			<entry key="SOUTH-FRANCE" value="FR"/>
+			<entry key="NAURU ISLAND" value="NR"/>
+			<entry key="ISREAL" value="IL"/>
+			<entry key="U.S.A" value="US"/>
+			<entry key="CLIPPERTON I." value="PF"/>
+			<entry key="CROZET IS." value="TF"/>
+			<entry key="KERGUELEN IS." value="TF"/>
+			<entry key="CURAÏ¿½AO I." value="AN"/>
+			<entry key="WEST SAHARA" value="EH"/>
+			<entry key="WALLIS FUT I" value="WF"/>
+			<entry key="LORD HOWE I." value="AU"/>
+			<entry key="ST PIER MQ" value="MQ"/>
+			<entry key="BRUNEI DARSM" value="BN"/>
+			<entry key="MAYOTTE" value="YT"/>
+			<entry key="MACQUARIE IS." value="AQ"/>
+			<entry key="BOUVET IS" value="BV"/>
+			<entry key="SOUTH SHETLAND" value="AQ"/>
+			<entry key="HEARD IS" value="HM"/>
+			<entry key="ADELAIDE IS." value="AQ"/>
+			<entry key="SOUTH ORKNEY IS." value="AQ"/>
+			<entry key="PRINCE EDWARD IS" value="CA"/>
+			<entry key="BRIT. ANTAR. TER" value="AQ"/>
+			<entry key="MOLDOVA REP" value="MD"/>
+			<entry key="CHANNEL IS" value="GB"/>
+			<entry key="ST. PAUL IS." value="TF"/>
+			<entry key="COCOS I., C.R." value="CC"/>
+			<entry key="JUAN FERNÏ¿½NDEZ" value="CL"/>
+			<entry key="BOSNIA HERZG" value="BA"/>
+			<entry key="GALAPAGOS ISLANDS" value="EC"/>
+			<entry key="VANUTAU" value="VU"/>
+			<entry key="SHRILANKA" value="LK"/>
+			<entry key="TOKELAU ISLANDS" value="TK"/>
+			<entry key="DENMARK (?)" value="DK"/>
+			<entry key="WALLIS AND FUTUNA ISLANDS" value="WF"/>
+			<entry key="NEW ZEALNAD" value="NZ"/>
+			<entry key="UNITED STATES (HAWAII)" value="US"/>
+			<entry key="GUERNSEY" value="GB"/>
+			<entry key="COOK ISLANDS ?" value="CK"/>
+			<entry key="PITCAIRN ISLAND" value="PN"/>
+			<entry key="GERMANY, FEDERAL REPUBLIC OF" value="DE"/>
+			<entry key="NAMBIA" value="NA"/>
+			<entry key="HOLLAND" value="NL"/>
+			<entry key="NEVIS" value="KN"/>
+			<entry key="FRANCE SW" value="FR"/>
+			<entry key="NORTH VIETNAM" value="VN"/>
+			<entry key="IRAN (ISLAMIC REPUBLIC OF)" value="IR"/>
+			<entry key="SIERRA LEONES" value="SL"/>
+			<entry key="UKRANIAN SSR" value="UA"/>
+			<entry key="ECUADOR?" value="EC"/>
+			<entry key="LAGOS" value="NG"/>
+			<entry key="COMORO ISLANDS" value="KM"/>
+			<entry key="KAZAKHISTAN" value="KZ"/>
+			<entry key="HAÃ¯TI" value="HT"/>
+			<entry key="NETHERLANDS," value="NL"/>
+			<entry key="ARGENTINIA" value="AR"/>
+			<entry key="U.S. VIRGIN IS." value="VI"/>
+			<entry key="ANTIGUA AND BARBUDA" value="AG"/>
+			<entry key="QUEEN CHARLOTTE SOUND" value="NZ"/>
+			<entry key="KOTZEBUE SOUND" value="US"/>
+			<entry key="JUAN DE FUCA STRAIT" value="CA"/>
+			<entry key="BAHAMAS, THE" value="BS"/>
+			<entry key="GULF OF ALASKA" value="US"/>
+			<entry key="MASCARENE ISLANDS" value="MU"/>
+			<entry key="BOUVET ISLAND" value="BV"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="MYANMAR (BURMA)" value="MM"/>
+			<entry key="MAURITIUS ISLAND" value="MU"/>
+			<entry key="MALAYA" value="MY"/>
+			<entry key="ZAIRE (BELGIAN CONGO)" value="CD"/>
+			<entry key="MOOREA" value="PF"/>
+			<entry key="DOMMICAN REPUBLIC" value="DO"/>
+			<entry key="ZAMBIA (N. RHODESIA)" value="ZM"/>
+			<entry key="INDIAN" value="IN"/>
+			<entry key="ZANZIBAR" value="TZ"/>
+			<entry key="(PORTUGAL)" value="PT"/>
+			<entry key="SOUTH YEMEN" value="YE"/>
+			<entry key="KIRIBATI REPUBLIC" value="KI"/>
+			<entry key="(U.K.)" value="GB"/>
+			<entry key="SAMOA (AMERICAN)" value="AS"/>
+			<entry key="PERU ?" value="PE"/>
+			<entry key="ROUMANIA = ROMANIA" value="RO"/>
+			<entry key="CENTRAL AFRICAN REP." value="CF"/>
+			<entry key="ROUMANIA=ROMANIA" value="RO"/>
+			<entry key="ST. BARTHELEMY" value="GP"/>
+			<entry key="FRANCE ?" value="FR"/>
+			<entry key="S. THAILAND" value="TH"/>
+			<entry key="P. R. CONGO" value="CD"/>
+			<entry key="VENEZEULA" value="VE"/>
+			<entry key="PANAMA ?" value="PA"/>
+			<entry key="AUSTRAILIA" value="AU"/>
+			<entry key="DEMOCRATIC YEMEN" value="YE"/>
+			<entry key="DOMINICA ISLAND" value="DM"/>
+			<entry key="REPUBLIC OF CONGO" value="CD"/>
+			<entry key="YUGOSLAVIA (CROATIA)" value="HR"/>
+			<entry key="MALAYA = [MALAYSIA]" value="MY"/>
+			<entry key="(KIRIBATI)" value="KI"/>
+			<entry key="OFF COLOMBIA" value="CO"/>
+			<entry key="FIJI ISLANDS" value="FJ"/>
+			<entry key="MALAWI(NYASALAND)" value="MW"/>
+			<entry key="KENTUCKY" value="US"/>
+			<entry key="JAMAICA ?" value="JM"/>
+			<entry key="ST. KITTS" value="KN"/>
+			<entry key="TRINIDAD-TOBAGO" value="TT"/>
+			<entry key="(BRAZIL)" value="BR"/>
+			<entry key="DOMINICAN REPUBLIC ?" value="DO"/>
+			<entry key="OFF CHILE" value="CL"/>
+			<entry key="SYRIA?" value="SY"/>
+			<entry key="GERMANY (WEST)" value="DE"/>
+			<entry key="ROUMANIA" value="RO"/>
+			<entry key="(ECUADOR)" value="EC"/>
+			<entry key="NICOBAR ISLANDS" value="IN"/>
+			<entry key="BERMUDAS" value="BM"/>
+			<entry key="OFF CUBA" value="CU"/>
+			<entry key="PHILLIPPINES" value="PH"/>
+			<entry key="SWAN ISLAND" value="US"/>
+			<entry key="ST THOMAS" value="VI"/>
+			<entry key="USA?" value="US"/>
+			<entry key="ALABAMA" value="US"/>
+			<entry key="ANGOLA (EXCLAVE)" value="AO"/>
+			<entry key="CHINA ?" value="CN"/>
+			<entry key="NORFOLK" value="GB"/>
+			<entry key="GUIANA" value="GY"/>
+			<entry key="CURA?O" value="AN"/>
+			<entry key="BRITISH HONDURAS" value="HN"/>
+			<entry key="PHILIPINES" value="PH"/>
+			<entry key="CANADA?" value="CA"/>
+			<entry key="PANANMA" value="PA"/>
+			<entry key="PENNSYLVANIA" value="US"/>
+			<entry key="INDIA (CA)" value="IN"/>
+			<entry key="NEWFOUNDLAND" value="CA"/>
+			<entry key="FRENCH GUINEA" value="GF"/>
+			<entry key="UPPER CONGO" value="CD"/>
+			<entry key="SOLOMON ISL" value="SB"/>
+			<entry key="KRITI" value="GR"/>
+			<entry key="CHANNEL ISL." value="GB"/>
+			<entry key="KALIMANTAN" value="MY"/>
+			<entry key="ALDABRA" value="SC"/>
+			<entry key="SICILIA" value="IT"/>
+			<entry key="MACQUARIE ISL" value="AQ"/>
+			<entry key="AZORES" value="PT"/>
+			<entry key="BURKINA" value="BF"/>
+			<entry key="EASTER ISL" value="CL"/>
+			<entry key="TUBUAI ISL" value="PF"/>
+			<entry key="MICRONESIA FEDERATED STATES" value="FM"/>
+			<entry key="COOK ISL" value="CK"/>
+			<entry key="MARSHALL ISL" value="MH"/>
+			<entry key="JUAN FERNANDEZ ISL" value="CL"/>
+			<entry key="SOCOTRA" value="YE"/>
+			<entry key="CUBA ?" value="CU"/>
+			<entry key="LESSER ANTARTICA" value="AQ"/>
+			<entry key="VENEZUELLA" value="VE"/>
+			<entry key="URUGUAY ?" value="UY"/>
+			<entry key="GULF OF VENEZUELA" value="VE"/>
+			<entry key="SOMALI REPUBLIC" value="SO"/>
+			<entry key="LORD HOWE ISLAND" value="AU"/>
+			<entry key="ANDAMAN ISL" value="IN"/>
+			<entry key="BOUGAINVILLE" value="PG"/>
+			<entry key="FAEROE ISL." value="FO"/>
+			<entry key="ASSAM" value="IN"/>
+			<entry key="SAO TOME" value="ST"/>
+			<entry key="SELVAGENS" value="PT"/>
+			<entry key="CHAGOS ARCHIPELAGO" value="IO"/>
+			<entry key="HOWLAND-BAKER ISL" value="UM"/>
+			<entry key="KIRIBATI LINE ISL" value="KI"/>
+			<entry key="US LINE ISL" value="KI"/>
+			<entry key="RODRIQUES" value="MU"/>
+			<entry key="IRIAN JAYA" value="ID"/>
+			<entry key="LORD HOWE ISL" value="AU"/>
+			<entry key="ISLAMIC REPUBLIC OF IRAN" value="IR"/>
+			<entry key="BURMA (NO LONGER EXISTS)" value="MM"/>
+			<entry key="TURKS AND CAICOS ISLANDS" value="TC"/>
+			<entry key="GERMAN DR (NO LONGER EXISTS)" value="DE"/>
+			<entry key="MOLDOVA, REPUBLIC OF" value="MD"/>
+			<entry key="FALKLAND ISLANDS AND DEPENDENCIES" value="FK"/>
+			<entry key="THE PHILIPPINES" value="PH"/>
+			<entry key="THE DUTCH WEST INDIES" value="AN"/>
+			<entry key="COMOREN ISL." value="KM"/>
+			<entry key="SWITZERLAND?" value="CH"/>
+			<entry key="JORDANIA" value="JO"/>
+			<entry key="THE CANARY ISLANDS" value="ES"/>
+			<entry key="CURAÃ‡AO" value="AN"/>
+			<entry key="USBEKISTAN" value="UZ"/>
+			<entry key="HUNGARY?" value="HU"/>
+			<entry key="POLAND?" value="PL"/>
+			<entry key="ABESSYNIA" value="ET"/>
+			<entry key="SPITZBERGEN" value="SJ"/>
+			<entry key="LITUANIA" value="LT"/>
+			<entry key="ZAIRE(?)" value="CD"/>
+			<entry key="AUSTRIA?" value="AT"/>
+			<entry key="COLOMIA" value="CO"/>
+			<entry key="EUCADOR" value="EC"/>
+			<entry key="SOLOMON ID" value="SB"/>
+			<entry key="HONDURUS(?)" value="HN"/>
+			<entry key="NEVADA" value="US"/>
+			<entry key="PANAMA?" value="PA"/>
+			<entry key="SAINT CHRISTOPHER-NEVIS" value="KN"/>
+			<entry key="MALAYSIA?" value="MY"/>
+			<entry key="WEST MALAYSIA" value="MY"/>
+			<entry key="PERU?" value="PE"/>
+			<entry key="BRITISH VIRGIN IDS" value="VG"/>
+			<entry key="ECUADOR(?)" value="EC"/>
+			<entry key="JAMIACA" value="JM"/>
+			<entry key="VIRGINIA" value="US"/>
+			<entry key="US VIRGIN IDS" value="VI"/>
+			<entry key="BRITISH VIRGIN ISLANDS" value="VG"/>
+			<entry key="BRITISH VIRGIN IDS." value="VG"/>
+			<entry key="SAINT VINCENT AND THE*" value="VC"/>
+			<entry key="SAINT KITTS-NEVIS" value="KN"/>
+			<entry key="BAHAMA IDS" value="BS"/>
+			<entry key="CAYMAN IDS" value="KY"/>
+			<entry key="FLORIDA" value="US"/>
+			<entry key="SAINT VINCENT/GRENADINES" value="VC"/>
+			<entry key="SAINT VINCENT" value="VC"/>
+			<entry key="INDIANA" value="US"/>
+			<entry key="TRINIDAD AND TOBAGO ?" value="TT"/>
+			<entry key="NEW JERSEY" value="US"/>
+			<entry key="VENZUELA" value="VE"/>
+			<entry key="CUBA?" value="CU"/>
+			<entry key="BAHAMAS IDS" value="BS"/>
+			<entry key="RWANDA?" value="RW"/>
+			<entry key="KENYA(?)" value="KE"/>
+			<entry key="PHILIPPINE" value="PH"/>
+			<entry key="PHILPPINES" value="PH"/>
+			<entry key="SOUTH KOREA?" value="KR"/>
+			<entry key="QUEENSLAND" value="AU"/>
+			<entry key="MADGASCAR" value="MG"/>
+			<entry key="BRITISH VRIGIN IDS" value="VG"/>
+			<entry key="BAHAMA" value="BS"/>
+			<entry key="NYASALAND (MALAWI)" value="MW"/>
+			<entry key="NYASALAND" value="MW"/>
+			<entry key="PAPUA NEW GUINEA?" value="PG"/>
+			<entry key="SHORTLAND IDS" value="SB"/>
+			<entry key="WEST VIRGINIA" value="US"/>
+			<entry key="SURINAM?" value="SR"/>
+			<entry key="MADAGASCAR/?" value="MG"/>
+			<entry key="PHILIPPINES ?" value="PH"/>
+			<entry key="EAST MALAYSIA" value="MY"/>
+			<entry key="PHILIIPPINES" value="PH"/>
+			<entry key="BURMA?" value="MM"/>
+			<entry key="SRI LANKA(?)" value="LK"/>
+			<entry key="GUATEMALA?" value="GT"/>
+			<entry key="WYOMING" value="US"/>
+			<entry key="WEST MADAGASCAR" value="MG"/>
+			<entry key="PAMAMA" value="MA"/>
+			<entry key="CHILES" value="CL"/>
+			<entry key="ETHIOPA" value="ET"/>
+			<entry key="WAKE ID" value="US"/>
+			<entry key="PAPAU NEW GUINEA" value="PG"/>
+			<entry key="SAUDI ARABIA(?)" value="SA"/>
+			<entry key="SOUTH YEMEN?" value="YE"/>
+			<entry key="SRI LANKA?" value="LK"/>
+			<entry key="SOLOMON IDS." value="SB"/>
+			<entry key="PAKISTAN?" value="PK"/>
+			<entry key="CAMAROON" value="CM"/>
+			<entry key="SIERRE LEONE" value="SL"/>
+			<entry key="ZAIRE?" value="CD"/>
+			<entry key="TNAZANIA" value="TZ"/>
+			<entry key="US VIRGIN ISLANDS" value="VI"/>
+			<entry key="LOUISIANA" value="US"/>
+			<entry key="MICRONESIA,F.S." value="FM"/>
+			<entry key="BAHAMA ISLANDS" value="BS"/>
+			<entry key="GUADALOUPE" value="GP"/>
+			<entry key="SAINT VINCENT AND THE *" value="VC"/>
+			<entry key="ST VINCENT AND THE GREN." value="VC"/>
+			<entry key="GUYANA?" value="GY"/>
+			<entry key="PUERTO RICO?" value="PR"/>
+			<entry key="US VIRGIN IDS?" value="VI"/>
+			<entry key="SAINT CHRISTOPHER-NEVIS?" value="KN"/>
+			<entry key="MARTINIQUE?" value="MQ"/>
+			<entry key="NETHERLANDS ANTILLES?" value="AN"/>
+			<entry key="AUSTALIA" value="AU"/>
+			<entry key="ST CROIX" value="US"/>
+			<entry key="ST CHRISTOPHER-NEVIS" value="KN"/>
+			<entry key="MONSERRAT" value="MS"/>
+			<entry key="ST.CHRISTOPHER-NEVIS" value="KN"/>
+			<entry key="SAINT CHRISTOPHER" value="KN"/>
+			<entry key="HEREDIA" value="CR"/>
+			<entry key="MICRONESIA, F.S." value="FM"/>
+			<entry key="NAVASSA ID" value="UM"/>
+			<entry key="ST. VINCENT*" value="VC"/>
+			<entry key="SAINT VINCENT AND THE" value="VC"/>
+			<entry key="CAYMAN" value="KY"/>
+			<entry key="SAINT THOMAS" value="VI"/>
+			<entry key="US VIRGIN ISLANDS?" value="VI"/>
+			<entry key="REPUBLICA DOMINICA" value="DO"/>
+			<entry key="DOMINICAN REUBLIC" value="DO"/>
+			<entry key="DOMINICAN REPUBLIC?" value="DO"/>
+			<entry key="BAHAMA IDS." value="BS"/>
+			<entry key="BERNUDA" value="BM"/>
+			<entry key="GUADELOUPE?" value="GP"/>
+			<entry key="GUADELOPE" value="GP"/>
+			<entry key="ST VIN. &amp; THE GRENADINES" value="VC"/>
+			<entry key="JAMCAICA" value="JM"/>
+			<entry key="ST VINCENT &amp; THE GREN." value="VC"/>
+			<entry key="TURKS AND CAICOS IDS" value="TC"/>
+			<entry key="ANTIGUA AND BARABU" value="AG"/>
+			<entry key="PUERTORICO" value="PR"/>
+			<entry key="COSTA RICO" value="CR"/>
+			<entry key="HONDURUS" value="HN"/>
+			<entry key="BAHAMA ID" value="BS"/>
+			<entry key="TURKS AND CAICOS" value="TC"/>
+			<entry key="BRITISH VIRGIN ID" value="VG"/>
+			<entry key="TRINDAD AND TOBAGO" value="TT"/>
+			<entry key="ST.VINCENT AND THE *" value="VC"/>
+			<entry key="ST VINCENT &amp; THE GRENAD*" value="VC"/>
+			<entry key="ST VINCENT &amp; THE GRENAD." value="VC"/>
+			<entry key="ST VICENT &amp; THE GREN." value="VC"/>
+			<entry key="DOMICAN REPUBLIC" value="DO"/>
+			<entry key="PUERTO" value="PR"/>
+			<entry key="ST.VINCENT AND THE*" value="VC"/>
+			<entry key="PAPUA NEW GUIENA" value="PG"/>
+			<entry key="MEXICO?" value="MX"/>
+			<entry key="CONGO?" value="CG"/>
+			<entry key="SOLOMON IDS?" value="SB"/>
+			<entry key="MICRONESIA,FS" value="FM"/>
+			<entry key="FIJI?" value="FJ"/>
+			<entry key="PHILIPPINE IDS" value="PH"/>
+			<entry key="INDIA?" value="IN"/>
+			<entry key="CALIFORNIA" value="US"/>
+			<entry key="VIETNAM?" value="VN"/>
+			<entry key="NEW IRELAND" value="PG"/>
+			<entry key="MALUKU" value="ID"/>
+			<entry key="SOMALIA?" value="SO"/>
+			<entry key="SAUDI ARABIA?" value="SA"/>
+			<entry key="ETHIPOIA" value="ET"/>
+			<entry key="UGANDA?" value="UG"/>
+			<entry key="ANGOLA?" value="AO"/>
+			<entry key="NEW ZEALAND?" value="NZ"/>
+			<entry key="PHILLIPINE ISLANDS" value="PH"/>
+			<entry key="CURACOS" value="AN"/>
+			<entry key="BRAZIL(?)" value="BR"/>
+			<entry key="ARABIA" value="SA"/>
+			<entry key="NEW MEXICO" value="US"/>
+			<entry key="COLORADO" value="US"/>
+			<entry key="UTAH" value="US"/>
+			<entry key="YEMEN NORTH/SOUTH?" value="YE"/>
+			<entry key="IRAQ?" value="IQ"/>
+			<entry key="JORDON" value="JO"/>
+			<entry key="PHILIPPINES?" value="PH"/>
+			<entry key="PALAU IDS" value="PW"/>
+			<entry key="MAINE" value="US"/>
+			<entry key="KANSAS" value="US"/>
+			<entry key="JAWA" value="ID"/>
+			<entry key="KOREA,SOUTH" value="KR"/>
+			<entry key="CLIPPERTON ID" value="PF"/>
+			<entry key="WESTERN SOMOA" value="WS"/>
+			<entry key="VANUATA" value="VU"/>
+			<entry key="VANUATU(NEW HEBRIDES)" value="VU"/>
+			<entry key="MALAITA" value="SB"/>
+			<entry key="FED.STATES OF MICRONESIA" value="FM"/>
+			<entry key="VENICE" value="IT"/>
+			<entry key="VENEZUELA?" value="VE"/>
+			<entry key="TURKS AND CIACOS IDS" value="TC"/>
+			<entry key="NIGERI" value="NG"/>
+			<entry key="PAQAPUA NEW GUINEA" value="PG"/>
+			<entry key="BERMUDA?" value="BM"/>
+			<entry key="SOUTH CAROLINA" value="US"/>
+			<entry key="SULAWESI UTARA" value="ID"/>
+			<entry key="PHILLIPINE IDS" value="PH"/>
+			<entry key="GUADALCANAL" value="SB"/>
+			<entry key="PAPUA NEW GUIN" value="PG"/>
+			<entry key="NAIROBI" value="KE"/>
+			<entry key="NAMAIBIA" value="NA"/>
+			<entry key="ASCENSION ID" value="SH"/>
+			<entry key="UGANAD" value="UG"/>
+			<entry key="URAGUAY" value="UY"/>
+			<entry key="REPUBLICA DOMINICANA" value="DO"/>
+			<entry key="BRITISH VIRGIN ISLS" value="VG"/>
+			<entry key="ASTRIA" value="AT"/>
+			<entry key="PORTUGAL?" value="PT"/>
+			<entry key="WESTERN SOMOA?" value="WS"/>
+			<entry key="TANZANIA?" value="TZ"/>
+			<entry key="DOMINICA?" value="DM"/>
+			<entry key="DOMINICAN REPEBLIC" value="DO"/>
+			<entry key="HIATI" value="HT"/>
+			<entry key="KOREA, SOUTH" value="KR"/>
+			<entry key="NICARAGUA?" value="NI"/>
+			<entry key="CHILI" value="CL"/>
+			<entry key="ZIMBABWE?" value="ZW"/>
+			<entry key="TANZNIA" value="TZ"/>
+			<entry key="GUANGDONG" value="CN"/>
+			<entry key="YEMEN, SOUTH" value="YE"/>
+			<entry key="CAPE VERDE IDS" value="CV"/>
+			<entry key="BARZIL" value="BR"/>
+			<entry key="(CF) ZAIRE" value="CD"/>
+			<entry key="BOLIVA" value="BO"/>
+			<entry key="NAMIBIA?" value="NA"/>
+			<entry key="THE PHILIPPINE ISLANDS" value="PH"/>
+			<entry key="SEYCHELLE IDS" value="SC"/>
+			<entry key="COCOS IDS" value="CC"/>
+			<entry key="AGALEGA IDS" value="MU"/>
+			<entry key="YEMAN" value="YE"/>
+			<entry key="TRINIDAD ADN TOBAGO" value="TT"/>
+			<entry key="CHRISTMAS ID" value="CX"/>
+			<entry key="ISRAEL?" value="IL"/>
+			<entry key="CAYMEN IDS" value="KY"/>
+			<entry key="YEMEN, SOUTH?" value="YE"/>
+			<entry key="SAINT CROIX" value="US"/>
+			<entry key="JAMAICA?" value="JM"/>
+			<entry key="BAHAMAS ISLANDS" value="BS"/>
+			<entry key="PAPAUA NEW GUINEA" value="PG"/>
+			<entry key="CAYMAN  IDS" value="KY"/>
+			<entry key="BELGIUM?" value="BE"/>
+			<entry key="AUSTRAL ISLANDS" value="PF"/>
+			<entry key="BELAU" value="PW"/>
+			<entry key="U.S. ADMINISTERED ISLANDS" value="UM"/>
+			<entry key="U.S. TRUST TERRITORY" value="UM"/>
+			<entry key="U.S.VIRGIN ISLANDS" value="VI"/>
+			<entry key="U.S.TRUST TERRITORY" value="UM"/>
+			<entry key="COMMONWEALTH OF THE NORTHERN MARIANA IS." value="MP"/>
+			<entry key="U.S.TRUST TERRITORY OF THE PACIFIC" value="UM"/>
+			<entry key="EAST POLYNESIA" value="PF"/>
+			<entry key="FEDERATED STATES OF MICONESIA" value="FM"/>
+			<entry key="POHNPEI" value="FM"/>
+			<entry key="PRESUMED VIETNAM" value="VN"/>
+			<entry key="MARIANNE ISLANDS" value="MP"/>
+			<entry key="HAWAIIAN ISLANDS" value="US"/>
+			<entry key="PROBABLY USA" value="US"/>
+			<entry key="PRESUMED USA" value="US"/>
+			<entry key="NORTHERN LINE ISLANDS" value="KI"/>
+			<entry key="FEDERATED STATE OF MICRONESIA" value="FM"/>
+			<entry key="OHIO" value="US"/>
+			<entry key="FEDERATED STATES MICONESIA" value="FM"/>
+			<entry key="FUTUNA" value="WF"/>
+			<entry key="U.S.-ADMINISTERED ISLANDS IN THE CENTRAL PACIFIC" value="UM"/>
+			<entry key="GREAT BRITIAN" value="GB"/>
+			<entry key="E. POLYNESIA SOCIETY IS." value="PF"/>
+			<entry key="MALAYASIA" value="MY"/>
+			<entry key="E.POLYNESIA" value="PF"/>
+			<entry key="E. POLYNESIA" value="PF"/>
+			<entry key="U.S VIRGIN ISLANDS" value="VI"/>
+			<entry key="BAHREIN" value="BH"/>
+			<entry key="PROBABLY CHINA" value="CN"/>
+			<entry key="TANZANIA,UNITEDREPUBLICOF" value="TZ"/>
+			<entry key="SIERRALEONE" value="SL"/>
+			<entry key="SOUTHAFRICA" value="ZA"/>
+			<entry key="LIBYANARABJAMAHIRIYA" value="LY"/>
+			<entry key="PAPUANEWGUINEA" value="PG"/>
+			<entry key="COSTARICA" value="CR"/>
+			<entry key="COTED'IVOIRE" value="CI"/>
+			<entry key="TRINIDADANDTOBAGO" value="TT"/>
+			<entry key="DOMINICANREPUBLIC" value="DO"/>
+			<entry key="FRENCHGUIANA" value="GF"/>
+			<entry key="UNITEDSTATES" value="US"/>
+			<entry key="HONGKONG" value="HK"/>
+			<entry key="BRUNEIDARUSSALAM" value="BN"/>
+			<entry key="SRILANKA" value="LK"/>
+			<entry key="TAIWAN,PROVINCEOFCHINA" value="TW"/>
+			<entry key="SAOTOMEANDPRINCIPE" value="ST"/>
+			<entry key="NEWZEALAND" value="NZ"/>
+			<entry key="NEWCALEDONIA" value="NC"/>
+			<entry key="COOKISLANDS" value="CK"/>
+			<entry key="EQUATORIALGUINEA" value="GQ"/>
+			<entry key="CAPEVERDE" value="CV"/>
+			<entry key="KOSRAE" value="FM"/>
+			<entry key="UNITEDKINGDOM" value="GB"/>
+			<entry key="AMERICANSAMOA" value="AS"/>
+			<entry key="IRAN,ISLAMICREPUBLICOF" value="IR"/>
+			<entry key="SYRIANARABREPUBLIC" value="SY"/>
+			<entry key="NORFOLKISLAND" value="NF"/>
+			<entry key="Ã–STERREICH" value="AT"/>
+			<entry key="CHINA, P.R." value="CN"/>
+			<entry key="WESTERN GREENLAND" value="GL"/>
+			<entry key="KAMERUN" value="CM"/>
+			<entry key="EQUAT. GUINEA" value="GQ"/>
+			<entry key="DANMARK" value="DK"/>
+			<entry key="FRANCE?" value="FR"/>
+			<entry key="PRESUMED ECUADOR" value="EC"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="RÃ©PUBLIQUE POPULAIRE DU CONGO, AUTOUR DU\
+								VILLAGE DE MOUMPOUTOU , LE LONG DE LA RIVIÃ¨RE\
+			" value="CG"/>
+			<entry key="BALEARES" value="ES"/>
+			<entry key="SANTA CRUZ ISL" value="US"/>
+			<entry key="ALEUTIAN ISL" value="US"/>
+			<entry key="COCOS ISL" value="CC"/>
+			<entry key="BIOKO" value="CM"/>
+			<entry key="CURAÏ¿½AO" value="AN"/>
+			<entry key="MALDIVE ISLANDS" value="MV"/>
+			<entry key="(FRANCE)" value="FR"/>
+			<entry key="NEW FOUNDLAND" value="CA"/>
+			<entry key="OFF NEW ZEALAND" value="NZ"/>
+			<entry key="CANDA" value="CA"/>
+			<entry key="MARQUESAS IS. (FR)" value="PF"/>
+			<entry key="PHOENIX GROUP" value="KI"/>
+			<entry key="MADIERA" value="PT"/>
+			<entry key="FED. ST. MICRONESIA" value="FM"/>
+			<entry key="AMERICAN SAMOA (USA)" value="AS"/>
+			<entry key="MADEIRAS" value="PT"/>
+			<entry key="SIAM" value="TH"/>
+			<entry key="DAHOMEY" value="BJ"/>
+			<entry key="MONGOLIA?" value="MN"/>
+			<entry key="REPUBLIC OF SEYCHELLES" value="SC"/>
+			<entry key="U. S. A." value="US"/>
+			<entry key="MEXICO SOUTHEAST" value="MX"/>
+			<entry key="GAL?PAGOS" value="EC"/>
+			<entry key="PENINSULAR MALYSIA" value="MY"/>
+			<entry key="DEMOCRATIC REPUBLIC OF CONGO" value="CD"/>
+			<entry key="ST BARTHELEMY ISLAND" value="GP"/>
+			<entry key="SABA ISLAND" value="MY"/>
+			<entry key="SABA" value="MY"/>
+			<entry key="ST EUSTATIUS ISLAND" value="AN"/>
+			<entry key="ST VINCENT ISLANDS" value="VC"/>
+			<entry key="ST KITTS-NEVIS ISLANDS" value="KN"/>
+			<entry key="ST MARTIN ISLAND" value="GP"/>
+			<entry key="ST LUCIA ISLAND" value="LC"/>
+			<entry key="RUSSIA (C.I.S.) (FORMER U.S.S.R.)" value="RU"/>
+			<entry key="MALAYSIA (WEST)" value="MY"/>
+			<entry key="NAVASSA ISLAND" value="UM"/>
+			<entry key="DUTCH WEST INDIES" value="AN"/>
+			<entry key="NEVIS ISLAND" value="KN"/>
+			<entry key="BARBUDA ISLAND" value="AG"/>
+			<entry key="RÉUNION" value="RE"/>
+			<entry key="CÔTE D'IVOIRE" value="CI"/>
+			<entry key="S.TOMÉ E PRÍNCIPE" value="ST"/>
+			<entry key="CONGO (D.R.)" value="CD"/>
+			<entry key="RÉPUBLIQUE DÉMOCRATIQUE DU CONGO" value="CD"/>
+			<entry key="DR CONGO" value="CD"/>
+			<entry key="DRC" value="CD"/>
+			<entry key="RDC" value="CD"/>
+			<entry key="CONGO FREE STATE" value="CD"/>
+			<entry key="BELGIAN CONGO" value="CD"/>
+			<entry key="THE CONGO" value="CD"/>
+			<entry key="CONGO-LEOPOLDVILLE" value="CD"/>
+			<entry key="CONGO-KINSHASA" value="CD"/>
+			<entry key="ZAIRE" value="CD"/>
+			<entry key="ZAÏRE" value="CD"/>			  
+		</map>
+	  </property>
+	</bean>
+</beans>

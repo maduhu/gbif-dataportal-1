@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- An abstract definition ready for using in workflows -->
+	<bean abstract="true" id="abstractDOSThrottleActivity"
+		class="org.gbif.portal.harvest.workflow.activity.dos.DOSThrottleActivity">
+		<property name="contextKeyURL" value="url"/>
+		<property name="contextKeyResourceAccessPointId" value="resourceAccessPointId"/>
+		<property name="resourceAccessPointDAO" ref="resourceAccessPointDAO"/>
+	</bean>
+</beans>
