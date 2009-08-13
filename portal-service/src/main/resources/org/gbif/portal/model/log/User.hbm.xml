@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class table="gbif_user" name="org.gbif.portal.model.log.User">
+    <id unsaved-value="null" name="id" column="id">
+      <generator class="native"/>
+    </id>
+    <property name="portalInstanceId" column="portal_instance_id" not-null="true" insert="true" update="true"/>		
+    <property name="name" column="name" not-null="true" insert="true" update="true"/>
+	<property name="email" column="email" not-null="true" insert="true" update="true"/>
+	<property name="verified" column="verified" not-null="true" insert="true" update="true"/>
+  </class>
+</hibernate-mapping>

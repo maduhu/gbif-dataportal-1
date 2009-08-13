@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.version">3.0</property>
+    <property name="hibernate.connection.pool_size">5</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.show_sql">false</property>
+    <property name="hibernate.jdbc.batch_size">50</property>
+    <property name="hibernate.use.query.cache">false</property>
+    <mapping resource="org/gbif/portal/model/geospatial/CellDensity.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/geospatial/CentiCellDensity.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/geospatial/Country.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/geospatial/CountryName.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/geospatial/IPCountry.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/log/LogMessage.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/log/User.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/OccurrenceRecord.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/InstitutionCode.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/CollectionCode.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/CatalogueNumber.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/RawOccurrenceRecord.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/ImageRecord.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/ORImage.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/TypeStatus.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/LinkRecord.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/IdentifierRecord.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/occurrence/TypificationRecord.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/geospatial/GeoRegion.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/geospatial/GeoMapping.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/DataProvider.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/ResourceAccessPoint.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/PropertyStoreNamespace.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/DataResource.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/RegistrationLogin.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/ResourceNetwork.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/ResourceRank.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/NetworkMembership.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/Agent.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/DataProviderAgent.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/resources/DataResourceAgent.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/taxonomy/RelationshipAssertion.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/taxonomy/RemoteConcept.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/taxonomy/TaxonConcept.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/taxonomy/TaxonName.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/taxonomy/TaxonConceptLite.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/taxonomy/TaxonCountry.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/taxonomy/TaxonNameLite.hbm.xml"/>
+    <mapping resource="org/gbif/portal/model/taxonomy/CommonName.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

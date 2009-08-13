@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <!--
+		Contains a map of field name to bean properties
+  -->
+	<bean id="occurrenceRecordProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="occurrenceRecord"/>
+	</bean>
+	<bean id="rawOccurrenceRecordProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="rawOccurrenceRecord"/>
+	</bean>
+	<bean id="taxonConceptProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="taxonConcept"/>
+	</bean>
+	
+	<!-- for properties not associated with a bean -->
+	<bean id="basicProperty" abstract="true" class="org.gbif.portal.io.OutputProperty"/>
+		
+	<!-- 
+		   These are the properties that are available for output
+       Applications using portal-service do not need to concern themselves with the content of the entries.
+		   All that is required is the entry key values		  
+	 -->
+	<bean id="propertyStore:namespace:GBIF:Portal-Service:OccurrenceOutput:1.0" class="org.gbif.portal.util.propertystore.impl.spring.PropertyBag">
+		<!-- The namespace that the PropertyStore will key this bag on -->
+		<property name="namespace" value="http://gbif.org/portal-service/occurrenceOutput/2006/1.0"/>
+		<property name="properties">
+			<map>
+				<!-- Properties just passed back in the bean map -->
+				<entry key="downloadFields">
+					<map>
+						<!-- Properties just passed back in the bean map -->
+						<entry key="dataResourceName">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="dataResourceName"/>
+							</bean>			
+						</entry>
+						<entry key="dataProviderName">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="dataProviderName"/>
+							</bean>			
+						</entry>
+						<entry key="taxonName">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="taxonName"/>
+							</bean>			
+						</entry>
+						<entry key="imageUrl">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="imageUrl"/>
+							</bean>			
+						</entry>
+						<entry key="typeStatus">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="typeStatus"/>
+							</bean>			
+						</entry>						
+						<entry key="collectorNumber">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="collectorNumber"/>
+							</bean>			
+						</entry>
+						<entry key="fieldNumber">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="fieldNumber"/>
+							</bean>			
+						</entry>						
+						<entry key="guid">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="guid"/>
+							</bean>			
+						</entry>						
+						<entry key="region">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="region"/>
+							</bean>			
+						</entry>
+						<entry key="providerIsoCountryCode">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="providerIsoCountryCode"/>
+							</bean>
+						</entry>	
+												
+						<!-- OccurrenceRecord fields -->
+						<entry key="occurrenceRecordId">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="id"/>
+							</bean>
+						</entry>						
+						<entry key="occurrenceDate">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="occurrenceDate"/>
+							</bean>
+						</entry>
+						<entry key="basisOfRecord">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="basisOfRecord"/>
+							</bean>
+						</entry>
+						<entry key="isoCountryCode">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="isoCountryCode"/>
+							</bean>
+						</entry>	
+						<entry key="latitude">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="latitude"/>
+							</bean>
+						</entry>		
+						<entry key="longitude">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="longitude"/>
+							</bean>
+						</entry>		
+						<entry key="cellId">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="cellId"/>
+							</bean>
+						</entry>		
+						<entry key="centiCellId">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="centiCellId"/>
+							</bean>
+						</entry>		
+						
+						<!-- RawOccurrenceRecord fields -->	
+						<entry key="rawModified">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="modified"/>
+							</bean>
+						</entry>
+						<entry key="rawLocality">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="locality"/>
+							</bean>
+						</entry>						
+						<entry key="rawLatLongPrecision">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="latLongPrecision"/>
+							</bean>
+						</entry>						
+						<entry key="rawMinDepth">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="minDepth"/>
+							</bean>
+						</entry>		
+						<entry key="rawMaxDepth">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="maxDepth"/>
+							</bean>
+						</entry>		
+						<entry key="rawDepthPrecision">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="depthPrecision"/>
+							</bean>
+						</entry>							
+						<entry key="rawMinAltitude">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="minAltitude"/>
+							</bean>
+						</entry>
+						<entry key="rawMaxAltitude">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="maxAltitude"/>
+							</bean>
+						</entry>								
+						<entry key="rawAltitudePrecision">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="altitudePrecision"/>
+							</bean>
+						</entry>								
+						<entry key="rawCollectorName">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="collectorName"/>
+							</bean>
+						</entry>
+						<entry key="rawCollectionCode">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="collectionCode"/>
+							</bean>
+						</entry>			
+						<entry key="rawInstitutionCode">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="institutionCode"/>
+							</bean>
+						</entry>
+						<entry key="rawCatalogueNumber">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="catalogueNumber"/>
+							</bean>
+						</entry>
+						<entry key="rawKingdom">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="kingdom"/>
+							</bean>
+						</entry>			
+						<entry key="rawPhylum">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="phylum"/>
+							</bean>
+						</entry>			
+						<entry key="rawBioClass">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="bioClass"/>
+							</bean>
+						</entry>			
+						<entry key="rawOrder">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="order"/>
+							</bean>
+						</entry>			
+						<entry key="rawFamily">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="family"/>
+							</bean>
+						</entry>			
+						<entry key="rawGenus">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="genus"/>
+							</bean>
+						</entry>
+						<entry key="rawScientificName">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="scientificName"/>
+							</bean>
+						</entry>
+						<entry key="rawAuthor">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="author"/>
+							</bean>
+						</entry>
+						<entry key="rawContinentOrOcean">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="continentOrOcean"/>
+							</bean>
+						</entry>
+						<entry key="rawCountry">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="country"/>
+							</bean>
+						</entry>
+						<entry key="rawStateOrProvince">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="stateOrProvince"/>
+							</bean>
+						</entry>
+						<entry key="rawCounty">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="county"/>
+							</bean>
+						</entry>
+						<entry key="rawLocality">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="locality"/>
+							</bean>
+						</entry>
+						<entry key="rawCollectorName">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="collectorName"/>
+							</bean>
+						</entry>
+						<entry key="rawMinDepth">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="minDepth"/>
+							</bean>
+						</entry>
+						<entry key="rawMaxDepth">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="maxDepth"/>
+							</bean>
+						</entry>
+						<entry key="rawMinAltitude">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="minAltitude"/>
+							</bean>
+						</entry>
+						<entry key="rawMaxAltitude">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="maxAltitude"/>
+							</bean>
+						</entry>
+						<entry key="rawIdentifierName">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="identifierName"/>
+							</bean>
+						</entry>
+						<entry key="rawIdentificationDate">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="identificationDate"/>
+							</bean>
+						</entry>
+						<entry key="rawIdentificationDate">
+							<bean parent="rawOccurrenceRecordProperty">
+								<property name="propertyName" value="identificationDate"/>
+							</bean>
+						</entry>		
+						<!-- The urls need the occurrence record id only -->
+						<entry key="portalUrl">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="id"/>
+							</bean>
+						</entry>		
+						<entry key="webserviceUrl">
+							<bean parent="occurrenceRecordProperty">
+								<property name="propertyName" value="id"/>
+							</bean>
+						</entry>		
+					</map>
+				</entry>		
+			</map>					
+		</property>
+	</bean>
+</beans>

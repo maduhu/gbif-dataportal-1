@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="image_record" name="org.gbif.portal.model.occurrence.ImageRecord">
+    <id unsaved-value="null" name="id" column="id">
+      <generator class="native"/>
+    </id>
+    <many-to-one name="dataResource" column="data_resource_id" not-null="true" insert="false" update="false"/>
+    <property name="dataResourceId" column="data_resource_id" not-null="true" insert="false" update="false"/>
+    <property name="occurrenceRecordId" column="occurrence_id" not-null="false" insert="false" update="false"/>
+    <many-to-one name="occurrenceRecord" column="occurrence_id" not-null="false" insert="false" update="false"/>
+    <property name="taxonConceptId" column="taxon_concept_id" not-null="false" insert="false" update="false"/>
+    <many-to-one name="taxonConceptLite" column="taxon_concept_id" insert="false" update="false"/>
+    <property name="imageType" column="image_type" not-null="true" type="org.gbif.portal.model.occurrence.ImageType"/>
+    <property name="imageTypeValue" column="image_type" not-null="true" insert="false" update="false"/>
+    <property name="url" column="url" not-null="true" insert="false" update="false"/>
+    <property name="description" column="description" not-null="false" insert="false" update="false"/>
+    <property name="rights" column="rights" not-null="false" insert="false" update="false"/>
+    <property name="htmlForDisplay" column="html_for_display" not-null="false" insert="false" update="false"/>
+  </class>
+</hibernate-mapping>

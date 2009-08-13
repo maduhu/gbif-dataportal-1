@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Defines the Spring Configuration for the Service Layer Managers -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <!-- OccurrenceManager -->
+    <bean id="abstractOccurrenceManager" class="org.gbif.portal.service.impl.OccurrenceManagerImpl" abstract="true">
+	    <property name="briefOccurrenceRecordDTOFactory" ref="briefOccurrenceRecordDTOFactory"/>
+	    <property name="occurrenceRecordDTOFactory" ref="occurrenceRecordDTOFactory"/>
+	    <property name="rawOccurrenceRecordDTOFactory" ref="rawOccurrenceRecordDTOFactory"/>
+	    <property name="imageRecordDTOFactory" ref="imageRecordDTOFactory"/>
+	    <property name="linkRecordDTOFactory" ref="linkRecordDTOFactory"/>
+	    <property name="identifierRecordDTOFactory" ref="identifierRecordDTOFactory"/>
+	    <property name="typificationRecordDTOFactory" ref="typificationRecordDTOFactory"/>
+	    <property name="extendedOccurrenceRecordDTOFactory" ref="extendedOccurrenceRecordDTOFactory"/>
+	    <property name="kmlOccurrenceRecordDTOFactory" ref="kmlOccurrenceRecordDTOFactory"/>	    
+    </bean>
+
+  <!-- Live Occurrence Manager -->
+  <bean id="occurrenceManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+  	<property name="target">
+  		<bean parent="abstractOccurrenceManager">
+  			<property name="countryDAO" ref="countryDAORO"/>
+  			<property name="dataProviderDAO" ref="dataProviderDAORO"/>
+  			<property name="dataResourceDAO" ref="dataResourceDAORO"/>
+  			<property name="resourceNetworkDAO" ref="resourceNetworkDAORO"/>
+  			<property name="occurrenceRecordDAO" ref="occurrenceRecordDAORO"/>
+  			<property name="rawOccurrenceRecordDAO" ref="rawOccurrenceRecordDAORO"/>
+  			<property name="imageRecordDAO" ref="imageRecordDAORO"/>
+  			<property name="linkRecordDAO" ref="linkRecordDAORO"/>
+  			<property name="identifierRecordDAO" ref="identifierRecordDAORO"/>
+  			<property name="typificationRecordDAO" ref="typificationRecordDAORO"/>
+  			<property name="taxonConceptDAO" ref="taxonConceptDAORO"/>
+  		</bean>
+  	</property>
+  	<property name="proxyInterfaces" value="org.gbif.portal.service.OccurrenceManager"/>
+  	<property name="interceptorNames" value="daoExceptionInterceptor,occurrenceEternalCacheAdvisor,hibernateInterceptor,firstArgKeyParserAdvisor,searchConstraintsCheckerAdvisor"/>
+  </bean>
+
+  <!-- Harvesting Occurrence Manager -->
+  <bean id="harvestingOccurrenceManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="target">
+      <bean parent="abstractOccurrenceManager">
+        <property name="countryDAO" ref="harvestingCountryDAORO"/>
+        <property name="dataProviderDAO" ref="harvestingDataProviderDAORO"/>
+        <property name="dataResourceDAO" ref="harvestingDataResourceDAORO"/>
+        <property name="resourceNetworkDAO" ref="harvestingResourceNetworkDAORO"/>
+        <property name="occurrenceRecordDAO" ref="harvestingOccurrenceRecordDAORO"/>
+        <property name="rawOccurrenceRecordDAO" ref="harvestingRawOccurrenceRecordDAORO"/>
+        <property name="imageRecordDAO" ref="harvestingImageRecordDAORO"/>
+        <property name="linkRecordDAO" ref="harvestingLinkRecordDAORO"/>
+        <property name="identifierRecordDAO" ref="harvestingIdentifierRecordDAORO"/>
+        <property name="typificationRecordDAO" ref="harvestingTypificationRecordDAORO"/>
+        <property name="taxonConceptDAO" ref="harvestingTaxonConceptDAORO"/>
+      </bean>
+    </property>
+    <property name="proxyInterfaces" value="org.gbif.portal.service.OccurrenceManager"/>
+    <property name="interceptorNames" value="daoExceptionInterceptor,occurrenceEternalCacheAdvisor,rawHibernateInterceptor,firstArgKeyParserAdvisor,searchConstraintsCheckerAdvisor"/>
+  </bean>  	
+
+  <!-- DataResourceManager -->
+  <bean id="abstractDataResourceManager" class="org.gbif.portal.service.impl.DataResourceManagerImpl" abstract="true">
+    <property name="dataProviderDTOFactory" ref="dataProviderDTOFactory"/>
+    <property name="dataResourceDTOFactory" ref="dataResourceDTOFactory"/>
+    <property name="resourceNetworkDTOFactory" ref="resourceNetworkDTOFactory"/>
+    <property name="resourceAccessPointDTOFactory" ref="resourceAccessPointDTOFactory"/>
+    <property name="propertyStoreNamespaceDTOFactory" ref="propertyStoreNamespaceDTOFactory"/>
+    <property name="imageRecordDTOFactory" ref="imageRecordDTOFactory"/>
+    <property name="dataProviderAgentDTOFactory" ref="dataProviderAgentDTOFactory"/>
+    <property name="dataResourceAgentDTOFactory" ref="dataResourceAgentDTOFactory"/>
+    <property name="keyValueDTOFactory" ref="keyValueDTOFactory"/>
+    <property name="nubDataProviderId" value="1"/>
+  </bean>    
+
+  <!-- Live Data Resource Manager -->  
+  <bean id="dataResourceManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean parent="abstractDataResourceManager">
+				<property name="dataResourceDAO" ref="dataResourceDAORO"/>
+				<property name="dataProviderDAO" ref="dataProviderDAORO"/>
+				<property name="resourceNetworkDAO" ref="resourceNetworkDAORO"/>
+				<property name="resourceAccessPointDAO" ref="resourceAccessPointDAORO"/>
+				<property name="propertyStoreNamespaceDAO" ref="propertyStoreNamespaceDAORO"/>
+				<property name="imageRecordDAO" ref="imageRecordDAORO"/>
+				<property name="agentDAO" ref="agentDAORO"/>
+			</bean>	
+		</property>		
+    <property name="proxyInterfaces" value="org.gbif.portal.service.DataResourceManager"/>
+    <property name="interceptorNames" value="daoExceptionInterceptor,dataResourceEternalCacheAdvisor,hibernateInterceptor,firstArgKeyParserAdvisor,searchConstraintsCheckerAdvisor"/>
+  </bean>		
+
+  <!-- Harvesting DataResourceManager -->
+  <bean id="harvestingDataResourceManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+	  <property name="target">
+	    <bean parent="abstractDataResourceManager">
+	      <property name="dataResourceDAO" ref="harvestingDataResourceDAORO"/>
+	      <property name="dataProviderDAO" ref="harvestingDataProviderDAORO"/>    
+	      <property name="resourceNetworkDAO" ref="harvestingResourceNetworkDAORO"/>    
+	      <property name="resourceAccessPointDAO" ref="harvestingResourceAccessPointDAORO"/>    
+	      <property name="propertyStoreNamespaceDAO" ref="harvestingPropertyStoreNamespaceDAORO"/>    
+	      <property name="imageRecordDAO" ref="harvestingImageRecordDAORO"/>
+	      <property name="agentDAO" ref="harvestingAgentDAORO"/>
+	    </bean> 
+	  </property>   
+    <property name="proxyInterfaces" value="org.gbif.portal.service.DataResourceManager"/>
+    <property name="interceptorNames" value="daoExceptionInterceptor,dataResourceEternalCacheAdvisor,rawHibernateInterceptor,firstArgKeyParserAdvisor,searchConstraintsCheckerAdvisor"/>
+  </bean>    
+
+  <!-- TaxonomyManager -->
+  <bean id="abstractTaxonomyManager" abstract="true" class="org.gbif.portal.service.impl.TaxonomyManagerImpl">
+    <property name="countDTOFactory" ref="countDTOFactory"/>        
+    <property name="briefTaxonConceptDTOFactory" ref="briefTaxonConceptDTOFactory"/>    
+    <property name="taxonConceptDTOFactory" ref="taxonConceptDTOFactory"/>      
+    <property name="commonNameDTOFactory" ref="commonNameDTOFactory"/>      
+    <property name="relationshipAssertionDTOFactory" ref="relationshipAssertionDTOFactory"/>      
+    <property name="keyValueDTOFactory" ref="keyValueDTOFactory"/>      
+    <property name="taxonConceptCommonNameDTOFactory" ref="taxonConceptCommonNameDTOFactory"/>      
+    <property name="imageRecordDTOFactory" ref="imageRecordDTOFactory"/>      
+    <property name="remoteConceptDTOFactory" ref="remoteConceptDTOFactory"/>      
+    <property name="typificationRecordDTOFactory" ref="typificationRecordDTOFactory"/>
+  </bean>  
+
+  <!-- Live - TaxonomyManager -->
+  <bean id="taxonomyManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+  	<property name="target">
+  		<bean parent="abstractTaxonomyManager">
+  			<property name="countryDAO" ref="countryDAORO"/>
+  			<property name="taxonConceptDAO" ref="taxonConceptDAORO"/>
+  			<property name="taxonNameDAO" ref="taxonNameDAORO"/>
+  			<property name="commonNameDAO" ref="commonNameDAORO"/>
+  			<property name="imageRecordDAO" ref="imageRecordDAORO"/>				
+  			<property name="remoteConceptDAO" ref="remoteConceptDAORO"/>				
+  			<property name="relationshipAssertionDAO" ref="relationshipAssertionDAORO"/>
+  			<property name="dataResourceDAO" ref="dataResourceDAORO"/>	  
+  			<property name="typificationRecordDAO" ref="typificationRecordDAORO"/>
+  		</bean>
+  	</property>
+  	<property name="proxyInterfaces" value="org.gbif.portal.service.TaxonomyManager"/>
+  	<property name="interceptorNames"	value="daoExceptionInterceptor,taxonomyEternalCacheAdvisor,hibernateInterceptor,firstArgKeyParserAdvisor,searchConstraintsCheckerAdvisor"/>
+  </bean>
+
+  <!-- TaxonomyManager -->
+  <bean id="harvestingTaxonomyManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="target">
+      <bean parent="abstractTaxonomyManager">
+        <property name="countryDAO" ref="harvestingCountryDAORO"/>
+        <property name="taxonConceptDAO" ref="harvestingTaxonConceptDAORO"/>
+        <property name="taxonNameDAO" ref="harvestingTaxonNameDAORO"/>
+        <property name="commonNameDAO" ref="harvestingCommonNameDAORO"/>
+        <property name="imageRecordDAO" ref="harvestingImageRecordDAORO"/>        
+        <property name="remoteConceptDAO" ref="harvestingRemoteConceptDAORO"/>        
+        <property name="relationshipAssertionDAO" ref="harvestingRelationshipAssertionDAORO"/>
+        <property name="dataResourceDAO" ref="harvestingDataResourceDAORO"/>    
+        <property name="typificationRecordDAO" ref="harvestingTypificationRecordDAORO"/>
+      </bean>
+    </property>
+    <property name="proxyInterfaces" value="org.gbif.portal.service.TaxonomyManager"/>
+    <property name="interceptorNames" value="daoExceptionInterceptor,taxonomyEternalCacheAdvisor,rawHibernateInterceptor,firstArgKeyParserAdvisor,searchConstraintsCheckerAdvisor"/>
+  </bean>	
+
+  <!-- GeospatialManager -->
+  <bean id="geospatialManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+  	<property name="target">
+  		<bean class="org.gbif.portal.service.impl.GeospatialManagerImpl">
+  			<property name="countryDAO" ref="countryDAORO"/>
+  			<property name="cellDensityDAO" ref="cellDensityDAORO"/>
+  			<property name="centiCellDensityDAO" ref="centiCellDensityDAORO"/>
+  			<property name="occurrenceRecordDAO" ref="occurrenceRecordDAORO"/>
+  			<property name="dataResourceDAO" ref="dataResourceDAORO"/>
+  			<property name="dataProviderDAO" ref="dataProviderDAORO"/>
+  			<property name="geoRegionDAO" ref="geoRegionDAORO"/>
+  			<property name="hostCountryTagDAO" ref="hostCountryTagDAO"/>
+            <property name="hostCountryKingdomBasisTagDAO" ref="hostCountryKingdomBasisTagDAO"/>
+  			<property name="cellDensityDTOFactory" ref="cellDensityDTOFactory"/>
+  			<property name="countryDTOFactory" ref="countryDTOFactory"/>
+  			<property name="countDTOFactory" ref="countDTOFactory"/>
+			<property name="keyValueDTOFactory" ref="keyValueDTOFactory"/>
+  		</bean>
+  	</property>
+  	<property name="proxyInterfaces" value="org.gbif.portal.service.GeospatialManager"/>
+  	<property name="interceptorNames" value="daoExceptionInterceptor,geospatialEternalCacheAdvisor,hibernateInterceptor,searchConstraintsCheckerAdvisor"/>
+  </bean>
+
+  <!-- The DataProviderServices for contacting a data provider in "real-time" -->
+  <bean id="dataProviderServices" class="org.springframework.aop.framework.ProxyFactoryBean">
+  	<property name="target">
+  		<bean class="org.gbif.portal.service.provider.impl.DataProviderServicesImpl">
+  			<property name="occurrenceRecordDAO" ref="occurrenceRecordDAORO"/>
+  			<property name="requestUtils">
+				<bean class="org.gbif.portal.util.request.RequestUtils">	
+					<property name="timeoutInMillisec" value="25000"/>
+				</bean>
+			</property>
+  			<property name="messageUtils" ref="messageUtils"/>
+  			<property name="templateUtils" ref="templateUtils"/>
+  			<property name="propertyStore" ref="indexPropertyStore"/>
+  		</bean>
+  	</property>
+  	<property name="proxyInterfaces"
+  		value="org.gbif.portal.service.provider.DataProviderServices"/>
+  	<property name="interceptorNames" value="daoExceptionInterceptor,hibernateInterceptor"/>
+  </bean>
+
+    <!-- Abstract Log Manager -->
+    <bean id="abstractLogManager" abstract="true" class="org.gbif.portal.service.impl.LogManagerImpl">
+        <property name="occurrenceManager" ref="occurrenceManager"/>
+        <property name="taxonomyManager" ref="taxonomyManager"/>
+        <property name="dataResourceManager" ref="dataResourceManager"/>
+        <!--property name="logMessageDAO" ref="logMessageDAORO"/-->
+        <property name="userDAO" ref="userDAORO"/>
+        <property name="logMessageDTOFactory" ref="logMessageDTOFactory"/>
+        <property name="gbifLogUtils" ref="logUtils"/>
+        <property name="mailSender" ref="mailSender"/>
+        <property name="providerTemplateMessage" ref="providerTemplateMessage"/>
+        <property name="userTemplateMessage" ref="userTemplateMessage"/>
+        <property name="portalEmailAddresses">
+            <list>
+                <value>portal@gbif.org</value>
+            </list>
+        </property>
+    </bean>	
+
+	<!-- The LogManager for handling user feedback, etc. -->
+	<bean id="logManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean parent="abstractLogManager">
+				<property name="logMessageDAO" ref="logMessageDAORO"/>
+			</bean>
+		</property>
+		<property name="interceptorNames" value="hibernateInterceptor"/>
+	</bean>
+
+	<!-- Indexing Log Manager - retrieves messages for indexing DB -->
+	<bean id="harvestingLogManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean parent="abstractLogManager">
+				<property name="logMessageDAO" ref="harvestingLogMessageDAORO"/>
+			</bean>
+		</property>
+		<property name="interceptorNames" value="rawHibernateInterceptor"/>		
+	</bean>
+
+	<!-- The Mail Sender -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gbif.org"/>
+	</bean>	
+
+	<!-- this is a template message that we can pre-load with default state -->
+	<bean id="providerTemplateMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="portal@gbif.org"/>
+	</bean>
+
+	<!-- this is a template message that we can pre-load with default state -->
+	<bean id="userTemplateMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="portal@gbif.org"/>
+	</bean>
+
+	<!-- System Manager -->
+	<bean id="systemManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.impl.SystemManagerImpl">
+				<property name="dataProviderDAO" ref="dataProviderDAORO"/>
+				<property name="cacheManager" ref="eternalCacheManager"/>
+				<property name="keyValueDTOFactory" ref="keyValueDTOFactory"/>
+				<property name="dataSource" ref="dataSource"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.SystemManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,hibernateInterceptor"/>
+	</bean>
+
+	<!-- TripletOccurrenceManager - supports the triplet queries for occurrence searches -->
+	<bean id="tripletOccurrenceManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleOccurrenceQueryDAO"/>
+				<property name="queryBuilder" ref="occurrenceQueryBuilder"/>
+				<property name="dtoFactory" ref="briefOccurrenceRecordDTOFactory"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,orLoggingInterceptor,hibernateInterceptor"/>
+	</bean>
+	<!-- TripletDetailedOccurrenceManager - supports the triplet queries for occurrence searches -->
+	<bean id="tripletDisplayOccurrenceManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleOccurrenceQueryDAO"/>
+				<property name="queryBuilder" ref="detailedOccurrenceQueryBuilder"/>
+				<property name="dtoFactory" ref="briefOccurrenceRecordDTOFactory"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,orLoggingInterceptor,hibernateInterceptor"/>
+	</bean>	
+	<!-- TripletDetailedOccurrenceManager - supports the triplet queries for occurrence searches -->
+	<bean id="tripletDetailedOccurrenceManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleOccurrenceQueryDAO"/>
+				<property name="queryBuilder" ref="detailedOccurrenceQueryBuilder"/>
+				<property name="dtoFactory" ref="extendedOccurrenceRecordDTOFactory"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,orLoggingInterceptor,hibernateInterceptor"/>
+	</bean>
+	<!-- TripletDetailedOccurrenceManager - supports the triplet queries for occurrence searches -->
+	<bean id="tripletFullDetailedOccurrenceManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleFullOccurrenceQueryDAO"/>
+				<property name="queryBuilder" ref="fullDetailedOccurrenceQueryBuilder"/>
+				<property name="dtoFactory" ref="extendedOccurrenceRecordDTOFactory"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,orLoggingInterceptor,hibernateInterceptor"/>
+	</bean>
+	
+	<!-- TripletTaxonOccurrenceManager - supports the triplet queries for occurrence searches -->
+	<bean id="tripletTaxonOccurrenceManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleTaxonOccurrenceQueryDAO"/>
+				<property name="queryBuilder" ref="distinctTaxonOccurrenceQueryBuilder"/>
+				<property name="dtoFactory" ref="extendedOccurrenceRecordDTOFactory"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,orLoggingInterceptor,hibernateInterceptor"/>
+	</bean>	
+	
+	<!-- TripletOccurrenceCountsManager - supports triplet queries bringing back aggregate counts -->
+	<bean id="tripletOccurrenceCountsManager"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleQueryDAO"/>
+				<!-- 
+				<property name="queryBuilder" ref="occurrenceQueryBuilder"/>
+				-->	
+				<property name="queryBuilder" ref="occurrenceCountsQueryBuilder"/>
+				<property name="dtoFactory" ref="countDTOFactory"/>			
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,hibernateInterceptor"/>
+	</bean>
+
+	<!-- TripletOccurrencePointsManager - supports triplet queries that only return point results -->
+	<bean id="tripletOccurrencePointsManager"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleQueryDAO"/>
+				<property name="queryBuilder" ref="occurrencePointsQueryBuilder"/>
+				<property name="dtoFactory" ref="pointDTOFactory"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,hibernateInterceptor"/>
+	</bean>
+
+    <bean id="tripletDistinctOccurrencePointsManager"
+      class="org.springframework.aop.framework.ProxyFactoryBean">
+      <property name="target">
+        <bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+          <property name="simpleQueryDAO" ref="simpleQueryDAO"/>
+          <property name="queryBuilder" ref="distinctCellsOccurrenceQueryBuilder"/>
+          <property name="dtoFactory" ref="pointDTOFactory"/>
+        </bean>
+      </property>
+      <property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+      <property name="interceptorNames" value="daoExceptionInterceptor,hibernateInterceptor"/>
+    </bean>
+
+    <bean id="tripletOccurrenceTaxonPointsManager"
+      class="org.springframework.aop.framework.ProxyFactoryBean">
+      <property name="target">
+        <bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+          <property name="simpleQueryDAO" ref="simpleQueryDAO"/>
+          <property name="queryBuilder" ref="occurrenceTaxonPointsQueryBuilder"/>
+          <property name="dtoFactory" ref="pointDTOFactory"/>
+        </bean>
+      </property>
+      <property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+      <property name="interceptorNames" value="daoExceptionInterceptor,hibernateInterceptor"/>
+    </bean>
+
+	<!-- TripletOccurrenceMapLayerManager - supports triplet queries bringing back map layer data -->
+	<bean id="tripletOccurrenceMapLayerManager"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleQueryDAO"/>
+				<property name="queryBuilder" ref="occurrenceQueryBuilder"/>
+				<property name="dtoFactory" ref="cellDensityDTOFactory"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,hibernateInterceptor"/>
+	</bean>
+
+	<!-- TripletTaxonomyManager - supports the triplet queries for taxon concept searches -->
+	<bean id="tripletTaxonomyManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleTaxonomyQueryDAO"/>
+				<property name="queryBuilder" ref="taxonomyQueryBuilder"/>
+				<property name="dtoFactory" ref="taxonConceptDTOFactory"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,hibernateInterceptor"/>
+	</bean>	
+	
+	<!-- DTO Factories -->
+	<bean id="briefTaxonConceptDTOFactory" class="org.gbif.portal.dto.taxonomy.BriefTaxonConceptDTOFactory"/>
+	<bean id="briefOccurrenceRecordDTOFactory" class="org.gbif.portal.dto.occurrence.BriefOccurrenceRecordDTOFactory"/>
+	<bean id="occurrenceRecordDTOFactory" class="org.gbif.portal.dto.occurrence.OccurrenceRecordDTOFactory"/>
+	<bean id="rawOccurrenceRecordDTOFactory" class="org.gbif.portal.dto.occurrence.RawOccurrenceRecordDTOFactory"/>
+	<bean id="extendedOccurrenceRecordDTOFactory" class="org.gbif.portal.dto.occurrence.ExtendedOccurrenceRecordDTOFactory">
+		<property name="occurrenceRecordDTOFactory" ref="occurrenceRecordDTOFactory"/>
+		<property name="rawOccurrenceRecordDTOFactory" ref="rawOccurrenceRecordDTOFactory"/>
+	</bean>
+	<bean id="imageRecordDTOFactory" class="org.gbif.portal.dto.occurrence.ImageRecordDTOFactory"/>
+	<bean id="linkRecordDTOFactory" class="org.gbif.portal.dto.occurrence.LinkRecordDTOFactory"/>
+	<bean id="identifierRecordDTOFactory"	class="org.gbif.portal.dto.occurrence.IdentifierRecordDTOFactory"/>
+	<bean id="typificationRecordDTOFactory" class="org.gbif.portal.dto.occurrence.TypificationRecordDTOFactory"/>
+	<bean id="taxonConceptDTOFactory" class="org.gbif.portal.dto.taxonomy.TaxonConceptDTOFactory"/>
+    <bean id="taxonConceptCommonNameDTOFactory" class="org.gbif.portal.dto.taxonomy.TaxonConceptCommonNameDTOFactory"/>   
+	<bean id="commonNameDTOFactory" class="org.gbif.portal.dto.taxonomy.CommonNameDTOFactory"/>
+	<bean id="remoteConceptDTOFactory" class="org.gbif.portal.dto.taxonomy.RemoteConceptDTOFactory"/>
+	<bean id="relationshipAssertionDTOFactory" class="org.gbif.portal.dto.taxonomy.RelationshipAssertionDTOFactory"/>
+	<bean id="dataResourceDTOFactory" class="org.gbif.portal.dto.resources.DataResourceDTOFactory"/>
+	<bean id="dataProviderDTOFactory" class="org.gbif.portal.dto.resources.DataProviderDTOFactory"/>
+	<bean id="resourceNetworkDTOFactory" class="org.gbif.portal.dto.resources.ResourceNetworkDTOFactory"/>
+	<bean id="resourceAccessPointDTOFactory" class="org.gbif.portal.dto.resources.ResourceAccessPointDTOFactory"/>
+	<bean id="propertyStoreNamespaceDTOFactory" class="org.gbif.portal.dto.resources.PropertyStoreNamespaceDTOFactory"/>
+	<bean id="dataProviderAgentDTOFactory" class="org.gbif.portal.dto.resources.DataProviderAgentDTOFactory"/>
+	<bean id="dataResourceAgentDTOFactory" class="org.gbif.portal.dto.resources.DataResourceAgentDTOFactory"/>
+	<bean id="cellDensityDTOFactory" class="org.gbif.portal.dto.geospatial.CellDensityDTOFactory"/>
+	<bean id="countryDTOFactory" class="org.gbif.portal.dto.geospatial.CountryDTOFactory"/>
+	<bean id="countDTOFactory" class="org.gbif.portal.dto.CountDTOFactory"/>
+	<bean id="pointDTOFactory" class="org.gbif.portal.dto.geospatial.PointDTOFactory"/>
+	<bean id="keyValueDTOFactory" class="org.gbif.portal.dto.KeyValueDTOFactory"/>
+	<bean id="logMessageDTOFactory" class="org.gbif.portal.dto.log.LogMessageDTOFactory"/>
+	
+	<!-- AOP advisors -->
+	<!--Data Resource manager method Caching-->
+	<bean id="occurrenceEternalCacheAdvisor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" abstract="false"
+		singleton="true" lazy-init="default" autowire="default" dependency-check="default">
+		<property name="advice" ref="eternalCacheInterceptor"/>
+		<property name="patterns">
+			<list>
+				<value>.*getTotalOccurrenceRecordCount</value>
+			</list>
+		</property>
+	</bean>	
+	
+	<!--Data Resource manager method Caching-->
+	<bean id="dataResourceEternalCacheAdvisor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" abstract="false"
+		singleton="true" lazy-init="default" autowire="default" dependency-check="default">
+		<property name="advice" ref="eternalCacheInterceptor"/>
+		<property name="patterns">
+			<list>
+				<value>.*getNubDataProvider</value>
+				<value>.*getNewestDataResource</value>				
+				<value>.*getDataProviderList</value>
+				<value>.*getDatasetAlphabet</value>
+				<value>.*getTotalDataResourceCount</value>				
+				<value>.*getTotalDataProviderCount</value>												
+			</list>
+		</property>
+	</bean>
+	<!--Taxonomy manager method Caching-->
+	<bean id="taxonomyEternalCacheAdvisor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" abstract="false"
+		singleton="true" lazy-init="default" autowire="default" dependency-check="default">
+		<property name="advice" ref="eternalCacheInterceptor"/>
+		<property name="patterns">
+			<list>
+				<value>.*getRootTaxonConceptsForTaxonomy</value>
+				<value>.*getRootConceptRankForTaxonomy</value>
+				<value>.*getTotalTaxonConceptCount</value>
+				<value>.*getTaxonConceptCountForRank</value>
+			</list>
+		</property>
+	</bean>
+	<!--Geospatial Manager method Caching -->
+	<bean id="geospatialEternalCacheAdvisor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" abstract="false"
+		singleton="true" lazy-init="default" autowire="default" dependency-check="default">
+		<property name="advice" ref="eternalCacheInterceptor"/>
+		<property name="patterns">
+			<list>
+				<value>.*getCountryAlphabet</value>
+				<!-- This seems to be causing out of memory errors -->
+				<!--value>.*get1DegCellDensities</value-->
+				<value>.*getTotalCountryCount</value>				
+			</list>
+		</property>
+	</bean>
+	<!-- AOP advisor that checks the first arg is a valid Service Layer key -->
+	<bean id="firstArgKeyParserAdvisor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" abstract="false"
+		singleton="true" lazy-init="default" autowire="default" dependency-check="default">
+		<property name="advice" ref="firstArgKeyParserInterceptor"/>
+		<property name="patterns">
+			<list>
+				<value>.*get.*For</value>
+				<value>.*findTaxonConceptsWithSameScientificNameAndRankAs</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- AOP advisor that checks the first arg is a valid Service Layer key -->
+	<bean id="searchConstraintsCheckerAdvisor"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" abstract="false"
+		singleton="true" lazy-init="default" autowire="default" dependency-check="default">
+		<property name="advice" ref="searchConstraintsCheckerInterceptor"/>
+		<property name="patterns">
+			<list>
+				<value>.*find.*</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- AOP Interceptors -->
+	<!-- Method Level Cache interceptor -->
+	<bean id="eternalCacheInterceptor"
+		class="org.springframework.aop.interceptor.cache.EHCacheInterceptor">
+		<property name="cacheManager" ref="eternalCacheManager"/>
+		<property name="defaultRefreshPeriod" value="86400"/>
+		<property name="identifiers">
+			<props>
+				<prop key="java.util.Set">toString</prop>
+				<prop key="java.util.List">toString</prop>
+				<prop key="org.gbif.portal.dto.util.EntityType">getName</prop>
+				<prop key="org.gbif.portal.dto.util.TaxonRankType">getName</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Catch DAO Layer exception - pass on as servie layer exceptions that webapp/web service may deal with -->
+    <bean id="daoExceptionInterceptor" class="org.gbif.portal.service.aop.ServiceLayerExceptionInterceptor"/>
+	<!-- AOP advisor that checks the first arg is a valid Service Layer key -->
+	<bean id="firstArgKeyParserInterceptor" class="org.gbif.portal.service.aop.KeyParserInterceptor">
+		<property name="argumentNo" value="0"/>
+	</bean>
+	<bean id="searchConstraintsCheckerInterceptor"
+		class="org.gbif.portal.service.aop.SearchConstraintsCheckerInterceptor">
+		<property name="maxResults" value="10000"/>
+	</bean>
+
+	<!-- GBIF occurrence triple logging interceptor -->
+	<bean id="orLoggingInterceptor" class="org.gbif.portal.service.log.TripletQueryLoggingInterceptor">
+		<property name="gbifLogUtils" ref="gbifLogUtils"/>
+		<!-- These are the things that will be logged as items of interest -->
+		<property name="serviceKeyToBriefLoggableName">
+			<map>
+				<!-- entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.RECORDID" value="key"/-->
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.SCIENTIFICNAME" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONNAMEID" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.NUBCONCEPTID" value="name"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.KINGDOM" value="name"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.PHYLUM" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.CLASS" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.ORDER" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.FAMILY" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.GENUS" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.SPECIES" value="name"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.KINGDOMID" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.PHYLUMID" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.CLASSID" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.ORDERID" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.FAMILYID" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.GENUSID" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.SPECIESID" value="name"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.LATITUDE" value="geo"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.LONGITUDE" value="geo"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.CELLID" value="geo"/>
+				<!--entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.CENTICELLID" value="geo"/-->
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.INSTITUTIONCODE" value="institutionCode"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.COLLECTIONCODE" value="collectionCode"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.CATALOGUENUMBER" value="catalogueNumber"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.COUNTRY" value="country"/>	  				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.CONTINENTCODE" value="continentCode"/>	  				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.REGIONCODE" value="regionCode"/>	  								
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.ISOCOUNTRYCODE" value="isoCountryCode"/>	        
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.HOSTCOUNTRYCODE" value="hostCountry"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATARESOURCE" value="dataResource"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATARESOURCEID" value="dataResource"/>				        							
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATAPROVIDER" value="dataProvider"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATAPROVIDERID" value="dataProvider"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.RESOURCENETWORKID" value="resourceNetwork"/>								
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.BASISOFRECORD" value="basisOfRecordCode"/>				
+				<!--entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOSPATIALISSUES" value="geospatialIssue"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONOMICISSUES" value="taxonomicIssue"/>								
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OTHERISSUES" value="otherIssue"/-->				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEDATE" value="occurrenceDate"/>
+				<!--entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUSCOUNT" value="typeStatus"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUS" value="typeStatus"/-->
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.YEAR" value="year"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.MONTH" value="month"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DAY" value="day"/>				
+			</map>
+		</property>
+		<!-- For anything that is not immediately loggable, we register a "mapper" which will convert it 
+			 Anything registered as "of interest" above, then it will be used as it's object value, unless 
+			 there is a mapper registered here -->
+		<property name="serviceObjectToLoggableStringMappers">
+			<map>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONNAMEID">
+					<bean class="org.gbif.portal.service.log.NameFromTaxonNameId">
+						<property name="taxonNameDAO" ref="taxonNameDAORO"/>
+					</bean>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONCONCEPTID" value-ref="nameFromTaxonConceptId"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.NUBCONCEPTID" value-ref="nameFromTaxonConceptId"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.KINGDOMID" value-ref="nameFromTaxonConceptId"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.PHYLUMID" value-ref="nameFromTaxonConceptId"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.CLASSID" value-ref="nameFromTaxonConceptId"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.ORDERID" value-ref="nameFromTaxonConceptId"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.FAMILYID" value-ref="nameFromTaxonConceptId"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.GENUSID" value-ref="nameFromTaxonConceptId"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TR.SPECIESID" value-ref="nameFromTaxonConceptId"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATARESOURCEID">
+					<bean class="org.gbif.portal.service.log.NameFromDataResourceId">
+						<property name="dataResourceDAO" ref="dataResourceDAORO"/>
+					</bean>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATAPROVIDERID">
+					<bean class="org.gbif.portal.service.log.NameFromDataProviderId">
+						<property name="dataProviderDAO" ref="dataProviderDAORO"/>
+					</bean>
+				</entry>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.LATITUDE" value-ref="descriptionFromLatitude"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.LONGITUDE" value-ref="descriptionFromLongitude"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.CELLID" value-ref="descriptionFromCellId"/>
+				<!--
+				</entry-->
+				
+				<!--
+					Still to consider...
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.CENTICELLID" value="centiCellId"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.CONTINENTCODE" value="continentCode"/>	  				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.REGIONCODE" value="regionCode"/>	  								
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.RESOURCENETWORKID" value="resourceNetwork"/>								
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.BASISOFRECORD" value="basisOfRecordCode"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOSPATIALISSUES" value="geospatialIssue"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONOMICISSUES" value="taxonomicIssue"/>								
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OTHERISSUES" value="otherIssue"/>				
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEDATE" value="occurrenceDate"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEMODIFICATIONDATE" value="modified"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUSCOUNT" value="typeStatus"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUS" value="oc.typeStatus.typeStatus"/>
+				-->				
+			</map>
+		</property>
+	</bean>
+	
+	<!-- Key to name mappers-->
+	<bean id="nameFromTaxonConceptId" class="org.gbif.portal.service.log.NameFromTaxonConceptId">
+		<property name="taxonConceptDAO" ref="taxonConceptDAORO"/>
+	</bean>
+	<bean id="descriptionFromLatitude" class="org.gbif.portal.service.log.DescriptionFromLatitude">
+		<property name="servicePredicateKeyToSimpleString" ref="servicePredicateKeyToSimpleString"/>
+	</bean>
+	<bean id="descriptionFromLongitude" class="org.gbif.portal.service.log.DescriptionFromLongitude">
+		<property name="servicePredicateKeyToSimpleString" ref="servicePredicateKeyToSimpleString"/>
+	</bean>
+	<bean id="descriptionFromCellId" class="org.gbif.portal.service.log.DescriptionFromCellId"/>
+	<!-- Maps predicates to nice simple strings for short brief logging -->
+	<bean id="servicePredicateKeyToSimpleString" class="org.springframework.beans.factory.config.MapFactoryBean">
+		<property name="sourceMap">
+			<map>
+				<entry key="SERVICE.QUERY.PREDICATE.LE" value="&lt;="/>
+				<entry key="SERVICE.QUERY.PREDICATE.L" value="&lt;"/>
+				<entry key="SERVICE.QUERY.PREDICATE.GE" value="&gt;="/>
+				<entry key="SERVICE.QUERY.PREDICATE.G" value="&gt;"/>
+				<entry key="SERVICE.QUERY.PREDICATE.EQUAL" value="="/>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- Cache Managers -->
+	<bean id="eternalCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:org/gbif/portal/service/impl/ehcache-eternal.xml"/>
+	</bean>
+	<!-- Log utilities -->
+	<bean id="logUtils" class="org.gbif.portal.util.log.GbifLogUtils"/>
+	
+	<!-- KML -->
+	<!-- TripletOccurrenceManager - supports the triplet queries for occurrence searches -->
+	<bean id="tripletOccurrenceKMLManager" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<bean class="org.gbif.portal.service.triplet.impl.TripletQueryManagerImpl">
+				<property name="simpleQueryDAO" ref="simpleOccurrenceQueryDAO"/>
+				<property name="queryBuilder" ref="kmlOccurrenceQueryBuilder"/>
+				<property name="dtoFactory" ref="kmlOccurrenceRecordDTOFactory"/>
+			</bean>
+		</property>
+		<property name="proxyInterfaces" value="org.gbif.portal.service.triplet.TripletQueryManager"/>
+		<property name="interceptorNames" value="daoExceptionInterceptor,orLoggingInterceptor,hibernateInterceptor"/>
+	</bean>		
+	
+	<!-- DTO Factories -->
+	<bean id="kmlOccurrenceRecordDTOFactory" class="org.gbif.portal.dto.occurrence.KmlOccurrenceRecordDTOFactory"/>		
+	
+</beans>

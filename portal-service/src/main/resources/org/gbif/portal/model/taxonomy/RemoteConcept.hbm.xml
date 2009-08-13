@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="remote_concept" name="org.gbif.portal.model.taxonomy.RemoteConcept">
+    <id unsaved-value="null" name="id" column="id">
+      <generator class="native"/>
+    </id>
+    <property name="remoteId" column="remote_id"/>
+    <property name="taxonConceptId" column="taxon_concept_id" not-null="true" insert="false" update="false"/>		
+    <property name="idType" column="id_type" not-null="true" type="org.gbif.portal.model.taxonomy.IdType"/>
+    <many-to-one column="taxon_concept_id" not-null="true" name="taxonConcept"/>
+  </class>
+</hibernate-mapping>

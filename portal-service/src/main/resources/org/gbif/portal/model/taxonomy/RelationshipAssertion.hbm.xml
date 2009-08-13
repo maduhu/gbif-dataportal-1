@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class table="relationship_assertion" name="org.gbif.portal.model.taxonomy.RelationshipAssertion">
+		<composite-id name="identifer" class="org.gbif.portal.model.taxonomy.RelationshipAssertionId">
+      <key-property name="fromConceptId" column="from_concept_id"/>
+			<key-property name="relationshipTypeValue" column="relationship_type"/>
+      <key-property name="toConceptId" column="to_concept_id"/>
+    </composite-id>
+    <many-to-one name="fromConcept" column="from_concept_id" insert="false" update="false"/>
+    <property name="relationshipType" column="relationship_type" not-null="true" type="org.gbif.portal.model.taxonomy.RelationshipType" insert="false" update="false"/>
+    <many-to-one name="toConcept" column="to_concept_id" insert="false" update="false"/>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="ip_country" name="org.gbif.portal.model.geospatial.IPCountry">
+    <id unsaved-value="null" name="id" column="id">
+      <generator class="native"/>
+    </id>
+    <property name="start" column="start"/>
+    <property name="end" column="end"/>
+    <property name="startLong" column="start_long"/>
+    <property name="endLong" column="end_long"/>
+		<property name="isoCountryCode" column="iso_country_code" insert="false" update="false"/>
+    <many-to-one column="iso_country_code" not-null="true" name="country"/>			
+  </class>
+</hibernate-mapping>

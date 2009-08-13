@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="network_membership" name="org.gbif.portal.model.resources.NetworkMembership">
+    <id unsaved-value="null" name="id" column="id">
+      <generator class="native"/>
+    </id>
+    <many-to-one column="data_resource_id" cascade="save-update" not-null="true" name="dataResource"/>
+    <many-to-one column="resource_network_id" cascade="save-update" not-null="true" name="resourceNetwork"/>
+    <property column="data_resource_id" not-null="false" name="dataResourceId" insert="false" update="false"/>
+    <property column="resource_network_id" not-null="false" name="resourceNetworkId" insert="false" update="false"/>
+  </class>
+</hibernate-mapping>

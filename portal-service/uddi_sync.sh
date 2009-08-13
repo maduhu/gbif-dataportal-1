@@ -1,0 +1,1 @@
+java -classpath .:portal-service-1.0-SNAPSHOT.jar:soap-2.3.1.jar:uddi4j-2.0.5.jar:activation-1.0.2.jar:mail-1.4.jar:commons-logging-1.0.4.jar  org.gbif.portal.registration.UDDIUtils http://registry.gbif.net/uddi/inquiry http://registry.gbif.net/uddi/publish http://aoraia.gbif.org/juddi/inquiry http://aoraia.gbif.org/juddi/publish admin password

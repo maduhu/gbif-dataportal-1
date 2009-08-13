@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <!--
+		Contains a map of field name to bean properties
+  -->
+	<bean id="taxonConceptProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="taxonConcept"/>
+	</bean>
+	<bean id="taxonNameProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="taxonName"/>
+	</bean>
+	<!-- major rank names -->
+	<!--
+	<bean id="kingdomNameProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="kingdomName"/>
+	</bean>
+	<bean id="phylumNameProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="phylumName"/>
+	</bean>
+	<bean id="classNameProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="className"/>
+	</bean>
+	<bean id="orderNameProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="orderName"/>
+	</bean>
+	<bean id="familyNameProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="familyrName"/>
+	</bean>	
+	<bean id="genusNameProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="genusName"/>
+	</bean>
+	<bean id="speciesNameProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="speciesName"/>
+	</bean>
+  -->
+	<!-- data resource / provider -->
+	<bean id="dataProviderProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="dataProvider"/>
+	</bean>	
+	<bean id="dataResourceProperty" abstract="true" class="org.gbif.portal.io.OutputProperty">
+		<property name="beanName" value="dataResource"/>
+	</bean>	
+	
+	<!-- for properties not associated with a bean -->
+	<bean id="basicProperty" abstract="true" class="org.gbif.portal.io.OutputProperty"/>
+		
+	<!-- 
+		   These are the properties that are available for output
+       Applications using portal-service do not need to concern themselves with the content of the entries.
+		   All that is required is the entry key values		  
+	 -->
+	<bean id="propertyStore:namespace:GBIF:Portal-Service:TaxonomyOutput:1.0" class="org.gbif.portal.util.propertystore.impl.spring.PropertyBag">
+		<!-- The namespace that the PropertyStore will key this bag on -->
+		<property name="namespace" value="http://gbif.org/portal-service/taxonomyOutput/2006/1.0"/>
+		<property name="properties">
+			<map>
+				<!-- Properties just passed back in the bean map -->
+				<entry key="downloadFields">
+					<map>
+						<!-- Taxon concept properties -->
+						<entry key="id">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="id"/>
+							</bean>			
+						</entry>
+						<entry key="rank">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="taxonRank"/>
+							</bean>			
+						</entry>						
+						<entry key="parentConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="parentConceptId"/>
+							</bean>			
+						</entry>						
+						<entry key="nubConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="nubConceptId"/>
+							</bean>			
+						</entry>						
+						<entry key="isAccepted">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="isAccepted"/>
+							</bean>			
+						</entry>							
+						<entry key="partnerConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="partnerConceptId"/>
+							</bean>			
+						</entry>					
+						<!-- major rank ids -->
+						<entry key="kingdomConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="kingdomConceptId"/>
+							</bean>			
+						</entry>					
+						<entry key="phylumConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="phylumConceptId"/>
+							</bean>			
+						</entry>		
+						<entry key="classConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="classConceptId"/>
+							</bean>			
+						</entry>								
+						<entry key="orderConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="orderConceptId"/>
+							</bean>			
+						</entry>		
+						<entry key="familyConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="familyConceptId"/>
+							</bean>			
+						</entry>		
+						<entry key="genusConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="genusConceptId"/>
+							</bean>			
+						</entry>							
+						<entry key="speciesConceptId">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="speciesConceptId"/>
+							</bean>			
+						</entry>																				
+												
+						<!-- Taxon name properties -->
+						<entry key="canonical">
+							<bean parent="taxonNameProperty">
+								<property name="propertyName" value="canonical"/>
+							</bean>			
+						</entry>
+						<entry key="author">
+							<bean parent="taxonNameProperty">
+								<property name="propertyName" value="author"/>
+							</bean>			
+						</entry>
+						<entry key="specificEpithet">
+							<bean parent="taxonNameProperty">
+								<property name="propertyName" value="specificEpithet"/>
+							</bean>			
+						</entry>
+						<entry key="generic">
+							<bean parent="taxonNameProperty">
+								<property name="propertyName" value="generic"/>
+							</bean>			
+						</entry>								
+						
+						<!-- Resource and provider -->
+						<entry key="dataProviderName">
+							<bean parent="dataProviderProperty">
+								<property name="propertyName" value="name"/>
+							</bean>			
+						</entry>							
+						<entry key="dataResourceName">
+							<bean parent="dataResourceProperty">
+								<property name="propertyName" value="name"/>
+							</bean>			
+						</entry>							
+            
+						<!-- Higher ranks -->
+						<entry key="kingdom">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="kingdom"/>
+							</bean>			
+						</entry>								
+						<entry key="phylum">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="phylum"/>
+							</bean>			
+						</entry>								
+						<entry key="class">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="class"/>
+							</bean>			
+						</entry>								
+						<entry key="order">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="order"/>
+							</bean>			
+						</entry>								
+						<entry key="family">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="family"/>
+							</bean>			
+						</entry>		
+						<entry key="genus">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="genus"/>
+							</bean>			
+						</entry>		
+						<entry key="species">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="species"/>
+							</bean>			
+						</entry>																				
+						<!-- The urls need the species id only -->
+						<entry key="treeBrowseUrl">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="id"/>
+							</bean>
+						</entry>	
+						<entry key="taxonPageUrl">
+							<bean parent="taxonConceptProperty">
+								<property name="propertyName" value="id"/>
+							</bean>
+						</entry>	
+					</map>
+				</entry>		
+			</map>					
+		</property>
+	</bean>
+</beans>

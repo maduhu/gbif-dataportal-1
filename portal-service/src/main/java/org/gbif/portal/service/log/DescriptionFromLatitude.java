@@ -1,0 +1,63 @@
+/***************************************************************************
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
+ * All Rights Reserved.
+ *
+ * The contents of this file are subject to the Mozilla Public
+ * License Version 1.1 (the "License"); you may not use this file
+ * except in compliance with the License. You may obtain a copy of
+ * the License at http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS
+ * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+ * implied. See the License for the specific language governing
+ * rights and limitations under the License.
+ ***************************************************************************/
+package org.gbif.portal.service.log;
+
+import java.util.Map;
+
+/**
+ * Creates the ">21N" for example for GREATER THAN 21  
+ * @author trobertson
+ */
+public class DescriptionFromLatitude extends
+		AbstractLoggableFromPredicateAndObject {
+
+	/**
+	 * Maps the predicates to a simple string
+	 * E.G ....GE becomes >=
+	 */
+	Map<String, String> servicePredicateKeyToSimpleString;
+	
+	/* (non-Javadoc)
+	 * @see org.gbif.portal.service.log.LoggableFromPredicateAndObject#getLoggable(java.lang.Object, java.lang.Object)
+	 */
+	public String getLoggable(Object predicate, Object object) {
+		if (servicePredicateKeyToSimpleString.containsKey((String)predicate)) {
+			String summary = servicePredicateKeyToSimpleString.get((String)predicate);
+			float value = (Float)object;
+			if (value<0) {
+				return summary + Math.abs(value) + "S"; 
+			} else {
+				return summary + Math.abs(value) + "N";
+			}			
+		}	
+		return null;		
+	}
+
+	/**
+	 * @return Returns the servicePredicateKeyToSimpleString.
+	 */
+	public Map<String, String> getServicePredicateKeyToSimpleString() {
+		return servicePredicateKeyToSimpleString;
+	}
+
+	/**
+	 * @param servicePredicateKeyToSimpleString The servicePredicateKeyToSimpleString to set.
+	 */
+	public void setServicePredicateKeyToSimpleString(
+			Map<String, String> servicePredicateKeyToSimpleString) {
+		this.servicePredicateKeyToSimpleString = servicePredicateKeyToSimpleString;
+	}
+
+}

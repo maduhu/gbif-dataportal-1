@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="org.gbif.portal.model.geospatial.GeoRegion" table="geo_region">
+    <id unsaved-value="null" name="id" column="id">
+      <generator class="native"/>
+    </id>
+    <property name="name" column="name" not-null="true"/>
+	<property name="isoCountryCode" column="iso_country_code"/>
+    <property name="occurrenceCoordinateCount" column="occurrence_coordinate_count"/>
+    <property name="occurrenceCount" column="occurrence_count"/>
+    <property name="speciesCount" column="species_count"/>
+    <property name="regionType" column="region_type"/>
+    <property name="minLongitude" column="min_longitude" not-null="true"/>
+    <property name="maxLongitude" column="max_longitude" not-null="true"/>
+    <property name="minLatitude" column="min_latitude" not-null="true"/>
+    <property name="maxLatitude" column="max_latitude" not-null="true"/>
+  </class>
+</hibernate-mapping>

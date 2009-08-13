@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="country" name="org.gbif.portal.model.geospatial.Country">
+    <id unsaved-value="null" name="isoCountryCode" column="iso_country_code">
+      <generator class="assigned"/>
+    </id>
+    <property name="countryId" column="id"/>
+    <property name="occurrenceCoordinateCount" column="occurrence_coordinate_count"/>
+    <property name="occurrenceCount" column="occurrence_count"/>
+    <property name="speciesCount" column="species_count"/>
+    <property name="continentCode" column="continent_code"/>
+	<property name="region" column="region"/>
+    <property name="minLongitude" column="min_longitude"/>
+    <property name="maxLongitude" column="max_longitude"/>
+    <property name="minLatitude" column="min_latitude"/>
+    <property name="maxLatitude" column="max_latitude"/>
+    <set inverse="true" cascade="save-update" lazy="true" name="countryNames">
+      <key column="iso_country_code"/>
+      <one-to-many class="org.gbif.portal.model.geospatial.CountryName"/>
+    </set>
+  </class>
+</hibernate-mapping>
