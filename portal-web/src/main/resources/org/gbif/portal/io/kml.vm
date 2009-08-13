@@ -1,0 +1,50 @@
+#if ($previousTaxonName)
+	#if ($previousTaxonName!=$taxonName)
+		</Folder>
+		<Folder>
+			<name>$taxonName</name>
+		#set( $iconCounter = $iconCounter + 1 )
+		#if ( $iconCounter>24)
+			#set( $iconCounter = 1 )		
+		#end	
+	#end
+#else
+	<name>$taxonName</name>
+		#set( $iconCounter = 1 )
+#end
+
+<Placemark>
+  <name>$taxonName</name>
+  <description><![CDATA[
+  	<p>$occurrenceRecord.institutionCode.code $occurrenceRecord.collectionCode.code $occurrenceRecord.catalogueNumber.code</p>  
+  	<p><img src="http://data.gbif.org/images/gbifSmall.gif"/></p>
+  	<p><b>Data retrieved from <a href="http://data.gbif.org">GBIF Data Portal</a></b></p>
+  	<table>
+  		<tr>
+  			<th>Data Provider</th>
+  			<th>Data Resource</th>  			
+  			<th>Institution Code</th>
+  			<th>Collection Code</th>
+  			<th>Catalogue Number</th>
+#if ($occurrenceRecord.occurrenceDate)  			
+  			<th>Date</th>
+#end  			
+  		</tr>
+ 			<tr>
+ 				<td>$dataProviderName</td>
+ 				<td>$dataResourceName</td> 				
+ 				<td>$occurrenceRecord.institutionCode.code</td>
+ 				<td>$occurrenceRecord.collectionCode.code</td>
+ 				<td>$occurrenceRecord.catalogueNumber.code</td>
+#if ($occurrenceRecord.occurrenceDate)  			 				 				
+ 				<td>$dateFormatter.format('dd-MM-yyyy',$occurrenceRecord.occurrenceDate)</td>
+#end 				
+ 			</tr>
+ 		</table>
+ 		<p><b>Portal URL</b>: <a href="$propertyFormatter.format("portalUrl",$occurrenceRecord.id.toString())">$propertyFormatter.format("portalUrl",$occurrenceRecord.id.toString())</a></p>
+  	]]></description>
+  <styleUrl>#gbifIcon$iconCounter</styleUrl>
+  <Point>
+    <coordinates>$occurrenceRecord.longitude,$occurrenceRecord.latitude</coordinates>
+  </Point>
+</Placemark>

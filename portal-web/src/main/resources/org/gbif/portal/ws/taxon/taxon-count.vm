@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+#set($stylesheet=$response.get("headerMap").get("stylesheet"))
+<?xml-stylesheet type="text/xsl" href="$stylesheet"?>
+<gbif:gbifResponse xsi:schemaLocation="http://portal.gbif.org/ws/response/gbif http://localhost:8080/portal/ws/rest/taxon/schema http://purl.org/dc/elements/1.1/ http://localhost:8080/portal/schema/dc.xsd http://purl.org/dc/terms/ http://localhost:8080/portal/schema/dcterms.xsd http://www.w3.org/1999/02/22-rdf-syntax-ns# http://localhost:8080/portal/schema/rdf.xsd http://www.w3.org/2002/07/owl# http://localhost:8080/portal/schema/owl.xsd http://rs.tdwg.org/ontology/voc/Common# http://localhost:8080/portal/schema/tcom.xsd http://rs.tdwg.org/ontology/voc/TaxonOccurrence# http://localhost:8080/portal/schema/TaxonOccurrence.xsd http://rs.tdwg.org/ontology/voc/TaxonConcept# http://localhost:8080/portal/schema/TaxonConcept.xsd http://rs.tdwg.org/ontology/voc/TaxonName# http://localhost:8080/portal/schema/TaxonName.xsd" xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#" xmlns:tn="http://rs.tdwg.org/ontology/voc/TaxonName#">
+#parse("org/gbif/portal/ws/header.vm")
+</gbif:gbifResponse>

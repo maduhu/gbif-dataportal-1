@@ -1,0 +1,5 @@
+#macro( writeElement $elementContent $elementName)
+	#if($elementContent)## then it has a value
+		<$elementName>$elementContent</$elementName>
+	#end
+#end

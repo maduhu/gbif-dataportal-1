@@ -1,0 +1,83 @@
+	 ##iterating through the ExtendedOccurrencesDTOs 
+     #foreach ($occurrence in $response.get($provider).get($resource))
+      <to:TaxonOccurrence gbifKey="$occurrence.getKey()" rdf:about="$occurrence.getKey()">
+       <to:basisOfRecord rdf:resource="$NO_INFO_RIGHT_NOW">$occurrence.getBasisOfRecord()</to:basisOfRecord>
+
+       #writeElement( $occurrence.getCatalogueNumber() "to:catalogNumber" )
+       #writeElement( $occurrence.getBasisOfRecord() "to:basisOfRecordString" )
+       #writeElement( $occurrence.getCatalogueNumber() "to:catalogNumber" )
+       #writeElement( $occurrence.getCollectionCode() "to:collectionCode" )
+       #writeElement( $occurrence.getRawOccurrenceRecordDTO().getCollectorName() "to:collector" )
+       #writeElement( $occurrence.getCollectorNumber() "to:collectorsBatchNumber" )
+       #writeElement( $occurrence.getFieldNumber() "to:collectorsFieldNumber" )
+       #writeElement( $occurrence.getRawOccurrenceRecordDTO().getContinentOrOcean() "to:continent" )
+       ##writeElement( $occurrence.getSomething... "to:coordinateUncertaintyInMeters" )
+       #writeElement( $occurrence.getRawOccurrenceRecordDTO().getCountry() "to:country" )
+       #writeElement( $occurrence.getRawOccurrenceRecordDTO().getCounty() "to:county" )
+       #writeElement( $occurrence.getRawOccurrenceRecordDTO().getDay() "to:dayOfYear" )
+       #writeElement( $occurrence.getLatitude() "to:decimalLatitude" )
+       #writeElement( $occurrence.getLongitude() "to:decimalLongitude" )
+       ##writeElement( $occurrence.getSomething... "to:derivedFrom" )
+       ##writeElement( $occurrence.getSomething... "to:disposition" )
+       #writeElement( $occurrence.getOccurrenceDate() "to:earliestDateCollected" )
+       ##writeElement( $occurrence.getSomething... "to:fieldNotes" )
+       ##writeElement( $occurrence.getSomething... "to:footprintSpatialFit" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:geodeticDatum" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:georeferenceProtocol" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:georeferenceRemarks" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:georeferenceSources" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:georeferenceVerificationStatus" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:higherGeography" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:hostCollection" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:hostCollectionString" )
+       #writeElement( $occurrence.getInstitutionCode() "to:institutionCode" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:identifiedTo" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:identifiedToString" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:individualCount" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:island" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:islandGroup" )
+       #writeElement( $occurrence.getOccurrenceDate() "to:latestDateCollected" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:lifeStage" )
+       #writeElement( $occurrence.getLocality "to:locality" )
+       #writeElement( $occurrence.getMaxDepth() "to:maximumDepthInMeters" )
+       #writeElement( $occurrence.getMaxAltitude() "to:maximumElevationInMeters" )
+       #writeElement( $occurrence.getMinDepth() "to:minimumDepthInMeters" )
+       #writeElement( $occurrence.getMinAltitude() "to:minimumElevationInMeters" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:pointRadiusSpatialFit" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:procedure" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:procedureDescriptor" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:sex" )
+       #writeElement( $occurrence.getStateOrProvince "to:stateProvince" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:typeForName" )
+       #writeElement( $occurrence.getTypeStatus() "to:typeStatus" )
+       #writeElement( $occurrence.getTypeStatus() "to:typeStatusString" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:validDistributionFlag" )
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:value" ) 
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:valueConfidence" ) 
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:verbatimCollectingDate" ) 
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:verbatimCoordinates" ) 
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:verbatimCoordinateSystem" ) 
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:verbatimDepth" ) 
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:verbatimElevation" ) 
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:verbatimLabelText" ) 
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:verbatimLatitude" ) 
+	   ##writeElement( $occurrence.getOccurrenceDate() "to:verbatimLongitude" ) 
+       ##writeElement( $occurrence.getOccurrenceDate() "to:voucherString" ) 
+       ##writeElement( $occurrence.getOccurrenceDate() "to:waterBody" )
+       ##writeElement( $occurrence.getOccurrenceDate() "to:wktFootprint" )
+
+       
+       
+       
+       
+       
+       <to:identifiedTo>
+        <to:Identification>
+         <to:taxon>
+          #parse("org/gbif/portal/ws/occurrence/occurrence-taxon-concept.vm")
+         </to:taxon>
+         <to:taxonName>$occurrence.getTaxonName()</to:taxonName>
+        </to:Identification>
+       </to:identifiedTo>
+      </to:TaxonOccurrence>
+      #end

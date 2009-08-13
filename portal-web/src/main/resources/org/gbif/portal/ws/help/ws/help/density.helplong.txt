@@ -1,0 +1,145 @@
+-
+
+HELP CONTENTS
+
+  1. SUMMARY
+  2. SEARCH FOR RECORDS - list
+  3. GET HELP - help
+  4. RESPONSE STRUCTURE - schema
+  5. BROWSER FORMATTING - stylesheet
+
+
+1. SUMMARY
+
+    The density web service provides access to records showing the density
+    of occurrence records from the GBIF Network by one-degree cell.
+    
+    Syntax: __WSROOT__/rest/density/<action>?<parameter_list>
+            
+      where:
+      
+        action is one of:
+                    
+          list - search for density records matching a range of filters
+          help - displays this help text
+          schema - returns the response schema document
+          stylesheet - returns a stylesheet for rendering response documents 
+              as HTML
+        
+        parameter_list is a set of key-value pair options controlling or
+        modifying how the service handles the action request.
+    
+    See subsections below for information on the parameters supported in parameter 
+    list for each action.
+
+
+2. SEARCH FOR RECORDS - list
+
+    Syntax: __WSROOT__/rest/density/list?<parameter_list>
+    
+      where:
+      
+        parameter_list is a set of URL-encoded key-value pairs including any of 
+            the following keys:
+
+          taxonconceptkey - return density records for the taxon identified
+              by the supplied numeric key, including any records provided under 
+              synonyms of the taxon concerned, and any records for child taxa (e.g.
+              all genera and species within a family).  
+              
+              Values for taxonconceptkey can be found through the taxon web service
+              (see __WSROOT__/rest/taxon).  Note that the service will always 
+              search using the corresponding concept in the synthetic generated 
+              "PORTAL" taxonomy (even if the taxonconceptkey is for a concept from
+              a specific resource.  
+              
+          dataproviderkey - return density records for the provider identified by the 
+              supplied numeric key.  (Each provider may serve one or more resources, 
+              so this can be used to query the full set of resources from a single provider.)
+              
+              Values for dataproviderkey can be found through the provider web service
+              (see __WSROOT__/rest/provider).
+                      
+          dataresourcekey - return density records for the resource identified by the 
+              supplied numeric key.  (Each provider may serve one or more resources.)
+              
+              Values for dataresourcekey can be found through the resource web service
+              (see __WSROOT__/rest/resource).
+                      
+          resourcenetworkkey - return density records for all resources identified as 
+              belonging to the network identified by the supplied numeric key.  (Each 
+              network may include several resources.)
+              
+              Values for resourcenetworkkey can be found through the network web service
+              (see __WSROOT__/rest/network).
+                      
+          originisocountrycode - return density records for occurrences which occurred
+              within the country identified by the supplied 2-letter ISO code.
+                      
+          format - specifies the format in which the records are to be returned.
+              At present the supported values are brief and kml but more
+              may be added later.  
+              
+              The brief format returns records with boundaries for each cell and a
+              count of matching records.
+              
+              The kml format returns KML GroundOverlay for Google Earth,
+              mapping an image to each cell.  The images use 6 colours to indicate
+              the density of records (from yellow for 1-9 records up to red for
+              100000 or more records).
+                      
+          stylesheet - sets the URL of the stylesheet to be associated with the 
+              response document.  This overrides the default provided by the data 
+              portal.  Supplying an empty string as the value for this parameter
+              disables the setting of a stylesheet by the data portal.  The value
+              of this parameter is used in an xml-stylesheet processing instruction
+              at the start of the response document.  See "5. BROWSER FORMATTING -
+              stylesheet" below.
+    
+    The list action should be used to find density records for a taxon, country,
+    data provider, data resource or resource network.    
+
+    Examples:
+    
+      __WSROOT__/rest/density/list?originisocountrycode=CA
+              - returns density data for Canada
+
+      __WSROOT__/rest/occurrence/list?dataresourcekey=12&format=kml
+              - returns KML density layer for resource 12
+
+
+3. GET HELP - help
+
+    Syntax: __WSROOT__/rest/density/help
+        or: __WSROOT__/rest/density
+        
+    The help action returns this help documentation.
+
+
+4. RESPONSE STRUCTURE - schema
+
+    Syntax: __WSROOT__/rest/density/schema
+        
+    The schema action returns the XML schema document used for the responses to
+    the list and help actions.
+    
+    The response document includes a header which includes intellectual property 
+    statements, information on the request issued and a summary of the response 
+    contents.  The body of the document for the response to a list or get action
+    request is a dataProviders element, containing one or more dataProvider
+    elements, each with metadata on a particular provider and a dataResources 
+    element, containing one or more dataResource elements, each with metadata on 
+    a particular resource and an occurrenceRecords element containing a set of 
+    occurrenceRecord elements.
+    
+
+5. BROWSER FORMATTING - stylesheet
+
+    Syntax: __WSROOT__/rest/density/stylesheet
+        
+    The stylesheet action returns a simple XSLT document which can be used to 
+    display the responses to the list and help actions in a readable form in a 
+    web browser.  An xml-stylesheet processing instruction referenceing this 
+    stylesheet is included by default in the responses to these actions.
+
+-

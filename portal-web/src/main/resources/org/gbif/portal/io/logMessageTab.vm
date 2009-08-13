@@ -1,0 +1,18 @@
+#set( $logLevel = $record.level )	
+#if ($record.level.intValue() == 10000)
+	#set( $logLevel = "DEBUG" )
+#elseif ($record.level.intValue() == 20000)
+	#set( $logLevel = "INFO" )
+#elseif ($record.level.intValue() == 30000)
+	#set( $logLevel = "WARNING" )
+#elseif ($record.level.intValue() == 40000)
+	#set( $logLevel = "ERROR" )
+#elseif ($record.level.intValue() == 50000)
+	#set( $logLevel = "FATAL" )
+#end
+#if($record.occurrenceRecordId && $record.occurrenceRecordId != 0)
+	#set( $collectionCode = $record.occurrenceRecord.collectionCode.code )
+	#set( $institutionCode = $record.occurrenceRecord.institutionCode.code )	
+	#set( $catalogueNumber = $record.occurrenceRecord.catalogueNumber.code )		
+#end
+$record.id	$!record.dataProvider.name	$!record.dataResource.name	$!record.taxonConceptLite.taxonName	$!record.occurrenceRecordId	$!collectionCode	$!institutionCode	$!catalogueNumber	$!logLevel	$propertyFormatter.format("record.eventId",$record.eventId.toString())	$!record.message	$!record.count	$!record.timestamp

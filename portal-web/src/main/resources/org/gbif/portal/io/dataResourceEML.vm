@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- These documents can be harvested into a metacat instance using the harvest list at
+$request.contextPath/datasets/resource/harvestList.xml
+-->
+<eml:eml packageId="eml.gbif.package.$dataResource.key" system="gbif"
+  xmlns:eml="eml://ecoinformatics.org/eml-2.0.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="eml://ecoinformatics.org/eml-2.0.1 $request.contextPath/schema/eml.xsd">
+  <dataset>
+    <title><![CDATA[$dataResource.name]]></title>
+    <creator id="1" scope="document">
+      <individualName>
+        <givenName>$!owner.firstName</givenName>
+        <surName>$!owner.lastName</surName>
+      </individualName>
+      <organizationName><![CDATA[$dataResource.name]]></organizationName>
+      <positionName>$!owner.position</positionName>
+    </creator>
+    <abstract>
+      <para><![CDATA[$!dataResource.description $!dataResource.citation $!dataResource.citableAgent]]></para>
+    </abstract>
+#if($keywords)
+    <keywordSet>
+#foreach( $keyword in $keywords )   
+      <keyword>$keyword</keyword>
+#end      
+    </keywordSet>
+#end    
+    <intellectualRights>
+      <para><![CDATA[$!dataResource.rights]]></para>
+    </intellectualRights>
+#if( $raps )    
+<!-- TODO these urls should be replaced with connection elements providing connection information for the correct
+protocol for a webservice endpoint -->
+	<distribution scope="document">
+#foreach( $rap in $raps )	
+		<online>
+			<url function="download"><![CDATA[$rap.url]]></url>
+		</online>
+#end		
+	</distribution>    
+#end	
+    <coverage>
+      <geographicCoverage scope="document">
+        <geographicDescription>#set($i18nPrefix = 'region.')
+#set( $index = 0 )	
+#foreach( $region in $regions )
+#if ($index > 0), #end
+#springMessage("$i18nPrefix$region")
+#set( $index = $index +1 )
+#end</geographicDescription>
+#foreach( $tag in $geographicCoverageTags )
+        <boundingCoordinates>
+          <westBoundingCoordinate>$!tag.minLongitude</westBoundingCoordinate>
+          <eastBoundingCoordinate>$!tag.maxLongitude</eastBoundingCoordinate>
+          <northBoundingCoordinate>$!tag.maxLatitude</northBoundingCoordinate>
+          <southBoundingCoordinate>$!tag.minLatitude</southBoundingCoordinate>
+        </boundingCoordinates>
+#end
+#if( ! $geographicCoverageTags )
+        <boundingCoordinates>
+     	  <!-- this is a place holder bounding box for datasets with no spatial information -->
+          <westBoundingCoordinate>-180</westBoundingCoordinate>
+          <eastBoundingCoordinate>180</eastBoundingCoordinate>
+          <northBoundingCoordinate>90</northBoundingCoordinate>
+          <southBoundingCoordinate>90</southBoundingCoordinate>
+        </boundingCoordinates>
+#end      
+      </geographicCoverage>
+      <temporalCoverage scope="document">
+#foreach( $tag in $temporalCoverageTags )
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>$dateFormatter.format('yyyy-MM-dd',$tag.startDate)</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>$dateFormatter.format('yyyy-MM-dd',$tag.endDate)</calendarDate>
+          </endDate>
+        </rangeOfDates>
+#end      
+#if ( ! $temporalCoverageTags )
+		<!-- this is a place holder data range for datasets with no temporal information -->
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>1800-01-01</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2009-01-01</calendarDate> 
+          </endDate>
+        </rangeOfDates>
+#end 
+      </temporalCoverage>
+      <taxonomicCoverage scope="document">
+#set($i18nPrefix = 'taxonrank.')      
+#foreach( $tag in $taxonomicScopeTags )       
+        <taxonomicClassification>
+          <taxonRankName>#springMessage("$i18nPrefix$tag.getProperties().get('rank')")</taxonRankName>
+          <taxonRankValue>$tag.toEntityName</taxonRankValue>
+        </taxonomicClassification>
+#end
+#if ( ! $taxonomicScopeTags)
+        <taxonomicClassification>
+          <taxonRankName>Kingdom</taxonRankName>
+          <taxonRankValue>Unknown</taxonRankValue>
+        </taxonomicClassification>
+#end
+      </taxonomicCoverage>
+    </coverage>
+    <purpose><para>$!dataResource.basisOfRecord.name</para></purpose>
+    <maintenance>
+      <description><para>TO BE ADDED</para></description>
+    </maintenance>
+#foreach( $agent in $agents )   
+    <contact id="$agent.key">
+      <individualName>
+        <surName>$agent.agentName</surName>
+      </individualName>
+      <organizationName><![CDATA[$dataResource.name]]></organizationName>
+      <positionName>$agent.agentTypeName</positionName>
+    </contact>
+#end 
+#if(!$agents || $agents.isEmpty() )      
+    <contact id="1">
+      <individualName>
+        <surName>TO BE ADDED</surName>
+      </individualName>
+    </contact>
+#end    
+<!-- for now allow access as primarily demonstration -->
+    <access authSystem="knb">
+        <allow>
+            <principal>public</principal>
+            <permission>read</permission>
+        </allow>
+    </access>
+  </dataset>
+</eml:eml>  

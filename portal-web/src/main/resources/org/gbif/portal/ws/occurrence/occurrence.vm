@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+#set($stylesheet=$response.get("headerMap").get("stylesheet"))
+<?xml-stylesheet type="text/xsl" href="$stylesheet"?>
+#set($schemaLocation=$response.get("headerMap").get("schemaLocation"))
+<gbif:gbifResponse xsi:schemaLocation="$schemaLocation" xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:to="http://rs.tdwg.org/ontology/voc/TaxonOccurrence#" xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#" xmlns:tn="http://rs.tdwg.org/ontology/voc/TaxonName#" xmlns:tcom="http://rs.tdwg.org/ontology/voc/Common#">
+#parse("org/gbif/portal/ws/header.vm")
+#set($results=$response.get("results"))
+#if ($response.get("count")>0)
+<gbif:dataProviders>
+##iterating through the providers
+#foreach ($provider in $results.keySet())
+ <gbif:dataProvider gbifKey="$provider.getKey()" rdf:about="$wsroot/rest/provider/get/$provider.getKey()">
+## we need to signal to write the provider name on each loop
+#set ($writeProviderName = true)
+##iterating through the resources
+#foreach ($resource in $results.get($provider).keySet())
+## we need to signal to write the resource name on each loop
+#set ($writeResourceName = true)
+##iterating through the ExtendedOccurrencesDTOs 
+#foreach ($occurrence in $results.get($provider).get($resource))
+## if it is the first of the providers, then write the name
+#if($writeProviderName)
+  <gbif:name>$occurrence.getDataProviderName()</gbif:name>
+   <gbif:dataResources>
+#set ($writeProviderName = false)
+#end
+## if it is the first of the resources then write the resource name
+#if($writeResourceName)
+    <gbif:dataResource gbifKey="$occurrence.getDataResourceKey()" rdf:about="$wsroot/rest/resource/get/$occurrence.getDataResourceKey()">
+#if($occurrence.getDataResourceName())
+     <gbif:name>$occurrence.getDataResourceName()</gbif:name>
+#end
+#if($resource.getRights())
+     <gbif:rights>$resource.getRights()</gbif:rights>
+#end
+#if($resource.getCitation())
+     <gbif:citation>$resource.getCitation()</gbif:citation>
+#end
+     <gbif:occurrenceRecords>
+#set ($writeResourceName = false)
+#end
+      <to:TaxonOccurrence gbifKey="$occurrence.getKey()" rdf:about="$wsroot/rest/occurrence/get/$occurrence.getKey()">
+#if($occurrence.getBasisOfRecord())
+       <to:basisOfRecord rdf:resource="$occurrence.getBasisOfRecord()">$occurrence.getBasisOfRecord()</to:basisOfRecord>
+#end
+#if($occurrence.getCatalogueNumber())       <to:catalogNumber>$occurrence.getCatalogueNumber()</to:catalogNumber>
+#end
+#if($occurrence.getBasisOfRecord())       <to:basisOfRecordString>$occurrence.getBasisOfRecord()</to:basisOfRecordString>
+#end
+#if($occurrence.getCatalogueNumber())       <to:catalogNumber>$occurrence.getCatalogueNumber()</to:catalogNumber>
+#end
+#if($occurrence.getCollectionCode())       <to:collectionCode>$occurrence.getCollectionCode()</to:collectionCode>
+#end
+#if($occurrence.getRawOccurrenceRecordDTO().getCollectorName())       <to:collector>$occurrence.getRawOccurrenceRecordDTO().getCollectorName()</to:collector>
+#end
+#if($occurrence.getCollectorNumber())       <to:collectorsBatchNumber>$occurrence.getCollectorNumber()</to:collectorsBatchNumber>
+#end
+#if($occurrence.getFieldNumber())       <to:collectorsFieldNumber>$occurrence.getFieldNumber()</to:collectorsFieldNumber>
+#end
+#if($occurrence.getRawOccurrenceRecordDTO().getContinentOrOcean())       <to:continent>$occurrence.getRawOccurrenceRecordDTO().getContinentOrOcean()</to:continent>
+#end
+#if($occurrence.getRawOccurrenceRecordDTO().getCountry())       <to:country>$occurrence.getRawOccurrenceRecordDTO().getCountry()</to:country>
+#end
+#if($occurrence.getRawOccurrenceRecordDTO().getCounty())       <to:county>$occurrence.getRawOccurrenceRecordDTO().getCounty()</to:county>
+#end
+#if($occurrence.getRawOccurrenceRecordDTO().getDay())       <to:dayOfYear>$occurrence.getRawOccurrenceRecordDTO().getDay()</to:dayOfYear>
+#end
+#if($occurrence.getLatitude())       <to:decimalLatitude>$occurrence.getLatitude()</to:decimalLatitude>
+#end
+#if($occurrence.getLongitude())       <to:decimalLongitude>$occurrence.getLongitude()</to:decimalLongitude>
+#end
+#if($occurrence.getOccurrenceDate())       <to:earliestDateCollected>$occurrence.getOccurrenceDate()</to:earliestDateCollected>
+#end
+#if($occurrence.getInstitutionCode())       <to:institutionCode>$occurrence.getInstitutionCode()</to:institutionCode>
+#end
+#if($occurrence.getOccurrenceDate())       <to:latestDateCollected>$occurrence.getOccurrenceDate()</to:latestDateCollected>
+#end
+#if($occurrence.getLocality)       <to:locality>$occurrence.getLocality</to:locality>
+#end
+#if($occurrence.getMaxDepth())       <to:maximumDepthInMeters>$occurrence.getMaxDepth()</to:maximumDepthInMeters>
+#end
+#if($occurrence.getMaxAltitude())       <to:maximumElevationInMeters>$occurrence.getMaxAltitude()</to:maximumElevationInMeters>
+#end
+#if($occurrence.getMinDepth())       <to:minimumDepthInMeters>$occurrence.getMinDepth()</to:minimumDepthInMeters>
+#end
+#if($occurrence.getMinAltitude())       <to:minimumElevationInMeters>$occurrence.getMinAltitude()</to:minimumElevationInMeters>
+#end
+#if($occurrence.getStateOrProvince)       <to:stateProvince>$occurrence.getStateOrProvince</to:stateProvince>
+#end
+#if($occurrence.getTypeStatus())       <to:typeStatus>$occurrence.getTypeStatus()</to:typeStatus>
+#end
+#if($occurrence.getTypeStatus())       <to:typeStatusString>$occurrence.getTypeStatus()</to:typeStatusString>
+#end
+       <to:identifiedTo>
+        <to:Identification>
+         <to:taxon>
+          <tc:TaxonConcept gbifKey="$occurrence.getTaxonConceptKey()" rdf:about="$wsroot/rest/taxon/get/$occurrenceRecord.getNubTaxonConceptKey()">
+           <tc:hasName>
+            <tn:TaxonName>
+             <tn:nameComplete>$occurrence.getTaxonName()</tn:nameComplete>
+             <tn:genusPart>$occurrence.getRawOccurrenceRecordDTO().getGenus()</tn:genusPart>
+             <tn:specificEpithet>$occurrence.getRawOccurrenceRecordDTO().getSpecies()</tn:specificEpithet>
+             <tn:scientific>$occurrence.getTaxonName()</tn:scientific>
+            </tn:TaxonName>
+           </tc:hasName>
+          </tc:TaxonConcept>         
+         </to:taxon>
+         <to:taxonName>$occurrence.getTaxonName()</to:taxonName>
+        </to:Identification>
+       </to:identifiedTo>
+      </to:TaxonOccurrence>
+#end
+     </gbif:occurrenceRecords>
+    </gbif:dataResource>
+#end
+   </gbif:dataResources>
+  </gbif:dataProvider>
+#end
+ </gbif:dataProviders>
+#end
+</gbif:gbifResponse>

@@ -1,0 +1,8 @@
+          <tc:TaxonConcept gbifKey="$taxon.getKey()" rdf:about="$taxon.getPartnerConceptKey()">
+           <tc:hasName>
+			#parse("org/gbif/portal/ws/taxon/taxon-taxon-name.vm")
+           </tc:hasName>
+           <tc:accordingToString>Portal Index</tc:accordingToString>
+           <tc:accordingTo rdf:resource="http://localhost:8080/portal/ws/rest/resource/get/1"/>
+           <tc:primary>true</tc:primary>
+          </tc:TaxonConcept>

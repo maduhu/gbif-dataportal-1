@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+#set($stylesheet=$response.get("headerMap").get("stylesheet"))
+<?xml-stylesheet type="text/xsl" href="$stylesheet"?>
+#set($schemaLocation=$response.get("headerMap").get("schemaLocation"))
+<gbif:gbifResponse xsi:schemaLocation="$schemaLocation" xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:to="http://rs.tdwg.org/ontology/voc/TaxonOccurrence#" xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#" xmlns:tn="http://rs.tdwg.org/ontology/voc/TaxonName#" xmlns:tcom="http://rs.tdwg.org/ontology/voc/Common#">
+#parse("org/gbif/portal/ws/header.vm")
+</gbif:gbifResponse>

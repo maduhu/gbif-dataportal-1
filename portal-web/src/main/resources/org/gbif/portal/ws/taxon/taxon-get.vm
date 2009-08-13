@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+#set($stylesheet=$response.get("headerMap").get("stylesheet"))
+<?xml-stylesheet type="text/xsl" href="$stylesheet"?>
+#set($schemaLocation=$response.get("headerMap").get("schemaLocation"))
+<gbif:gbifResponse xsi:schemaLocation="$schemaLocation" xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#" xmlns:tn="http://rs.tdwg.org/ontology/voc/TaxonName#">
+#parse("org/gbif/portal/ws/header.vm")
+#set($taxonConceptDTO=$response.get("taxonConceptDTO"))
+#set($relationships=$response.get("relationshipMapSet"))
+ <gbif:dataProviders>
+##iterating through the providers
+  <gbif:dataProvider gbifKey="$taxonConceptDTO.getDataProviderKey()" rdf:about="$wsroot/rest/provider/get/$taxonConceptDTO.getDataProviderKey()">
+   <gbif:name>$taxonConceptDTO.getDataProviderName()</gbif:name>
+   <gbif:dataResources>
+    <gbif:dataResource gbifKey="$taxonConceptDTO.getDataResourceKey()" rdf:about="$wsroot/rest/resource/get/$taxonConceptDTO.getDataResourceKey()">
+     <gbif:name>$taxonConceptDTO.getDataResourceName()</gbif:name>
+#if($taxonConceptDTO.getDataResourceCitation())     
+     <gbif:citation>$taxonConceptDTO.getDataResourceCitation()</gbif:citation>
+#end
+     <gbif:taxonConcepts>
+      <tc:TaxonConcept gbifKey="$taxonConceptDTO.getKey()" status="$taxonConceptDTO.getStatus()" rdf:about="$wsroot/rest/taxon/get/$taxonConceptDTO.getKey()">
+       <tc:hasName>
+        <tn:TaxonName>
+         <tn:nameComplete>$taxonConceptDTO.getTaxonName()</tn:nameComplete>
+#if($taxonConceptDTO.getRankCode())
+         <tn:rank rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonRank#$taxonConceptDTO.getRankCode()"/>
+#end
+#if($taxonConceptDTO.getRank())         
+         <tn:rankString>$taxonConceptDTO.getRank()</tn:rankString>
+#end
+         <tn:scientific>true</tn:scientific>
+        </tn:TaxonName>
+       </tc:hasName>
+       <tc:accordingToString>$taxonConceptDTO.getDataResourceName()</tc:accordingToString>
+       <tc:accordingTo rdf:resource="$wsroot/rest/resource/get/$taxonConceptDTO.getDataResourceKey()"/>
+       <tc:primary>true</tc:primary>
+#foreach ($relationship in $relationships)
+       <tc:hasRelationship>
+        <tc:Relationship>
+#set($taxonResource=$relationship.get("taxonResource"))
+#set($relationshipResource=$relationship.get("relationshipResource"))
+         <tc:toTaxon rdf:resource="$taxonResource"/>
+         <tc:relationshipCategory rdf:resource="$relationshipResource"/>
+        </tc:Relationship>
+       </tc:hasRelationship>
+#end
+      </tc:TaxonConcept>
+#set($taxonConceptMapSet=$response.get("taxonConceptMapSet"))
+#foreach($taxonConceptMap in $taxonConceptMapSet)
+#set($relationshipMap="")
+#set($taxonConceptDTO=$taxonConceptMap.get("taxonConceptDTO"))
+#set($relationshipMap=$taxonConceptMap.get("relationshipMap"))
+      <tc:TaxonConcept gbifKey="$taxonConceptDTO.getKey()" status="$taxonConceptDTO.getStatus()" rdf:about="$wsroot/rest/taxon/get/$taxonConceptDTO.getKey()">
+       <tc:hasName>
+        <tn:TaxonName>
+         <tn:nameComplete>$taxonConceptDTO.getTaxonName()</tn:nameComplete>
+#if($taxonConceptDTO.getRankCode())
+         <tn:rank rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonRank#$taxonConceptDTO.getRankCode()"/>
+#end
+#if($taxonConceptDTO.getRank())
+         <tn:rankString>$taxonConceptDTO.getRank()</tn:rankString>
+#end
+         <tn:scientific>true</tn:scientific>
+        </tn:TaxonName>
+       </tc:hasName>
+       <tc:accordingToString>$taxonConceptDTO.getDataResourceName()</tc:accordingToString>
+       <tc:accordingTo rdf:resource="$wsroot/rest/resource/get/$taxonConceptDTO.getDataResourceKey()"/>
+       <tc:primary>false</tc:primary>
+#if($relationshipMap!="")
+#set($taxonResource=$relationshipMap.get("taxonResource"))
+#set($relationshipResource=$relationshipMap.get("relationshipResource"))
+       <tc:hasRelationship>
+        <tc:Relationship>
+         <tc:toTaxon rdf:resource="$taxonResource"/>
+         <tc:relationshipCategory rdf:resource="$relationshipResource"/>
+        </tc:Relationship>
+       </tc:hasRelationship>
+#end
+      </tc:TaxonConcept>
+#end
+     </gbif:taxonConcepts>
+    </gbif:dataResource>
+   </gbif:dataResources>
+  </gbif:dataProvider>
+ </gbif:dataProviders>
+</gbif:gbifResponse>

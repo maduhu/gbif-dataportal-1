@@ -1,0 +1,83 @@
+<html>
+<head>
+<style>
+body { color: #494949; background: #FFF url('http://data.gbif.org/skins/standard/images/speciesBodyBG.gif') repeat-x top left;
+	    font: 0.81em Verdana, Arial, Helvetica, sans-serif;	text-align: left;
+		padding: 0; margin: 0; min-width: 990px;
+}
+#header { margin: 0; padding: 0; height: 85px; background: url('http://data.gbif.org/skins/standard/images/speciesSearchBG.gif') right top no-repeat;}
+#header h1 { margin: 0; padding: 0; width: 863px; height: 85px; background: url('http://data.gbif.org/skins/standard/images/speciesHeaderBG.jpg') no-repeat; }
+#header h1 a { display: none  }
+#header li a:hover { color: #FF6633; }
+h2 { font-size: 1.5em; border-bottom: 1px solid #CCCCCC; padding-bottom:5px; font-weight:normal; }
+table { font-size: 1.0em; border:1px solid #CCCCCC; border-collapse: collapse; background-color: #fffae4; padding: 5px; text-align:left; }
+table thead { padding-top: 3px; border:0;}
+table th { border: 1px solid #CCCCCC; border-top:0; color: gray; padding:3px 5px 3px 5px; }
+table td { border: 1px solid #CCCCCC; text-align:left; padding:3px 5px 3px 5px; vertical-align:center; }
+table td.lastColumn { border-right: 0; text-align:left; vertical-align:center; }
+#container { padding:20px; }
+</style>
+</head>
+<body>
+<div id="header">
+    <h1 id="header" title="Global Biodiversity Information Facility"><a href="http://www.gbif.org">Global Biodiversity Information Facility</a></h1>
+</div> <!-- End header-->
+<div id="container">
+
+<h2>Event log download</h2>
+<table>
+<tr><td>Original URL:</td><td> <a href="$logQuery.queryUrl">$logQuery.queryUrl</a></td></tr>
+<tr><td>Query date:</td><td> $logQuery.queryDate</td></tr>
+</table>
+
+#if ($dataProvider)
+<h2>$dataProvider.name statistics</h2>
+<table>
+	<thead>
+		<th>Event</th><th>Event count</th><th>Number of records returned</th>
+	</thead>
+	<tbody>
+		#foreach( $logStat in $dataProviderStats )
+			<tr>
+				<td>$propertyFormatter.format("record.eventId",$logStat.eventId.toString())</td><td>$logStat.eventCount</td><td>$logStat.count</td>
+			</tr>
+		#end
+	</tbody>	
+</table>
+#elseif ($dataProviderStats)
+<h2>Data provider statistics</h2>
+<table>
+	<thead>
+		<th>Data provider</th><th>Event</th><th>Event count</th><th>Number of records returned</th>
+	</thead>
+	<tbody>
+		#foreach( $logStat in $dataProviderStats )
+			<tr>
+				<td>$logStat.entityName</td>
+				<td>$propertyFormatter.format("record.eventId",$logStat.eventId.toString())</td>
+				<td>$logStat.eventCount</td>
+				<td>$!logStat.count</td>	
+			</tr>
+		#end
+	</tbody>	
+</table>
+#end
+
+<h2>Data resource statistics</h2>
+<table>
+	<thead>
+		<th>Data resource</th><th>Event</th><th>Event count</th><th>Number of records returned</th>
+	</thead>
+	<tbody>
+		#foreach( $logStat in $dataResourceStats )
+			<tr>
+				<td>$logStat.entityName</td>
+				<td>$propertyFormatter.format("record.eventId",$logStat.eventId.toString())</td>
+				<td>$logStat.eventCount</td>
+				<td>$!logStat.count</td>	
+			</tr>
+		#end
+	</tbody>
+</div>
+</body>
+</html>

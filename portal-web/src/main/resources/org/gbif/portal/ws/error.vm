@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gbif:gbifResponse xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <gbif:header>
+  <gbif:request xsi:nil="true"/>
+  <gbif:parameter name="service" value="$service"/>
+  <gbif:parameter name="portalroot" value="$portalroot"/>
+  <gbif:parameter name="wsroot" value="$wsroot"/>
+  <gbif:parameter name="request" value="$request"/>
+ </gbif:header>
+<gbif:exceptionReport>$errorMessage</gbif:exceptionReport>
+</gbif:gbifResponse>

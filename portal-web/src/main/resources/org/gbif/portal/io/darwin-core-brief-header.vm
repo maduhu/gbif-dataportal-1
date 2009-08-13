@@ -1,0 +1,18 @@
+<?xml-stylesheet type="text/xsl" href="$hostUrl/ws/rest/occurrence/stylesheet"?>
+<gbifResponse xsi:schemaLocation="http://portal.gbif.org/ws/response/gbif $hostUrl/ws/rest/occurrence/schema http://purl.org/dc/elements/1.1/ $hostUrl/schema/dc.xsd http://purl.org/dc/terms/ http://data.gbif.org/schema/dcterms.xsd http://www.w3.org/1999/02/22-rdf-syntax-ns# http://data.gbif.org/schema/rdf.xsd http://www.w3.org/2002/07/owl# http://data.gbif.org/schema/owl.xsd http://rs.tdwg.org/ontology/voc/Common# http://data.gbif.org/schema/tcom.xsd http://rs.tdwg.org/ontology/voc/TaxonOccurrence# http://data.gbif.org/schema/TaxonOccurrence.xsd http://rs.tdwg.org/ontology/voc/TaxonConcept# http://data.gbif.org/schema/TaxonConcept.xsd http://rs.tdwg.org/ontology/voc/TaxonName# http://data.gbif.org/schema/TaxonName.xsd" xmlns="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:tax="http://rs.tdwg.org/ontology/voc/TaxonOccurrence#" xmlns:tax1="http://rs.tdwg.org/ontology/voc/TaxonConcept#" xmlns:tax2="http://rs.tdwg.org/ontology/voc/TaxonName#">
+  <header>
+    <statements>-
+
+This document contains data shared through the GBIF Network - see http://data.gbif.org/ for more information.
+					
+All usage of these data must be in accordance with the GBIF Data Use Agreement - see http://www.gbif.org/DataProviders/Agreements/DUA
+
+	 -</statements>
+    <help>$hostUrl/ws/rest/occurrence/help</help>
+    <request>list</request>
+    <parameter name="service" value="occurrence"/>
+    <parameter name="mode" value="raw"/>
+    <parameter name="request" value="list"/>
+    <parameter name="format" value="brief"/>
+  </header>
+  <dataProviders>

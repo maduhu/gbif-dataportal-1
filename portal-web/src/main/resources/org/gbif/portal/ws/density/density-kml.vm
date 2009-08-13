@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://earth.google.com/kml/2.1">
+ <name>$response.get("documentName")</name>
+ <open>$response.get("documentOpen")</open>
+ <description>$response.get("documentDescription")</description>
+#set($documentStyleId=$response.get("documentStyleId"))
+ <Style id="$documentStyleId">
+  <IconStyle>
+   <Icon>
+    <href>$response.get("documentStyleIconHref")</href>
+   </Icon>
+  </IconStyle>
+ </Style>
+#if($response.get("results").size() > 0)  
+#foreach($density in $response.get("results"))
+ <Folder>
+  <name>$density.get("folderName")</name>
+  <Placemark>
+   <name>$density.get("placemarkName")</name>
+   <visibility>$density.get("placemarkVisibility")</visibility>
+   <description><![CDATA[$density.get("placemarkDescription")]]></description>
+   <styleUrl>$density.get("placemarkStyleUrl")</styleUrl>
+   <Point>
+    <coordinates>$density.get("placemarkPointCoordinates")</coordinates>
+   </Point>
+  </Placemark>
+  <GroundOverlay>
+   <visibility>$density.get("groundOverlayVisibility")</visibility>
+   <color>$density.get("groundOverlayColor")</color>
+   <LatLonBox>
+    <north>$density.get("groundOverlayBoxNorth")</north>
+    <south>$density.get("groundOverlayBoxSouth")</south>
+    <east>$density.get("groundOverlayBoxEast")</east>
+    <west>$density.get("groundOverlayBoxWest")</west>
+   </LatLonBox>
+  </GroundOverlay>
+ </Folder>
+#end
+#end
+</Document>

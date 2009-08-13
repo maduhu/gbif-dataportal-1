@@ -1,0 +1,5 @@
+          <tc:TaxonConcept gbifKey="$occurrence.getTaxonConceptKey()" rdf:about="$occurrenceRecord.nubTaxonConceptId.toString()">
+           <tc:hasName>
+			#parse("org/gbif/portal/ws/occurrence/occurrence-taxon-name.vm")
+           </tc:hasName>
+          </tc:TaxonConcept>

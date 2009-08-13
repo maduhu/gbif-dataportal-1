@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://localhost:8080/portal/ws/rest/taxon/stylesheet"?>
+<gbif:gbifResponse xsi:schemaLocation="http://portal.gbif.org/ws/response/gbif http://localhost:8080/portal/ws/rest/taxon/schema http://purl.org/dc/elements/1.1/ http://localhost:8080/portal/schema/dc.xsd http://purl.org/dc/terms/ http://localhost:8080/portal/schema/dcterms.xsd http://www.w3.org/1999/02/22-rdf-syntax-ns# http://localhost:8080/portal/schema/rdf.xsd http://www.w3.org/2002/07/owl# http://localhost:8080/portal/schema/owl.xsd http://rs.tdwg.org/ontology/voc/Common# http://localhost:8080/portal/schema/tcom.xsd http://rs.tdwg.org/ontology/voc/TaxonOccurrence# http://localhost:8080/portal/schema/TaxonOccurrence.xsd http://rs.tdwg.org/ontology/voc/TaxonConcept# http://localhost:8080/portal/schema/TaxonConcept.xsd http://rs.tdwg.org/ontology/voc/TaxonName# http://localhost:8080/portal/schema/TaxonName.xsd" xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#" xmlns:tn="http://rs.tdwg.org/ontology/voc/TaxonName#">
+ <gbif:header>
+ <gbif:statements>-
+
+This document contains data shared through the GBIF Network - see http://data.gbif.org/ for more information.
+					
+All usage of these data must be in accordance with the GBIF Data Use Agreement - see http://www.gbif.org/DataProviders/Agreements/DUA
+
+Please cite these data as follows:
+
+Academy of Natural Sciences, ORN (accessed through GBIF data portal, http://localhost:8080/portal/datasets/resource/2, 2008-11-26)
+BeBIF Provider, National Botanic Garden Belgium - Martius (accessed through GBIF data portal, http://localhost:8080/portal/datasets/resource/7, 2008-11-26)
+
+-</gbif:statements>
+  <gbif:help>http://localhost:8080/portal/ws/rest/taxon/help</gbif:help>
+  <gbif:request>list</gbif:request>
+  <gbif:parameter name="service" value="taxon"/>
+  <gbif:parameter name="maxresults" value="1000"/>
+  <gbif:parameter name="scientificname" value="Accipiter striatus velox"/>
+  <gbif:parameter name="request" value="list"/>
+  <gbif:parameter name="format" value="brief"/>
+  <gbif:summary start="0" totalMatched="126" totalReturned="126"/>
+ </gbif:header>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+#set($stylesheet=$response.get("headerMap").get("stylesheet"))
+<?xml-stylesheet type="text/xsl" href="$stylesheet"?>
+#set($schemaLocation=$response.get("headerMap").get("schemaLocation"))
+<gbif:gbifResponse xsi:schemaLocation="$schemaLocation" xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#" xmlns:tn="http://rs.tdwg.org/ontology/voc/TaxonName#">
+#parse("org/gbif/portal/ws/header.vm")
+#set($results=$response.get("results"))
+#if ($results.keySet().size()>0)
+<gbif:dataProviders>
+
+#set ($writeProviderName = true )
+#set ($writeResourceName = true )
+
+##iterating through the providers
+#foreach ($provider in $results.keySet())
+<gbif:dataProvider gbifKey="$provider" rdf:about="$wsroot/rest/provider/get/$provider">
+	#set($writeProviderName = true)
+	#foreach ($resource in $results.get($provider).keySet() )
+		#set ($writeResourceName = true)
+		#foreach ($taxonConceptDTO in $results.get($provider).get($resource)) 
+			#if($writeProviderName)
+				<gbif:name>$taxonConceptDTO.getDataProviderName()</gbif:name>
+				#set ($writeProviderName = false)
+				<gbif:dataResources>
+			#end
+			#if($writeResourceName)
+				<gbif:dataResource gbifKey="$resource" rdf:about="$wsroot/rest/resource/get/$resource">
+		     <gbif:name>$taxonConceptDTO.getDataResourceName()</gbif:name>
+		     #if($taxonConceptDTO.getDataResourceCitation())     
+		          <gbif:citation>$taxonConceptDTO.getDataResourceCitation()</gbif:citation>
+		     #end
+				#set ($writeResourceName= false)
+				<gbif:taxonConcepts>
+			#end
+		      <tc:TaxonConcept gbifKey="$taxonConceptDTO.getKey()" status="$taxonConceptDTO.getStatus()" rdf:about="$wsroot/rest/taxon/get/$taxonConceptDTO.getKey()">
+		       <tc:hasName>
+		        <tn:TaxonName>
+		         <tn:nameComplete>$taxonConceptDTO.getTaxonName()</tn:nameComplete>
+		#if($taxonConceptDTO.getRankCode())
+		         <tn:rank rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonRank#$taxonConceptDTO.getRankCode()"/>
+		#end
+		#if($taxonConceptDTO.getRank())         
+		         <tn:rankString>$taxonConceptDTO.getRank()</tn:rankString>
+		#end
+		         <tn:scientific>true</tn:scientific>
+		        </tn:TaxonName>
+		       </tc:hasName>
+		       <tc:accordingToString>$taxonConceptDTO.getDataResourceName()</tc:accordingToString>
+		       <tc:accordingTo rdf:resource="$wsroot/rest/resource/get/$taxonConceptDTO.getDataResourceKey()"/>
+		       <tc:primary>true</tc:primary>
+		      </tc:TaxonConcept>			
+		#end
+				</gbif:taxonConcepts>
+				</gbif:dataResource>    
+	#end
+		</gbif:dataResources>
+		</gbif:dataProvider>
+#end 
+</gbif:dataProviders>
+#end
+</gbif:gbifResponse>

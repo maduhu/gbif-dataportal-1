@@ -1,0 +1,49 @@
+#if ($previousDataProviderId)
+	#if ($previousDataProviderId && $dataProviderId!=$previousDataProviderId)
+			</occurrenceRecords>	
+		</dataResource>
+	</dataProvider>
+	<dataProvider gbifKey="$dataProviderId" rdf:about="$propertyFormatter.format("providerWSUrl",$dataProviderId.toString())">
+		<name>$dataProviderName</name>	
+		<dataResource gbifKey="$dataResourceId" rdf:about="$propertyFormatter.format("resourceWSUrl",$dataResourceId.toString())">
+			<name>$dataResourceName</name>		
+			<occurrenceRecords>			
+	#elseif ($previousDataResourceId && $dataResourceId!=$previousDataResourceId)
+			</occurrenceRecords>			
+		</dataResource>
+		<dataResource gbifKey="$dataResourceId" rdf:about="$propertyFormatter.format("resourceWSUrl",$dataResourceId.toString())">
+			<name>$dataResourceName</name>
+			<occurrenceRecords>			
+	#end
+#else
+	<dataProvider gbifKey="$dataProviderId" rdf:about="$propertyFormatter.format("providerWSUrl",$dataProviderId.toString())">
+		<name>$dataProviderName</name>		
+		<dataResource gbifKey="$dataResourceId" rdf:about="$propertyFormatter.format("resourceWSUrl",$dataResourceId.toString())">
+			<name>$dataResourceName</name>		
+			<occurrenceRecords>
+#end
+				<tax:TaxonOccurrence gbifKey="$occurrenceRecord.id.toString()" rdf:about="$propertyFormatter.format("webserviceUrl",$occurrenceRecord.id.toString())">
+				  <tax:catalogNumber>$!occurrenceRecord.catalogueNumber.code</tax:catalogNumber>
+				  <tax:country>$!occurrenceRecord.getIsoCountryCode()</tax:country>
+				  <tax:decimalLatitude>$!occurrenceRecord.latitude</tax:decimalLatitude>
+				  <tax:decimalLongitude>$!occurrenceRecord.longitude</tax:decimalLongitude>
+				  <tax:earliestDateCollected>$!occurrenceRecord.occurrenceDate</tax:earliestDateCollected>
+				  <tax:identifiedTo>
+				    <tax:Identification>
+				      <tax:taxon>
+				        <tax1:TaxonConcept gbifKey="$!occurrenceRecord.nubTaxonConceptId" rdf:about="$propertyFormatter.format("taxonPageWSUrl",$occurrenceRecord.nubTaxonConceptId.toString())">
+				          <tax1:hasName>
+				            <tax2:TaxonName>
+				              <tax2:nameComplete>$occurrenceRecord.taxonName.canonical</tax2:nameComplete>
+				              <tax2:genusPart>$!occurrenceRecord.taxonName.generic</tax2:genusPart>
+				              <tax2:specificEpithet>$!occurrenceRecord.taxonName.specificEpithet</tax2:specificEpithet>
+				              <tax2:scientific>true</tax2:scientific>
+				            </tax2:TaxonName>
+				          </tax1:hasName>
+				        </tax1:TaxonConcept>
+				      </tax:taxon>
+				      <tax:taxonName>$taxonName</tax:taxonName>
+				    </tax:Identification>
+				  </tax:identifiedTo>
+				  <tax:latestDateCollected>$!occurrenceRecord.occurrenceDate</tax:latestDateCollected>
+				</tax:TaxonOccurrence>

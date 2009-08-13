@@ -1,0 +1,6 @@
+            <tn:TaxonName>
+             <tn:nameComplete>$occurrence.getTaxonName()</tn:nameComplete>
+             <tn:genusPart>$occurrence.getRawOccurrenceRecordDTO().getGenus()</tn:genusPart>
+             <tn:specificEpithet>$occurrence.getRawOccurrenceRecordDTO().getSpecies()</tn:specificEpithet>
+             <tn:scientific>$occurrence.getTaxonName()</tn:scientific>
+            </tn:TaxonName>

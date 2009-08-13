@@ -1,0 +1,24 @@
+#set($headerMap=$response.get("headerMap"))
+#set($parameterMap=$response.get("parameterMap"))
+#set($summaryMap=$response.get("summaryMap"))
+#set($count=$response.get("count"))
+ <gbif:header>
+#foreach($headerElement in $headerMap.keySet())
+#if($headerElement != "schemaLocation")
+  <gbif:$headerElement>$headerMap.get($headerElement)</gbif:$headerElement>
+#end
+#end
+#foreach($parameterElement in $parameterMap.keySet())
+  <gbif:parameter name="$parameterElement" value="$parameterMap.get($parameterElement)"/>
+#end
+#if($summaryMap)
+#if($summaryMap.get("nextRequestUrl"))
+  <gbif:nextRequestUrl>$summaryMap.get("nextRequestUrl")</gbif:nextRequestUrl>
+#end
+#set($start=$summaryMap.get("start"))
+#set($totalMatched=$summaryMap.get("totalMatched"))
+#set($next=$summaryMap.get("next"))
+#set($totalReturned=$summaryMap.get("totalReturned"))
+<gbif:summary#if($start) start="$start"#end#if($totalMatched) totalMatched="$totalMatched"#end#if($next) next="$next"#end#if($totalReturned) totalReturned="$totalReturned"#end/>
+#end
+ </gbif:header>

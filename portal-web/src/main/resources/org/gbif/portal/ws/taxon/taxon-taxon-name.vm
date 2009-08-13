@@ -1,0 +1,9 @@
+            <tn:TaxonName>
+             <tn:nameComplete>$taxon.getTaxonName()</tn:nameComplete>
+             <tn:rank rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonRank#Subspecies"/>
+         	 <tn:rankString>subspecies</tn:rankString>
+         	 <tn:scientific>true</tn:scientific>
+            </tn:TaxonName>
+            
+           
+            

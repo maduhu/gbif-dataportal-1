@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+#set($stylesheet=$response.get("headerMap").get("stylesheet"))
+<?xml-stylesheet type="text/xsl" href="$stylesheet"?>
+#set($schemaLocation=$response.get("headerMap").get("schemaLocation"))
+<gbif:gbifResponse xsi:schemaLocation="$schemaLocation" xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:tc="http://rs.tdwg.org/ontology/voc/TaxonConcept#" xmlns:tn="http://rs.tdwg.org/ontology/voc/TaxonName#">
+#parse("org/gbif/portal/ws/header.vm")
+#set($results = $response.get("results"))
+
+#if ($results.size()>0)
+ <gbif:dataProviders>
+ #foreach ($provider in $results.keySet())
+ 
+  <gbif:dataProvider gbifKey="$provider" rdf:about="$wsroot/rest/provider/get/$provider">
+
+ 	 #set($writeDataProvider=true)
+     
+     #set($resources = $results.get($provider))
+     
+     #if($resources)
+    	 
+     	  #foreach($resource in $resources)
+     	 
+     	  	#set($resourceDTO=$resource.get("dataResourceDTO"))
+	     	  	
+	     	  #if($writeDataProvider)
+	     		 <gbif:name>$resourceDTO.getDataProviderName()</gbif:name>
+	     		  <gbif:dataResources>
+	     		 #set($writeDataProvider=false)
+	     	  #end     	  	
+     	  	
+	     	     <gbif:dataResource rdf:about="$wsroot/rest/provider/get/$resourceDTO.getKey()" gbifKey="$resourceDTO.getKey()">
+	     	     #if($resourceDTO.getName())
+	     	    	 <gbif:name>$resourceDTO.getName()</gbif:name>
+	     	     #end
+	     	     #if($resourceDTO.getDescription())
+	     	    	 <gbif:description>$resourceDTO.getDescription()</gbif:description>
+			     #end
+	     	     #if($resourceDTO.getCode())
+	     	    	 <gbif:shortIdentifier>$resourceDTO.getCode()</gbif:shortIdentifier>
+			     #end		     
+			     #if($resourceDTO.getWebsiteUrl())
+			    	 <gbif:websiteUrl>$resourceDTO.getWebsiteUrl()</gbif:websiteUrl>
+			     #end
+			     #if($resourceDTO.getLogoUrl())
+			    	 <gbif:logoUrl>$resourceDTO.getLogoUrl()</gbif:logoUrl>
+			     #end
+			     #if($resourceDTO.getRights())
+			    	 <gbif:rights>$resourceDTO.getRights()</gbif:rights>
+			     #end		     		     
+			     #if($resourceDTO.getCitation())
+			    	 <gbif:citation>$resourceDTO.getCitation()</gbif:citation>
+			     #end
+			     #if($resourceDTO.getBasisOfRecord())
+			    	 <gbif:defaultBasisOfRecord>$resourceDTO.getBasisOfRecord()</gbif:defaultBasisOfRecord>
+			     #end
+			     #if($resourceDTO.getConceptCount() && $resourceDTO.getConceptCount() > 0)
+			    	 <gbif:taxonConceptCount>$resourceDTO.getConceptCount()</gbif:taxonConceptCount>
+			     #end
+			     #if($resourceDTO.getSpeciesCount() && $resourceDTO.getSpeciesCount() > 0)
+			    	 <gbif:speciesCount>$resourceDTO.getSpeciesCount()</gbif:speciesCount>
+			     #end
+			     #if($resourceDTO.getOccurrenceCount() && $resourceDTO.getOccurrenceCount() > 0)
+			    	 <gbif:occurrenceCount>$resourceDTO.getOccurrenceCount()</gbif:occurrenceCount>
+			     #end
+			     #if($resourceDTO.getOccurrenceCoordinateCount() && $resourceDTO.getOccurrenceCoordinateCount() > 0)
+			    	 <gbif:georeferencedOccurrenceCount>$resourceDTO.getOccurrenceCoordinateCount()</gbif:georeferencedOccurrenceCount>
+			     #end
+				 #if($resourceDTO.getCreated())
+					 <gbif:created>$resourceDTO.getCreated()</gbif:created>
+			     #end 
+				 #if($resourceDTO.getModified())
+					 <gbif:modified>$resourceDTO.getModified()</gbif:modified>
+			     #end 
+				 #if($resourceDTO.getDeleted())
+					 <gbif:deleted>$resourceDTO.getDeleted()</gbif:deleted>
+			     #end 				     
+		     #set($resourceNetworks=$resource.get("resourceNetworkDTOList"))
+		     #if($resourceNetworks.size()>0)
+		    	 <gbif:resourceNetworks>
+		     
+		     		#foreach($resourceNetwork in $resourceNetworks)
+		     			<gbif:resourceNetwork gbifKey="$resourceNetwork.getKey()" rdf:about="$wsroot/rest/provider/get/$resourceNetwork.getKey()">
+		     				#if($resourceNetwork.getName())
+		     					<gbif:name>$resourceNetwork.getName()</gbif:name>
+		     				#end
+		     				#if($resourceNetwork.getDescription())
+		     					<gbif:description>$resourceNetwork.getDescription()</gbif:description>
+		     				#end
+		     				#if($resourceNetwork.getCode())
+		     					<gbif:shortIdentifier>$resourceNetwork.getCode()</gbif:shortIdentifier>
+		     				#end		     				
+		     				#if($resourceNetwork.getWebsiteUrl())
+		     					<gbif:websiteUrl>$resourceNetwork.getWebsiteUrl()</gbif:websiteUrl>
+		     				#end
+		     				#if($resourceNetwork.getLogoUrl())
+		     					<gbif:logoUrl>$resourceNetwork.getLogoUrl()</gbif:logoUrl>
+		     				#end
+		     				#if($resourceNetwork.getEmail())
+		     					<gbif:email>$resourceNetwork.getEmail()</gbif:email>
+		     				#end
+		     				#if($resourceNetwork.getAddress())
+		     					<gbif:address>$resourceNetwork.getAddress()</gbif:address>
+		     				#end
+		     				#if($resourceNetwork.getTelephone())
+		     					<gbif:telephone>$resourceNetwork.getTelephone()</gbif:telephone>
+		     				#end
+		     				#if($resourceNetwork.getConceptCount() && $resourceNetwork.getConceptCount() > 0)
+		     					<gbif:taxonConceptCount>$resourceNetwork.getConceptCount()</gbif:taxonConceptCount>
+		     				#end
+		     				#if($resourceNetwork.getSpeciesCount() && $resourceNetwork.getSpeciesCount() > 0)
+		     					<gbif:speciesCount>$resourceNetwork.getSpeciesCount()</gbif:speciesCount>
+		     				#end		   
+		     				#if($resourceNetwork.getOccurrenceCount() && $resourceNetwork.getOccurrenceCount() > 0)
+		     					<gbif:occurrenceCount>$resourceNetwork.getOccurrenceCount()</gbif:occurrenceCount>
+		     				#end		 
+		     				#if($resourceNetwork.getOccurrenceCoordinateCount() && $resourceNetwork.getOccurrenceCoordinateCount() > 0)
+		     					<gbif:georeferencedOccurrenceCount>$resourceNetwork.getOccurrenceCoordinateCount()</gbif:georeferencedOccurrenceCount>
+		     				#end
+		     				#if($resourceNetwork.getCreated())
+		     					<gbif:created>$resourceNetwork.getCreated()</gbif:created>
+		     				#end
+		     				#if($resourceNetwork.getModified())
+		     					<gbif:modified>$resourceNetwork.getModified()</gbif:modified>
+		     				#end
+		     				#if($resourceNetwork.getDeleted())
+		     					<gbif:deleted>$resourceNetwork.getDeleted()</gbif:deleted>
+		     				#end		     				
+				        </gbif:resourceNetwork>
+		     		#end
+		     		
+		     	 </gbif:resourceNetworks>
+		     #end
+		     
+		     #set($resourceAccessPoints=$resource.get("resourceAccessPointMap"))
+		     #if($resourceAccessPoints)
+		    	 <gbif:accessPoints>
+		     
+		     		#foreach($resourceAccessPoint in $resourceAccessPoints.keySet())
+		     			<gbif:accessPoint>
+		     				#if($resourceAccessPoint.getUrl())
+		     					<gbif:url>$resourceAccessPoint.getUrl()</gbif:url>
+		     				#end
+		     				#if($resourceAccessPoint.getRemoteIdAtUrl())
+		     					<gbif:identifier>$resourceAccessPoint.getRemoteIdAtUrl()</gbif:identifier>
+		     				#end
+		     				#foreach($propertyStoreNamespace in $resourceAccessPoints.get($resourceAccessPoint))
+		     				#if($propertyStoreNamespace.getNamespace())
+		     					<gbif:schema>$propertyStoreNamespace.getNamespace()</gbif:schema>
+		     				#end
+		     				#end
+		     			</gbif:accessPoint>
+		     		#end
+		     	 </gbif:accessPoints>
+		     #end
+		     
+		     #set($taxonConceptMapSet = $response.get("taxonConceptMapSet"))
+		     #if($taxonConceptMapSet.size()>0)
+		    	 <gbif:taxonConcepts>
+		     		#foreach($taxonConceptMap is $taxonConceptMapSet)
+		     		#set($taxonConceptDTO=$taxonConceptMap.get("taxonConceptDTO"))
+				    <tc:TaxonConcept gbifKey="$taxonConceptDTO.getKey()" status="$taxonConceptDTO.getStatus()" rdf:about="$wsroot/rest/taxon/get/$taxonConceptDTO.getKey()">
+				    <tc:hasName>
+				     <tn:TaxonName>
+				      <tn:nameComplete>$taxonConceptDTO.getTaxonName()</tn:nameComplete>
+				      <tn:rank rdf:resource="http://rs.tdwg.org/ontology/voc/TaxonRank#$taxonConceptDTO.getRankCode()"/>
+				      <tn:rankString>$taxonConceptDTO.getRank()</tn:rankString>
+				      <tn:scientific>true</tn:scientific>
+				     </tn:TaxonName>
+				    </tc:hasName>
+				    <tc:accordingToString>$taxonConceptDTO.getDataResourceName()</tc:accordingToString>
+				    <tc:accordingTo rdf:resource="$wsroot/rest/resource/get/$taxonConceptDTO.getDataResourceKey()"/>
+				    <tc:primary>true</tc:primary>
+				   </tc:TaxonConcept>
+		     		#end
+		     
+		     	 </gbif:taxonConcepts>
+			 #end
+		    	 
+		     
+		     
+		    </gbif:dataResource> 
+     	  
+     	  #end
+     	 </gbif:dataResources>
+     #end
+     
+     
+	 
+  </gbif:dataProvider>
+ 
+ #end
+ </gbif:dataProviders> 
+ 
+#end
+ 
+
+</gbif:gbifResponse>

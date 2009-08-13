@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://data.gbif.org/ws/rest/resource/stylesheet"?>
+<gbif:gbifResponse xsi:schemaLocation="http://portal.gbif.org/ws/response/gbif http://data.gbif.org/ws/rest/resource/schema http://purl.org/dc/elements/1.1/ http://data.gbif.org/schema/dc.xsd http://purl.org/dc/terms/ http://data.gbif.org/schema/dcterms.xsd http://www.w3.org/1999/02/22-rdf-syntax-ns# http://data.gbif.org/schema/rdf.xsd http://www.w3.org/2002/07/owl# http://data.gbif.org/schema/owl.xsd http://rs.tdwg.org/ontology/voc/Common# http://data.gbif.org/schema/tcom.xsd http://rs.tdwg.org/ontology/voc/TaxonOccurrence# http://data.gbif.org/schema/TaxonOccurrence.xsd http://rs.tdwg.org/ontology/voc/TaxonConcept# http://data.gbif.org/schema/TaxonConcept.xsd http://rs.tdwg.org/ontology/voc/TaxonName# http://data.gbif.org/schema/TaxonName.xsd" xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <gbif:header>
+  <gbif:statements>-
+
+This document contains data shared through the GBIF Network - see http://data.gbif.org/ for more information.
+					
+All usage of these data must be in accordance with the GBIF Data Use Agreement - see http://www.gbif.org/DataProviders/Agreements/DUA
+
+-</gbif:statements>
+  <gbif:help>http://data.gbif.org/ws/rest/resource/help</gbif:help>
+  <gbif:request>get</gbif:request>
+  <gbif:parameter name="key" value="1"/>
+  <gbif:parameter name="service" value="resource"/>
+
+  <gbif:parameter name="request" value="get"/>
+  <gbif:summary start="0" totalMatched="1" totalReturned="1"/>
+ </gbif:header>
