@@ -508,7 +508,7 @@ public class DataResourceDAOImpl extends HibernateDaoSupport implements DataReso
 				}
 				
 				if(georeferenced){
-					sb.append(" and oc.cellId is not null");
+					sb.append(" and oc.cellId is not null and oc.geospatialIssue=0");
 				}
 				
 				sb.append(" group by oc.dataResourceId");
