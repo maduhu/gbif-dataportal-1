@@ -90,16 +90,15 @@
 	</c:choose>
 	</p>
 
-	<p>
-	<c:forEach items="${identifierRecords}" var="identifierRecord">
-	<label><spring:message code="identifier.type.${identifierRecord.identifierType}"/>:</label> ${identifierRecord.identifier}<br/>
-	</c:forEach>
-	</p>
-
 	<!-- Collector -->
 	<p>
 	<label for="collector"><spring:message code="occurrence.record.collectorName"/>:</label> 
 	${rawOccurrenceRecord.collectorName}
+	</p>
+	<p>
+	<c:forEach items="${identifierRecords}" var="identifierRecord">
+	<label><spring:message code="identifier.type.${identifierRecord.identifierType}"/>:</label> ${identifierRecord.identifier}<br/>
+	</c:forEach>
 	</p>
 
 	<!-- Date collected -->
