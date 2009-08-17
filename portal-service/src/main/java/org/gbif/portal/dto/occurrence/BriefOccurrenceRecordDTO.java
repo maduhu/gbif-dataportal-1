@@ -38,7 +38,9 @@ public class BriefOccurrenceRecordDTO implements Comparable, Serializable{
 	/** The key for the data resource occurrence record */
 	protected String dataResourceKey;
 	/** The name of the data resource occurrence record */	
-	protected String dataResourceName;	
+	protected String dataResourceName;
+	/** The rights of the data resource */
+	protected String dataResourceRights;
 	/** The taxon concept */
 	protected String taxonConceptKey;
 	/** The scientific name */
@@ -124,6 +126,20 @@ public class BriefOccurrenceRecordDTO implements Comparable, Serializable{
 	 */
 	public void setDataResourceName(String dataResourceName) {
 		this.dataResourceName = dataResourceName;
+	}
+
+	/**
+	 * @return the dataResourceRights
+	 */
+	public String getDataResourceRights() {
+		return dataResourceRights;
+	}
+
+	/**
+	 * @param dataResourceRights the dataResourceRights to set
+	 */
+	public void setDataResourceRights(String dataResourceRights) {
+		this.dataResourceRights = dataResourceRights;
 	}
 
 	/**

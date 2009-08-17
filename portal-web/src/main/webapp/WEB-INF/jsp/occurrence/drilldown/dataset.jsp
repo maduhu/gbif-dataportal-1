@@ -11,6 +11,11 @@
 	</p>
 	
 	<p>
+	<label for="dataresourceRights"><spring:message code="occurrence.record.dataresource.rights"/>:</label>
+	${occurrenceRecord.dataResourceRights}	
+	</p>	
+	
+	<p>
 	<label for="institutionCode"><spring:message code="occurrence.record.institutioncode"/>:</label>
 	${rawOccurrenceRecord.institutionCode}
 	<c:if test="${not empty occurrenceRecord && rawOccurrenceRecord.institutionCode!=occurrenceRecord.institutionCode}">

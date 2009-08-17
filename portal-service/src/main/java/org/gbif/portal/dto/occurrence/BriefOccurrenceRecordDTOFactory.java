@@ -60,6 +60,7 @@ public class BriefOccurrenceRecordDTOFactory extends BaseDTOFactory {
 			 or = (OccurrenceRecord) source;
 			 target.setDataProviderName(or.getDataProvider().getName());
 			 target.setDataResourceName(or.getDataResource().getName());
+			 target.setDataResourceRights(or.getDataResource().getRights());
 			 target.setTaxonName(or.getTaxonName().getCanonical());
 		}			
 		
