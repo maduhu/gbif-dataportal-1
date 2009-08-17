@@ -36,6 +36,11 @@
 								<property name="propertyName" value="dataResourceName"/>
 							</bean>			
 						</entry>
+						<entry key="dataResourceRights">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="dataResourceRights"/>
+							</bean>			
+						</entry>						
 						<entry key="dataProviderName">
 							<bean parent="basicProperty">
 								<property name="propertyName" value="dataProviderName"/>

@@ -14,6 +14,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	<util:list id="occurrenceDownloadFields">
 		<ref bean="dataProviderName"/>
 		<ref bean="dataResourceName"/>
+		<ref bean="dataResourceRights"/>
 		<ref bean="rawCollectorName"/>
 		<ref bean="rawCollectorNumber"/>
 		<ref bean="fieldNumber"/>
@@ -70,6 +71,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	<util:list id="mandatoryOccurrenceDownloadFields">
 		<ref bean="dataProviderName"/>
 		<ref bean="dataResourceName"/>
+		<ref bean="dataResourceRights"/>
 		<ref bean="rawScientificName"/>
 		<ref bean="portalUrl"/>
 	</util:list>
@@ -143,6 +145,10 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="fieldName" value="dataResourceName"/>
 		<property name="fieldI18nNameKey" value="occurrence.record.dataresource"/>
 	</bean>
+	<bean id="dataResourceRights" parent="downloadField">
+		<property name="fieldName" value="dataResourceRights"/>
+		<property name="fieldI18nNameKey" value="occurrence.record.dataresource.rights"/>
+	</bean>	
 	<bean id="occurrenceDate" parent="downloadField">
 		<property name="fieldName" value="occurrenceDate"/>
 		<property name="fieldI18nNameKey" value="occurrence.record.dateCollected"/>

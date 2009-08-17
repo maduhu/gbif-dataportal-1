@@ -179,6 +179,7 @@ public class OccurrenceAssociationTraverser implements AssociationTraverser {
 
 			beanMap.put("dataResourceName", or.getDataResource().getName());
 			beanMap.put("dataProviderName", or.getDataProvider().getName());
+			beanMap.put("dataResourceRights", or.getDataResource().getRights());
 			beanMap.put("providerIsoCountryCode", or.getDataProvider().getIsoCountryCode());
 			
 			//add data resource id
