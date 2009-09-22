@@ -69,7 +69,8 @@
 		<property name="geospatialManager" ref="geospatialManager"/>		
 		<property name="mapLayerServerURL" value="http://data.gbif.org/maplayer/"/>
 		<property name="defaultMapServerKey" value="map_server_url"/>	
-		<property name="defaultGeoServerValue" value="http://db3:8080/geoserver/wms"/>
+		<!-- defaultGeoServerValue is overwritten at portal.properties -->
+		<property name="defaultGeoServerValue" value="http://ogc.gbif.org/wms"/>
 		<property name="defaultMapServerValue" value="http://maps.gbif.org/mapserver/draw.pl"/>				
 		<property name="defaultMapLayerKey" value="map_server_layers_url"/>	
 	</bean>	
