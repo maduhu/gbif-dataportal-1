@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.gbif.portal.dto.util.EntityType;
+import org.gbif.portal.model.log.User;
 import org.gbif.portal.service.LogManager;
 import org.gbif.portal.util.log.GbifLogMessage;
 import org.gbif.portal.util.log.LogGroup;
@@ -32,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
  * A Controller for dealing with the submition of user feedback
  *
  * @author Tim Robertson
+ * @author jcuadra
  */
 public class FeedbackSubmitController extends RestController {
 	/**
@@ -54,6 +56,7 @@ public class FeedbackSubmitController extends RestController {
 	
 	/** The view names */
 	protected String feedbackSuccessViewName = "feedbackSuccessView";
+	protected String feedbackVerificationViewName = "feedbackVerificationView";
 	
 	/** The request keys **/
 	protected String conceptTypeRequestKey = "conceptType";
@@ -86,27 +89,41 @@ public class FeedbackSubmitController extends RestController {
 		LogGroup logGroup = logManager.startLogGroup();
 		try {
 			GbifLogMessage message = null;
+			
+			String userKey = logManager.getUserKeyFor(userName, userEmail);
+			
+			//creates the log message
 			if (conceptType.equals(EntityType.TYPE_TAXON)) {
 				logger.debug("User feeding back information for taxon");
-				message = logManager.createTaxonFeedbackMessage(logGroup, userName, userEmail, conceptKey, messageDetail);
+				message = logManager.createTaxonFeedbackMessage(logGroup, userKey, conceptKey, messageDetail);
 				
 			} else if(conceptType.equals(EntityType.TYPE_DATA_RESOURCE)) {
 				logger.debug("User feeding back information for resource");
-				message = logManager.createResourceFeedbackMessage(logGroup, userName, userEmail, conceptKey, messageDetail);
+				message = logManager.createResourceFeedbackMessage(logGroup, userKey, conceptKey, messageDetail);
 				
 			} else if(conceptType.equals(EntityType.TYPE_OCCURRENCE)) {
 				logger.debug("User feeding back information for occurrence");
-				message = logManager.createOccurrenceFeedbackMessage(logGroup, userName, userEmail, conceptKey, messageDetail);
-				
+				message = logManager.createOccurrenceFeedbackMessage(logGroup, userKey, conceptKey, messageDetail);
 			}
+			
+			//log the message
 			if (message!=null) {
 				logger.info(message);
+			}			
+			
+			//checks if user is verified, and decide if a verification or feedback msg should be sent
+			if(logManager.isVerifiedUser(userKey)) {
+				logManager.sendFeedbackOrVerificationMessages(message, true);
+				return new ModelAndView(feedbackSuccessViewName, feedbackOnURLRequestKey, request.getParameter(feedbackOnURLRequestKey));
 			}
+			else {
+				logManager.sendFeedbackOrVerificationMessages(message, false);
+				return new ModelAndView(feedbackVerificationViewName, feedbackOnURLRequestKey, request.getParameter(feedbackOnURLRequestKey));
+			}
+
 		} finally {
 			logManager.endLogGroup(logGroup);
 		}
-		
-		return new ModelAndView(feedbackSuccessViewName, feedbackOnURLRequestKey, request.getParameter(feedbackOnURLRequestKey));
 	}
 
 	/**
