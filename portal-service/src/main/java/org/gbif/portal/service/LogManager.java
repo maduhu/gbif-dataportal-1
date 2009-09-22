@@ -277,6 +277,31 @@ public interface LogManager {
 	 * @return
 	 */
 	public LogGroup startLogGroup();
+	
+	/**
+	 * Gets the userKey associated with the username/useremail combination
+	 * 
+	 * @param userName
+	 * @param userEmail
+	 * @return
+	 */
+	public String getUserKeyFor(String userName, String userEmail);
+	
+	/**
+	 * Checks whether the userKey belongs to a verified user (verified=be able to send feedback messages through the Data Portal) 
+	 * 
+	 * @param userKey
+	 * @return
+	 */
+	public boolean isVerifiedUser(String userKey);
+	
+	/**
+	 * Sends feedback or verification email messages
+	 * 
+	 * @param message
+	 * @param isVerified
+	 */
+	public void sendFeedbackOrVerificationMessages(GbifLogMessage message, boolean isVerified);
 
 	/**
 	 * Close a log group

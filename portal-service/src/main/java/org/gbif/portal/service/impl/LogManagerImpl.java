@@ -116,12 +116,12 @@ public class LogManagerImpl implements LogManager {
 				message.setDataProviderId(parseKey(record.getDataProviderKey()));
 				message.setDataResourceId(parseKey(record.getDataResourceKey()));
 				message.setTaxonConceptId(parseKey(record.getTaxonConceptKey()));
-				if (userKey != null) {					
+				if (userKey != null) {
 					message.setUserId(parseKey(userKey));
 				}
 			}
 			
-			sendFeedbackOrVerificationMessages(message);
+			//sendFeedbackOrVerificationMessages(message);
 		} catch (Exception e) {
 			logger.warn("Ignoring error", e);
 		}
@@ -147,7 +147,7 @@ public class LogManagerImpl implements LogManager {
 					message.setUserId(parseKey(userKey));
 				}
 			}
-			sendFeedbackOrVerificationMessages(message);
+			//sendFeedbackOrVerificationMessages(message);
 		} catch (Exception e) {
 			logger.warn("Ignoring error", e);
 		}
@@ -174,7 +174,7 @@ public class LogManagerImpl implements LogManager {
 					message.setUserId(parseKey(userKey));
 				}
 			}
-			sendFeedbackOrVerificationMessages(message);
+			//sendFeedbackOrVerificationMessages(message);
 		} catch (Exception e) {
 			logger.warn("Ignoring error", e);
 		}
@@ -207,6 +207,34 @@ public class LogManagerImpl implements LogManager {
 		}
 		return verificationSent;
 	}
+	
+	/* (non-Javadoc)
+	 * @see org.gbif.portal.service.LogManager#sendFeedbackOrVerificationMessages(org.gbif.portal.util.log.GbifLogMessage, boolean)
+	 */
+	public void sendFeedbackOrVerificationMessages(GbifLogMessage message,
+			boolean isVerified) {
+		// we only send feedback for known users
+		if (message.getUserId() == null || message.getUserId()< 1) {
+			logger.warn("Ignoring feedback since the user id is not set");
+		}
+		User user = userDAO.getUserFor(message.getUserId());
+		
+		if(isVerified)		
+			sendFeedbackMessage(message, user);
+		else
+			sendVerificationMessage(user);
+	}
+	
+	/* (non-Javadoc)x
+	 * @see org.gbif.portal.service.LogManager#isVerifiedUser(java.lang.String)
+	 */
+	public boolean isVerifiedUser(String userKey) {
+		User user = userDAO.getUserFor(parseKey(userKey));
+		if(user != null)
+			return user.isVerified();
+		return false;
+	}
+	
 
 	/**
 	 * @see org.gbif.portal.service.LogManager#endLogGroup(org.gbif.portal.util.log.LogGroup)
@@ -313,14 +341,14 @@ public class LogManagerImpl implements LogManager {
 			ccEmailAddresses.removeAll(toEmailAddresses);
 			
 	        SimpleMailMessage providerMessage = new SimpleMailMessage(providerTemplateMessage);
-	        providerMessage.setTo(toEmailAddresses.toArray(new String[toEmailAddresses.size()]));
-	        providerMessage.setCc(ccEmailAddresses.toArray(new String[ccEmailAddresses.size()]));
+	        //providerMessage.setTo(toEmailAddresses.toArray(new String[toEmailAddresses.size()]));
+	        //providerMessage.setCc(ccEmailAddresses.toArray(new String[ccEmailAddresses.size()]));
 	        
 	        // TODO - NLS and portal URL
 	        StringBuffer subjectBuffer = new StringBuffer();
 
 	        SimpleMailMessage userMessage = new SimpleMailMessage(userTemplateMessage);
-	        userMessage.setTo(user.getEmail());
+	        //userMessage.setTo(user.getEmail());
 	        
 	        subjectBuffer.append("Feedback from GBIF Data Portal - ");
 
@@ -417,6 +445,13 @@ public class LogManagerImpl implements LogManager {
 	        userMessage.setText("Thank you for your feedback.  The following message has " +
 	        		            "been sent on your behalf to the appropriate data provider.\n\n" +
 	        		            "-----------\n\n" + textBuffer.toString());
+	        
+	        //just for testing
+	        providerMessage.setTo("josecuadra@gmail.com");
+	        userMessage.setCc("cleaning@mailinator.com");
+	        userMessage.setTo("jcuadra@gbif.org");
+	        providerMessage.setCc("cleaning@mailinator.com");
+	        
 
 	        try{
 	            mailSender.send(providerMessage);
@@ -439,7 +474,8 @@ public class LogManagerImpl implements LogManager {
 	protected void sendVerificationMessage(User user) {
 		if (user != null) {
 			SimpleMailMessage verificationMessage = new SimpleMailMessage(userTemplateMessage);
-			verificationMessage.setTo(user.getEmail());
+			//verificationMessage.setTo(user.getEmail());
+			verificationMessage.setTo("somebody1@mailinator.com");
 			verificationMessage.setSubject("Confirm e-mail address for GBIF Data Portal");
 			// todo
 			verificationMessage.setText("Please visit the following link to confirm your e-mail address:\n" +
@@ -599,7 +635,7 @@ public class LogManagerImpl implements LogManager {
 	 * @param email
 	 * @return
 	 */
-	protected String getUserKeyFor(String name, String email) {
+	public String getUserKeyFor(String name, String email) {
 		User user = userDAO.findUser(portalInstanceId, name, email);
 		if (user == null) {
 			if(logger.isInfoEnabled())
