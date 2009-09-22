@@ -622,6 +622,11 @@
 		<put name="headcontent" value="/WEB-INF/jsp/feedback/headcontent.jsp"/>	  
 		<put name="content" value="/WEB-INF/jsp/feedback/success.jsp"/>
 	</definition>	
+	<definition name="feedbackVerificationView" extends="mainLayout">
+		<put name="subtitle" value="/WEB-INF/jsp/feedback/subtitle.jsp"/>
+		<put name="headcontent" value="/WEB-INF/jsp/feedback/headcontent.jsp"/>	  
+		<put name="content" value="/WEB-INF/jsp/feedback/verify.jsp"/>
+	</definition>
 	<definition name="verificationSuccessView" extends="mainLayout">
 		<put name="subtitle" value="/WEB-INF/jsp/feedback/subtitle.jsp"/>
 		<put name="headcontent" value="/WEB-INF/jsp/feedback/headcontent.jsp"/>	  
