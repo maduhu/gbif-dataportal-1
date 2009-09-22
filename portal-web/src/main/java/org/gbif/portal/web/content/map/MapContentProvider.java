@@ -368,7 +368,10 @@ public class MapContentProvider implements ContentProvider {
 		request.setAttribute("mapServerUrl", getMapServerURL());		
 		request.setAttribute("mapLayerUrl", mapLayerUrlEscaped);
 		request.setAttribute("unEscapedMapLayerUrl", mapLayerUrl);		
-		request.setAttribute("overviewMapUrl", getMapServerURL()+"?dtype=box&imgonly=1&path="+mapLayerUrlEscaped+"&mode=browse&refresh=Refresh&layer=countryborders&extent="+extent);	
+		//TODO: change this, looks ugly
+		request.setAttribute("overviewMapUrl", getGeoServerURL()+"?request=GetMap&bgcolor=0x666698&styles=,,&layers=gbif:country_fill,gbif:tabDensityLayer,gbif:country_borders" +
+				"&srs=EPSG:4326&filter=()(<Filter><PropertyIsEqualTo><PropertyName>url</PropertyName><Literal><![CDATA[" + mapLayerUrlEscaped + "]]></Literal></PropertyIsEqualTo></Filter>)()" +
+						"&width=720&height=360&Format=image/png&bbox=-180,-90,180,90");	
 	}
 	
 	/**
@@ -398,8 +401,11 @@ public class MapContentProvider implements ContentProvider {
 		//map server urls
 		request.setAttribute("geoServerUrl", getGeoServerURL());		
 		request.setAttribute("mapLayerUrl", mapLayerUrlEscaped);
-		request.setAttribute("unEscapedMapLayerUrl", mapLayerUrl);		
-		request.setAttribute("overviewMapUrl", getMapServerURL()+"?dtype=box&imgonly=1&path="+mapLayerUrlEscaped+"&mode=browse&refresh=Refresh&layer=countryborders&extent="+extent);	
+		request.setAttribute("unEscapedMapLayerUrl", mapLayerUrl);	
+		//TODO: change this, looks ugly
+		request.setAttribute("overviewMapUrl", getGeoServerURL()+"?request=GetMap&bgcolor=0x666698&styles=,,&layers=gbif:country_fill,gbif:tabDensityLayer,gbif:country_borders" +
+				"&srs=EPSG:4326&filter=()(<Filter><PropertyIsEqualTo><PropertyName>url</PropertyName><Literal><![CDATA[" + mapLayerUrlEscaped + "]]></Literal></PropertyIsEqualTo></Filter>)()" +
+						"&width=720&height=360&Format=image/png&bbox=-180,-90,180,90");	
 	}	
 	
 	/**
