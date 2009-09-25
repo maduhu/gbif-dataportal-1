@@ -7,7 +7,33 @@
   <packaging>jar</packaging>
   <name>GBIF Portal Core</name>
   <version>1.0-SNAPSHOT</version>
-  <url>http://TODO</url>
+  <url>http://code.google.com/p/gbif-dataportal/</url>
+
+	<distributionManagement>
+	  <repository>
+		<id>gbif</id>
+		<name>GBIF Repository</name>
+		<url>sftp://kiwaia.gbif.org/var/www/html/tools/maven/repository</url>
+	  </repository>
+	</distributionManagement>
+
+	<developers>
+		<developer>
+			<name>Tim Robertson</name>
+			<email>trobertson@gbif.org</email>
+		</developer>
+		<developer>
+			<name>Jose Cuadra</name>
+			<email>jcuadra@gbif.org</email>
+		</developer>
+    </developers>
+    <contributors>
+        <contributor>
+            <name>Kyle Braak</name>
+            <email>kbraak@gbif.org</email>
+        </contributor>
+    </contributors>
+	
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -200,11 +226,10 @@
 		</plugin>	    
 	  </plugins>
 	</build>
- <repositories>
-    <repository>
-      <id>gbif-remote</id>
-      <name>gbif-remote</name>
-      <url>http://tools.gbif.org/maven/repository</url>
-    </repository>
-  </repositories>	
+	<repositories>
+		<repository>
+           <id>gbif</id>
+           <url>http://tools.gbif.org/maven/repository/</url>
+       </repository>
+    </repositories>
 </project>
