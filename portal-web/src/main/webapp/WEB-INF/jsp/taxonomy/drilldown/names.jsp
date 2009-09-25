@@ -1,7 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 <c:if test="${not empty partners}">
 <h4><spring:message code="taxonconcept.drilldown.explore.names" text="Names and classification"/></h4>
-<table width="100%" border="0" cellpadding="2" cellspacing="0">
+<table width="80%" border="0" cellpadding="2" cellspacing="0">
 
 <c:forEach items="${partners}" var="partner" varStatus="partnerStatus">
 	<tr valign="top">
@@ -154,6 +154,10 @@
 		<td class="label"><spring:message code="feedback"/></td>
 		<td><a class="feedback" href='javascript:feedback("${pageContext.request.contextPath}/feedback/taxon/${partner.taxonConcept.key}")'><spring:message code="feedback.to.provider.on.classification.link"  arguments="${partner.taxonConcept.dataProviderName}" argumentSeparator="|"/> <gbif:taxonPrint concept="${partner.taxonConcept}"/><c:if test="${not empty partner.taxonConcept.author}"> ${partner.taxonConcept.author}</c:if></a></td>
 	</tr>
+	<tr valign="top">
+		<td class="label"></td>
+		<td><spring:message code="feedback.to.provider.on.classification.explanation" /></td>
+	</tr>	
 	
 	<c:if test="${partnerStatus.count < fn:length(partners)}">
 		<tr valign="top"><td colspan="2"><br/></td></tr>
