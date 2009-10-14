@@ -280,8 +280,14 @@ public class ProviderAction extends Action {
 					public int compare(Object a, Object b) {
 						DataResourceDTO dataResource1 = (DataResourceDTO) ((Map)a).get("dataResourceDTO");
 						DataResourceDTO dataResource2 = (DataResourceDTO) ((Map)b).get("dataResourceDTO");
-						String key1 = dataResource1.getName().toString();
-						String key2 = dataResource2.getName().toString();
+						String key1 = "";
+						String key2 = "";
+						
+						if(dataResource1.getName()!=null)
+							key1 = dataResource1.getName().toString();
+						if(dataResource2.getName()!=null)
+							key2 = dataResource2.getName().toString();
+						
 						return key1.compareToIgnoreCase(key2);
 					}
 				});
