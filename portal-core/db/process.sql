@@ -614,8 +614,6 @@ inner join taxon_concept p on c.parent_concept_id=p.id
 set c.parent_concept_id=null
 where p.rank>=c.rank;
 
-select concat('Rollover complete: ', now()) as debug;
-
 -- populate temporary table to assign unique keys to each of the participant nodes available
 truncate table temp_participant_nodes;
 insert into temp_participant_nodes(node_name)
@@ -623,5 +621,7 @@ select distinct(data_provider.gbif_approver) from data_provider where data_provi
 
 -- save stats for the communication portal. Files will be residing on the /tmp/ folder on the machine running process.sql
 select * from temp_participant_nodes into outfile '/tmp/comm_nodes.txt';
-select dp.id,tpn.id,dp.name from data_provider dp inner join temp_participant_nodes tpn on dp.gbif_approver = tpn.node_name into outfile '/tmp/comm_dataprovider.txt';
-select dr.id, dp.id, dr.name, dr.occurrence_count, dr.occurrence_coordinate_count from data_resource dr inner join data_provider dp on dr.data_provider_id=dp.id into outfile '/tmp/comm_dataresource.txt';
+select dp.id,tpn.id,dp.name from data_provider dp inner join temp_participant_nodes tpn on dp.gbif_approver = tpn.node_name where dp.deleted is null and dp.id>3 and dp.id!=223 and dp.id!=226  into outfile '/tmp/comm_dataprovider.txt';
+select dr.id, dp.id, dr.name, dr.occurrence_count, dr.occurrence_coordinate_count from data_resource dr inner join data_provider dp on dr.data_provider_id=dp.id  where dp.deleted is null and dp.id>3 and dp.id!=223 and dp.id!=226 and dr.deleted is null into outfile '/tmp/comm_dataresource.txt';
+
+select concat('Rollover complete: ', now()) as debug;
