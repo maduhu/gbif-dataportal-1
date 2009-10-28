@@ -100,11 +100,21 @@
 	<label for="collector"><spring:message code="occurrence.record.collectorName"/>:</label> 
 	${rawOccurrenceRecord.collectorName}
 	</p>
+	
+	<!-- Identifiers -->
 	<p>
 	<c:forEach items="${identifierRecords}" var="identifierRecord">
-	<label><spring:message code="identifier.type.${identifierRecord.identifierType}"/>:</label> ${identifierRecord.identifier}<br/>
+		<c:choose>
+	        <c:when test="${fn:startsWith(identifierRecord.identifier,'http://') }">
+    	            <label><spring:message code="identifier.type.${identifierRecord.identifierType}"/>:</label> <a href="${identifierRecord.identifier}">${identifierRecord.identifier}</a><br/>
+        	</c:when>
+	        <c:otherwise>
+    	            <label><spring:message code="identifier.type.${identifierRecord.identifierType}"/>:</label>  ${identifierRecord.identifier}<br/>
+        	</c:otherwise>
+		</c:choose>
 	</c:forEach>
 	</p>
+	
 
 	<!-- Date collected -->
 	<p>
