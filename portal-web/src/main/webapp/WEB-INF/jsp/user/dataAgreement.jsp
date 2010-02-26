@@ -23,9 +23,9 @@
 
 <h4>2. Citing Data</h4>
 <p>Use the following format to cite data retrieved from the GBIF network:</p>  
-<p><em>Biodiversity occurrence data provided by: (Accessed through GBIF Data Portal, www.gbif.net, YYYY-MM-DD)</em></p>
+<p><em>Biodiversity occurrence data provided by: (Accessed through GBIF Data Portal, data.gbif.org, YYYY-MM-DD)</em></p>
 <p>For example:</p>
-<p><em>Biodiversity occurrence data provided by: Field Museum of Natural History, Museum of Vertebrate Zoology, University of Washington Burke Museum, and University of Turku (Accessed through GBIF Data Portal, www.gbif.net, 2007-02-22)</em></p>
+<p><em>Biodiversity occurrence data provided by: Field Museum of Natural History, Museum of Vertebrate Zoology, University of Washington Burke Museum, and University of Turku (Accessed through GBIF Data Portal, data.gbif.org, 2007-02-22)</em></p>
 
 <h4>3. Definitions</h4>
 <ul>
