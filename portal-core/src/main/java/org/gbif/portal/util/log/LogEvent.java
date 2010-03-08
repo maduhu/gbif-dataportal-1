@@ -91,7 +91,7 @@ public class LogEvent extends Enumeration implements Serializable {
 	public static final LogEvent USAGE_DATASET_TAXONOMY_DOWNLOAD = new LogEvent("datasetTaxonomyDownload", USAGE_RANGE_START+8);
 	public static final LogEvent USAGE_DATASET_LOG_DOWNLOAD = new LogEvent("datasetLogDownload", USAGE_RANGE_START+9);
 	
-	protected LogEvent(String name, Integer value) { 
+	public LogEvent(String name, Integer value) { 
 		super(nameMap, valueMap, name, value); 
 	}
 	

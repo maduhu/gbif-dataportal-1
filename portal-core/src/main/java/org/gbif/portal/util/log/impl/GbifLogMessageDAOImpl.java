@@ -15,9 +15,11 @@
 package org.gbif.portal.util.log.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.gbif.portal.util.log.GbifLogMessage;
@@ -69,6 +71,25 @@ public class GbifLogMessageDAOImpl extends JdbcDaoSupport implements GbifLogMess
         "restricted," +
         "count) " +
 		"values (?,?,?,?,?,?,?,?,?,?,?,?)";
+	
+	/**
+	 * The insert SQL (with timestamp)
+	 */
+	protected static final String CREATE_SQL_WITH_TIMESTAMP = "insert into gbif_log_message (" +
+        "portal_instance_id," +
+        "log_group_id," +
+        "event_id," + 
+        "level," +
+        "data_provider_id," +
+        "data_resource_id," +
+        "occurrence_id," +
+        "taxon_concept_id," +
+        "user_id," +
+        "message," +
+        "restricted," +
+        "count," +
+        "timestamp) " +
+		"values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	/**
 	 * Reusable row mapper
@@ -133,7 +154,15 @@ public class GbifLogMessageDAOImpl extends JdbcDaoSupport implements GbifLogMess
 		getJdbcTemplate().update(
 			new PreparedStatementCreator() {
 				public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
-					PreparedStatement ps = conn.prepareStatement(GbifLogMessageDAOImpl.CREATE_SQL);
+					// timestamp included?
+					PreparedStatement ps = null;
+					if (message.getTimestamp() !=null) {
+						ps = conn.prepareStatement(GbifLogMessageDAOImpl.CREATE_SQL_WITH_TIMESTAMP);
+						Timestamp ts = new Timestamp(message.getTimestamp().getTime());
+						ps.setTimestamp(13, ts);
+					} else {
+						ps = conn.prepareStatement(GbifLogMessageDAOImpl.CREATE_SQL);
+					}
 					ps.setLong(1, message.getPortalInstanceId());
 					ps.setLong(2, (message.getLogGroup() == null) ? 0 : message.getLogGroup().getId());
 					ps.setInt(3, message.getEvent().getValue());
@@ -168,7 +197,6 @@ public class GbifLogMessageDAOImpl extends JdbcDaoSupport implements GbifLogMess
 		} 
 		return maxId;
 	}
-
 	
 	public int deleteExtractEventsByOccurrenceId(long occurrenceId) {
 		return getJdbcTemplate().update(
