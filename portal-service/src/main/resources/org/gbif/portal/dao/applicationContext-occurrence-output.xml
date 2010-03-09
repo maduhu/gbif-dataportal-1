@@ -81,6 +81,11 @@
 								<property name="propertyName" value="region"/>
 							</bean>			
 						</entry>
+						<entry key="rawCollectorNumber">
+							<bean parent="basicProperty">
+								<property name="propertyName" value="collectorNumber"/>
+							</bean>
+						</entry>
 						<entry key="providerIsoCountryCode">
 							<bean parent="basicProperty">
 								<property name="propertyName" value="providerIsoCountryCode"/>
@@ -258,11 +263,6 @@
 						<entry key="rawLocality">
 							<bean parent="rawOccurrenceRecordProperty">
 								<property name="propertyName" value="locality"/>
-							</bean>
-						</entry>
-						<entry key="rawCollectorName">
-							<bean parent="rawOccurrenceRecordProperty">
-								<property name="propertyName" value="collectorName"/>
 							</bean>
 						</entry>
 						<entry key="rawMinDepth">

@@ -232,7 +232,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="fieldI18nNameKey" value="occurrence.record.collectorName"/>
 	</bean>
 	<bean id="rawCollectorNumber" parent="downloadField">
-		<property name="fieldName" value="imageUrl"/>
+		<property name="fieldName" value="rawCollectorNumber"/>
 		<property name="fieldI18nNameKey" value="occurrence.record.collector.number"/>
 	</bean>
 	<bean id="rawKingdom" parent="downloadField">
