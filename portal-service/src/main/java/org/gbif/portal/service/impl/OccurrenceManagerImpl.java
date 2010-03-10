@@ -394,7 +394,7 @@ public class OccurrenceManagerImpl implements OccurrenceManager {
 	 * @see org.gbif.portal.service.OccurrenceManager#getOccurrenceRecordCount()
 	 */
 	public int getTotalOccurrenceRecordCount() throws ServiceException {
-		return occurrenceRecordDAO.getTotalOccurrenceRecordCount();
+		return occurrenceRecordDAO.getTotalOccurrenceRecordCount() - occurrenceRecordDAO.getTotalOccurrenceRecordCountForDeletedProviders();
 	}
 
 	/* (non-Javadoc)
