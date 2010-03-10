@@ -871,6 +871,9 @@
 	<definition name="scientificNameHelp" extends="ajaxHtmlLayout"> 		
 		<put name="content" value="/WEB-INF/jsp/occurrence/help/scientificNameHelp.jsp"/>
 	</definition>
+	<definition name="collectorNumberHelp" extends="ajaxHtmlLayout"> 		
+		<put name="content" value="/WEB-INF/jsp/occurrence/help/collectorNumberHelp.jsp"/>
+	</definition>
 	<definition name="typeStatusHelp" extends="ajaxHtmlLayout"> 		
 		<put name="content" value="/WEB-INF/jsp/occurrence/help/typeStatusHelp.jsp"/>	
 	</definition>

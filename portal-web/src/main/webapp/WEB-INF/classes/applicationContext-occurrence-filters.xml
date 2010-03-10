@@ -35,6 +35,7 @@
 				<ref bean="dataResourceIdFilter"/>
 				<ref bean="hostCountryCodeFilter"/>
 				<ref bean="resourceNetworkIdFilter"/>
+				<ref bean="collectorNumberFilter" />
 				<!-- other details filters -->
 				<ref bean="occurrenceDateFilter"/>
 				<ref bean="yearRangeFilter"/>
@@ -483,6 +484,20 @@
 		</property>
 		<property name="filterHelper" ref="resourceNetworkIdFilterHelper"/>
 		<property name="editable" value="false"/>
+	</bean>
+	<bean id="collectorNumberFilter" parent="baseDatasetsFilter">
+		<property name="id" value="38" />
+		<property name="displayName"
+			value="occurrence.search.filter.dataset.collectornumber" />
+		<property name="subject"
+			value="SERVICE.OCCURRENCE.QUERY.SUBJECT.COLLECTORNUMBERID" />
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs" />
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true" />
+		<property name="helpView" value="/occurrence/collectorNumberHelp.htm" />
 	</bean>
 	<bean id="restrictionsFilter" parent="baseDatasetsFilter">
 		<property name="id" value="27"/>
