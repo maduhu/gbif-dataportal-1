@@ -58,6 +58,10 @@ public class RestController implements Controller {
 	protected List<String> supportedSubViews;
 	/** Additional properties - that default get added as attributes to the request */
 	protected Map<String, String> additionalProperties;
+	/** 
+	 * A string to check the slash at the end
+	 */
+	protected String endsWith;
 	
 	/**
 	 * Takes the requested url and splits out the properties in that url. <br>
@@ -69,7 +73,18 @@ public class RestController implements Controller {
 	 * @see org.springframework.web.servlet.mvc.multiaction.MultiActionController#handleRequestInternal(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	public final ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+		// Code added to verify the slash (/) in the URL.		
+		if (endsWith != null && request.getRequestURI().endsWith(endsWith)) {
+			String[] parts = request.getRequestURI().split("/");
+			boolean val = false;
+			String URL = "/";
+			for (int c = 2; c < parts.length; c++) {
+				URL += parts[c] + "/";
+			}
+			// System.out.println(URL);
+			return new ModelAndView(new RedirectView(URL, true));
+		}
+		// end code
 		String requestURI = request.getRequestURI();
 		//get path e.g. /taxonomy/1234/Summary.htm
 		String path = requestURI.substring(requestURI.indexOf(urlRoot)+urlRoot.length());
@@ -245,6 +260,13 @@ public class RestController implements Controller {
 	public String getUrlRoot() {
 		return urlRoot;
 	}
+	
+	/**
+	 * @return the endsWith
+	 */
+	public String getEndsWith() {
+		return endsWith;
+	}
 
 	/**
 	 * @param urlRoot the urlRoot to set
@@ -328,5 +350,12 @@ public class RestController implements Controller {
 	 */
 	public void setAdditionalProperties(Map<String, String> additionalProperties) {
 		this.additionalProperties = additionalProperties;
+	}
+	
+	/**
+	 * @param endsWith the endsWith to set
+	 */
+	public void setEndsWith(String endsWith) {
+		this.endsWith = endsWith;
 	}
 }
