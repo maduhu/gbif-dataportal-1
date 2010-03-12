@@ -54,6 +54,7 @@ public class GeographyController extends RestController {
 	protected String countryModelKey = "country";
 	protected String resourceCountsModelKey = "resourceCounts";
 	protected String countryCountsModelKey = "countryCounts";
+	protected String nonCountryCountsModelKey = "nonCountryCountsModelKey";
 	protected String hostedModelKey = "hosted";
 	protected boolean sortResourcesByCount = false;
 	
@@ -80,7 +81,8 @@ public class GeographyController extends RestController {
 			if(country!=null){
 				//sort counts into descending order
 				List<CountDTO> resourceCounts = geospatialManager.getDataResourceCountsForCountry(country.getIsoCountryCode(), true);
-				List<CountDTO> countryCounts = geospatialManager.getCountryCountsForCountry(country.getIsoCountryCode(), true, locale); 
+				List<CountDTO> countryCounts = geospatialManager.getCountryCountsForCountry(country.getIsoCountryCode(), true, locale);
+				List<CountDTO> nonCountryCounts = geospatialManager.getCountryCountsForCountry(country.getIsoCountryCode(), false, locale);
 				if(sortResourcesByCount){
 					Collections.sort(resourceCounts, new Comparator<CountDTO>(){
 						public int compare(CountDTO o1, CountDTO o2) {
@@ -103,6 +105,7 @@ public class GeographyController extends RestController {
 				mav.addObject(countryModelKey, country);
 				mav.addObject(resourceCountsModelKey, resourceCounts);
 				mav.addObject(countryCountsModelKey, countryCounts);
+				mav.addObject(nonCountryCountsModelKey, nonCountryCounts);
 				
 				if(logger.isDebugEnabled())
 					logger.debug("Returning details of:"+country);
