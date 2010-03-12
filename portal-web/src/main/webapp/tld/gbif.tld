@@ -536,6 +536,31 @@
   </tag>    
   
   <tag>
+    <description>Tag for format long options values of selects</description>
+    <name>formatDropDownList</name>
+    <tag-class>org.gbif.portal.web.tag.FormatDropDownListTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description>The text string</description>
+      <name>content</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <description>Max length of string value</description>
+      <name>maxLength</name>
+      <required>true</required>
+      <rtexprvalue>false</rtexprvalue>
+    </attribute>
+    <attribute>
+      <description>End string for long string values</description>
+      <name>end</name>
+      <required>true</required>
+      <rtexprvalue>false</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  <tag>
     <description>Returns the current date</description>
     <name>currentDate</name>
     <tag-class>org.gbif.portal.web.tag.CurrentDateTag</tag-class>
