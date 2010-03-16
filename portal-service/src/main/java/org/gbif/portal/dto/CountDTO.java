@@ -99,6 +99,8 @@ public class CountDTO implements Comparable<CountDTO> {
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	public int compareTo(CountDTO o) {
+		if(this.getName().compareTo(o.getName()) == 0)
+			return this.getKey().compareTo(o.getKey());
 		return this.getName().compareTo(o.getName());
 	}
 }

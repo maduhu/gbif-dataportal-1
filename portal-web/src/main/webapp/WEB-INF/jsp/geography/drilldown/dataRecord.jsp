@@ -76,7 +76,7 @@ function toggleTables(firstTable, secondTable, visibleClass){
         <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="24" predicate="0" value="${resourceCount.key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="0" index="2"/>"><fmt:formatNumber value="${resourceCount.count}" pattern="###,###"/></a>
       </td>
       <td class="lastColumn" style="width:200px;">
-        <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="28" predicate="0" value="1" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="24" predicate="0" value="${resourceCount.key}" index="2"/>"><fmt:formatNumber value="${nonResourceCounts[rowCounter.index].count-resourceCounts[rowCounter.index].count}" pattern="###,###"/></a>
+        <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="28" predicate="0" value="1" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="24" predicate="0" value="${nonResourceCounts[rowCounter.index].key}" index="2"/>"><fmt:formatNumber value="${nonResourceCounts[rowCounter.index].count-resourceCounts[rowCounter.index].count}" pattern="###,###"/></a>
       </td>
     </tr>
     </c:forEach>
