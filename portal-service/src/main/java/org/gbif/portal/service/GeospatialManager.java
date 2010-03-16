@@ -280,6 +280,20 @@ public interface GeospatialManager {
 	 */
 	public List<CountDTO> getDataResourceCountsForCountry(String isoCountryCode, boolean georeferencedOnly) throws ServiceException;	
 	
+	/** 
+	 * Syncronize both lists of "occurrence record counts for data resources in the supplied country".
+	 * The new lists will depend of the records that have the two lists, using the following rules:
+	 *  - If a record exists in the georef list but not in the nonGeoref list. The record will be added to the
+	 *  nonGeoref list with a value of 0 in its count attribute.  
+	 *  - If a record exists in the nonGeoref list but not in the georef list. The record will be added to the
+	 *  georef list with a value of 0 in its count attribute.
+	 *  - Both lists will have the same records in the same order.
+	 * 
+	 * @param georeferenced The list with georeferenced counts
+	 * @param nonGeoreferenced The list with non georeferenced counts.
+	 */	
+	public void synchronizeLists(List<CountDTO> georeferenced, List<CountDTO> nonGeoreferenced);
+	
 	/**
 	 * Returns a list of occurrence record counts for countries providing data for an country
 	 * (e.g.: Denmark hosts occurrences that were collected in Australia)

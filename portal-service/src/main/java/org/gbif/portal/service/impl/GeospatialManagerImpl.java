@@ -16,6 +16,7 @@ package org.gbif.portal.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -799,5 +800,47 @@ public class GeospatialManagerImpl implements GeospatialManager {
 	 */
 	public void setKeyValueDTOFactory(DTOFactory keyValueDTOFactory) {
 		this.keyValueDTOFactory = keyValueDTOFactory;
+	}
+	
+	public void synchronizeLists(List<CountDTO> georeferenced,
+			List<CountDTO> nonGeoreferenced) {
+		// Creating a clone list of non georeferenced records.
+		List<CountDTO> nonGeoreferencedTemp = new ArrayList<CountDTO>();
+		for(CountDTO count : nonGeoreferenced) {
+			nonGeoreferencedTemp.add(count);
+		}		
+		// Synchronizing...
+		for(Iterator<CountDTO> iCount = georeferenced.iterator(); iCount.hasNext();) {
+			CountDTO count = iCount.next();
+			boolean exist = false;
+			for(Iterator<CountDTO> iNon = nonGeoreferencedTemp.iterator(); !exist && iNon.hasNext();){
+				CountDTO nonCount = iNon.next();
+				if(count.getKey().equals(nonCount.getKey())) {
+					iNon.remove();
+					exist = true;
+				}							
+			}
+			if(!exist) {
+				CountDTO newCount = new CountDTO();
+				newCount.setKey(count.getKey());
+				newCount.setName(count.getName());
+				newCount.setProperties(count.getProperties());
+				newCount.setCount(0);
+				nonGeoreferenced.add(newCount);
+			}
+		}
+		for(CountDTO countTemp : nonGeoreferencedTemp) {
+			CountDTO count = new CountDTO();
+			count.setKey(countTemp.getKey());
+			count.setName(countTemp.getName());
+			count.setProperties(countTemp.getProperties());
+			count.setCount(0);
+			georeferenced.add(count);
+		}
+		nonGeoreferencedTemp.clear();
+		
+		// Both lists should be ordered.
+		Collections.sort(georeferenced);
+		Collections.sort(nonGeoreferenced);		
 	}
 }

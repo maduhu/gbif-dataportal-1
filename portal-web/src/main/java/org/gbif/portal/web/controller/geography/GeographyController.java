@@ -14,8 +14,10 @@
  ***************************************************************************/
 package org.gbif.portal.web.controller.geography;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -53,8 +55,9 @@ public class GeographyController extends RestController {
 	protected String zoomRequestKey = "zoom";	
 	protected String countryModelKey = "country";
 	protected String resourceCountsModelKey = "resourceCounts";
+	protected String nonResourceCountsModelKey = "nonResourceCounts";
 	protected String countryCountsModelKey = "countryCounts";
-	protected String nonCountryCountsModelKey = "nonCountryCountsModelKey";
+	protected String nonCountryCountsModelKey = "nonCountryCounts";
 	protected String hostedModelKey = "hosted";
 	protected boolean sortResourcesByCount = false;
 	
@@ -81,10 +84,20 @@ public class GeographyController extends RestController {
 			if(country!=null){
 				//sort counts into descending order
 				List<CountDTO> resourceCounts = geospatialManager.getDataResourceCountsForCountry(country.getIsoCountryCode(), true);
+				List<CountDTO> nonResourceCounts = geospatialManager.getDataResourceCountsForCountry(country.getIsoCountryCode(), false);
 				List<CountDTO> countryCounts = geospatialManager.getCountryCountsForCountry(country.getIsoCountryCode(), true, locale);
 				List<CountDTO> nonCountryCounts = geospatialManager.getCountryCountsForCountry(country.getIsoCountryCode(), false, locale);
+				geospatialManager.synchronizeLists(resourceCounts, nonResourceCounts);
+				geospatialManager.synchronizeLists(countryCounts, nonCountryCounts);
 				if(sortResourcesByCount){
 					Collections.sort(resourceCounts, new Comparator<CountDTO>(){
+						public int compare(CountDTO o1, CountDTO o2) {
+							if(o1==null || o2==null || o1.getCount()==null || o2.getCount()==null)
+								return -1;
+							return o1.getCount().compareTo(o2.getCount()) * -1;
+						}
+					});
+					Collections.sort(nonResourceCounts, new Comparator<CountDTO>(){
 						public int compare(CountDTO o1, CountDTO o2) {
 							if(o1==null || o2==null || o1.getCount()==null || o2.getCount()==null)
 								return -1;
@@ -104,6 +117,7 @@ public class GeographyController extends RestController {
 				ModelAndView mav = resolveAndCreateView(properties, request, false);
 				mav.addObject(countryModelKey, country);
 				mav.addObject(resourceCountsModelKey, resourceCounts);
+				mav.addObject(nonResourceCountsModelKey, nonResourceCounts);
 				mav.addObject(countryCountsModelKey, countryCounts);
 				mav.addObject(nonCountryCountsModelKey, nonCountryCounts);
 				
