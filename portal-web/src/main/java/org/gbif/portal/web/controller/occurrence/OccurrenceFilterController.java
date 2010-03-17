@@ -14,6 +14,7 @@
  ***************************************************************************/
 package org.gbif.portal.web.controller.occurrence;
 
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.Comparator;
@@ -208,7 +209,16 @@ public class OccurrenceFilterController extends MultiActionController {
 
 		//retrieve the criteria from the request
 		CriteriaDTO criteria  = CriteriaUtil.getCriteria(request,occurrenceFilters.getFilters());
-
+		if(request.getCharacterEncoding() == null) {
+			for(int c = 0; c < criteria.size(); c++) {
+				criteria.get(c).setValue(URLEncoder.encode(criteria.get(c).getValue(), "ISO-8859-1"));
+				criteria.get(c).setValue(URLDecoder.decode(criteria.get(c).getValue(), "UTF-8"));
+				criteria.get(c).setDisplayValue(URLEncoder.encode(criteria.get(c).getDisplayValue(), "ISO-8859-1"));
+				criteria.get(c).setDisplayValue(URLDecoder.decode(criteria.get(c).getDisplayValue(), "UTF-8"));
+				request.setCharacterEncoding("UTF-8");
+			}
+		}
+		
 		//check for data provider ids		
 		String[] dataProviderIds = request.getParameterValues(dataProviderParameterKey);
 		if(dataProviderIds!=null && dataProviderIds.length>0){
