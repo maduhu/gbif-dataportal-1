@@ -99,7 +99,10 @@ public class OpenModellerController extends MultiActionController {
 	public ModelAndView setupModel(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView(setupModelView);
 		List<FilterDTO> filters = occurrenceFilters.getFilters();
-		mav.addObject(filtersRequestKey, filters);
+		CriteriaDTO criteria = CriteriaUtil.getCriteria(request, filters);
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
+		mav.addObject(criteriaRequestKey, criteria);
 		mav.addObject(criteriaRequestKey, CriteriaUtil.getCriteria(request, filters));
 		String[] selectedLayers = request.getParameterValues(layerRequestKey);
 		if(selectedLayers!=null){
