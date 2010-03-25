@@ -13,7 +13,7 @@
 	  <repository>
 		<id>gbif</id>
 		<name>GBIF Repository</name>
-		<url>sftp://kiwaia.gbif.org/var/www/html/tools/maven/repository</url>
+		<url>sftp://b1g3.gbif.org/var/www/html/tools/maven/repository</url>
 	  </repository>
 	</distributionManagement>
 
@@ -228,8 +228,12 @@
 	</build>
 	<repositories>
 		<repository>
-           <id>gbif</id>
-           <url>http://tools.gbif.org/maven/repository/</url>
-       </repository>
+        	<id>gbif</id>
+        	<url>http://tools.gbif.org/maven/repository/</url>
+        	<snapshots>
+          		<enabled>true</enabled>
+          		<updatePolicy>always</updatePolicy>
+        	</snapshots>
+      	</repository>
     </repositories>
 </project>
