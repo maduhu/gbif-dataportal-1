@@ -7,5 +7,5 @@
 <div style="margin-left:30px;">
    <c:set var="occurrenceSearchSubject" value="20" scope="request"/> 
    <c:set var="occurrenceSearchValue" value="${taxonConcept.key}" scope="request"/>
- <tiles:insert page="/WEB-INF/jsp/geography/drilldown/dataRecord.jsp"/>
+ <tiles:insert page="/WEB-INF/jsp/geography/drilldown/speciesDataRecord.jsp"/>
 </div>
