@@ -880,6 +880,9 @@
 	<definition name="yearHelp" extends="ajaxHtmlLayout"> 		
 		<put name="content" value="/WEB-INF/jsp/occurrence/help/yearHelp.jsp"/>		
 	</definition>
+	<definition name="collectorNameHelp" extends="ajaxHtmlLayout"> 		
+		<put name="content" value="/WEB-INF/jsp/occurrence/help/collectorNameHelp.jsp"/>
+	</definition>
 	<definition name="monthHelp" extends="ajaxHtmlLayout"> 		
 		<put name="content" value="/WEB-INF/jsp/occurrence/help/monthHelp.jsp"/>			
 	</definition>

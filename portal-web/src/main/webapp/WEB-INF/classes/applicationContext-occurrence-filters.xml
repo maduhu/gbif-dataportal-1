@@ -36,6 +36,7 @@
 				<ref bean="hostCountryCodeFilter"/>
 				<ref bean="resourceNetworkIdFilter"/>
 				<ref bean="collectorNumberFilter" />
+				<ref bean="collectorNameFilter" />
 				<!-- other details filters -->
 				<ref bean="occurrenceDateFilter"/>
 				<ref bean="yearRangeFilter"/>
@@ -204,6 +205,7 @@
 		<property name="predicates">
 			<list>
 				<ref bean="predicateIs"/>
+				<ref bean="predicateIsNot"/>
 			</list>
 		</property>
 		<property name="wildcardFriendly" value="true"/>
@@ -318,6 +320,7 @@
 		<property name="predicates">
 			<list>
 				<ref bean="predicateIs"/>
+				<ref bean="predicateIsNot"/>
 			</list>
 		</property>
 		<property name="wildcardFriendly" value="true"/>
@@ -465,6 +468,7 @@
 		<property name="predicates">
 			<list>
 				<ref bean="predicateIs"/>
+				<ref bean="predicateIsNot"/>
 			</list>
 		</property>
 		<property name="valueType" value="java.lang.Long"/>
@@ -498,6 +502,21 @@
 		</property>
 		<property name="wildcardFriendly" value="true" />
 		<property name="helpView" value="/occurrence/collectorNumberHelp.htm" />
+	</bean>
+	<bean id="collectorNameFilter" parent="baseDatasetsFilter">
+		<property name="id" value="39" />
+		<property name="displayName"
+			value="occurrence.search.filter.dataset.collectorname" />
+		<property name="subject"
+			value="SERVICE.OCCURRENCE.QUERY.SUBJECT.COLLECTORNAME" />
+		<property name="predicates">
+			<list>
+				<ref bean="predicateIs" />
+				<ref bean="predicateIsLike" />
+			</list>
+		</property>
+		<property name="wildcardFriendly" value="true" />
+		<property name="helpView" value="/occurrence/collectorNameHelp.htm" />
 	</bean>
 	<bean id="restrictionsFilter" parent="baseDatasetsFilter">
 		<property name="id" value="27"/>

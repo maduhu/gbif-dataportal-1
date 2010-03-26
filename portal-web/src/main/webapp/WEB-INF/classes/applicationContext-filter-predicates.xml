@@ -21,6 +21,11 @@
 		<property name="id" value="0"/>										
 		<property name="value" value="filter.predicate.is"/>
 		<property name="key" value="SERVICE.QUERY.PREDICATE.EQUAL"/>
+	</bean>
+	<bean id="predicateIsNot" class="org.gbif.portal.web.filter.PredicateDTO">
+		<property name="id" value="0"/>										
+		<property name="value" value="filter.predicate.is.not"/>
+		<property name="key" value="SERVICE.QUERY.PREDICATE.NEQUAL"/>
 	</bean>  
 	<bean id="predicateIsLike" class="org.gbif.portal.web.filter.PredicateDTO">
 		<property name="id" value="1"/>										

@@ -189,6 +189,7 @@
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.DATAPROVIDERID" value="oc.dataProviderId"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.RESOURCENETWORKID" value="oc.dataResource.networkMemberships.resourceNetworkId"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.COLLECTORNUMBERID" value="oc.identifierRecords.identifier"/>
+                <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.COLLECTORNAME" value="oc.rawOccurrenceRecord.collectorName"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.BASISOFRECORD" value="oc.basisOfRecordCode"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOSPATIALISSUES" value="oc.geospatialIssue"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONOMICISSUES" value="oc.taxonomicIssue"/>
