@@ -43,7 +43,7 @@ public class LogMessageDTOFactory extends BaseDTOFactory {
 			lmDTO.setPortalInstanceKey(lm.getPortalInstanceId().toString());
 		lmDTO.setLogGroupId(lm.getLogGroupId());
 		lmDTO.setEventId(lm.getEventId());
-		if(lm.getEventId()!=null && lm.getEventId()!=0){
+		if(lm.getEventId()!=null && lm.getEventId()!=0 && LogEvent.get(lm.getEventId().intValue())!=null){
 			lmDTO.setEventName(((LogEvent)LogEvent.get(lm.getEventId().intValue())).getName());
 		}
 		lmDTO.setLevel(lm.getLevel());
