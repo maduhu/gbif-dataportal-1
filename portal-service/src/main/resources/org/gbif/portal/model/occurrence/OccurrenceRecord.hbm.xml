@@ -65,6 +65,7 @@
     <property name="month" column="month" not-null="false"/>
 
     <property name="occurrenceDate" column="occurrence_date" type="timestamp" not-null="false"/>
+	<property name="modified" column="modified" type="timestamp" not-null="false"/>
 
     <property name="basisOfRecord" column="basis_of_record" not-null="true" type="org.gbif.portal.model.occurrence.BasisOfRecord"/>
     <property name="basisOfRecordCode" column="basis_of_record" update="false" insert="false"/>
