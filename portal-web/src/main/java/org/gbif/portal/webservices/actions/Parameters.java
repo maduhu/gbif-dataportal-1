@@ -165,7 +165,7 @@ public abstract class Parameters {
 			}
 
 			searchConstraints.setStartIndex(startIndex);
-			searchConstraints.setMaxResults(maxResults + 1);
+			searchConstraints.setMaxResults(maxResults);
 		}
 		catch (GbifWebServiceException gwse) {
 			throw(gwse);
