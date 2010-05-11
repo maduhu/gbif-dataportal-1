@@ -92,7 +92,8 @@ public class ZoomLevel {
 				break;
 			}
 		}
-		return selectedZoomLevel;
+		if(selectedZoomLevel.level>3)selectedZoomLevel=ZOOM_LEVEL_3;
+			return selectedZoomLevel;
 	}
 
 	/**
