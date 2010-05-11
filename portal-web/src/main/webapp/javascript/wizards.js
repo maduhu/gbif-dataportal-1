@@ -107,6 +107,11 @@ function setBoundingBox(filterIndex){
 
 function setCoordinatesForMapSelector(){
 	
+	if(selectedPointX==undefined)
+		selectedPointX=selectedRootX;
+	if(selectedPointY==undefined)
+		selectedPointY=selectedRootY;
+		
 	northCoordinate = selectedRootY> selectedPointY ? selectedRootY:selectedPointY;
 	southCoordinate = selectedRootY< selectedPointY ? selectedRootY:selectedPointY;
 	eastCoordinate = selectedRootX> selectedPointX ? selectedRootX:selectedPointX;
