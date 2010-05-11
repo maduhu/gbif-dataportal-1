@@ -8,7 +8,7 @@ $request.contextPath/datasets/resource/harvestList.xml
   xsi:schemaLocation="eml://ecoinformatics.org/eml-2.0.1 $request.contextPath/schema/eml.xsd">
   <dataset>
     <title><![CDATA[$dataResource.name]]></title>
-    <creator id="1" scope="document">
+    <creator id="creator-1" scope="document">
       <individualName>
         <givenName>$!owner.firstName</givenName>
         <surName>$!owner.lastName</surName>
@@ -120,10 +120,8 @@ protocol for a webservice endpoint -->
     </contact>
 #end 
 #if(!$agents || $agents.isEmpty() )      
-    <contact id="1">
-      <individualName>
-        <surName>TO BE ADDED</surName>
-      </individualName>
+    <contact>
+    	<references>creator-1</references>
     </contact>
 #end    
 <!-- for now allow access as primarily demonstration -->
