@@ -322,6 +322,10 @@ public class TaxonConceptUtils {
 			return;
 		
 		List<RelationshipAssertionDTO> raDTOs = retrieveSynonyms(tcDTO.getKey());
+		for (int i = 0; i < raDTOs.size(); i++) {
+			if (raDTOs.get(i).getFromTaxonName().equals(tcDTO.getTaxonName()))
+				raDTOs.remove(i);
+		}
 		if(raDTOs!=null && raDTOs.size()>0){
 			StringBuffer synonymList = new StringBuffer();
 			for(int i=0; i<raDTOs.size(); i++){
