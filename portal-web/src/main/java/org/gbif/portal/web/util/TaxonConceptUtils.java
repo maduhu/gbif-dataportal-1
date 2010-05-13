@@ -322,32 +322,34 @@ public class TaxonConceptUtils {
 			return;
 		
 		List<RelationshipAssertionDTO> raDTOs = retrieveSynonyms(tcDTO.getKey());
-		for (int i = 0; i < raDTOs.size(); i++) {
-			if (raDTOs.get(i).getFromTaxonName().equals(tcDTO.getTaxonName()))
-				raDTOs.remove(i);
-		}
-		if(raDTOs!=null && raDTOs.size()>0){
-			StringBuffer synonymList = new StringBuffer();
-			for(int i=0; i<raDTOs.size(); i++){
-				if(i>0)
-					synonymList.append(", ");
-				synonymList.append(raDTOs.get(i).getFromTaxonName());
+		if(raDTOs!=null){
+			for (int i = 0; i < raDTOs.size(); i++) {
+				if (raDTOs.get(i).getFromTaxonName().equals(tcDTO.getTaxonName()))
+					raDTOs.remove(i);
 			}
-			String warningMessage = null;
-			Object[] objects = new Object[2];
-			//the accepted name
-			objects[0] = tcDTO.getTaxonName();
-			//the synonym list
-			objects[1] = synonymList.toString();
-			
-			if(raDTOs.size()>1)
-				warningMessage = messageSource.getMessage(synonymsWarning, objects, locale);
-			else
-				warningMessage = messageSource.getMessage(synonymWarning, objects, locale);
-			
-			warnings.add(warningMessage);
-		}
-	}	
+			if(raDTOs.size()>0){
+				StringBuffer synonymList = new StringBuffer();
+				for(int i=0; i<raDTOs.size(); i++){
+					if(i>0)
+						synonymList.append(", ");
+					synonymList.append(raDTOs.get(i).getFromTaxonName());
+				}
+				String warningMessage = null;
+				Object[] objects = new Object[2];
+				//the accepted name
+				objects[0] = tcDTO.getTaxonName();
+				//the synonym list
+				objects[1] = synonymList.toString();
+				
+				if(raDTOs.size()>1)
+					warningMessage = messageSource.getMessage(synonymsWarning, objects, locale);
+				else
+					warningMessage = messageSource.getMessage(synonymWarning, objects, locale);
+				
+				warnings.add(warningMessage);
+			}
+		}	
+	}
 	
 	/**
 	 * @param taxonomyManager the taxonomyManager to set
