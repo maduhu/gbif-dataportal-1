@@ -149,7 +149,7 @@
 		<property name="userUtils" ref="userUtils"/>
 		<property name="urlRoot" value="species"/>
 		<property name="viewNamePrefix" value="species"/>
-		<property name="defaultView" value="/welcome.htm"/>
+		<property name="defaultView" value="/species/"/>
 		<property name="showCharts" value="true"/>		
 		<property name="supportedSubViews">
 			<list>

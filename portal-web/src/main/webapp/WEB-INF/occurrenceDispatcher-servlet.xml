@@ -96,7 +96,7 @@
     <property name="dataProviderServices" ref="dataProviderServices" />
     <property name="urlRoot" value="occurrences" />
     <property name="viewNamePrefix" value="occurrenceRecord" />
-    <property name="defaultView" value="/welcome.htm" />
+    <property name="defaultView" value="/occurrences/search.htm" />
     <property name="queryViewUrl" value="/occurrences/search.htm?" />
     <property name="cellWidth" value="1" />
     <property name="messageSource" ref="messageSource" />

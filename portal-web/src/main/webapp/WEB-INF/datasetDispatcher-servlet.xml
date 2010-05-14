@@ -68,6 +68,7 @@
         <prop key="/network/*/overviewMap.png">networkWidgetResolvingController</prop>
         <prop key="/network/*/overviewmap.png">networkWidgetResolvingController</prop>
         <!--prop key="/**/*">datasetController</prop-->
+        <prop key="*">datasetBrowserController</prop>
       </props>
     </property>
   </bean>
@@ -97,6 +98,8 @@
     <property name="harvestingLogManager" ref="harvestingLogManager" />
     <property name="dataResourceManager" ref="harvestingDataResourceManager" />
     <property name="urlRoot" value="datasets" />
+	<property name="endsWith" value="indexing" />
+	<property name="defaultView" value="/indexing/" />
     <property name="supportedPatterns">
       <list>
         <list>

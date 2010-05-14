@@ -60,6 +60,11 @@ public class RestController implements Controller {
 	protected Map<String, String> additionalProperties;
 	
 	/**
+	* A string to check the slash at the end
+	*/
+	protected String endsWith;	
+	
+	/**
 	 * Takes the requested url and splits out the properties in that url. <br>
 	 * E.g. "/taxonomy/2324/Summary" where  "taxonomy" is the root will have 2 properties
 	 * "2324" and "Summary"
@@ -70,6 +75,18 @@ public class RestController implements Controller {
 	 */
 	public final ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+		// Code added to verify the slash (/) in the URL.
+		if (endsWith != null && request.getRequestURI().endsWith(endsWith)) {
+			String[] parts = request.getRequestURI().split("/");
+			boolean val = false;
+			String URL = "/";
+			for (int c = 2; c < parts.length; c++) {
+				URL += parts[c] + "/";
+			}
+			return new ModelAndView(new RedirectView(URL, true));
+		}
+		// end code		
+		
 		String requestURI = request.getRequestURI();
 		//get path e.g. /taxonomy/1234/Summary.htm
 		String path = requestURI.substring(requestURI.indexOf(urlRoot)+urlRoot.length());
@@ -223,6 +240,20 @@ public class RestController implements Controller {
 		encodedParam = encodedParam.trim();
 		encodedParam = encodedParam.replaceAll("_", " ");
 		return encodedParam; 
+	}
+	
+	/**
+	* @return the endsWith
+	*/
+	public String getEndsWith() {
+		return endsWith;
+	}
+	
+	/**
+	* @param endsWith the endsWith to set
+	*/
+	public void setEndsWith(String endsWith) {
+		this.endsWith = endsWith;
 	}
 
 	/**

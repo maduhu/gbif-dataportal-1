@@ -23,7 +23,8 @@
 				<prop key="/taxonomyFinder.htm">taxonomyRedirectController</prop>
 				<prop key="/browse/">taxonomyBrowseController</prop>
 				<prop key="/browse/**/*">taxonomyBrowseController</prop>
-				<prop key="/browse/taxon/*">taxonomyBrowseController</prop>				
+				<prop key="/browse">taxonomyBrowseController</prop>
+				<prop key="/browse/taxon/*">taxonomyBrowseController</prop>		
 				<prop key="/browse/taxon/**/*">taxonomyBrowseController</prop>								
 				<prop key="/browse/resource/**/*">taxonomyBrowseController</prop>
 				<prop key="/browse/provider/**/*">taxonomyBrowseController</prop>				
