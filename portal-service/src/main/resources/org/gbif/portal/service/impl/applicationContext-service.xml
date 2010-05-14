@@ -605,6 +605,7 @@
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONOMICISSUES" value="taxonomicIssue"/>								
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OTHERISSUES" value="otherIssue"/-->				
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEDATE" value="occurrenceDate"/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEMODIFICATIONDATE" value="modified"/>
 				<!--entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUSCOUNT" value="typeStatus"/>
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUS" value="typeStatus"/-->
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.YEAR" value="year"/>				
@@ -657,8 +658,6 @@
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.GEOSPATIALISSUES" value="geospatialIssue"/>				
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONOMICISSUES" value="taxonomicIssue"/>								
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OTHERISSUES" value="otherIssue"/>				
-				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEDATE" value="occurrenceDate"/>
-				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEMODIFICATIONDATE" value="modified"/>
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUSCOUNT" value="typeStatus"/>
 				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TYPESTATUS" value="oc.typeStatus.typeStatus"/>
 				-->				

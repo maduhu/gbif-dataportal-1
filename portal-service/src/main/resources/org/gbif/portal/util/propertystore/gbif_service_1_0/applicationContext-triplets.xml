@@ -193,6 +193,7 @@
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.TAXONOMICISSUES" value="oc.taxonomicIssue"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OTHERISSUES" value="oc.otherIssue"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEDATE" value="oc.occurrenceDate"/>
+                <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEMODIFICATIONDATE" value="oc.modified"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.YEAR" value="oc.year"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.YEARRANGE" value="oc.year"/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.MONTH" value="oc.month"/>
@@ -297,6 +298,7 @@
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.LONGITUDE.MULTIPLECONDITION" value=" and "/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.PUBLICATION.MULTIPLECONDITION" value=" or "/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEDATE.MULTIPLECONDITION" value=" and "/>
+				<entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.OCCURRENCEMODIFICATIONDATE.MULTIPLECONDITION" value=" and "/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.COUNTRY.MULTIPLECONDITION" value=" or "/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.INSTITUTIONCODE.MULTIPLECONDITION" value=" or "/>
                 <entry key="SERVICE.OCCURRENCE.QUERY.SUBJECT.COLLECTIONCODE.MULTIPLECONDITION" value=" or "/>
