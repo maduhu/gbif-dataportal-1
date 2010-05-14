@@ -60,7 +60,8 @@
 
 <c:if test="${dataResource!=null}">
 <ul class="genericList">
-	<li><a href="${pageContext.request.contextPath}/datasets/resource/${dataResource.key}/datatracking/"><spring:message code="indexing.history.view.unprocessed"/></a></li>
+	<li><a href="${pageContext.request.contextPath}/datasets/resource/${dataResource.key}/datatracking/"><spring:message code="indexing.history.preview.indexed"/></a></li>
+	<table><tr><td style="background-color:#D4ECF5;"><spring:message code="indexing.history.preview.indexed.message"/></td></tr></table>
 </ul>	
 </c:if>
 
