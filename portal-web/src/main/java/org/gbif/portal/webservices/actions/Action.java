@@ -179,7 +179,7 @@ public abstract class Action {
 		{
 			summaryMap.put("totalMatched", (new Integer(parameters.getStartIndex() + listSize).toString()));
 		}
-		if (parameters.getMaxResults() < listSize && includeNext) {
+		if (parameters.getMaxResults() < listSize+1 && includeNext) {
 			list = list.subList(0, parameters.getMaxResults());
 			Integer next = new Integer(parameters.getStartIndex() + list.size());
 			summaryMap.put("next", next.toString());
