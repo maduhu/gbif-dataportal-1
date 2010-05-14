@@ -296,6 +296,27 @@ public class OccurrenceRecordDAOImpl extends HibernateDaoSupport implements Occu
 		return criteria;
 	}
 	
+    /** 
+     * @see org.gbif.portal.dao.occurrence.OccurrenceRecordDAO#getTotalOccurrenceRecordCountForDeletedProviders()
+     */
+    public int getTotalOccurrenceRecordCountForDeletedProviders() {         
+                    HibernateTemplate template = getHibernateTemplate();
+                    Object count = template.execute(new HibernateCallback() {
+                            public Object doInHibernate(Session session) {
+                                            Query query = session
+                                                            .createQuery("select count(*) from OccurrenceRecord oc where oc.dataProvider.deleted is not null");
+                                    query.setCacheable(true);
+                                    return query.uniqueResult();
+                            }
+                    });             
+                    if (count instanceof Integer)
+                            return ((Integer)count).intValue();
+                    if (count instanceof Long)
+                            return ((Long)count).intValue();
+                    return 0;       
+    }
+	
+	
 	/**
 	 * @see org.gbif.portal.dao.occurrence.OccurrenceRecordDAO#getTotalOccurrenceRecordCount()
 	 */

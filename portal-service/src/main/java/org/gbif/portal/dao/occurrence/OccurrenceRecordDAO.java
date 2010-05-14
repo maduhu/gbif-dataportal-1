@@ -108,6 +108,14 @@ public interface OccurrenceRecordDAO {
 	 */
 	public int getTotalOccurrenceRecordCount();
 	
+    /**
+     * Return the total number of occurrence records from deleted providers.
+	* 
+	* @return the total number of occurrence records from deleted providers.
+	*/
+	public int getTotalOccurrenceRecordCountForDeletedProviders();
+	
+	
 	/**
 	 * Returns a list of the centiCellId and the count for the taxonConcept within the cell
 	 * id provided, or an empty list 
