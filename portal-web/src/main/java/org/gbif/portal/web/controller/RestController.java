@@ -75,13 +75,7 @@ public class RestController implements Controller {
 	public final ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Code added to verify the slash (/) in the URL.		
 		if (endsWith != null && request.getRequestURI().endsWith(endsWith)) {
-			String[] parts = request.getRequestURI().split("/");
-			boolean val = false;
-			String URL = "/";
-			for (int c = 2; c < parts.length; c++) {
-				URL += parts[c] + "/";
-			}
-			// System.out.println(URL);
+			String URL = "/"+request.getRequestURI().substring(request.getRequestURI().indexOf(urlRoot))+"/";
 			return new ModelAndView(new RedirectView(URL, true));
 		}
 		// end code
