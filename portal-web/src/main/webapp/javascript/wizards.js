@@ -615,7 +615,7 @@ function select_innerHTML(objeto, innerHTML) {
 	if (innerHTML.toLowerCase().indexOf("<option") < 0) {//se não é option eu converto
 		innerHTML = "<option>" + innerHTML + "</option>"
 	}
-	innerHTML = innerHTML.toLowerCase().replace(/<option/g, "<span").replace(
+	innerHTML = innerHTML.replace(/<option/g, "<span").replace(
 			/<\/option/g, "</span")
 	selTemp.innerHTML = innerHTML
 
