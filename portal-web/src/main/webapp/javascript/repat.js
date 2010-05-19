@@ -5,7 +5,8 @@ var selectedRow = null;
 var selectedCol = null;
 var serverUrl="http://localhost:8080/portaldev/";
 var captionUrl = "http://localhost:8080/portaldev/countries/repatriation/ajaxCaption?";
-var mapServerUrl = "http://maps.gbif.org/mapserver/draw.pl?dtype=box&imgonly=1&mode=browse&refresh=Refresh&layer=countryborders&layer=countrylabel&path=";
+var mapServerUrl ="http://ogc.gbif.org/wms?request=GetMap&bgcolor=0x666698&styles=,,&layers=gbif:country_fill,gbif:tabDensityLayer,gbif:country_borders&srs=EPSG:4326&filter=()(%3CFilter%3E%3CPropertyIsEqualTo%3E%3CPropertyName%3Eurl%3C/PropertyName%3E%3CLiteral%3E%3C![CDATA[";
+var mapServerUrlEnd ="]]%3E%3C/Literal%3E%3C/PropertyIsEqualTo%3E%3C/Filter%3E)()&width=720&height=360&Format=image/png&bbox=-180,-90,180,90";
 var mapLayerUrl = "http://localhost:8080/portaldev/maplayers/homeCountry/";
 var hostCountryUrl = "http://localhost:8080/portaldev/countries/hosted/";
 var countryUrl = "http://localhost:8080/portaldev/countries/";
@@ -109,7 +110,7 @@ function selectCell(){
    var host = selectedCell.id.substring(0,2);
    var country = selectedCell.id.substring(3,5);
    var layerPath=host+"/"+country+".txt";
-   var img = mapServerUrl+mapLayerUrl+layerPath;
+   var img = mapServerUrl+mapLayerUrl+layerPath+mapServerUrlEnd;
    
     //retrieve caption
     var callback = {

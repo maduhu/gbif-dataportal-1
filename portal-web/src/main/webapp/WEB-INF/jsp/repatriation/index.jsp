@@ -131,7 +131,6 @@ How to do searches:<br/>
 //set callback and mapserver urls
 var serverUrl="http://${header.host}${pageContext.request.contextPath}";
 var captionUrl = "http://${header.host}${pageContext.request.contextPath}/countries/repatriation/ajaxCaption?";
-var mapServerUrl = "http://maps.gbif.org/mapserver/draw.pl?dtype=box&imgonly=1&mode=browse&refresh=Refresh&layer=countryborders&layer=countrylabel&path=";
 
 <c:set var="repatriationMaplayers"><gbif:propertyLoader bundle="portal" property="repatriationMaplayers"/></c:set>
 <c:choose>
