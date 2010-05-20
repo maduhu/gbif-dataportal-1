@@ -3,12 +3,28 @@
 	<h2><spring:message code="version"/> <gbif:propertyLoader bundle="portal" property="version"/> (Published: <gbif:propertyLoader bundle="portal" property="versionDate"/>)</h2>
 	<h3><spring:message code="version.features"/></h3>
 </div>
+
+<ul class="genericList">
+	<li><a href="${pageContext.request.contextPath}/occurrence/">Occurrence search</a> - Bug fixing related to search filters and results being returned </li>
+	<li><a href="${pageContext.request.contextPath}/ws/">Web services</a> - More accurate occurrence web service responses </li>
+	<li><a href="${pageContext.request.contextPath}/countries/AG">Maps</a> - Improved map usability and bug fixing </li>
+	<li>Several GUI enhancements</li>
+</ul>
+<a href="${pageContext.request.contextPath}/bugs.htm">Click here</a> for a complete list of fixes/enhancements in this version
+
+<h4>Features added in version 1.2.6 (Published: October, 2009)</h4>
+<ul class="genericList">
+	<li><a href="${pageContext.request.contextPath}/feedback/occurrence/45891569">Feedback</a> - STMP Server now easily configured by mirrors and institutions/organisations developing specific portal customisations </li>
+	<li><a href="${pageContext.request.contextPath}/feedback/occurrence/45891569">Feedback</a> - Improved feedback workflow </li>
+	<li>Several GUI enhancements</li>
+</ul>
+
+<h4>Features added in version 1.2.5 (Published: August, 2009)</h4>
 <ul class="genericList">
 	<li><a href="${pageContext.request.contextPath}/countries/AR">Maps</a> - Switched from MapServer to GeoServer as the map content provider for the data portal</li>
 	<li><a href="${pageContext.request.contextPath}/occurrences/45340996/rawProviderMessage/">Original record from data provider</a> - Improved user experience while downloading the original record from the provider</li>
 	<li>Several GUI enhancements</li>
 </ul>
-<a href="${pageContext.request.contextPath}/bugs.htm">Click here</a> for a complete list of fixes/enhancements in this version
 
 <h4>Features added in version 1.2.4 (Published: June, 2009)</h4>
 <ul class="genericList">

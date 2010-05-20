@@ -4,6 +4,34 @@
 	<h3><spring:message code="bugs.fixes"/></h3>
 </div>
 <ul class="genericList">
+		<li>Occurrence search - initialise variables of bounding box to avoid NaN values -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=56">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/search.htm">SAMPLE</a></li>
+		<li>Occurrence search - When selecting datasets, second drop down is now showing -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=50">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/">SAMPLE</a></li>
+		<li>Occurrence search - Dataset names are shortened when selecting from the dataset select box -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=19">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/">SAMPLE</a></li>
+		<li>Occurrence search results - Suppress message on recognised synonyms when strings identical -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=75">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/search.htm?c[0].s=0&c[0].p=0&c[0].o=Bacillariophyta">SAMPLE</a></li>
+		<li>Occurrence download - Collector number is now returned (in all formats) -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=71">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/downloadSpreadsheet.htm?c[0].s=0&c[0].p=0&c[0].o=Amphilophus%20macracanthus&c[1].s=24&c[1].p=0&c[1].o=1023">SAMPLE</a></li>
+		<li>Occurrence web service - Date last modified filter working properly -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=61">issue tracking</a> - <a href="${pageContext.request.contextPath}/ws/rest/occurrence/list?dataresourcekey=222&originisocountrycode=ES&modifiedsince=2009-01-01">SAMPLE</a></li>
+		<li>Occurrence web service - Response brings back exact number of records -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=72">issue tracking</a> - <a href="${pageContext.request.contextPath}/ws/rest/occurrence/list?scientificname=solanum">SAMPLE</a></li>		
+		<li>Data tracking page - Change wording on "View unprocessed data" -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=81">issue tracking</a> - <a href="${pageContext.request.contextPath}/datasets/resource/654/indexing/">SAMPLE</a></li>
+		<li>General - Improved treatment of the portal's urls -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=11">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences">SAMPLE</a></li>
+		<li>Main page - Does not include counts from deleted data providers -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=74">issue tracking</a> - <a href="${pageContext.request.contextPath}/">SAMPLE</a></li>
+		<li>Maps - Geoserver shows all points when using the tab-density plugin -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=82">issue tracking</a> - <a href="${pageContext.request.contextPath}/countries/AG">SAMPLE</a></li>
+		<li>Maps - Max default zoom level is now set to 3 (to give users at least a recognisable part of a continent) -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=39">issue tracking</a> - <a href="${pageContext.request.contextPath}/countries/AG">SAMPLE</a></li>
+</ul>
+<h4>Bug fixes in version 1.2.6</h4>
+<ul class="genericList">
+		<li>Feedback sent through mirror sites - Mirrors now have the ability to configure their own SMTP server to be used by the mirror web application
+		<li>Occurrence Page - In the individual record display, "Dataset Rights" field was included -- <a href="${pageContext.request.contextPath}/occurrences/42352199/">SAMPLE</a></li>
+		<li>Occurrences Download - "Dataset Rights" column is now included in the Excel spreadsheet, CSV file and tab delimited file, when downloading occurrence records -- <a href="${pageContext.request.contextPath}/occurrences/downloadSpreadsheet.htm?c[0].s=0&c[0].p=0&c[0].o=Inga%20vera&c[1].s=37&c[1].p=0&c[1].o=0">SAMPLE</a></li>		
+		<li>Feedback messages - Users are informed of the "verify your e-mail" process once they submit feedback through the data portal (in case they are not registered) -- <a href="${pageContext.request.contextPath}/feedback/occurrence/45891569">SAMPLE</a></li>
+		<li>Species Page - Fixed inconsistency between map display and list of contributing resources -- <a href="${pageContext.request.contextPath}/species/13803552/">SAMPLE</a></li>
+		<li>Occurrence Page - In the individual record display, slight change in order of appearance for "Collector name" -- <a href="${pageContext.request.contextPath}/occurrences/110056/">SAMPLE</a></li>
+		<li>Species/Occurrences pages - Give more information to the user about the kind of feedback being sent -- <a href="${pageContext.request.contextPath}/occurrences/15904399/">SAMPLE</a></li>
+		<li>Species Pages - When a species is shown and it doesn't have any georeferenced records, map won't be displayed  -- <a href="${pageContext.request.contextPath}/species/14443938/">SAMPLE</a></li>
+</ul>
+
+
+<h4>Bug fixes in version 1.2.5</h4>
+<ul class="genericList">
 		<li>Maps - Switch from Mapserver to Geoserver as map content provider -- <a href="${pageContext.request.contextPath}/countries/AR">SAMPLE</a></li>
 		<li>Occurrence search results - Fixed centi-cell accuracy when returning occurrence records within a 1 degree area -- <a href="${pageContext.request.contextPath}/occurrences/searchWithTable.htm?c[1].p=0&c[0].s=24&c[1].o=16.1W%2C28.6N%2C16.0W%2C28.7N&c[0].o=1896&c[0].p=0&c[1].s=19">SAMPLE</a></li>
 		<li>Retrieve original record from data provider - Added a 'graceful' error message when the provider is inaccesible  -- <a href="${pageContext.request.contextPath}/occurrences/45340996/rawProviderMessage/">SAMPLE</a></li>
