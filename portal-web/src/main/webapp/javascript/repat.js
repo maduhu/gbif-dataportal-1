@@ -9,6 +9,11 @@ var mapServerUrl = "http://maps.gbif.org/mapserver/draw.pl?dtype=box&imgonly=1&m
 var mapLayerUrl = "http://localhost:8080/portaldev/maplayers/homeCountry/";
 var hostCountryUrl = "http://localhost:8080/portaldev/countries/hosted/";
 var countryUrl = "http://localhost:8080/portaldev/countries/";
+
+var geoServerURL = "http://ogc.gbif.org/wms?request=GetMap&bgcolor=0x666698&styles=,,&layers=gbif:country_fill,gbif:tabDensityLayer,gbif:country_borders&srs=EPSG:4326&width=721&height=362&Format=image/png&bbox=-180,-90,180,90&";
+var geoServerFilterPrefix = "filter=()(<Filter><PropertyIsEqualTo><PropertyName>url</PropertyName><Literal><![CDATA[";
+var geoServerFilterPostfix = "]]></Literal></PropertyIsEqualTo></Filter>)()()";
+
 var overviewMapFileName = "overviewMap.png";
 var debug = false;
 
@@ -109,7 +114,9 @@ function selectCell(){
    var host = selectedCell.id.substring(0,2);
    var country = selectedCell.id.substring(3,5);
    var layerPath=host+"/"+country+".txt";
-   var img = mapServerUrl+mapLayerUrl+layerPath;
+   //var img = mapServerUrl+mapLayerUrl+layerPath;
+   var img = geoServerURL + geoServerFilterPrefix + mapLayerUrl + layerPath + geoServerFilterPostfix;
+
    
     //retrieve caption
     var callback = {
