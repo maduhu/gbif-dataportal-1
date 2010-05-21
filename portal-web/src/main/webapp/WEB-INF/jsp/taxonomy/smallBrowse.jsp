@@ -15,9 +15,7 @@
 			<h3><spring:message code="taxonomy.browser.title.accordingto"/>: 
 				<c:choose>
 				<c:when test="${dataProvider!=null && dataProvider.key==nubProvider.key}">
-					The Global Biodiversity Information Facility: GBIF Data Portal Classification 
-					(based on <a href="${pageContext.request.contextPath}/datasets/provider/2">Catalogue of Life Annual Checklist</a>, 
-					with provisional additions from specimen and observation data resources)			
+					<spring:message code="taxonomy.browser.title.classification" arguments="${pageContext.request.contextPath}/datasets/provider/2"/>
 				</c:when>
 				<c:otherwise>
 					<a href="${pageContext.request.contextPath}/datasets/provider/${dataProvider.key}">${dataProvider.name}</a><c:if test="${dataResource!=null}">: <a href="${pageContext.request.contextPath}/datasets/resource/${dataResource.key}">${dataResource.name}</a></c:if></h3>
