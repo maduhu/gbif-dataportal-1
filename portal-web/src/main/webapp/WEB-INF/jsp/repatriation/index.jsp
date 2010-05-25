@@ -31,7 +31,7 @@ How to do searches:<br/>
       <select name="host" onchange="javascript:document.viewOptions.submit();">
         <option value="all" <c:if test="${empty param['host'] || param['host']=='all'}">selected="true"</c:if>>All</option>
         <c:forEach items="${hostsOrdered}" var="host">
-        <c:if test="${host!='TW'}">
+        <c:if test="${host!='TW' && host!='CN' && host!='UK'}">
         <option value="${host}" <c:if test="${param['host']==host}">selected="true"</c:if>><spring:message code="country.${host}"/></option>
         </c:if>
         </c:forEach> 
@@ -44,7 +44,7 @@ How to do searches:<br/>
       <select name="country" onchange="javascript:document.viewOptions.submit();">
         <option value="all" <c:if test="${empty param['country'] || param['country']=='all'}">selected="true"</c:if>>All</option>
         <c:forEach items="${countryList}" var="country">
-        <c:if test="${country.isoCountryCode!='TW'}">
+        <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && country.isoCountryCode!='CN'}">
          <option value="${country.isoCountryCode}" <c:if test="${param['country']==country.isoCountryCode}">selected="true"</c:if>>
           <gbif:capitalize>${country.name}</gbif:capitalize>
          </option>
@@ -131,7 +131,7 @@ How to do searches:<br/>
 //set callback and mapserver urls
 var serverUrl="http://${header.host}${pageContext.request.contextPath}";
 var captionUrl = "http://${header.host}${pageContext.request.contextPath}/countries/repatriation/ajaxCaption?";
-var mapServerUrl = "http://maps.gbif.org/mapserver/draw.pl?dtype=box&imgonly=1&mode=browse&refresh=Refresh&layer=countryborders&layer=countrylabel&path=";
+//var mapServerUrl = "http://maps.gbif.org/mapserver/draw.pl?dtype=box&imgonly=1&mode=browse&refresh=Refresh&layer=countryborders&layer=countrylabel&path=";
 
 <c:set var="repatriationMaplayers"><gbif:propertyLoader bundle="portal" property="repatriationMaplayers"/></c:set>
 <c:choose>
