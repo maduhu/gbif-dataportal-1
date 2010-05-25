@@ -103,6 +103,7 @@
 		<property name="viewNamePrefix" value="taxonomyBrowse"/>
 		<property name="defaultView" value="/welcome.htm"/>
 		<property name="messageSource" ref="messageSource"/>
+		<property name="occurrenceManager" ref="occurrenceManager"/>
 	</bean>
 
 	<!-- Pygmy Style Taxonomy Tree Browser -->

@@ -63,6 +63,12 @@
       <required>false</required>
       <rtexprvalue>true</rtexprvalue>
     </attribute>
+    <attribute>
+      <description>Occurrence Manager to count occurrences</description>
+      <name>occurrenceManager</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
   </tag>
 
   <tag>
