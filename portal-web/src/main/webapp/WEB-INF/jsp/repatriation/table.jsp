@@ -6,7 +6,7 @@
       <img src="${pageContext.request.contextPath}/images/hostCountryLegend.gif"/>
     </td>
     <c:forEach items="${hosts}" var="host" varStatus="hostIndex">
-    	<c:if test="${host!='TW'}">   
+    	<c:if test="${host!='TW' && host!='UK' && host!='CN'}">   
         <td id="host-${host}" class="hostLabel"
           <c:choose>
             <c:when test="${host!='XX'}">title="<spring:message code="country.abbr.${host}" text="${host}"/>"</c:when>
@@ -33,7 +33,7 @@
     <c:if test="${!countrySelected && !hostSelected}"><td>&nbsp;</td></c:if>  
   </tr>
   <c:forEach items="${countries}" var="country" varStatus="countryIndex">
-    <c:if test="${country.isoCountryCode!='TW' && (!countrySelected || param['country']==country.isoCountryCode)}">   
+    <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && country.isoCountryCode!='CN' && (!countrySelected || param['country']==country.isoCountryCode)}">   
     <tr class="rowEntry">
       <td id="country-${country.isoCountryCode}" class="leftLabel" title="<spring:message code="country.abbr.${country.isoCountryCode}" text="${country.isoCountryCode}"/>">
        <c:if test="${showFlags && country.isoCountryCode!='XX'}"><img src="${pageContext.request.contextPath}/images/flags/<string:lowerCase>${country.isoCountryCode}</string:lowerCase>.gif"/></c:if>
@@ -56,7 +56,7 @@
       </string:trim></td>
        <c:set var="tagArray" value="${stats[country.isoCountryCode]}"/>
        <c:forEach items="${tagArray}" var="stat" varStatus="statIndex">
-       	<c:if test="${hosts[statIndex.index]!='TW'}">
+       	<c:if test="${hosts[statIndex.index]!='TW' && hosts[statIndex.index]!='UK' && hosts[statIndex.index]!='CN'}">
          <td id="${stat.fromEntityName}-${stat.toEntityName}"><string:trim>
             <c:choose>
                 <c:when test="${selectedView=='concise'}">
@@ -114,7 +114,7 @@
   <c:if test="${!countrySelected && !hostSelected}">
   <tr class="bottomLabels">
     <td>&nbsp;</td>
-    <c:forEach items="${hosts}" var="host"><c:if test="${host!='TW'}"><td id="host-${host}" title="<spring:message code="country.abbr.${host}" text="${host}"/>"><string:trim>
+    <c:forEach items="${hosts}" var="host"><c:if test="${host!='TW' && host!='CN' && host!='UK'}"><td id="host-${host}" title="<spring:message code="country.abbr.${host}" text="${host}"/>"><string:trim>
           <c:choose>
             <c:when test="${host!='XX'}">
               <p><string:trim>
