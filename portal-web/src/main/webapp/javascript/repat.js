@@ -11,8 +11,8 @@ var hostCountryUrl = "http://localhost:8080/portaldev/countries/hosted/";
 var countryUrl = "http://localhost:8080/portaldev/countries/";
 
 var geoServerURL = "http://ogc.gbif.org/wms?request=GetMap&bgcolor=0x666698&styles=,,&layers=gbif:country_fill,gbif:tabDensityLayer,gbif:country_borders&srs=EPSG:4326&width=721&height=362&Format=image/png&bbox=-180,-90,180,90&";
-var geoServerFilterPrefix = "filter=()(<Filter><PropertyIsEqualTo><PropertyName>url</PropertyName><Literal><![CDATA[";
-var geoServerFilterPostfix = "]]></Literal></PropertyIsEqualTo></Filter>)()()";
+var geoServerFilterPrefix = "filter=%28%29%28<Filter><PropertyIsEqualTo><PropertyName>url</PropertyName><Literal><![CDATA[";
+var geoServerFilterPostfix = "]]></Literal></PropertyIsEqualTo></Filter>%29%28%29";
 
 var overviewMapFileName = "overviewMap.png";
 var debug = false;
