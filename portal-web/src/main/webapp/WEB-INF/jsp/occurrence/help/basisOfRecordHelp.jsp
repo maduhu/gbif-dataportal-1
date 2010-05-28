@@ -1,6 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 <div class="otherDetailsFilterHelp">
-<spring:message code="occurrence.basisOfRecord.help1"/>
+<c:set var="addFilterMsg"><spring:message code="search.filter.add.filter"/></c:set>
+<spring:message code="occurrence.basisOfRecord.help1" arguments="${addFilterMsg}" argumentSeparator="$$$"/>
 <spring:message code="occurrence.basisOfRecord.help2"/>
 <ul class="helpList">
 	<li><span class="subject"><spring:message code="occurrence.basisOfRecord.observation"/></span> <spring:message code="occurrence.basisOfRecord.observation.description"/></li>

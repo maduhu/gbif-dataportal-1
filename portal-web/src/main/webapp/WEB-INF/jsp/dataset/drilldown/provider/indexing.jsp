@@ -13,7 +13,7 @@
 				<a href="${pageContext.request.contextPath}/datasets/provider/${dataProvider.key}/logs/"><spring:message code="view.event.logs.for" text="View event logs for"/> ${dataProvider.name}</a>
 			</li>
 			<li>
-				<span class="new">New!</span> <a href="${pageContext.request.contextPath}/datasets/provider/${dataProvider.key}/indexing/"><spring:message code="view.event.logs.for" text="View indexing history for"/> ${dataProvider.name}</a>
+				<span class="new"><spring:message code="new"/></span> <a href="${pageContext.request.contextPath}/datasets/provider/${dataProvider.key}/indexing/"><spring:message code="view.indexing.history.for" text="View indexing history for"/> ${dataProvider.name}</a>
 			</li>
 		</ul>
 	</c:when>

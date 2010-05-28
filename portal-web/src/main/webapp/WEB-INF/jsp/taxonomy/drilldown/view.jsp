@@ -1,7 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 <div id="twopartheader">
 	<h2>
-		<string:capitalize>${taxonConcept.rank}</string:capitalize>: 
+		<string:capitalize><spring:message code="taxonrank.${taxonConcept.rank}" /></string:capitalize>: 
 		<span class="subject"><gbif:taxonPrint concept="${taxonConcept}"/> <c:if test="${not empty taxonConcept.author}">${taxonConcept.author}</c:if></span>
 	</h2>
 	<h3>

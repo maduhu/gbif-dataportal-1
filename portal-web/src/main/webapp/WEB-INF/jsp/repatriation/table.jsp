@@ -23,8 +23,7 @@
                </string:trim></p>
             </c:when>
             <c:otherwise>
-              <spring:message code="repat.abbr.international" text="Int."/><br/>
-              <spring:message code="repat.abbr.int.networks" text="networks"/>
+              <spring:message code="repat.abbr.intl.networks.line.separated"/>
             </c:otherwise>
           </c:choose>  
         </string:trim></td>
@@ -130,8 +129,7 @@
                <c:if test="${showFlags}"><img src="${pageContext.request.contextPath}/images/flags/<string:lowerCase>${host}</string:lowerCase>.gif"/></c:if>
             </c:when>
             <c:otherwise>
-              <spring:message code="repat.abbr.international" text="Int."/><br/>
-              <spring:message code="repat.abbr.int.networks" text="networks"/>
+              <spring:message code="repat.abbr.intl.networks.line.separated"/>
             </c:otherwise>
           </c:choose>  
         </string:trim></td></c:if></c:forEach>  

@@ -195,6 +195,7 @@ public class TaxonResolvingController extends RestController {
 		if(taxonConceptDTO!=null){
 			request.setAttribute(conceptKeyModelKey, conceptIdentifier);
 			request.setAttribute(taxonConceptModelKey, taxonConceptDTO);
+			request.setAttribute("messageSource", messageSource);
 			if(propertiesMap.get(commonNameRequestKey)!=null){
 				request.setAttribute(commonNameModelKey, propertiesMap.get(commonNameRequestKey));
 			}

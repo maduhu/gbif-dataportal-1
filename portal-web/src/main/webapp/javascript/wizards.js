@@ -444,7 +444,9 @@ function dateChanged(){
 		displayDate = getSelectorDisplayDate(startDateDiv);
 	} else {
 		dateValue = getSelectorDate(startDateDiv)+"-"+getSelectorDate(endDateDiv);
-		displayDate = "between " +getSelectorDisplayDate(startDateDiv) +" and "+ getSelectorDisplayDate(endDateDiv);
+		if (betweenMsg==undefined)betweenMsg="between";
+		if (andMsg==undefined)andMsg="and";
+		displayDate = betweenMsg +" " +getSelectorDisplayDate(startDateDiv) +" "+andMsg+" "+ getSelectorDisplayDate(endDateDiv);
 	}
 	setWizardValues(0, dateValue, displayDate);
 }
@@ -559,7 +561,9 @@ function yearRangeChanged(){
 	}
 
 	var	dateValue = startYear+"-"+endYear;
-	var	displayDate = "between " +startYear +" and "+ endYear;
+	if (betweenMsg==undefined)betweenMsg="between";
+	if (andMsg==undefined)andMsg="and";
+	var	displayDate = betweenMsg+" " +startYear +" "+andMsg+" "+ endYear;
 	setWizardValues(0, dateValue, displayDate);
 }
 

@@ -4,7 +4,7 @@
 		<h2>
 		<c:choose>
 			<c:when test="${taxonConcept!=null}">
-				<spring:message code="taxonomy.browser.classification.of"/> <span class="subject"><string:capitalize>${taxonConcept.rank}</string:capitalize>: <gbif:taxonPrint concept="${taxonConcept}"/></span> ${taxonConcept.author}
+				<spring:message code="taxonomy.browser.classification.of"/> <span class="subject"><string:capitalize><spring:message code="taxonrank.${taxonConcept.rank}"/></string:capitalize>: <gbif:taxonPrint concept="${taxonConcept}"/></span> ${taxonConcept.author}
 			</c:when>
 			<c:otherwise>
 				<spring:message code="taxonomy.browser.classification"/>
@@ -27,7 +27,7 @@
 
 	<c:if test="${taxonConcept!=null}">
 		<div id="furtherActions">
-			<h4><spring:message code='actions.for'/> <string:capitalize>${taxonConcept.rank}</string:capitalize>: <gbif:taxonPrint concept="${taxonConcept}"/> ${taxonConcept.author}</h4>
+			<h4><spring:message code='actions.for'/> <string:capitalize><spring:message code="taxonrank.${taxonConcept.rank}"/></string:capitalize>: <gbif:taxonPrint concept="${taxonConcept}"/> ${taxonConcept.author}</h4>
 			<table cellspacing="1" class="actionsList">
 				<tbody>
 					<c:set var="conceptKey" value="${taxonConcept.isNubConcept ? taxonConcept.key : taxonConcept.partnerConceptKey}"/>

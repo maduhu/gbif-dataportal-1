@@ -48,6 +48,12 @@
     </c:forEach>
     </optgroup>
 </select>
+<c:set var="betweenMsg"><spring:message code="between"/></c:set>
+<c:set var="andMsg"><spring:message code="and"/></c:set>
+<script type="text/javascript">
+	var betweenMsg="${betweenMsg}";
+	var andMsg="${andMsg}";
+</script>
 
 <c:if test="${filterSubject==0}">
 <script type="text/javascript">

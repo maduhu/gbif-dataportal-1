@@ -562,6 +562,14 @@ public class RepatriationController extends MultiActionController {
 		
 		SearchResultsDTO searchResults = geospatialManager.findAllCountries(locale);
 		List<CountryDTO> countryList = searchResults.getResults();
+		//order countries by locale string 
+		Collections.sort(countryList, new Comparator<CountryDTO>(){
+			public int compare(CountryDTO o1, CountryDTO o2) {
+				String c1 = messageSource.getMessage(countryI18nPrefix+o1.getIsoCountryCode(), null, locale);
+				String c2 = messageSource.getMessage(countryI18nPrefix+o2.getIsoCountryCode(), null, locale);
+				return c1.compareTo(c2);
+			}
+		});
 		HashMap<String, CountryDTO> countryMap = new HashMap<String, CountryDTO>();
 		for(CountryDTO cDTO : countryList){
 			countryMap.put(cDTO.getIsoCountryCode(), cDTO);

@@ -15,7 +15,7 @@
 				<a href="${pageContext.request.contextPath}/datasets/resource/${dataResource.key}/logs/"><spring:message code="view.event.logs.for" text="View event logs for"/> ${dataResource.name}</a>
 			</li>
 			<li>
-				<span class="new">New!</span> <a href="${pageContext.request.contextPath}/datasets/resource/${dataResource.key}/indexing/"><spring:message code="view.indexing.history.for" text="View indexing history for"/> ${dataResource.name}</a>
+				<span class="new"><spring:message code="new"/></span> <a href="${pageContext.request.contextPath}/datasets/resource/${dataResource.key}/indexing/"><spring:message code="view.indexing.history.for" text="View indexing history for"/> ${dataResource.name}</a>
 			</li>
 		</ul>
 	</c:when>

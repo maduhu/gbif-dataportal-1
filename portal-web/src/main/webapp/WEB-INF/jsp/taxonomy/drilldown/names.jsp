@@ -21,7 +21,7 @@
 		<tr valign="top">
 			<td class="label"><spring:message code="taxonomy.classification"/></td>
 			<td>
-				<gbif:flattree classname="classificationCondensed" concepts="${partner.higherConcepts}" selectedConcept="${partner.taxonConcept}"/>
+				<gbif:flattree classname="classificationCondensed" concepts="${partner.higherConcepts}" selectedConcept="${partner.taxonConcept}" messageSource="${messageSource}"/>
 			</td>
 		</tr>
 	</c:if>

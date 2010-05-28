@@ -1,35 +1,35 @@
 <%@ include file="/common/taglibs.jsp"%>
 <tiles:insert page="title.jsp"/>
 <p>
-The table shows numbers of records, for countries (and in some cases regions within countries), shared by other countries and international networks.<br/>
-How to do searches:<br/>
+<spring:message code="repat.tabledescription"/><br/><br/>
+<spring:message code="repat.how.to.search.title"/><br/>
 <ul class="genericList">
-<li>Using the drop-down menu select the country(ies) of interest and country(ies) that host data for them</li>
-<li><b>Countries that host data</b>: Select a country at the top of the table (that is, by column) to get an overview of the data they share.</li>
-<li><b>Countries to which the data are relevant</b>: Select a country on the left (that is, by row) for an overview of the numbers of records relevant to that country that are shared by other countries or international networks.</li>
-<li><b>Intersecting</b> cells indicate the number of records hosted and shared by country X/international networks that are relevant to country Y.</li>
+<li><spring:message code="repat.how.to.search.list.item1"/></li>
+<li><spring:message code="repat.how.to.search.list.item2"/></li>
+<li><spring:message code="repat.how.to.search.list.item3"/></li>
+<li><spring:message code="repat.how.to.search.list.item4"/></li>
 </ul>
 </p>
 <form id="repatChangeViewForm" name="viewOptions" method="get" action="">
 <table>
   <tr>
     <td>
-      Change view:
+	  <spring:message code="repat.select.view"/>
     </td>
     <td>
 		<select name="view" onchange="javascript:document.viewOptions.submit();">
-			<option value="concise" <c:if test="${param['view']=='concise'}">selected="true"</c:if>>Summary</option>
-		 	<option value="iso" <c:if test="${param['view']=='iso'}">selected="true"</c:if>>Detailed view</option>
-	    	<option value="percent" <c:if test="${param['view']=='percent'}">selected="true"</c:if>>Percentages</option>            
-			<option value="full" <c:if test="${param['view']=='full'}">selected="true"</c:if>>Detailed view (with country names)</option>
+			<option value="concise" <c:if test="${param['view']=='concise'}">selected="true"</c:if>><spring:message code="repat.select.view.option.concise"/></option>
+		 	<option value="iso" <c:if test="${param['view']=='iso'}">selected="true"</c:if>><spring:message code="repat.select.view.option.iso"/></option>
+	    	<option value="percent" <c:if test="${param['view']=='percent'}">selected="true"</c:if>><spring:message code="repat.select.view.option.percent"/></option>            
+			<option value="full" <c:if test="${param['view']=='full'}">selected="true"</c:if>><spring:message code="repat.select.view.option.full"/></option>
 		</select>
 	</td>
     <td style="padding-left:15px;">
-      Host:
+      <spring:message code="repat.select.host"/>
     </td>
     <td>
       <select name="host" onchange="javascript:document.viewOptions.submit();">
-        <option value="all" <c:if test="${empty param['host'] || param['host']=='all'}">selected="true"</c:if>>All</option>
+        <option value="all" <c:if test="${empty param['host'] || param['host']=='all'}">selected="true"</c:if>><spring:message code="repat.select.host.option.all"/></option>
         <c:forEach items="${hostsOrdered}" var="host">
         <c:if test="${host!='TW' && host!='CN' && host!='UK'}">
         <option value="${host}" <c:if test="${param['host']==host}">selected="true"</c:if>><spring:message code="country.${host}"/></option>
@@ -38,15 +38,15 @@ How to do searches:<br/>
       </select>
     </td>		
     <td style="padding-left:15px;">
-      Country:
+      <spring:message code="repat.select.country"/>
     </td>
     <td>
       <select name="country" onchange="javascript:document.viewOptions.submit();">
-        <option value="all" <c:if test="${empty param['country'] || param['country']=='all'}">selected="true"</c:if>>All</option>
+        <option value="all" <c:if test="${empty param['country'] || param['country']=='all'}">selected="true"</c:if>><spring:message code="repat.select.country.option.all"/></option>
         <c:forEach items="${countryList}" var="country">
         <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && country.isoCountryCode!='CN'}">
          <option value="${country.isoCountryCode}" <c:if test="${param['country']==country.isoCountryCode}">selected="true"</c:if>>
-          <gbif:capitalize>${country.name}</gbif:capitalize>
+          <spring:message code="country.${country.isoCountryCode}"/>
          </option>
         </c:if> 
         </c:forEach> 
@@ -74,7 +74,7 @@ How to do searches:<br/>
 <tiles:insert page="table.jsp"/>
 
 <p style="margin-top:20px;">
-	International networks and others participating in GBIF:<br/>
+	<spring:message code="repat.intl.networks.list.title"/><br/>
 	<ul class="genericList">
 		<li>AndinoNET</li>
 		<li>BioNET-ASEANET</li>

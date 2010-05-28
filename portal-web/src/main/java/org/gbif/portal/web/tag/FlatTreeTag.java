@@ -27,6 +27,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.gbif.portal.dto.taxonomy.BriefTaxonConceptDTO;
 import org.gbif.portal.dto.util.TaxonRankType;
+import org.springframework.context.MessageSource;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 /**
  * Simple tag that takes a taxatree and writes it out in an unordered list
@@ -48,7 +50,8 @@ public class FlatTreeTag extends TagSupport {
 	
 	protected String generaClassName = "genera";
 	protected String speciesUrlPrefix = "/species/";
-	
+	/** The message source */
+	protected MessageSource messageSource;
 	/**
 	 * @see javax.servlet.jsp.tagext.TagSupport#doEndTag()
 	 */
@@ -73,7 +76,11 @@ public class FlatTreeTag extends TagSupport {
 			while (iter.hasNext()){
 				BriefTaxonConceptDTO conceptDTO = iter.next();
 				sb.append("<li>");
-				sb.append(StringUtils.capitalize(conceptDTO.getRank()));
+				if(messageSource != null) {
+					sb.append(messageSource.getMessage("taxonrank."+conceptDTO.getRank(), null, RequestContextUtils.getLocale(request)));
+				} else {
+					sb.append(StringUtils.capitalize(conceptDTO.getRank()));
+				}
 				sb.append(": ");			
 				boolean isSelectedConcept = false;
 				if(selectedConcept!=null)
@@ -128,5 +135,12 @@ public class FlatTreeTag extends TagSupport {
 	 */
 	public void setClassname(String classname) {
 		this.classname = classname;
+	}
+	
+	/**
+	 * @param messageSource The messageSource to set.
+	 */
+	public void setMessageSource(MessageSource messageSource) {
+		this.messageSource = messageSource;
 	}
 }

@@ -266,6 +266,12 @@
       <name>classname</name>
       <required>false</required>
       <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <description>i18n</description>
+      <name>messageSource</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
     </attribute>	  
    </tag>
 	
