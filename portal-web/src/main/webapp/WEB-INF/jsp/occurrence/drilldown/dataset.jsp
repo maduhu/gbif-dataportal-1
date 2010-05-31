@@ -139,8 +139,25 @@
 	<!-- Image records -->
 	<c:if test="${not empty imageRecords}">
 	<p>	
+		<c:set var="showTitle">true</c:set>
 		<c:forEach items="${imageRecords}" var="imageRecord">
-			<label><spring:message code="image"/>:</label> <c:choose>
+			<c:choose>
+				<c:when  test="${showTitle==true}">
+				<c:choose>
+					<c:when test="${fn:length(imageRecords)==1}">
+							<label><spring:message code="image"/>:</label>
+					</c:when>
+					<c:otherwise>
+							<label><spring:message code="images" text="Images"/>:</label>
+					</c:otherwise>
+				</c:choose>	
+				<c:set var="showTitle">false</c:set>
+				</c:when>
+				<c:otherwise>
+					<label></label>
+				</c:otherwise>
+			</c:choose>
+			<c:choose>
 				<c:when test="${not empty imageRecord.htmlForDisplay}">
 						${imageRecord.htmlForDisplay}
 				</c:when>
@@ -159,6 +176,40 @@
 						<c:otherwise>
 							<a href="${imageRecord.url}">${imageRecord.url}</a>
 						</c:otherwise>
+					</c:choose>	
+				</c:when>		
+			</c:choose>
+			<br/>
+		</c:forEach>
+		</p>	
+	</c:if>
+	<!-- Link records -->
+	<c:if test="${not empty linkRecords}">
+	<p>	
+		<c:set var="showTitle">true</c:set>
+		<c:forEach items="${linkRecords}" var="linkRecord">
+			<c:choose>
+				<c:when  test="${showTitle==true}">
+				<c:choose>
+					<c:when test="${fn:length(linkRecords)==1}">
+							<label><spring:message code="link" text="Link"/>:</label>
+					</c:when>
+					<c:otherwise>
+							<label><spring:message code="links" text="Links"/>:</label>
+					</c:otherwise>
+				</c:choose>	
+				<c:set var="showTitle">false</c:set>
+				</c:when>
+				<c:otherwise>
+					<label></label>
+				</c:otherwise>
+			</c:choose>	
+			<c:choose>
+				<c:when test="${not empty linkRecord.url}">
+					<c:choose>
+						<c:when test="${linkRecord.linkType==1}">
+							<a href="${linkRecord.url}">${linkRecord.url}</a>
+						</c:when>
 					</c:choose>	
 				</c:when>		
 			</c:choose>
