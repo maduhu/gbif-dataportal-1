@@ -1,7 +1,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 <c:choose>
   <c:when test="${not empty param['host'] && param['host']=='XX'}">
-    <c:set var="hostName" scope="request"><spring:message code="repat.int.networks" text="Int. networks"/></c:set>
+    <c:set var="hostName" scope="request"><spring:message code="repat.abbr.intl.networks"/></c:set>
   </c:when>
   <c:when test="${not empty param['host'] && param['host']!='XX'}">
     <c:set var="hostName" scope="request"><gbif:capitalize>${host.name}</gbif:capitalize></c:set>

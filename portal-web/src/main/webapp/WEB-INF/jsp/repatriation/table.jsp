@@ -10,7 +10,7 @@
         <td id="host-${host}" class="hostLabel"
           <c:choose>
             <c:when test="${host!='XX'}">title="<spring:message code="country.abbr.${host}" text="${host}"/>"</c:when>
-            <c:otherwise>title="<spring:message code="repat.int.networks" text="networks"/>"</c:otherwise>
+            <c:otherwise>title="<spring:message code="repat.networks"/>"</c:otherwise>
           </c:choose>><string:trim>
           <c:choose>
             <c:when test="${host!='XX'}">
