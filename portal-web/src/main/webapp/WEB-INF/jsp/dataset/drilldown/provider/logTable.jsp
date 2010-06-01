@@ -118,9 +118,9 @@
 </span><br/>
 
 <ul class="classificationCondensed" style="margin-top:10px;margin-bottom:10px; margin-left:170px;">
-<li><a href="javascript:setDateSelector('sd','<fmt:formatDate value="${lastWeek}" pattern="dd"/>','<fmt:formatDate value="${lastWeek}" pattern="MM"/>','<fmt:formatDate value="${lastWeek}" pattern="yyyy"/>');setDateSelector('ed','<fmt:formatDate value="${today}" pattern="dd"/>','<fmt:formatDate value="${today}" pattern="MM"/>','<fmt:formatDate value="${today}" pattern="yyyy"/>');">Last week</a></li>
-<li><a href="javascript:setDateSelector('sd','<fmt:formatDate value="${oneMonthAgo}" pattern="dd"/>','<fmt:formatDate value="${oneMonthAgo}" pattern="MM"/>','<fmt:formatDate value="${oneMonthAgo}" pattern="yyyy"/>');setDateSelector('ed','<fmt:formatDate value="${today}" pattern="dd"/>','<fmt:formatDate value="${today}" pattern="MM"/>','<fmt:formatDate value="${today}" pattern="yyyy"/>');">Last month</a></li>
-<li><a href="javascript:setDateSelector('sd','<fmt:formatDate value="${oneYearAgo}" pattern="dd"/>','<fmt:formatDate value="${oneYearAgo}" pattern="MM"/>','<fmt:formatDate value="${oneYearAgo}" pattern="yyyy"/>');setDateSelector('ed','<fmt:formatDate value="${today}" pattern="dd"/>','<fmt:formatDate value="${today}" pattern="MM"/>','<fmt:formatDate value="${today}" pattern="yyyy"/>');">Last year</a></li>
+<li><a href="javascript:setDateSelector('sd','<fmt:formatDate value="${lastWeek}" pattern="dd"/>','<fmt:formatDate value="${lastWeek}" pattern="MM"/>','<fmt:formatDate value="${lastWeek}" pattern="yyyy"/>');setDateSelector('ed','<fmt:formatDate value="${today}" pattern="dd"/>','<fmt:formatDate value="${today}" pattern="MM"/>','<fmt:formatDate value="${today}" pattern="yyyy"/>');"><spring:message code="log.console.last.week"/></a></li>
+<li><a href="javascript:setDateSelector('sd','<fmt:formatDate value="${oneMonthAgo}" pattern="dd"/>','<fmt:formatDate value="${oneMonthAgo}" pattern="MM"/>','<fmt:formatDate value="${oneMonthAgo}" pattern="yyyy"/>');setDateSelector('ed','<fmt:formatDate value="${today}" pattern="dd"/>','<fmt:formatDate value="${today}" pattern="MM"/>','<fmt:formatDate value="${today}" pattern="yyyy"/>');"><spring:message code="log.console.last.month"/></a></li>
+<li><a href="javascript:setDateSelector('sd','<fmt:formatDate value="${oneYearAgo}" pattern="dd"/>','<fmt:formatDate value="${oneYearAgo}" pattern="MM"/>','<fmt:formatDate value="${oneYearAgo}" pattern="yyyy"/>');setDateSelector('ed','<fmt:formatDate value="${today}" pattern="dd"/>','<fmt:formatDate value="${today}" pattern="MM"/>','<fmt:formatDate value="${today}" pattern="yyyy"/>');"><spring:message code="log.console.last.year"/></a></li>
 </ul>
 
 <input type="submit" value="<spring:message code="log.console.submit" text="refresh"/>"/>
@@ -128,7 +128,7 @@
 <c:if test="${not empty searchResults}">
 <p style="padding-top:10px; padding-bottom:0px; margin-bottom:3px;">
 <input id="download" name="download" type="checkbox" style="display:none;"/>
-<img src="${pageContext.request.contextPath}/images/icons/disk.gif"/> <a href="javascript:downloadLogs('logConsoleForm');">Download these logs</a>
+<img src="${pageContext.request.contextPath}/images/icons/disk.gif"/> <a href="javascript:downloadLogs('logConsoleForm');"><spring:message code="log.console.download"/></a>
 <script type="text/javascript">
 	function downloadLogs(formId){
 		var form = document.getElementById(formId);

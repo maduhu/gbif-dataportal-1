@@ -148,7 +148,7 @@
 							<label><spring:message code="image"/>:</label>
 					</c:when>
 					<c:otherwise>
-							<label><spring:message code="images" text="Images"/>:</label>
+							<label><spring:message code="images"/>:</label>
 					</c:otherwise>
 				</c:choose>	
 				<c:set var="showTitle">false</c:set>
@@ -192,10 +192,10 @@
 				<c:when  test="${showTitle==true}">
 				<c:choose>
 					<c:when test="${fn:length(linkRecords)==1}">
-							<label><spring:message code="link" text="Link"/>:</label>
+							<label><spring:message code="link"/>:</label>
 					</c:when>
 					<c:otherwise>
-							<label><spring:message code="links" text="Links"/>:</label>
+							<label><spring:message code="links"/>:</label>
 					</c:otherwise>
 				</c:choose>	
 				<c:set var="showTitle">false</c:set>

@@ -14,7 +14,7 @@
 <table>
   <tr>
     <td>
-	  <spring:message code="repat.select.view"/>
+	  <spring:message code="repat.select.view"/>:
     </td>
     <td>
 		<select name="view" onchange="javascript:document.viewOptions.submit();">
@@ -25,11 +25,11 @@
 		</select>
 	</td>
     <td style="padding-left:15px;">
-      <spring:message code="repat.select.host"/>
+      <spring:message code="repat.select.host"/>:
     </td>
     <td>
       <select name="host" onchange="javascript:document.viewOptions.submit();">
-        <option value="all" <c:if test="${empty param['host'] || param['host']=='all'}">selected="true"</c:if>><spring:message code="repat.select.host.option.all"/></option>
+        <option value="all" <c:if test="${empty param['host'] || param['host']=='all'}">selected="true"</c:if>><spring:message code="repat.select.option.all"/></option>
         <c:forEach items="${hostsOrdered}" var="host">
         <c:if test="${host!='TW' && host!='CN' && host!='UK'}">
         <option value="${host}" <c:if test="${param['host']==host}">selected="true"</c:if>><spring:message code="country.${host}"/></option>
@@ -38,11 +38,11 @@
       </select>
     </td>		
     <td style="padding-left:15px;">
-      <spring:message code="repat.select.country"/>
+      <spring:message code="repat.select.country"/>:
     </td>
     <td>
       <select name="country" onchange="javascript:document.viewOptions.submit();">
-        <option value="all" <c:if test="${empty param['country'] || param['country']=='all'}">selected="true"</c:if>><spring:message code="repat.select.country.option.all"/></option>
+        <option value="all" <c:if test="${empty param['country'] || param['country']=='all'}">selected="true"</c:if>><spring:message code="repat.select.option.all"/></option>
         <c:forEach items="${countryList}" var="country">
         <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && country.isoCountryCode!='CN'}">
          <option value="${country.isoCountryCode}" <c:if test="${param['country']==country.isoCountryCode}">selected="true"</c:if>>
@@ -58,7 +58,7 @@
 
 <p>
 <img src="${pageContext.request.contextPath}/images/icons/disk.gif"/> 
-<a href="${pageContext.request.contextPath}/countries/repatriation/table.txt?download=true&stylesheet=repat.xsl<c:if test="${not empty param['host']}">&host=${param['host']}</c:if><c:if test="${not empty param['host']}">&country=${param['country']}</c:if>">Download as tab file</a></li>
+<a href="${pageContext.request.contextPath}/countries/repatriation/table.txt?download=true&stylesheet=repat.xsl<c:if test="${not empty param['host']}">&host=${param['host']}</c:if><c:if test="${not empty param['host']}">&country=${param['country']}</c:if>"><spring:message code="repat.download"/></a></li>
 </p>
 
 <style type="text/css">
