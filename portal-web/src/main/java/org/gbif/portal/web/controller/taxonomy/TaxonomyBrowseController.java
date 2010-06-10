@@ -27,6 +27,7 @@ import org.gbif.portal.dto.taxonomy.BriefTaxonConceptDTO;
 import org.gbif.portal.dto.taxonomy.TaxonConceptDTO;
 import org.gbif.portal.dto.util.TaxonRankType;
 import org.gbif.portal.service.DataResourceManager;
+import org.gbif.portal.service.OccurrenceManager;
 import org.gbif.portal.service.ServiceException;
 import org.gbif.portal.service.TaxonomyManager;
 import org.gbif.portal.web.content.filter.FilterContentProvider;
@@ -102,6 +103,11 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 	protected String messageSourceModelKey = "messageSource";
 	/** Whether or not to display unconfirmed names */
 	protected boolean allowUnconfirmed = true;
+	
+	protected String occurrenceManagerModelKey = "occurrenceManager";
+	
+	/** occurrenceManager for the taxonomy occurrences calculation */
+	protected OccurrenceManager occurrenceManager;
 	
 	/**
 	 * @see org.gbif.portal.web.controller.RestController#handleRequest(java.util.List, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -212,6 +218,7 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 				//add taxonomy search criteria- Compare classifications of
 				CriteriaDTO taxonomyCriteria = filterContentProvider.getTaxonomySearchCriteria(selectedConcept);
 				mav.addObject(taxonomyCriteriaModelKey, taxonomyCriteria);
+				mav.addObject(occurrenceManagerModelKey, occurrenceManager);
 			}
 		} catch (ServiceException e) {
 			logger.error(e.getMessage(), e);
@@ -396,5 +403,12 @@ public class TaxonomyBrowseController extends RestKeyValueController {
    */
   public void setAllowUnconfirmed(boolean allowUnconfirmed) {
   	this.allowUnconfirmed = allowUnconfirmed;
+  }
+
+  /**
+   * @param occurrenceManager the occurrenceManager to set
+   */
+  public void setOccurrenceManager(OccurrenceManager occurrenceManager) {
+		this.occurrenceManager = occurrenceManager;
   }
 }

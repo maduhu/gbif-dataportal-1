@@ -90,7 +90,7 @@
 		<c:when test="${not empty concepts}">
 			<tiles:insert page="quickTaxonSearch.jsp"/>
 			<div id="taxonomytree" class="smalltree">
-				<gbif:smallbrowser concepts="${concepts}" rootUrl="${rootUrl}" highestRank="${highestRank}" selectedConcept="${taxonConcept}" markConceptBelowThreshold="${dataProvider.key==nubProvider.key}" messageSource="${messageSource}"/>
+				<gbif:smallbrowser concepts="${concepts}" rootUrl="${rootUrl}" highestRank="${highestRank}" selectedConcept="${taxonConcept}" markConceptBelowThreshold="${dataProvider.key==nubProvider.key}" messageSource="${messageSource}" occurrenceManager="${occurrenceManager}"/>
 			</div>		
 		</c:when>
 		<c:when test="${dataProvider!=null}">		

@@ -29,6 +29,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.gbif.portal.dto.taxonomy.BriefTaxonConceptDTO;
 import org.gbif.portal.dto.util.TaxonRankType;
+import org.gbif.portal.service.OccurrenceManager;
+import org.gbif.portal.service.ServiceException;
 import org.gbif.portal.web.controller.taxonomy.bean.SpecialTreeNode;
 import org.springframework.context.MessageSource;
 import org.springframework.web.servlet.support.RequestContextUtils;
@@ -61,6 +63,12 @@ public class SmallTaxonomyBrowserTag extends TagSupport {
 	protected String overviewLinkText="taxonomy.browser.overviewlink";
 	/** The overview root Url */
 	protected String overviewLinkTitle="taxonomy.browser.overviewlink.title";
+	/** The number of occurrences link message */
+	protected String numberOfOccurrences="taxonomy.browser.numberofoccurrences";
+	/** The no occurrences link message */
+	protected String noOccurrences="taxonomy.browser.nooccurrences";
+	/** The  occurrenceManager to calculate the number of taxon occurrences*/
+	protected OccurrenceManager occurrenceManager;
 	/** The overview root Url */
 	protected String overviewRootUrl="/species/";
 	/** The overview root Url */
@@ -307,6 +315,19 @@ public class SmallTaxonomyBrowserTag extends TagSupport {
 				//sb.append(TagUtils.getMessage(overviewLinkText, "Overview", pageContext));
 				sb.append(messageSource.getMessage(overviewLinkText, null, locale));
 				sb.append("</a></span>");
+				//Calculating number of occurrences for species and subspecies
+				if(concept.getRank().equals(TaxonRankType.SPECIES_STR)||concept.getRank().equals(TaxonRankType.SUB_SPECIES_STR)){ 
+					int occurrencesCount=0;
+					try {
+						occurrencesCount = occurrenceManager.countOccurrenceRecords(null, null, null, concept.getKey(), null, null, null, null, null, null, null, null, false);
+					} catch (ServiceException e) {
+						logger.error(e.getMessage(), e);
+					}
+					Object[] messageArgs={occurrencesCount};
+					sb.append("<span class=\"occurrenceCount\">");
+					sb.append((occurrencesCount == 0 ? messageSource.getMessage(noOccurrences, null, locale) : messageSource.getMessage(numberOfOccurrences, messageArgs, locale)));
+					sb.append("</span>");
+				}
 			}
 		}
 		sb.append("</p>");
@@ -472,5 +493,12 @@ public class SmallTaxonomyBrowserTag extends TagSupport {
 	 */
 	public void setMessageSource(MessageSource messageSource) {
 		this.messageSource = messageSource;
+	}
+	
+	/**
+	 * @param occurrenceManager the occurrenceManager to set
+	 */
+	public void setOccurrenceManager(OccurrenceManager occurrenceManager) {
+		this.occurrenceManager = occurrenceManager;
 	}
 }
