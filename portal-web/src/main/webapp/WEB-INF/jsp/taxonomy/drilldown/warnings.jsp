@@ -11,7 +11,7 @@
 		<c:if test="${not empty matchingNameClassifications}">	
 			<p><spring:message code="taxonconcept.drilldown.warnings.ambiguous.name" arguments="${taxonName}"/></p>
 			<c:forEach items="${matchingNameClassifications}" var="classification">
-				<gbif:flattree classname="classificationCondensed" concepts="${classification}"/>
+				<gbif:flattree classname="classificationCondensed" concepts="${classification}" messageSource="${messageSource}"/>
 			</c:forEach>
 		</c:if>
 		<c:if test="${not empty unacceptedClassifications}">	
@@ -20,7 +20,7 @@
 				<spring:message code="taxonconcept.drilldown.warnings.presentation.accepted.viewed.at"/>
 			</p>
 			<c:forEach items="${unacceptedClassifications}" var="classification">
-				<gbif:flattree classname="classificationCondensed" concepts="${classification}"/>
+				<gbif:flattree classname="classificationCondensed" concepts="${classification}" messageSource="${messageSource}"/>
 			</c:forEach>
 		</c:if>	
 	</c:when>
