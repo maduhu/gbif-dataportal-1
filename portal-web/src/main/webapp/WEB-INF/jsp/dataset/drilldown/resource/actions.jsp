@@ -56,7 +56,7 @@
 						</li>		
 						</c:if>
 						<li>
-							<a href="${pageContext.request.contextPath}/species/downloadSpreadsheet.htm?<gbif:criterion subject="1" predicate="0" value="${dataResource.key}" index="0"/>"><spring:message code="dataset.download.taxonomy" text="Taxonomy as spreadsheet"/></a>
+							<a href="${pageContext.request.contextPath}/species/downloadSpreadsheet.htm?<gbif:criterion subject="1" predicate="0" value="${dataResource.key}" index="0"/>"><spring:message code="dataset.download.taxonomy"/></a>
 						</li>					
 					</ul>
 				</td>

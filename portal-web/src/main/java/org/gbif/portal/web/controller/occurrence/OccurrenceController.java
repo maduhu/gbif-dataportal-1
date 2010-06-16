@@ -411,7 +411,8 @@ public class OccurrenceController extends RestController {
 		mav.addObject("dataProvider", dataProvider);				
 		mav.addObject("country", country);
 		mav.addObject(messageSourceKey, messageSource);
-		
+		mav.addObject("locale", locale);
+
 		//add an image to this request - with image dimension for scaling
 		logger.debug("Adding image records");
 		List<ImageRecordDTO> imageRecords = occurrenceManager.getImageRecordsForOccurrenceRecord(occurrenceRecord.getKey());

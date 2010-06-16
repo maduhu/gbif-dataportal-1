@@ -10,15 +10,15 @@
 			<h4><spring:message code="taxonconcept.drilldown.warnings.title"/></h4>
 			<p>
 			<c:if test="${not empty occurrenceRecord}">
-				<gbiftag:formatGeospatialIssues issuesBit="${occurrenceRecord.geospatialIssue}" messageSource="${messageSource}" locale="${request.getLocale}"/>
+				<gbiftag:formatGeospatialIssues issuesBit="${occurrenceRecord.geospatialIssue}" messageSource="${messageSource}" locale="${locale}"/>
 				<c:if test="${not empty geospatialIssueText}">
 					 <spring:message code="geospatial.issues"/>: ${geospatialIssueText}<br/>
 				</c:if>	
-				<gbiftag:formatOtherIssues issuesBit="${occurrenceRecord.otherIssue}" messageSource="${messageSource}" locale="${request.getLocale}"/>
+				<gbiftag:formatOtherIssues issuesBit="${occurrenceRecord.otherIssue}" messageSource="${messageSource}" locale="${request.locale}"/>
 				<c:if test="${not empty otherIssueText}">
 					 <spring:message code="other.issues"/>: ${otherIssueText}<br/>
 				</c:if>	
-				<gbiftag:formatTaxonomicIssues issuesBit="${occurrenceRecord.taxonomicIssue}" messageSource="${messageSource}" locale="${request.getLocale}"/>
+				<gbiftag:formatTaxonomicIssues issuesBit="${occurrenceRecord.taxonomicIssue}" messageSource="${messageSource}" locale="${locale}"/>
 				<c:if test="${not empty taxonomicIssueText}">
 					 <spring:message code="taxonomic.issues"/>: ${taxonomicIssueText}<br/>
 				</c:if>

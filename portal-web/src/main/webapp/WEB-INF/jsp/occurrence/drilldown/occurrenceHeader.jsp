@@ -1,7 +1,6 @@
 <%@ include file="/common/taglibs.jsp"%>
 <div id="twopartheader">
-	<h2>
-		<fmt:message key="occurrence.record.details.title"/> 
+	<h2><spring:message code="occurrence.record.details.title"/>
 		<span class="subject">
 			<c:choose>
 			<c:when test="${not empty occurrenceRecord}">
