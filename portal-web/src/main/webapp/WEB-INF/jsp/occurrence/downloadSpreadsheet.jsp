@@ -14,7 +14,7 @@
 	<input type="radio" name="format" value="excel"/> <spring:message code="download.format.excel"/><br/>
 </fieldset>
 
-<h5 id="requiredFieldsTitle"><spring:message code="occurrence.record.required.fields" text="Required fields"/></h5>
+<h5 id="requiredFieldsTitle"><spring:message code="occurrence.record.required.fields"/></h5>
 <table id="mandatoryFields">
 <tr>
 <c:forEach items="${mandatoryFields}" var="field">

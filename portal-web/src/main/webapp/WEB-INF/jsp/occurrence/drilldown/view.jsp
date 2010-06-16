@@ -14,7 +14,7 @@
 				<c:if test="${not empty geospatialIssueText}">
 					 <spring:message code="geospatial.issues"/>: ${geospatialIssueText}<br/>
 				</c:if>	
-				<gbiftag:formatOtherIssues issuesBit="${occurrenceRecord.otherIssue}" messageSource="${messageSource}" locale="${request.locale}"/>
+				<gbiftag:formatOtherIssues issuesBit="${occurrenceRecord.otherIssue}" messageSource="${messageSource}" locale="${locale}"/>
 				<c:if test="${not empty otherIssueText}">
 					 <spring:message code="other.issues"/>: ${otherIssueText}<br/>
 				</c:if>	

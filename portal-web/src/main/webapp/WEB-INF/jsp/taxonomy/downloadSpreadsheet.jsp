@@ -14,7 +14,7 @@
 	<input type="radio" name="format" value="excel"/> <spring:message code="download.format.excel"/><br/>	
 </fieldset>
 
-<h5 id="requiredFieldsTitle"><spring:message code="occurrence.record.required.fields" text="Required fields"/></h5>
+<h5 id="requiredFieldsTitle"><spring:message code="occurrence.record.required.fields"/></h5>
 
 <c:forEach items="${mandatoryFields}" var="field">
 	<input type="checkbox" name="${field.fieldName}" checked="true"<c:if test="${!param['ignoreMandatory']}"> disabled="true"</c:if>/> <spring:message code="${field.fieldI18nNameKey}" text="${field.fieldI18nNameKey}"/>
@@ -25,7 +25,7 @@
 </c:forEach>
 </c:if>
 
-<h5 id="otherFieldsTitle">Classification fields</h5>
+<h5 id="taxonomyFieldsTitle"><spring:message code="occurrence.record.taxonomy.legend"/></h5>
 <gbiftag:selectAll fieldsetId="classificationFields"/>
 <table id="classificationFields">
 	<tr>
@@ -35,7 +35,7 @@
 	</tr>
 </table>
 
-<h5 id="otherFieldsTitle">Other fields</h5>
+<h5 id="otherFieldsTitle"><spring:message code="occurrence.record.other.fields"/></h5>
 <gbiftag:selectAll fieldsetId="otherFields"/>
 <table id="otherFields">
 	<tr>
