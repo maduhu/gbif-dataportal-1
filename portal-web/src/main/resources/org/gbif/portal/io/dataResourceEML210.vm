@@ -55,7 +55,6 @@ $request.contextPath/datasets/resource/harvestList.xml
     <coverage>
       <geographicCoverage scope="document">
       	#set($regionUnDefinedDefault = "This defines a Region")
-      	#set($regionUnDefined = $!regionUnDefinedDefault $!dataResource.description $!dataResource.citation)
         <geographicDescription>#set($i18nPrefix = 'region.')
 #set( $index = 0 )	
 #foreach( $region in $regions )
@@ -63,7 +62,7 @@ $request.contextPath/datasets/resource/harvestList.xml
 #springMessage("$i18nPrefix$region") 
 #set( $index = $index +1 )
 #end
-$regionUnDefined
+$regionUnDefinedDefault
 </geographicDescription>
 #foreach( $tag in $geographicCoverageTags )
         <boundingCoordinates>
