@@ -5,7 +5,13 @@ $request.contextPath/datasets/resource/harvestList.xml
 <eml:eml packageId="eml.gbif.package.$dataResource.key" system="gbif"
   xmlns:eml="eml://ecoinformatics.org/eml-2.1.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.0 $request.contextPath/schema/eml.xsd"> 
+  xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.0 $request.contextPath/schema/eml.xsd">
+    <access authSystem="knb" order="allowFirst">
+        <allow>
+            <principal>public</principal>
+            <permission>read</permission>
+        </allow>
+    </access> 
   <dataset>
     <title><![CDATA[$dataResource.name]]></title>
     <creator id="creator-1" scope="document">
@@ -130,12 +136,5 @@ $request.contextPath/datasets/resource/harvestList.xml
     	<references>creator-1</references>
     </contact>
 #end    
-<!-- for now allow access as primarily demonstration -->
-    <access authSystem="knb">
-        <allow>
-            <principal>public</principal>
-            <permission>read</permission>
-        </allow>
-    </access>
   </dataset>
 </eml:eml>  
