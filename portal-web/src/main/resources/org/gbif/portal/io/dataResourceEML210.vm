@@ -18,7 +18,9 @@ $request.contextPath/datasets/resource/harvestList.xml
       </individualName>
 #end        
       <organizationName><![CDATA[$dataResource.name]]></organizationName>
-      <positionName>$!owner.position</positionName>
+      #if( $!owner.position != null && $!owner.position != '')
+      	<positionName>$!owner.position</positionName>
+      #end  
     </creator>
     <abstract>
       <para><![CDATA[$!dataResource.description $!dataResource.citation $!dataResource.citableAgent]]></para>
