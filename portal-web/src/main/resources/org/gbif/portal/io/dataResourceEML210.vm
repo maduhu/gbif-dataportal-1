@@ -58,14 +58,10 @@ $request.contextPath/datasets/resource/harvestList.xml
 #set( $index = 0 )	
 #foreach( $region in $regions )
 #if ($index > 0), #end
-#set($aDefinedRegion = #springMessage("$i18nPrefix$region"))
+#springMessage("$i18nPrefix$region") 
 #set( $index = $index +1 )
-#if ("$!aDefinedRegion" != "")
-$aDefinedRegion
-#else
-$regionUnDefined
 #end
-#end</geographicDescription>
+$regionUnDefined</geographicDescription>
 #foreach( $tag in $geographicCoverageTags )
         <boundingCoordinates>
           <westBoundingCoordinate>$!tag.minLongitude</westBoundingCoordinate>
