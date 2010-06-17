@@ -53,7 +53,9 @@ $request.contextPath/datasets/resource/harvestList.xml
 	</distribution>    
 #end	
     <coverage>
-      <geographicCoverage scope="document">#set($regionUnDefined = $!dataResource.description)
+      <geographicCoverage scope="document">
+      	#set($regionUnDefinedDefault = "This defines a Region")
+      	#set($regionUnDefined = $!regionUnDefinedDefault $!dataResource.description $!dataResource.citation)
         <geographicDescription>#set($i18nPrefix = 'region.')
 #set( $index = 0 )	
 #foreach( $region in $regions )
