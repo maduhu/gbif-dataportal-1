@@ -9,16 +9,18 @@ $request.contextPath/datasets/resource/harvestList.xml
   <dataset>
     <title><![CDATA[$dataResource.name]]></title>
     <creator id="creator-1" scope="document">
-#if( $!owner.firstName != null && $!owner.firstName != '')     
+#if(($!owner.firstName != "") && ($!owner.lastName != ""))     
       <individualName>
-        <givenName>$!owner.firstName</givenName>
-        #if( $!owner.lastName != null && $!owner.lastName != '')
+      	#if($!owner.firstName != "")
+        	<givenName>$!owner.firstName</givenName>
+        #end
+        #if($!owner.lastName != "")
         	<surName>$!owner.lastName</surName>
         #end
       </individualName>
 #end        
       <organizationName><![CDATA[$dataResource.name]]></organizationName>
-      #if( $!owner.position != null && $!owner.position != '')
+      #if($!owner.position != "")
       	<positionName>$!owner.position</positionName>
       #end  
     </creator>
