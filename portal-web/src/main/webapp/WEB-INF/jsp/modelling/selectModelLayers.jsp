@@ -3,7 +3,7 @@
 <a href="http://www.cria.org.br/"><img style="float:right; right:200px; padding-right:30px;" src="${pageContext.request.contextPath}/images/logo_cria.gif"/></a>
 <h4>
 <c:choose>
-  <c:when test="${empty param['img']}">Create Niche Model</c:when>
+  <c:when test="${empty param['img']}"><spring:message code="model.create.title"/></c:when>
   <c:otherwise>Your Generated Niche Model</c:otherwise>
 </c:choose>
 </h4>
@@ -67,7 +67,7 @@ Bioclim's categorical output is mapped to probabilities of 1.0, 0.5 and 0.0 resp
 		<br/>    
   </p>
  -->  
-  <h5>Please select environment to model within</h5>
+  <h5><spring:message code="model.select.environment"/></h5>
   <script type="text/javascript">
     function toggleLayers(showLayers, hideLayers){
       document.getElementById(showLayers).className='modellingLayers';
@@ -92,8 +92,8 @@ Bioclim's categorical output is mapped to probabilities of 1.0, 0.5 and 0.0 resp
   </script>
   
   <ul class="genericList">
-    <li id="landLayersSelector" class="${empty param['selectedLayers'] || param['selectedLayers']=='landLayers' ? 'selectedLayerSet' : 'nonSelectedLayerSet'}"><a href="javascript:toggleLayers('landLayers','marineLayers');">Land</a></li>
-    <li id="marineLayersSelector" class="${param['selectedLayers']=='marineLayers' ? 'selectedLayerSet' : 'nonSelectedLayerSet'}"><a href="javascript:toggleLayers('marineLayers','landLayers');">Ocean</a></li>
+    <li id="landLayersSelector" class="${empty param['selectedLayers'] || param['selectedLayers']=='landLayers' ? 'selectedLayerSet' : 'nonSelectedLayerSet'}"><a href="javascript:toggleLayers('landLayers','marineLayers');"><spring:message code="model.environment.land"/></a></li>
+    <li id="marineLayersSelector" class="${param['selectedLayers']=='marineLayers' ? 'selectedLayerSet' : 'nonSelectedLayerSet'}"><a href="javascript:toggleLayers('marineLayers','landLayers');"><spring:message code="model.environment.marine"/></a></li>
     <input id="selectedLayers" type="hidden" name="selectedLayers" value="${param['selectedLayers']}"/>
   </ul>
   
@@ -101,7 +101,7 @@ Bioclim's categorical output is mapped to probabilities of 1.0, 0.5 and 0.0 resp
 	    <table id="landLayers" class="${empty param['selectedLayers'] || param['selectedLayers']=='landLayers' ? 'modellingLayers' : 'hidden'}">
         <thead>
           <th valign="top">
-            Land Layers - provided by <a href="http://www.worldclim.org/">Worldclim</a>
+            <spring:message code="model.land.layers.provided.by"/> <a href="http://www.worldclim.org/">Worldclim</a>
           </th>
           <th>  
             <img style="height:40px;" src="${pageContext.request.contextPath}/images/mvz_logo.jpg"/>
@@ -134,7 +134,7 @@ Bioclim's categorical output is mapped to probabilities of 1.0, 0.5 and 0.0 resp
       <table id="marineLayers" class="${param['selectedLayers']=='marineLayers' ? 'modellingLayers' : 'hidden'}">
         <thead>
 	        <th valign="top">
-	          Ocean Layers - provided by <a href="http://www.incofish.org/">IncoFish Project</a>
+	          <spring:message code="model.marine.layers.provided.by"/> <a href="http://www.incofish.org/">IncoFish Project</a>
 	        </th>
 	        <th>
 	          <img src="${pageContext.request.contextPath}/images/incofish_logo.gif"/>
@@ -168,6 +168,6 @@ Bioclim's categorical output is mapped to probabilities of 1.0, 0.5 and 0.0 resp
     <input type="hidden" name="mask" value="prec_1"/>
     <input type="hidden" name="template" value="biod_5_15"/>
     <input type="hidden" name="criteria" value="<gbif:criteria criteria="${criteria}" urlEncode="true"/>"/>
-    <input type="submit" name="model" value="Create Model">	
+    <input type="submit" name="model" value="<spring:message code="model.create.model"/>">	
  </form>
 </div>

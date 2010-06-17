@@ -233,7 +233,7 @@ public class OpenModellerController extends MultiActionController {
 		String fileNameWithoutExtension = FilenameUtils.removeExtension(downloadFile);
 		//generate description
 		Locale locale = RequestContextUtils.getLocale(request);
-		StringBuffer downloadDesc = new StringBuffer(messageSource.getMessage("model.description", null, locale));
+		StringBuffer downloadDesc = new StringBuffer(messageSource.getMessage("model.preparing.description", null, locale)+"<br>");
 		downloadDesc.append(FilterUtils.getQueryDescription(occurrenceFilters.getFilters(), criteria, messageSource, locale));
 		DownloadUtils.writeDownloadToDescriptor(request, fileNameWithoutExtension, originalUrl, downloadFileType, downloadDesc.toString(), true, redirectUrl);
 		//redirect to download preparing page
