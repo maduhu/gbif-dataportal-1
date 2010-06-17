@@ -52,21 +52,20 @@ $request.contextPath/datasets/resource/harvestList.xml
 #end		
 	</distribution>    
 #end	
-    <coverage>#set($regionDefined = -1)
-      <geographicCoverage scope="document">
-      #if($regions)
+    <coverage>
+      <geographicCoverage scope="document">#set($regionUnDefined = $!dataResource.description $!dataResource.citation)
         <geographicDescription>#set($i18nPrefix = 'region.')
 #set( $index = 0 )	
 #foreach( $region in $regions )
 #if ($index > 0), #end
-#springMessage("$i18nPrefix$region")
+#set($aDefinedRegion = #springMessage("$i18nPrefix$region"))
 #set( $index = $index +1 )
-#set($regionDefined = $index)
+#if ("$!aDefinedRegion" != "")
+$aDefinedRegion
+#else
+$regionUnDefined
+#end
 #end</geographicDescription>
-#end
-#if($regionDefined < 0)
-<geographicDescription><![CDATA[$!dataResource.description $!dataResource.citation]]></geographicDescription>
-#end
 #foreach( $tag in $geographicCoverageTags )
         <boundingCoordinates>
           <westBoundingCoordinate>$!tag.minLongitude</westBoundingCoordinate>
