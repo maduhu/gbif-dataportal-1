@@ -61,6 +61,8 @@ public class CountryDTOFactory extends BaseDTOFactory {
 		if(countryAndName.length>2){
 			countryDTO.setInterpretedFrom((String)countryAndName[2]);
 		}
+		if(countryDTO.getOccurrenceCoordinateCount()==null)
+			countryDTO.setOccurrenceCoordinateCount(0);
 		
 		return  countryDTO;
 	}
