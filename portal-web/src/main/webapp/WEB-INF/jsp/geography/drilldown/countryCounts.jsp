@@ -22,12 +22,13 @@ function toggleTables(firstTable, secondTable, visibleClass){
 <table id="sampleCountryTable" class="results" style="width: 720px;">
   <thead>
     <th><spring:message code="country"/></th>
-    <th class="lastColumn"><spring:message code="log.console.count"/></th>
+    <th style="text-align: center;"><spring:message code="log.console.count"/></th>
+    <th style="text-align: center;" class="lastColumn"><spring:message code="log.console.non.georef.count" text="Non-Georeferenced Count (does not appear on map)"/></th>
   </thead>  
   <tbody>
-    <c:forEach items="${countryCounts}" var="countryCount" begin="0" end="3">
+    <c:forEach items="${countryCounts}" var="countryCount" begin="0" end="3" varStatus="rowCounter">
     <tr>
-      <td style="width:650px;">
+      <td style="width:450px;">
       	<c:set var="countryName"><gbif:capitalize>${countryCount.name}</gbif:capitalize></c:set>
         <img src="${pageContext.request.contextPath}/images/flags/<string:lowerCase>${countryCount.key}</string:lowerCase>.gif"/>&nbsp; <a href="${pageContext.request.contextPath}/countries/${countryCount.key}">${countryName}</a>
         <p class="resultsDetails">
@@ -36,6 +37,9 @@ function toggleTables(firstTable, secondTable, visibleClass){
       </td>
       <td class="lastColumn" style="width:70px;">
         <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="32" predicate="0" value="${countryCount.key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="0" index="2"/>"><fmt:formatNumber value="${countryCount.count}" pattern="###,###"/></a>
+      </td>
+      <td class="lastColumn" style="width:200px;">
+        <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="32" predicate="0" value="${nonCountryCounts[rowCounter.index].key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="1" index="2"/>"><fmt:formatNumber value="${nonCountryCounts[rowCounter.index].count-countryCounts[rowCounter.index].count}" pattern="###,###"/></a>
       </td>
     </tr>
     </c:forEach>
@@ -51,6 +55,33 @@ function toggleTables(firstTable, secondTable, visibleClass){
   </tbody>
 </table>
 <c:if test="${fn:length(countryCounts)>4}">
+<table id="countryCount" class="hidden" style="width: 720px;">
+	<thead>
+    	<th><spring:message code="country"/></th>
+    	<th style="text-align: center;"><spring:message code="log.console.count"/></th>
+    	<th style="text-align: center;" class="lastColumn"><spring:message code="log.console.non.georef.count"/></th>
+	</thead>
+	<tbody>
+    <c:forEach items="${countryCounts}" var="countryCount" begin="0" varStatus="rowCounter">
+    <tr>
+      <td style="width:450px;">
+      	<c:set var="countryName"><gbif:capitalize>${countryCount.name}</gbif:capitalize></c:set>
+        <img src="${pageContext.request.contextPath}/images/flags/<string:lowerCase>${countryCount.key}</string:lowerCase>.gif"/>&nbsp; <a href="${pageContext.request.contextPath}/countries/${countryCount.key}">${countryName}</a>
+        <p class="resultsDetails">
+        ${countryCount.properties[0]}
+        </p>
+      </td>
+      <td class="lastColumn" style="width:70px;">
+        <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="32" predicate="0" value="${countryCount.key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="0" index="2"/>"><fmt:formatNumber value="${countryCount.count}" pattern="###,###"/></a>
+      </td>
+      <td class="lastColumn" style="width:200px;">
+        <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="32" predicate="0" value="${nonCountryCounts[rowCounter.index].key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="1" index="2"/>"><fmt:formatNumber value="${nonCountryCounts[rowCounter.index].count-countryCount.count}" pattern="###,###"/></a>
+      </td>
+    </tr>
+    </c:forEach>
+	</tbody>
+</table>
+<!-- This has been rendered as a for each.
 <display-el:table 
   name="countryCounts" 
   class="hidden" 
@@ -68,5 +99,6 @@ function toggleTables(firstTable, secondTable, visibleClass){
         <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="32" predicate="0" value="${countryCount.key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="0" index="2"/>"><fmt:formatNumber value="${countryCount.count}" pattern="###,###"/></a>
   </display-el:column>
 </display-el:table>
+-->
 </c:if>    
-</c:if>   
+</c:if>
