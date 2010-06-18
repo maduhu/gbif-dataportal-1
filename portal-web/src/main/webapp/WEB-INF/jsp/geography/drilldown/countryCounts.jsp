@@ -23,7 +23,9 @@ function toggleTables(firstTable, secondTable, visibleClass){
   <thead>
     <th><spring:message code="country"/></th>
     <th style="text-align: center;"><spring:message code="log.console.count"/></th>
+    <c:if test="${showNonGeoreferencedCount}">
     <th style="text-align: center;" class="lastColumn"><spring:message code="log.console.non.georef.count" text="Non-Georeferenced Count (does not appear on map)"/></th>
+    </c:if>
   </thead>  
   <tbody>
     <c:forEach items="${countryCounts}" var="countryCount" begin="0" end="3" varStatus="rowCounter">
@@ -38,9 +40,11 @@ function toggleTables(firstTable, secondTable, visibleClass){
       <td class="lastColumn" style="width:70px;">
         <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="32" predicate="0" value="${countryCount.key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="0" index="2"/>"><fmt:formatNumber value="${countryCount.count}" pattern="###,###"/></a>
       </td>
+      <c:if test="${showNonGeoreferencedCount}">
       <td class="lastColumn" style="width:200px;">
         <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="32" predicate="0" value="${nonCountryCounts[rowCounter.index].key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="1" index="2"/>"><fmt:formatNumber value="${nonCountryCounts[rowCounter.index].count-countryCounts[rowCounter.index].count}" pattern="###,###"/></a>
       </td>
+      </c:if>
     </tr>
     </c:forEach>
     <c:if test="${fn:length(countryCounts)>4}">
@@ -59,7 +63,9 @@ function toggleTables(firstTable, secondTable, visibleClass){
 	<thead>
     	<th><spring:message code="country"/></th>
     	<th style="text-align: center;"><spring:message code="log.console.count"/></th>
+    	<c:if test="${showNonGeoreferencedCount}">
     	<th style="text-align: center;" class="lastColumn"><spring:message code="log.console.non.georef.count"/></th>
+    	</c:if>
 	</thead>
 	<tbody>
     <c:forEach items="${countryCounts}" var="countryCount" begin="0" varStatus="rowCounter">
@@ -74,9 +80,11 @@ function toggleTables(firstTable, secondTable, visibleClass){
       <td class="lastColumn" style="width:70px;">
         <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="32" predicate="0" value="${countryCount.key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="0" index="2"/>"><fmt:formatNumber value="${countryCount.count}" pattern="###,###"/></a>
       </td>
+      <c:if test="${showNonGeoreferencedCount}">
       <td class="lastColumn" style="width:200px;">
         <a href="${pageContext.request.contextPath}/occurrences/search.htm?<gbif:criterion subject="32" predicate="0" value="${nonCountryCounts[rowCounter.index].key}" index="0"/>&<gbif:criterion subject="${occurrenceSearchSubject}" predicate="0" value="${occurrenceSearchValue}" index="1"/>&<gbif:criterion subject="28" predicate="0" value="1" index="2"/>"><fmt:formatNumber value="${nonCountryCounts[rowCounter.index].count-countryCount.count}" pattern="###,###"/></a>
       </td>
+      </c:if>
     </tr>
     </c:forEach>
 	</tbody>

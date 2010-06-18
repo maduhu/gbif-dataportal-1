@@ -24,7 +24,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * 
  * @author dmartin
  */
-public class CountDTO {
+public class CountDTO implements Comparable<CountDTO> {
 
 	/** The key for this entity */
 	protected String key;	
@@ -94,4 +94,13 @@ public class CountDTO {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
+
+    /** 
+     * @see java.lang.Comparable#compareTo(java.lang.Object)
+     */
+    public int compareTo(CountDTO o) {
+    	if(this.getName().compareTo(o.getName()) == 0)
+    		return this.getKey().compareTo(o.getKey());
+        return this.getName().compareTo(o.getName());
+    }
 }
