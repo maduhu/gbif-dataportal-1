@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
+	
+    <!-- For jdbc settings -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+            </list>
+        </property>
+    </bean>
+	
+	<!-- GBIF Indexing DB (localhost) -->
+	<bean id="portalDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${portalDataSource.driverClassName}"/>
+        <property name="url" value="${portalDataSource.url}"/>
+        <property name="username" value="${portalDataSource.username}"/>
+        <property name="password" value="${portalDataSource.password}"/>
+		<property name="initialSize" value="1"/>
+		<property name="maxActive" value="25"/>
+		<property name="maxIdle" value="10"/>
+		<property name="maxWait" value="10000"/>
+		<property name="poolPreparedStatements" value="false"/>
+		<!-- to avoid seeing broken pipe exception -->
+		<property name="validationQuery" value="SELECT 1"/>
+    </bean>
+	
+	<bean id="geospatialIssueResolver" class="org.gbif.portal.GeospatialIssueResolver">
+		<property name="occurrenceRecordDAO" ref="occurrenceRecordDAO"/>
+		<property name="cellCountryDAO" ref="cellCountryDAO"/>
+		<property name="gbifLogMessageDAO" ref="gbifLogMessageDAO"/>
+	</bean>
+
+</beans>

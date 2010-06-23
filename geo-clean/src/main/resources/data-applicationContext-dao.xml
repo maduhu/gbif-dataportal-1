@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	
+	<!-- Starting work from porting of code from portal-index -->
+	<bean id="baseDAO" abstract="true">
+		<property name="dataSource" ref="portalDataSource"/>
+	</bean>
+	
+	<bean id="occurrenceRecordDAO" class="org.gbif.portal.dao.impl.jdbc.OccurrenceRecordDAOImpl" parent="baseDAO">
+		<property name="namedParameterTemplate">
+			<bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+				<constructor-arg ref="portalDataSource"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="cellCountryDAO" class="org.gbif.portal.dao.impl.jdbc.CellCountryDAOImpl" parent="baseDAO"/>
+	
+	<bean id="gbifLogMessageDAO" class="org.gbif.portal.dao.impl.jdbc.GbifLogMessageDAOImpl" parent="baseDAO">
+		<property name="namedParameterTemplate">
+			<bean class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+				<constructor-arg ref="portalDataSource"/>
+			</bean>
+		</property>
+	</bean>
+</beans>
