@@ -121,6 +121,17 @@ public class CellCountryDAOImpl extends JdbcDaoSupport implements
 				}					
 			}
 			);
+		if (rowsAffected==1) {
+			logger.info("Success: new cell_country record added for cell_id="+
+					String.valueOf(cellCountry.getCellId())+
+					" and iso_country_code="+
+					cellCountry.getIsoCountryCode());
+		} else {
+			logger.info("Create failed: no new cell_country record could be added for cell_id="+
+					String.valueOf(cellCountry.getCellId())+
+					" and iso_country_code="+
+					cellCountry.getIsoCountryCode());
+		}
 		return rowsAffected;
 	}
 

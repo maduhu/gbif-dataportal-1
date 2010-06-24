@@ -159,7 +159,7 @@ public class OccurrenceRecordDAOImpl extends JdbcDaoSupport implements Occurrenc
 		"ore.basis_of_record,ore.taxonomic_issue,ore.geospatial_issue,ore.other_issue," +
 		"ore.modified,ore.deleted " +
 	"from occurrence_record ore " +
-	"where ore.geospatial_issue=? and deleted is null";
+	"where ore.geospatial_issue=? and deleted is null limit 25";
 	
 	/**
 	 * OccurrenceRecord row mapper
