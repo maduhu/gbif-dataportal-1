@@ -5,12 +5,19 @@
 </div>
 
 <ul class="genericList">
+	<li><a href="${pageContext.request.contextPath}/occurrence/">Occurrence search</a> - Ability to search by string containing accents </li>
+	<li><a href="${pageContext.request.contextPath}/countries/ZA/">Countries</a> - More statistics on data provenance </li>
+	<li>Several GUI enhancements</li>
+</ul>
+<a href="${pageContext.request.contextPath}/bugs.htm">Click here</a> for a complete list of fixes/enhancements in this version
+
+<h4>Features added in version 1.3 (Published: May, 2010)</h4>
+<ul class="genericList">
 	<li><a href="${pageContext.request.contextPath}/occurrence/">Occurrence search</a> - Bug fixing related to search filters and results being returned </li>
 	<li><a href="${pageContext.request.contextPath}/ws/">Web services</a> - More accurate occurrence web service responses </li>
 	<li><a href="${pageContext.request.contextPath}/countries/AG">Maps</a> - Improved map usability and bug fixing </li>
 	<li>Several GUI enhancements</li>
 </ul>
-<a href="${pageContext.request.contextPath}/bugs.htm">Click here</a> for a complete list of fixes/enhancements in this version
 
 <h4>Features added in version 1.2.6 (Published: October, 2009)</h4>
 <ul class="genericList">

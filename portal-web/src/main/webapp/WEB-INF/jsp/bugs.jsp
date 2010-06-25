@@ -4,6 +4,16 @@
 	<h3><spring:message code="bugs.fixes"/></h3>
 </div>
 <ul class="genericList">
+		<li>Species classification page - indicate the status of a taxon having occurrence data available -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=52">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/search.htm">SAMPLE</a></li>
+		<li>Internationalisation - more internationalised texts inside the data portal -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=85">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/">SAMPLE</a></li>
+		<li>Country pages - additional column to show data of a country/resource that is not displayed on the map -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=67">issue tracking</a> - <a href="${pageContext.request.contextPath}/countries/ZA/">SAMPLE</a></li>
+		<li>Occurrence search - Searches containing accents are now possible -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=29">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/">SAMPLE</a></li>
+		<li>Occurrence page - Identifier links (or multiple ones) are now being displayed when present -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=87">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/208050127/">SAMPLE</a></li>		
+</ul>
+
+
+<h4>Bug fixes in version 1.3</h4>
+<ul class="genericList">
 		<li>Occurrence search - initialise variables of bounding box to avoid NaN values -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=56">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/search.htm">SAMPLE</a></li>
 		<li>Occurrence search - When selecting datasets, second drop down is now showing -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=50">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/">SAMPLE</a></li>
 		<li>Occurrence search - Dataset names are shortened when selecting from the dataset select box -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=19">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences/">SAMPLE</a></li>
@@ -17,6 +27,8 @@
 		<li>Maps - Geoserver shows all points when using the tab-density plugin -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=82">issue tracking</a> - <a href="${pageContext.request.contextPath}/countries/AG">SAMPLE</a></li>
 		<li>Maps - Max default zoom level is now set to 3 (to give users at least a recognisable part of a continent) -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=39">issue tracking</a> - <a href="${pageContext.request.contextPath}/countries/AG">SAMPLE</a></li>
 </ul>
+
+
 <h4>Bug fixes in version 1.2.6</h4>
 <ul class="genericList">
 		<li>Feedback sent through mirror sites - Mirrors now have the ability to configure their own SMTP server to be used by the mirror web application
