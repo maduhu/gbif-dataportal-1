@@ -6,11 +6,22 @@
 <%@ page import="org.apache.commons.lang.*" %>
 <%@ page import="org.gbif.portal.web.filter.*" %>
 <%@ page import="org.apache.taglibs.string.util.*" %>
+<%@ page import="java.net.*" %>
 <form id="filterSearchForm" name="filterSearch" method="get" action="${pageContext.request.contextPath}${filterAction}">
 <%
 		List<FilterDTO> filters = (List<FilterDTO>) request.getAttribute("filters");
 		CriteriaDTO criteriaDTO = (CriteriaDTO) request.getAttribute("criteria");		
 		List<CriterionDTO> criteria = criteriaDTO.getCriteria();
+		// Added to encode and decode criteria values
+		if(request.getCharacterEncoding() == null) {
+			for(CriterionDTO criterionDTO : criteria) {
+				criterionDTO.setValue(URLEncoder.encode(criterionDTO.getValue(), "ISO-8859-1"));
+				criterionDTO.setValue(URLDecoder.decode(criterionDTO.getValue(), "UTF-8"));
+				criterionDTO.setDisplayValue(URLEncoder.encode(criterionDTO.getDisplayValue(), "ISO-8859-1"));
+				criterionDTO.setDisplayValue(URLDecoder.decode(criterionDTO.getDisplayValue(), "UTF-8"));
+			}
+		}
+		// End
 		pageContext.setAttribute("criteria", criteria);		 
 %>
 <h4 id="currentSearch"><spring:message code="search.filter.currentsearch.title"/></h4>

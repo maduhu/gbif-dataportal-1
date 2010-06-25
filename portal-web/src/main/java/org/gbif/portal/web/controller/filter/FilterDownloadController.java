@@ -131,6 +131,8 @@ public class FilterDownloadController extends RestController {
 		Locale locale = RequestContextUtils.getLocale(request);
 		String criteriaString = request.getParameter(criteriaRequestKey);
 		CriteriaDTO criteria = CriteriaUtil.getCriteria(criteriaString, filters.getFilters(), locale);
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
 		List<PropertyStoreTripletDTO> triplets = queryHelper.getTriplets(filters.getFilters(), criteria, request, response);
 		
 		//retrieve the download field mappings

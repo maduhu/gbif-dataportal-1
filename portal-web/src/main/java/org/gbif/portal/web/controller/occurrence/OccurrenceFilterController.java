@@ -14,6 +14,8 @@
  ***************************************************************************/
 package org.gbif.portal.web.controller.occurrence;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.Comparator;
@@ -208,7 +210,9 @@ public class OccurrenceFilterController extends MultiActionController {
 
 		//retrieve the criteria from the request
 		CriteriaDTO criteria  = CriteriaUtil.getCriteria(request,occurrenceFilters.getFilters());
-
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
+		
 		//check for data provider ids		
 		String[] dataProviderIds = request.getParameterValues(dataProviderParameterKey);
 		if(dataProviderIds!=null && dataProviderIds.length>0){
@@ -280,6 +284,8 @@ public class OccurrenceFilterController extends MultiActionController {
 	public ModelAndView searchWithTable(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//retrieve the criteria from the request
 		CriteriaDTO criteria = CriteriaUtil.getCriteriaAndPopulate(request, occurrenceFilters.getFilters());
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
 		//convert to triplets
 		List<PropertyStoreTripletDTO> triplets = queryHelper.getTriplets(occurrenceFilters.getFilters(), criteria, request, response);
     	ModelAndView mav = new ModelAndView("occurrenceSearchWithTable");		
@@ -303,6 +309,8 @@ public class OccurrenceFilterController extends MultiActionController {
 	public ModelAndView downloadSpreadsheet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//retrieve the criteria from the request
 		CriteriaDTO criteria  = CriteriaUtil.getCriteriaAndPopulate(request, occurrenceFilters.getFilters());
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
 		ModelAndView mav = new ModelAndView(downloadSpreadsheetView);
 		mav.addObject("mandatoryFields", mandatoryDownloadFields);
 		mav.addObject("taxonomyFields", taxonomyDownloadFields);
@@ -344,7 +352,8 @@ public class OccurrenceFilterController extends MultiActionController {
 			
 			if("criteria".equals(paramName)){
 				CriteriaDTO criteria  = CriteriaUtil.getCriteria(paramValue, occurrenceFilters.getFilters(), null);
-
+				//fix criteria value
+				CriteriaUtil.fixEncoding(request, criteria);
 				//if its a format requiring georeferencing - add criteria if not there
 				String format = request.getParameter("format");
 				if(format!=null && geoFormats!=null && geoFormats.contains(format)){
@@ -379,6 +388,8 @@ public class OccurrenceFilterController extends MultiActionController {
 
 		//retrieve the criteria from the request
 		CriteriaDTO criteria  = CriteriaUtil.getCriteriaAndPopulate(request,occurrenceFilters.getFilters());
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
 		ModelAndView mav = new ModelAndView("occurrenceCountView");		
 		//convert to triplets
 		List<PropertyStoreTripletDTO> triplets = queryHelper.getTriplets(occurrenceFilters.getFilters(), criteria, request, response);
@@ -404,6 +415,8 @@ public class OccurrenceFilterController extends MultiActionController {
 	public ModelAndView actionsOccurrenceCount(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//retrieve the criteria from the request
 		CriteriaDTO criteria  = CriteriaUtil.getCriteriaAndPopulate(request,occurrenceFilters.getFilters());
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
 		ModelAndView mav = new ModelAndView("actionsOccurrenceCountView");		
 		//convert to triplets
 		List<PropertyStoreTripletDTO> triplets = queryHelper.getTriplets(occurrenceFilters.getFilters(), criteria, request, response);
@@ -433,6 +446,8 @@ public class OccurrenceFilterController extends MultiActionController {
 
 		//retrieve the criteria from the request
 		CriteriaDTO criteria  = CriteriaUtil.getCriteriaAndPopulate(request,occurrenceFilters.getFilters());
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
 		//convert to triplets
     	ModelAndView mav = new ModelAndView("boundingBoxFull");		
 		//do the query 
@@ -468,7 +483,9 @@ public class OccurrenceFilterController extends MultiActionController {
 		ModelAndView mav = new ModelAndView("occurrenceSearchWithMap");		
 		//retrieve the criteria from the request
 		CriteriaDTO criteria  = CriteriaUtil.getCriteriaAndPopulate(request, occurrenceFilters.getFilters());
-
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
+		
 		List<PropertyStoreTripletDTO> triplets = queryHelper.getTriplets(occurrenceFilters.getFilters(), criteria, request, response);
 		
 		//if query suitable for cell density, switch over 
@@ -574,10 +591,14 @@ public class OccurrenceFilterController extends MultiActionController {
 	 * @param request
 	 * @param response
 	 * @return ModelAndView which contains the provider list and counts
+	 * @throws UnsupportedEncodingException 
 	 */
-	public ModelAndView searchProviders (HttpServletRequest request, HttpServletResponse response) throws ServiceException{
+	public ModelAndView searchProviders (HttpServletRequest request, HttpServletResponse response) throws ServiceException, UnsupportedEncodingException{
 		//interrogate the criteria - if it only contains a country filter then switch
 		CriteriaDTO criteriaDTO = CriteriaUtil.getCriteria(request, occurrenceFilters.getFilters());
+		//fix criteria value
+		request.setCharacterEncoding("ISO-8859-1");
+		CriteriaUtil.fixEncoding(request, criteriaDTO);
 		if(criteriaDTO.size()==0){
 			logger.debug("Switching to using service layer method getAllDataProviders");
 			ModelAndView mav = new ModelAndView(occurrenceFilterProviderCountsView);
@@ -616,10 +637,13 @@ public class OccurrenceFilterController extends MultiActionController {
 	 * @param request
 	 * @param response
 	 * @return ModelAndView which contains the provider list and counts
+	 * @throws UnsupportedEncodingException 
 	 */
-	public ModelAndView searchResources (HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+	public ModelAndView searchResources (HttpServletRequest request, HttpServletResponse response) throws ServiceException, UnsupportedEncodingException {
 		//interrogate the criteria - if it only contains a country filter then switch
 		CriteriaDTO criteriaDTO = CriteriaUtil.getCriteria(request, occurrenceFilters.getFilters());
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteriaDTO);
 		if(criteriaDTO.size()==0){
 			logger.debug("Switching to using service layer method getAllDataResources");
 			ModelAndView mav = new ModelAndView(occurrenceFilterResourceCountsView);
@@ -658,10 +682,14 @@ public class OccurrenceFilterController extends MultiActionController {
 	 * @param request
 	 * @param response
 	 * @return ModelAndView which contains the provider list and counts
+	 * @throws UnsupportedEncodingException 
 	 */
-	public ModelAndView searchCountries (HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+	public ModelAndView searchCountries (HttpServletRequest request, HttpServletResponse response) throws ServiceException, UnsupportedEncodingException {
 		//interrogate the criteria - if it only contains a taxon filter then switch
 		CriteriaDTO criteriaDTO = CriteriaUtil.getCriteria(request, occurrenceFilters.getFilters());
+		//fix criteria value
+		request.setCharacterEncoding("ISO-8859-1");
+		CriteriaUtil.fixEncoding(request, criteriaDTO);
 		if(criteriaDTO.size()==1){
 			logger.debug("Switching to using service layer method getCountryCountsForTaxonConcept");			
 			CriterionDTO criterionDTO = criteriaDTO.get(0);
@@ -688,8 +716,9 @@ public class OccurrenceFilterController extends MultiActionController {
 	 * @param request
 	 * @param response
 	 * @return ModelAndView which contains the provider list and counts
+	 * @throws UnsupportedEncodingException 
 	 */
-	public ModelAndView downloadSpecies (HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+	public ModelAndView downloadSpecies (HttpServletRequest request, HttpServletResponse response) throws ServiceException, UnsupportedEncodingException {
 		
 		ModelAndView mav =  getCountsView(request, response, "SERVICE.OCCURRENCE.QUERY.RETURNFIELDS.SPECIESCOUNTS", occurrenceFilterSpeciesCountsView, new SearchConstraints(0, speciesCountLimit));
 		mav.addObject(resultsLimitModelKey, speciesCountLimit);
@@ -701,9 +730,13 @@ public class OccurrenceFilterController extends MultiActionController {
 	 * 
 	 * @param triplets
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
-	private ModelAndView getCountsView(HttpServletRequest request, HttpServletResponse response, String returnFieldsKey, String viewName, SearchConstraints searchConstraints) throws ServiceException{
+	private ModelAndView getCountsView(HttpServletRequest request, HttpServletResponse response, String returnFieldsKey, String viewName, SearchConstraints searchConstraints) throws ServiceException, UnsupportedEncodingException{
 		CriteriaDTO criteriaDTO = CriteriaUtil.getCriteria(request,occurrenceFilters.getFilters());
+		//fix criteria value
+		request.setCharacterEncoding("ISO-8859-1");
+		CriteriaUtil.fixEncoding(request, criteriaDTO);
 		List<PropertyStoreTripletDTO> triplets = queryHelper.getTriplets(occurrenceFilters.getFilters(), criteriaDTO, request, response);		
 		triplets.add(new PropertyStoreTripletDTO(queryHelper.getQueryNamespace(), selectFieldSubject, returnPredicateSubject, returnFieldsKey));
 		SearchResultsDTO searchResults = countsQueryManager.doTripletQuery(triplets, criteriaDTO.isMatchAll(), searchConstraints);
@@ -721,10 +754,14 @@ public class OccurrenceFilterController extends MultiActionController {
 	 * 
 	 * @param triplets
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
 	@SuppressWarnings("unchecked")
-	private ModelAndView getCountryCountsView(HttpServletRequest request, HttpServletResponse response, String returnFieldsKey, String viewName, SearchConstraints searchConstraints) throws ServiceException{
+	private ModelAndView getCountryCountsView(HttpServletRequest request, HttpServletResponse response, String returnFieldsKey, String viewName, SearchConstraints searchConstraints) throws ServiceException, UnsupportedEncodingException{
 		CriteriaDTO criteriaDTO = CriteriaUtil.getCriteria(request,occurrenceFilters.getFilters());
+		//fix criteria value
+		request.setCharacterEncoding("ISO-8859-1");
+		CriteriaUtil.fixEncoding(request, criteriaDTO);
 		List<PropertyStoreTripletDTO> triplets = queryHelper.getTriplets(occurrenceFilters.getFilters(), criteriaDTO, request, response);		
 		triplets.add(new PropertyStoreTripletDTO(queryHelper.getQueryNamespace(), selectFieldSubject, returnPredicateSubject, returnFieldsKey));
 		SearchResultsDTO searchResults = countsQueryManager.doTripletQuery(triplets, criteriaDTO.isMatchAll(), searchConstraints);
@@ -766,9 +803,12 @@ public class OccurrenceFilterController extends MultiActionController {
 	 * @param response
 	 * @param criteria
 	 * @return ModelAndView, filter view
+	 * @throws UnsupportedEncodingException 
 	 */
-	public ModelAndView boundingBoxWithCriteria(HttpServletRequest request, HttpServletResponse response){
+	public ModelAndView boundingBoxWithCriteria(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
 		CriteriaDTO criteria = CriteriaUtil.getCriteria(request, occurrenceFilters.getFilters());
+		//fix criteria value
+		CriteriaUtil.fixEncoding(request, criteria);
 		float minx = ServletRequestUtils.getFloatParameter(request, minXRequestKey, 0);
 		float miny = ServletRequestUtils.getFloatParameter(request, minYRequestKey,0);
 		float maxx =ServletRequestUtils.getFloatParameter(request, maxXRequestKey,0);
