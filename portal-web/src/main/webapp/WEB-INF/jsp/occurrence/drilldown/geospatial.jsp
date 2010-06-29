@@ -32,14 +32,14 @@
 	</c:otherwise>
 	</c:choose>	
 </p>
-<p>	
-	<label for="county"><spring:message code="occurrence.record.county"/>:</label> 
-	${rawOccurrenceRecord.county}
-</p>	
 <p>
 	<label for="stateOrProvince"><spring:message code="occurrence.record.state.or.province"/>:</label> 
 	${rawOccurrenceRecord.stateOrProvince}
-</p>	
+</p>
+<p>	
+	<label for="county"><spring:message code="occurrence.record.county"/>:</label> 
+	${rawOccurrenceRecord.county}
+</p>		
 <p>
 	<label for="locality"><spring:message code="occurrence.record.locality"/>:</label> 
 	${rawOccurrenceRecord.locality}
