@@ -49,7 +49,7 @@ function toggleTables(firstTable, secondTable, visibleClass){
     </c:forEach>
     <c:if test="${fn:length(countryCounts)>4}">
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <p class="showFullTable">      
           <a href="javascript:toggleTables('sampleCountryTable', 'countryCount', 'results');">View ${fn:length(countryCounts)-4 } more countries... </a>
         </p>

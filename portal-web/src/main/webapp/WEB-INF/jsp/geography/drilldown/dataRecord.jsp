@@ -50,7 +50,7 @@ function toggleTables(firstTable, secondTable, visibleClass){
     </c:forEach>
     <c:if test="${fn:length(resourceCounts)>4}">
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <p class="showFullTable">      
           <a href="javascript:toggleTables('sampleTable', 'resourceCount', 'results');">View ${fn:length(resourceCounts)-4 } more datasets... </a>
         </p>
