@@ -5,6 +5,7 @@
 </div>
 
 <ul class="genericList">
+	<li><a href="${pageContext.request.contextPath}/species/browse/provider/1/taxon/13815711/">Species classification page</a> - Indicate the status of a taxon having occurrence data available</li>
 	<li><a href="${pageContext.request.contextPath}/occurrence/">Occurrence search</a> - Ability to search by string containing accents </li>
 	<li><a href="${pageContext.request.contextPath}/countries/ZA/">Countries</a> - More statistics on data provenance </li>
 	<li>Several GUI enhancements</li>
