@@ -43,15 +43,24 @@ $request.contextPath/datasets/resource/harvestList.xml
     <intellectualRights>
       <para><![CDATA[$!dataResource.rights]]></para>
     </intellectualRights>
-#if( $raps )
+
 	<distribution scope="document">
-#foreach( $rap in $raps )	
-		<online>
-			<url function="download"><![CDATA[$rap.url]]></url>
-		</online>
-#end		
-	</distribution>    
+	#set( $distCount = 0 )
+#if( $raps )	
+	#foreach( $rap in $raps )
+		#set( $distCount = $distCount +1 )	
+			<online>
+				<url function="download"><![CDATA[$rap.url]]></url>
+			</online>
+	#end
+	if(!$raps || ($distCount < 1))
+		<offline>
+			<mediumName><![CDATA[This dataset is not available on line.]]></mediumName>
+		</offline>
+	#end
 #end	
+	</distribution>    
+	
     <coverage>
       <geographicCoverage scope="document">
       	#set($regionUnDefinedDefault = "This defines a Region")
