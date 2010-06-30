@@ -43,7 +43,7 @@ $request.contextPath/datasets/resource/harvestList.xml
     <intellectualRights>
       <para><![CDATA[$!dataResource.rights]]></para>
     </intellectualRights>
-
+<!-- PWERE UPDATED distribution 06/302010 -->
 	<distribution scope="document">
 	#set( $distCount = 0 )
 #if( $raps )	
@@ -53,7 +53,7 @@ $request.contextPath/datasets/resource/harvestList.xml
 				<url function="download"><![CDATA[$rap.url]]></url>
 			</online>
 	#end
-	if(!$raps || ($distCount < 1))
+	if($distCount < 1)
 		<offline>
 			<mediumName><![CDATA[This dataset is not available on line.]]></mediumName>
 		</offline>
