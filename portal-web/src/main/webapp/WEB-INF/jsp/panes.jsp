@@ -1,6 +1,9 @@
 <%@ include file="/common/taglibs.jsp"%>
 <div id="announce">
 <h3><spring:message code="welcome.tip.of.the.day.title"/></h3>
+<c:set var="totalRecordsCount">
+	<fmt:formatNumber value="${totalOccurrenceRecords}" pattern="###,###"/>
+</c:set>
 <c:set var="link1">
 	<em><a href="${pageContext.request.contextPath}/tutorial/introduction"><spring:message code="topmenu.about"/></a></em>
 </c:set>
@@ -8,7 +11,7 @@
 	<em><a href="${pageContext.request.contextPath}/settings.htm"><spring:message code="topmenu.settings"/></a></em>
 </c:set>
 <p>
-<spring:message code="welcome.tip.of.the.day.1"/><br/>
+<spring:message code="welcome.tip.of.the.day.1" arguments="${totalRecordsCount}"/><br/>
 <spring:message code="welcome.tip.of.the.day.2" arguments="${link1}"/><br/>
 <spring:message code="welcome.tip.of.the.day.3" arguments="${link2}"/><br/>
 <a href="version.htm"><spring:message code="version" text="Version"/> <gbif:propertyLoader bundle="portal" property="version"/></a> - click here to see what is new!
