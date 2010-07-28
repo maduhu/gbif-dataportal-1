@@ -2,7 +2,11 @@
 <fieldset>
 <c:if test="${not empty dataResource.name}"><p><label><spring:message code="name"/>:</label>${dataResource.name}</p></c:if>
 <c:if test="${not empty dataResource.websiteUrl}"><p><label><spring:message code="website"/>:</label><a href="<c:if test="${fn:length(ataResource.websiteUrl)>6 && !fn:startsWith(dataResource.websiteUrl, 'http://')}">http://</c:if>${dataResource.websiteUrl}">${dataResource.websiteUrl}</a></p></c:if>
-<c:if test="${not empty dataResource.description}"><p><label><spring:message code="description"/>:</label><gbif:formatText content="${dataResource.description}"/></p></c:if>
+<c:if test="${not empty dataResource.description}"><p><label><spring:message code="description"/>:</label>
+<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+<gbif:formatText content="${dataResource.description}"/>
+</td></tr>
+</p></c:if>
 <c:if test="${not empty dataResource.rights}"><p><label><spring:message code="rights"/>:</label><gbif:formatText content="${dataResource.rights}"/></p></c:if>
 
 <%-- 
