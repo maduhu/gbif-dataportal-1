@@ -36,6 +36,8 @@ public class DelimitedFileWriterFactory extends BaseFileWriterFactory {
 	protected String delimiter;
 	/** The end of record marker */
 	protected String endOfRecord;
+	/** The characters to replace */
+	protected Map<String, String> replaceChars;
 	
 	/**
 	 * @see org.gbif.portal.web.download.FileWriterFactory#createFileWriter(java.io.File, java.util.List, java.util.Map, org.gbif.portal.web.download.OutputProcess, java.io.OutputStream, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletRequest)
@@ -62,6 +64,7 @@ public class DelimitedFileWriterFactory extends BaseFileWriterFactory {
 		dfw.setDownloadFieldMappings(downloadFieldMappings);
 		dfw.setOutputProcess(outputProcess);
 		dfw.setDelimiter(delimiter);
+		dfw.setReplaceChars(replaceChars);
 		dfw.setEndOfRecord(endOfRecord);
 		dfw.setSecondaryDownloadOutputs(secondaryOutputs);
 		return dfw;
@@ -79,5 +82,12 @@ public class DelimitedFileWriterFactory extends BaseFileWriterFactory {
 	 */
 	public void setEndOfRecord(String endOfRecord) {
 		this.endOfRecord = endOfRecord;
+	}
+	
+	/**
+	 * @param replaceChars the replaceChars to set
+	 */
+	public void setReplaceChars(Map<String, String> replaceChars) {
+		this.replaceChars = replaceChars;
 	}
 }

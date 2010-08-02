@@ -14,8 +14,10 @@
  ***************************************************************************/
 package org.gbif.portal.web.download;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.context.MessageSource;
 
@@ -27,6 +29,8 @@ import org.springframework.context.MessageSource;
 public class DelimitedFieldFormatter extends FieldFormatter {
 
 	protected String delimiter = "\t";
+	/** The characters to replace */
+	protected Map<String, String> replaceChars=new HashMap<String, String>();
 	
 	/**
 	 * 
@@ -45,10 +49,15 @@ public class DelimitedFieldFormatter extends FieldFormatter {
 	@Override
 	public String format(String propertyName, String propertyValue) {
 		String formattedValue = super.format(propertyName, propertyValue);
-		if(formattedValue!=null && formattedValue.contains(delimiter)){
-			//enclose in quotes
-			formattedValue = "\""+formattedValue+"\"";
-		}
+		if(formattedValue!=null){
+			for(String character: replaceChars.keySet()){
+				formattedValue=formattedValue.replaceAll(character, replaceChars.get(character));
+			}			
+			/*if(formattedValue.contains(delimiter)){
+				//enclose in quotes
+				formattedValue = "\""+formattedValue+"\"";
+			}*/
+		}		
 		return formattedValue;
 	}
 
@@ -64,5 +73,19 @@ public class DelimitedFieldFormatter extends FieldFormatter {
 	 */
 	public void setDelimiter(String delimiter) {
 		this.delimiter = delimiter;
+	}
+
+	/**
+	 * @return the replaceChars
+	 */
+	public Map<String, String> getReplaceChars() {
+		return replaceChars;
+	}
+
+	/**
+	 * @param replaceChars the replaceChars to set
+	 */
+	public void setReplaceChars(Map<String, String> replaceChars) {
+		this.replaceChars = replaceChars;
 	}
 }

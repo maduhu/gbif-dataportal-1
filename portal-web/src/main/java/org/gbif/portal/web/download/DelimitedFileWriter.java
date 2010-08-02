@@ -16,6 +16,7 @@ package org.gbif.portal.web.download;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -49,6 +50,8 @@ public class DelimitedFileWriter extends FileWriter {
 	protected String endOfRecord = "\n";
 	/** The secondary outputs to run */
 	protected List<SecondaryOutput> secondaryDownloadOutputs;	
+	/** The characters to replace */
+	protected Map<String, String> replaceChars=new HashMap<String, String>();
 	/**
 	 * Write out the delimited file.
 	 * 
@@ -60,6 +63,7 @@ public class DelimitedFileWriter extends FileWriter {
 		//Create FieldFormatter - the object that is i18n aware
 		DelimitedFieldFormatter dff = new DelimitedFieldFormatter(downloadFields, messageSource, locale, hostUrl);
 		dff.setDelimiter(delimiter);
+		dff.setReplaceChars(replaceChars);
 		//handy for debug
 //		Field idField = new Field();
 //		idField.setFieldI18nNameKey("occurrenceRecordId");
@@ -204,4 +208,19 @@ public class DelimitedFileWriter extends FileWriter {
 			List<SecondaryOutput> secondaryDownloadOutputs) {
 		this.secondaryDownloadOutputs = secondaryDownloadOutputs;
 	}
+
+	/**
+	 * @return the replaceChars
+	 */
+	public Map<String, String> getReplaceChars() {
+		return replaceChars;
+	}
+
+	/**
+	 * @param replaceChars the replaceChars to set
+	 */
+	public void setReplaceChars(Map<String, String> replaceChars) {
+		this.replaceChars = replaceChars;
+	}
+
 }

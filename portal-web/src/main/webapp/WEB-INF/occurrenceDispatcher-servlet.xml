@@ -659,6 +659,13 @@
         <entry key="tsv">
           <bean class="org.gbif.portal.web.download.DelimitedFileWriterFactory">
             <property name="delimiter" value="&#x9;" />
+             <property name="replaceChars">
+            	<map>
+            		<entry key="&#x22;" value="'" />
+            		<entry key="&#xA;" value=" " />
+            		<entry key="&#xD;" value=" " />
+            	</map>
+            </property>
             <property name="endOfRecord" value="&#xD;&#xA;" />
             <property name="messageSource" ref="messageSource" />
             <property name="fileExtension" value=".txt" />
@@ -670,6 +677,14 @@
         <entry key="csv">
           <bean class="org.gbif.portal.web.download.DelimitedFileWriterFactory">
             <property name="delimiter" value="," />
+            <property name="replaceChars">
+            	<map>
+            		<entry key="," value="" />
+            		<entry key="&#x22;" value="'" />
+            		<entry key="&#xA;" value=" " />
+            		<entry key="&#xD;" value=" " />
+            	</map>
+            </property>
             <property name="endOfRecord" value="&#xD;&#xA;" />
             <property name="messageSource" ref="messageSource" />
             <property name="fileExtension" value=".csv" />
