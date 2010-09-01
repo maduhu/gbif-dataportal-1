@@ -47,8 +47,13 @@
 #set ($writeResourceName = false)
 #end
       <to:TaxonOccurrence gbifKey="$occurrence.getKey()" rdf:about="$wsroot/rest/occurrence/get/$occurrence.getKey()">
-#if($occurrence.getRawOccurrenceRecordDTO().getBasisOfRecord())       <to:basisOfRecordString>$occurrence.getRawOccurrenceRecordDTO().getBasisOfRecord()</to:basisOfRecordString>
-#end
+#if("processed" == $parameterMap.get("mode"))
+  #if($occurrence.getBasisOfRecord())     <to:basisOfRecordString>$occurrence.getBasisOfRecord()</to:basisOfRecordString>
+  #end
+ #else
+  #if($occurrence.getRawOccurrenceRecordDTO().getBasisOfRecord())       <to:basisOfRecordString>$occurrence.getRawOccurrenceRecordDTO().getBasisOfRecord()</to:basisOfRecordString>
+  #end
+ #end
 #if($occurrence.getRawOccurrenceRecordDTO().getCatalogueNumber())       <to:catalogNumber>$occurrence.getRawOccurrenceRecordDTO().getCatalogueNumber()</to:catalogNumber>
 #end
 #if($occurrence.getRawOccurrenceRecordDTO().getCollectionCode())       <to:collectionCode>$occurrence.getRawOccurrenceRecordDTO().getCollectionCode()</to:collectionCode>
@@ -59,8 +64,13 @@
 #end
 #if($occurrence.getRawOccurrenceRecordDTO().getLatLongPrecision())       <to:coordinateUncertaintyInMeters>$occurrence.getRawOccurrenceRecordDTO().getLatLongPrecision()</to:coordinateUncertaintyInMeters>
 #end
-#if($occurrence.getRawOccurrenceRecordDTO().getCountry())       <to:country>$occurrence.getRawOccurrenceRecordDTO().getCountry()</to:country>
-#end
+#if("processed" == $parameterMap.get("mode"))
+  #if($occurrence.getCountry())       <to:country>$occurrence.getCountry()</to:country>
+  #end
+ #else
+  #if($occurrence.getRawOccurrenceRecordDTO().getCountry())   <to:country>$occurrence.getRawOccurrenceRecordDTO().getCountry()</to:country>
+  #end
+ #end
 #if($occurrence.getRawOccurrenceRecordDTO().getLatitude())       <to:decimalLatitude>$occurrence.getRawOccurrenceRecordDTO().getLatitude()</to:decimalLatitude>
 #end
 #if($occurrence.getRawOccurrenceRecordDTO().getLongitude())       <to:decimalLongitude>$occurrence.getRawOccurrenceRecordDTO().getLongitude()</to:decimalLongitude>
