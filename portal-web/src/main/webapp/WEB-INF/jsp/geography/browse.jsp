@@ -4,6 +4,9 @@
 		<c:set var="ignores"><spring:message code="country.alphabet.skips"/></c:set>
 		<gbif:alphabetLink rootUrl="/countries/browse/" selected="${selectedChar}" listClass="flatlist" ignores="${ignores}" letters="${alphabet}"/>
 </div>
+<p>
+<spring:message code="geography.list.iso.explaination"/>
+</p>
 <h2 id="selectedChar">${selectedChar}</h2>
 <c:choose>
 	<c:when test="${fn:length(alphabet)==0}">Currently no countries within the system.</c:when>

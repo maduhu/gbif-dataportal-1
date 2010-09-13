@@ -6,3 +6,6 @@
   </h2>
   <h3><spring:message code="repat.subtitle"/></h3>
 </div>
+<p>
+<spring:message code="geography.list.iso.explaination"/>
+<p>
