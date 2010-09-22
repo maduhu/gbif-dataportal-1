@@ -557,6 +557,9 @@ create table temp_hc_c_k_bor
 select dp.iso_country_code host, o.iso_country_code country, o.kingdom_concept_id, o.basis_of_record, count(*) as hc_count, 0 as rollover_id 
 from data_provider dp left outer join occurrence_record o on o.data_provider_id=dp.id group by 4,3,2,1 order by 1,2,3,4;
 
+-- handle erroneus UK / GB iso country codes
+update temp_hc_c_k_bor set host='GB' where host='UK';
+
 -- add the rollover date to this table
 -- Query OK, 20732 rows affected (0.05 sec)
 -- Rows matched: 20732  Changed: 20732  Warnings: 0
