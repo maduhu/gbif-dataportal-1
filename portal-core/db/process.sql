@@ -4,6 +4,7 @@
  *
  * last updated: 03.04.2009 (ahahn): added statistical tables for country and participant contribution overview
  * -- 12.8.2008 (ahahn): regenerate network membership for country nodes 
+ * -- 08/2009 (jcuadra): 
  */
 
 -- May 6, 2008: 134,704,562 records on rancor (applies to all processing counts below)
@@ -128,6 +129,8 @@ inner join network_membership nm on oc.data_resource_id=nm.data_resource_id
 where centi_cell_id is not null and oc.geospatial_issue=0
 group by nm.resource_network_id, oc.cell_id, oc.centi_cell_id;
 
+-- --------------------------------------------
+
 -- populate cell densities for all ORs on the denormalised nub id
 -- Query OK, 873791 rows affected (3 min 58.67 sec)
 -- Records: 873791  Duplicates: 0  Warnings: 0
@@ -239,6 +242,8 @@ insert ignore into cell_density
 select type,entity_id,cell_id,sum(count)
 from centi_cell_density
 group by 1,2,3;
+
+-- 18.9.10: started up to here so far (8:13)
 
 -- updates and sets the countries count
 -- Query OK, 240 rows affected (5 min 17.92 sec)
@@ -549,6 +554,11 @@ where month is not null
 group by month, data_resource_id 
 order by month, data_resource_id;
 
+-- ***********************************
+-- quad relation table starts here...
+-- in case of re-run, remove line "insert into rollover..."!
+-- ***********************************
+
 -- host country x country x kingdoms x basis of record (25 mins to generate on 6GB machine, 120m DB)
 -- Query OK, 20732 rows affected (12 min 12.44 sec)
 -- Records: 20732  Duplicates: 0  Warnings: 0
@@ -591,6 +601,10 @@ update quad_relation_tag set entity2_id=0 where entity2_id is null and tag_id=20
 update quad_relation_tag set entity3_id=14719007 where entity3_id is null; show warnings;
 drop table temp_hc_c_k_bor;
 
+-- ***********************************
+-- ..... end of quad relation table
+-- ***********************************
+
 -- add statistics for counts per country
 INSERT INTO stats_country_contribution (
 rollover_id, iso_country_code, provider_count, dataset_count, occurrence_count, occurrence_georeferenced_count, created)
@@ -611,20 +625,45 @@ left join data_resource dr on dp.id = dr.data_provider_id
 where dr.deleted is null and dp.deleted is null and dp.id > 3
 group by 2;
 
--- to eliminate possiblity of infinites loops in the taxonomy
-update taxon_concept c
-inner join taxon_concept p on c.parent_concept_id=p.id
-set c.parent_concept_id=null
-where p.rank>=c.rank;
+-- ********************************************
+-- generate stats for the communications portal
+-- ********************************************
 
 -- populate temporary table to assign unique keys to each of the participant nodes available
 truncate table temp_participant_nodes;
 insert into temp_participant_nodes(node_name)
-select distinct(data_provider.gbif_approver) from data_provider where data_provider.gbif_approver!='NULL'
+select distinct(data_provider.gbif_approver) from data_provider where data_provider.gbif_approver!='NULL';
 
--- save stats for the communication portal. Files will be residing on the /tmp/ folder on the machine running process.sql
+/* save stats for the communication portal. Files will be residing on the /tmp/ folder on the machine running process.sql */
+
 select * from temp_participant_nodes into outfile '/tmp/comm_nodes.txt';
-select dp.id,tpn.id,dp.name from data_provider dp inner join temp_participant_nodes tpn on dp.gbif_approver = tpn.node_name where dp.deleted is null and dp.id>3 and dp.id!=223 and dp.id!=226  into outfile '/tmp/comm_dataprovider.txt';
-select dr.id, dp.id, dr.name, dr.occurrence_count, dr.occurrence_coordinate_count from data_resource dr inner join data_provider dp on dr.data_provider_id=dp.id  where dp.deleted is null and dp.id>3 and dp.id!=223 and dp.id!=226 and dr.deleted is null into outfile '/tmp/comm_dataresource.txt';
+select dp.id,tpn.id,dp.name, dp.iso_country_code from data_provider dp inner join temp_participant_nodes tpn on dp.gbif_approver = tpn.node_name where dp.deleted is null into outfile '/tmp/comm_dataprovider.txt';
+select dr.id, dp.id, dr.name, dr.occurrence_count, dr.occurrence_coordinate_count from data_resource dr inner join data_provider dp on dr.data_provider_id=dp.id where dp.deleted is null and dr.deleted is null into outfile '/tmp/comm_dataresource.txt';
+
+-- ********************************************
+-- ... end of comms portal stats
+-- ********************************************
+
+-- fix non-kingdoms - 
+-- first need to  check if parent_concept_id=14719007 is the UNKNOWN kingdom in data_resource=1:
+select tc.id from taxon_concept tc join taxon_name tn on tc.taxon_name_id=tn.id where tn.canonical='UNKNOWN' and tn.rank=1000 and tc.data_resource_id = 1;
+
+--  careful: this might need id-fixing after nub rebuilding!
+update taxon_concept set parent_concept_id=14719007 where 
+parent_concept_id is null and 
+rank>1000 and 
+data_resource_id=1 and
+is_accepted=1;
+
+-- make sure all iso country codes are uppercase
+update data_provider set iso_country_code=upper(iso_country_code);
+
 
 select concat('Rollover complete: ', now()) as debug;
+
+-- to eliminate possiblity of infinites loops in the taxonomy
+-- ! this already needs to run before doing the taxon processing! --
+/ * update taxon_concept c
+inner join taxon_concept p on c.parent_concept_id=p.id
+set c.parent_concept_id=null
+where p.rank>=c.rank; */
