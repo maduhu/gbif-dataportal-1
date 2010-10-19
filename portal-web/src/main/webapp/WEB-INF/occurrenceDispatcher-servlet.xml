@@ -664,6 +664,7 @@
             		<entry key="&#x22;" value="'" />
             		<entry key="&#xA;" value=" " />
             		<entry key="&#xD;" value=" " />
+            		<entry key="&#x9;" value=" " />
             	</map>
             </property>
             <property name="endOfRecord" value="&#xD;&#xA;" />
