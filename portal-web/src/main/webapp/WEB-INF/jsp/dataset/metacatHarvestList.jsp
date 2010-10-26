@@ -10,7 +10,7 @@
     <!-- revision is not tracked - all data is derived from the current portal index -->
     <revision>1</revision>
    </docid>
-   <documentType><![CDATA[eml://ecoinformatics.org/eml-2.0.1]]></documentType>
+   <documentType><![CDATA[eml://ecoinformatics.org/eml-2.1.0]]></documentType>
    <documentURL><![CDATA[http://${header.host}${pageContext.request.contextPath}/datasets/resource/${dataResource.key}?schema=eml]]></documentURL>
  </document>
 </c:forEach>
