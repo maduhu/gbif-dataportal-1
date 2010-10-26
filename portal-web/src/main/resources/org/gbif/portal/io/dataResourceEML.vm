@@ -13,7 +13,7 @@ $request.contextPath/datasets/resource/harvestList.xml
         <givenName>$!owner.firstName</givenName>
         <surName>$!owner.lastName</surName>
       </individualName>
-      <organizationName><![CDATA[$dataResource.name]]></organizationName>
+      <organizationName><![CDATA[$dataResource.dataProviderName]]></organizationName>
       <positionName>$!owner.position</positionName>
     </creator>
     <abstract>
