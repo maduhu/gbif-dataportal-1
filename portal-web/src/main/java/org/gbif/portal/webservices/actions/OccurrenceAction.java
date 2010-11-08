@@ -864,19 +864,20 @@ public class OccurrenceAction extends Action {
 		Map<String, DataResourceDTO> resourceMap = new HashMap<String, DataResourceDTO>();
 
 		for (KmlOccurrenceRecordDTO dto : records) {
-			if (!resourceMap.containsKey(dto.getDataResourceKey())) {
+			if (dto!=null) {
 				try {
-					DataResourceDTO dataResourceDTO = new DataResourceDTO();
-					dataResourceDTO.setCitableAgent(dto.getDataResourceCitableAgent());
-					dataResourceDTO.setDataProviderName(dto.getDataProviderName());
-					dataResourceDTO.setName(dto.getDataResourceName());
-					dataResourceDTO.setKey(dto.getDataResourceKey());
-					
-					resourceMap.put(dto.getDataResourceKey(),dataResourceDTO);
-					
+					if (!resourceMap.containsKey(dto.getDataResourceKey())) {
+							DataResourceDTO dataResourceDTO = new DataResourceDTO();
+							dataResourceDTO.setCitableAgent(dto.getDataResourceCitableAgent());
+							dataResourceDTO.setDataProviderName(dto.getDataProviderName());
+							dataResourceDTO.setName(dto.getDataResourceName());
+							dataResourceDTO.setKey(dto.getDataResourceKey());
+							
+							resourceMap.put(dto.getDataResourceKey(),dataResourceDTO);
+							
+					}
 				} catch (Exception e) {
-					log.error("Could not retrieve data resource "
-							+ dto.getDataResourceKey(), e);
+					log.error("Could not retrieve data resource " + dto.getDataResourceKey(), e);
 				}
 			}
 		}

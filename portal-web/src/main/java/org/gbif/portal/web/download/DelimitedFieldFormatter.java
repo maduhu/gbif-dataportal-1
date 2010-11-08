@@ -50,13 +50,15 @@ public class DelimitedFieldFormatter extends FieldFormatter {
 	public String format(String propertyName, String propertyValue) {
 		String formattedValue = super.format(propertyName, propertyValue);
 		if(formattedValue!=null){
-			for(String character: replaceChars.keySet()){
-				formattedValue=formattedValue.replaceAll(character, replaceChars.get(character));
-			}			
-			/*if(formattedValue.contains(delimiter)){
-				//enclose in quotes
-				formattedValue = "\""+formattedValue+"\"";
-			}*/
+			if (replaceChars!=null && replaceChars.keySet()!=null) {
+				for(String character: replaceChars.keySet()){
+					formattedValue=formattedValue.replaceAll(character, replaceChars.get(character));
+				}			
+				/*if(formattedValue.contains(delimiter)){
+					//enclose in quotes
+					formattedValue = "\""+formattedValue+"\"";
+				}*/
+			}
 		}		
 		return formattedValue;
 	}
