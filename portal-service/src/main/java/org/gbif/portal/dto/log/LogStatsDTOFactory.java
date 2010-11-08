@@ -43,7 +43,10 @@ public class LogStatsDTOFactory extends BaseDTOFactory {
 					if(stats[2]!=null){
 						Integer eventId = (Integer) stats[2];
 						LogEvent le = LogEvent.get(eventId.intValue());
-						ls.setEventName(le.getName());
+						if (le!=null)
+							ls.setEventName(le.getName());
+						else 
+							ls.setEventName("Unknown");
 					}
 					if(stats[3]!=null){
 						Long eventCount = (Long) stats[3];
