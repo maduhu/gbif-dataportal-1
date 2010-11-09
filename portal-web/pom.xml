@@ -195,11 +195,7 @@
 			 <artifactId>maven-compiler-plugin</artifactId>
 			 <configuration>
 			   <source>1.5</source>
-			   <target>1.5</target>
-               <excludes>
-			    <exclude>**/CitationView.java</exclude>
-			    <exclude>**/WebserviceView.java</exclude>
-               </excludes>			   
+			   <target>1.5</target>		   
 			 </configuration>
 		   </plugin>          
 		 </plugins>	  
