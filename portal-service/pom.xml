@@ -8,8 +8,42 @@
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>GBIF Portal Service API</name>
-	<url>http://www.gbif.org</url>
-	<dependencies>
+	<url>http://code.google.com/p/gbif-dataportal/</url>
+	<distributionManagement>
+      <!-- 
+	    TO DEPLOY THE JAR TO THE REPOSITORY PLEASE USE: mvn deploy
+	  --> 
+	  <repository> 
+	    <id>gbif</id>
+		<name>GBIF Repository</name> 
+		<url>sftp://tools.gbif.org/var/www/html/tools/maven/repository/</url> 
+	  </repository>
+	  <!-- 
+	    TO CREATE & DEPLOY THE WEBSITE PLEASE USE: mvn site-deploy
+	  -->
+	  <site>
+		<id>gbif</id>
+		<name>GBIF Maven Sites</name>
+		<url>sftp://tools.gbif.org/var/www/html/tools/maven/sites/</url>
+	  </site>
+	</distributionManagement>
+	<developers>
+	  <developer>
+	    <name>Tim Robertson</name>
+	    <email>trobertson@gbif.org</email>
+	  </developer>
+	  <developer>
+	    <name>Jose Cuadra</name>
+	    <email>jcuadra@gbif.org</email>
+	  </developer>
+	</developers>
+	<contributors>
+	  <contributor>
+	    <name>Kyle Braak</name>
+	    <email>kbraak@gbif.org</email>
+	  </contributor>
+    </contributors>	
+    <dependencies>
 		<dependency>
 			<groupId>portal</groupId>
 			<artifactId>portal-core</artifactId>
@@ -239,16 +273,10 @@
 			</plugin>
 		</plugins>
 	</build>
- <repositories>
-    <repository>
-      <id>gbif-remote</id>
-      <name>gbif-remote</name>
-      <url>http://tools.gbif.org/maven/repository</url>
-    </repository> 
-    <!--repository>
-      <id>ibiblio</id>
-      <name>ibiblio</name>
-      <url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
-    </repository-->
-  </repositories>    
+    <repositories>
+      <repository>
+        <id>gbif</id>
+        <url>http://tools.gbif.org/maven/repository</url>
+      </repository>
+    </repositories>    
 </project>
