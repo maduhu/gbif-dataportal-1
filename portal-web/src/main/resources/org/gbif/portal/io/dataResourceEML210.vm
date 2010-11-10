@@ -14,6 +14,7 @@ $request.contextPath/datasets/resource/harvestList.xml
     </access> 
   <dataset>
     <title><![CDATA[$dataResource.name]]></title>
+    <alternateIdentifier>$dataResource.id</alternateIdentifier>    
     <creator id="creator-1" scope="document">
 #if(("$!owner.firstName" != "") && ("$!owner.lastName" != ""))     
       <individualName>
