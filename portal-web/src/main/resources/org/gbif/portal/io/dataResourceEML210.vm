@@ -31,6 +31,7 @@ $request.contextPath/datasets/resource/harvestList.xml
       	<positionName>$!owner.position</positionName>
       #end  
     </creator>
+    <pubDate>$dateFormatter.format('yyyy-MM-dd',$dataResource.created)</pubDate>
     <abstract>
       <para><![CDATA[$!dataResource.description $!dataResource.citation $!dataResource.citableAgent]]></para>
     </abstract>
@@ -44,7 +45,6 @@ $request.contextPath/datasets/resource/harvestList.xml
     <intellectualRights>
       <para><![CDATA[$!dataResource.rights]]></para>
     </intellectualRights>
-<!-- PWERE UPDATED distribution 06/302010 -->
 	<distribution scope="document">
 	#set( $distCount = 0 )
 	#if( $raps )
@@ -91,6 +91,9 @@ $regionUnDefinedDefault
         </boundingCoordinates>
 #end      
       </geographicCoverage>
+      
+#if ( $temporalCoverageTags )     
+      
       <temporalCoverage scope="document">
 #foreach( $tag in $temporalCoverageTags )
         <rangeOfDates>
@@ -102,18 +105,9 @@ $regionUnDefinedDefault
           </endDate>
         </rangeOfDates>
 #end      
-#if ( ! $temporalCoverageTags )
-		<!-- this is a place holder data range for datasets with no temporal information -->
-        <rangeOfDates>
-          <beginDate>
-            <calendarDate>1800-01-01</calendarDate>
-          </beginDate>
-          <endDate>
-            <calendarDate>2009-01-01</calendarDate> 
-          </endDate>
-        </rangeOfDates>
-#end 
       </temporalCoverage>
+#end
+ 
       <taxonomicCoverage scope="document">
 #set($i18nPrefix = 'taxonrank.')      
 #foreach( $tag in $taxonomicScopeTags )       
@@ -132,7 +126,7 @@ $regionUnDefinedDefault
     </coverage>
     <purpose><para>$!dataResource.basisOfRecord.name</para></purpose>
     <maintenance>
-      <description><para>TO BE ADDED</para></description>
+      <description><para>Unknown</para></description>
     </maintenance>
 #foreach( $agent in $agents )   
     <contact id="$agent.key">
