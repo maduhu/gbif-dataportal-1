@@ -67,8 +67,10 @@ public class DataResourceTagDAOImpl extends JdbcDaoSupport implements SimpleTagD
 		"inner join data_resource dr on dr.id=from_entity_id " + 
 		"inner join taxon_concept tc on tc.id=rt.to_entity_id " + 
 		"inner join taxon_name tn on tc.taxon_name_id=tn.id " + 
-		"inner join rank rk on rk.id=tn.rank "+
-		"where tag_id=? and from_entity_id=? order by to_entity_name"; 		
+		"inner join rank rk on rk.id=tn.rank "+		
+		"where tag_id=? and from_entity_id=? " +
+		"group by 1,2,3,4,5,6,7 " +
+		"order by to_entity_name";
 	
 	protected static final String SELECT_COMMON_TAG_BY_DATASET="select " + 
 		"tag_id,from_entity_id,dr.name as from_entity_name,to_entity_id,cn.name as to_entity_name,rt.count as count " + 
