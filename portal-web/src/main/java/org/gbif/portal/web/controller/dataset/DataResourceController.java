@@ -42,6 +42,7 @@ import org.gbif.portal.dto.tag.StringTag;
 import org.gbif.portal.dto.tag.TemporalCoverageTag;
 import org.gbif.portal.dto.util.EntityType;
 import org.gbif.portal.dto.util.SearchConstraints;
+import org.gbif.portal.model.resources.AgentType;
 import org.gbif.portal.service.DataResourceManager;
 import org.gbif.portal.service.GeospatialManager;
 import org.gbif.portal.service.TaxonomyManager;
@@ -189,6 +190,8 @@ public class DataResourceController extends RestController {
 		
 		//add agents
 		List<DataResourceAgentDTO> agents = dataResourceManager.getAgentsForDataResource(dataResourceKey);
+		mav.addObject("DATAADMINISTRATOR", AgentType.DATAADMINISTRATOR.getValue());
+		mav.addObject("SYSTEMADMINISTRATOR", AgentType.SYSTEMADMINISTRATOR.getValue());
 		mav.addObject("agents", agents);
 
 		//add raps

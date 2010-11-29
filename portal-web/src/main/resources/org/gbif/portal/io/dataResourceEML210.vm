@@ -5,7 +5,7 @@ $request.contextPath/datasets/resource/harvestList.xml
 <eml:eml packageId="eml.gbif.package.$dataResource.key" system="gbif"
   xmlns:eml="eml://ecoinformatics.org/eml-2.1.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.0 $request.contextPath/schema/eml.xsd">
+  xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.0 $request.contextPath/schema/eml.xsd" xml:lang="eng">
     <access authSystem="knb" order="allowFirst">
         <allow>
             <principal>public</principal>
@@ -15,22 +15,22 @@ $request.contextPath/datasets/resource/harvestList.xml
   <dataset>
     <title><![CDATA[$dataResource.name]]></title>
     <alternateIdentifier>$dataResource.key</alternateIdentifier>    
-    <creator id="creator-1" scope="document">
-#if(("$!owner.firstName" != "") && ("$!owner.lastName" != ""))     
-      <individualName>
-      	#if("$!owner.firstName" != "")
-        	<givenName>$!owner.firstName</givenName>
-        #end
-        #if("$!owner.lastName" != "")
-        	<surName>$!owner.lastName</surName>
-        #end
-      </individualName>
-#end        
-      <organizationName><![CDATA[$dataResource.dataProviderName]]></organizationName>
-      #if("$!owner.position" != "")
-      	<positionName>$!owner.position</positionName>
-      #end  
+    <creator id="creator-1">       
+      <organizationName><![CDATA[$dataResource.dataProviderName]]></organizationName> 
     </creator>
+    <metadataProvider>       
+      <organizationName><![CDATA[$dataResource.dataProviderName]]></organizationName> 
+    </metadataProvider>  
+    #foreach( $agent in $agents )
+	#if ($agent.agentType == $SYSTEMADMINISTRATOR)   
+    <associatedParty id="$agent.key">
+      <individualName>
+        <surName>$agent.agentName</surName>
+      </individualName>
+      <role>$agent.agentTypeName</role>
+    </associatedParty>
+    #end
+	#end      
     <pubDate>$dateFormatter.format('yyyy-MM-dd',$dataResource.created)</pubDate>
     <abstract>
       <para><![CDATA[$!dataResource.description $!dataResource.citation $!dataResource.citableAgent]]></para>
@@ -63,15 +63,19 @@ $request.contextPath/datasets/resource/harvestList.xml
 </distribution>
 	<coverage>
       <geographicCoverage scope="document">
-      	#set($regionUnDefinedDefault = "This defines a Region")
-        <geographicDescription>#set($i18nPrefix = 'region.')
-#set( $index = 0 )	
-#foreach( $region in $regions )
-#if ($index > 0), #end
-#springMessage("$i18nPrefix$region") 
-#set( $index = $index +1 )
-#end
+      	#set($regionUnDefinedDefault = "Information not provided")
+        <geographicDescription>
+#if ($regions && !$regions.isEmpty())
+	#set($i18nPrefix = 'region.')
+	#set( $index = 0 )	
+	#foreach( $region in $regions )
+	#if ($index > 0), #end
+	#springMessage("$i18nPrefix$region") 
+	#set( $index = $index +1 )
+	#end
+#else
 $regionUnDefinedDefault
+#end
 </geographicDescription>
 #foreach( $tag in $geographicCoverageTags )
         <boundingCoordinates>
@@ -126,9 +130,12 @@ $regionUnDefinedDefault
     </coverage>
     <purpose><para>$!dataResource.basisOfRecord.name</para></purpose>
     <maintenance>
-      <description><para>Unknown</para></description>
+      <description><para>Information not provided</para></description>
     </maintenance>
-#foreach( $agent in $agents )   
+#set($hasContacts = false)
+#foreach( $agent in $agents )
+	#if ($agent.agentType == $DATAADMINISTRATOR)   
+    #set($hasContacts = true)
     <contact id="$agent.key">
       <individualName>
         <surName>$agent.agentName</surName>
@@ -136,8 +143,9 @@ $regionUnDefinedDefault
       <organizationName><![CDATA[$dataResource.name]]></organizationName>
       <positionName>$agent.agentTypeName</positionName>
     </contact>
+    #end
 #end 
-#if(!$agents || $agents.isEmpty() )      
+#if(!$agents || $agents.isEmpty() && !$hasContacts)      
     <contact>
     	<references>creator-1</references>
     </contact>
