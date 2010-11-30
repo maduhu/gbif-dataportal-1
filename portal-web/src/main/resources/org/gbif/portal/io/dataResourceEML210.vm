@@ -28,6 +28,17 @@ $request.contextPath/datasets/resource/harvestList.xml
         <surName>$agent.agentName</surName>
       </individualName>
       <role>$agent.agentTypeName</role>
+      #if ($agent.agentAddress)
+      <address>
+      	<deliveryPoint>$agent.agentAddress</deliveryPoint>
+      </address>
+      #end
+      #if ($agent.agentTelephone)
+      <phone>$agent.agentTelephone</phone>
+      #end
+      #if ($agent.agentEmail)
+      <electronicMailAddress>$agent.agentEmail</electronicMailAddress>
+      #end
     </associatedParty>
     #end
 	#end      
@@ -142,6 +153,17 @@ $regionUnDefinedDefault
       </individualName>
       <organizationName><![CDATA[$dataResource.name]]></organizationName>
       <positionName>$agent.agentTypeName</positionName>
+      #if ($agent.agentAddress)
+      <address>
+      	<deliveryPoint>$agent.agentAddress</deliveryPoint>
+      </address>
+      #end
+      #if ($agent.agentTelephone)
+      <phone>$agent.agentTelephone</phone>
+      #end
+      #if ($agent.agentEmail)
+      <electronicMailAddress>$agent.agentEmail</electronicMailAddress>
+      #end
     </contact>
     #end
 #end 
