@@ -3,9 +3,9 @@
 $request.contextPath/datasets/resource/harvestList.xml
 -->
 <eml:eml packageId="eml.gbif.package.$dataResource.key" system="gbif"
-  xmlns:eml="eml://ecoinformatics.org/eml-2.1.0"
+  xmlns:eml="eml://ecoinformatics.org/eml-2.1.1"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.0 $request.contextPath/schema/eml.xsd" xml:lang="eng">
+  xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 http://rs.gbif.org/schema/eml-2.1.1/eml.xsd" xml:lang="eng">
     <access authSystem="knb" order="allowFirst">
         <allow>
             <principal>public</principal>
