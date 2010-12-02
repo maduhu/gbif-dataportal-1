@@ -201,6 +201,8 @@ public class DataResourceController extends RestController {
 		//retrieve bounding box
 		logger.debug("Adding geographic coverage tags");
 		List<GeographicalCoverageTag> gcts = dataResourceTagDAO.retrieveGeographicalCoverageTagsForEntity(TagDAO.DATA_RESOURCE_OCCURRENCES_BOUNDING_BOX, id);
+		mav.addObject("formatter", new Formatter());
+		mav.addObject("String", String.class);
 		if(gcts!=null && !gcts.isEmpty()){
 			mav.addObject("geographicCoverageTags", gcts);
 		}
@@ -591,5 +593,27 @@ public class DataResourceController extends RestController {
    */
   public void setMessageSource(MessageSource messageSource) {
   	this.messageSource = messageSource;
+  }
+  
+  /**
+   * Helper class to support formatting objects in velocity, 
+   * velocity doesn't support call methods with variable list of arguments like String.format(String,Objects...), and specifically
+   * when those methods are overloaded
+   * @author Federico Mendez
+   *
+   */
+  public class Formatter {
+	  
+	  /**
+	   * Applies a format to the object parameter and returns the formatted String.
+	   * This method only invokes the String.format method
+	   * @param format formatting instructions
+	   * @param object to format
+	   * @return
+	   */
+	  public String format(String format, Object object){		  
+		  return String.format(format, object);
+	  }	  
+	  
   }
 }
