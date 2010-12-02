@@ -13,36 +13,36 @@ $request.contextPath/datasets/resource/harvestList.xml
         </allow>
     </access> 
   <dataset>
+    <alternateIdentifier>$dataResource.key</alternateIdentifier> 
     <title><![CDATA[$dataResource.name]]></title>
-    <alternateIdentifier>$dataResource.key</alternateIdentifier>    
     <creator id="creator-1">       
       <organizationName><![CDATA[$dataResource.dataProviderName]]></organizationName> 
     </creator>
     <metadataProvider>       
       <organizationName><![CDATA[$dataResource.dataProviderName]]></organizationName> 
     </metadataProvider>  
-    #foreach( $agent in $agents )
-	#if ($agent.agentType == $SYSTEMADMINISTRATOR)   
+    #foreach( $agent in $agents )	  
     <associatedParty id="$agent.key">
       <individualName>
         <surName>$agent.agentName</surName>
-      </individualName>
-      <role>$agent.agentTypeName</role>
+      </individualName>     
       #if ($agent.agentAddress)
       <address>
-      	<deliveryPoint>$agent.agentAddress</deliveryPoint>
+      	<deliveryPoint><![CDATA[$agent.agentAddress]]></deliveryPoint>
       </address>
       #end
       #if ($agent.agentTelephone)
       <phone>$agent.agentTelephone</phone>
       #end
       #if ($agent.agentEmail)
-      <electronicMailAddress>$agent.agentEmail</electronicMailAddress>
+      <electronicMailAddress><![CDATA[$agent.agentEmail]]></electronicMailAddress>
       #end
-    </associatedParty>
-    #end
-	#end      
+      <role>$agent.agentTypeName</role>
+    </associatedParty>   
+	#end
+	#if ($dataResource.created)       
     <pubDate>$dateFormatter.format('yyyy-MM-dd',$dataResource.created)</pubDate>
+    #end
     <abstract>
       <para><![CDATA[$!dataResource.description $!dataResource.citation $!dataResource.citableAgent]]></para>
     </abstract>
@@ -59,19 +59,21 @@ $request.contextPath/datasets/resource/harvestList.xml
 	<distribution scope="document">
 	#set( $distCount = 0 )
 	#if( $raps )
-		#foreach( $rap in $raps )
-			#set( $distCount = $distCount +1 )	
-			<online>
-				<url function="download"><![CDATA[$rap.url]]></url>
-			</online>
+	  #foreach( $rap in $raps )
+	    #set( $distCount = $distCount +1 )	
+	    #if($distCount == 1)
+		<online>
+			<url function="download"><![CDATA[$rap.url]]></url>
+		</online>
+		#end
 		#end
 		#if($distCount < 1)
-			<offline>
-				<mediumName><![CDATA[This dataset is not available on line.]]></mediumName>
-			</offline>
+		<offline>
+			<mediumName><![CDATA[This dataset is not available on line.]]></mediumName>
+		</offline>
 		#end
-#end
-</distribution>
+	#end
+	</distribution>
 	<coverage>
       <geographicCoverage scope="document">
       	#set($regionUnDefinedDefault = "Information not provided")
@@ -84,16 +86,14 @@ $request.contextPath/datasets/resource/harvestList.xml
 	#springMessage("$i18nPrefix$region") 
 	#set( $index = $index +1 )
 	#end
-#else
-$regionUnDefinedDefault
-#end
+#else $regionUnDefinedDefault #end
 </geographicDescription>
 #foreach( $tag in $geographicCoverageTags )
         <boundingCoordinates>
-          <westBoundingCoordinate>$!tag.minLongitude</westBoundingCoordinate>
-          <eastBoundingCoordinate>$!tag.maxLongitude</eastBoundingCoordinate>
-          <northBoundingCoordinate>$!tag.maxLatitude</northBoundingCoordinate>
-          <southBoundingCoordinate>$!tag.minLatitude</southBoundingCoordinate>
+          <westBoundingCoordinate>$formatter.format('%.4f',$!tag.minLongitude)</westBoundingCoordinate>
+          <eastBoundingCoordinate>$formatter.format('%.4f',$!tag.maxLongitude)</eastBoundingCoordinate>
+          <northBoundingCoordinate>$formatter.format('%.4f',$!tag.maxLatitude)</northBoundingCoordinate>
+          <southBoundingCoordinate>$formatter.format('%.4f',$!tag.minLatitude)</southBoundingCoordinate>
         </boundingCoordinates>
 #end
 #if( ! $geographicCoverageTags )
@@ -155,22 +155,22 @@ $regionUnDefinedDefault
       <positionName>$agent.agentTypeName</positionName>
       #if ($agent.agentAddress)
       <address>
-      	<deliveryPoint>$agent.agentAddress</deliveryPoint>
+      	<deliveryPoint><![CDATA[$agent.agentAddress]]></deliveryPoint>
       </address>
       #end
       #if ($agent.agentTelephone)
       <phone>$agent.agentTelephone</phone>
       #end
       #if ($agent.agentEmail)
-      <electronicMailAddress>$agent.agentEmail</electronicMailAddress>
+      <electronicMailAddress><![CDATA[$agent.agentEmail]]></electronicMailAddress>
       #end
     </contact>
     #end
 #end 
-#if(!$agents || $agents.isEmpty() && !$hasContacts)      
+#if(!$hasContacts)      
     <contact>
     	<references>creator-1</references>
     </contact>
 #end    
   </dataset>
-</eml:eml>  
+</eml:eml>
