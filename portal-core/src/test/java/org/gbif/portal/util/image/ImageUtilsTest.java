@@ -60,7 +60,7 @@ public class ImageUtilsTest extends TestCase {
 
   public void testScaleImageFromStream() {
     HttpClient httpClient = new HttpClient();
-    GetMethod getMethod = new GetMethod("http://www.gbif.org/images/gbif_05.jpg");
+    GetMethod getMethod = new GetMethod("http://ukmoths.org.uk/images/02286_Borkhausenia_minutella_3.jpg");
     try {
       httpClient.executeMethod(getMethod);
       InputStream in = getMethod.getResponseBodyAsStream();
