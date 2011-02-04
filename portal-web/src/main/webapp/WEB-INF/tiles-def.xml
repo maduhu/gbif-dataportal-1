@@ -405,6 +405,7 @@
 	</definition>
     <!-- JSP for rendering metacat harvest list -->
     <definition name="harvestList" page="/WEB-INF/jsp/dataset/metacatHarvestList.jsp" />
+    <definition name="harvestListGBIFProfile" page="/WEB-INF/jsp/dataset/metadataHarvestList.jsp" />
 	
 	<!-- Indexing History -->
 	<definition name="indexingHistory" extends="mainLayout">
