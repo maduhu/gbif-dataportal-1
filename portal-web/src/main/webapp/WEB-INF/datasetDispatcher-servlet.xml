@@ -26,6 +26,7 @@
         <prop key="/network/**/*">resourceNetworkController</prop>
         <!-- Metacat harvest list -->
         <prop key="/resource/harvestList.xml">dataResourceBrowseController</prop>
+        <prop key="/resource/harvestListGBIFProfile.xml">dataResourceBrowseController</prop>
         <!-- logging -->
         <prop key="/logs/">logController</prop>
         <prop key="/logs/**/*">logController</prop>
@@ -80,6 +81,7 @@
     <property name="supportedSubViews">
       <list>
         <value>harvestList</value>
+        <value>harvestListGBIFProfile10</value>
       </list>
     </property>  
     <property name="removeExtensions" value="true"/>
@@ -315,6 +317,15 @@
             <property name="numberToolAttribute" value="numberFormatter"/>
             <property name="requestContextAttribute" value="request"/>
           </bean>
+        </entry>
+        <entry key="emlGBIF10">
+          <bean class="org.springframework.web.servlet.view.velocity.VelocityView">
+            <property name="url" value="org/gbif/portal/io/dataResourceEMLGBIF10.vm"/>
+            <property name="contentType" value="text/xml;charset=UTF-8"/>
+            <property name="dateToolAttribute" value="dateFormatter"/>
+            <property name="numberToolAttribute" value="numberFormatter"/>
+            <property name="requestContextAttribute" value="request"/>
+          </bean>
         </entry>        
       </map>    
     </property>   
@@ -456,8 +467,10 @@
         <value>/nameSearch</value>
         <value>/speciesSearch</value>  
         <value>/harvestList.xml</value>
+        <value>/harvestListGBIFProfile.xml</value>
         <value>schema=eml</value>
-        <value>schema=rdf</value>        
+        <value>schema=rdf</value>
+        <value>schema=emlGBIFProfile</value>        
       </list>
     </property>
     <!-- uppercase -->
