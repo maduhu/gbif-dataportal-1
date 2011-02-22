@@ -32,7 +32,7 @@
     <c:if test="${!countrySelected && !hostSelected}"><td>&nbsp;</td></c:if>  
   </tr>
   <c:forEach items="${countries}" var="country" varStatus="countryIndex">
-    <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && (!countrySelected || param['country']==country.isoCountryCode)}">
+    <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && country.isoCountryCode!=null && (!countrySelected || param['country']==country.isoCountryCode)}">
     <tr class="rowEntry">
       <td id="country-${country.isoCountryCode}" class="leftLabel" title="<spring:message code="country.abbr.${country.isoCountryCode}" text="${country.isoCountryCode}"/>">
        <c:if test="${showFlags && country.isoCountryCode!='XX'}"><img src="${pageContext.request.contextPath}/images/flags/<string:lowerCase>${country.isoCountryCode}</string:lowerCase>.gif"/></c:if>
