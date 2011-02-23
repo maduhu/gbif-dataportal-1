@@ -132,10 +132,11 @@
 			<version>3.1</version>
 			<scope>compile</scope>
 		</dependency>
+  		<!-- Upgraded from 1.2.3 to 1.2.6 because it still required Maven 1 and couldn't be built using Maven 3, only Maven 2 -->
 		<dependency>
 	 	  <groupId>org.codehaus.xfire</groupId>
 			<artifactId>xfire-spring</artifactId>
-			<version>1.2.3</version>
+			<version>1.2.6</version>
 	    <exclusions>
         <exclusion>
           <groupId>org.springframework</groupId>
