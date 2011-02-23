@@ -1,5 +1,5 @@
 <%@ page contentType="text/json" %><%@ include file="/common/taglibs.jsp"%><c:if test="${not empty callback}">${callback}(</c:if>{ "classificationSearch":{
-	"provider":"${taxonomicProvider}",
+	"publisher":"${taxonomicProvider}",
 	"classification":[<c:forEach items="${concepts}" var="concept" varStatus="nameStatus"><c:if test="${nameStatus.index>0}">,</c:if>	
 	{	
 		"id":"${concept.key}",

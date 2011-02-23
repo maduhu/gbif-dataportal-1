@@ -5,8 +5,8 @@
 </div>
 <div id="registrationContainer">
 
-<p>Use this tool to associate a system user with a data provider.</p>
-<p>This will allow the user to update a provider's details and update the resources they are providing.</p>
+<p>Use this tool to associate a system user with a data publisher.</p>
+<p>This will allow the user to update a publisher's details and update the resources they are providing.</p>
 
 <form method="get" action="${pageContext.request.contextPath}/register/addRegistrationLogins">
 	<fieldset>

@@ -48,7 +48,7 @@
             </td>
             <td class="tdColumn3" >
                 <p class="column3">
-					Data provider<c:if test="${dataProvider.dataResourceCount!=null}"> with ${dataProvider.dataResourceCount} resources</c:if>
+					Data publisher<c:if test="${dataProvider.dataResourceCount!=null}"> with ${dataProvider.dataResourceCount} resources</c:if>
 				</p>
             </td>
         </tr>

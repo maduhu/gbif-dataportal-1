@@ -5,7 +5,7 @@
 	<p class="resourceNotes">
 	Note: Fields marked with <span class="info"><spring:message code="registration.metdata.supplied"/></span>
 	are retrieved from the metadata request.<br/>
-	These fields are readonly and can only be updated by the provider updating the details supplied in the metadata
+	These fields are readonly and can only be updated by the publisher updating the details supplied in the metadata
 	request for the ${resource.resourceType} endpoint.
 	</p>
 </c:if>

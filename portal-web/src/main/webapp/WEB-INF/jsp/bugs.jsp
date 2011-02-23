@@ -23,7 +23,7 @@
 		<li>Occurrence web service - Response brings back exact number of records -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=72">issue tracking</a> - <a href="${pageContext.request.contextPath}/ws/rest/occurrence/list?scientificname=solanum">SAMPLE</a></li>		
 		<li>Data tracking page - Change wording on "View unprocessed data" -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=81">issue tracking</a> - <a href="${pageContext.request.contextPath}/datasets/resource/654/indexing/">SAMPLE</a></li>
 		<li>General - Improved treatment of the portal's urls -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=11">issue tracking</a> - <a href="${pageContext.request.contextPath}/occurrences">SAMPLE</a></li>
-		<li>Main page - Does not include counts from deleted data providers -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=74">issue tracking</a> - <a href="${pageContext.request.contextPath}/">SAMPLE</a></li>
+		<li>Main page - Does not include counts from deleted data publishers -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=74">issue tracking</a> - <a href="${pageContext.request.contextPath}/">SAMPLE</a></li>
 		<li>Maps - Geoserver shows all points when using the tab-density plugin -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=82">issue tracking</a> - <a href="${pageContext.request.contextPath}/countries/AG">SAMPLE</a></li>
 		<li>Maps - Max default zoom level is now set to 3 (to give users at least a recognisable part of a continent) -- <a href="http://code.google.com/p/gbif-dataportal/issues/detail?id=39">issue tracking</a> - <a href="${pageContext.request.contextPath}/countries/AG">SAMPLE</a></li>
 </ul>
@@ -55,11 +55,11 @@
 <ul class="genericList">
 		<li>Species pages - In "Explore All Occurrences," on each species page, the expected number of records is given -- <a href="${pageContext.request.contextPath}/species/13140809">SAMPLE</a></li>
         <li>Occurrence search - Countries sorted by their name instead of their ISO Code -- <a href="${pageContext.request.contextPath}/occurrences/searchCountries.htm?c[0].s=0&c[0].p=0&c[0].o=Inga vera">SAMPLE</a></li>
-        <li>Data Provider/Dataset pages - Formatted links into real links (a href...) in metadata fields (rights, description) -- <a href="${pageContext.request.contextPath}/datasets/provider/41">SAMPLE</a></li>
+        <li>Data Publisher/Dataset pages - Formatted links into real links (a href...) in metadata fields (rights, description) -- <a href="${pageContext.request.contextPath}/datasets/provider/41">SAMPLE</a></li>
 		<li>Country pages - Table included - "Countries providing data for Map" -- <a href="${pageContext.request.contextPath}/countries/AR">SAMPLE</a></li>        
         <li>Dataset individual page -  Consolidate content and display of citation texts -- <a href="${pageContext.request.contextPath}/datasets/resource/461">SAMPLE</a></li>
 		<li>Occurrence search - Sort datasets by their name when specifying two filters in occurrence search -- <a href="${pageContext.request.contextPath}/occurrences/searchResources.htm?c[0].s=0&c[0].p=0&c[0].o=Inga vera&c[1].s=32&c[1].p=0&c[1].o=US">SAMPLE</a></li>
-		<li>Occurrence search - Sort providers by their name when specifying two filters in occurrence search -- <a href="${pageContext.request.contextPath}/occurrences/searchProviders.htm?c[0].s=0&c[0].p=0&c[0].o=Inga vera&c[1].s=32&c[1].p=0&c[1].o=US">SAMPLE</a></li>
+		<li>Occurrence search - Sort publishers by their name when specifying two filters in occurrence search -- <a href="${pageContext.request.contextPath}/occurrences/searchProviders.htm?c[0].s=0&c[0].p=0&c[0].o=Inga vera&c[1].s=32&c[1].p=0&c[1].o=US">SAMPLE</a></li>
 		<li>Occurrence Search - Fixed inclusion of recognised synonyms -- <a href="${pageContext.request.contextPath}/occurrences/search.htm?c[0].s=0&c[0].p=0&c[0].o=Felis+concolor">SAMPLE</a></li>		
 		<li>Occurrence Search - Added image filter (filters were re-arranged into categories) -- <a href="${pageContext.request.contextPath}/occurrences/">SAMPLE</a></li>		        
         <li>Occurrence search - Fixed "Occurrence Date" filter. Date string was not updating automatically -- <a href="${pageContext.request.contextPath}/occurrences/">SAMPLE</a></li>

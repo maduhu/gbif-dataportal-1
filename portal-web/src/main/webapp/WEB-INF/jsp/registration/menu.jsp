@@ -9,16 +9,16 @@
 	<c:choose>
 		<c:when test="${empty providerDetails}">
 			<p>
-				You are currently not associated with a Data Provider.
+				You are currently not associated with a Data Publisher.
 			</p>
 			<ul class="generalActions">
 				<li><a href="registerDataProvider">Register a new Data Provider</a></li>				
-				<li><a href="findDataProvider">My Data Provider is already registered, please find it</a></li>									
+				<li><a href="findDataProvider">My Data Publisher is already registered, please find it</a></li>									
 			</ul>	
 		</c:when>				
 		<c:otherwise>					
 			<p>
-				You are currently associated with the following data providers:
+				You are currently associated with the following data publishers:
 			</p>
 				<c:forEach items="${providerDetails}" var="provider">
 						<h4><a class="providerLink" href="viewDataProvider?businessKey=${provider.businessKey}">${provider.businessName}</a></h4>
@@ -31,7 +31,7 @@
 			<p style="margin-top:20px;">Other options:</p>
 			<ul class="generalActions">
 				<li><a href="registerDataProvider">Register a new Data Provider</a></li>				
-				<li><a href="findDataProvider">My Data Provider is already registered, please find it</a></li>									
+				<li><a href="findDataProvider">My Data Publisher is already registered, please find it</a></li>									
 			</ul>							
 		</c:otherwise>								
 	</c:choose>			

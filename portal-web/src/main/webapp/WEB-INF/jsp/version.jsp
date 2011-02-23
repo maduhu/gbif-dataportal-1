@@ -30,7 +30,7 @@
 <h4>Features added in version 1.2.5 (Published: August, 2009)</h4>
 <ul class="genericList">
 	<li><a href="${pageContext.request.contextPath}/countries/AR">Maps</a> - Switched from MapServer to GeoServer as the map content provider for the data portal</li>
-	<li><a href="${pageContext.request.contextPath}/occurrences/45340996/rawProviderMessage/">Original record from data provider</a> - Improved user experience while downloading the original record from the provider</li>
+	<li><a href="${pageContext.request.contextPath}/occurrences/45340996/rawProviderMessage/">Original record from data publisher</a> - Improved user experience while downloading the original record from the publisher</li>
 	<li>Several GUI enhancements</li>
 </ul>
 

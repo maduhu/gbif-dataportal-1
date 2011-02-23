@@ -99,7 +99,7 @@
   <c:if test="${hostNotTied>0}">  
     <p>
        <fmt:formatNumber pattern="###,###">${hostNotTied}</fmt:formatNumber>
-       records are provided through networks or providers associated with multiple countries & territories.<br/>
+       records are provided through networks or publishers associated with multiple countries & territories.<br/>
        This accounts for 
        <gbiftag:lessThanPercent lowerLimit="0.01" value="${hostNotTied/country.occurrenceCount}" text="less than 0.01%"/>
        of the data for <gbif:capitalize>${country.name}</gbif:capitalize>. 

@@ -17,34 +17,34 @@
    <li>The quality and completeness of data cannot be guaranteed. Users employ these data at their own risk.</li>
    <li>Users shall respect restrictions of access to sensitive data.</li>
    <li>In order to make attribution of use for owners of the data possible, the identifier of ownership of data must be retained with every data record.</li>
-   <li>Users must publicly acknowledge, in conjunction with the use of the data, the data providers whose biodiversity data they have used.  Data providers may require additional attribution of specific collections within their institution.</li>
-   <li>Users must comply with additional terms and conditions of use set by the data provider. Where these exist they will be available through the metadata associated with the data.</li>
+   <li>Users must publicly acknowledge, in conjunction with the use of the data, the data publishers whose biodiversity data they have used.  Data publishers may require additional attribution of specific collections within their institution.</li>
+   <li>Users must comply with additional terms and conditions of use set by the data publisher. Where these exist they will be available through the metadata associated with the data.</li>
 </ol>
 
 <h4>2. Citing Data</h4>
 <p>Use the following format to cite data retrieved from the GBIF network:</p>  
-<p><em>Biodiversity occurrence data provided by: (Accessed through GBIF Data Portal, data.gbif.org, YYYY-MM-DD)</em></p>
+<p><em>Biodiversity occurrence data published by: (Accessed through GBIF Data Portal, data.gbif.org, YYYY-MM-DD)</em></p>
 <p>For example:</p>
-<p><em>Biodiversity occurrence data provided by: Field Museum of Natural History, Museum of Vertebrate Zoology, University of Washington Burke Museum, and University of Turku (Accessed through GBIF Data Portal, data.gbif.org, 2007-02-22)</em></p>
+<p><em>Biodiversity occurrence data published by: Field Museum of Natural History, Museum of Vertebrate Zoology, University of Washington Burke Museum, and University of Turku (Accessed through GBIF Data Portal, data.gbif.org, 2007-02-22)</em></p>
 
 <h4>3. Definitions</h4>
 <ul>
    <li>GBIF Participant: Signatory of the GBIF-establishing Memorandum of Understanding (MoU).</li>
    <li>GBIF Secretariat: Legal entity empowered by the GBIF Participants to enter into contracts, execute the Work Programme, and maintain the central services for the GBIF network.</li>
-   <li>GBIF network: The infrastructure consisting of the central services of the GBIF Secretariat, Participant Nodes and data providers. Making data available through GBIF network means registering and advertising the pertinent services via the GBIF central services.</li>
-   <li>Node: A data provider designated by a GBIF Participant that maintains a stable computer gateway that makes data available through the GBIF network.</li>
+   <li>GBIF network: The infrastructure consisting of the central services of the GBIF Secretariat, Participant Nodes and data publishers. Making data available through GBIF network means registering and advertising the pertinent services via the GBIF central services.</li>
+   <li>Node: A data publisher designated by a GBIF Participant that maintains a stable computer gateway that makes data available through the GBIF network.</li>
    <li>Participant node: An organisational unit designated by the GBIF Participant to coordinate activities in its domain. It may also provide data.</li>
    <li>Biodiversity data:  Primary data on specimens, observations, names, taxonomic concepts, and sites, and other related data on biological diversity.</li>
    <li>Metadata: Data describing the attributes and combinations of biodiversity data.</li>
    <li>Data:  Biodiversity data and metadata.</li>
-   <li>Data provider: A custodian of data making it technically available. This may or may not be the data owner. If not they will have declared to GBIF that they have permission to make the data available.</li>
+   <li>Data publisher: A custodian of data making it technically available. This may or may not be the data owner. If not they will have declared to GBIF that they have permission to make the data available.</li>
    <li>Data sharing: The process of and agreements for making data freely and universally available on the Internet.</li>
    <li>User:  Anyone who uses the Internet to access data through the GBIF network.</li>
    <li>Owner of data: The legal entity possessing the right resulting from the act of creating a digital record. The record may be a product derived from another, possibly non-digital product, which may affect the right.</li>
    <li>Sensitive data: Any data that the Node does not want to make available,  e.g. precise localities of endangered species.</li>
 </ul><br/>
 
-<p>Also see the <a href="${pageContext.request.contextPath}/tutorial/datasharingagreement">GBIF Data Sharing Agreement</a> for the data providers.</p>
+<p>Also see the <a href="${pageContext.request.contextPath}/tutorial/datasharingagreement">GBIF Data Sharing Agreement</a> for the data publishers.</p>
 
 <form method="post" action="terms.htm" form="acceptForm" class="acceptForm">
   <input type="hidden" name="forwardUrl" value="${param['forwardUrl']}"/>

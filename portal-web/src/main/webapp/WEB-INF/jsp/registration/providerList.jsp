@@ -9,10 +9,10 @@
 <p>
 	<c:choose>
 		<c:when test="${not empty userLogin}">
-			<b>${userLogin.fullName}</b> (<a href="mailto:${userLogin.email}">${userLogin.email}</a>) is already associated with the following data providers:		
+			<b>${userLogin.fullName}</b> (<a href="mailto:${userLogin.email}">${userLogin.email}</a>) is already associated with the following data publishers:		
 		</c:when>
 		<c:otherwise>
-			You are already associated with the following data providers:
+			You are already associated with the following data publishers:
 		</c:otherwise>	
 	</c:choose>		
 	<table>
@@ -36,11 +36,11 @@
 					Please select the provider you wish <b>${userLogin.fullName}</b> (<a href="mailto:${userLogin.email}">${userLogin.email}</a>) to be associated with and click "Submit".
 				</c:when>
 				<c:otherwise>
-						Please select the provider you wish to be associated with and click "Submit".<br/>
-						If you select to see a new provider, 
+						Please select the publisher you wish to be associated with and click "Submit".<br/>
+						If you select to see a new publisher, 
 						a notification email will be sent to our portal administrators (<a href="mailto:portal@gbif.org">portal@gbif.org</a>) 
 						so that they can enable access.<br/>
-						Once you are granted access to a providers details, you will receive an email and then
+						Once you are granted access to a publishers details, you will receive an email and then
 						you will be able to update this details,<br/>
 						and add new resources and update the details of existing resources.
 				</c:otherwise>	
@@ -64,7 +64,7 @@
 	</c:when>		
 	<c:otherwise>
 	<p>
-		There are no providers within the system to add.
+		There are no publishers within the system to add.
 	</p>		
 	</c:otherwise>	
 </c:choose>			

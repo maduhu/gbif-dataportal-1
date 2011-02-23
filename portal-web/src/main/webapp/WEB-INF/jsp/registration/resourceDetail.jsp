@@ -11,7 +11,7 @@
 	<a href="${pageContext.request.contextPath}/register/refreshMetadataDetails?businessKey=${param['businessKey']}&serviceKey=${param['serviceKey']}">click here</a>.
 	</p>
 	<p>
-	This will retrieve the latest metadata from the provider and update the fields marked with <span class="info"><spring:message code="registration.metdata.supplied"/></span>.
+	This will retrieve the latest metadata from the publisher and update the fields marked with <span class="info"><spring:message code="registration.metdata.supplied"/></span>.
 	</p>
 	<c:if test="${metadataRefresh}">
 			<p class="registrationHelp">

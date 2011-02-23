@@ -9,10 +9,10 @@
 <p>
 	<c:choose>
 		<c:when test="${not empty username}">
-			<b>${username}</b> is already associated with the following data providers:		
+			<b>${username}</b> is already associated with the following data publishers:		
 		</c:when>
 		<c:otherwise>
-			You are already associated with the following data providers:
+			You are already associated with the following data publishers:
 		</c:otherwise>	
 	</c:choose>		
 	<table>
@@ -36,7 +36,7 @@
 					Please pick the provider you wish <b>${username}</b> to be associated with
 				</c:when>
 				<c:otherwise>
-						Please pick the provider you wish to be associated with.
+						Please pick the publisher you wish to be associated with.
 				</c:otherwise>	
 			</c:choose>	
 		</p>
@@ -57,7 +57,7 @@
 	</c:when>		
 	<c:otherwise>
 	<p>
-		There are no providers within the system to add.
+		There are no publishers within the system to add.
 	</p>		
 	</c:otherwise>	
 </c:choose>			

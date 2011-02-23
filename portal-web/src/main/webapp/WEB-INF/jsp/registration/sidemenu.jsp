@@ -2,10 +2,10 @@
 <div id="sideMenu">
 <ul class="generalActions">
 	<li><a href="${pageContext.request.contextPath}/register/">Main menu</a></li>
-	<li><a href="${pageContext.request.contextPath}/register/registerDataProvider">Register new data provider</a></li>
-	<li><a href="${pageContext.request.contextPath}/register/findDataProvider">Find a data provider </a></li>
+	<li><a href="${pageContext.request.contextPath}/register/registerDataProvider">Register new data publisher</a></li>
+	<li><a href="${pageContext.request.contextPath}/register/findDataProvider">Find a data publisher </a></li>
 	<gbif:isUserInRole role="GBIF LDAP admins">	
-		<li><a href="${pageContext.request.contextPath}/register/userUpdate">Associate user with provider <span style="color:#FF0000;">(Admin)</span></a></li>
+		<li><a href="${pageContext.request.contextPath}/register/userUpdate">Associate user with publisher <span style="color:#FF0000;">(Admin)</span></a></li>
 	</gbif:isUserInRole>	
 	<li><a href="${pageContext.request.contextPath}/register/resetPassword">Reset password</a></li>		
 	<li><a href="${pageContext.request.contextPath}/register/logoutUser">Log out</a></li>	

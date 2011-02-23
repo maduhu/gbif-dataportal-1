@@ -2,7 +2,7 @@
 <c:set var="entityLink" scope="request">datasets/resource/${dataResource.key}</c:set>
 <c:set var="mapDescription" scope="request">
 <c:if test="${param['size']!='small'}">
-Specimen and observational data	provided by 
+Specimen and observational data	published by 
 </c:if>
 <span class="subject"><a href="http://${header.host}${pageContext.request.contextPath}/datasets/resource/${dataResource.key}" target="_top">${dataResource.name}</a></span><br/>
 <c:if test="${param['size']!='small'}">from the </c:if>Global Biodiversity Information Facility Network

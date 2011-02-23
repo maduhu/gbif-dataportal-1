@@ -1,1 +1,1 @@
-<%@ include file="/common/taglibs.jsp"%><spring:message code="provider.requesting.title" text="Provider request"/>
+<%@ include file="/common/taglibs.jsp"%><spring:message code="provider.requesting.title" text="Publisher request"/>
