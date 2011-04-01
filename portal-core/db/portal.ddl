@@ -560,6 +560,7 @@ CREATE TABLE `data_resource` (
   `lock_citable_agent` tinyint(1) NOT NULL default '0',
   `lock_basis_of_record` tinyint(1) NOT NULL default '0',
   `override_citation` tinyint(1) NOT NULL default '0',
+  `gbif_registry_uuid` varchar(50) default NULL,
   PRIMARY KEY  (`id`),
   KEY `data_provider_id` (`data_provider_id`),
   KEY `IX_data_resource_name` (`name`),
