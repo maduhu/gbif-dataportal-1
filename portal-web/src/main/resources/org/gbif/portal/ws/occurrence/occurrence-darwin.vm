@@ -65,7 +65,7 @@
 #if($occurrence.getRawOccurrenceRecordDTO().getLatLongPrecision())       <to:coordinateUncertaintyInMeters>$occurrence.getRawOccurrenceRecordDTO().getLatLongPrecision()</to:coordinateUncertaintyInMeters>
 #end
 #if("processed" == $parameterMap.get("mode"))
-  #if($occurrence.getCountry())       <to:country>$occurrence.getCountry()</to:country>
+  #if($occurrence.getIsoCountryCode())       <to:country>$occurrence.getIsoCountryCode()</to:country>
   #end
  #else
   #if($occurrence.getRawOccurrenceRecordDTO().getCountry())   <to:country>$occurrence.getRawOccurrenceRecordDTO().getCountry()</to:country>
