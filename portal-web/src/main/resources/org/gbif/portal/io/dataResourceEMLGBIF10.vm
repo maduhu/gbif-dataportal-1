@@ -136,7 +136,7 @@ $request.contextPath/datasets/resource/harvestList.xml
     <purpose><para>$!dataResource.basisOfRecord.name</para></purpose>
 #set($hasContacts = false)
 #foreach( $agent in $agents )
-	#if ($agent.agentType == $DATAADMINISTRATOR)   
+	#if ($agent.agentType == $DATAADMINISTRATOR && !$hasContacts)   
     #set($hasContacts = true)
     <contact>
       <individualName>
