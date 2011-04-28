@@ -49,20 +49,20 @@ $request.contextPath/datasets/resource/harvestList.xml
 #end    
     <intellectualRights>
       <para><![CDATA[$!dataResource.rights]]></para>
-    </intellectualRights>
-	<distribution scope="document">
+    </intellectualRights>	
 	#set( $distCount = 0 )
-	#if( $raps )
+	#if( $raps )	
 	  #foreach( $rap in $raps )
 	    #set( $distCount = $distCount +1 )	
 	    #if($distCount == 1)
+	    <distribution scope="document">
 		<online>
 			<url function="download"><![CDATA[$rap.url]]></url>
 		</online>
+		</distribution>
 		#end
 		#end		
-	#end
-	</distribution>
+	#end	
 	<coverage>
       <geographicCoverage>
       	#set($regionUnDefinedDefault = "Information not provided")
