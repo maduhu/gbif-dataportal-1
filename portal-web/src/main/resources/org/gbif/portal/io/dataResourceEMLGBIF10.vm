@@ -60,12 +60,7 @@ $request.contextPath/datasets/resource/harvestList.xml
 			<url function="download"><![CDATA[$rap.url]]></url>
 		</online>
 		#end
-		#end
-		#if($distCount < 1)
-		<offline>
-			<mediumName><![CDATA[This dataset is not available on line.]]></mediumName>
-		</offline>
-		#end
+		#end		
 	#end
 	</distribution>
 	<coverage>
