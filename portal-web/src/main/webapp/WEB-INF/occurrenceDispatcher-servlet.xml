@@ -671,6 +671,7 @@
             <property name="messageSource" ref="messageSource" />
             <property name="fileExtension" value=".txt" />
             <property name="addCitation" value="true" />
+            <property name="addRights" value="true" />
             <property name="downloadUtils" ref="downloadUtils" />
             <property name="logEventId" value="3008" />
           </bean>
@@ -690,6 +691,7 @@
             <property name="messageSource" ref="messageSource" />
             <property name="fileExtension" value=".csv" />
             <property name="addCitation" value="true" />
+            <property name="addRights" value="true" />
             <property name="downloadUtils" ref="downloadUtils" />
             <property name="logEventId" value="3008" />
           </bean>
@@ -699,6 +701,7 @@
             <property name="messageSource" ref="messageSource" />
             <property name="fileExtension" value=".xls" />
             <property name="addCitation" value="true" />
+            <property name="addRights" value="true" />
             <property name="sheetName" value="taxonomy.search.results" />
             <property name="downloadUtils" ref="downloadUtils" />
             <property name="logEventId" value="3008" />
@@ -739,6 +742,7 @@
             <property name="downloadFields" ref="occurrenceDownloadFields" />
             <property name="defaultMaxDownload" value="250000" />
             <property name="addCitation" value="false" />
+            <property name="addRights" value="false" />
             <property name="downloadUtils" ref="downloadUtils" />
             <property name="logEventId" value="3008" />
           </bean>
