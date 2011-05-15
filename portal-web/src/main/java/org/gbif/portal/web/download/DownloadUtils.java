@@ -242,6 +242,49 @@ public class DownloadUtils {
 		}
 	}
 	
+	
+	/**
+	 * Outputs a rights to the supplied output stream. If the stream is zipped, it will create an entry of the specified <code>rightsFileName</code>. 
+	 * 
+	 * @param outputStream
+	 * @param resultsOutputter
+	 * @param rightsFileName
+	 * @param locale
+	 * @param hostUrl
+	 * @throws IOException
+	 */
+	public void outputRights(OutputStream outputStream, DataResourceAuditor resultsOutputter, String rightsFileName, Locale locale, String hostUrl) throws IOException {
+		if(outputStream instanceof ZipOutputStream){
+			((ZipOutputStream) outputStream).putNextEntry(new ZipEntry(rightsFileName));
+		}
+		Map<String, String> dataResources = resultsOutputter.getDataResources();
+		StringBuffer sb = new StringBuffer();
+		sb.append(messageSource.getMessage("rights.introduction", null, locale));
+		try {
+			for(String dataResourceId: dataResources.keySet() ) {
+				DataResourceDTO dataResourceDTO = dataResourceManager.getDataResourceFor(dataResourceId);
+				if(dataResourceDTO.getRights()!=null) {
+					Object[] paramsEntry = new Object[2];
+					paramsEntry[0]=dataResourceDTO.getName();
+					paramsEntry[1]=hostUrl+datasetBaseUrl+dataResourceDTO.getKey();
+					sb.append(messageSource.getMessage("rights.entry", paramsEntry, locale));
+					sb.append('\n');		
+					Object[] paramsRights = new Object[1];
+					paramsRights[0]=dataResourceDTO.getRights();
+					sb.append(messageSource.getMessage("rights.supplied", paramsRights, locale));
+					sb.append('\n');					
+				}
+			}
+		} catch (Exception e){
+			logger.error(e.getMessage(), e);
+		}	
+		outputStream.write(csb.toString().getBytes());
+		if(outputStream instanceof ZipOutputStream){
+			((ZipOutputStream) outputStream).closeEntry();
+		}
+	}
+	
+	
 	/**
 	 * Logs the user event of viewing an occurrence record.
 	 * 

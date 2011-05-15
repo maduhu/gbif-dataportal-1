@@ -117,6 +117,11 @@ public class ExcelFileWriter extends FileWriter {
 		if(addCitation && zipped){
 			downloadUtils.outputCitation(outputStream, (DataResourceAuditor) resultsOutputter, citationFileName, locale, hostUrl);
 		}
+		
+		//write out the rights
+		if(addRights && zipped){
+			downloadUtils.outputCitation(outputStream, (DataResourceAuditor) resultsOutputter, rightsFileName, locale, hostUrl);
+		}		
 
 		//log usage
 		if(logEventId!=null && resultsOutputter instanceof DataResourceAuditor){

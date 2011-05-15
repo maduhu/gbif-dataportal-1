@@ -49,10 +49,14 @@ public abstract class FileWriter implements Runnable {
 	protected Integer logEventId;	
 	/** Whether to add a citation */
 	protected boolean addCitation = true;
+	/** Whether to add a citation */
+	protected boolean addRights = true;	
 	/** Whether the file to produce is zipped */
 	protected boolean zipped = true;
 	/** The file name for the citation */
-	protected String citationFileName = "citation.txt";	
+	protected String citationFileName = "citation.txt";
+	/** The file name for the citation */
+	protected String rightsFileName = "rights.txt";		
 	/** Audit the download */
 	protected boolean audit = true;	
 
@@ -187,6 +191,14 @@ public abstract class FileWriter implements Runnable {
 	public void setAddCitation(boolean addCitation) {
 		this.addCitation = addCitation;
 	}
+	
+	/**
+	 * 
+	 * @param addRights the addRights to set
+	 */
+	public void setAddRights(boolean addRights) {
+		this.addRights = addRights;
+	}
 
 	/**
 	 * @param zipped the zipped to set
@@ -201,6 +213,13 @@ public abstract class FileWriter implements Runnable {
 	public void setCitationFileName(String citationFileName) {
 		this.citationFileName = citationFileName;
 	}
+	
+	/**
+	 * @param rightsFileName
+	 */
+	public void setRightsFileName(String rightsFileName) {
+		this.rightsFileName = rightsFileName;
+	}	
 	
 	/**
 	 * @param audit the audit to set

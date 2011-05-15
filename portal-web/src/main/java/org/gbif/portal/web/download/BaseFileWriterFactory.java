@@ -31,6 +31,8 @@ public abstract class BaseFileWriterFactory implements FileWriterFactory {
 	protected MessageSource messageSource;
 	/** Whether or not to add a citation */
 	protected boolean addCitation = false;
+	/** Whether or not to add a rights file */
+	protected boolean addRights = false;
 	/** Whether or not to add a citation */
 	protected boolean zipped = true;
 	/** The default file extension for the primary file that is created */
@@ -60,6 +62,22 @@ public abstract class BaseFileWriterFactory implements FileWriterFactory {
 	public void setAddCitation(boolean addCitation) {
 		this.addCitation = addCitation;
 	}
+	
+	/**
+	 *  the addRights
+	 * @return
+	 */
+	public boolean isAddRights() {
+		return addRights;
+	}
+
+	/**
+	 * @param addRights the rights to set
+	 */
+	public void setAddRights(boolean addRights) {
+		this.addRights = addRights;
+	}
+
 	/**
 	 * @return the downloadUtils
 	 */
