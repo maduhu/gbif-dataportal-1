@@ -278,7 +278,7 @@ public class DownloadUtils {
 		} catch (Exception e){
 			logger.error(e.getMessage(), e);
 		}	
-		outputStream.write(csb.toString().getBytes());
+		outputStream.write(sb.toString().getBytes());
 		if(outputStream instanceof ZipOutputStream){
 			((ZipOutputStream) outputStream).closeEntry();
 		}
