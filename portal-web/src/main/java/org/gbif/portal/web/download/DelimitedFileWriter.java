@@ -108,6 +108,11 @@ public class DelimitedFileWriter extends FileWriter {
 		if(addCitation && zipped){
 			downloadUtils.outputCitation(outputStream, (DataResourceAuditor) resultsOutputter, citationFileName, locale, hostUrl);
 		}
+		
+    //write out the rights
+    if(addRights && zipped){
+      downloadUtils.outputRights(outputStream, (DataResourceAuditor) resultsOutputter, rightsFileName, locale, hostUrl);
+    }   		
 
 		//log usage
 		if(logEventId!=null && resultsOutputter instanceof DataResourceAuditor){

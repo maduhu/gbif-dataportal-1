@@ -9,7 +9,7 @@
 
 	<context-param>
 			<param-name>webAppRootKey</param-name>
-			<param-value>portal14may2009</param-value>
+			<param-value>portal16may2011</param-value>
 	</context-param>
 	
 	<!-- For spring context initialisation -->

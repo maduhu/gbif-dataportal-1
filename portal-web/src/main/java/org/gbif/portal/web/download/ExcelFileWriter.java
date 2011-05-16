@@ -120,7 +120,7 @@ public class ExcelFileWriter extends FileWriter {
 		
 		//write out the rights
 		if(addRights && zipped){
-			downloadUtils.outputCitation(outputStream, (DataResourceAuditor) resultsOutputter, rightsFileName, locale, hostUrl);
+			downloadUtils.outputRights(outputStream, (DataResourceAuditor) resultsOutputter, rightsFileName, locale, hostUrl);
 		}		
 
 		//log usage
