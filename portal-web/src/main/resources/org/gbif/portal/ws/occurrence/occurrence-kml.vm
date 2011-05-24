@@ -2,6 +2,7 @@
 #set($documentOpen=$response.get("documentOpen"))
 #set($documentDescription=$response.get("documentDescription"))
 <?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
 <Document xmlns="http://earth.google.com/kml/2.1">
  <name>$documentName</name>
  <open>$documentOpen</open>
@@ -195,3 +196,4 @@
 #end
 #end
 </Document>
+</kml>
