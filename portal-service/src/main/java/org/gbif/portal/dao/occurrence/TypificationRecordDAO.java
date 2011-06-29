@@ -25,7 +25,6 @@ import org.gbif.portal.model.occurrence.TypificationRecord;
  * @author Donald Hobern
  */
 public interface TypificationRecordDAO {
-	
 	/**
 	 * Returns the TypificationRecords for an occurrence record.
 	 * 
@@ -50,11 +49,20 @@ public interface TypificationRecordDAO {
 	 */
 	public List<TypificationRecord> getTypificationRecordsForTaxonName(long taxonNameId);
 	
-	/**
-	 * Returns the TypificationRecords for the partners of this taxon concept.  
-	 * 
-	 * @param taxonConceptId identifier for a taxon concept
-	 * @return List of TypificationRecord objects.
-	 */
-	public List<TypificationRecord> getTypificationRecordsForNamesOfPartnersOfTaxonConcept(long taxonConceptId);
+  /**
+   * Returns the TypificationRecords for the partners of this taxon concept.  
+   * 
+   * @param taxonConceptId identifier for a taxon concept
+   * @return List of TypificationRecord objects.
+   */
+  public List<TypificationRecord> getTypificationRecordsForNamesOfPartnersOfTaxonConcept(long taxonConceptId);
+  
+  /**
+   * Returns the TypificationRecords for the taxon concept.  
+   * 
+   * @param taxonConceptId identifier for a taxon concept
+   * 
+   * @return List of TypificationRecord objects.
+   */
+  public List<TypificationRecord> getTypificationRecordsForTaxonConcept(long taxonConceptId);
 }

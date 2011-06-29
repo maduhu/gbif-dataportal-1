@@ -582,12 +582,8 @@ public class TaxonResolvingController extends RestController {
 	 * @param response
 	 * @throws Exception
 	 */ 
-	public void addTypifications(TaxonConceptDTO taxonConcept, HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		if (taxonConcept.getIsNubConcept()) {
-			request.setAttribute("typifications", taxonomyManager.getTypificationRecordsForPartnersOfTaxonConcept(taxonConcept.getKey()));	
-		} else {
-			request.setAttribute("typifications", taxonomyManager.getTypificationRecordsForPartnersOfTaxonConcept(taxonConcept.getPartnerConceptKey()));			
-		}
+	public void addTypifications(TaxonConceptDTO taxonConcept, HttpServletRequest request, HttpServletResponse response)  throws Exception {
+	  request.setAttribute("typifications", taxonomyManager.getTypificationRecordsForTaxonConcept(taxonConcept.getKey()));
 	}
 	
 	/**

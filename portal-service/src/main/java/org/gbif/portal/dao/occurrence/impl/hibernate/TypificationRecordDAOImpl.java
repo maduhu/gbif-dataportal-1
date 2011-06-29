@@ -32,7 +32,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * @author Donald Hobern
  */
 public class TypificationRecordDAOImpl extends HibernateDaoSupport implements TypificationRecordDAO {
-
+  
 	/**
 	 * @see org.gbif.portal.dao.occurrence.TypificationRecordDAO#getTypificationRecordsForOccurrenceRecord(long)
 	 */
@@ -115,4 +115,25 @@ public class TypificationRecordDAOImpl extends HibernateDaoSupport implements Ty
 			return new LinkedList<TypificationRecord>();
 		}
 	}
+	
+  /**
+   * 
+   */
+  @SuppressWarnings("unchecked")
+  public List<TypificationRecord> getTypificationRecordsForTaxonConcept(final long taxonConceptId) {
+    HibernateTemplate template = getHibernateTemplate();
+    return (List<TypificationRecord>) template.execute(new HibernateCallback() {
+      public Object doInHibernate(Session session) {
+        String query = "from TypificationRecord tr " +
+            "inner join fetch tr.occurrenceRecord inner join fetch tr.dataResource " +
+            "where tr.occurrenceRecord.nubTaxonConceptId=? or tr.occurrenceRecord.taxonConceptId=?";
+        Query q = session.createQuery(query);
+        q.setParameter(0, taxonConceptId);
+        q.setParameter(1, taxonConceptId);
+        q.setCacheable(true);
+        q.setMaxResults(100);
+        return q.list();
+      }
+    });   
+  }	
 }

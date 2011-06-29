@@ -697,17 +697,28 @@ public class TaxonomyManagerImpl implements TaxonomyManager {
 		return countDTOFactory.createDTOList(counts);
 	}
 	
-	/**
-	 * @see org.gbif.portal.service.TaxonomyManager#getTypificationRecordsForTaxonName(java.lang.String)
-	 */
-	@SuppressWarnings("unchecked")
-	public List<TypificationRecordDTO> getTypificationRecordsForPartnersOfTaxonConcept(String nubConceptKey) throws ServiceException {
-		Long nubConceptId = parseKey(nubConceptKey);
-		if(nubConceptId==null)
-			return new ArrayList<TypificationRecordDTO>();
-		List<TypificationRecord> records = typificationRecordDAO.getTypificationRecordsForNamesOfPartnersOfTaxonConcept(nubConceptId);
-		return typificationRecordDTOFactory.createDTOList(records);		
-	}
+  /**
+   * @see org.gbif.portal.service.TaxonomyManager#getTypificationRecordsForTaxonName(java.lang.String)
+   */
+  @SuppressWarnings("unchecked")
+  public List<TypificationRecordDTO> getTypificationRecordsForPartnersOfTaxonConcept(String nubConceptKey) throws ServiceException {
+    Long nubConceptId = parseKey(nubConceptKey);
+    if(nubConceptId==null)
+      return new ArrayList<TypificationRecordDTO>();
+    List<TypificationRecord> records = typificationRecordDAO.getTypificationRecordsForNamesOfPartnersOfTaxonConcept(nubConceptId);
+    return typificationRecordDTOFactory.createDTOList(records);   
+  }
+
+  /**
+   * @see org.gbif.portal.service.TaxonomyManager#getTypificationRecordsForTaxonName(java.lang.String)
+   */
+  @SuppressWarnings("unchecked")
+  public List<TypificationRecordDTO> getTypificationRecordsForTaxonConcept(String conceptKey) throws ServiceException {
+    Long conceptId = parseKey(conceptKey);
+    if (conceptId==null)
+      return new ArrayList<TypificationRecordDTO>();
+    return typificationRecordDTOFactory.createDTOList(typificationRecordDAO.getTypificationRecordsForTaxonConcept(conceptId));
+  }
 
 	/**
 	 * @see org.gbif.portal.service.TaxonomyManager#getTaxonConceptForRemoteId(java.lang.String, java.lang.String, java.lang.String)

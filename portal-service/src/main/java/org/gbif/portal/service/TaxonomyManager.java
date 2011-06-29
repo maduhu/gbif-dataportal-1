@@ -477,16 +477,25 @@ public interface TaxonomyManager {
 	 */
 	public List<RemoteConceptDTO> findRemoteConceptsFor(String taxonConceptKey) throws ServiceException;
 	
-	/**
-	 * Returns the typification records for all the taxonNames that are partners of the supplied nub concept.
-	 * All names are used, to ensure that any author variations within the nub concept are returned
-	 * 
-	 * @param nubConceptKey The nubConceptKey key 
-	 * @return List of TypificationRecordDTOs for ALL the names behind the nub concept
-	 * @throws ServiceException indicate a failure to retrieve the data due to a network/database connection 
-	 */
-	public List<TypificationRecordDTO> getTypificationRecordsForPartnersOfTaxonConcept(String nubConceptKey) throws ServiceException;
-	
+  /**
+   * Returns the typification records for all the taxonNames that are partners of the supplied nub concept.
+   * All names are used, to ensure that any author variations within the nub concept are returned
+   * 
+   * @param nubConceptKey The nubConceptKey key 
+   * @return List of TypificationRecordDTOs for ALL the names behind the nub concept
+   * @throws ServiceException indicate a failure to retrieve the data due to a network/database connection 
+   */
+  public List<TypificationRecordDTO> getTypificationRecordsForPartnersOfTaxonConcept(String nubConceptKey) throws ServiceException;
+  
+  /**
+   * Returns the typification records for the given concept
+   * 
+   * @param conceptKey The nubConceptKey key 
+   * @return List of TypificationRecordDTOs for the concepts
+   * @throws ServiceException indicate a failure to retrieve the data due to a network/database connection 
+   */
+  public List<TypificationRecordDTO> getTypificationRecordsForTaxonConcept(String conceptKey) throws ServiceException;
+  
 	/**
 	 * Retrieves a count against all countries for this taxon concept.
 	 * @param taxonConcept
