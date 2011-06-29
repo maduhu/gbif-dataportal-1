@@ -131,7 +131,7 @@
 						<td>
 							<c:choose>
 								<c:when test="${fn:startsWith(remoteConcept.remoteId, 'urn:lsid:')}">
-									<a href="http://www.ipni.org/${remoteConcept.remoteId}">${remoteConcept.remoteId}</a>
+									<a href="http://lsid.tdwg.org/${remoteConcept.remoteId}">${remoteConcept.remoteId}</a>
 								</c:when>
 								<c:when test="${fn:startsWith(remoteConcept.remoteId, 'doi:')}">
 									<a href="http://dx.doi.org/${remoteConcept.remoteId}">${remoteConcept.remoteId}</a>
