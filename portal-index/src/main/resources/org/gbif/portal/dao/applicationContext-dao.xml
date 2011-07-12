@@ -14,7 +14,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/portal"/>
-		<property name="username" value="root"/>
+		<property name="username" value="portal"/>
 		<property name="password" value="password"/>
 		<property name="initialSize" value="1"/>
 		<property name="maxActive" value="25"/>
@@ -27,7 +27,7 @@
 	<bean id="logDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/portal"/>
-		<property name="username" value="root"/>
+		<property name="username" value="portal"/>
 		<property name="password" value="password"/>
 		<property name="initialSize" value="1"/>
 		<property name="maxActive" value="25"/>
