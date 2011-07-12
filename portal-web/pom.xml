@@ -219,8 +219,7 @@
       <id>gbif-remote</id>
       <name>gbif-remote</name>
       <url>http://tools.gbif.org/maven/repository</url>
-    </repository>
-		<repository>    
+    </repository> 
   </repositories>
   <pluginRepositories>
     <pluginRepository>
