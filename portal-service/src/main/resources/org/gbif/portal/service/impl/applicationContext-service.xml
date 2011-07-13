@@ -70,6 +70,7 @@
     <property name="dataResourceAgentDTOFactory" ref="dataResourceAgentDTOFactory"/>
     <property name="keyValueDTOFactory" ref="keyValueDTOFactory"/>
     <property name="nubDataProviderId" value="1"/>
+    <property name="nubDataResourceId" value="1"/>
   </bean>    
 
   <!-- Live Data Resource Manager -->  

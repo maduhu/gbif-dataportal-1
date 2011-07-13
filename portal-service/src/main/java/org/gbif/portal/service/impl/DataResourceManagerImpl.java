@@ -102,6 +102,11 @@ public class DataResourceManagerImpl implements DataResourceManager {
 	
 	/**The Data Provider id of the nub taxonomy**/
 	protected long nubDataProviderId;
+  /**The Data resource id of the nub taxonomy**/
+  protected long nubDataResourceId;
+  	
+	
+	
 	
 	/**
 	 * @see org.gbif.portal.service.DataResourceManager#getAllDataProviders()
@@ -204,6 +209,14 @@ public class DataResourceManagerImpl implements DataResourceManager {
 		DataProvider dataProvider = dataProviderDAO.getDataProviderFor(nubDataProviderId);
 		return (DataProviderDTO) dataProviderDTOFactory.createDTO(dataProvider);		
 	}	
+	
+  /**
+   * @see org.gbif.portal.service.DataResourceManager#getNubDataResource()
+   */
+  public DataResourceDTO getNubDataResource() throws ServiceException {
+    DataResource dataResource = dataResourceDAO.getDataResourceFor(nubDataResourceId);
+    return (DataResourceDTO) dataResourceDTOFactory.createDTO(dataResource);
+  }	
 	
 	/**
 	 * @see org.gbif.portal.service.DataResourceManager#getNewestDataResource()
