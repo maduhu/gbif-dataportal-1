@@ -694,4 +694,13 @@ public class DataResourceManagerImpl implements DataResourceManager {
 			DTOFactory resourceAccessPointDTOFactory) {
 		this.resourceAccessPointDTOFactory = resourceAccessPointDTOFactory;
 	}
+
+  /**
+   * @param nubDataResourceId the nubDataResourceId to set
+   */
+  public void setNubDataResourceId(long nubDataResourceId) {
+    this.nubDataResourceId = nubDataResourceId;
+  }
+	
+	
 }
