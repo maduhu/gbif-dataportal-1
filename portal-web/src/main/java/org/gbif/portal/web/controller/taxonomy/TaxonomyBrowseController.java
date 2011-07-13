@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -38,11 +38,11 @@ import org.springframework.context.MessageSource;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Simple Small Tree Browser Controller intended to support the pygmy style 
+ * Simple Small Tree Browser Controller intended to support the pygmy style
  * browser. This style of browser only displays the direct ascendents of the
  * selected concept and its direct descendents. When there is not a concept selected
  * the root nodes are returned - i.e. concepts with no parent.
- * 
+ *
  * @author dmartin
  */
 public class TaxonomyBrowseController extends RestKeyValueController {
@@ -54,18 +54,18 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 
 	/** Utilities for organising concepts */
 	protected TaxonConceptUtils taxonConceptUtils;
-	
+
 	/** Filter Content Provider for criteria construction utils **/
 	protected FilterContentProvider filterContentProvider;
-	
+
 	/** Message source */
 	protected MessageSource messageSource;
-	
+
 	/** The request properties data provider key */
-	protected String dataProviderPropertyKey = "provider";	
+	protected String dataProviderPropertyKey = "provider";
 	/** The request properties data resource key */
 	protected String dataResourcePropertyKey = "resource";
-	/** The request properties taxon concept key */	
+	/** The request properties taxon concept key */
 	protected String taxonConceptPropertyKey = "taxon";
 
 	/** The key for the list of concepts */
@@ -74,20 +74,22 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 	protected String taxonConceptModelKey = "taxonConcept";
 
 	/** The key for the selected data provider */
-	protected String nubProviderModelKey = "nubProvider";		
-	/** The key for the selected data provider */
-	protected String dataProviderModelKey = "dataProvider";	
+	protected String nubProviderModelKey = "nubProvider";
+  /** The key for the selected data provider */
+  protected String nubResourceModelKey = "nubResource";
+  /** The key for the selected data provider */
+	protected String dataProviderModelKey = "dataProvider";
 	/** The key for the selected data resource */
 	protected String dataResourceModelKey = "dataResource";
 
 	/** The model key for the list of  data providers */
-	protected String dataProvidersModelKey = "dataProviders";	
+	protected String dataProvidersModelKey = "dataProviders";
 	/** The model key for the list of data resources */
 	protected String dataResourcesModelKey = "dataResources";
-	
+
 	/** The highest rank model key  */
 	protected String highestRankModelKey = "highestRank";
-	
+
 	/** The occurrence criteria for quick searching */
 	protected String occurrenceCriteriaModelKey = "occurrenceCriteria";
 
@@ -95,20 +97,20 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 	protected String taxonomyCriteriaModelKey = "taxonomyCriteria";
 
 	/** Threshold used to determining rendering */
-	protected String taxonPriorityThresholdModelKey = " taxonPriorityThreshold";	
+	protected String taxonPriorityThresholdModelKey = " taxonPriorityThreshold";
 
 	/** Threshold used to determining rendering */
 	protected int taxonPriorityThreshold = 20;
-	
+
 	protected String messageSourceModelKey = "messageSource";
 	/** Whether or not to display unconfirmed names */
 	protected boolean allowUnconfirmed = true;
-	
+
 	protected String occurrenceManagerModelKey = "occurrenceManager";
-	
+
 	/** occurrenceManager for the taxonomy occurrences calculation */
 	protected OccurrenceManager occurrenceManager;
-	
+
 	/**
 	 * @see org.gbif.portal.web.controller.RestController#handleRequest(java.util.List, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
@@ -122,35 +124,39 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 		String taxonConceptKey = properties.get(taxonConceptPropertyKey);
 		if(logger.isDebugEnabled())
 			logger.debug("provider:"+dataProviderKey+", resource:"+dataResourceKey+", concept:"+taxonConceptKey);
-		
-		//Create the view		
-		ModelAndView mav = resolveAndCreateView(properties, request, false);	
-		
+
+		//Create the view
+		ModelAndView mav = resolveAndCreateView(properties, request, false);
+
 		DataProviderDTO nubProvider = dataResourceManager.getNubDataProvider();
 		if(nubProvider!=null)
 			mav.addObject(nubProviderModelKey, nubProvider);
-		
+
+    DataResourceDTO nubResource = dataResourceManager.getNubDataResource();
+    if (nubResource != null) mav.addObject(nubResourceModelKey, nubResource);
+
+
 		//retrieve the list of taxonomies - for the drop down
 //		List<DataProviderDTO> dataProviders = dataResourceManager.getDataProvidersOfferingTaxonomies();
 //		List<DataResourceDTO> dataResources = dataResourceManager.getDataResourcesWithInferredTaxonomies();
 //		mav.addObject(dataProvidersModelKey, dataProviders);
 //		mav.addObject(dataResourcesModelKey, dataResources);
-		
+
 		//get the concepts
 		TaxonConceptDTO selectedConcept = null;
-		List<BriefTaxonConceptDTO> concepts = null; 
+		List<BriefTaxonConceptDTO> concepts = null;
 		DataProviderDTO dataProviderDTO = null;
-		DataResourceDTO dataResourceDTO = null;		
-		
+		DataResourceDTO dataResourceDTO = null;
+
 		try {
 			//if concept is null, check for provider or resource id
 			if(StringUtils.isEmpty(taxonConceptKey)){
-				//use provider key if available, resource key if not and default taxonomy (treated as a provider key)	
+				//use provider key if available, resource key if not and default taxonomy (treated as a provider key)
 				if(StringUtils.isNotEmpty(dataProviderKey)){
 					//retrieve the data provider
 					dataProviderDTO = dataResourceManager.getDataProviderFor(dataProviderKey);
 					if(dataProviderDTO==null)
-						return redirectToDefaultView();				
+						return redirectToDefaultView();
 					//get the root taxon concepts
 					concepts= taxonomyManager.getRootTaxonConceptsForTaxonomy(dataProviderKey, null);
 				} else if (StringUtils.isNotEmpty(dataResourceKey)){
@@ -165,10 +171,11 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 				} else {
 					//use the default taxonomy - treat this as a DataProvider for now
 					//retrieve the data provider
-					dataProviderDTO = dataResourceManager.getNubDataProvider();
-					//get the root taxon concepts
-					if(dataProviderDTO!=null)
-						concepts= taxonomyManager.getRootTaxonConceptsForTaxonomy(dataProviderDTO.getKey(), null);
+					dataProviderDTO = nubProvider;
+          dataResourceDTO = nubResource;
+          //get the root taxon concepts
+					if(dataResourceDTO!=null)
+						concepts= taxonomyManager.getRootTaxonConceptsForTaxonomy(null, nubResource.getKey());
 				}
 				//if only one child descend tree until there is a choice
 				if(concepts!=null && concepts.size()==1){
@@ -184,7 +191,7 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 						if(noOfChildConcepts>1)
 							taxonConceptUtils.organiseUnconfirmedNames(request, currentConcept, concepts, childConcepts, taxonPriorityThreshold);
 						else
-							concepts.addAll(childConcepts);					
+							concepts.addAll(childConcepts);
 					}
 				}
 			} else {
@@ -197,19 +204,19 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 				//retrieve the data resource
 				if(selectedConcept.getDataResourceKey()!=null)
 					dataResourceDTO = dataResourceManager.getDataResourceFor(selectedConcept.getDataResourceKey());
-				
-				
+
+
 				//get high level concepts first
 				concepts = taxonomyManager.getClassificationFor(taxonConceptKey, false, null, allowUnconfirmed);
-				
+
 				//get child concepts
 				List<BriefTaxonConceptDTO> childConcepts = taxonomyManager.getChildConceptsFor(taxonConceptKey, allowUnconfirmed);
-				
+
 				//organised the child concepts
 				taxonConceptUtils.organiseUnconfirmedNames(request, selectedConcept, concepts, childConcepts, taxonPriorityThreshold);
-				
+
 				mav.addObject(taxonConceptModelKey, selectedConcept);
-				
+
 				//add occurrence search criteria - Search for Occurrences of
 				CriteriaDTO occurrenceCriteria = filterContentProvider.getOccurrenceSearchCriteria(selectedConcept);
 				if(occurrenceCriteria!=null)
@@ -231,16 +238,16 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 			topRank = taxonomyManager.getRootConceptRankForTaxonomy(null, dataResourceDTO.getKey());
 		else if(dataProviderDTO!=null)
 			topRank = taxonomyManager.getRootConceptRankForTaxonomy(dataProviderDTO.getKey(), null);
-		
+
 		if(topRank!=null)
 			mav.addObject(highestRankModelKey, topRank.getName());
-		
-		if(dataProviderDTO!=null)		
+
+		if(dataProviderDTO!=null)
 			mav.addObject(dataProviderModelKey, dataProviderDTO);
-		
+
 		if(dataResourceDTO!=null)
 			mav.addObject(dataResourceModelKey, dataResourceDTO);
-		
+
 		if(concepts!=null)
 			mav.addObject(conceptsModelKey, concepts);
 
