@@ -23,7 +23,7 @@ class UrlRewriteRequest extends HttpServletRequestWrapper {
     }
     // only use first value of each parameter:
     final Enumeration<String> iter = super.getParameterNames();
-    while (iter.hasMoreElements()) {
+    while (iter!=null && iter.hasMoreElements()) {
       final String p = iter.nextElement();
       params.put(p, super.getParameter(p));
     }

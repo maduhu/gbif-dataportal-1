@@ -40,6 +40,12 @@
         </encoder>
     </appender>
 
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+        <pattern>%d{HH:mm:ss.SSS} %msg%n</pattern>
+      </encoder>
+    </appender>
+
     <logger name="org.gbif" level="INFO"/>
 
     <logger name="com.opensymphony" level="ERROR"/>
@@ -49,8 +55,8 @@
     <logger name="freemarker" level="ERROR"/>
     <logger name="cache" level="ERROR"/>
 
-    <root level="WARN">
-        <appender-ref ref="FILE" />
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
         <appender-ref ref="ERRORFILE" />
     </root>
 </configuration>

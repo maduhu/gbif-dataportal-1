@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 import javax.servlet.Filter;
@@ -24,29 +25,44 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
 /**
- * A servlet filter that takes pretty URLs and converts them into a parameter based request very suitable for struts2 actions derived from CrudAction.
+ * A servlet filter that takes RESTful, pretty URLs with path encoded paraemters
+ * and converts them into a parameter based request very suitable for struts2 actions derived from BaseAction.
+ * Ids are detected when they are integers or uuids, but nothing else.
+ *
+ * The suffix for the generated actions defaults to .do but can be configured via the actionSuffix init filter param.
+ *
  * The supported URLs allow CRUD style operations based on standard pretty URLs like the following:
+ *
  * action/
  * -> action.do
  * action/add
- * -> action.do?add=true
+ * -> action.do?action=add
+ * action/create
+ * -> action.do?action=add
  * action/4372
  * -> action.do?id=4372
+ * action/ded724e7-3fde-49c5-bfa3-03b4045c4c5f
+ * -> action.do?uuid=ded724e7-3fde-49c5-bfa3-03b4045c4c5f
  * action/save
- * -> action.do?save=true
+ * -> action.do?action=update
  * action/4372/save
- * -> action.do?id=4372&save=true
+ * -> action.do?id=4372&action=update
+ * action/4372/update
+ * -> action.do?id=4372&action=update
  * action/4372/del
- * -> action.do?id=4372&del=true
+ * -> action.do?id=4372&action=del
  *
- * Note that the save(=insert or update) and delete paths are not strictly RESTful, but it allows to use simple POST requests from forms instead of generating DELETE or PUT http requests
+ * Note that the create/add, update and delete paths are not strictly RESTful, but it allows to use simple POST requests from forms instead of generating DELETE or PUT http requests
  *
- * @see org.gbif.portal.action.CrudAction
+ * @see org.gbif.portal.action.BaseAction
  * @author markus
  *
  */
 @Singleton
 public class RestfulFilter implements Filter {
+  public static enum CRUD { CREATE, READ, UPDATE, DELETE };
+  private String actionSuffix = ".do";
+
   public class UrlRewriteResponse extends HttpServletResponseWrapper {
 
     public UrlRewriteResponse(final HttpServletResponse response) {
@@ -82,11 +98,11 @@ public class RestfulFilter implements Filter {
     if (request instanceof HttpServletRequest) {
       final HttpServletRequest req = (HttpServletRequest) request;
       final HttpServletResponse resp = (HttpServletResponse) response;
-
+      // a static resource, keep as is
       if (req.getServletPath().contains(".")) {
         chain.doFilter(request, response);
       } else {
-        // wrap the request for a nub name search with given kingdom and checklist ID
+        // wrap the request with potential url path parameters
         chain.doFilter(filter(req), resp);
       }
     }
@@ -100,25 +116,24 @@ public class RestfulFilter implements Filter {
       url = url.substring(0, url.length() - 1);
     }
     if (StringUtils.trimToNull(url) == null) {
-//			System.out.println("empty path. Index.do");
-      return new UrlRewriteRequest(req, "/index.do", params);
+      return req;
     }
 
     final LinkedList<String> parts = new LinkedList<String>(Arrays.asList(splitPaths.split(url)));
 //		System.out.println("pretty filter: "+StringUtils.join(parts,"|"));
 
     // see if we got a final add
-    if (!parts.isEmpty() && parts.getLast().equalsIgnoreCase("add")) {
+    if (!parts.isEmpty() && (parts.getLast().equalsIgnoreCase("add") || parts.getLast().equalsIgnoreCase("create"))) {
       parts.removeLast();
-      params.put("add", "true");
+      params.put("action", CRUD.CREATE.name());
     } else {
       // see if we got a final edit or del
-      if (!parts.isEmpty() && parts.getLast().equalsIgnoreCase("save")) {
+      if (!parts.isEmpty() && (parts.getLast().equalsIgnoreCase("save") || parts.getLast().equalsIgnoreCase("update"))) {
         parts.removeLast();
-        params.put("save", "true");
+        params.put("action", CRUD.UPDATE.name());
       } else if (!parts.isEmpty() && parts.getLast().equalsIgnoreCase("del")) {
         parts.removeLast();
-        params.put("del", "true");
+        params.put("action", CRUD.DELETE.name());
       }
       // see if we got an integer id parameter in the URL
       Integer id = null;
@@ -130,11 +145,21 @@ public class RestfulFilter implements Filter {
         } catch (final NumberFormatException e) {
         }
       }
+      // see if we got an UUID parameter in the URL
+      UUID uuid = null;
+      if (!parts.isEmpty()) {
+        try {
+          uuid = UUID.fromString(parts.getLast());
+          parts.removeLast();
+          params.put("id", uuid.toString());
+        } catch (final IllegalArgumentException e) {
+        }
+      }
     }
     // add suffix to final path if it doesnt contain a suffix yet
     String action = parts.get(parts.size() - 1);
     if (action != null && !action.contains(".")) {
-      action = action + ".do";
+      action = action + actionSuffix;
       parts.set(parts.size() - 1, action);
     }
     final String newUrl = StringUtils.join(parts, "/");
@@ -144,6 +169,10 @@ public class RestfulFilter implements Filter {
 
   @Override
   public void init(final FilterConfig filterConfig) throws ServletException {
+    String suffix = filterConfig.getInitParameter("actionSuffix");
+    if (suffix!=null){
+      actionSuffix = "."+suffix.trim();
+    }
   }
 
 }

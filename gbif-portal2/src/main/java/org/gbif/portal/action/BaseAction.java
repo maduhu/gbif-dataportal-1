@@ -1,50 +1,95 @@
 package org.gbif.portal.action;
 
-import org.gbif.checklistbank.Constants;
 import org.gbif.checklistbank.model.Agent;
 import org.gbif.ecat.cfg.DataDirConfig;
+import org.gbif.portal.config.PortalConfig;
+import org.gbif.portal.filter.RestfulFilter;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.google.inject.Inject;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 
-import org.apache.commons.lang.StringUtils;
+import com.opensymphony.xwork2.Preparable;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  *
  */
-public class BaseAction extends ActionSupport implements Action, SessionAware {
+public class BaseAction extends ActionSupport implements Action, Preparable, SessionAware, ServletRequestAware {
   protected final Logger log = LoggerFactory.getLogger(getClass());
   public static final String NOT_FOUND = "404";
   public static final String NOT_ALLOWED = "401";
   public static final String LOGIN_REQUIRED = "loginRequired";
   public static final String NOT_IMPLEMENTED = "notImplemented";
+  protected Integer id;
+  protected UUID uuid;
+  protected RestfulFilter.CRUD actionType = RestfulFilter.CRUD.READ;
+  private Map<String, String> requestParams;
+
   @Inject
-  protected DataDirConfig cfg;
+  protected PortalConfig cfg;
 
   protected Map<String, Object> session;
-  protected String currentMenu = "index";
+
+  @Override
+  public void prepare() throws Exception {
+    // extract and set id and actionType params from request without relying on interceptors
+    if (requestParams.containsKey("action")) {
+      // parse action type
+      try {
+        actionType = RestfulFilter.CRUD.valueOf(requestParams.get("action"));
+      } catch (IllegalArgumentException e) {
+        actionType = RestfulFilter.CRUD.READ;
+      }
+      if (actionType==null){
+        actionType = RestfulFilter.CRUD.READ;
+      }
+      // set ids
+      try {
+        id = Integer.parseInt(requestParams.get("id"));
+      } catch (final NumberFormatException e) {
+        try {
+          uuid = UUID.fromString(requestParams.get("id"));
+        } catch (final IllegalArgumentException e2) {
+        }
+      }
+
+      // call special prepares in case we need to load existing objects before the execute takes place
+      if (actionType == RestfulFilter.CRUD.UPDATE) {
+        prepareExisting();
+      } else if (actionType != RestfulFilter.CRUD.DELETE){
+        // all but deletes require an empty model object to exist for params being set by interceptor
+        prepareNew();
+      }
+    }
+  }
+
+  /*
+  Override this method to prepare an existing object that the params interceptor will populate.
+  Use the id or uuid properties to load object.
+   */
+  protected void prepareExisting() {
+  }
+
+  /*
+  Override this method to prepare a new, empty object that the params interceptor will populate.
+  */
+  protected void prepareNew() {
+  }
 
   @Override
   public String execute() throws Exception {
     return SUCCESS;
-  }
-
-  public String getDomain() {
-    return cfg.domain();
-  }
-
-  public String getCurrentMenu() {
-    // is set via action constructor
-    return currentMenu;
   }
 
   public Agent getUser() {
@@ -61,14 +106,10 @@ public class BaseAction extends ActionSupport implements Action, SessionAware {
     return getUser() == null ? false : true;
   }
 
-  protected List<String> splitMultiValueParameter(final String value) {
-    if (value == null) {
-      return new ArrayList<String>();
-    }
-    final String[] paras = StringUtils.split(value, ", ");
-    return Arrays.asList(paras);
-  }
-
+  /*
+  Translates a map with value entries being resource keys into the current language values using the actions text provider.
+  Useful for translating maps that serve to populate select boxes with keys being the form value.
+   */
   protected Map<String, String> translateI18nMap(final Map<String, String> map) {
     for (final String key : map.keySet()) {
       final String i18Key = map.get(key);
@@ -82,8 +123,17 @@ public class BaseAction extends ActionSupport implements Action, SessionAware {
     this.session = session;
   }
 
-  public DataDirConfig getCfg() {
+  public PortalConfig getCfg() {
     return cfg;
   }
 
+  @Override
+  public void setServletRequest(final HttpServletRequest request) {
+    requestParams = new HashMap<String, String>();
+    final Enumeration<String> params = request.getParameterNames();
+    while (params.hasMoreElements()) {
+      final String k = params.nextElement();
+      requestParams.put(k, request.getParameter(k));
+    }
+  }
 }

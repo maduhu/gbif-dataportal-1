@@ -49,41 +49,13 @@
 
 
     <package name="root" namespace="/" extends="default">
+      <default-action-ref name="home"/>
+
       <action name="home" class="org.gbif.portal.action.HomeAction">
-        <result>/WEB-INF/pages/index.ftl</result>
+        <result>/WEB-INF/pages/home.ftl</result>
       </action>
 
-      <action name="login" class="org.gbif.portal.action.LoginAction">
-            <result name="input">/WEB-INF/pages/login.ftl</result>
-            <result name="success" type="redirect">${redirectUrl}</result>
-        </action>
-        <action name="logout" class="org.gbif.portal.action.LoginAction" method="logout">
-            <result name="success" type="redirect">${redirectUrl}</result>
-        </action>
-        <action name="register" class="org.gbif.portal.action.AccountAction" method="register">
-            <result name="input">/WEB-INF/pages/register.ftl</result>
-            <result>/WEB-INF/pages/welcome.ftl</result>
-        </action>
-        <action name="confirm" class="org.gbif.portal.action.AccountAction" method="confirm">
-            <result>/WEB-INF/pages/confirm.ftl</result>
-            <result name="error">/WEB-INF/pages/confirmError.ftl</result>
-        </action>
-        <action name="resendPassword" class="org.gbif.portal.action.AccountAction" method="resendPassword">
-            <result>/WEB-INF/pages/confirm.ftl</result>
-            <result name="error">/WEB-INF/pages/confirmError.ftl</result>
-        </action>
-        <action name="account" class="org.gbif.portal.action.AccountAction">
-            <result>/WEB-INF/pages/account.ftl</result>
-            <result name="saved">/WEB-INF/pages/account.ftl</result>
-        </action>
-
-
-        <action name="search" class="org.gbif.portal.action.SearchAction">
-            <result>/WEB-INF/pages/search.ftl</result>
-        </action>
-
-
-        <!-- INDEX ACTIONS FOR FOLLOWING PACKAGES  -->
+      <!-- INDEX ACTIONS FOR FOLLOWING PACKAGES  -->
         <action name="occurrence">
           <result type="redirect">/occurrence/home</result>
         </action>
