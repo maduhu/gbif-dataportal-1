@@ -99,7 +99,7 @@ public class RestfulFilter implements Filter {
       final HttpServletRequest req = (HttpServletRequest) request;
       final HttpServletResponse resp = (HttpServletResponse) response;
       // a static resource, keep as is
-      if (req.getServletPath().contains(".")) {
+      if (req.getServletPath()!=null && req.getServletPath().contains(".")) {
         chain.doFilter(request, response);
       } else {
         // wrap the request with potential url path parameters
@@ -112,7 +112,7 @@ public class RestfulFilter implements Filter {
     final Map<String, String> params = new HashMap<String, String>();
     // see if we have an empty / at the end, ignore
     String url = req.getServletPath();
-    if (url.endsWith("/")) {
+    if (url!=null && url.endsWith("/")) {
       url = url.substring(0, url.length() - 1);
     }
     if (StringUtils.trimToNull(url) == null) {

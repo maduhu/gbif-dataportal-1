@@ -1,6 +1,5 @@
 package org.gbif.portal.action;
 
-import org.gbif.checklistbank.model.Agent;
 import org.gbif.ecat.cfg.DataDirConfig;
 import org.gbif.portal.config.PortalConfig;
 import org.gbif.portal.filter.RestfulFilter;
@@ -92,10 +91,10 @@ public class BaseAction extends ActionSupport implements Action, Preparable, Ses
     return SUCCESS;
   }
 
-  public Agent getUser() {
-    Agent u = null;
+  public Object getUser() {
+    Object u = null;
     try {
-      u = (Agent) session.get(DataDirConfig.SESSION_USER);
+      u = session.get(DataDirConfig.SESSION_USER);
     } catch (final Exception e) {
       // swallow. if session is not yet opened we get an exception here...
     }

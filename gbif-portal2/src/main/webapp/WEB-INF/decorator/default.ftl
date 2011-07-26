@@ -32,7 +32,9 @@ Remove this if you use the .htaccess -->
 <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
 
 	<script src="/js/modernizr-1.7.min.js"></script>
+
 	${head}
+
 </head>
 <body class="reference">
 	<header>
@@ -74,6 +76,8 @@ Remove this if you use the .htaccess -->
 		</div>
 		<!-- /top -->
 
+
+	<#if infoband!false>
 		<!-- infoband -->
 		<div id="infoband">
 			<div class="content">
@@ -83,6 +87,7 @@ Remove this if you use the .htaccess -->
 			</div>
 		</div>
 		<!-- /infoband -->
+	</#if>
 
 	</header>
 

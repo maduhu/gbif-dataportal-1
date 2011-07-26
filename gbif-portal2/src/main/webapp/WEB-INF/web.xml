@@ -5,63 +5,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-    <display-name>GBIF Portal</display-name>
+  <display-name>GBIF Portal</display-name>
 
-    <session-config>
-        <session-timeout>-1</session-timeout>
-    </session-config>
+  <session-config>
+    <session-timeout>-1</session-timeout>
+  </session-config>
 
 
-  <!-- Filters -->
-    <filter>
-        <filter-name>restfulFilter</filter-name>
-        <filter-class>org.gbif.portal.filter.RestfulFilter</filter-class>
-    </filter>
-
-  <filter>
-    <filter-name>struts-prepare</filter-name>
-    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareFilter</filter-class>
-  </filter>
+  <!--
+  guice listener that configures all other filters and servlets
+  The freemarker one below does not work inside the guice listener :(
+  -->
+  <listener>
+    <listener-class>org.gbif.portal.config.PortalListener</listener-class>
+  </listener>
 
   <filter>
-    <filter-name>sitemesh</filter-name>
-    <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+    <filter-name>guice</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
   </filter>
-
-  <filter>
-    <filter-name>struts-execute</filter-name>
-    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsExecuteFilter</filter-class>
-  </filter>
-
 
   <filter-mapping>
-        <filter-name>restfulFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>struts-prepare</filter-name>
+    <filter-name>guice</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
-  <filter-mapping>
-    <filter-name>sitemesh</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
-    <dispatcher>INCLUDE</dispatcher>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>struts-execute</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
-  </filter-mapping>
-
-
+  <!-- allows sitemesh 2.4 freemarker decorators to access struts2 action variables -->
   <servlet>
     <servlet-name>sitemesh-freemarker</servlet-name>
     <servlet-class>org.apache.struts2.sitemesh.FreemarkerDecoratorServlet</servlet-class>
@@ -76,7 +45,6 @@
     <servlet-name>sitemesh-freemarker</servlet-name>
     <url-pattern>*.ftl</url-pattern>
   </servlet-mapping>
-
 
   <listener>
     <listener-class>org.apache.struts2.dispatcher.ng.listener.StrutsListener</listener-class>

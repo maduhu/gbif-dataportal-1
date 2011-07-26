@@ -1,6 +1,5 @@
 package org.gbif.portal.struts;
 
-import org.gbif.checklistbank.model.Agent;
 import org.gbif.portal.action.BaseAction;
 import org.gbif.ecat.cfg.DataDirConfig;
 
@@ -17,7 +16,7 @@ public class RequireLoginInterceptor extends AbstractInterceptor {
   @Override
   public String intercept(final ActionInvocation invocation) throws Exception {
     final Map session = invocation.getInvocationContext().getSession();
-    final Agent user = (Agent) session.get(DataDirConfig.SESSION_USER);
+    final Object user = (Object) session.get(DataDirConfig.SESSION_USER);
     if (user == null) {
       return BaseAction.LOGIN_REQUIRED;
     }
