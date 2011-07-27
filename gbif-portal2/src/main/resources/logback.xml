@@ -46,11 +46,10 @@
       </encoder>
     </appender>
 
-    <logger name="org.gbif" level="INFO"/>
-
+    <logger name="org.gbif" level="DEBUG"/>
     <logger name="com.opensymphony" level="ERROR"/>
     <logger name="org.apache" level="ERROR"/>
-    <logger name="org.struts" level="ERROR"/>
+    <logger name="org.struts" level="WARN"/>
     <logger name="org.tuckey" level="ERROR"/>
     <logger name="freemarker" level="ERROR"/>
     <logger name="cache" level="ERROR"/>

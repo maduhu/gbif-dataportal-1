@@ -1,10 +1,18 @@
-[#ftl]
-[#include "/WEB-INF/pages/inc/header.ftl"/]
- <title>Not Authorised</title>
-[#include "/WEB-INF/pages/inc/menu.ftl"/]
+<html>
+<head>
+	<title>Not Authorised</title>
+</head>
+<body>
+	<article class="error">
+		<header></header>
+		<div class="content">
+		<h1>Not Authorised</h1>
+	<p>You are not authorised for this page.<br/>
+		Please <a href="#">login</a> with an admin account.</p>
 
-<h1>Not Authorised</h1>
-<p>You are not authorised for this page.<br/>
-Please <a href="${domain}/login/">login</a> with an admin account.</p>
+		</div>
+		<footer></footer>
+	</article>
 
-[#include "/WEB-INF/pages/inc/footer.ftl"/]
+</body>
+</html>

@@ -29,19 +29,19 @@
 
         <global-results>
             <result name="404">
-                <param name="location">/WEB-INF/pages/404.ftl</param>
+                <param name="location">/WEB-INF/error/404.ftl</param>
             </result>
             <result name="401">
-                <param name="location">/WEB-INF/pages/401.ftl</param>
+                <param name="location">/WEB-INF/error/401.ftl</param>
             </result>
             <result name="loginRequired">
-                <param name="location">/WEB-INF/pages/loginRequired.ftl</param>
+                <param name="location">/WEB-INF/error/loginRequired.ftl</param>
             </result>
             <result name="error">
-                <param name="location">/WEB-INF/pages/error.ftl</param>
+                <param name="location">/WEB-INF/error/error.ftl</param>
             </result>
             <result name="notImplemented">
-                <param name="location">/WEB-INF/pages/notImplemented.ftl</param>
+                <param name="location">/WEB-INF/error/notImplemented.ftl</param>
             </result>
 
         </global-results>
@@ -68,12 +68,29 @@
     </package>
 
   <package name="occurrence" namespace="/occurrence" extends="default">
+    <default-action-ref name="home"/>
+    <action name="home" class="org.gbif.portal.action.occurrence.OccurrenceAction">
+      <result>/WEB-INF/pages/occurrence/home.ftl</result>
+    </action>
   </package>
 
   <package name="species" namespace="/species" extends="default">
+    <default-action-ref name="home"/>
+    <action name="home" class="org.gbif.portal.action.species.SpeciesAction">
+      <result>/WEB-INF/pages/species/home.ftl</result>
+    </action>
   </package>
 
   <package name="dataset" namespace="/dataset" extends="default">
+    <default-action-ref name="home"/>
+
+    <action name="home" class="org.gbif.portal.action.dataset.DatasetAction">
+      <result>/WEB-INF/pages/dataset/home.ftl</result>
+    </action>
+
+    <action name="search" class="org.gbif.portal.action.dataset.DatasetAction">
+      <result>/WEB-INF/pages/dataset/search.ftl</result>
+    </action>
   </package>
 
 </struts>

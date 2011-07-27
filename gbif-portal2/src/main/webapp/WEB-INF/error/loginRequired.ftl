@@ -1,10 +1,21 @@
-[#ftl]
-[#include "/WEB-INF/pages/inc/header.ftl"/]
- <title>Login Required</title>
-[#include "/WEB-INF/pages/inc/menu.ftl"/]
+<html>
+<head>
+	<title>Login Required</title>
+</head>
+<body>
+	<article class="error">
+		<header></header>
+		<div class="content">
 
-<h1>Login Required</h1>
-<p>You need to be logged in to use this part of the portal. 
-Please <a href="${domain}/login">login</a> with an existing account or <a href="${domain}/register">register</a> to create a new account.</p>
+		<h1>Login Required</h1>
 
-[#include "/WEB-INF/pages/inc/footer.ftl"/]
+	<p>You need to be logged in to use this part of the portal.
+	Please <a href="#">login</a> with an existing account or <a href="#">register</a> first to create a new account.</p>
+
+		</div>
+		<footer></footer>
+	</article>
+
+
+</body>
+</html>

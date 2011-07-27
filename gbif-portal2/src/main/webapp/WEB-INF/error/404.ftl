@@ -1,9 +1,18 @@
-[#ftl]
-[#include "/WEB-INF/pages/inc/header.ftl"/]
- <title>Page Not Found</title>
-[#include "/WEB-INF/pages/inc/menu.ftl"/]
+<html>
+<head>
+	<title>Page Not Found</title>
+</head>
+<body>
+	<article class="error">
+		<header></header>
+		<div class="content">
+		<h1>Page Not Found</h1>
 
-<h1>Page Not Found</h1>
-<p>We are sorry, but the page you requested does not exist.</p>
+	<p>We are sorry, but the page you requested does not exist.</p>
 
-[#include "/WEB-INF/pages/inc/footer.ftl"/]
+		</div>
+		<footer></footer>
+	</article>
+
+</body>
+</html>

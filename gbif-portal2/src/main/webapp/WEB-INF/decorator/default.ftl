@@ -8,14 +8,16 @@
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
-	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+	<#if useGooglemaps!false>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	</#if>
+<#-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
 Remove this if you use the .htaccess -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<title>${title}</title>
 	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta name="author" content="GBIF">
 
 	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +38,7 @@ Remove this if you use the .htaccess -->
 	${head}
 
 </head>
-<body class="reference">
+<body class="${page.properties["body.class"]!}">
 	<header>
 
 		<!-- top -->
@@ -58,14 +60,14 @@ Remove this if you use the .htaccess -->
 
 				<nav>
 					<ul>
-						<li><a href="/occurrences/index.html" title="Occurrences">Occurrences</a></li>
-						<li class="selected"><a href="/dataset/index.html" title="Datasets">Datasets</a></li>
-						<li><a href="/species/index.html" title="Species">Species</a></li>
+						<li><a href="/occurrence/home" title="Occurrences">Occurrences</a></li>
+						<li class="selected"><a href="/dataset/home" title="Datasets">Datasets</a></li>
+						<li><a href="/species/home" title="Species">Species</a></li>
 						<li><a href="#" class="more" title="More">More<span class="more"></span></a></li>
 						<li class="search">
-							<form action="/dataset/search.html" method="post">
+							<form action="/dataset/home" method="post">
     <span class="input_text">
-      <input type="text" name="search"/>
+      <input type="text" name="q"/>
     </span>
 							</form>
 						</li>
@@ -76,39 +78,35 @@ Remove this if you use the .htaccess -->
 		</div>
 		<!-- /top -->
 
-
-	<#if infoband!false>
-		<!-- infoband -->
+	<#if page.properties["page.infoband"]?has_content>
 		<div id="infoband">
 			<div class="content">
-				<h1>Reference Card</h1>
-
-				<h3>Provided by <a href="http://www.vizzuality.com">Vizzuality</a></h3>
+				${page.properties["page.infoband"]}
 			</div>
 		</div>
-		<!-- /infoband -->
 	</#if>
 
 	</header>
 
-
 	<div id="content">
 
-	${body}
+		<!-- TESTING i18n -->
+	<@s.text name="menu.species"/>
+
+		${body}
 
 	</div>
-
 
 	<footer>
 		<div class="content">
 			<ul>
 				<li><h3>EXPLORE THE DATA</h3></li>
-				<li><a href="/occurrences/index.html">Occurrences</a></li>
-				<li><a href="/dataset/index.html">Datasets</a></li>
-				<li><a href="/species/index.html">Species</a></li>
-				<li><a href="/countries/index.html">Countries</a></li>
-				<li><a href="/members/index.html">GBIF Network Members</a></li>
-				<li><a href="/themes/index.html">Themes</a></li>
+				<li><a href="/occurrences/home">Occurrences</a></li>
+				<li><a href="/dataset/home">Datasets</a></li>
+				<li><a href="/species/home">Species</a></li>
+				<li><a href="/countries/home">Countries</a></li>
+				<li><a href="/members/home">GBIF Network Members</a></li>
+				<li><a href="/themes/home">Themes</a></li>
 			</ul>
 
 			<ul>
@@ -163,6 +161,16 @@ Remove this if you use the .htaccess -->
 
 	<div class="copyright">
 		<p>2011 © GBIF. Data publishers retain all rights to data.</p>
+	</div>
+
+	<div style="text-align:left">
+		<p>Sitemesh debugging, page properties in decorator</p>
+		<br/>
+		<pre>
+		<#list page.properties?keys as k>
+			${k} = ${page.properties[k]!""}
+		</#list>
+		</pre>
 	</div>
 
 	<!-- JavaScript at the bottom for fast page loading -->
