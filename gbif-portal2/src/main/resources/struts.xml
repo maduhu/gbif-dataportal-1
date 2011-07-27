@@ -69,17 +69,23 @@
 
   <package name="occurrence" namespace="/occurrence" extends="default">
     <default-action-ref name="home"/>
+
     <action name="home" class="org.gbif.portal.action.occurrence.OccurrenceAction">
       <result>/WEB-INF/pages/occurrence/home.ftl</result>
     </action>
   </package>
 
+
+
   <package name="species" namespace="/species" extends="default">
     <default-action-ref name="home"/>
+
     <action name="home" class="org.gbif.portal.action.species.SpeciesAction">
       <result>/WEB-INF/pages/species/home.ftl</result>
     </action>
   </package>
+
+
 
   <package name="dataset" namespace="/dataset" extends="default">
     <default-action-ref name="home"/>
@@ -88,7 +94,7 @@
       <result>/WEB-INF/pages/dataset/home.ftl</result>
     </action>
 
-    <action name="search" class="org.gbif.portal.action.dataset.DatasetAction">
+    <action name="search" class="org.gbif.portal.action.dataset.DatasetAction" method="search">
       <result>/WEB-INF/pages/dataset/search.ftl</result>
     </action>
   </package>
