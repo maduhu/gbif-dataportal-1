@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gbif.portal.action.member.country;
+package org.gbif.portal.action.stats;
 
 import org.gbif.portal.action.BaseAction;
 
-public class MemberAction extends BaseAction {
+public class StatsAction extends BaseAction {
 
   @Override
   public String execute() throws Exception {

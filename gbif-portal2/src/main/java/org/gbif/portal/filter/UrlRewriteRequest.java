@@ -8,11 +8,22 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
+/**
+ * Simple wrapper class to create rewritten http requests with a new url and parameters,
+ * as the original HttpServletRequest object does not allow parameters to be changed.
+ * @see http://stackoverflow.com/questions/2319638/httpservletrequest-setparameter
+ */
 class UrlRewriteRequest extends HttpServletRequestWrapper {
   private Map<String, String> params = new HashMap<String, String>();
   private final String requestURI;
   private String servletPath;
 
+  /**
+   *
+   * @param request the original request to wrap
+   * @param url the new url
+   * @param additionalParameter new parameters to be added to the original ones, keeping all existing parameters
+   */
   public UrlRewriteRequest(final HttpServletRequest request, final String url, final Map<String, String> additionalParameter) {
     super(request);
     this.requestURI = url;

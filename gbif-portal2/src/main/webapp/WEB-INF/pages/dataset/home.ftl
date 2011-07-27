@@ -14,7 +14,7 @@
     <span class="input_text">
       <input type="text" name="q"/>
     </span>
-				<button type="submit" class="search_button"><span>Search</span></button>
+			<button type="submit" class="search_button"><span>Search</span></button>
 			</form>
 			<div class="results">
 				<ul>

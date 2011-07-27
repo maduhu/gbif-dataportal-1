@@ -61,33 +61,9 @@ import javax.servlet.http.HttpServletResponseWrapper;
 @Singleton
 public class RestfulFilter implements Filter {
   public static enum CRUD { CREATE, READ, UPDATE, DELETE };
-  private String actionSuffix = ".do";
-
-  public class UrlRewriteResponse extends HttpServletResponseWrapper {
-
-    public UrlRewriteResponse(final HttpServletResponse response) {
-      super(response);
-    }
-
-    @Override
-    public String encodeUrl(final String url) {
-      final String x = super.encodeUrl(url);
-//			System.out.println("resp.encodeUrl():"+x);
-      return x;
-    }
-
-    @Override
-    public String encodeURL(final String url) {
-      final String x = super.encodeURL(url);
-//			System.out.println("resp.encodeURL():"+x);
-      return x;
-    }
-
-  }
-
-  protected static final Logger log = LoggerFactory.getLogger(RestfulFilter.class);
-
+  private static final Logger log = LoggerFactory.getLogger(RestfulFilter.class);
   private static final Pattern splitPaths = Pattern.compile("/");
+  private String actionSuffix = ".do";
 
   @Override
   public void destroy() {
@@ -120,7 +96,6 @@ public class RestfulFilter implements Filter {
     }
 
     final LinkedList<String> parts = new LinkedList<String>(Arrays.asList(splitPaths.split(url)));
-//		System.out.println("pretty filter: "+StringUtils.join(parts,"|"));
 
     // see if we got a final add
     if (!parts.isEmpty() && (parts.getLast().equalsIgnoreCase("add") || parts.getLast().equalsIgnoreCase("create"))) {
@@ -143,16 +118,15 @@ public class RestfulFilter implements Filter {
           parts.removeLast();
           params.put("id", id.toString());
         } catch (final NumberFormatException e) {
-        }
-      }
-      // see if we got an UUID parameter in the URL
-      UUID uuid = null;
-      if (!parts.isEmpty()) {
-        try {
-          uuid = UUID.fromString(parts.getLast());
-          parts.removeLast();
-          params.put("id", uuid.toString());
-        } catch (final IllegalArgumentException e) {
+          // see if we got an UUID parameter instead
+          UUID uuid = null;
+          try {
+            uuid = UUID.fromString(parts.getLast());
+            parts.removeLast();
+            params.put("id", uuid.toString());
+          } catch (final IllegalArgumentException e2) {
+            // no ids at all
+          }
         }
       }
     }
@@ -163,7 +137,6 @@ public class RestfulFilter implements Filter {
       parts.set(parts.size() - 1, action);
     }
     final String newUrl = StringUtils.join(parts, "/");
-//		System.out.println("New URL: "+newUrl);
     return new UrlRewriteRequest(req, newUrl, params);
   }
 

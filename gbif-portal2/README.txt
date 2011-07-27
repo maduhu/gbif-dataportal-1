@@ -37,6 +37,9 @@ The Compass files to update are: xyz
 
 *** STRUTS2 ***
 
+== URLs
+struts has case sensitive URLs, a problem?
+
 == package/namespace names
 package names in struts define namespaces, i.e. parent url paths to the terminal action.
 Names should use the singular form, e.g. occurrence, not occurrences
@@ -68,17 +71,22 @@ main page:
 		<form>
 			<input type="text" name="search"/>
 		</form>
-	</content>
+</content>
 
 inside the decorator these content tags can be reached via:
   ${page.properties["page.infoband"]}
 
 
 == Paging
-discuss how we implement result paging in general, maybe even clientside?
+discuss how we implement result paging in general
 Options:
- * simple paging class (PageableAction) and freemarker template (pager.ftl) existing in this project
- * DisplayTag for jsp? http://www.displaytag.org/1.2/ requires the jsp support servlet and hasnt been updated since 1.5 years
+ * simple paging class (PageableAction) and freemarker template (pager.ftl) exists in this project
+ * DisplayTag for jsp? http://www.displaytag.org/1.2/ requires the jsp support servlet so freemarker can use this custom tag library and hasnt been updated since 1.5 years, but we used it before
+ * ajax clientside
+
+not done at all yet, but an interceptor to protect pages requiring logins exist. This interceptor along with the base action keep the current user in the session, but treat it as an unspecific Object right now
 
 == Authentication/login
-not done at all yet, but an interceptor to protect pages requiring logins exist. This interceptor along with the base action keep the current user in the session, but treat it as an unspecific Object right now
+A RequireLoginInterceptor exists to protect actions or entire packages to only allow logged in users.
+It looks for a user object in the session, which needs to be created by the actual login method and the authentication framework of your choice.
+Evaluate CAS and Shiro for the central authentication.
