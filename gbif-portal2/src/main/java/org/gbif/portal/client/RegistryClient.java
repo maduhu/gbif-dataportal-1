@@ -20,6 +20,8 @@ import javax.ws.rs.core.MultivaluedMap;
 
 import java.util.List;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
@@ -37,7 +39,8 @@ public class RegistryClient extends BaseClient{
   private WebResource DATASET_RESOURCE;
   private WebResource MEMBER_RESOURCE;
 
-  public RegistryClient(String RegistryWsBaseUrl) {
+  @Inject
+  public RegistryClient(@Named("ws.dataset") String RegistryWsBaseUrl) {
     this.WEB_SERVICE_URL = RegistryWsBaseUrl;
     ClientConfig cc = new DefaultClientConfig();
     //cc.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, true);

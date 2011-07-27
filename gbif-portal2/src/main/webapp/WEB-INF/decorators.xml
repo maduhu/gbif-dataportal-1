@@ -1,5 +1,5 @@
 <decorators defaultdir="/WEB-INF/decorator">
-  <decorator name="default" page="minimal.ftl">
+  <decorator name="default" page="default.ftl">
     <pattern>/*</pattern>
   </decorator>
 </decorators>

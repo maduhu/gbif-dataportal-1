@@ -90,9 +90,6 @@ Remove this if you use the .htaccess -->
 
 	<div id="content">
 
-		<!-- TESTING i18n -->
-	<@s.text name="menu.species"/>
-
 		${body}
 
 	</div>
@@ -171,6 +168,8 @@ Remove this if you use the .htaccess -->
 			${k} = ${page.properties[k]!""}
 		</#list>
 		</pre>
+		<!-- TESTING i18n -->
+		<@s.text name="menu.species"/>
 	</div>
 
 	<!-- JavaScript at the bottom for fast page loading -->
