@@ -25,7 +25,9 @@
             </interceptor-stack>
 
         </interceptors>
+      <!--
         <default-interceptor-ref name="i18nStack"/>
+      -->
 
         <global-results>
             <result name="404">
@@ -54,49 +56,67 @@
       <action name="home" class="org.gbif.portal.action.HomeAction">
         <result>/WEB-INF/pages/home.ftl</result>
       </action>
-
-      <!-- INDEX ACTIONS FOR FOLLOWING PACKAGES  -->
-        <action name="occurrence">
-          <result type="redirect">/occurrence/home</result>
-        </action>
-        <action name="species">
-            <result type="redirect">/species/home</result>
-        </action>
-        <action name="dataset">
-            <result type="redirect">/dataset/home</result>
-        </action>
     </package>
-
-  <package name="occurrence" namespace="/occurrence" extends="default">
-    <default-action-ref name="home"/>
-
-    <action name="home" class="org.gbif.portal.action.occurrence.OccurrenceAction">
-      <result>/WEB-INF/pages/occurrence/home.ftl</result>
-    </action>
-  </package>
-
-
-
-  <package name="species" namespace="/species" extends="default">
-    <default-action-ref name="home"/>
-
-    <action name="home" class="org.gbif.portal.action.species.SpeciesAction">
-      <result>/WEB-INF/pages/species/home.ftl</result>
-    </action>
-  </package>
 
 
 
   <package name="dataset" namespace="/dataset" extends="default">
     <default-action-ref name="home"/>
 
-    <action name="home" class="org.gbif.portal.action.dataset.DatasetAction">
+    <action name="home" class="org.gbif.portal.action.dataset.HomeAction">
       <result>/WEB-INF/pages/dataset/home.ftl</result>
     </action>
 
-    <action name="search" class="org.gbif.portal.action.dataset.DatasetAction" method="search">
+    <action name="search" class="org.gbif.portal.action.dataset.SearchAction">
       <result>/WEB-INF/pages/dataset/search.ftl</result>
     </action>
+
+    <action name="{id}/activity" class="org.gbif.portal.action.dataset.ActivityAction">
+      <result>/WEB-INF/pages/dataset/activity.ftl</result>
+    </action>
+
+    <action name="{id}/stats" class="org.gbif.portal.action.dataset.StatsAction">
+      <result>/WEB-INF/pages/dataset/stats.ftl</result>
+    </action>
+
+    <action name="{id}/discussion" class="org.gbif.portal.action.dataset.DiscussionAction">
+      <result>/WEB-INF/pages/dataset/discussion.ftl</result>
+    </action>
+
+    <action name="{id}" class="org.gbif.portal.action.dataset.DetailAction">
+      <result>/WEB-INF/pages/dataset/detail.ftl</result>
+    </action>
+
+  </package>
+
+
+  <package name="species" namespace="/species" extends="default">
+    <default-action-ref name="home"/>
+
+    <action name="home" class="org.gbif.portal.action.species.HomeAction">
+      <result>/WEB-INF/pages/species/home.ftl</result>
+    </action>
+
+    <action name="search" class="org.gbif.portal.action.species.SearchAction">
+      <result>/WEB-INF/pages/species/search.ftl</result>
+    </action>
+
+    <action name="{id}/activity" class="org.gbif.portal.action.species.ActivityAction">
+      <result>/WEB-INF/pages/species/activity.ftl</result>
+    </action>
+
+    <action name="{id}/stats" class="org.gbif.portal.action.species.StatsAction">
+      <result>/WEB-INF/pages/species/stats.ftl</result>
+    </action>
+
+    <action name="{id}/discussion" class="org.gbif.portal.action.species.DiscussionAction">
+      <result>/WEB-INF/pages/species/discussion.ftl</result>
+    </action>
+
+    <action name="{id}" class="org.gbif.portal.action.species.DetailAction">
+      <result>/WEB-INF/pages/species/detail.ftl</result>
+    </action>
+
   </package>
 
 </struts>

@@ -18,9 +18,9 @@
 			<h3>Datasets</h3>
 			<ul>
 				<li><a href="index.html">Information</a></li>
-				<li><a href="dataset/discussion.html">Discussion</a></li>
-				<li><a href="dataset/external.html">External</a></li>
-				<li><a href="dataset/search.html">Search</a></li>
+				<li><a href="dataset/discussion">Discussion</a></li>
+				<li><a href="dataset/external">External</a></li>
+				<li><a href="dataset/search?q=botanic">Search</a></li>
 				<li><a href="dataset">Results</a></li>
 				<!--<li><a href="dataset/process_detail.html">Process detail</a></li>-->
 				<li><strong>Register</strong>: <a href="dataset/step0.html">step 0</a>, <a href="dataset/step1.html">step 1</a>,

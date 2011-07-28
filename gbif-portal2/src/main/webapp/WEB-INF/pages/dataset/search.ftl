@@ -1,21 +1,13 @@
 <html>
 <head>
 	<title>Dataset Search Results</title>
-  <#assign useGooglemaps=true />
 </head>
 <body class="search">
-
-<#assign infoband>
-	<h2>Search datasets</h2>
-	<form>
-		<input type="text" name="search"/>
-	</form>
-</#assign>
 
 	<content tag="infoband">
 		<h2>Search datasets</h2>
 		<form>
-			<input type="text" name="search"/>
+			<input type="text" name="q"/>
 		</form>
 	</content>
 
@@ -25,7 +17,7 @@
 
 			<div class="header">
 				<div class="left">
-					<h2>411 results for "Puma Concolor"</h2>
+					<h2>${datasets?size} results for "${q!}"</h2>
 					<a href="#" class="sort" title="Sort by relevance">Sort by relevance <span class="more"></span></a>
 				</div>
 				<div class="right"><h3>Refine your search</h3></div>
@@ -36,7 +28,7 @@
 
 				<!-- full examples -->
 				<div class="result">
-					<h2><a href="/dataset/detail.html" title="World Mangroves Fauna"><strong>World Mangroves Fauna</strong></a>
+					<h2><a href="/dataset/detail.html" title="World Mangroves Fauna"><strong>MOCK: World Mangroves Fauna</strong></a>
 					</h2>
 
 					<p>An occurrences dataset published by <a href="/members/detail.html">Academy of Natural Sciences</a> at 1978.
@@ -46,7 +38,7 @@
 				</div>
 
 				<div class="result">
-					<h2><a href="/dataset/checklist.html" title="Herpetology"><strong>Herpetology</strong></a></h2>
+					<h2><a href="/dataset/checklist.html" title="Herpetology"><strong>MOCK: Herpetology</strong></a></h2>
 
 					<p>A checklist published by <a href="/members/detail.html" title="Academy of Natural Sciences">Academy of
 						Natural Sciences</a> at 1978.</p>
@@ -56,7 +48,7 @@
 
 				<div class="result">
 					<h2><a href="/dataset/external.html"
-								 title="Absolute abundance of particles and planktic foraminifera in..".><strong>Absolute abundance of
+								 title="Absolute abundance of particles and planktic foraminifera in..".><strong>MOCK: Absolute abundance of
 						particles and planktic foraminifera in...</strong></a></h2>
 					<p>An external dataset published by <a href="/members/detail.html">Academy of Natural Sciences</a> at 1978.
 					</p>
@@ -66,9 +58,9 @@
 <!-- dynamic, real data -->
 <#list datasets as d>
 	<div class="result">
-		<h2><a href="/dataset/detail.html" title="${d.title!"No Title"}"><strong>${d.title!"No Title"}</strong></a></h2>
-		<p>An occurrences dataset published by <a href="/members/detail.html">Academy of Natural Sciences</a></p>
-		<div class="footer"><p>201.456 occurrences | covering Europe, Asia, Africa and Oceania</p></div>
+		<h2><a href="/dataset/${d.key!}" title="${d.name!"No Title"}"><strong>${d.name!"No Title"}</strong></a></h2>
+		<p>A ??? dataset published by <a href="/members/${d.organisationKey!}">Organisation ${d.organisationKey!}</a></p>
+		<div class="footer"><p>??? occurrences | covering ???</p></div>
 	</div>
 </#list>
 

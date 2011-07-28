@@ -37,30 +37,45 @@ The Compass files to update are: xyz
 
 *** STRUTS2 ***
 
-== URLs
-struts has case sensitive URLs, a problem?
+== URL conventions
+we want to expose restful, pretty urls like the following. 
+The examples are mainly for datasets, but would be similar for species, occurrences, etc
 
-== package/namespace names
-package names in struts define namespaces, i.e. parent url paths to the terminal action.
-Names should use the singular form, e.g. occurrence, not occurrences
+/home
+/dataset
+/dataset/home
+/dataset/search?q=puma
+/dataset/{UUID}
+/dataset/{UUID}/stats
+/dataset/{UUID}/activity
+/dataset/{UUID}/discussion
+
+Path names should use the singular form, e.g. occurrence, not occurrences
+
+=== Action mapping
+we use wildcard mapping with the namedVariable pattern matcher for the default action mapper.
+http://struts.apache.org/2.x/docs/wildcard-mappings.html
+
+The conventions plugin (http://struts.apache.org/2.x/docs/convention-plugin.html) looked good, but failed to do the above urls with id params in the middle of the urls.
+It also isnt as configurable as the explicit struts.xml definitions, for example to change http headers, content type, serving binary (eg image) streams, etc so it was finally not used.
+
+=== Case sensitivity
+URLs should be case insensitive. Struts, like servlets, seems case sensitive by default.
+We need to see if we can change a setting or use a rewrite to lower case filter?
 
 == internationalisation
 not done yet as we expect mayor changes in the html still and its less work to replace the real strings once we reached a considerable stable state. Otherwise we also run into lots of orphaned entries.
 
 use the struts tags for i18n, for example <@s.text name="menu.species"/>
-Consider replacing the native struts2 text provider with a much simpler one we use in the IPT that increased page rendering with many getText lookups by more than 100% as the native one does an extensive resource bundle search across various classpaths and other places that we dont need.
+Consider replacing the native struts2 text provider with a much simpler one we use in the IPT that increased page rendering with many getText lookups by more than 100% as the native one does an extensive resource bundle search across various classpaths and other places that we dont need if we stick to a single resource file.
 
-== Action suffices, URL paths, servlet filters
-to be discussed, but struts doesnt work with url parameters and actions without suffix have also proven problematic in the past. A simple servlet filter converts integers and uuids to id parameters and adds in a configurable action suffix like .do
+== Freemarker vs struts tags
+Freemarker has support for iterating lists, displaying properties, including other templates, macro's, and so on. There is a small performance cost when using the struts tags instead of the Freemarker equivalent (eg. <s:property value="foo"/> should be replaced by ${foo}), so use as much of native freemarker as you can!
 
-== Sitemesh vs Freemarker includes
-version3 is still in alpha and caused some NIO blocking with Jetty in my tests. The struts2 plugin for sitemesh also is not working with sitemesh3 now and needs to be rewritten. We therefore still use the old 2.4.2 version with the 2 config files sitemesh.xml and decorators.xml
-
-Sitemesh exposes specific variables that contain content from the main page to be used in the decorators:
- <head><title> ==> ${title}
- <head> ==> ${head}
- <body> ==> ${body}
- <body class="xyz"> ==> ${page.properties["body.class"]!}
+== Sitemesh
+version3 is still in alpha and caused some NIO blocking with Jetty & Tomcat 7 and above in my tests. 
+The struts2 plugin for sitemesh also does not work with sitemesh3 and still waits to be rewritten. 
+We therefore still use the old 2.4.2 version with the 2 config files sitemesh.xml and decorators.xml
 
 === content fragments
 as decorators cant access freemarker vars from the main page, we have to use custom sitemesh tags in the main page to pass content fragments to the decorators, for example to populate the green "infoband":
@@ -75,6 +90,25 @@ main page:
 
 inside the decorator these content tags can be reached via:
   ${page.properties["page.infoband"]}
+
+=== Decorators
+we use a single default.ftl decorator
+
+Sitemesh exposes specific variables that contain content from the main page to be used in the decorators:
+ <head><title> ==> ${title}
+ <head> ==> ${head}
+ <body> ==> ${body}
+ <body class="xyz"> ==> ${page.properties["body.class"]!}
+
+the default decorator is aware of the following content fragments and variables apart from the main ones above:
+
+ meta.menu
+ content tag="infoband"
+ content tag="tabs"
+
+=== Errors
+If the underlying action results in an uncaught error, the sitemesh filter fails with a NPE and you cannot see the original struts stacktrace.
+Only way I found to change that is disabling the SiteMeshFilter in the PortalListener and restart the server to try the same query again.
 
 
 == Paging

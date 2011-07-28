@@ -15,10 +15,13 @@
  */
 package org.gbif.portal.client;
 
+import org.gbif.portal.config.PortalConfig;
+
 import javax.inject.Singleton;
 import javax.ws.rs.core.MultivaluedMap;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -33,28 +36,26 @@ import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import com.sun.jersey.api.json.JSONConfiguration;
 
 @Singleton
-public class RegistryClient extends BaseClient{
-
-  private String WEB_SERVICE_URL;
-  private WebResource DATASET_RESOURCE;
-  private WebResource MEMBER_RESOURCE;
+public class RegistryClientImpl extends BaseClient implements RegistryClient{
+  private WebResource REGISTRY_RESOURCE;
 
   @Inject
-  public RegistryClient(@Named("ws.dataset") String RegistryWsBaseUrl) {
-    this.WEB_SERVICE_URL = RegistryWsBaseUrl;
-    ClientConfig cc = new DefaultClientConfig();
-    //cc.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, true);
-    cc.getClasses().add(JacksonJsonProvider.class);
-    Client client = ApacheHttpClient.create(cc);
-    DATASET_RESOURCE= client.resource(WEB_SERVICE_URL+"resource.json");
-    MEMBER_RESOURCE = client.resource(WEB_SERVICE_URL + "resource.json");
+  public RegistryClientImpl(PortalConfig cfg, ApacheHttpClient client) {
+    log.info("Creating registry client with base url "+ cfg.getRegistryWs());
+    REGISTRY_RESOURCE= client.resource(cfg.getRegistryWs());
   }
 
+  @Override
   public List<Object> searchDatasets(String q){
     //TODO: manipulate query string?
     MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
     queryParams.add("q", StringUtils.trimToNull(q));
-    List<Object> resources = DATASET_RESOURCE.queryParams(queryParams).get(List.class);
+    List<Object> resources = REGISTRY_RESOURCE.path("resource.json").queryParams(queryParams).get(List.class);
     return resources;
+  }
+
+  @Override
+  public Object getDataset(UUID uuid) {
+    return REGISTRY_RESOURCE.path(uuid.toString()+".json").get(Object.class);
   }
 }

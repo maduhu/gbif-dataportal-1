@@ -47,6 +47,11 @@ public class PortalConfig {
 
   protected static final Logger log = LoggerFactory.getLogger(DataDirConfig.class);
   public static final String SESSION_USER = "user";
+  private static final String KEY_BASE_URL = "baseurl";
+  private static final String KEY_VERSION = "version";
+  private static final String KEY_WS_REG = "ws.registry";
+  private static final String KEY_WS_CLB = "ws.species";
+  private static final String KEY_WS_OCC = "ws.occurrence";
   protected Properties properties;
 
   private PortalConfig() {
@@ -68,6 +73,26 @@ public class PortalConfig {
 
   public String getProperty(String property) {
     return properties.getProperty(property);
+  }
+
+  public String getBaseUrl() {
+    return properties.getProperty(KEY_BASE_URL);
+  }
+
+  public String getVersion() {
+    return properties.getProperty(KEY_VERSION);
+  }
+
+  public String getRegistryWs() {
+    return properties.getProperty(KEY_WS_REG);
+  }
+
+  public String getSpeciesWs() {
+    return properties.getProperty(KEY_WS_CLB);
+  }
+
+  public String getOccurrenceWs() {
+    return properties.getProperty(KEY_WS_OCC);
   }
 
   /**

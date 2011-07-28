@@ -13,48 +13,51 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gbif.portal.action.dataset;
+package org.gbif.portal.action.species;
 
 import org.gbif.portal.action.BaseAction;
 import org.gbif.portal.client.RegistryClient;
 
-import java.util.List;
+import java.util.UUID;
 
 import com.google.inject.Inject;
-import org.w3c.dom.stylesheets.LinkStyle;
+import org.apache.commons.lang.StringUtils;
 
-public class DatasetAction extends BaseAction {
+public class DetailAction extends BaseAction {
   @Inject
   private RegistryClient registry;
-  // search
-  private String q;
-  private List<?> datasets;
   // detail
+  private String id;
   private Object dataset;
 
   @Override
-  public String execute() throws Exception {
-    return SUCCESS;
-  }
-
-  public String search() throws Exception {
-    datasets=registry.searchDatasets(q);
-    return SUCCESS;
-  }
-
-  public List<?> getDatasets() {
-    return datasets;
+  public String execute() {
+    log.debug("executing action class: " + this.getClass().getName());
+    if (!StringUtils.isBlank(id)) {
+      UUID uuid = null;
+      try {
+        uuid = UUID.fromString(id.trim());
+        dataset = registry.getDataset(uuid);
+        if (dataset != null) {
+          return SUCCESS;
+        }
+      } catch (Exception e) {
+        // swallow
+      }
+      return SUCCESS;
+    }
+    return NOT_FOUND;
   }
 
   public Object getDataset() {
     return dataset;
   }
 
-  public String getQ() {
-    return q;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public void setQ(String q) {
-    this.q = q;
+  public String getId() {
+    return id;
   }
 }

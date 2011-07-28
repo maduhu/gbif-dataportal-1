@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>GBIF - Dataset</title>
-  <#assign useGooglemaps=true />
+  <meta name="gmap" value="true" />
 </head>
 <body class="dataset">
 

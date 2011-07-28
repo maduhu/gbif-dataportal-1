@@ -13,14 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gbif.portal.action.theme;
+package org.gbif.portal.action.species;
 
 import org.gbif.portal.action.BaseAction;
 
-public class ThemeAction extends BaseAction {
+public class StatsAction extends BaseAction {
 
-  @Override
-  public String execute() throws Exception {
-    return NOT_IMPLEMENTED;
-  }
 }

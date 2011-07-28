@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gbif.portal.action.species;
+package org.gbif.portal.action.country;
 
 import org.gbif.portal.action.BaseAction;
 
-public class SpeciesAction extends BaseAction {
+public class HomeAction extends BaseAction {
 
   @Override
-  public String execute() throws Exception {
-    return NOT_IMPLEMENTED;
+  public String execute() {
+    return SUCCESS;
   }
 
 }

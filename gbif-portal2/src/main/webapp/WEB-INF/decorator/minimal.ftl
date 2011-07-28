@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Title</title>
+	<title>Minimal Decorator</title>
 </head>
 <body>
 	${body}

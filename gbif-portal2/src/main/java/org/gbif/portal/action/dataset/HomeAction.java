@@ -13,12 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gbif.portal.client;
+package org.gbif.portal.action.dataset;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.gbif.portal.action.BaseAction;
+import org.gbif.portal.client.RegistryClient;
 
-public class BaseClient {
-  protected final Logger log = LoggerFactory.getLogger(this.getClass());
+import java.util.UUID;
+
+import com.google.inject.Inject;
+import org.apache.commons.lang.StringUtils;
+
+public class HomeAction extends BaseAction {
+
+  @Override
+  public String execute() {
+    return SUCCESS;
+  }
 
 }

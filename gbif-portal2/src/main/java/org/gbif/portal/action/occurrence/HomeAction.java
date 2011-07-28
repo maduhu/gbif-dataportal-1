@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gbif.portal.action.country;
+package org.gbif.portal.action.occurrence;
 
 import org.gbif.portal.action.BaseAction;
 
-public class CountryAction extends BaseAction {
+public class HomeAction extends BaseAction {
 
   @Override
-  public String execute() throws Exception {
-    return NOT_IMPLEMENTED;
+  public String execute() {
+    return SUCCESS;
   }
+
 }

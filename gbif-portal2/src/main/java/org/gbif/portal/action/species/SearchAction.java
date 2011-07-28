@@ -13,14 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gbif.portal.action.user;
+package org.gbif.portal.action.species;
 
 import org.gbif.portal.action.BaseAction;
+import org.gbif.portal.client.RegistryClient;
 
-public class UserAction extends BaseAction {
+import java.util.List;
+
+import com.google.inject.Inject;
+
+public class SearchAction extends BaseAction {
+  @Inject
+  private RegistryClient registry;
+  // search
+  private String q;
+  private List<?> datasets;
 
   @Override
-  public String execute() throws Exception {
-    return NOT_IMPLEMENTED;
+  public String execute() {
+    datasets=registry.searchDatasets(q);
+    return SUCCESS;
+  }
+
+  public List<?> getDatasets() {
+    return datasets;
+  }
+
+  public String getQ() {
+    return q;
+  }
+
+  public void setQ(String q) {
+    this.q = q;
   }
 }

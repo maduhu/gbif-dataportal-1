@@ -13,12 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gbif.portal.client;
+package org.gbif.portal.action.species;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.gbif.portal.action.BaseAction;
 
-public class BaseClient {
-  protected final Logger log = LoggerFactory.getLogger(this.getClass());
+public class DiscussionAction extends BaseAction {
+  private String id;
 
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 }
