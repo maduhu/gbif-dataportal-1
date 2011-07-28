@@ -47,6 +47,10 @@ public class ChecklistBankClientImpl extends BaseClient implements ChecklistBank
     queryParams.add("q", StringUtils.trimToNull(q));
     queryParams.add("rkey", "1");
     queryParams.add("showRanks", "kpcofg");
+    queryParams.add("showVernaculars", "all");
+    queryParams.add("showIds", "true");
+    queryParams.add("page", "1");
+    queryParams.add("pagesize", "100");
 
     List<Map> results = removeMessageWrapperAsList(USAGE_RESOURCE.queryParams(queryParams).get(Map.class));
     return results;
