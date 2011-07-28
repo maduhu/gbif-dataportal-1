@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Species: ${(usage.name)!}</title>
+	<title>${usage.canonicalName!}</title>
 	<meta name="gmap" value="false"/>
 	<meta name="menu" value="species"/>
 </head>
@@ -8,12 +8,12 @@
 
 <content tag="infoband">
 	<ul class="breadcrumb">
-		<li class="last"><a href="#" title="Species">Species</a></li>
+		<li class="last"><a href="#" title="Species">${usage.rank!}</a></li>
 	</ul>
 
-	<h1>Puma Concolor</h1>
+	<h1>${usage.canonicalName!}</h1>
 
-	<h3 class="separator">Animalia</h3>
+	<h3 class="separator">${usage.kingdom!}</h3>
 
 	<ul class="tags">
 		<li><a href="#" title="Turkey">Turkey</a></li>
@@ -47,7 +47,7 @@
 	<div class="content">
 
 		<div class="header">
-			<div class="left"><h2>Species Overview</h2></div>
+			<div class="left"><h2>Overview</h2></div>
 		</div>
 
 		<div class="left">
@@ -60,11 +60,11 @@
 
 			<h3>Full name</h3>
 
-			<p>Puma Concolor Linnaeus 1771</p>
+			<p>${usage.scientificName!}</p>
 
 			<h3>Status</h3>
 
-			<p>Accepted</p>
+			<p>${usage.taxonomicStatus!}</p>
 
 			<h3>Description</h3>
 
