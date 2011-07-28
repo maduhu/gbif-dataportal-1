@@ -2,24 +2,16 @@ package org.gbif.portal.action;
 
 import org.gbif.ecat.cfg.DataDirConfig;
 import org.gbif.portal.config.PortalConfig;
-import org.gbif.portal.filter.RestfulFilter;
-
-import javax.servlet.http.HttpServletRequest;
 
 import com.google.inject.Inject;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 
-import com.opensymphony.xwork2.Preparable;
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  *
