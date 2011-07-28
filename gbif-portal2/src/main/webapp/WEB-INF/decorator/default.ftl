@@ -45,25 +45,28 @@ Remove this if you use the .htaccess -->
 		<div id="top">
 			<div class="content">
 				<div class="account">
-					<a href="#" class="login" title="Sign in">Sign in</a> or <a href="/user/register/step0.html"
+					<a href="#" class="login" title="Sign in">Sign in</a> or <a href="/user/register/step0"
 																																			title="Create your account">Create your
 					account</a>
 				</div>
 
 				<div id="logo">
-					<a href="/reference.html" class="logo"><img src="/img/header/logo.png"/></a>
+					<a href="/home" class="logo"><img src="/img/header/logo.png"/></a>
 
-					<h1><a href="/reference.html" title="DATA.GBIF.ORG">DATA.GBIF.ORG</a></h1>
+					<h1><a href="/home" title="DATA.GBIF.ORG">DATA.GBIF.ORG</a></h1>
 					<span>Free and open access to biodiversity data</span>
 				</div>
 
-
+				<#assign menu=page.properties["meta.menu"]!"home" />
+				<#assign menuItems=["occurrence","dataset","species"] />
 				<nav>
 					<ul>
-						<li><a href="/occurrence/home" title="Occurrences">Occurrences</a></li>
-						<li class="selected"><a href="/dataset/home" title="Datasets">Datasets</a></li>
-						<li><a href="/species/home" title="Species">Species</a></li>
-						<li><a href="#" class="more" title="More">More<span class="more"></span></a></li>
+						<#list menuItems as m>
+							<li<#if menu==m> class="selected"</#if>>
+								<a href="/${m}/home" title="<@s.text name="menu.${m}"/>"><@s.text name="menu.${m}"/></a></li>
+						</#list>
+						<li><a href="#" class="more" title="<@s.text name="menu.more"/>"><@s.text name="menu.more"/><span class="more"></span></a>
+						</li>
 						<li class="search">
 							<form action="/dataset/home" method="post">
     <span class="input_text">
@@ -98,12 +101,12 @@ Remove this if you use the .htaccess -->
 		<div class="content">
 			<ul>
 				<li><h3>EXPLORE THE DATA</h3></li>
-				<li><a href="/occurrences/home">Occurrences</a></li>
-				<li><a href="/dataset/home">Datasets</a></li>
-				<li><a href="/species/home">Species</a></li>
-				<li><a href="/countries/home">Countries</a></li>
-				<li><a href="/members/home">GBIF Network Members</a></li>
-				<li><a href="/themes/home">Themes</a></li>
+				<li><a href="/occurrence/home"><@s.text name="menu.occurrences"/></a></li>
+				<li><a href="/dataset/home"><@s.text name="menu.datasets"/></a></li>
+				<li><a href="/species/home"><@s.text name="menu.species"/></a></li>
+				<li><a href="/country/home"><@s.text name="menu.countries"/></a></li>
+				<li><a href="/member/home"><@s.text name="menu.members"/></a></li>
+				<li><a href="/theme/home"><@s.text name="menu.themes"/></a></li>
 			</ul>
 
 			<ul>
@@ -117,9 +120,9 @@ Remove this if you use the .htaccess -->
 			<ul>
 				<li><h3>JOIN THE COMMUNITY</h3></li>
 				<li><a class="login" href="#">Sign in</a></li>
-				<li><a href="/user/register/step0.html">Sign up</a></li>
-				<li><a href="/static/terms_and_conditions.html">Terms and conditions</a></li>
-				<li><a href="/static/about.html">About GBIF</a></li>
+				<li><a href="/user/register/step0">Sign up</a></li>
+				<li><a href="/terms-and-conditions">Terms and conditions</a></li>
+				<li><a href="/about">About GBIF</a></li>
 			</ul>
 
 			<ul class="first">
@@ -168,8 +171,6 @@ Remove this if you use the .htaccess -->
 			${k} = ${page.properties[k]!""}
 		</#list>
 		</pre>
-		<!-- TESTING i18n -->
-		<@s.text name="menu.species"/>
 	</div>
 
 	<!-- JavaScript at the bottom for fast page loading -->
@@ -204,11 +205,11 @@ Remove this if you use the .htaccess -->
 		$(function() {
 			$('nav ul li a.more').bindLinkPopover({
 				links:{
-					"Countries":"/countries/index.html",
-					"GBIF network":"/members/index.html",
-					"Themes":"/themes/index.html",
-					"Stats":"/stats/index.html",
-					"About":"/static/about.html"
+					"<@s.text name="menu.country"/>":"/country/home",
+					"<@s.text name="menu.member"/>":"/member/home",
+					"<@s.text name="menu.theme"/>":"/theme/home",
+					"<@s.text name="menu.stats"/>":"/stats/home",
+					"<@s.text name="menu.about"/>":"/about"
 				}
 			});
 		});

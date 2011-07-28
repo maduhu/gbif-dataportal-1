@@ -16,8 +16,10 @@
 package org.gbif.portal.action.species;
 
 import org.gbif.portal.action.BaseAction;
+import org.gbif.portal.client.ChecklistBankClient;
 import org.gbif.portal.client.RegistryClient;
 
+import java.util.Map;
 import java.util.UUID;
 
 import com.google.inject.Inject;
@@ -25,39 +27,31 @@ import org.apache.commons.lang.StringUtils;
 
 public class DetailAction extends BaseAction {
   @Inject
-  private RegistryClient registry;
+  private ChecklistBankClient clb;
   // detail
-  private String id;
-  private Object dataset;
+  private Integer id;
+  private Map usage;
 
   @Override
   public String execute() {
-    log.debug("executing action class: " + this.getClass().getName());
-    if (!StringUtils.isBlank(id)) {
-      UUID uuid = null;
-      try {
-        uuid = UUID.fromString(id.trim());
-        dataset = registry.getDataset(uuid);
-        if (dataset != null) {
-          return SUCCESS;
-        }
-      } catch (Exception e) {
-        // swallow
+    if (id!=null) {
+      usage = clb.getUsage(id);
+      if (usage != null) {
+        return SUCCESS;
       }
-      return SUCCESS;
     }
     return NOT_FOUND;
   }
 
-  public Object getDataset() {
-    return dataset;
-  }
-
-  public void setId(String id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
-  public String getId() {
+  public Integer getId() {
     return id;
+  }
+
+  public Map getUsage() {
+    return usage;
   }
 }

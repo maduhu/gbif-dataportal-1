@@ -19,7 +19,6 @@ import org.gbif.portal.config.PortalConfig;
 
 import javax.inject.Singleton;
 import javax.ws.rs.core.MultivaluedMap;
-
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -31,26 +30,43 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
 import org.apache.commons.lang.StringUtils;
 
 @Singleton
-public class RegistryClientImpl extends BaseClient implements RegistryClient{
-  private WebResource REGISTRY_RESOURCE;
+public class ChecklistBankClientImpl extends BaseClient implements ChecklistBankClient{
+  private WebResource USAGE_RESOURCE;
+  private WebResource NAV_RESOURCE;
 
   @Inject
-  public RegistryClientImpl(PortalConfig cfg, ApacheHttpClient client) {
-    log.info("Creating registry client with base url "+ cfg.getRegistryWs());
-    REGISTRY_RESOURCE = client.resource(cfg.getRegistryWs());
+  public ChecklistBankClientImpl(PortalConfig cfg, ApacheHttpClient client) {
+    log.info("Creating checklist bank client with base url "+ cfg.getSpeciesWs());
+    USAGE_RESOURCE = client.resource(cfg.getSpeciesWs() + "usage/");
+    NAV_RESOURCE = client.resource(cfg.getSpeciesWs() + "resource");
   }
 
   @Override
-  public List<Map> searchDatasets(String q){
-    //TODO: manipulate query string?
+  public List<Map> searchSpecies(String q) {
     MultivaluedMap<String, String> queryParams = new MultivaluedMapImpl();
     queryParams.add("q", StringUtils.trimToNull(q));
-    List<Map> resources = REGISTRY_RESOURCE.path("resource.json").queryParams(queryParams).get(List.class);
-    return resources;
+    queryParams.add("rkey", "1");
+    queryParams.add("showRanks", "kpcofg");
+
+    List<Map> results = removeMessageWrapperAsList(USAGE_RESOURCE.queryParams(queryParams).get(Map.class));
+    return results;
   }
 
   @Override
-  public Map getDataset(UUID uuid) {
-    return REGISTRY_RESOURCE.path("resource/"+uuid.toString()+".json").get(Map.class);
+  public List<Map> searchUsages(String q) {
+    // TODO: Write implementation
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
+
+  @Override
+  public Map getUsage(Integer id) {
+    return removeMessageWrapperAsMap(USAGE_RESOURCE.path(id.toString()).get(Map.class));
+  }
+
+  private List<Map> removeMessageWrapperAsList(Map obj){
+    return (List<Map>) obj.get("data");
+  }
+  private Map removeMessageWrapperAsMap(Map obj) {
+    return (Map) obj.get("data");
   }
 }

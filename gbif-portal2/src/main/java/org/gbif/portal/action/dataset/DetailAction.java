@@ -45,7 +45,6 @@ public class DetailAction extends BaseAction {
       } catch (Exception e) {
         // swallow
       }
-      return SUCCESS;
     }
     return NOT_FOUND;
   }

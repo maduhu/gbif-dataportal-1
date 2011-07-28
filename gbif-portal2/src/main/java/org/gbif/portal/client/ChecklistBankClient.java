@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gbif.portal.action.species;
+package org.gbif.portal.client;
 
-import org.gbif.portal.action.BaseAction;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public class DiscussionAction extends BaseAction {
-  private Integer id;
+public interface ChecklistBankClient {
 
-  public Integer getId() {
-    return id;
-  }
+  public List<Map> searchSpecies(String q);
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+  public List<Map> searchUsages(String q);
+
+  public Map getUsage(Integer id);
+
 }

@@ -4,6 +4,13 @@
 </head>
 <body>
 
+
+<content tag="infoband">
+	<h1>Reference Card</h1>
+	<h3>Provided by <a href="http://www.vizzuality.com">Vizzuality</a></h3>
+</content>
+
+
 <article class="results light_pane">
 	<header></header>
 	<div class="content">

@@ -16,27 +16,25 @@
 package org.gbif.portal.action.species;
 
 import org.gbif.portal.action.BaseAction;
+import org.gbif.portal.client.ChecklistBankClient;
 import org.gbif.portal.client.RegistryClient;
 
 import java.util.List;
+import java.util.Map;
 
 import com.google.inject.Inject;
 
 public class SearchAction extends BaseAction {
   @Inject
-  private RegistryClient registry;
+  private ChecklistBankClient clb;
   // search
   private String q;
-  private List<?> datasets;
+  private List<Map> usages;
 
   @Override
   public String execute() {
-    datasets=registry.searchDatasets(q);
+    usages=clb.searchSpecies(q);
     return SUCCESS;
-  }
-
-  public List<?> getDatasets() {
-    return datasets;
   }
 
   public String getQ() {
@@ -45,5 +43,9 @@ public class SearchAction extends BaseAction {
 
   public void setQ(String q) {
     this.q = q;
+  }
+
+  public List<Map> getUsages() {
+    return usages;
   }
 }

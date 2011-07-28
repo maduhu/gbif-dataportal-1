@@ -16,12 +16,13 @@
 package org.gbif.portal.client;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public interface RegistryClient {
 
-  public List<Object> searchDatasets(String q);
+  public List<Map> searchDatasets(String q);
 
-  public Object getDataset(UUID uuid);
+  public Map getDataset(UUID uuid);
 
 }

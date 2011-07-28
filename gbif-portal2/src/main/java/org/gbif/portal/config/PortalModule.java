@@ -1,5 +1,7 @@
 package org.gbif.portal.config;
 
+import org.gbif.portal.client.ChecklistBankClient;
+import org.gbif.portal.client.ChecklistBankClientImpl;
 import org.gbif.portal.client.RegistryClient;
 import org.gbif.portal.client.RegistryClientImpl;
 import org.gbif.utils.file.FileUtils;
@@ -26,6 +28,8 @@ public class PortalModule extends AbstractModule {
   @Override
   protected void configure() {
     bind(RegistryClient.class).to(RegistryClientImpl.class).in(Scopes.SINGLETON);
+    bind(ChecklistBankClient.class).to(ChecklistBankClientImpl.class).in(Scopes.SINGLETON);
+
   }
 
   @Provides
