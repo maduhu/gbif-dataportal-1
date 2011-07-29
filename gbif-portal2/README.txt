@@ -64,7 +64,7 @@ we want to expose restful, pretty urls like the following.
 The examples are mainly for datasets, but would be similar for species, occurrences, etc
 
 /home
-/dataset
+/dataset/
 /dataset/home
 /dataset/search?q=puma
 /dataset/{UUID}

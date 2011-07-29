@@ -61,6 +61,7 @@
 
 
   <package name="dataset" namespace="/dataset" extends="default">
+    <!-- catches everything that doesnt match below! -->
     <default-action-ref name="home"/>
 
     <action name="home" class="org.gbif.portal.action.dataset.HomeAction">
@@ -71,6 +72,7 @@
       <result>/WEB-INF/pages/dataset/search.ftl</result>
     </action>
 
+    <!-- {id} matches anything but "/" -->
     <action name="{id}/activity" class="org.gbif.portal.action.dataset.ActivityAction">
       <result>/WEB-INF/pages/dataset/activity.ftl</result>
     </action>
