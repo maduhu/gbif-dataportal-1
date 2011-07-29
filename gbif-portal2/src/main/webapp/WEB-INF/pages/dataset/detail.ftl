@@ -1,8 +1,7 @@
 <html>
 <head>
 	<title>Dataset: ${dataset.name!}</title>
-	<meta name="gmap" value="true"/>
-	<meta name="menu" value="dataset"/>
+	<meta name="menu" content="dataset"/>
 </head>
 <body class="dataset">
 

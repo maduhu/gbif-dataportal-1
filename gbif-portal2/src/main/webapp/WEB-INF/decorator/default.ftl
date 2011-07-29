@@ -57,13 +57,13 @@ Remove this if you use the .htaccess -->
 					<span>Free and open access to biodiversity data</span>
 				</div>
 
-				<#assign menu=page.properties["meta.menu"]!"home" />
+				<#assign menu=(page.properties["meta.menu"])!"home" />
 				<#assign menuItems=["occurrence","dataset","species"] />
 				<nav>
 					<ul>
 						<#list menuItems as m>
 							<li<#if menu==m> class="selected"</#if>>
-								<a href="/${m}/home" title="<@s.text name="menu.${m}"/>"><@s.text name="menu.${m}"/></a></li>
+								<a href="/${m}/home" title="${menu}:${m}|<@s.text name="menu.${m}"/>"><@s.text name="menu.${m}"/></a></li>
 						</#list>
 						<li><a href="#" class="more" title="<@s.text name="menu.more"/>"><@s.text name="menu.more"/><span class="more"></span></a>
 						</li>
@@ -101,12 +101,12 @@ Remove this if you use the .htaccess -->
 		<div class="content">
 			<ul>
 				<li><h3>EXPLORE THE DATA</h3></li>
-				<li><a href="/occurrence/home"><@s.text name="menu.occurrences"/></a></li>
-				<li><a href="/dataset/home"><@s.text name="menu.datasets"/></a></li>
+				<li><a href="/occurrence/home"><@s.text name="menu.occurrence"/></a></li>
+				<li><a href="/dataset/home"><@s.text name="menu.dataset"/></a></li>
 				<li><a href="/species/home"><@s.text name="menu.species"/></a></li>
-				<li><a href="/country/home"><@s.text name="menu.countries"/></a></li>
-				<li><a href="/member/home"><@s.text name="menu.members"/></a></li>
-				<li><a href="/theme/home"><@s.text name="menu.themes"/></a></li>
+				<li><a href="/country/home"><@s.text name="menu.country"/></a></li>
+				<li><a href="/member/home"><@s.text name="menu.member"/></a></li>
+				<li><a href="/theme/home"><@s.text name="menu.theme"/></a></li>
 			</ul>
 
 			<ul>

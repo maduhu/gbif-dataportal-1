@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>Dataset Search Results</title>
+	<meta name="menu" content="dataset"/>
 </head>
 <body class="search">
 

@@ -1,8 +1,7 @@
 <html>
 <head>
 	<title>Species Search Results for ${q!}</title>
-	<meta name="gmap" value="false"/>
-	<meta name="menu" value="species"/>
+	<meta name="menu" content="species"/>
 </head>
 <body class="search">
 

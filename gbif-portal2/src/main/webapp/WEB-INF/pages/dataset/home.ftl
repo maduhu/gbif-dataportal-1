@@ -1,7 +1,8 @@
 <html>
 <head>
 	<title>GBIF - Dataset</title>
-  <meta name="gmap" value="true" />
+  <meta name="gmap" content="true" />
+	<meta name="menu" content="dataset"/>
 </head>
 <body class="dataset">
 

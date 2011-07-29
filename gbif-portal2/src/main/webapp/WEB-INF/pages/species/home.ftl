@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>Species Search</title>
+	<meta name="menu" content="species"/>
 </head>
 <body class="dataset">
 

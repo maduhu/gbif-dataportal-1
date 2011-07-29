@@ -1,8 +1,8 @@
 <html>
 <head>
 	<title>${usage.canonicalName!}</title>
-	<meta name="gmap" value="false"/>
-	<meta name="menu" value="species"/>
+	<meta name="gmap" content="true"/>
+	<meta name="menu" content="species"/>
 </head>
 <body class="species">
 
