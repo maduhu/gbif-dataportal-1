@@ -12,7 +12,6 @@
 	</form>
 </content>
 
-
 	<article class="results light_pane">
 		<header></header>
 		<div class="content">
