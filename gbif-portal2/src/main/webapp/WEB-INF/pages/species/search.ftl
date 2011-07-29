@@ -28,7 +28,7 @@
 
 				<!-- full examples -->
 				<div class="result">
-					<h2><a href="/species/detail.html" title="Puma Concolor"><strong>Puma Concolor</strong></a></h2>
+					<h2><a href="/species/0" title="Puma Concolor"><strong>Puma Concolor</strong></a></h2>
 					<div class="footer">
 						<ul class="taxonomy">
 							<li>Animalia</li>
@@ -42,7 +42,7 @@
 				</div>
 
 				<div class="result">
-					<h2><a href="/species/name_usage.html" title="Puma Concolor"><strong>Puma Concolor</strong> according to World
+					<h2><a href="/species/0" title="Puma Concolor"><strong>Puma Concolor</strong> according to World
 						Felines checklist</a></h2>
 					<div class="footer">
 						<ul class="taxonomy">

@@ -94,6 +94,13 @@ Consider replacing the native struts2 text provider with a much simpler one we u
 == Freemarker vs struts tags
 Freemarker has support for iterating lists, displaying properties, including other templates, macro's, and so on. There is a small performance cost when using the struts tags instead of the Freemarker equivalent (eg. <s:property value="foo"/> should be replaced by ${foo}), so use as much of native freemarker as you can!
 
+=== Freemarker Tips:
+Common pitfalls with freemarker are:
+
+You need to handle null value explicitly. If nulls are encountered in places you render the variable, an exception will occurr. You need to explicitly tell freemarker what to do with nulls. The default operator (!) can be used or ?? to test for not null. To also test for empty string use ?has_content. Example ${dataset.title!"No title given"}
+
+Freemarker renders non strings for humans by default based on the current locale. You can instruct freemarker to use different renderings. This is very important for numbers as parameters, as you will be surprised with commas otherwise. Render numbers for "computers" is done with ?c, e.g. ${u.taxonID?c}. Booleans also require special attention. To render simple true/false strings use ?string, e.g. ${u.isSynonym?string}, you can also specify the strings to be used.
+
 == Sitemesh
 version3 is still in alpha and caused some NIO blocking with Jetty & Tomcat 7 and above in my tests. 
 The struts2 plugin for sitemesh also does not work with sitemesh3 and still waits to be rewritten. 
