@@ -30,6 +30,10 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
 import org.apache.commons.lang.StringUtils;
 
 @Singleton
+/**
+ * A simple client to the checklist bank json webservices.
+ * API documentation: http://ecat-dev.gbif.org/api/clb
+ */
 public class ChecklistBankClientImpl extends BaseClient implements ChecklistBankClient{
   private WebResource USAGE_RESOURCE;
   private WebResource NAV_RESOURCE;
