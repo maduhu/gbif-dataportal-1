@@ -21,6 +21,27 @@ In the project folder we have the following files:
 	• Rakefile: custom tasks to compile the website
 	• Gemfile: list of gems and versions used
 
+== folders in the this webapp that contain vizzuality files:
+src/webapp/css
+All css and sass files taken from the output/css and content/css
+
+src/webapp/external
+These are example content files used for the mockups, mainly spcies images. We need to figure out how to deal with external images first, but this folder can ultimately be removed. For demo puposes keep it. It holds the folder and all their files from assets/img/photos, assets/img/logos, assets/img/slideshow
+
+src/webapp/fonts
+All fonts used in the design. Unclear if there are needed for the final layout. But we should keep them anyway. Taken from assets/fonts
+
+src/webapp/img
+All the static images used in the design. Taken from assets/img, but ignoring the folders copied to above paths already (e.g. photos). Also add the assets/favicon folder.
+
+src/webapp/js
+The javascript being used, incl jQuery libs. Taken from content/js
+
+src/webapp/favicon.ico
+Copied (again) from assets/favicon/favicon_32x32.ico
+
+src/webapp/WEB-INF/pages
+
 
 == CSS
 The css is generated via SASS source files and static Compass file includes.
