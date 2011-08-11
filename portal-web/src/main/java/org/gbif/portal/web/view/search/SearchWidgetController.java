@@ -74,16 +74,21 @@ public class SearchWidgetController extends WidgetControllerSupport {
 
 		//use the nub provider
 		DataProviderDTO nubProvider = dataResourceManager.getNubDataProvider();
+		//use the nub resource
+		DataResourceDTO nubResource = dataResourceManager.getNubDataResource();
 		String providerKey = null;
+		String resourceKey = null;
 		if(nubProvider!=null && nubProvider.getKey()!=null)
 			providerKey = nubProvider.getKey();
+    if(nubResource!=null && nubResource.getKey()!=null)
+      resourceKey = nubResource.getKey();		
 		
 		//exact scientific name matches
-		SearchResultsDTO exactTaxonMatches = taxonomyManager.findTaxonConcepts(searchString, false, null, providerKey, null, null, null, RequestContextUtils.getLocale(request).getLanguage(), null, allowUnconfirmedNames, false, new SearchConstraints(0,100));
+		SearchResultsDTO exactTaxonMatches = taxonomyManager.findTaxonConcepts(searchString, false, null, null, resourceKey, null, null, RequestContextUtils.getLocale(request).getLanguage(), null, allowUnconfirmedNames, false, new SearchConstraints(0,100));
 		request.setAttribute("exactTaxonMatches", exactTaxonMatches);
 		
 		//exact specific epithet matches
-		SearchResultsDTO exactEpithetMatches = taxonomyManager.findSpeciesConcepts(null, searchString, false, providerKey, null, null, new SearchConstraints(0,100));
+		SearchResultsDTO exactEpithetMatches = taxonomyManager.findSpeciesConcepts(null, searchString, false, null, resourceKey, null, new SearchConstraints(0,100));
 		request.setAttribute("exactEpithetMatches", exactEpithetMatches);
 		
 		int matchesTotal = exactTaxonMatches.size() + exactEpithetMatches.size();
@@ -99,7 +104,7 @@ public class SearchWidgetController extends WidgetControllerSupport {
 			}
 			
 			//exact scientific name matches
-			SearchResultsDTO fuzzyTaxonMatches = taxonomyManager.findTaxonConcepts(searchString, true, null, providerKey, null, null, null, RequestContextUtils.getLocale(request).getLanguage(), null, allowUnconfirmedNames, sortAlpha, searchConstraints);
+			SearchResultsDTO fuzzyTaxonMatches = taxonomyManager.findTaxonConcepts(searchString, true, null, null, resourceKey, null, null, RequestContextUtils.getLocale(request).getLanguage(), null, allowUnconfirmedNames, sortAlpha, searchConstraints);
 			//remove the exact matches
 			for (Object exactMatch: exactTaxonMatches){
 				if(fuzzyTaxonMatches.contains(exactMatch))
@@ -115,7 +120,7 @@ public class SearchWidgetController extends WidgetControllerSupport {
 		// if there are still no results, then try a soundex
 		if(matchesTotal==0){
 			logger.debug("No names found, trying the SoundEx search");
-			SearchResultsDTO soundExMatches = taxonomyManager.findMatchingScientificNames(searchString, true, null, null, true, providerKey, null, true, new SearchConstraints(0, DEFAULT_MAX_RESULTS));
+			SearchResultsDTO soundExMatches = taxonomyManager.findMatchingScientificNames(searchString, true, null, null, true, null, resourceKey, true, new SearchConstraints(0, DEFAULT_MAX_RESULTS));
 			request.setAttribute("soundexNameMatches", soundExMatches);
 			matchesTotal = soundExMatches.size();
 			// it's just a suggestion list so no need for paging

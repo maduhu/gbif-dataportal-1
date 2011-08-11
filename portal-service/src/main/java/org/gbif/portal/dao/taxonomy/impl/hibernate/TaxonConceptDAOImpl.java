@@ -575,7 +575,8 @@ public class TaxonConceptDAOImpl extends HibernateDaoSupport implements TaxonCon
 					query.setParameter("taxonRank", taxonRank);
 				if(dataProviderId!=null)
 					query.setParameter("dataProviderId", dataProviderId);
-				if(dataResourceId!=null && dataResourceId > 1)
+				//if(dataResourceId!=null && dataResourceId > 1)
+				if(dataResourceId!=null)
 					query.setParameter("dataResourceId", dataResourceId);
 				if(resourceNetworkId!=null)
 					query.setParameter("resourceNetworkId", resourceNetworkId);
