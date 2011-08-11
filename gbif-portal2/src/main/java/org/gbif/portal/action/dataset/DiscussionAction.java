@@ -16,20 +16,23 @@
 package org.gbif.portal.action.dataset;
 
 import org.gbif.portal.action.BaseAction;
-import org.gbif.portal.client.RegistryClient;
-
-import java.util.List;
-
-import com.google.inject.Inject;
 
 public class DiscussionAction extends BaseAction {
-  private String id;
 
-  public String getId() {
-    return id;
+  // detail
+  private Integer id;
+
+  @Override
+  public String execute() {
+    log.debug("Getting discussion for dataset id [{}]", id);
+    return SUCCESS;
   }
 
-  public void setId(String id) {
+  public void setId(Integer id) {
     this.id = id;
+  }
+
+  public Integer getId() {
+    return id;
   }
 }

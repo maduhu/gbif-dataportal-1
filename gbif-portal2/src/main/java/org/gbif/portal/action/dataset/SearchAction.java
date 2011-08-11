@@ -18,7 +18,9 @@ package org.gbif.portal.action.dataset;
 import org.gbif.portal.action.BaseAction;
 import org.gbif.portal.client.RegistryClient;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.google.inject.Inject;
 
@@ -32,8 +34,13 @@ public class SearchAction extends BaseAction {
   @Override
   public String execute() {
     log.debug("Searching for datasets matching [{}]", q);
-    datasets=registry.searchDatasets(q);
-    log.debug("Got [{}] datasets matching [{}]", datasets.size(), q);
+    /** TODO: re-enable real lookup */
+    // using static just to make sure all layout is working properly
+    q = "Pontaurus";
+    datasets = new ArrayList<Map>();
+
+//    datasets=registry.searchDatasets(q);
+//    log.debug("Got [{}] datasets matching [{}]", datasets.size(), q);
     return SUCCESS;
   }
 

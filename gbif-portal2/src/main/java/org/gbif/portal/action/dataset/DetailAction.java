@@ -18,11 +18,7 @@ package org.gbif.portal.action.dataset;
 import org.gbif.portal.action.BaseAction;
 import org.gbif.portal.client.RegistryClient;
 
-import java.util.List;
-import java.util.UUID;
-
 import com.google.inject.Inject;
-import org.apache.commons.lang.StringUtils;
 
 public class DetailAction extends BaseAction {
   @Inject
@@ -33,20 +29,24 @@ public class DetailAction extends BaseAction {
 
   @Override
   public String execute() {
-    log.debug("executing action class: " + this.getClass().getName());
-    if (!StringUtils.isBlank(id)) {
-      UUID uuid = null;
-      try {
-        uuid = UUID.fromString(id.trim());
-        dataset = registry.getDataset(uuid);
-        if (dataset != null) {
-          return SUCCESS;
-        }
-      } catch (Exception e) {
-        // swallow
-      }
-    }
-    return NOT_FOUND;
+    /** TODO: re-enable real lookup */
+    dataset = "Pontaurus";
+    return SUCCESS;
+
+//    log.debug("executing action class: " + this.getClass().getName());
+//    if (!StringUtils.isBlank(id)) {
+//      UUID uuid = null;
+//      try {
+//        uuid = UUID.fromString(id.trim());
+//        dataset = registry.getDataset(uuid);
+//        if (dataset != null) {
+//          return SUCCESS;
+//        }
+//      } catch (Exception e) {
+//        // swallow
+//      }
+//    }
+//    return NOT_FOUND;
   }
 
   public Object getDataset() {

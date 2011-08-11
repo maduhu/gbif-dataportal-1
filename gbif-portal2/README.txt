@@ -156,3 +156,4 @@ Evaluate CAS and Shiro for the central authentication.
 
 OLIVER NOTES
 - species/distribution.html and species/bibliography.html don't exist (weren't contracted from vizz but exist as links)
+- status: occurrences, users and session haven't been touched; dataset started, using proper struts tags for links; all others complete but not using struts tags (links broken when in context)
