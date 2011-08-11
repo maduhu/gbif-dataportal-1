@@ -18,7 +18,7 @@
   <url>http://sites.gbif.org/gbif/gbif-portal2</url>
 
   <properties>
-    <baseurl>http:localhost:8080</baseurl>
+    <baseurl></baseurl>
     <ws.species>http://ecat-dev.gbif.org/ws/</ws.species>
     <ws.registry>http://gbrdstest.gbif.org/registry/</ws.registry>
     <ws.occurrence>TO.BE.DONE</ws.occurrence>
@@ -328,7 +328,7 @@ marked as "provided" so it needs to be specified explicitly. -->
       <properties>
         <devMode>false</devMode>
         <notDevMode>true</notDevMode>
-        <baseurl>http://hudson.gbif.org/portal-web</baseurl>
+        <baseurl></baseurl>
       </properties>
     </profile>
 

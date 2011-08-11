@@ -14,37 +14,37 @@ http://pixelmatrixdesign.com/uniform/themer.html
 */
 /* Global Declaration */
 div.selector {
-  background-image: url(/img/uniform/sprite.png);
+  background-image: url(../img/uniform/sprite.png);
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
 }
 div.selector span {
-  background-image: url(/img/uniform/sprite.png);
+  background-image: url(../img/uniform/sprite.png);
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
 }
 div.checker span, div.radio span {
-  background-image: url(/img/uniform/sprite.png);
+  background-image: url(../img/uniform/sprite.png);
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
 }
 div.uploader {
-  background-image: url(/img/uniform/sprite.png);
+  background-image: url(../img/uniform/sprite.png);
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
 }
 div.uploader span.action {
-  background-image: url(/img/uniform/sprite.png);
+  background-image: url(../img/uniform/sprite.png);
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
 }
 div.button {
-  background-image: url(/img/uniform/sprite.png);
+  background-image: url(../img/uniform/sprite.png);
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
 }
 div.button span {
-  background-image: url(/img/uniform/sprite.png);
+  background-image: url(../img/uniform/sprite.png);
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
 }
@@ -61,8 +61,8 @@ input.text, input.email, input.password {
   font-weight: normal;
   padding: 3px;
   color: #777;
-  background: url("/img/uniform/bg-input-focus.png") repeat-x 0px 0px;
-  background: url("/img/uniform/bg-input.png") repeat-x 0px 0px;
+  background: url("../img/uniform/bg-input-focus.png") repeat-x 0px 0px;
+  background: url("../img/uniform/bg-input.png") repeat-x 0px 0px;
   border-top: solid 1px #aaa;
   border-left: solid 1px #aaa;
   border-bottom: solid 1px #ccc;
@@ -79,8 +79,8 @@ textarea.uniform {
   font-weight: normal;
   padding: 3px;
   color: #777;
-  background: url("/img/uniform/bg-input-focus.png") repeat-x 0px 0px;
-  background: url("/img/uniform/bg-input.png") repeat-x 0px 0px;
+  background: url("../img/uniform/bg-input-focus.png") repeat-x 0px 0px;
+  background: url("../img/uniform/bg-input.png") repeat-x 0px 0px;
   border-top: solid 1px #aaa;
   border-left: solid 1px #aaa;
   border-bottom: solid 1px #ccc;
@@ -96,7 +96,7 @@ input.text:focus, input.email:focus, input.password:focus {
   -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
   border-color: #999;
-  background: url("/img/uniform/bg-input-focus.png") repeat-x 0px 0px;
+  background: url("../img/uniform/bg-input-focus.png") repeat-x 0px 0px;
 }
 
 textarea.uniform:focus {
@@ -104,7 +104,7 @@ textarea.uniform:focus {
   -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
   border-color: #999;
-  background: url("/img/uniform/bg-input-focus.png") repeat-x 0px 0px;
+  background: url("../img/uniform/bg-input-focus.png") repeat-x 0px 0px;
 }
 
 /* SPRITES */

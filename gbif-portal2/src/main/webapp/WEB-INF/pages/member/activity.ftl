@@ -8,6 +8,7 @@
 <content tag="infoband">
   <ul class="breadcrumb">
     <li><a href="/members/" title="GBIF Network Members">GBIF Network Members</a></li>
+    <li><@s.a value="/members">Tagged version GBIF Network Members</@s.a></li>
   </ul>
 
   <h1>Academy of Natural Sciences</h1>

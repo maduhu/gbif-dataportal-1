@@ -27,13 +27,13 @@ Remove this if you use the .htaccess -->
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- CSS: implied media="all" -->
-  <link rel="stylesheet" href="/css/style.css?v=2">
+  <link rel="stylesheet" href="<@s.url value='/css/style.css?v=2'/>"/>
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css"
         type="text/css" media="all"/>
   <!-- Uncomment if you are specifically targeting less enabled mobile browsers
 <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
 
-  <script src="/js/modernizr-1.7.min.js"></script>
+  <script src="<@s.url value='/js/modernizr-1.7.min.js'/>"></script>
 
   ${head}
 
@@ -46,13 +46,13 @@ Remove this if you use the .htaccess -->
       <div class="content">
         <div class="account">
           <a href="#" class="login" title='<@s.text name="menu.login"/>'><@s.text name="menu.login"/></a> or
-          <a href="/user/register/step1" title='<@s.text name="menu.register"/>'><@s.text name="menu.register"/></a>
+          <a href="<@s.url value='/user/register/step1'/>" title='<@s.text name="menu.register"/>'><@s.text name="menu.register"/></a>
         </div>
 
         <div id="logo">
-          <a href="/" class="logo"><img src="/img/header/logo.png"/></a>
+          <a href="<@s.url value='/'/>" class="logo"><img src="<@s.url value='/img/header/logo.png'/>"/></a>
 
-          <h1><a href="/" title="DATA.GBIF.ORG">DATA.GBIF.ORG</a></h1>
+          <h1><a href="<@s.url value='/'/>" title="DATA.GBIF.ORG">DATA.GBIF.ORG</a></h1>
           <span>Free and open access to biodiversity data</span>
         </div>
 
@@ -62,12 +62,13 @@ Remove this if you use the .htaccess -->
           <ul>
             <#list menuItems as m>
               <li<#if menu==m> class="selected"</#if>>
-                <a href="/${m}" title="${menu}:${m}|<@s.text name="menu.${m}"/>"><@s.text name="menu.${m}"/></a></li>
+                <@s.text id="menuName" name="menu.${m}" />
+                <@s.a value="/${m}" title="%{menuName}"><@s.text name="menu.${m}"/></@s.a></li>
             </#list>
             <li><a href="#" class="more" title="<@s.text name="menu.more"/>"><@s.text name="menu.more"/><span class="more"></span></a>
             </li>
             <li class="search">
-              <form action="/datasets/search" method="post">
+              <form href="<@s.url value='/datasets/search'/>" method="post">
                 <span class="input_text">
                   <input type="text" name="q"/>
                 </span>
@@ -75,7 +76,6 @@ Remove this if you use the .htaccess -->
             </li>
           </ul>
         </nav>
-
       </div>
     </div>
     <!-- /top -->
@@ -108,12 +108,12 @@ Remove this if you use the .htaccess -->
     <div class="content">
       <ul>
         <li><h3>EXPLORE THE DATA</h3></li>
-        <li><a href="/occurrences"><@s.text name="menu.occurrences"/></a></li>
-        <li><a href="/datasets"><@s.text name="menu.datasets"/></a></li>
-        <li><a href="/species"><@s.text name="menu.species"/></a></li>
-        <li><a href="/countries"><@s.text name="menu.countries"/></a></li>
-        <li><a href="/members"><@s.text name="menu.members"/></a></li>
-        <li><a href="/themes"><@s.text name="menu.themes"/></a></li>
+        <li><a href="<@s.url value='/occurrences'/>"><@s.text name="menu.occurrences"/></a></li>
+        <li><a href="<@s.url value='/datasets'/>"><@s.text name="menu.datasets"/></a></li>
+        <li><a href="<@s.url value='/species'/>"><@s.text name="menu.species"/></a></li>
+        <li><a href="<@s.url value='/countries'/>"><@s.text name="menu.countries"/></a></li>
+        <li><a href="<@s.url value='/members'/>"><@s.text name="menu.members"/></a></li>
+        <li><a href="<@s.url value='/themes'/>"><@s.text name="menu.themes"/></a></li>
       </ul>
 
       <ul>
@@ -126,10 +126,10 @@ Remove this if you use the .htaccess -->
 
       <ul>
         <li><h3>JOIN THE COMMUNITY</h3></li>
-        <li><a class="login" href="/session/login"><@s.text name="menu.login"/></a></li>
-        <li><a href="/user/register/step1"><@s.text name="menu.register"/></a></li>
-        <li><a href="/terms"><@s.text name="menu.terms"/></a></li>
-        <li><a href="/about"><@s.text name="menu.about"/></a></li>
+        <li><a class="login" href="<@s.url value='/session/login'/>"><@s.text name="menu.login"/></a></li>
+        <li><a href="<@s.url value='/user/register/step1'/>"><@s.text name="menu.register"/></a></li>
+        <li><a href="<@s.url value='/terms'/>"><@s.text name="menu.terms"/></a></li>
+        <li><a href="<@s.url value='/about'/>"><@s.text name="menu.about"/></a></li>
       </ul>
 
       <!--
@@ -185,33 +185,29 @@ Remove this if you use the .htaccess -->
 -->
 
   <!-- scripts concatenated and minified via ant build script  -->
-  <script src="/js/vendor/jquery-1.6.1.min.js"></script>
-  <script src="/js/vendor/jquery-ui.min.js"></script>
-  <script src="/js/vendor/autocomplete.js"></script>
-  <script type="text/javascript" src="/js/vendor/mousewheel.js"></script>
-  <script type="text/javascript" src="/js/vendor/jscrollpane.min.js"></script>
-  <script src="/js/vendor/jquery-scrollTo-1.4.2-min.js"></script>
-  <script src="/js/vendor/underscore-min.js"></script>
-  <script src="/js/helpers.js"></script>
-
-  <!-- javascript for testing, it's safe to delete it -->
-  <#--<script src="/js/test.js"></script>-->
-
-  <script src="/js/widgets.js"></script>
-  <script src="/js/app.js"></script>
-  <script src="/js/graphs.js"></script>
-  <script src="/js/vendor/jquery.uniform.min.js" type="text/javascript"></script>
-  <script src="/js/vendor/OpenLayers.js"></script>
-  <script src="/js/full_map.js"></script>
-  <script src="/js/types_map.js"></script>
-  <script src="/js/single_map.js"></script>
-  <script src="/js/openlayers_addons.js"></script>
-  <script src="/js/Infowindow.js"></script>
-  <script src="/js/vendor/raphael-min.js"></script>
+  <script src="<@s.url value='/js/vendor/jquery-1.6.1.min.js'/>"></script>
+  <script src="<@s.url value='/js/vendor/jquery-ui.min.js'/>"></script>
+  <script src="<@s.url value='/js/vendor/autocomplete.js'/>"></script>
+  <script type="text/javascript" src="<@s.url value='/js/vendor/mousewheel.js'/>"></script>
+  <script type="text/javascript" src="<@s.url value='/js/vendor/jscrollpane.min.js'/>"></script>
+  <script src="<@s.url value='/js/vendor/jquery-scrollTo-1.4.2-min.js'/>"></script>
+  <script src="<@s.url value='/js/vendor/underscore-min.js'/>"></script>
+  <script src="<@s.url value='/js/helpers.js'/>"></script>
+  <script src="<@s.url value='/js/widgets.js'/>"></script>
+  <script src="<@s.url value='/js/app.js'/>"></script>
+  <script src="<@s.url value='/js/graphs.js'/>"></script>
+  <script src="<@s.url value='/js/vendor/jquery.uniform.min.js" type="text/javascript' />"></script>
+  <script src="<@s.url value='/js/vendor/OpenLayers.js'/>"></script>
+  <script src="<@s.url value='/js/full_map.js'/>"></script>
+  <script src="<@s.url value='/js/types_map.js'/>"></script>
+  <script src="<@s.url value='/js/single_map.js'/>"></script>
+  <script src="<@s.url value='/js/openlayers_addons.js'/>"></script>
+  <script src="<@s.url value='/js/Infowindow.js'/>"></script>
+  <script src="<@s.url value='/js/vendor/raphael-min.js'/>"></script>
   <!-- end scripts-->
 
   <!--[if lt IE 7 ]>
-  <script src="/js/libs/dd_belatedpng.js"></script>
+  <script src="<@s.url value='/js/libs/dd_belatedpng.js'/>"></script>
   <script>DD_belatedPNG
           .fix("img, .png_bg"); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
   <![endif]-->
@@ -220,11 +216,11 @@ Remove this if you use the .htaccess -->
     $(function() {
       $('nav ul li a.more').bindLinkPopover({
         links:{
-          "<@s.text name="menu.countries"/>":"/countries",
-          "<@s.text name="menu.members"/>":"/members",
-          "<@s.text name="menu.themes"/>":"/themes",
-          "<@s.text name="menu.stats"/>":"/stats",
-          "<@s.text name="menu.about"/>":"/about"
+          "<@s.text name="menu.countries"/>":"<@s.url value='/countries'/>",
+          "<@s.text name="menu.members"/>":"<@s.url value='/members'/>",
+          "<@s.text name="menu.themes"/>":"<@s.url value='/themes'/>",
+          "<@s.text name="menu.stats"/>":"<@s.url value='/stats'/>",
+          "<@s.text name="menu.about"/>":"<@s.url value='/about'/>"
         }
       });
     });
