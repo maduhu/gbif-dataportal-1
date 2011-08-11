@@ -135,7 +135,7 @@ public class TaxonomyBrowseController extends RestKeyValueController {
     DataResourceDTO nubResource = dataResourceManager.getNubDataResource();
     if (nubResource != null) mav.addObject(nubResourceModelKey, nubResource);
 
-
+    mav.addObject(occurrenceManagerModelKey, occurrenceManager);
 		//retrieve the list of taxonomies - for the drop down
 //		List<DataProviderDTO> dataProviders = dataResourceManager.getDataProvidersOfferingTaxonomies();
 //		List<DataResourceDTO> dataResources = dataResourceManager.getDataResourcesWithInferredTaxonomies();
@@ -225,7 +225,6 @@ public class TaxonomyBrowseController extends RestKeyValueController {
 				//add taxonomy search criteria- Compare classifications of
 				CriteriaDTO taxonomyCriteria = filterContentProvider.getTaxonomySearchCriteria(selectedConcept);
 				mav.addObject(taxonomyCriteriaModelKey, taxonomyCriteria);
-				mav.addObject(occurrenceManagerModelKey, occurrenceManager);
 			}
 		} catch (ServiceException e) {
 			logger.error(e.getMessage(), e);
