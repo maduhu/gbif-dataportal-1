@@ -41,6 +41,7 @@ import org.gbif.portal.dto.util.EntityType;
 import org.gbif.portal.dto.util.SearchConstraints;
 import org.gbif.portal.dto.util.TaxonRankType;
 import org.gbif.portal.dto.util.TimePeriodDTO;
+import org.gbif.portal.model.taxonomy.TaxonRank;
 import org.gbif.portal.service.DataResourceManager;
 import org.gbif.portal.service.GeospatialManager;
 import org.gbif.portal.service.OccurrenceManager;
@@ -413,7 +414,7 @@ public class TaxonResolvingController extends RestController {
 			request.setAttribute("kingdomConcept",briefDTO);
 		}
 		
-		SearchResultsDTO searchResults = taxonomyManager.findTaxonConceptsWithSameScientificNameAndRankAs(taxonConcept.getKey(), taxonConcept.getDataProviderKey(), null, new SearchConstraints(0,10));
+		SearchResultsDTO searchResults = taxonomyManager.findTaxonConceptsWithSameScientificNameAndRankAs(taxonConcept.getKey(), null, taxonConcept.getDataResourceKey(), new SearchConstraints(0,10));
 		if(!searchResults.isEmpty()){
 			
 			//split the classifications into accepted and not accepted.
@@ -583,7 +584,9 @@ public class TaxonResolvingController extends RestController {
 	 * @throws Exception
 	 */ 
 	public void addTypifications(TaxonConceptDTO taxonConcept, HttpServletRequest request, HttpServletResponse response)  throws Exception {
-	  request.setAttribute("typifications", taxonomyManager.getTypificationRecordsForTaxonConcept(taxonConcept.getKey()));
+	  if (taxonConcept.getRankValue()>=TaxonRank.FAMILY.getValue()) {
+	    request.setAttribute("typifications", taxonomyManager.getTypificationRecordsForTaxonConcept(taxonConcept.getKey()));
+	  }
 	}
 	
 	/**
