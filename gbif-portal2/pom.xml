@@ -9,7 +9,7 @@
   </parent>
 
   <groupId>org.gbif</groupId>
-  <artifactId>gbif-portal2</artifactId>
+  <artifactId>portal-web</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
@@ -328,7 +328,7 @@ marked as "provided" so it needs to be specified explicitly. -->
       <properties>
         <devMode>false</devMode>
         <notDevMode>true</notDevMode>
-        <baseurl>http://hudson.gbif.org/gbif-portal2</baseurl>
+        <baseurl>http://hudson.gbif.org/portal-web</baseurl>
       </properties>
     </profile>
 
