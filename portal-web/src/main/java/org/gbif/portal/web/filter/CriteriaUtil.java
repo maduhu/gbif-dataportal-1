@@ -391,8 +391,10 @@ public class CriteriaUtil {
                     for(int c = 0; c < criteria.size(); c++) {
                             criteria.get(c).setValue(URLEncoder.encode(criteria.get(c).getValue(), "ISO-8859-1"));
                             criteria.get(c).setValue(URLDecoder.decode(criteria.get(c).getValue(), "UTF-8"));
-                            criteria.get(c).setDisplayValue(URLEncoder.encode(criteria.get(c).getDisplayValue(), "ISO-8859-1"));
-                            criteria.get(c).setDisplayValue(URLDecoder.decode(criteria.get(c).getDisplayValue(), "UTF-8"));
+                            if (criteria.get(c).getDisplayValue() !=null) {
+                              criteria.get(c).setDisplayValue(URLEncoder.encode(criteria.get(c).getDisplayValue(), "ISO-8859-1"));
+                              criteria.get(c).setDisplayValue(URLDecoder.decode(criteria.get(c).getDisplayValue(), "UTF-8"));
+                            }
                             request.setCharacterEncoding("UTF-8");
                     }
             }

@@ -18,7 +18,7 @@
 	<!--ISO country codes to country i18n key -->	
 	<util:map id="iso-country-codes">
 		<entry key="AF" value="country.AF"/>
-		<!--entry key="AX" value="country.AX"/-->
+		<entry key="AX" value="country.AX"/>
 		<entry key="AL" value="country.AL"/>
 		<entry key="DZ" value="country.DZ"/>
 		<entry key="AS" value="country.AS"/>
