@@ -51,74 +51,389 @@
 
 
     <package name="root" namespace="/" extends="default">
-      <default-action-ref name="home"/>
+      <default-action-ref name=""/>
 
-      <action name="home" class="org.gbif.portal.action.HomeAction">
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
         <result>/WEB-INF/pages/home.ftl</result>
+      </action>
+
+      <action name="datasets">
+        <result type="redirect">datasets/</result>
+      </action>
+
+      <action name="occurrences">
+        <result type="redirect">occurrences/</result>
+      </action>
+
+      <action name="species">
+        <result type="redirect">species/</result>
+      </action>
+
+      <action name="themes">
+        <result type="redirect">themes/</result>
+      </action>
+
+      <action name="countries">
+        <result type="redirect">countries/</result>
+      </action>
+
+      <action name="stats">
+        <result type="redirect">stats/</result>
+      </action>
+
+      <action name="session">
+        <result type="redirect">session/</result>
+      </action>
+
+      <action name="user">
+        <result type="redirect">user/</result>
+      </action>
+
+      <action name="members">
+        <result type="redirect">members/</result>
+      </action>
+
+      <action name="about">
+        <result type="redirect">about/</result>
+      </action>
+    </package>
+
+    <!-- DATASETS -->
+    <package name="datasets" namespace="/datasets" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="" class="org.gbif.portal.action.dataset.HomeAction">
+        <result>/WEB-INF/pages/dataset/home.ftl</result>
+      </action>
+
+      <action name="search" class="org.gbif.portal.action.dataset.SearchAction">
+        <result>/WEB-INF/pages/dataset/search.ftl</result>
+      </action>
+    </package>
+
+    <package name="dataset" namespace="/dataset" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="">
+        <result type="redirect">/datasets</result>
+      </action>
+
+      <!-- {id} matches anything but "/" -->
+      <action name="{id}/activity" class="org.gbif.portal.action.dataset.ActivityAction">
+        <result>/WEB-INF/pages/dataset/activity.ftl</result>
+      </action>
+
+      <action name="{id}/stats" class="org.gbif.portal.action.dataset.StatsAction">
+        <result>/WEB-INF/pages/dataset/stats.ftl</result>
+      </action>
+
+      <action name="{id}/discussion" class="org.gbif.portal.action.dataset.DiscussionAction">
+        <result>/WEB-INF/pages/dataset/discussion.ftl</result>
+      </action>
+
+      <action name="{id}" class="org.gbif.portal.action.dataset.DetailAction">
+        <result>/WEB-INF/pages/dataset/detail.ftl</result>
       </action>
     </package>
 
 
+    <!-- OCCURRENCES -->
+    <package name="occurrences" namespace="/occurrences" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
 
-  <package name="dataset" namespace="/dataset" extends="default">
-    <!-- catches everything that doesnt match below! -->
-    <default-action-ref name="home"/>
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/occurrence/home.ftl</result>
+      </action>
 
-    <action name="home" class="org.gbif.portal.action.dataset.HomeAction">
-      <result>/WEB-INF/pages/dataset/home.ftl</result>
-    </action>
+      <action name="search" class="org.gbif.portal.action.occurrence.SearchAction">
+        <result>/WEB-INF/pages/occurrence/search.ftl</result>
+      </action>
+    </package>
 
-    <action name="search" class="org.gbif.portal.action.dataset.SearchAction">
-      <result>/WEB-INF/pages/dataset/search.ftl</result>
-    </action>
+    <package name="occurrence" namespace="/occurrence" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
 
-    <!-- {id} matches anything but "/" -->
-    <action name="{id}/activity" class="org.gbif.portal.action.dataset.ActivityAction">
-      <result>/WEB-INF/pages/dataset/activity.ftl</result>
-    </action>
+      <action name="">
+        <result type="redirectAction">/occurrences</result>
+      </action>
 
-    <action name="{id}/stats" class="org.gbif.portal.action.dataset.StatsAction">
-      <result>/WEB-INF/pages/dataset/stats.ftl</result>
-    </action>
+      <!-- {id} matches anything but "/" -->
+      <action name="{id}/activity" class="org.gbif.portal.action.occurrence.ActivityAction">
+        <result>/WEB-INF/pages/occurrence/activity.ftl</result>
+      </action>
 
-    <action name="{id}/discussion" class="org.gbif.portal.action.dataset.DiscussionAction">
-      <result>/WEB-INF/pages/dataset/discussion.ftl</result>
-    </action>
+      <action name="{id}/stats" class="org.gbif.portal.action.occurrence.StatsAction">
+        <result>/WEB-INF/pages/occurrence/stats.ftl</result>
+      </action>
 
-    <action name="{id}" class="org.gbif.portal.action.dataset.DetailAction">
-      <result>/WEB-INF/pages/dataset/detail.ftl</result>
-    </action>
+      <action name="{id}/discussion" class="org.gbif.portal.action.occurrence.DiscussionAction">
+        <result>/WEB-INF/pages/occurrence/discussion.ftl</result>
+      </action>
 
-  </package>
+      <action name="{id}" class="org.gbif.portal.action.occurrence.DetailAction">
+        <result>/WEB-INF/pages/occurrence/detail.ftl</result>
+      </action>
+    </package>
 
 
-  <package name="species" namespace="/species" extends="default">
-    <default-action-ref name="home"/>
+    <!-- SPECIES -->
+    <package name="species" namespace="/species" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
 
-    <action name="home" class="org.gbif.portal.action.species.HomeAction">
-      <result>/WEB-INF/pages/species/home.ftl</result>
-    </action>
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/species/home.ftl</result>
+      </action>
 
-    <action name="search" class="org.gbif.portal.action.species.SearchAction">
-      <result>/WEB-INF/pages/species/search.ftl</result>
-    </action>
+      <action name="search" class="org.gbif.portal.action.species.SearchAction">
+        <result>/WEB-INF/pages/species/search.ftl</result>
+      </action>
 
-    <action name="{id}/activity" class="org.gbif.portal.action.species.ActivityAction">
-      <result>/WEB-INF/pages/species/activity.ftl</result>
-    </action>
+      <action name="{id}/stats" class="org.gbif.portal.action.species.StatsAction">
+        <result>/WEB-INF/pages/species/stats.ftl</result>
+      </action>
 
-    <action name="{id}/stats" class="org.gbif.portal.action.species.StatsAction">
-      <result>/WEB-INF/pages/species/stats.ftl</result>
-    </action>
+      <action name="{id}/activity" class="org.gbif.portal.action.species.ActivityAction">
+        <result>/WEB-INF/pages/species/activity.ftl</result>
+      </action>
 
-    <action name="{id}/discussion" class="org.gbif.portal.action.species.DiscussionAction">
-      <result>/WEB-INF/pages/species/discussion.ftl</result>
-    </action>
+      <action name="{id}/occurrences" class="org.gbif.portal.action.species.OccurrencesAction">
+        <result>/WEB-INF/pages/species/occurrences.ftl</result>
+      </action>
 
-    <action name="{id}" class="org.gbif.portal.action.species.DetailAction">
-      <result>/WEB-INF/pages/species/detail.ftl</result>
-    </action>
+      <action name="{id}/synonyms" class="org.gbif.portal.action.species.SynonymsAction">
+        <result>/WEB-INF/pages/species/synonyms.ftl</result>
+      </action>
 
-  </package>
+      <action name="{id}/extended_taxonomy" class="org.gbif.portal.action.species.ExtendedTaxonomyAction">
+        <result>/WEB-INF/pages/species/extended_taxonomy.ftl</result>
+      </action>
 
+      <action name="{id}/distribution" class="org.gbif.portal.action.species.DistributionAction">
+        <result>/WEB-INF/pages/species/distribution.ftl</result>
+      </action>
+
+      <action name="{id}/name_usage" class="org.gbif.portal.action.species.NameUsageAction" method="nameUsage">
+        <result>/WEB-INF/pages/species/name_usage.ftl</result>
+      </action>
+
+      <action name="{id}/name_usage_raw" class="org.gbif.portal.action.species.NameUsageAction" method="nameUsageRaw">
+        <result>/WEB-INF/pages/species/name_usage_raw.ftl</result>
+      </action>
+
+      <action name="{id}/name_usage_list" class="org.gbif.portal.action.species.NameUsageAction" method="nameUsageList">
+        <result>/WEB-INF/pages/species/name_usage_list.ftl</result>
+      </action>
+
+      <action name="{id}" class="org.gbif.portal.action.species.DetailAction">
+        <result>/WEB-INF/pages/species/detail.ftl</result>
+      </action>
+    </package>
+
+    <!-- COUNTRIES -->
+    <package name="countries" namespace="/countries" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/country/home.ftl</result>
+      </action>
+
+      <action name="search" class="org.gbif.portal.action.country.SearchAction">
+        <result>/WEB-INF/pages/country/search.ftl</result>
+      </action>
+    </package>
+
+    <package name="country" namespace="/country" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="">
+        <result type="redirectAction">/countries</result>
+      </action>
+
+      <action name="{id}" class="org.gbif.portal.action.country.DetailAction">
+        <result>/WEB-INF/pages/country/detail.ftl</result>
+      </action>
+    </package>
+
+    <!-- THEMES -->
+    <package name="themes" namespace="/themes" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/theme/home.ftl</result>
+      </action>
+    </package>
+
+    <package name="theme" namespace="/theme" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="">
+        <result type="redirectAction">/themes</result>
+      </action>
+
+      <action name="{id}" class="org.gbif.portal.action.theme.DetailAction">
+        <result>/WEB-INF/pages/theme/detail.ftl</result>
+      </action>
+    </package>
+
+
+    <!-- STATS -->
+    <package name="stats" namespace="/stats" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/stats/home.ftl</result>
+      </action>
+
+      <action name="activity" class="org.gbif.portal.action.stats.ActivityAction">
+        <result>/WEB-INF/pages/stats/activity.ftl</result>
+      </action>
+
+      <action name="history" class="org.gbif.portal.action.stats.HistoryAction">
+        <result>/WEB-INF/pages/stats/history.ftl</result>
+      </action>
+    </package>
+
+    <!-- MEMBERS -->
+    <package name="members" namespace="/members" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/member/home.ftl</result>
+      </action>
+
+      <action name="search" class="org.gbif.portal.action.member.SearchAction">
+        <result>/WEB-INF/pages/member/search.ftl</result>
+      </action>
+    </package>
+
+    <package name="member" namespace="/member" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="">
+        <result type="redirectAction">/members</result>
+      </action>
+
+      <!-- {id} matches anything but "/" -->
+      <action name="{id}/activity" class="org.gbif.portal.action.member.ActivityAction">
+        <result>/WEB-INF/pages/member/activity.ftl</result>
+      </action>
+
+      <action name="{id}/occurrences" class="org.gbif.portal.action.member.OccurrencesAction">
+        <result>/WEB-INF/pages/member/occurrences.ftl</result>
+      </action>
+
+      <action name="{id}/datasets" class="org.gbif.portal.action.member.DatasetsAction">
+        <result>/WEB-INF/pages/member/datasets.ftl</result>
+      </action>
+
+      <action name="{id}" class="org.gbif.portal.action.member.DetailAction">
+        <result>/WEB-INF/pages/member/detail.ftl</result>
+      </action>
+    </package>
+
+
+    <!-- SESSIONS -->
+    <package name="sessions" namespace="/sessions" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/session/home.ftl</result>
+      </action>
+    </package>
+
+    <package name="session" namespace="/session" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="">
+        <result type="redirectAction">/sessions</result>
+      </action>
+
+      <action name="login" class="org.gbif.portal.action.session.SessionAction" method="logIn">
+        <result>/WEB-INF/pages/session/login.ftl</result>
+      </action>
+
+      <action name="logout" class="org.gbif.portal.action.session.SessionAction" method="logOut">
+        <result>/WEB-INF/pages/session/logout.ftl</result>
+      </action>
+    </package>
+
+    <!-- USER -->
+    <package name="users" namespace="/users" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/user/home.ftl</result>
+      </action>
+    </package>
+
+    <package name="user" namespace="/user" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="">
+        <result type="redirectAction">/users</result>
+      </action>
+
+      <action name="register/step1" class="org.gbif.portal.action.user.RegistrationAction" method="step1">
+        <result>/WEB-INF/pages/user/register/step1.ftl</result>
+      </action>
+
+      <action name="register/step2" class="org.gbif.portal.action.user.RegistrationAction" method="step2">
+        <result>/WEB-INF/pages/user/register/step2.ftl</result>
+      </action>
+
+      <action name="register/step3" class="org.gbif.portal.action.user.RegistrationAction" method="step3">
+        <result>/WEB-INF/pages/user/register/step3.ftl</result>
+      </action>
+
+      <action name="reset-password" class="org.gbif.portal.action.user.PasswordResetAction">
+        <result>/WEB-INF/pages/user/reset-password.ftl</result>
+      </action>
+    </package>
+
+    <!-- ABOUT -->
+    <package name="about" namespace="/about" extends="default">
+      <!-- catches everything that doesn't match below! -->
+      <default-action-ref name=""/>
+
+      <action name="" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/about/home.ftl</result>
+      </action>
+
+      <action name="contact" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/about/contact.ftl</result>
+      </action>
+
+      <action name="sharing" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/about/sharing.ftl</result>
+      </action>
+
+      <action name="terms" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/about/terms.ftl</result>
+      </action>
+
+      <action name="tools" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/about/tools.ftl</result>
+      </action>
+
+      <action name="use" class="org.gbif.portal.action.DefaultHomeAction">
+        <result>/WEB-INF/pages/about/use.ftl</result>
+      </action>
+
+    </package>
 </struts>

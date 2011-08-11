@@ -1,17 +1,17 @@
 <html>
 <head>
-	<title>GBIF - Dataset</title>
+	<title>Dataset - GBIF</title>
   <meta name="gmap" content="true" />
-	<meta name="menu" content="dataset"/>
+	<meta name="menu" content="datasets"/>
 </head>
 <body class="dataset">
 
 	<article class="dataset">
 		<header></header>
 		<div class="content">
-			<h1>Search throw 21.392 datasets</h1>
+			<h1>Search through 21.392 datasets</h1>
 
-			<form action="/dataset/search">
+			<form action="/datasets/search">
     <span class="input_text">
       <input type="text" name="q"/>
     </span>

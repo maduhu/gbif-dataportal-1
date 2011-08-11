@@ -31,7 +31,9 @@ public class SearchAction extends BaseAction {
 
   @Override
   public String execute() {
+    log.debug("Searching for datasets matching [{}]", q);
     datasets=registry.searchDatasets(q);
+    log.debug("Got [{}] datasets matching [{}]", datasets.size(), q);
     return SUCCESS;
   }
 

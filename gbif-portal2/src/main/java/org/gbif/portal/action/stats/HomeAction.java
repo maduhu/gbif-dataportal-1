@@ -21,6 +21,7 @@ public class HomeAction extends BaseAction {
 
   @Override
   public String execute() {
+    /** TODO: lookup page elements and populate response object */
     return SUCCESS;
   }
 

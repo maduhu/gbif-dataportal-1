@@ -17,8 +17,9 @@ package org.gbif.portal.action.species;
 
 import org.gbif.portal.action.BaseAction;
 import org.gbif.portal.client.ChecklistBankClient;
-import org.gbif.portal.client.RegistryClient;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,25 @@ public class SearchAction extends BaseAction {
 
   @Override
   public String execute() {
-    usages=clb.searchSpecies(q);
+    /** TODO: re-enable dynamic content */
+    // using static just to make sure all layout is working properly
+    q = "Puma concolor";
+    usages = new ArrayList<Map>();
+    usages.add(new HashMap<String, String>());
+    usages.add(new HashMap<String, String>());
+//    if (q == null) {
+//      log.debug("Got species search request for null q, ignoring");
+//    }
+//    else {
+//      log.debug("Trying species search for q [{}]", q);
+//      try {
+//        usages=clb.searchSpecies(q);
+//      }
+//      catch (Exception e) {
+//        log.warn("Got exception trying for species lookup with q ["+q+"]", e);
+//      }
+//      log.debug("Got [{}] species results for q [{}]", usages.size(), q);
+//    }
     return SUCCESS;
   }
 

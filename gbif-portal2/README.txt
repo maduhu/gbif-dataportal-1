@@ -59,20 +59,17 @@ The Compass files to update are: xyz
 
 *** STRUTS2 ***
 
-== URL conventions
-we want to expose restful, pretty urls like the following. 
+== URL conventions (UPDATED BY OLIVER!)
+we want to expose restful, pretty urls like the following.
 The examples are mainly for datasets, but would be similar for species, occurrences, etc
 
-/home
-/dataset/
-/dataset/home
-/dataset/search?q=puma
-/dataset/{UUID}
-/dataset/{UUID}/stats
-/dataset/{UUID}/activity
-/dataset/{UUID}/discussion
-
-Path names should use the singular form, e.g. occurrence, not occurrences
+/ (portal home)
+/datasets (datasets home)
+/datasets/search?q=puma (search datasets for the word puma)
+/dataset/{UUID} (detail page for specific dataset)
+/dataset/{UUID}/stats (stats page for specific dataset X)
+/dataset/{UUID}/activity (activity page for specific dataset X)
+/dataset/{UUID}/discussion (discussion page for specific dataset X)
 
 === Action mapping
 we use wildcard mapping with the namedVariable pattern matcher for the default action mapper.
@@ -101,9 +98,12 @@ You need to handle null value explicitly. If nulls are encountered in places you
 
 Freemarker renders non strings for humans by default based on the current locale. You can instruct freemarker to use different renderings. This is very important for numbers as parameters, as you will be surprised with commas otherwise. Render numbers for "computers" is done with ?c, e.g. ${u.taxonID?c}. Booleans also require special attention. To render simple true/false strings use ?string, e.g. ${u.isSynonym?string}, you can also specify the strings to be used.
 
+BIG NOTE: if you have a freemarker error (exceptions) sitemesh will swallow it and you can't see it unless you remove sitemesh (sitemesh filter from struts).  Do we need Sitemesh
+at all?  Markus thinks not, Tim thinks yes.
+
 == Sitemesh
-version3 is still in alpha and caused some NIO blocking with Jetty & Tomcat 7 and above in my tests. 
-The struts2 plugin for sitemesh also does not work with sitemesh3 and still waits to be rewritten. 
+version3 is still in alpha and caused some NIO blocking with Jetty & Tomcat 7 and above in my tests.
+The struts2 plugin for sitemesh also does not work with sitemesh3 and still waits to be rewritten.
 We therefore still use the old 2.4.2 version with the 2 config files sitemesh.xml and decorators.xml
 
 === content fragments
@@ -153,3 +153,6 @@ not done at all yet, but an interceptor to protect pages requiring logins exist.
 A RequireLoginInterceptor exists to protect actions or entire packages to only allow logged in users.
 It looks for a user object in the session, which needs to be created by the actual login method and the authentication framework of your choice.
 Evaluate CAS and Shiro for the central authentication.
+
+OLIVER NOTES
+- species/distribution.html and species/bibliography.html don't exist (weren't contracted from vizz but exist as links)

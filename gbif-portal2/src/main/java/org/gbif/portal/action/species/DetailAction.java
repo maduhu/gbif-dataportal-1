@@ -17,13 +17,10 @@ package org.gbif.portal.action.species;
 
 import org.gbif.portal.action.BaseAction;
 import org.gbif.portal.client.ChecklistBankClient;
-import org.gbif.portal.client.RegistryClient;
 
 import java.util.Map;
-import java.util.UUID;
 
 import com.google.inject.Inject;
-import org.apache.commons.lang.StringUtils;
 
 public class DetailAction extends BaseAction {
   @Inject
@@ -34,13 +31,16 @@ public class DetailAction extends BaseAction {
 
   @Override
   public String execute() {
-    if (id!=null) {
-      usage = clb.getUsage(id);
-      if (usage != null) {
-        return SUCCESS;
-      }
-    }
-    return NOT_FOUND;
+    // static until layout is solid
+    return SUCCESS;
+    /** TODO: re-enable dynamic lookup */
+//    if (id!=null) {
+//      usage = clb.getUsage(id);
+//      if (usage != null) {
+//        return SUCCESS;
+//      }
+//    }
+//    return NOT_FOUND;
   }
 
   public void setId(Integer id) {

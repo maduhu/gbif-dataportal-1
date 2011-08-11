@@ -21,7 +21,6 @@ import javax.inject.Singleton;
 import javax.ws.rs.core.MultivaluedMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import com.google.inject.Inject;
 import com.sun.jersey.api.client.WebResource;
@@ -33,6 +32,7 @@ import org.apache.commons.lang.StringUtils;
 /**
  * A simple client to the checklist bank json webservices.
  * API documentation: http://ecat-dev.gbif.org/api/clb
+ * TODO: this is broken because the server is broken - see http://code.google.com/p/gbif-ecat/issues/detail?id=61
  */
 public class ChecklistBankClientImpl extends BaseClient implements ChecklistBankClient{
   private WebResource USAGE_RESOURCE;
