@@ -100,8 +100,8 @@ public class OccurrenceFilterWizardController implements Controller {
 				taxonConceptUtils.organiseUnconfirmedNames(request, selectedConcept, concepts, childConcepts);
 				mav.addObject("selectedConcept", selectedConcept);
 			} else {
-				if(dataProvider!=null)
-					concepts = taxonomyManager.getRootTaxonConceptsForTaxonomy(dataProvider.getKey(), null);
+			  // we always use the nub resource 
+				concepts = taxonomyManager.getRootTaxonConceptsForTaxonomy(null,"1");
 			}
 			if(dataProvider!=null)
 				mav.addObject("dataProvider", dataProvider)	;
