@@ -313,7 +313,8 @@ public class DataResourceDAOImpl extends HibernateDaoSupport implements DataReso
 		HibernateTemplate template = getHibernateTemplate();
 		Object result =  template.execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) {
-				Query query = session.createQuery("select count(dr.id) from DataResource dr");
+				Query query = session.createQuery("select count(dr.id) from DataResource dr where dr.deleted is null and dr.dataProvider.deleted is null" +
+						" and dr.occurrenceCount>=10 and dr.dataProvider.gbifApprover is not null");
 				return query.uniqueResult();
 			}
 		});

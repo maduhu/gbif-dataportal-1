@@ -178,7 +178,7 @@ public class DataProviderDAOImpl extends HibernateDaoSupport implements DataProv
 		HibernateTemplate template = getHibernateTemplate();
 		Object result =  template.execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) {
-				Query query = session.createQuery("select count(dp.id) from DataProvider dp where dp.deleted is null");
+				Query query = session.createQuery("select count(dp.id) from DataProvider dp where dp.deleted is null and dp.gbifApprover is not null");
 				return query.uniqueResult();
 			}
 		});
