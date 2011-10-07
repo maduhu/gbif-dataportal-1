@@ -285,6 +285,8 @@ public class TaxonomyManagerImpl implements TaxonomyManager {
 			DataResource dataResource = dataResourceDAO.getDataResourceFor(dataResourceId);			
 			if(dataResource !=null && !dataResource.isSharedTaxonomy())
 				rootConcepts = taxonConceptDAO.getDataResourceRootConceptsFor(dataResourceId);
+			else if(dataResource != null && dataResource.getId() == 1)
+        rootConcepts = taxonConceptDAO.getDataResourceRootConceptsFor(dataResourceId);
 			else if (dataProviderId!=null)
 				rootConcepts = taxonConceptDAO.getDataProviderRootConceptsFor(dataProviderId);			
 		} else {
