@@ -172,6 +172,14 @@ public interface OccurrenceManager {
 	 * @throws ServiceException indicate a failure to retrieve the data due to a network/database connection 
 	 */
 	public int getTotalOccurrenceRecordCount() throws ServiceException;
+	
+  /**
+   * Returns the current number of georeferenced occurrence records within the system.
+   * 
+   * @return the current number of georeferenced occurrence records within the system.
+   * @throws ServiceException indicate a failure to retrieve the data due to a network/database connection 
+   */
+  public int getTotalGeoreferencedOccurrenceRecordCount() throws ServiceException;	
 
 	/**
 	 * Returns the Raw Occurrence Record for the specified key value. Returns null if there is not

@@ -108,6 +108,13 @@ public interface OccurrenceRecordDAO {
 	 */
 	public int getTotalOccurrenceRecordCount();
 	
+  /**
+   * Returns the total number of occurrence records with coordinates. 
+   * 
+   * @return the total number of occurrence records with coordinates
+   */
+  public int getTotalGeoreferencedOccurrenceRecordCount();	
+	
     /**
      * Return the total number of occurrence records from deleted providers.
 	* 

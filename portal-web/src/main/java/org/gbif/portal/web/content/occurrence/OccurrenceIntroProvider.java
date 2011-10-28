@@ -43,11 +43,14 @@ public class OccurrenceIntroProvider implements ContentProvider {
 	public void addContent(ContentView cc, HttpServletRequest request, HttpServletResponse response) {
 		try {
 			int totalOccurrenceRecords = occurrenceManager.getTotalOccurrenceRecordCount();
+			int totalGeoreferencedRecords = occurrenceManager.getTotalGeoreferencedOccurrenceRecordCount();
 			cc.addObject("totalOccurrenceRecords", totalOccurrenceRecords);
+			cc.addObject("totalGeoreferencedOccurrenceRecords", totalGeoreferencedRecords);   
 		} catch (ServiceException e) {
 			// flag in the logs
 			log.error("Occurrence count cannot be found, setting to 0", e);
-			cc.addObject("totalOccurrenceRecords", 0);						
+			cc.addObject("totalOccurrenceRecords", 0);
+			cc.addObject("totalGeoreferencedOccurrenceRecords", 0);   
 		}
 	}
 

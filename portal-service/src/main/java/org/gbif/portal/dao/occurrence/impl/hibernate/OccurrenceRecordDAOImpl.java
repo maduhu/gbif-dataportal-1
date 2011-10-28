@@ -339,6 +339,26 @@ public class OccurrenceRecordDAOImpl extends HibernateDaoSupport implements Occu
 			return ((Long)count).intValue();
 		return 0;
 	}
+	
+  /**
+   * @see org.gbif.portal.dao.occurrence.OccurrenceRecordDAO#getTotalGeoreferencedOccurrenceRecordCount()
+   */
+  public int getTotalGeoreferencedOccurrenceRecordCount() {
+    HibernateTemplate template = getHibernateTemplate();
+    Object count = template.execute(new HibernateCallback() {
+      public Object doInHibernate(Session session) {
+        Query query = null;
+        query = session.createQuery("select sum(dp.occurrenceCoordinateCount) from DataProvider dp where dp.deleted is null");
+        query.setCacheable(true);
+        return query.uniqueResult();
+      }
+    }); 
+    if (count instanceof Integer)
+      return ((Integer)count).intValue();
+    if (count instanceof Long)
+      return ((Long)count).intValue();
+    return 0;
+  }	
 
 	/**
 	 * TODO this will change when nub taxon concept ids are added to occurrence record table.

@@ -184,7 +184,7 @@
   <name>$folder.getTaxonName()</name>
 #foreach ($placemarkMap in $results.get($folder))
   <Placemark>
-   <name>$placemarkMap.get("name")</name>
+   <name><![CDATA[$placemarkMap.get("name")]]></name>
    <description><![CDATA[$placemarkMap.get("description")]]></description>
    <styleUrl>$placemarkMap.get("styleUrl")</styleUrl>
    <Point>

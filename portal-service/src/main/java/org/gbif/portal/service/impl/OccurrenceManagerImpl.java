@@ -396,6 +396,13 @@ public class OccurrenceManagerImpl implements OccurrenceManager {
 	public int getTotalOccurrenceRecordCount() throws ServiceException {
 		return occurrenceRecordDAO.getTotalOccurrenceRecordCount() - occurrenceRecordDAO.getTotalOccurrenceRecordCountForDeletedProviders();
 	}
+	
+  /**
+   * @see org.gbif.portal.service.OccurrenceManager#getTotalGeoreferencedOccurrenceRecordCount()
+   **/
+  public int getTotalGeoreferencedOccurrenceRecordCount() throws ServiceException {
+    return occurrenceRecordDAO.getTotalGeoreferencedOccurrenceRecordCount();
+  }	
 
 	/* (non-Javadoc)
 	 * @see org.gbif.portal.service.OccurrenceManager#getIdentifierRecordsForOccurrenceRecord(java.lang.String)
