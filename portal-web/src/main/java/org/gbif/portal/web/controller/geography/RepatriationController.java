@@ -260,11 +260,11 @@ public class RepatriationController extends MultiActionController {
 		String currentName = null;
 		QuadRelationTagDTO[] row = null;
 
-		for (QuadRelationTagDTO quadRelationTagDTO: tags){
+		for (QuadRelationTagDTO quadRelationTagDTO: tags) {
 			
 			if(	(currentId==null && quadRelationTagDTO.getEntity3Id()!=null)
 					|| (quadRelationTagDTO.getEntity3Id()!=null && !currentId.equals(quadRelationTagDTO.getEntity3Id()))
-					|| (quadRelationTagDTO.getEntity3Id()==null && currentId!=null)		
+					|| (quadRelationTagDTO.getEntity3Id()==null)		
 					)
 			{
 				if(row!=null){
