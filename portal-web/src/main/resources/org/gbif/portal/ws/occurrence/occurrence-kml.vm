@@ -6,7 +6,7 @@
 <Document xmlns="http://earth.google.com/kml/2.1">
  <name>$documentName</name>
  <open>$documentOpen</open>
- <description>$documentDescription</description>
+ <description><![CDATA[$documentDescription]]></description>
 #set($hostUrl=$response.get("hostUrl"))
  <Style id="gbifIcon1">
   <IconStyle>
