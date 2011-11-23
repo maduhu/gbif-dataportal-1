@@ -80,19 +80,4 @@ public class BoundingBoxUtils {
 
 		return triplets;
 	}
-	
-  public static void main(String[] args) {
-    System.out.println("35-36");
-    List<PropertyStoreTripletDTO> results = getTripletsFromLatLongBoundingBox("GBIF:Portal-Service:1.0", new LatLongBoundingBox(-122, 35, -121, 36));
-    for (PropertyStoreTripletDTO d : results) {
-      System.out.println(d.getSubject() + " " + d.getPredicate() + " " + d.getObject());
-    }
-
-    System.out.println("35-35.5");
-    results = getTripletsFromLatLongBoundingBox("GBIF:Portal-Service:1.0", new LatLongBoundingBox(-122, 35.0f, -121, 35.5f));
-    for (PropertyStoreTripletDTO d : results) {
-      System.out.println(d.getSubject() + " " + d.getPredicate() + " " + d.getObject());
-    }
-  }	
-	
 }
