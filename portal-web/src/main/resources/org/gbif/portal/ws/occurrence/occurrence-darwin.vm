@@ -141,7 +141,7 @@
        </to:identifiedTo>
 #if($occurrence.getRawOccurrenceRecordDTO().getLocality())       <to:locality>$occurrence.getRawOccurrenceRecordDTO().getLocality()</to:locality>
 #end
-<to:gbifNotes>Data from GBIF data index - original values.</to:gbifNotes>
+       <to:gbifNotes>Data from GBIF data index - original values.</to:gbifNotes>
       </to:TaxonOccurrence>
 #end
      </gbif:occurrenceRecords>

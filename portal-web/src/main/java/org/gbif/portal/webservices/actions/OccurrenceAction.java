@@ -15,6 +15,24 @@
 
 package org.gbif.portal.webservices.actions;
 
+import org.gbif.portal.dto.SearchResultsDTO;
+import org.gbif.portal.dto.occurrence.ExtendedOccurrenceRecordDTO;
+import org.gbif.portal.dto.occurrence.IdentifierRecordDTO;
+import org.gbif.portal.dto.occurrence.ImageRecordDTO;
+import org.gbif.portal.dto.occurrence.KmlOccurrenceRecordDTO;
+import org.gbif.portal.dto.occurrence.RawOccurrenceRecordDTO;
+import org.gbif.portal.dto.occurrence.TypificationRecordDTO;
+import org.gbif.portal.dto.resources.DataProviderDTO;
+import org.gbif.portal.dto.resources.DataResourceDTO;
+import org.gbif.portal.dto.taxonomy.TaxonConceptDTO;
+import org.gbif.portal.model.occurrence.IdentifierType;
+import org.gbif.portal.service.DataResourceManager;
+import org.gbif.portal.service.OccurrenceManager;
+import org.gbif.portal.service.ServiceException;
+import org.gbif.portal.service.TaxonomyManager;
+import org.gbif.portal.service.triplet.TripletQueryManager;
+import org.gbif.portal.webservices.util.GbifWebServiceException;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,22 +52,6 @@ import java.util.TreeSet;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.gbif.portal.dto.SearchResultsDTO;
-import org.gbif.portal.dto.occurrence.ExtendedOccurrenceRecordDTO;
-import org.gbif.portal.dto.occurrence.IdentifierRecordDTO;
-import org.gbif.portal.dto.occurrence.ImageRecordDTO;
-import org.gbif.portal.dto.occurrence.KmlOccurrenceRecordDTO;
-import org.gbif.portal.dto.occurrence.TypificationRecordDTO;
-import org.gbif.portal.dto.resources.DataProviderDTO;
-import org.gbif.portal.dto.resources.DataResourceDTO;
-import org.gbif.portal.dto.taxonomy.TaxonConceptDTO;
-import org.gbif.portal.model.occurrence.IdentifierType;
-import org.gbif.portal.service.DataResourceManager;
-import org.gbif.portal.service.OccurrenceManager;
-import org.gbif.portal.service.ServiceException;
-import org.gbif.portal.service.TaxonomyManager;
-import org.gbif.portal.service.triplet.TripletQueryManager;
-import org.gbif.portal.webservices.util.GbifWebServiceException;
 
 /**
  * @author
@@ -249,6 +251,8 @@ public class OccurrenceAction extends Action {
 			else // non-kml request type
 			{				
 				ExtendedOccurrenceRecordDTO dto = occurrenceManager.getExtendedOccurrenceRecordFor(params.getKey());
+				//sanitize illegal characters from the dto
+				sanitizeDTO(dto);
 								
 				// switch (params.getFormat()) {
 				// case OccurrenceParameters.FORMAT_KML:
@@ -367,6 +371,26 @@ public class OccurrenceAction extends Action {
 			throw new GbifWebServiceException("Data service problems - " + se.toString());
 		}
 	}
+	
+  private void sanitizeDTO(ExtendedOccurrenceRecordDTO dto) {
+    if (dto == null) {
+      return;
+    }
+    RawOccurrenceRecordDTO ror = dto.getRawOccurrenceRecordDTO();
+    if (ror != null) {
+      // include here any field that needs sanitation
+      ror.setLocality(sanitizeField(ror.getLocality()));
+      ror.setCollectorName(sanitizeField(ror.getCollectorName()));
+    }
+  }
+
+  private String sanitizeField(String content) {
+    if (content == null) {
+      return null;
+    }
+    //replace all vertical tabs
+    return content.replace('\u000B', ' ');
+  }	
 	
 	public Map<String,String> addHigherTaxon(TaxonConceptDTO tcdto, String name)
 	{
