@@ -57,7 +57,11 @@ public class BoundingBoxUtils {
 			//check for adjacent cells - used in zoom level 6 - "view all occurrences in the viewed area"
 			if(minMaxCellIds[1]-minMaxCellIds[0]<2){
 				triplets.add(new PropertyStoreTripletDTO(namespace, cellIdSubject,greaterThanOrEqualPredicate, minMaxCellIds[0]));			
-				triplets.add(new PropertyStoreTripletDTO(namespace, cellIdSubject,lessThanOrEqualPredicate, minMaxCellIds[1]));			
+				triplets.add(new PropertyStoreTripletDTO(namespace, cellIdSubject,lessThanOrEqualPredicate, minMaxCellIds[1]));	
+				triplets.add(new PropertyStoreTripletDTO(namespace, latitudeSubject, greaterThanOrEqualPredicate, llbb.getMinLat()));
+				triplets.add(new PropertyStoreTripletDTO(namespace, latitudeSubject, lessThanOrEqualPredicate, llbb.getMaxLat()));
+				triplets.add(new PropertyStoreTripletDTO(namespace, longitudeSubject, greaterThanOrEqualPredicate, llbb.getMinLong()));
+				triplets.add(new PropertyStoreTripletDTO(namespace, longitudeSubject, lessThanOrEqualPredicate, llbb.getMaxLong()));
 			} else {
 				triplets.add(new PropertyStoreTripletDTO(namespace, cellIdSubject, greaterThanOrEqualPredicate,minMaxCellIds[0]));			
 				triplets.add(new PropertyStoreTripletDTO(namespace, cellIdSubject, lessThanOrEqualPredicate, minMaxCellIds[1]));			
@@ -76,4 +80,19 @@ public class BoundingBoxUtils {
 
 		return triplets;
 	}
+	
+  public static void main(String[] args) {
+    System.out.println("35-36");
+    List<PropertyStoreTripletDTO> results = getTripletsFromLatLongBoundingBox("GBIF:Portal-Service:1.0", new LatLongBoundingBox(-122, 35, -121, 36));
+    for (PropertyStoreTripletDTO d : results) {
+      System.out.println(d.getSubject() + " " + d.getPredicate() + " " + d.getObject());
+    }
+
+    System.out.println("35-35.5");
+    results = getTripletsFromLatLongBoundingBox("GBIF:Portal-Service:1.0", new LatLongBoundingBox(-122, 35.0f, -121, 35.5f));
+    for (PropertyStoreTripletDTO d : results) {
+      System.out.println(d.getSubject() + " " + d.getPredicate() + " " + d.getObject());
+    }
+  }	
+	
 }
