@@ -339,6 +339,10 @@ public class LogManagerImpl implements LogManager {
 			
 	        SimpleMailMessage providerMessage = new SimpleMailMessage(providerTemplateMessage);
 	        providerMessage.setTo(toEmailAddresses.toArray(new String[toEmailAddresses.size()]));
+	        //user that submitted feedback should also be CCed
+	        if(user.getEmail()!=null) {
+	          ccEmailAddresses.add(processEmail(user.getEmail()));
+	        }
 	        providerMessage.setCc(ccEmailAddresses.toArray(new String[ccEmailAddresses.size()]));
 	        
 	        // TODO - NLS and portal URL
@@ -363,7 +367,7 @@ public class LogManagerImpl implements LogManager {
 	        if (message.getDataProviderId()!=null &&  message.getDataProviderId()!=0) {
 	        	try {
 	        		DataProviderDTO dto = dataResourceManager.getDataProviderFor(new Long(message.getDataProviderId()).toString());
-		        	textBuffer.append("  Data provider: ");
+		        	textBuffer.append("  Data publisher: ");
 		        	textBuffer.append(dto.getName());
 			        textBuffer.append("\n");
 		        	
@@ -439,9 +443,8 @@ public class LogManagerImpl implements LogManager {
 	        providerMessage.setText(textBuffer.toString());
 	        
 	        userMessage.setSubject(subjectBuffer.toString());
-	        userMessage.setText("Thank you for your feedback.  The following message has " +
-	        		            "been sent on your behalf to the appropriate data provider.\n\n" +
-	        		            "-----------\n\n" + textBuffer.toString());
+	        userMessage.setText("Thank you for your feedback.  The message has " +
+	        		            "been sent on your behalf to the appropriate data publisher.\n\n");
 
 	        try{
 	            mailSender.send(providerMessage);
