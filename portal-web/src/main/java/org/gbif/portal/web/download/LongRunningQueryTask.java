@@ -29,7 +29,7 @@ public class LongRunningQueryTask extends TimerTask {
 
 	protected static Log logger = LogFactory.getLog(LongRunningQueryTask.class);	
 	
-	protected int maxProcessLengthInSecs = 3600;
+	protected int maxProcessLengthInSecs = 1200;
 	
 	protected SystemManager systemManager;
 	

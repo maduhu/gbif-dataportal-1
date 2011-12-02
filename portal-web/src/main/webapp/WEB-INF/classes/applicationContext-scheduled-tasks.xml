@@ -16,7 +16,7 @@
 		<!-- wait 10 seconds before starting repeated execution -->
 		<property name="delay" value="10000"/>
 		<!-- run every half hour -->
-		<property name="period" value="1800000"/>
+		<property name="period" value="60000"/>
 		<property name="timerTask" ref="longQuery"/>
 	</bean>	
 
@@ -31,7 +31,7 @@
 
 	<!-- Long Running Query -->
 	<bean id="longQuery" class="org.gbif.portal.web.download.LongRunningQueryTask">
-		<property name="maxProcessLengthInSecs" value="3600"/>
+		<property name="maxProcessLengthInSecs" value="1200"/>
 		<property name="systemManager" ref="systemManager"/>
 	</bean>
 	
