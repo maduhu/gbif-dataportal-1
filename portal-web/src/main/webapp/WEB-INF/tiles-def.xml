@@ -1070,6 +1070,11 @@
 		<put name="content" value="/WEB-INF/jsp/request/providerOffline.jsp"/>
 	</definition>		
   
+	<definition name="providerArchive" extends="mainLayout">
+		<put name="subtitle" value="/WEB-INF/jsp/request/providerMessageSubtitle.jsp"/>
+		<put name="headcontent" value="/WEB-INF/jsp/occurrence/headcontent.jsp"/>
+		<put name="content" value="/WEB-INF/jsp/request/providerArchive.jsp"/>
+	</definition>	  
   
    <!-- Web service tutorial page -->
 	<definition name="webserviceView" extends="mainLayout">

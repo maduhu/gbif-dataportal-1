@@ -99,6 +99,8 @@ public class OccurrenceController extends RestController {
 	protected String rawXmlStylesheet = "rawXml.jsp";
 	/** Provider not available view */
 	protected String providerOffline = "providerOffline";
+  /** Provider provides an archive. Record can't be accessed directly */
+  protected String providerArchive = "providerArchive";	
 	
 	/** The results limit for a distinct query */
 	protected String messageSourceKey = "messageSource";
@@ -231,7 +233,9 @@ public class OccurrenceController extends RestController {
 	 * @return
 	 */
 	public ModelAndView retrieveProviderMessage(String occurrenceRecordKey, Map<String, String>properties, HttpServletRequest request, HttpServletResponse response) {
-		try {
+	  ModelAndView mav = new ModelAndView();
+    mav.addObject("occurrenceRecordKey", occurrenceRecordKey);
+	  try {
 			String rawMessage = dataProviderServices.getOccurrence(occurrenceRecordKey);
 			response.setContentType("text/xml");
 			response.getWriter().write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -242,15 +246,21 @@ public class OccurrenceController extends RestController {
 			response.getWriter().write("\"?>");
 			response.getWriter().write(rawMessage);
 		} catch (Exception e) {
-			logger.debug(e.getMessage(), e);
-			ModelAndView mav = new ModelAndView(providerOffline);
-			mav.addObject("occurrenceRecordKey", occurrenceRecordKey);
+		  // provider is offline or there is no single representation of a ROR
+      try {		  
+		  if(!dataProviderServices.hasRaw(occurrenceRecordKey)) {
+		      logger.debug("Showing the link to access the record. Raw representation not available");
+		      mav.setViewName(providerArchive);
+          String resourceUrl = dataProviderServices.getResourceUrl(occurrenceRecordKey);
+          mav.addObject("resourceUrl", resourceUrl);
+        } 
+		  } catch (ServiceException e1) {
+        logger.debug(e.getMessage(), e);
+        mav.setViewName(providerOffline);
+      }
 			return mav;
 		}
 		return null;		
-		
-
-
 	}	
 	
 	/**

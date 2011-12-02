@@ -135,7 +135,23 @@ public class DataProviderServicesImpl implements DataProviderServices {
 		return null;
 	}
 
-	/**
+	
+	
+	/* (non-Javadoc)
+   * @see org.gbif.portal.service.provider.DataProviderServices#hasRaw(java.lang.String)
+   */
+  public boolean hasRaw(String gbifOccurrenceKey) throws ServiceException {
+    OccurrenceRecord occurrenceRecord = occurrenceRecordDAO.getOccurrenceRecordFor(Long.valueOf(gbifOccurrenceKey));
+    // TODO Is this really how to get the remote id?
+    ResourceAccessPoint rap = occurrenceRecord.getRawOccurrenceRecord().getResourceAccessPoint(); 
+    for (PropertyStoreNamespace psn : rap.getPropertyStoreNamespaces()) {
+      if(("http://rs.tdwg.org/dwc/terms/Occurrence").equals(psn.getNamespace()))
+        return false;
+    }
+    return true;
+  }
+
+  /**
 	 * Create a occurrence record request for this occurrence record.
 	 * 
 	 * @param occurrenceRecord
@@ -214,7 +230,19 @@ public class DataProviderServicesImpl implements DataProviderServices {
 		}
 	}	
 	
-	/**
+	/* (non-Javadoc)
+   * @see org.gbif.portal.service.provider.DataProviderServices#getResourceUrl(java.lang.String)
+   */
+  public String getResourceUrl(String gbifOccurrenceKey) {
+    OccurrenceRecord occurrenceRecord = occurrenceRecordDAO.getOccurrenceRecordFor(Long.valueOf(gbifOccurrenceKey));
+    if(occurrenceRecord!=null && occurrenceRecord.getRawOccurrenceRecord()!=null & 
+      occurrenceRecord.getRawOccurrenceRecord().getResourceAccessPoint()!=null) {
+        return occurrenceRecord.getRawOccurrenceRecord().getResourceAccessPoint().getUrl();
+    }
+     return null;
+  }
+
+  /**
 	 * @param requestUtils The requestUtils to set.
 	 */
 	public void setRequestUtils(RequestUtils requestUtils) {

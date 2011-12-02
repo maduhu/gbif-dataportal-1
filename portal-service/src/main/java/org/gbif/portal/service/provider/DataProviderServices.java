@@ -48,4 +48,24 @@ public interface DataProviderServices {
 	 * @throws ServiceException
 	 */
 	public String getOccurrenceRecordRequest(String gbifOccurrenceKey) throws ServiceException;
+	
+	/**
+	 * Get the resource url associated to the occurrence key
+	 * 
+	 * @param gbifOccurrenceKey
+	 * @return the resource url on where to access the verbatim occurrence record
+	 * @throws ServiceException
+	 */
+	public String getResourceUrl(String gbifOccurrenceKey)  throws ServiceException;
+	
+	/**
+   * Whether the occurrence can be displayed in a raw mode or is part of an archive
+   * 
+   * @param gbifOccurrenceKey
+   * @return the resource url on where to access the verbatim occurrence record
+   * @throws ServiceException
+	 */
+	public boolean hasRaw(String gbifOccurrenceKey) throws ServiceException;
+	
+	
 }
