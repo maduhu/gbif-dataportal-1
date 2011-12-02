@@ -324,18 +324,21 @@ public class TaxonAction extends Action {
 			
 			//6) If the taxon is not a nub concept, get the nub taxon concept
 			if (!dto.getIsNubConcept()) {
-								
-				//add the related taxon to the taxon list
-				Map<String,Object> taxonConceptMap = new HashMap<String,Object>();		 //add a new taxon concept map
-				TaxonConceptDTO relatedConceptDTO = taxonomyManager.getTaxonConceptFor(dto.getPartnerConceptKey());
-				taxonConceptMap.put("taxonConceptDTO", relatedConceptDTO);
-				taxonConceptMapSet.add(taxonConceptMap);
-				
-				//relationship map for the original taxon
-				Map<String,String> relationshipMap = new HashMap<String,String>();
-				relationshipMap.put("taxonResource", params.getGetUrl("taxon", relatedConceptDTO.getKey()));
-				relationshipMap.put("relationshipResource", "http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn");
-				relationshipMapSet.add(relationshipMap);
+			  
+			  // With the new rollover not all concepts are tied to the NUB
+			  if (dto.getPartnerConceptKey() != null) {
+	        //add the related taxon to the taxon list
+	        Map<String,Object> taxonConceptMap = new HashMap<String,Object>();     //add a new taxon concept map
+	        TaxonConceptDTO relatedConceptDTO = taxonomyManager.getTaxonConceptFor(dto.getPartnerConceptKey());
+	        taxonConceptMap.put("taxonConceptDTO", relatedConceptDTO);
+	        taxonConceptMapSet.add(taxonConceptMap);
+	        
+	        //relationship map for the original taxon
+	        Map<String,String> relationshipMap = new HashMap<String,String>();
+	        relationshipMap.put("taxonResource", params.getGetUrl("taxon", relatedConceptDTO.getKey()));
+	        relationshipMap.put("relationshipResource", "http://rs.tdwg.org/ontology/voc/TaxonConcept#IsIncludedIn");
+	        relationshipMapSet.add(relationshipMap);
+			  }
 			} 
 			
 			//7) If the taxon is a nub concept, then get all the concepts that are pointing to it
