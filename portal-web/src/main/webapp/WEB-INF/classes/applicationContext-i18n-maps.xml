@@ -74,6 +74,7 @@
 		<entry key="CI" value="country.CI"/>
 		<entry key="HR" value="country.HR"/>
 		<entry key="CU" value="country.CU"/>
+		<entry key="CW" value="country.CW"/>		
 		<entry key="CY" value="country.CY"/>
 		<entry key="CZ" value="country.CZ"/>
 		<entry key="DK" value="country.DK"/>
@@ -201,9 +202,12 @@
 		<entry key="RO" value="country.RO"/>
 		<entry key="RU" value="country.RU"/>
 		<entry key="RW" value="country.RW"/>
+		<entry key="BL" value="country.BL"/>		
 		<entry key="SH" value="country.SH"/>
 		<entry key="KN" value="country.KN"/>
 		<entry key="LC" value="country.LC"/>
+		<entry key="SX" value="country.SX"/>
+		<entry key="MF" value="country.MF"/>
 		<entry key="PM" value="country.PM"/>
 		<entry key="VC" value="country.VC"/>
 		<entry key="WS" value="country.WS"/>
@@ -221,6 +225,7 @@
 		<entry key="SO" value="country.SO"/>
 		<entry key="ZA" value="country.ZA"/>
 		<entry key="GS" value="country.GS"/>
+		<entry key="SS" value="country.SS"/>			
 		<entry key="ES" value="country.ES"/>
 		<entry key="LK" value="country.LK"/>
 		<entry key="SD" value="country.SD"/>
