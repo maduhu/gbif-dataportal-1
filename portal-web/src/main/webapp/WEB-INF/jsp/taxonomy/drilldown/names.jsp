@@ -104,7 +104,7 @@
 				<c:when test="${remoteConcept.idType.value==2}">
 					<tr valign="top">
 						<td class="label"><spring:message code="remote.concept.url"/></td>
-						<td><a href="${remoteConcept.remoteId}">${remoteConcept.remoteId}</a></td>
+						<td><!-- <a href="${remoteConcept.remoteId}"> -->${remoteConcept.remoteId}</a></td>
 					</tr>
 				</c:when>
 			</c:choose>
