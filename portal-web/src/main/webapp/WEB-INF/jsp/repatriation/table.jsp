@@ -6,7 +6,7 @@
       <img src="${pageContext.request.contextPath}/images/hostCountryLegend.gif"/>
     </td>
     <c:forEach items="${hosts}" var="host" varStatus="hostIndex">
-    	<c:if test="${host!='TW' && host!='UK' && host!='CN' && host!='HK'}">   
+    	<c:if test="${host!='TW' && host!='UK' && host!='CN' && host!='HK' && host!='IL'}">   
         <td id="host-${host}" class="hostLabel"
           <c:choose>
             <c:when test="${host!='XX'}">title="<spring:message code="country.abbr.${host}" text="${host}"/>"</c:when>
