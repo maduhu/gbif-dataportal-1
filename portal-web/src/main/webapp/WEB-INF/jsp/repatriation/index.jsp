@@ -31,7 +31,7 @@
       <select name="host" onchange="javascript:document.viewOptions.submit();">
         <option value="all" <c:if test="${empty param['host'] || param['host']=='all'}">selected="true"</c:if>><spring:message code="repat.select.option.all"/></option>
         <c:forEach items="${hostsOrdered}" var="host">
-        <c:if test="${host!='TW' && host!='CN' && host!='UK'}">
+        <c:if test="${host!='TW' && host!='CN' && host!='UK' && host!='IL'}">
         <option value="${host}" <c:if test="${param['host']==host}">selected="true"</c:if>><spring:message code="country.${host}"/></option>
         </c:if>
         </c:forEach> 
@@ -44,7 +44,7 @@
       <select name="country" onchange="javascript:document.viewOptions.submit();">
         <option value="all" <c:if test="${empty param['country'] || param['country']=='all'}">selected="true"</c:if>><spring:message code="repat.select.option.all"/></option>
         <c:forEach items="${countryList}" var="country">
-        <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && country.isoCountryCode!='CN'}">
+        <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && country.isoCountryCode!='CN' && country.isoCountryCode!='IL'}">
          <option value="${country.isoCountryCode}" <c:if test="${param['country']==country.isoCountryCode}">selected="true"</c:if>>
           <spring:message code="country.${country.isoCountryCode}"/>
          </option>
@@ -85,7 +85,7 @@
 		<li>Botanic Gardens Conservation International</li>
 		<li>CABI Bioscience</li>
 		<li>Chinese Taipei</li>
-		<li>Ciencia y Tecnología para el Desarollo</li>
+		<li>Ciencia y Tecnologï¿½a para el Desarollo</li>
 		<li>Consortium for the Barcode of Life</li>
 		<li>Consortium of European Taxonomic Facilities (CETAF)</li>
 		<li>DIVERSITAS</li>

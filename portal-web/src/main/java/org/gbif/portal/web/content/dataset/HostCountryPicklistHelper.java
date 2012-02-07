@@ -150,7 +150,7 @@ public class HostCountryPicklistHelper implements PicklistHelper, FilterHelper {
 		for (String code : isoCodes) {
 			if (code != null && !isoCountryCodeToI18NKey.containsKey(code)) {
 				logger.warn("Received an unknown country code[" + code + "] - ignoring from map...");
-			} else if (code != null) {
+			} else if (code != null && !code.equals("IL") && !code.equals("CN") && !code.equals("TW") ) {
 				// get the i18n value of it, and use that to key it
 				String i18nValue;
 				try {
