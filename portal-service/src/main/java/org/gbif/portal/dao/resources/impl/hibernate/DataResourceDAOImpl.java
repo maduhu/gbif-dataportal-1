@@ -101,8 +101,11 @@ public class DataResourceDAOImpl extends HibernateDaoSupport implements DataReso
 		HibernateTemplate template = getHibernateTemplate();
 		return (DataResource) template.execute(new HibernateCallback() {
 			public Object doInHibernate(Session session) {
-				Query query = session.createQuery("from DataResource dr left join fetch dr.dataProvider where dr.id = (select max(id) from DataResource where dr.deleted is null)");
-				query.setCacheable(true);
+        Query query =
+          session
+            .createQuery("from DataResource dr left join fetch dr.dataProvider order by dr.created desc");
+        query.setMaxResults(1);
+        query.setCacheable(true);
 				return query.uniqueResult();
 			}
 		});		
