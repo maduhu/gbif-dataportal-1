@@ -78,6 +78,11 @@ public class OccurrenceParameters extends Parameters {
 	public static final String KEY_COORDINATEISSUES = "coordinateissues";
 	public static final String KEY_ICON = "icon";
 	public static final String KEY_KEY = "key";
+	
+  //support institutionCode, collectionCode, catalogueNumber
+  private static final String KEY_INSTITUTIONCODE = "institutioncode";
+  private static final String KEY_COLLECTIONCODE = "collectioncode";
+  private static final String KEY_CATALOGUENUMBER = "cataloguenumber";	
 
 	// Old parameter names, handled for compatibility
 	public static final String KEY_GEOREFERENCEDONLY = "georeferencedonly";
@@ -123,6 +128,11 @@ public class OccurrenceParameters extends Parameters {
 	private static final String PREDICATE_NEQUAL = "SERVICE.QUERY.PREDICATE.NEQUAL";
 	private static final String PREDICATE_RETURN = "SERVICE.QUERY.PREDICATE.RETURN";
 	private static final String RETURNFIELDS_COUNT = "SERVICE.OCCURRENCE.QUERY.RETURNFIELDS.COUNT";
+	
+	//support institutionCode, collectionCode, catalogueNumber
+	private static final String SUBJECT_INSTITUTIONCODE = "SERVICE.OCCURRENCE.QUERY.SUBJECT.INSTITUTIONCODE";
+	private static final String SUBJECT_COLLECTIONCODE = "SERVICE.OCCURRENCE.QUERY.SUBJECT.COLLECTIONCODE";
+	private static final String SUBJECT_CATALOGUENUMBER = "SERVICE.OCCURRENCE.QUERY.SUBJECT.CATALOGUENUMBER";
 
 	public static final int MODE_PROCESSED = 1;
 	public static final int MODE_RAW = 0;
@@ -160,6 +170,12 @@ public class OccurrenceParameters extends Parameters {
 	protected boolean typesOnly = false;
 	protected Boolean coordinateStatus = null;
 	protected Boolean coordinateIssues = null;
+	
+	//support institutionCode, collectionCode, catalogueNumber
+	protected String[] institutionCodes = null;
+	protected String[] collectionCodes = null;
+	protected String[] catalogueNumbers = null;
+	
 
 	public static Log log = LogFactory.getLog(OccurrenceParameters.class);
 	
@@ -306,6 +322,16 @@ public class OccurrenceParameters extends Parameters {
 				else if (k.equals(KEY_MAXDEPTH)) {
 					maxDepth = Float.parseFloat((String) value);
 				}				
+			  //support institutionCode, collectionCode, catalogueNumber
+				else if(k.equals(KEY_INSTITUTIONCODE)) {
+				  institutionCodes = getValue(params, KEY_INSTITUTIONCODE, (String) value);
+				}
+        else if(k.equals(KEY_COLLECTIONCODE)) {
+          collectionCodes = getValue(params, KEY_COLLECTIONCODE, (String) value);
+        }
+        else if(k.equals(KEY_CATALOGUENUMBER)) {
+          catalogueNumbers = getValue(params, KEY_CATALOGUENUMBER, (String) value);
+        }				
 			}
 			
 			if (format == FORMAT_KML) {
@@ -381,6 +407,16 @@ public class OccurrenceParameters extends Parameters {
 			} else if (triplet.getSubject().equals(SUBJECT_REGIONCODE) && triplet.getPredicate().equals(PREDICATE_EQUAL)) {
 				originRegionCodes = addValue(originRegionCodes, (String) triplet.getObject());
 				processed = true;
+				//support institutionCode, collectionCode, catalogueNumber  	
+      } else if (triplet.getSubject().equals(SUBJECT_INSTITUTIONCODE) && triplet.getPredicate().equals(PREDICATE_EQUAL)) {
+        institutionCodes = addValue(institutionCodes, (String) triplet.getObject());
+        processed = true;
+      } else if (triplet.getSubject().equals(SUBJECT_COLLECTIONCODE) && triplet.getPredicate().equals(PREDICATE_EQUAL)) {
+        collectionCodes = addValue(collectionCodes, (String) triplet.getObject());
+        processed = true;
+      } else if (triplet.getSubject().equals(SUBJECT_CATALOGUENUMBER) && triplet.getPredicate().equals(PREDICATE_EQUAL)) {
+        catalogueNumbers = addValue(catalogueNumbers, (String) triplet.getObject());
+        processed = true;
 			} else if (triplet.getSubject().equals(SUBJECT_CELLID)) {
 				if (triplet.getPredicate().equals(PREDICATE_EQUAL)) {
 					cellIds = addValue(cellIds, ((Integer) triplet.getObject()).toString());
@@ -669,7 +705,11 @@ public class OccurrenceParameters extends Parameters {
 				if (minAltitude != null) map.put(KEY_MINALTITUDE, minAltitude);
 				if (maxAltitude != null) map.put(KEY_MAXALTITUDE, maxAltitude);
 				if (minDepth != null) map.put(KEY_MINDEPTH, minDepth);
-				if (maxDepth != null) map.put(KEY_MAXDEPTH, maxDepth);				
+				if (maxDepth != null) map.put(KEY_MAXDEPTH, maxDepth);	
+        //support institutionCode, collectionCode, catalogueNumber
+        if (institutionCodes != null) map.put(KEY_INSTITUTIONCODE, institutionCodes);
+        if (collectionCodes != null) map.put(KEY_COLLECTIONCODE, collectionCodes);
+        if (catalogueNumbers != null) map.put(KEY_CATALOGUENUMBER, catalogueNumbers);  				
 			}
 			if (requestType == Action.LIST || requestType == Action.GET) {
 				map.put(KEY_MODE, getModeName());
@@ -698,8 +738,32 @@ public class OccurrenceParameters extends Parameters {
 		
 		return strings;
 	}
+	
+  //support institutionCode, collectionCode, catalogueNumber
+  /**
+   * @return the institutionCodes.
+   */
+  public String[] getInstitutionCodes() {
+    return institutionCodes;
+  }
 
-	/**
+  
+  /**
+   * @return the collectionCodes.
+   */
+  public String[] getCollectionCodes() {
+    return collectionCodes;
+  }
+
+  
+  /**
+   * @return the catalogueNumbers.
+   */
+  public String[] getCatalogueNumbers() {
+    return catalogueNumbers;
+  }
+
+  /**
 	 * @return the basisOfRecordCode
 	 */
 	public String[] getBasisOfRecordCodes() {
@@ -936,6 +1000,23 @@ public class OccurrenceParameters extends Parameters {
 				addTriplet(triplets, SUBJECT_BASISOFRECORD, PREDICATE_EQUAL, BasisOfRecord.getBasisOfRecord(basisOfRecordCodes[i]).getValue());
 			}
 		}
+	  //support institutionCode, collectionCode, catalogueNumber		
+    if (institutionCodes != null) {
+      for (int i = 0; i < institutionCodes.length; i++) {
+        addTriplet(triplets, SUBJECT_INSTITUTIONCODE, PREDICATE_EQUAL, institutionCodes[i]);
+      }
+    }		
+    if (collectionCodes != null) {
+      for (int i = 0; i < collectionCodes.length; i++) {
+        addTriplet(triplets, SUBJECT_COLLECTIONCODE, PREDICATE_EQUAL, collectionCodes[i]);
+      }
+    }   
+    if (catalogueNumbers != null) {
+      for (int i = 0; i < catalogueNumbers.length; i++) {
+        addTriplet(triplets, SUBJECT_CATALOGUENUMBER, PREDICATE_EQUAL, catalogueNumbers[i]);
+      }
+    }       
+		
 		if (cellIds != null) {
 			for (int i = 0; i < cellIds.length; i++) {
 				addTriplet(triplets, SUBJECT_CELLID, PREDICATE_EQUAL, new Integer(cellIds[i]));
