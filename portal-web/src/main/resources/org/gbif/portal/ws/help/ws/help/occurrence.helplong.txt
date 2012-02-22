@@ -207,6 +207,12 @@ HELP CONTENTS
               The dataresourcekey parameter may be repeated within a single 
               request - the results will include records from any of the specified
               resources.
+              
+          institutioncode - return only records from a given institution code.
+          
+          collectioncode - return only records from a given collection code.
+          
+          catalognumber - return only records from a given catalog number.       
                       
           resourcenetworkkey - return only records which have been made available by 
               resources identified as belonging to the network identified by the supplied 

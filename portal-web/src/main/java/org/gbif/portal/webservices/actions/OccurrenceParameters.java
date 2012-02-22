@@ -82,7 +82,7 @@ public class OccurrenceParameters extends Parameters {
   //support institutionCode, collectionCode, catalogueNumber
   private static final String KEY_INSTITUTIONCODE = "institutioncode";
   private static final String KEY_COLLECTIONCODE = "collectioncode";
-  private static final String KEY_CATALOGUENUMBER = "cataloguenumber";	
+  private static final String KEY_CATALOGUENUMBER = "catalognumber";	
 
 	// Old parameter names, handled for compatibility
 	public static final String KEY_GEOREFERENCEDONLY = "georeferencedonly";
