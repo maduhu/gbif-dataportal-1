@@ -106,8 +106,8 @@ public class TaxonNameSoundEx {
 	 * Selectively replaces the first character
 	 */
 	String selectiveReplaceFirstChar(String source) {
-		if (source.startsWith("Æ")) {
-			return source.replaceFirst("Æ", "E");
+		if (source.startsWith("Ã†")) {
+			return source.replaceFirst("Ã†", "E");
 			
 		} else if (source.startsWith("AE")) {
 			return source.replaceFirst("AE", "E");
