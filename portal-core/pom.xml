@@ -2,12 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.gbif</groupId>
+    <artifactId>motherpom</artifactId>
+    <version>8</version>
+  </parent>
+
   <groupId>portal</groupId>
   <artifactId>portal-core</artifactId>
   <packaging>jar</packaging>
   <name>GBIF Portal Core</name>
   <version>1.0-SNAPSHOT</version>
   <url>http://code.google.com/p/gbif-dataportal/</url>
+
+  <properties>
+    <jdkLevel>1.5</jdkLevel>
+  </properties>
 
   <distributionManagement>
     <repository>
@@ -36,6 +47,12 @@
       <email>kbraak@gbif.org</email>
     </contributor>
   </contributors>
+
+  <scm>
+    <connection>scm:svn:http://gbif-dataportal.googlecode.com/svn/trunk/portal-core</connection>
+    <developerConnection>scm:svn:https://gbif-dataportal.googlecode.com/svn/trunk/portal-core</developerConnection>
+    <url>http://code.google.com/p/gbif-dataportal/source/browse/#svn/trunk/portal-core</url>
+  </scm>
 
   <repositories>
     <repository>
@@ -202,6 +219,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <build>
     <testResources>
       <testResource>
@@ -211,27 +229,17 @@
         </includes>
       </testResource>
     </testResources>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.3</version>
         <configuration>
           <descriptors>
             <descriptor>src/assemble/dir.xml</descriptor>
           </descriptors>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
