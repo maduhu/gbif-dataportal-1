@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>portal</groupId>
   <artifactId>portal-core</artifactId>
@@ -8,40 +8,46 @@
   <name>GBIF Portal Core</name>
   <version>1.0-SNAPSHOT</version>
   <url>http://code.google.com/p/gbif-dataportal/</url>
+
   <distributionManagement>
-    <!-- 
-      TO DEPLOY THE JAR TO THE REPOSITORY PLEASE USE: mvn deploy
-    --> 
-    <repository> 
-      <id>gbif</id>
-	  <name>GBIF Repository</name> 
-	  <url>sftp://tools.gbif.org/var/www/html/tools/maven/repository/</url> 
+    <repository>
+      <id>gbif-release</id>
+      <url>http://repository.gbif.org/content/repositories/releases</url>
     </repository>
-	<!-- 
-	  TO CREATE & DEPLOY THE WEBSITE PLEASE USE: mvn site-deploy
-	-->
-	<site>
-      <id>gbif</id>
-	  <name>GBIF Maven Sites</name>
-	  <url>sftp://tools.gbif.org/var/www/html/tools/maven/sites/</url>
-    </site>
+    <snapshotRepository>
+      <id>gbif-snapshot</id>
+      <url>http://repository.gbif.org/content/repositories/snapshots</url>
+    </snapshotRepository>
   </distributionManagement>
+
   <developers>
-	<developer>
-	  <name>Tim Robertson</name>
-	  <email>trobertson@gbif.org</email>
-	</developer>
-	<developer>
-	  <name>Jose Cuadra</name>
-	  <email>jcuadra@gbif.org</email>
-	</developer>
+    <developer>
+      <name>Tim Robertson</name>
+      <email>trobertson@gbif.org</email>
+    </developer>
+    <developer>
+      <name>Jose Cuadra</name>
+      <email>jcuadra@gbif.org</email>
+    </developer>
   </developers>
   <contributors>
     <contributor>
-	  <name>Kyle Braak</name>
-	  <email>kbraak@gbif.org</email>
+      <name>Kyle Braak</name>
+      <email>kbraak@gbif.org</email>
     </contributor>
   </contributors>
+
+  <repositories>
+    <repository>
+      <id>gbif-old</id>
+      <url>http://tools.gbif.org/maven/repository</url>
+    </repository>
+    <repository>
+      <id>gbif-all</id>
+      <url>http://repository.gbif.org/content/groups/gbif</url>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -108,12 +114,12 @@
       <groupId>quartz</groupId>
       <artifactId>quartz</artifactId>
       <version>1.6.0</version>
-    </dependency>    
-    <!--dependency>    
+    </dependency>
+    <!--dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
       <version>1.3.3</version>
-    </dependency--> 
+    </dependency-->
     <dependency>
       <groupId>javax.activation</groupId>
       <artifactId>activation</artifactId>
@@ -158,7 +164,7 @@
       <groupId>commons-math</groupId>
       <artifactId>commons-math</artifactId>
       <version>1.1</version>
-    </dependency>		
+    </dependency>
     <!--dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -169,75 +175,65 @@
       <artifactId>saxpath</artifactId>
       <version>1.0-FCS</version>
     </dependency>
-	<dependency>
+    <dependency>
       <groupId>javax.media</groupId>
       <artifactId>jai-core</artifactId>
       <version>1.1.3</version>
-	</dependency>
-<dependency>
+    </dependency>
+    <dependency>
       <groupId>javax.media</groupId>
       <artifactId>jai-codec</artifactId>
       <version>1.1.3</version>
-</dependency>
+    </dependency>
     <dependency>
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
       <version>1.2.1</version>
     </dependency>
     <dependency>
-      <groupId>commons-collections</groupId>
-      <artifactId>commons-collections</artifactId>
-      <version>3.2</version>
-    </dependency>
-    <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>3.1.13</version>
     </dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-mock</artifactId>
-		<version>2.0</version>
-		<scope>test</scope>
-	</dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-mock</artifactId>
+      <version>2.0</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
-	<build>
-		<testResources>
-			<testResource>
-				<directory>src/test/java</directory>
-				<includes>
-					<include>org/gbif/portal/**/*.xml</include>
-				</includes>
-			</testResource>
-		</testResources>
-	  <plugins>
-	    <plugin>
-	      <groupId>org.apache.maven.plugins</groupId>
-	      <artifactId>maven-compiler-plugin</artifactId>
-	      <configuration>
-	        <source>1.5</source>
-	        <target>1.5</target>
-	      </configuration>
-	    </plugin>
-		<plugin>
-		   <groupId>org.apache.maven.plugins</groupId>
-		   <artifactId>maven-assembly-plugin</artifactId>
-	        <configuration>
-	          <descriptors>
-	            <descriptor>src/assemble/dir.xml</descriptor>
-	          </descriptors>
-	        </configuration>
-	    </plugin>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-source-plugin</artifactId>
-		</plugin>	    
-	  </plugins>
-	</build>
-    <repositories>
-      <repository>
-        <id>gbif</id>
-        <url>http://tools.gbif.org/maven/repository</url>
-      </repository>           
-    </repositories>
+  <build>
+    <testResources>
+      <testResource>
+        <directory>src/test/java</directory>
+        <includes>
+          <include>org/gbif/portal/**/*.xml</include>
+        </includes>
+      </testResource>
+    </testResources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptors>
+            <descriptor>src/assemble/dir.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
