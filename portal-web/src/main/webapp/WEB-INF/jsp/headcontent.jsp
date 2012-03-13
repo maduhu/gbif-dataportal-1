@@ -1,2 +1,0 @@
-<%@ include file="/common/taglibs.jsp"%><link rel="stylesheet" href="${pageContext.request.contextPath}/<spring:theme code='global.css'/>"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/<spring:theme code='panes.css'/>"/>

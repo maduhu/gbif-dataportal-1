@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
-<beans>
-  <!-- An abstract definition ready for using in workflows -->
-  <bean id="occurrenceRecordSynchroniserActivity" 
-        parent="abstractOccurrenceRecordSynchroniserActivity"/>
-</beans>  

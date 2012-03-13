@@ -1,3 +1,0 @@
-<%@ page contentType="text/plain" %><%@ include file="/common/taglibs.jsp"%><string:trim><tiles:insert page="mapSize.jsp" flush="false"/>
-<c:forEach items="${searchResults}" var="dataset">${dataset.key}	${dataset.name}	<iframe src="http://${header.host}${pageContext.request.contextPath}/datasets/<gbiftag:printResourceType dataset="${dataset}"/>/${dataset.key}/mapWidget${mapUrlParam}" frameborder="0" hspace="1" vspace="1" scrolling="no" ${iframeDimensions}></iframe>
-</c:forEach></string:trim>

@@ -1,1 +1,0 @@
-<%@ include file="/common/taglibs.jsp"%><spring:message code="registration.title"/>

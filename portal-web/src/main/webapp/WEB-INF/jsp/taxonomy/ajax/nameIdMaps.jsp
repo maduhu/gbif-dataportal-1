@@ -1,3 +1,0 @@
-<%@ page contentType="text/plain" %><%@ include file="/common/taglibs.jsp"%><string:trim><tiles:insert page="mapSize.jsp" flush="false"/>
-<c:forEach items="${searchResults}" var="taxonConcept">${taxonConcept.key}	<c:choose><c:when test="${showCommonName}"><gbif:capitalizeFirstChar>${taxonConcept.commonName}</gbif:capitalizeFirstChar></c:when><c:otherwise>${taxonConcept.taxonName}</c:otherwise></c:choose>	<iframe src="http://${header.host}${pageContext.request.contextPath}/species/${taxonConcept.key}/mapWidget${mapUrlParam}" frameborder="0" hspace="1" vspace="1" scrolling="no" ${iframeDimensions}></iframe>
-</c:forEach></string:trim>
