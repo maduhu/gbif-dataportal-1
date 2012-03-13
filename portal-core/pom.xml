@@ -12,7 +12,7 @@
   <artifactId>portal-core</artifactId>
   <packaging>jar</packaging>
   <name>GBIF Portal Core</name>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <url>http://code.google.com/p/gbif-dataportal/</url>
 
   <properties>
@@ -48,9 +48,9 @@
   </contributors>
 
   <scm>
-    <connection>scm:svn:http://gbif-dataportal.googlecode.com/svn/tags/portal-core-1.0</connection>
-    <developerConnection>scm:svn:https://gbif-dataportal.googlecode.com/svn/tags/portal-core-1.0</developerConnection>
-    <url>http://code.google.com/p/gbif-dataportal/source/browse/#svn/tags/portal-core-1.0</url>
+    <connection>scm:svn:http://gbif-dataportal.googlecode.com/svn/trunk/portal-core</connection>
+    <developerConnection>scm:svn:https://gbif-dataportal.googlecode.com/svn/trunk/portal-core</developerConnection>
+    <url>http://code.google.com/p/gbif-dataportal/source/browse/#svn/trunk/portal-core</url>
   </scm>
 
   <repositories>
