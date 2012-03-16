@@ -782,6 +782,7 @@
       <list>
         <value>/nameSearch</value>
         <value>widget=true</value>
+        <value>.kml</value>
       </list>
     </property>
     <!-- uppercase -->
