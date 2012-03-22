@@ -14,19 +14,20 @@
  ***************************************************************************/
 package org.gbif.portal.model.occurrence;
 
-import java.io.Serializable;
-
 import org.gbif.portal.model.IntegerEnumType;
 import org.gbif.portal.util.db.OccurrenceRecordUtils;
 
+import java.io.Serializable;
+
 /**
- * Enumerated type for identifiers
+ * Enumerated type for identifiers.
  *
  * @author dhobern
+ * @author kbraak
  */
 public class IdentifierType extends IntegerEnumType implements Serializable{
 	/**
-	 * Generated
+	 * Generated.
 	 */
 	private static final long serialVersionUID = -6414459810689631419L;
 	
@@ -36,6 +37,7 @@ public class IdentifierType extends IntegerEnumType implements Serializable{
 	public static final IdentifierType ACCESSIONNUMBER = new IdentifierType("accession number", OccurrenceRecordUtils.IDENTIFIERTYPE_ACCESSIONNUMBER);
 	public static final IdentifierType SEQUENCENUMBER = new IdentifierType("sequence number", OccurrenceRecordUtils.IDENTIFIERTYPE_SEQUENCENUMBER);
 	public static final IdentifierType OTHERCATALOGNUMBER = new IdentifierType("other catalog number", OccurrenceRecordUtils.IDENTIFIERTYPE_OTHERCATALOGNUMBER);
+  public static final IdentifierType SOURCEID = new IdentifierType("alternative id", OccurrenceRecordUtils.IDENTIFIERTYPE_SOURCEID);
 	
 	public IdentifierType() {
 		//default constructor, required by hibernate
@@ -46,7 +48,7 @@ public class IdentifierType extends IntegerEnumType implements Serializable{
 	}
 	
 	/**
-	 * Utility method to return the enumerated instance for the specified name
+	 * Utility method to return the enumerated instance for the specified name.
 	 * @param name The enumerated name value
 	 * @return The enumerated instance if found or null
 	 */
@@ -64,14 +66,16 @@ public class IdentifierType extends IntegerEnumType implements Serializable{
 				return SEQUENCENUMBER;
 			} else if (name.equalsIgnoreCase(OTHERCATALOGNUMBER.getName())) {
 				return OTHERCATALOGNUMBER;
-			} 
+			} else if (name.equalsIgnoreCase(SOURCEID.getName())) {
+      return SOURCEID;
+    }
 	
 		}
 		return null;
 	}
 	
 	/**
-	 * Utility method to return the enumerated instance for the specified value
+	 * Utility method to return the enumerated instance for the specified value.
 	 * @param value The enumerated name integer value
 	 * @return The enumerated instance if found or null
 	 */
@@ -88,7 +92,9 @@ public class IdentifierType extends IntegerEnumType implements Serializable{
 			return SEQUENCENUMBER;
 		} else if (value == OTHERCATALOGNUMBER.getValue()) {
 			return OTHERCATALOGNUMBER;
-		} 
+		} else if (value == SOURCEID.getValue()) {
+      return SOURCEID;
+    }
 		return null;
 	}
 }
