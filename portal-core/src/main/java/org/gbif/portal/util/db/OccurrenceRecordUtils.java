@@ -35,6 +35,7 @@ public class OccurrenceRecordUtils {
 	public static final int IDENTIFIERTYPE_ACCESSIONNUMBER = 4;
 	public static final int IDENTIFIERTYPE_SEQUENCENUMBER = 5;
 	public static final int IDENTIFIERTYPE_OTHERCATALOGNUMBER = 6;
+  public static final int IDENTIFIERTYPE_SOURCEID = 7;
 		
 	/**
 	 * Constant values for image types
