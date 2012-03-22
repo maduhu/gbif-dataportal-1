@@ -19,17 +19,6 @@
     <jdkLevel>1.5</jdkLevel>
   </properties>
 
-  <distributionManagement>
-    <repository>
-      <id>gbif-release</id>
-      <url>http://repository.gbif.org/content/repositories/releases</url>
-    </repository>
-    <snapshotRepository>
-      <id>gbif-snapshot</id>
-      <url>http://repository.gbif.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
-
   <developers>
     <developer>
       <name>Tim Robertson</name>
@@ -54,10 +43,6 @@
   </scm>
 
   <repositories>
-    <repository>
-      <id>gbif-old</id>
-      <url>http://tools.gbif.org/maven/repository</url>
-    </repository>
     <repository>
       <id>gbif-all</id>
       <url>http://repository.gbif.org/content/groups/gbif</url>
