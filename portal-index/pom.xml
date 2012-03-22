@@ -1,51 +1,59 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.gbif</groupId>
+    <artifactId>motherpom</artifactId>
+    <version>8</version>
+  </parent>
+
   <groupId>portal</groupId>
   <artifactId>portal-index</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>GBIF Portal Index</name>
-  <url>http://maven.apache.org</url>
-  <distributionManagement>
-    <!-- 
-      TO DEPLOY THE JAR TO THE REPOSITORY PLEASE USE: mvn deploy
-    --> 
-    <repository> 
-      <id>gbif</id>
-	  <name>GBIF Repository</name> 
-	  <url>sftp://tools.gbif.org/var/www/html/tools/maven/repository/</url> 
-    </repository>
-	<!-- 
-	  TO CREATE & DEPLOY THE WEBSITE PLEASE USE: mvn site-deploy
-	-->
-	<site>
-      <id>gbif</id>
-	  <name>GBIF Maven Sites</name>
-	  <url>sftp://tools.gbif.org/var/www/html/tools/maven/sites/</url>
-    </site>
-  </distributionManagement>
+  <url>http://code.google.com/p/gbif-dataportal/</url>
+
+  <properties>
+    <jdkLevel>1.5</jdkLevel>
+  </properties>
+
   <developers>
-	<developer>
-	  <name>Tim Robertson</name>
-	  <email>trobertson@gbif.org</email>
-	</developer>
-	<developer>
-	  <name>Jose Cuadra</name>
-	  <email>jcuadra@gbif.org</email>
-	</developer>
+    <developer>
+      <name>Tim Robertson</name>
+      <email>trobertson@gbif.org</email>
+    </developer>
+    <developer>
+      <name>Jose Cuadra</name>
+      <email>jcuadra@gbif.org</email>
+    </developer>
   </developers>
   <contributors>
     <contributor>
-	  <name>Kyle Braak</name>
-	  <email>kbraak@gbif.org</email>
+      <name>Kyle Braak</name>
+      <email>kbraak@gbif.org</email>
     </contributor>
-  </contributors>	
+  </contributors>
+
+  <scm>
+    <connection>scm:svn:http://gbif-dataportal.googlecode.com/svn/trunk/portal-index</connection>
+    <developerConnection>scm:svn:https://gbif-dataportal.googlecode.com/svn/trunk/portal-index</developerConnection>
+    <url>http://code.google.com/p/gbif-dataportal/source/browse/#svn/trunk/portal-index</url>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>gbif-all</id>
+      <url>http://repository.gbif.org/content/groups/gbif</url>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>portal</groupId>
       <artifactId>portal-core</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -235,14 +243,6 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
           <descriptors>
@@ -252,10 +252,4 @@
       </plugin>
     </plugins>
   </build>
-  <repositories>
-    <repository>
-      <id>gbif</id>
-      <url>http://tools.gbif.org/maven/repository</url>
-    </repository>
-  </repositories>
 </project>
