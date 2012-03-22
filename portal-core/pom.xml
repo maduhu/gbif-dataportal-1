@@ -44,6 +44,10 @@
 
   <repositories>
     <repository>
+      <id>gbif-old</id>
+      <url>http://tools.gbif.org/maven/repository</url>
+    </repository>
+    <repository>
       <id>gbif-all</id>
       <url>http://repository.gbif.org/content/groups/gbif</url>
     </repository>
