@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -19,15 +19,16 @@ import javax.sql.DataSource;
 
 /**
  * Interface for class to persist GbifLogMessages to database.
+ *
  * @author Donald Hobern
  */
 public interface GbifLogMessageDAO {
 
-	public long create(GbifLogMessage message);
+  long create(GbifLogMessage message);
 
-	public long getMaxLogGroupId(Long portalInstanceId);
-	
-	public void setDataSource(DataSource dataSource);
-	
-	public int deleteExtractEventsByOccurrenceId(long occurrenceId);
+  long getMaxLogGroupId(Long portalInstanceId);
+
+  void setDataSource(DataSource dataSource);
+
+  int deleteExtractEventsByOccurrenceId(long occurrenceId);
 }

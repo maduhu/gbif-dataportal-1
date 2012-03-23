@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -20,78 +20,78 @@ import java.util.Map;
 
 /**
  * Class to manage log message groups.
+ *
  * @author Donald Hobern
  */
 public class LogGroup implements Serializable {
-	
-	/**
-	 * Generated
-	 */
-	private static final long serialVersionUID = 985927704928612695L;
 
-	public static long UNINITIALISED = -1;
-	
-	protected long id;
-	protected Map<String, GbifLogMessage> map = null;
-	protected boolean isEnded = false;
-	
-	public LogGroup() {
-		id = UNINITIALISED;
-	}
-	
-	public LogGroup(long id) {
-		this.id = id;
-	}
-	
-	public long getId() {
-		return id;
-	}
+  /**
+   * Generated
+   */
+  private static final long serialVersionUID = 985927704928612695L;
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+  public static long UNINITIALISED = -1;
 
-	/**
-	 * If the log group isnt "ended" this will add the message
-	 * to the map which is keyed on message.toString()
-	 * 
-	 * @param message
-	 * @return
-	 */
-	public boolean handleMessage(GbifLogMessage message) {
-		boolean handled = false;
-		if (!isEnded()) {
-			if (map == null) {
-				map = new HashMap<String, GbifLogMessage>();
-				map.put(message.toString(), message);
-				message.setCount(0);
-			}
-			else {
-				GbifLogMessage oldMessage = map.get(message.toString());
-				if (oldMessage == null) {
-					map.put(message.toString(), message);
-					message.setCount(0);
-				} else {
-					oldMessage.setCount(oldMessage.getCount() + 1);
-				}
-			}
-			handled = true;
-		}
-		return handled;
-	}
+  protected long id;
+  protected Map<String, GbifLogMessage> map = null;
+  protected boolean isEnded = false;
 
-	public Map<String, GbifLogMessage> getStoredMessages() {
-		return map;
-	}
-	
-	protected void end() {
-		isEnded = true;
-	}
-	
-	public boolean isEnded() {
-		return isEnded;
-	}
+  public LogGroup() {
+    id = UNINITIALISED;
+  }
+
+  public LogGroup(long id) {
+    this.id = id;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  /**
+   * @param id the id to set
+   */
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  /**
+   * If the log group isnt "ended" this will add the message
+   * to the map which is keyed on message.toString()
+   *
+   * @param message
+   * @return
+   */
+  public boolean handleMessage(GbifLogMessage message) {
+    boolean handled = false;
+    if (!isEnded()) {
+      if (map == null) {
+        map = new HashMap<String, GbifLogMessage>();
+        map.put(message.toString(), message);
+        message.setCount(0);
+      } else {
+        GbifLogMessage oldMessage = map.get(message.toString());
+        if (oldMessage == null) {
+          map.put(message.toString(), message);
+          message.setCount(0);
+        } else {
+          oldMessage.setCount(oldMessage.getCount() + 1);
+        }
+      }
+      handled = true;
+    }
+    return handled;
+  }
+
+  public Map<String, GbifLogMessage> getStoredMessages() {
+    return map;
+  }
+
+  protected void end() {
+    isEnded = true;
+  }
+
+  public boolean isEnded() {
+    return isEnded;
+  }
 }

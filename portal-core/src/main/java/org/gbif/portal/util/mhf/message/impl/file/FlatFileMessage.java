@@ -14,89 +14,92 @@
  ***************************************************************************/
 package org.gbif.portal.util.mhf.message.impl.file;
 
-import java.util.List;
-
 import org.gbif.portal.util.file.DelimitedFileReader;
 import org.gbif.portal.util.mhf.message.Message;
 import org.gbif.portal.util.mhf.message.MessageAccessException;
 import org.gbif.portal.util.mhf.message.MessageParseException;
 
+import java.util.List;
 
 
 /**
  * A wrapper around a flat file type containing tabular data (E.g. Tab Delmitted, CSV etc).
- * 
+ * <p/>
  * One should note that you may only go through the message in order and cannot reset to the beginning,
  * similar to a SAX parser
- * 
+ *
  * @author trobertson
  */
 public class FlatFileMessage implements Message {
-	/**
-	 * The data
-	 */
-	DelimitedFileReader dataset;
-	
-	/**
-	 * @param dataset Creates the message
-	 */
-	public FlatFileMessage(DelimitedFileReader dataset) {
-		this.dataset = dataset;
-	}
+  /**
+   * The data
+   */
+  DelimitedFileReader dataset;
 
-	/**
-	 * The location must be of type Integer and will represent the row to return from the file
-	 * If the row is before the current row, and exception is thrown (e.g. one pass only)
-	 * @see org.gbif.portal.util.mhf.message.Message#getPart(java.lang.Object)
-	 */
-	public Message getPart(Object location) throws MessageAccessException, MessageParseException {
-		if (!(location instanceof Integer)) {
-			throw new MessageAccessException("Only Integer locations are supported - recieved: " + location.getClass());
-		}
-		//Integer locator = (Integer)location;
-		
-		return null; //data.get(locator.intValue());
-	}
+  /**
+   * @param dataset Creates the message
+   */
+  public FlatFileMessage(DelimitedFileReader dataset) {
+    this.dataset = dataset;
+  }
 
-	/**
-	 * NOT SUPPORTED
-	 * @see org.gbif.portal.util.mhf.message.Message#getParts(java.lang.Object)
-	 */
-	public List<Message> getParts(Object location) throws MessageAccessException, MessageParseException {
-		throw new MessageAccessException("Not supported in FlatFileMessage");
-	}
-	
-	/**
-	 * The location must be of type Integer[][]
-	 * @see org.gbif.portal.util.mhf.message.Message#getPartAsString(java.lang.Object)
-	 */
-	public String getPartAsString(Object location) throws MessageAccessException {
-		if (!(location instanceof Integer[][])) {
-			throw new MessageAccessException("Only Integer[][] locations are supported - recieved: " + location.getClass());
-		}
-		//Integer[][] locator = (Integer[][])location;
-		return null;
-	}
+  /**
+   * The location must be of type Integer and will represent the row to return from the file
+   * If the row is before the current row, and exception is thrown (e.g. one pass only)
+   *
+   * @see org.gbif.portal.util.mhf.message.Message#getPart(java.lang.Object)
+   */
+  public Message getPart(Object location) throws MessageAccessException, MessageParseException {
+    if (!(location instanceof Integer)) {
+      throw new MessageAccessException("Only Integer locations are supported - recieved: " + location.getClass());
+    }
+    //Integer locator = (Integer)location;
 
-	/**
-	 * NOT SUPPORTED
-	 * @see org.gbif.portal.util.mhf.message.Message#getPartsAsString(java.lang.Object)
-	 */
-	public List<String> getPartsAsString(Object location) throws MessageAccessException {
-		throw new MessageAccessException("Not supported in FlatFileMessage");
-	}
+    return null; //data.get(locator.intValue());
+  }
 
-	/**
-	 * Throws an exception
-	 */
-	public String getRawData() throws MessageAccessException {
-		throw new MessageAccessException("Not supported in FlatFileMessage");
-	}
-	
-	/**
-	 * Throws an exception
-	 */
-	public String getLoggableData() throws MessageAccessException {
-		throw new MessageAccessException("Not supported in FlatFileMessage");
-	}
+  /**
+   * NOT SUPPORTED
+   *
+   * @see org.gbif.portal.util.mhf.message.Message#getParts(java.lang.Object)
+   */
+  public List<Message> getParts(Object location) throws MessageAccessException, MessageParseException {
+    throw new MessageAccessException("Not supported in FlatFileMessage");
+  }
+
+  /**
+   * The location must be of type Integer[][]
+   *
+   * @see org.gbif.portal.util.mhf.message.Message#getPartAsString(java.lang.Object)
+   */
+  public String getPartAsString(Object location) throws MessageAccessException {
+    if (!(location instanceof Integer[][])) {
+      throw new MessageAccessException("Only Integer[][] locations are supported - recieved: " + location.getClass());
+    }
+    //Integer[][] locator = (Integer[][])location;
+    return null;
+  }
+
+  /**
+   * NOT SUPPORTED
+   *
+   * @see org.gbif.portal.util.mhf.message.Message#getPartsAsString(java.lang.Object)
+   */
+  public List<String> getPartsAsString(Object location) throws MessageAccessException {
+    throw new MessageAccessException("Not supported in FlatFileMessage");
+  }
+
+  /**
+   * Throws an exception
+   */
+  public String getRawData() throws MessageAccessException {
+    throw new MessageAccessException("Not supported in FlatFileMessage");
+  }
+
+  /**
+   * Throws an exception
+   */
+  public String getLoggableData() throws MessageAccessException {
+    throw new MessageAccessException("Not supported in FlatFileMessage");
+  }
 }

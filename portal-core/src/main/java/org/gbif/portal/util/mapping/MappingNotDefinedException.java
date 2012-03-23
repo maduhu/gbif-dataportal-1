@@ -16,28 +16,31 @@ package org.gbif.portal.util.mapping;
 
 /**
  * Used to indicate that mapping has not been defined for a raw string
+ *
  * @author dhobern
  */
 public class MappingNotDefinedException extends Exception {
-	/**
-	 * Generated
-	 */
-	private static final long serialVersionUID = 1043429702099805426L;
+  /**
+   * Generated
+   */
+  private static final long serialVersionUID = 1043429702099805426L;
 
-	/**
-	 * Delegates implementation to super class
-	 * @param message 
-	 * @param exception
-	 */
-	public MappingNotDefinedException(String message, Throwable exception) {
-		super(message, exception);		
-	}
+  /**
+   * Delegates implementation to super class
+   *
+   * @param message
+   * @param exception
+   */
+  public MappingNotDefinedException(String message, Throwable exception) {
+    super(message, exception);
+  }
 
-	/**
-	 * Delegates implementation to super class
-	 * @param message 
-	 */
-	public MappingNotDefinedException(String message) {
-		super(message);
-	}	
+  /**
+   * Delegates implementation to super class
+   *
+   * @param message
+   */
+  public MappingNotDefinedException(String message) {
+    super(message);
+  }
 }

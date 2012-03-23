@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -21,124 +21,124 @@ import org.gbif.portal.util.workflow.ProcessContext;
 
 /**
  * Tools to support GBIF logging
- * 
+ *
  * @author Donald Hobern
  */
 public class GbifLogUtils {
 
-	/**
-	 * Logger
-	 */
-	protected static Log logger = LogFactory.getLog(GbifLogUtils.class);
-	
-	/**
-	 * Context keys
-	 */
-	protected String contextKeyDataProviderId;
-	protected String contextKeyDataResourceId;
-	protected String contextKeyOccurrenceId="occurrenceId";
-	protected String contextKeyLogGroup;
-	
-	public GbifLogMessage createGbifLogMessage(ProcessContext context, LogEvent event) {
-		return createGbifLogMessage(context, event, null);
-	}
+  /**
+   * Logger
+   */
+  protected static Log logger = LogFactory.getLog(GbifLogUtils.class);
 
-	public GbifLogMessage createGbifLogMessage(ProcessContext context, LogEvent event, String messageText) {
-		GbifLogMessage message = new GbifLogMessage();
-		if(context!=null){
-			try {
-				Long dataProviderId = (Long) context.get(getContextKeyDataProviderId(), Long.class, false);
-				Long dataResourceId = (Long) context.get(getContextKeyDataResourceId(), Long.class, false);
-				Long occurrenceId = (Long) context.get(getContextKeyOccurrenceId(), Long.class, false);
-				message.setDataProviderId(dataProviderId);
-				message.setDataResourceId(dataResourceId);
-				message.setOccurrenceId(occurrenceId);
-				LogGroup logGroup = (LogGroup) context.get(getContextKeyLogGroup(), LogGroup.class, false);
-				message.setLogGroup(logGroup);
-			} catch (Exception e) {
-				logger.debug(e.getMessage(), e);
-			}
-		}	else {
-			logger.debug("Supplied ProcessContext is null, omitting properties from log message.");
-		}
-		message.setEvent(event);
-		message.setMessage(messageText);
-		
-		return message;
-	}
+  /**
+   * Context keys
+   */
+  protected String contextKeyDataProviderId;
+  protected String contextKeyDataResourceId;
+  protected String contextKeyOccurrenceId = "occurrenceId";
+  protected String contextKeyLogGroup;
 
-	public GbifLogMessage createGbifLogMessage(LogGroup logGroup, LogEvent event) {
-		GbifLogMessage message = new GbifLogMessage();
-		message.setLogGroup(logGroup);
-		message.setEvent(event);
-		return message;
-	}
+  public GbifLogMessage createGbifLogMessage(ProcessContext context, LogEvent event) {
+    return createGbifLogMessage(context, event, null);
+  }
 
-	public boolean endLogGroup(LogGroup logGroup) {
-		if (logGroup != null && !logGroup.isEnded()) {
-			logger.info(createGbifLogMessage(logGroup, LogEvent.LOGGROUP_CLOSE));
-			logGroup.end();
-		}
-		return true;
-	}
+  public GbifLogMessage createGbifLogMessage(ProcessContext context, LogEvent event, String messageText) {
+    GbifLogMessage message = new GbifLogMessage();
+    if (context != null) {
+      try {
+        Long dataProviderId = (Long) context.get(getContextKeyDataProviderId(), Long.class, false);
+        Long dataResourceId = (Long) context.get(getContextKeyDataResourceId(), Long.class, false);
+        Long occurrenceId = (Long) context.get(getContextKeyOccurrenceId(), Long.class, false);
+        message.setDataProviderId(dataProviderId);
+        message.setDataResourceId(dataResourceId);
+        message.setOccurrenceId(occurrenceId);
+        LogGroup logGroup = (LogGroup) context.get(getContextKeyLogGroup(), LogGroup.class, false);
+        message.setLogGroup(logGroup);
+      } catch (Exception e) {
+        logger.debug(e.getMessage(), e);
+      }
+    } else {
+      logger.debug("Supplied ProcessContext is null, omitting properties from log message.");
+    }
+    message.setEvent(event);
+    message.setMessage(messageText);
 
-	public synchronized LogGroup startLogGroup() {
-		return new LogGroup();
-	}
+    return message;
+  }
 
-	/**
-	 * @return the contextKeyDataProviderId
-	 */
-	public String getContextKeyDataProviderId() {
-		return contextKeyDataProviderId;
-	}
+  public GbifLogMessage createGbifLogMessage(LogGroup logGroup, LogEvent event) {
+    GbifLogMessage message = new GbifLogMessage();
+    message.setLogGroup(logGroup);
+    message.setEvent(event);
+    return message;
+  }
 
-	/**
-	 * @param contextKeyDataProviderId the contextKeyDataProviderId to set
-	 */
-	public void setContextKeyDataProviderId(String contextKeyDataProviderId) {
-		this.contextKeyDataProviderId = contextKeyDataProviderId;
-	}
+  public boolean endLogGroup(LogGroup logGroup) {
+    if (logGroup != null && !logGroup.isEnded()) {
+      logger.info(createGbifLogMessage(logGroup, LogEvent.LOGGROUP_CLOSE));
+      logGroup.end();
+    }
+    return true;
+  }
 
-	/**
-	 * @return the contextKeyDataResourceId
-	 */
-	public String getContextKeyDataResourceId() {
-		return contextKeyDataResourceId;
-	}
+  public synchronized LogGroup startLogGroup() {
+    return new LogGroup();
+  }
 
-	/**
-	 * @param contextKeyDataResourceId the contextKeyDataResourceId to set
-	 */
-	public void setContextKeyDataResourceId(String contextKeyDataResourceId) {
-		this.contextKeyDataResourceId = contextKeyDataResourceId;
-	}
+  /**
+   * @return the contextKeyDataProviderId
+   */
+  public String getContextKeyDataProviderId() {
+    return contextKeyDataProviderId;
+  }
 
-	/**
-	 * @return the contextKeyLogGroup
-	 */
-	public String getContextKeyLogGroup() {
-		return contextKeyLogGroup;
-	}
+  /**
+   * @param contextKeyDataProviderId the contextKeyDataProviderId to set
+   */
+  public void setContextKeyDataProviderId(String contextKeyDataProviderId) {
+    this.contextKeyDataProviderId = contextKeyDataProviderId;
+  }
 
-	/**
-	 * @param contextKeyLogGroup the contextKeyLogGroup to set
-	 */
-	public void setContextKeyLogGroup(String contextKeyLogGroup) {
-		this.contextKeyLogGroup = contextKeyLogGroup;
-	}
+  /**
+   * @return the contextKeyDataResourceId
+   */
+  public String getContextKeyDataResourceId() {
+    return contextKeyDataResourceId;
+  }
 
-	/**
-	 * @return Returns the contextKeyOccurrenceId.
-	 */
-	public String getContextKeyOccurrenceId() {
-		return contextKeyOccurrenceId;
-	}
+  /**
+   * @param contextKeyDataResourceId the contextKeyDataResourceId to set
+   */
+  public void setContextKeyDataResourceId(String contextKeyDataResourceId) {
+    this.contextKeyDataResourceId = contextKeyDataResourceId;
+  }
 
-	/**
-	 * @param contextKeyOccurrenceId The contextKeyOccurrenceId to set.
-	 */
-	public void setContextKeyOccurrenceId(String contextKeyOccurrenceId) {
-		this.contextKeyOccurrenceId = contextKeyOccurrenceId;
-	}
+  /**
+   * @return the contextKeyLogGroup
+   */
+  public String getContextKeyLogGroup() {
+    return contextKeyLogGroup;
+  }
+
+  /**
+   * @param contextKeyLogGroup the contextKeyLogGroup to set
+   */
+  public void setContextKeyLogGroup(String contextKeyLogGroup) {
+    this.contextKeyLogGroup = contextKeyLogGroup;
+  }
+
+  /**
+   * @return Returns the contextKeyOccurrenceId.
+   */
+  public String getContextKeyOccurrenceId() {
+    return contextKeyOccurrenceId;
+  }
+
+  /**
+   * @param contextKeyOccurrenceId The contextKeyOccurrenceId to set.
+   */
+  public void setContextKeyOccurrenceId(String contextKeyOccurrenceId) {
+    this.contextKeyOccurrenceId = contextKeyOccurrenceId;
+  }
 }

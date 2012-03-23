@@ -16,28 +16,31 @@ package org.gbif.portal.util.mhf.message;
 
 /**
  * Used to indicate that some unexpected access to a message has been detected
+ *
  * @author trobertson
  */
 public class MessageAccessException extends Exception {
-	/**
-	 * Generated
-	 */
-	private static final long serialVersionUID = 1133732931996743848L;
+  /**
+   * Generated
+   */
+  private static final long serialVersionUID = 1133732931996743848L;
 
-	/**
-	 * Delegates implementation to super class
-	 * @param message 
-	 * @param exception
-	 */
-	public MessageAccessException(String message, Throwable exception) {
-		super(message, exception);		
-	}
+  /**
+   * Delegates implementation to super class
+   *
+   * @param message
+   * @param exception
+   */
+  public MessageAccessException(String message, Throwable exception) {
+    super(message, exception);
+  }
 
-	/**
-	 * Delegates implementation to super class
-	 * @param message 
-	 */
-	public MessageAccessException(String message) {
-		super(message);
-	}	
+  /**
+   * Delegates implementation to super class
+   *
+   * @param message
+   */
+  public MessageAccessException(String message) {
+    super(message);
+  }
 }

@@ -23,40 +23,40 @@ import org.gbif.portal.util.mhf.message.MessageParseException;
 
 
 /**
- * Takes an XPath Expression and invokes the "getPart()" on the Message to return a 
+ * Takes an XPath Expression and invokes the "getPart()" on the Message to return a
  * Message as the response.
- * 
+ *
  * @author Tim Robertson
  */
 public class MessageFromXPathAccessor implements MessageAccessor {
-	/**
-	 * That is used to access the message
-	 */
-	protected XPath xPath;
+  /**
+   * That is used to access the message
+   */
+  protected XPath xPath;
 
-	/**
-	 * @throws MessageAccessException 
-	 * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
-	 */
-	public Message invoke(Message message) throws MessageAccessException {
-		try {
-			return message.getPart(getXPath());
-		} catch (MessageParseException e) {
-			throw new MessageAccessException("Error creating a Message from the sub message part", e);
-		}
-	}
+  /**
+   * @throws MessageAccessException
+   * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
+   */
+  public Message invoke(Message message) throws MessageAccessException {
+    try {
+      return message.getPart(getXPath());
+    } catch (MessageParseException e) {
+      throw new MessageAccessException("Error creating a Message from the sub message part", e);
+    }
+  }
 
-	/**
-	 * @return Returns the xPath.
-	 */
-	public XPath getXPath() {
-		return xPath;
-	}
+  /**
+   * @return Returns the xPath.
+   */
+  public XPath getXPath() {
+    return xPath;
+  }
 
-	/**
-	 * @param path The xPath to set.
-	 */
-	public void setXPath(XPath path) {
-		xPath = path;
-	}
+  /**
+   * @param path The xPath to set.
+   */
+  public void setXPath(XPath path) {
+    xPath = path;
+  }
 }

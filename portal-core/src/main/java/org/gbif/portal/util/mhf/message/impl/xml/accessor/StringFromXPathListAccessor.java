@@ -15,51 +15,51 @@
 
 package org.gbif.portal.util.mhf.message.impl.xml.accessor;
 
-import java.util.List;
-
 import org.dom4j.XPath;
 import org.gbif.portal.util.mhf.message.Message;
 import org.gbif.portal.util.mhf.message.MessageAccessException;
 import org.gbif.portal.util.mhf.message.MessageAccessor;
 
+import java.util.List;
+
 
 /**
- * Takes a list of XPath Expressions and invokes them in turn until it finds 
+ * Takes a list of XPath Expressions and invokes them in turn until it finds
  * an element with actual content.
- * 
+ *
  * @author Donald Hobern
  */
 public class StringFromXPathListAccessor implements MessageAccessor {
-	/**
-	 * That is used to access the message
-	 */
-	protected List xPathList;
+  /**
+   * That is used to access the message
+   */
+  protected List xPathList;
 
-	/**
-	 * @throws MessageAccessException 
-	 * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
-	 */
-	public String invoke(Message message) throws MessageAccessException {
-		for (Object xPath : xPathList) { 
-			 String s = message.getPartAsString((XPath) xPath);
-			 if (s != null && s.length() > 0) {
-				 return s;
-			 }
-		}
-		return null;
-	}
+  /**
+   * @throws MessageAccessException
+   * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
+   */
+  public String invoke(Message message) throws MessageAccessException {
+    for (Object xPath : xPathList) {
+      String s = message.getPartAsString((XPath) xPath);
+      if (s != null && !s.isEmpty()) {
+        return s;
+      }
+    }
+    return null;
+  }
 
-	/**
-	 * @return the xPathList
-	 */
-	public List getXPathList() {
-		return xPathList;
-	}
+  /**
+   * @return the xPathList
+   */
+  public List getXPathList() {
+    return xPathList;
+  }
 
-	/**
-	 * @param pathList the xPathList to set
-	 */
-	public void setXPathList(List pathList) {
-		xPathList = pathList;
-	}
+  /**
+   * @param pathList the xPathList to set
+   */
+  public void setXPathList(List pathList) {
+    xPathList = pathList;
+  }
 }

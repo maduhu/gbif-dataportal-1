@@ -19,16 +19,16 @@ import java.io.InputStream;
 
 /**
  * This defines the Factory for building a Message.
- *  
+ *
  * @author trobertson
  */
 public interface MessageFactory {
-	/**
-	 * Constructs the Message
-	 * 
-	 * @param rawDataStream The stream to the underlying raw data
-	 * @return A new Message around the rawData 
-	 * @throws MessageParseException If exception occured constructing the message
-	 */
-	public Message build(InputStream rawDataStream) throws MessageParseException;
+  /**
+   * Constructs the Message
+   *
+   * @param rawDataStream The stream to the underlying raw data
+   * @return A new Message around the rawData
+   * @throws MessageParseException If exception occured constructing the message
+   */
+  Message build(InputStream rawDataStream) throws MessageParseException;
 }

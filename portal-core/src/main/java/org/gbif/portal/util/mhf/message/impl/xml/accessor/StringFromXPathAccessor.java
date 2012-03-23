@@ -22,36 +22,36 @@ import org.gbif.portal.util.mhf.message.MessageAccessor;
 
 
 /**
- * Takes an XPath Expression and invokes the "getPartAsString()" on the Message to return a 
+ * Takes an XPath Expression and invokes the "getPartAsString()" on the Message to return a
  * String as the response.
- * 
+ *
  * @author Tim Robertson
  */
 public class StringFromXPathAccessor implements MessageAccessor {
-	/**
-	 * That is used to access the message
-	 */
-	protected XPath xPath;
+  /**
+   * That is used to access the message
+   */
+  protected XPath xPath;
 
-	/**
-	 * @throws MessageAccessException 
-	 * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
-	 */
-	public String invoke(Message message) throws MessageAccessException {
-		return message.getPartAsString(getXPath());
-	}
+  /**
+   * @throws MessageAccessException
+   * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
+   */
+  public String invoke(Message message) throws MessageAccessException {
+    return message.getPartAsString(getXPath());
+  }
 
-	/**
-	 * @return Returns the xPath.
-	 */
-	public XPath getXPath() {
-		return xPath;
-	}
+  /**
+   * @return Returns the xPath.
+   */
+  public XPath getXPath() {
+    return xPath;
+  }
 
-	/**
-	 * @param path The xPath to set.
-	 */
-	public void setXPath(XPath path) {
-		xPath = path;
-	}
+  /**
+   * @param path The xPath to set.
+   */
+  public void setXPath(XPath path) {
+    xPath = path;
+  }
 }

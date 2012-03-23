@@ -21,43 +21,45 @@ import java.io.FileWriter;
 import java.util.regex.Pattern;
 
 /**
- * Utilities for creating a text file from a cell density table dump 
+ * Utilities for creating a text file from a cell density table dump
  * suitable for rendering in Mapserver
+ *
  * @author tim
  */
 public class CreateMapTextFile {
-	
-	/**
-	 * pass in the input file name and output file name
-	 */
-	public static void main(String[] args) {
-		try {
-			if (args.length == 2) {
-				
-				BufferedReader br = new BufferedReader(new FileReader(args[0]));
-				FileWriter fw = new FileWriter(args[1]);
-				
-				String line = br.readLine();
-				Pattern tab = Pattern.compile("\t");
-				fw.write("MINX\tMINY\tMAXX\tMAXY\tDENSITY\n");
-				while (line!=null){
-					String[] parts = tab.split(line);					
-					
-					// type, id, cell, count
-					int cell = Integer.parseInt(parts[2]);
-					LatLongBoundingBox llbb = CellIdUtils.toBoundingBox(cell);
-					
-					fw.write(llbb.getMinLong() + "\t" + llbb.getMinLat() + "\t" + llbb.getMaxLong() + "\t" + llbb.getMaxLat() + "\t" + parts[3] + "\n");
-					line = br.readLine();
-				}
-				
-				fw.flush();
-				fw.close();
-				br.close();
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-	}
-}	
+
+  /**
+   * pass in the input file name and output file name
+   */
+  public static void main(String[] args) {
+    try {
+      if (args.length == 2) {
+
+        BufferedReader br = new BufferedReader(new FileReader(args[0]));
+        FileWriter fw = new FileWriter(args[1]);
+
+        String line = br.readLine();
+        Pattern tab = Pattern.compile("\t");
+        fw.write("MINX\tMINY\tMAXX\tMAXY\tDENSITY\n");
+        while (line != null) {
+          String[] parts = tab.split(line);
+
+          // type, id, cell, count
+          int cell = Integer.parseInt(parts[2]);
+          LatLongBoundingBox llbb = CellIdUtils.toBoundingBox(cell);
+
+          fw.write(llbb.getMinLong() + "\t" + llbb.getMinLat() + "\t" + llbb.getMaxLong() + "\t" + llbb.getMaxLat() +
+            "\t" + parts[3] + "\n");
+          line = br.readLine();
+        }
+
+        fw.flush();
+        fw.close();
+        br.close();
+      }
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+}

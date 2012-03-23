@@ -17,16 +17,17 @@ package org.gbif.portal.util.geospatial;
 
 /**
  * Used to indicate that a Cell Id cannot be instanciated
+ *
  * @author tim
  */
 public class UnableToGenerateCellIdException extends Exception {
 
-	private static final long serialVersionUID = 5154386920306317433L;
+  private static final long serialVersionUID = 5154386920306317433L;
 
-	/**
-	 * @param arg0 The message
-	 */
-	public UnableToGenerateCellIdException(String arg0) {
-		super(arg0);	
-	}
+  /**
+   * @param arg0 The message
+   */
+  public UnableToGenerateCellIdException(String arg0) {
+    super(arg0);
+  }
 }

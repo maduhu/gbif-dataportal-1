@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -16,9 +16,11 @@ package org.gbif.portal.util.mhf.criteria;
 
 /**
  * A criteria is used to build up a search filter
+ *
  * @author trobertson
  */
 public abstract class Criteria {
-	public abstract String getType();
-	public abstract String getPredicate();
+  public abstract String getType();
+
+  public abstract String getPredicate();
 }

@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -15,70 +15,80 @@
 package org.gbif.portal.util.mhf.criteria;
 
 /**
- * A simple triplet criteria 
- * 	e.g.
- * 		ScientificName equals Puma*
+ * A simple triplet criteria
+ * e.g.
+ * ScientificName equals Puma*
+ *
  * @author trobertson
  */
 public class TripletCriteria extends Criteria {
-	protected String type = "TRIPLET";
-	protected String subject;
-	protected String predicate;
-	protected String object;
-	
-	public TripletCriteria(Object subject, Object predicate, Object object) {
-		this.subject = subject.toString();
-		this.predicate = predicate.toString();
-		this.object = object.toString();
-		
-	}
-	
-	/**
-	 * @return Returns the object.
-	 */
-	public String getObject() {
-		return object;
-	}
-	/**
-	 * @param object The object to set.
-	 */
-	public void setObject(String object) {
-		this.object = object;
-	}
-	/**
-	 * @return Returns the predicate.
-	 */
-	public String getPredicate() {
-		return predicate;
-	}
-	/**
-	 * @param predicate The predicate to set.
-	 */
-	public void setPredicate(String predicate) {
-		this.predicate = predicate;
-	}
-	/**
-	 * @return Returns the subject.
-	 */
-	public String getSubject() {
-		return subject;
-	}
-	/**
-	 * @param subject The subject to set.
-	 */
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-	/**
-	 * @return Returns the type.
-	 */
-	public String getType() {
-		return type;
-	}
-	/**
-	 * @param type The type to set.
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
+  protected String type = "TRIPLET";
+  protected String subject;
+  protected String predicate;
+  protected String object;
+
+  public TripletCriteria(Object subject, Object predicate, Object object) {
+    this.subject = subject.toString();
+    this.predicate = predicate.toString();
+    this.object = object.toString();
+
+  }
+
+  /**
+   * @return Returns the object.
+   */
+  public String getObject() {
+    return object;
+  }
+
+  /**
+   * @param object The object to set.
+   */
+  public void setObject(String object) {
+    this.object = object;
+  }
+
+  /**
+   * @return Returns the predicate.
+   */
+  @Override
+  public String getPredicate() {
+    return predicate;
+  }
+
+  /**
+   * @param predicate The predicate to set.
+   */
+  public void setPredicate(String predicate) {
+    this.predicate = predicate;
+  }
+
+  /**
+   * @return Returns the subject.
+   */
+  public String getSubject() {
+    return subject;
+  }
+
+  /**
+   * @param subject The subject to set.
+   */
+  public void setSubject(String subject) {
+    this.subject = subject;
+  }
+
+  /**
+   * @return Returns the type.
+   */
+  @Override
+  public String getType() {
+    return type;
+  }
+
+  /**
+   * @param type The type to set.
+   */
+  public void setType(String type) {
+    this.type = type;
+  }
 }

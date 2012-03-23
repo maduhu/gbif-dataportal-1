@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -18,76 +18,78 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * A collection criteria 
- * 	e.g.
- * 		and (.,.,.,.,.)
+ * A collection criteria
+ * e.g.
+ * and (.,.,.,.,.)
+ *
  * @author trobertson
  */
 public class CollectionCriteria extends Criteria {
-	protected String type = "COLLECTION";
-	protected String predicate;
-	protected List<Criteria> criteria = new LinkedList<Criteria>();
-
-	
-	public CollectionCriteria(Object predicate) {
-		this.predicate = predicate.toString();
-	}
-
-	/**
-	 * Appends the criterion to the list of criteria
-	 * @param criterion To append
-	 * @return Itself
-	 */
-	public CollectionCriteria add(Criteria criterion) {
-		this.getCriteria().add(criterion);
-		return this;
-	}
-
-	/**
-	 * @return Returns the criteria.
-	 */
-	public List<Criteria> getCriteria() {
-		return criteria;
-	}
+  protected String type = "COLLECTION";
+  protected String predicate;
+  protected List<Criteria> criteria = new LinkedList<Criteria>();
 
 
-	/**
-	 * @param criteria The criteria to set.
-	 */
-	public void setCriteria(List<Criteria> criteria) {
-		this.criteria = criteria;
-	}
+  public CollectionCriteria(Object predicate) {
+    this.predicate = predicate.toString();
+  }
+
+  /**
+   * Appends the criterion to the list of criteria
+   *
+   * @param criterion To append
+   * @return Itself
+   */
+  public CollectionCriteria add(Criteria criterion) {
+    this.getCriteria().add(criterion);
+    return this;
+  }
+
+  /**
+   * @return Returns the criteria.
+   */
+  public List<Criteria> getCriteria() {
+    return criteria;
+  }
 
 
-	/**
-	 * @return Returns the predicate.
-	 */
-	public String getPredicate() {
-		return predicate;
-	}
+  /**
+   * @param criteria The criteria to set.
+   */
+  public void setCriteria(List<Criteria> criteria) {
+    this.criteria = criteria;
+  }
 
 
-	/**
-	 * @param predicate The predicate to set.
-	 */
-	public void setPredicate(String predicate) {
-		this.predicate = predicate;
-	}
+  /**
+   * @return Returns the predicate.
+   */
+  public String getPredicate() {
+    return predicate;
+  }
 
 
-	/**
-	 * @return Returns the type.
-	 */
-	public String getType() {
-		return type;
-	}
+  /**
+   * @param predicate The predicate to set.
+   */
+  public void setPredicate(String predicate) {
+    this.predicate = predicate;
+  }
 
 
-	/**
-	 * @param type The type to set.
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
+  /**
+   * @return Returns the type.
+   */
+  public String getType() {
+    return type;
+  }
+
+
+  /**
+   * @param type The type to set.
+   */
+  public void setType(String type) {
+    this.type = type;
+  }
 
 }

@@ -17,22 +17,22 @@ package org.gbif.portal.util.mapping;
 /**
  * This interface supports mappings between arbitrary string values and a set of
  * defined codes.
- * 
+ * <p/>
  * Implementations could include:
- *  <ul>
- *  	<li>MapCodeMapping with mappings provided via a Map</li>
- *  	<li>DBCodeMapping with mappings stored in a database table</li>
- *  </ul>
- *  
+ * <ul>
+ * <li>MapCodeMapping with mappings provided via a Map</li>
+ * <li>DBCodeMapping with mappings stored in a database table</li>
+ * </ul>
+ *
  * @author dhobern
  */
 public interface CodeMapping {
-	/**
-	 * Map supplied string to a code value
-	 * 
-	 * @param raw String to be mapped
-	 * @return Code value corresponding to raw string
-	 * @throws NoMappingDefinedException If no mapping exists for the value 
-	 */
-	public Integer mapToCode(String raw) throws MappingNotDefinedException;
+  /**
+   * Map supplied string to a code value
+   *
+   * @param raw String to be mapped
+   * @return Code value corresponding to raw string
+   * @throws NoMappingDefinedException If no mapping exists for the value
+   */
+  Integer mapToCode(String raw) throws MappingNotDefinedException;
 }

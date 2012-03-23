@@ -15,46 +15,46 @@
 
 package org.gbif.portal.util.mhf.message.impl.xml.accessor;
 
-import java.util.List;
-
 import org.dom4j.XPath;
 import org.gbif.portal.util.mhf.message.Message;
 import org.gbif.portal.util.mhf.message.MessageAccessException;
 import org.gbif.portal.util.mhf.message.MessageAccessor;
 
+import java.util.List;
+
 
 /**
- * Takes an XPath Expression and invokes the "getPartsAsString()" on the Message to return a 
+ * Takes an XPath Expression and invokes the "getPartsAsString()" on the Message to return a
  * List<String> as the response.
- * 
+ *
  * @author Tim Robertson
  */
 public class ListStringFromXPathAccessor implements MessageAccessor {
-	/**
-	 * That is used to access the message
-	 */
-	protected XPath xPath;
+  /**
+   * That is used to access the message
+   */
+  protected XPath xPath;
 
-	/**
-	 * @throws MessageAccessException 
-	 * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
-	 */
-	public List<String> invoke(Message message) throws MessageAccessException {
-		return message.getPartsAsString(getXPath());
-	}
+  /**
+   * @throws MessageAccessException
+   * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
+   */
+  public List<String> invoke(Message message) throws MessageAccessException {
+    return message.getPartsAsString(getXPath());
+  }
 
-	/**
-	 * @return Returns the xPath.
-	 */
-	public XPath getXPath() {
-		return xPath;
-	}
+  /**
+   * @return Returns the xPath.
+   */
+  public XPath getXPath() {
+    return xPath;
+  }
 
-	/**
-	 * @param path The xPath to set.
-	 */
-	public void setXPath(XPath path) {
-		xPath = path;
-	}
+  /**
+   * @param path The xPath to set.
+   */
+  public void setXPath(XPath path) {
+    xPath = path;
+  }
 
 }

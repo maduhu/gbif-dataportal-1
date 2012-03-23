@@ -18,11 +18,12 @@ import org.gbif.portal.util.mhf.message.MessageAccessException;
 
 /**
  * Interface to enable access to beautified data
+ *
  * @author trobertson
  */
 public interface BeautifiedData {
-	/**
-	 * Returns the data as a beautified string 
-	 */
-	public String getBeautifiedData() throws MessageAccessException;
+  /**
+   * Returns the data as a beautified string
+   */
+  String getBeautifiedData() throws MessageAccessException;
 }

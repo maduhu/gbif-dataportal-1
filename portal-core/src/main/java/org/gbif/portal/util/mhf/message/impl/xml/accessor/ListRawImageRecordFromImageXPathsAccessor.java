@@ -15,50 +15,50 @@
 
 package org.gbif.portal.util.mhf.message.impl.xml.accessor;
 
-import java.util.List;
-
 import org.dom4j.XPath;
 import org.gbif.portal.util.mhf.message.Message;
 import org.gbif.portal.util.mhf.message.MessageAccessException;
 import org.gbif.portal.util.mhf.message.MessageAccessor;
 import org.gbif.portal.util.mhf.message.MessageParseException;
 
+import java.util.List;
+
 
 /**
- * Takes an XPath Expression and invokes the "getParts()" on the Message to return a 
+ * Takes an XPath Expression and invokes the "getParts()" on the Message to return a
  * List<Message> as the response.
- * 
+ *
  * @author Tim Robertson
  */
 public class ListRawImageRecordFromImageXPathsAccessor implements MessageAccessor {
-	/**
-	 * That is used to access the message
-	 */
-	protected XPath xPath;
-	
-	/**
-	 * @throws MessageAccessException 
-	 * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
-	 */
-	public List<Message> invoke(Message message) throws MessageAccessException {
-		try {
-			return message.getParts(getXPath());
-		} catch (MessageParseException e) {
-			throw new MessageAccessException("Error creating a Message from the sub message part", e);
-		}
-	}
+  /**
+   * That is used to access the message
+   */
+  protected XPath xPath;
 
-	/**
-	 * @return Returns the xPath.
-	 */
-	public XPath getXPath() {
-		return xPath;
-	}
+  /**
+   * @throws MessageAccessException
+   * @see org.gbif.portal.util.mhf.message.MessageAccessor#invoke(org.gbif.portal.util.mhf.message.Message)
+   */
+  public List<Message> invoke(Message message) throws MessageAccessException {
+    try {
+      return message.getParts(getXPath());
+    } catch (MessageParseException e) {
+      throw new MessageAccessException("Error creating a Message from the sub message part", e);
+    }
+  }
 
-	/**
-	 * @param path The xPath to set.
-	 */
-	public void setXPath(XPath path) {
-		xPath = path;
-	}
+  /**
+   * @return Returns the xPath.
+   */
+  public XPath getXPath() {
+    return xPath;
+  }
+
+  /**
+   * @param path The xPath to set.
+   */
+  public void setXPath(XPath path) {
+    xPath = path;
+  }
 }

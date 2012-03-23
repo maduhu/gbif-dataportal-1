@@ -14,28 +14,29 @@
  ***************************************************************************/
 package org.gbif.portal.util.mhf.message.impl.file;
 
-import java.io.InputStream;
-
 import org.gbif.portal.util.file.DelimitedFileReader;
 import org.gbif.portal.util.mhf.message.Message;
 import org.gbif.portal.util.mhf.message.MessageFactory;
 import org.gbif.portal.util.mhf.message.MessageParseException;
 
+import java.io.InputStream;
+
 /**
  * The concrete factory for Building Flat file based Messages
+ *
  * @author trobertson
  */
 public class FlatFileMessageFactory implements MessageFactory {
-	/** 
-	 * @see org.gbif.portal.util.mhf.message.MessageFactory#build(java.io.InputStream)
-	 */
-	public Message build(InputStream rawDataStream) throws MessageParseException  {
-		try {
-			DelimitedFileReader dataset = new DelimitedFileReader(rawDataStream, "\t", null, true);
-			return new FlatFileMessage(dataset);
-		} catch (Exception e) {
-			throw new MessageParseException(e);
-		}
-	}
-	
+  /**
+   * @see org.gbif.portal.util.mhf.message.MessageFactory#build(java.io.InputStream)
+   */
+  public Message build(InputStream rawDataStream) throws MessageParseException {
+    try {
+      DelimitedFileReader dataset = new DelimitedFileReader(rawDataStream, "\t", null, true);
+      return new FlatFileMessage(dataset);
+    } catch (Exception e) {
+      throw new MessageParseException(e);
+    }
+  }
+
 }
