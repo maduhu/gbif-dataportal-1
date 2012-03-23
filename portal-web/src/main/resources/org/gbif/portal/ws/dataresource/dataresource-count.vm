@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-#set($stylesheet=$response.get("headerMap").get("stylesheet"))
-<?xml-stylesheet type="text/xsl" href="$stylesheet"?>
-#set($schemaLocation=$response.get("headerMap").get("schemaLocation"))
-<gbif:gbifResponse xsi:schemaLocation="$schemaLocation" xmlns:gbif="http://portal.gbif.org/ws/response/gbif" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-#parse("org/gbif/portal/ws/header.vm")
-</gbif:gbifResponse>

@@ -1,9 +1,0 @@
-User-agent: *
-Disallow: /occurrences/search
-Disallow: /occurrences/download
-Disallow: /ws
-Allow: /
-Allow: /species
-Allow: /countries
-Allow: /datasets
-Allow: /tutorial

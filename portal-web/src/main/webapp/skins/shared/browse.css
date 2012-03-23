@@ -1,9 +1,0 @@
-ul.flatlist {
-	list-style-type: none;
-	margin-left: 0px;
-}
-
-ul.flatlist li {
-	margin-left: 5px;
-	display: inline;
-}
