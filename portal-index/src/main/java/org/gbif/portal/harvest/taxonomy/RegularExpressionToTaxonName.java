@@ -26,9 +26,9 @@ import org.gbif.portal.model.TaxonName;
 /**
  * A class that is loaded with a RegEx and will create a taxon name based on the configured group id's
  * to extract from the regex.
- * 
+ *
  * Prenormalisation may occur if set, but defaults to no denormalisation.
- *  
+ *
  * @author trobertson
  */
 public class RegularExpressionToTaxonName {
@@ -36,32 +36,32 @@ public class RegularExpressionToTaxonName {
 	 * Logger
 	 */
 	protected Log logger = LogFactory.getLog(RegularExpressionToTaxonName.class);
-	
+
 	/**
 	 * The Reg Expression to match with
 	 */
 	protected String regex;
-	
+
 	/**
 	 * The compiled pattern for the regex
 	 */
-	protected Pattern pattern;	
-	
+	protected Pattern pattern;
+
 	/**
 	 * If the name should be turned into lower case prior to reg ex evaluation
 	 */
 	public static final String PRENORMALISE_LOWER_CASE = "LOWER_CASE";
-	
+
 	/**
 	 * If the name should be turned into Sentence case prior to reg ex evaluation
 	 */
 	public static final String PRENORMALISE_SENTENCED_CASE = "SENTENCE_CASE";
-	
+
 	/**
 	 * May be set to one of the types to prenormalise strings
 	 */
 	protected String prenormalisation;
-	
+
 	/**
 	 * The groups to extract from the RegEx and set
 	 */
@@ -72,24 +72,24 @@ public class RegularExpressionToTaxonName {
 	protected int infraSpecificGroup = -1;
 	protected int infraSpecificMarkerGroup = -1;
 	protected int authorGroup = -1;
-	
+
 	/**
 	 * Canonical can be made up of a space seperated concatination of groups
 	 */
-	protected List<Integer> canonicalGroups;	
-	
+	protected List<Integer> canonicalGroups;
+
 	/**
-	 * If set, will be set in the taxon name 
+	 * If set, will be set in the taxon name
 	 */
 	protected int type = -1;
 	protected int rank = -1;
-	
+
 	/**
 	 * Can be used instead of a group for the canonical
 	 * The canonical group overrides this if it is set
 	 */
 	protected boolean setCanonical = true;
-	
+
 	/**
 	 * Parses the name based on the configuration
 	 * @param name To parse
@@ -99,7 +99,7 @@ public class RegularExpressionToTaxonName {
 	public boolean parse(String name, TaxonName parsedName) {
 		return parse(name, parsedName, null);
 	}
-	
+
 	/**
 	 * Parses the name based on the configuration
 	 * @param name To parse
@@ -110,7 +110,7 @@ public class RegularExpressionToTaxonName {
 	public boolean parse(String name, TaxonName parsedName, Integer suppliedRank) {
 
 		name = prepareName(name);
-		
+
 		// todo tidy...
 		if (name == null) {
 			return false;
@@ -160,9 +160,9 @@ public class RegularExpressionToTaxonName {
 				} else if (rank > 0) {
 					parsedName.setRank(rank);
 				}
-				
+
 				return true;
-				
+
 			} catch (RuntimeException e) {
 				logger.error(
 						"Error parsing name from [" + name + "] using regex["
@@ -176,7 +176,7 @@ public class RegularExpressionToTaxonName {
 
 	protected String prepareName(String name) {
 		name = StringUtils.trimToNull(name);
-		
+
 		if (prenormalisation != null && name != null) {
 			String oldName = name;
 			if (prenormalisation.equals(RegularExpressionToTaxonName.PRENORMALISE_LOWER_CASE)) {
@@ -184,22 +184,22 @@ public class RegularExpressionToTaxonName {
 			} else if (prenormalisation.equals(RegularExpressionToTaxonName.PRENORMALISE_SENTENCED_CASE)) {
 				name = StringUtils.capitalize(name.toLowerCase());
 			}
-			logger.debug("prenormalisation [" + prenormalisation + "] of " + oldName + ": " + name);			
+			logger.debug("prenormalisation [" + prenormalisation + "] of " + oldName + ": " + name);
 		}
-		
+
 		if (name != null) {
-			// sometimes there are incorrectly: 
+			// sometimes there are incorrectly:
 			//   Genus species(Author1) Author2
-			// lets add a space before all "(" and after ")" 
+			// lets add a space before all "(" and after ")"
 			//   (doubles will immediately be stripped after)
 			name = name.replaceAll("\\(", " \\(");
 			name = name.replaceAll("\\)", "\\) ");
-			
+
 			// strip double ups
 			name = name.replaceAll(" +", " ");
 			name=name.trim();
-			
-			
+
+
 			// strip diareses
 			name = name.replace("ä", "a");
 			name = name.replace("ë", "e");
@@ -207,12 +207,12 @@ public class RegularExpressionToTaxonName {
 			name = name.replace("ö", "o");
 			name = name.replace("ü", "u");
 			name = name.replace("ÿ", "y");
-			
-			name = name.replaceAll(" x ", " � ");
-			name = name.replaceAll(" X ", " � ");
-			name = name.replaceAll(" \\* ", " � ");
+
+			name = name.replaceAll(" x ", " × ");
+			name = name.replaceAll(" X ", " × ");
+			name = name.replaceAll(" \\* ", " × ");
 		}
-		
+
 		return name;
 	}
 

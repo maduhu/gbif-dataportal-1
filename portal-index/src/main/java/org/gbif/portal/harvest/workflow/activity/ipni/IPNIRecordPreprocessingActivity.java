@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.gbif.portal.harvest.workflow.activity.ipni;
 
@@ -12,7 +12,7 @@ import org.gbif.portal.util.workflow.ProcessContext;
 
 /**
  * An activity that will preprocess the single record, to account for errors that IPNI provide.
- * 
+ *
  * <ul>
  * 	<li>
  * 		If the Name in the context starts with the Family, then it is stripped from the name.  This
@@ -26,14 +26,14 @@ public class IPNIRecordPreprocessingActivity extends BaseActivity {
 	 */
 	protected String contextKeyFamily;
 	protected String contextKeyName;
-	
+
 	/**
 	 * The known IPNI error
 	 * When they wish to give a Genus, they give "Family Genus"
 	 * However, we want the Family for the subfam. and tribe. names
 	 */
 	protected Pattern familyGenusPattern = Pattern.compile("([A-Z][a-z]+(?:-[a-z]+)*) ([A-Z][a-z]+(?:-[a-z]+)*)");
-	
+
 	/**
 	 * @see org.gbif.portal.util.workflow.Activity#execute(org.gbif.portal.util.workflow.ProcessContext)
 	 */
@@ -41,15 +41,15 @@ public class IPNIRecordPreprocessingActivity extends BaseActivity {
 	public ProcessContext execute(final ProcessContext context) throws Exception {
 		String family = (String) context.get(getContextKeyFamily(), String.class, false);
 		String name = (String) context.get(getContextKeyName(), String.class, false);
-		
+
 		// THIS IS A HACK - NEED TO FIND OUT HOW TO GET THE FILE READER TO READ UTF-8
 		if (StringUtils.isNotEmpty(name)
 				&& name.contains("×")) {
-			logger.debug("Replacing × - see IPNIRecordPreprocessingActivity - " + name);
-			name = name.replaceAll("×", "�");
+			logger.debug("Replacing x - see IPNIRecordPreprocessingActivity - " + name);
+			name = name.replaceAll("x", "×");
 			context.put(getContextKeyName(), name);
 		}
-		
+
 		if (StringUtils.isNotEmpty(family)
 				&& StringUtils.isNotEmpty(name)
 				&& name.startsWith(family)
@@ -59,7 +59,7 @@ public class IPNIRecordPreprocessingActivity extends BaseActivity {
 			name = name.trim();
 			context.put(getContextKeyName(), name);
 		}
-		
+
 		return context;
 	}
 

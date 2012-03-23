@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package launcher.arkive;
 
@@ -14,12 +14,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
 /**
- * Launcher for loading ARKive 
+ * Launcher for loading ARKive
  * @author Donald Hobern
  */
 public class DataLoader {
 	private ApplicationContext context;
-	
+
 	private void init() {
 		String[] locations = {
 				"classpath*:/**/applicationContext-*.xml",
@@ -28,7 +28,7 @@ public class DataLoader {
 		};
 		context = new ClassPathXmlApplicationContext(locations);
 	}
-	
+
 	private void index() {
 		SequenceProcessor workflow = (SequenceProcessor)context.getBean("ARKive:0.1:dataLoad");
 		try {
@@ -38,7 +38,7 @@ public class DataLoader {
 			seed.put("taxonomicPriorityText", "100");
 			seed.put("description", "Creating a lasting audio-visual record of life on Earth.");
 			seed.put("basisOfRecord", "Unknown");
-			seed.put("citation", "© Wildscreen Trading Limited or its contributors");
+			seed.put("citation", "Wildscreen Trading Limited or its contributors");
 			seed.put("url", "http://portaldev2.gbif.org/species-v2.xml");
 			seed.put("requestToIssue", "");
 			seed.put("website", "http://www.arkive.org/");
@@ -47,11 +47,11 @@ public class DataLoader {
 			List<String> psNamespaces = new ArrayList<String>();
 			psNamespaces.add("http://www.arkive.org/0.1");
 			seed.put("psNamespaces", psNamespaces);
-			
+
 			workflow.doActivities(seed);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	/**
