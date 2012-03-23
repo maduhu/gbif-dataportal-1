@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -11,7 +10,7 @@
   <groupId>portal</groupId>
   <artifactId>portal-index</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <name>GBIF Portal Index</name>
   <url>http://code.google.com/p/gbif-dataportal/</url>
 
@@ -37,9 +36,9 @@
   </contributors>
 
   <scm>
-    <connection>scm:svn:http://gbif-dataportal.googlecode.com/svn/trunk/portal-index</connection>
-    <developerConnection>scm:svn:https://gbif-dataportal.googlecode.com/svn/trunk/portal-index</developerConnection>
-    <url>http://code.google.com/p/gbif-dataportal/source/browse/#svn/trunk/portal-index</url>
+    <connection>scm:svn:http://gbif-dataportal.googlecode.com/svn/tags/portal-index-1.0</connection>
+    <developerConnection>scm:svn:https://gbif-dataportal.googlecode.com/svn/tags/portal-index-1.0</developerConnection>
+    <url>http://code.google.com/p/gbif-dataportal/source/browse/#svn/tags/portal-index-1.0</url>
   </scm>
 
   <build>
