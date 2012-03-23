@@ -1,1 +1,0 @@
-<%@ include file="/common/taglibs.jsp"%><spring:message code="tutorial.title"/><c:if test="${not empty tutorialPageName}"> - </c:if><spring:message code="tutorial.${tutorialPageName}" text=""/>
