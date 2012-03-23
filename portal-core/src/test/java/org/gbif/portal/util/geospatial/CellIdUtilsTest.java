@@ -54,7 +54,7 @@ public class CellIdUtilsTest extends TestCase {
    */
   public void testCreateCellId() {
     try {
-      assertEquals(0, CellIdUtils.toCellId(new Float(-180), (float) -90));
+      assertEquals(0, CellIdUtils.toCellId(new Float(-90), new Float(-180)));
       assertEquals(0, CellIdUtils.toCellId(new Float(-90), new Float(-179.9)));
       assertEquals(359, CellIdUtils.toCellId(new Float(-89.1), new Float(179.2)));
       assertEquals(360, CellIdUtils.toCellId(new Float(-88.5), new Float(-180)));
