@@ -1,1 +1,0 @@
-${pageContext.request.contextPath}/occurrences/${occurrenceRecordKey}/providerMessage.xml
