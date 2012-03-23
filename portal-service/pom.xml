@@ -11,7 +11,7 @@
   <groupId>portal</groupId>
   <artifactId>portal-service</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <name>GBIF Portal Service API</name>
   <url>http://code.google.com/p/gbif-dataportal/</url>
 
@@ -37,9 +37,9 @@
   </contributors>
 
   <scm>
-    <connection>scm:svn:http://gbif-dataportal.googlecode.com/svn/tags/portal-service-1.0</connection>
-    <developerConnection>scm:svn:https://gbif-dataportal.googlecode.com/svn/tags/portal-service-1.0</developerConnection>
-    <url>http://code.google.com/p/gbif-dataportal/source/browse/#svn/tags/portal-service-1.0</url>
+    <connection>scm:svn:http://gbif-dataportal.googlecode.com/svn/trunk/portal-service</connection>
+    <developerConnection>scm:svn:https://gbif-dataportal.googlecode.com/svn/trunk/portal-service</developerConnection>
+    <url>http://code.google.com/p/gbif-dataportal/source/browse/#svn/trunk/portal-service</url>
   </scm>
 
   <build>
