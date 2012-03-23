@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -16,14 +16,15 @@ package org.gbif.portal.util.text;
 
 /**
  * Indicates an invalid date
+ *
  * @author trobertson
  */
 @SuppressWarnings("serial")
 public class InvalidDateException extends Exception {
-	/**
-	 * @param message
-	 */
-	public InvalidDateException(String message) {
-		super(message);
-	}
+  /**
+   * @param message
+   */
+  public InvalidDateException(String message) {
+    super(message);
+  }
 }

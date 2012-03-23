@@ -15,33 +15,33 @@
 
 package org.gbif.portal.util.geospatial;
 
+import junit.framework.TestCase;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.regex.Pattern;
 
-import junit.framework.TestCase;
-
 /**
  * Reads a file of cell_id count and produces what is needed for maps
- * 
  */
 public class CellRewrite extends TestCase {
-	public static void main(String[] args) throws Exception {
-		BufferedReader reader = new BufferedReader(new FileReader(args[0]));
-		String line = reader.readLine();
-		line = reader.readLine();
-		Pattern tab = Pattern.compile("\t");
-		BufferedWriter writer = new BufferedWriter(new FileWriter(args[1]));
-		writer.write("MINX\tMINY\tMAXX\tMAXY\tDENSITY\n");
-		while(line!=null) {
-			String[] parts = tab.split(line);
-			LatLongBoundingBox llbb = CellIdUtils.toBoundingBox(Integer.parseInt(parts[1]));
-			writer.write(llbb.minLong + "\t" + llbb.minLat + "\t" + llbb.maxLong + "\t" + llbb.maxLat + "\t" + parts[2] + "\n");
-			line = reader.readLine();
-		}
-		writer.close();
-		reader.close();
-	}
+  public static void main(String[] args) throws Exception {
+    BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+    String line = reader.readLine();
+    line = reader.readLine();
+    Pattern tab = Pattern.compile("\t");
+    BufferedWriter writer = new BufferedWriter(new FileWriter(args[1]));
+    writer.write("MINX\tMINY\tMAXX\tMAXY\tDENSITY\n");
+    while (line != null) {
+      String[] parts = tab.split(line);
+      LatLongBoundingBox llbb = CellIdUtils.toBoundingBox(Integer.parseInt(parts[1]));
+      writer.write(llbb.minLong + "\t" + llbb.minLat + "\t" + llbb.maxLong + "\t" + llbb.maxLat + "\t" + parts[2] +
+        "\n");
+      line = reader.readLine();
+    }
+    writer.close();
+    reader.close();
+  }
 }

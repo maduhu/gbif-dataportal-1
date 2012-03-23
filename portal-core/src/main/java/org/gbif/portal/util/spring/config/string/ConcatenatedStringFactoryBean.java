@@ -14,82 +14,83 @@
  ***************************************************************************/
 package org.gbif.portal.util.spring.config.string;
 
-import java.util.List;
-
 import org.springframework.beans.factory.config.AbstractFactoryBean;
+
+import java.util.List;
 
 /**
  * A factory that will create a String from a List<StringBean> in config.
- * 
+ * <p/>
  * Thus "global" StringBeans may be defined and reused in configuration.
  * For example, complex regular expressions may be built from smaller easier components
- * 
+ * <p/>
  * There exists further configuration options (for example, seperating all tokens with spaces)
- * 
+ *
  * @author trobertson
  */
 public class ConcatenatedStringFactoryBean extends AbstractFactoryBean {
-	/**
-	 * The tokens that make the concatinated String
-	 */
-	protected List<StringBean> tokens;
-	
-	/**
-	 * Convienience for seperating ALL tokens with a value
-	 */
-	protected String separator = "";
+  /**
+   * The tokens that make the concatinated String
+   */
+  protected List<StringBean> tokens;
 
-	/**
-	 * @see org.springframework.beans.factory.config.AbstractFactoryBean#createInstance()
-	 */
-	@Override
-	protected String createInstance() throws Exception {
-		StringBuffer sb = new StringBuffer();
-		int length = getTokens().size();
-		int i = 0;
-		for (StringBean s : getTokens()) {
-			sb.append(s.getString());
-			i++;
-			if (i<length) {
-				sb.append(getSeparator());
-			}			
-		}
-		return sb.toString();
-	}
+  /**
+   * Convienience for seperating ALL tokens with a value
+   */
+  protected String separator = "";
 
-	/**
-	 * Returns String.class
-	 * @see org.springframework.beans.factory.FactoryBean#getObjectType()
-	 */
-	public Class getObjectType() {
-		return String.class;
-	}
+  /**
+   * @see org.springframework.beans.factory.config.AbstractFactoryBean#createInstance()
+   */
+  @Override
+  protected String createInstance() throws Exception {
+    StringBuilder sb = new StringBuilder();
+    int length = getTokens().size();
+    int i = 0;
+    for (StringBean s : getTokens()) {
+      sb.append(s.getString());
+      i++;
+      if (i < length) {
+        sb.append(getSeparator());
+      }
+    }
+    return sb.toString();
+  }
 
-	/**
-	 * @return Returns the tokens.
-	 */
-	public List<StringBean> getTokens() {
-		return tokens;
-	}
+  /**
+   * Returns String.class
+   *
+   * @see org.springframework.beans.factory.FactoryBean#getObjectType()
+   */
+  public Class getObjectType() {
+    return String.class;
+  }
 
-	/**
-	 * @param tokens The tokens to set.
-	 */
-	public void setTokens(List<StringBean> tokens) {
-		this.tokens = tokens;
-	}
+  /**
+   * @return Returns the tokens.
+   */
+  public List<StringBean> getTokens() {
+    return tokens;
+  }
 
-	/**
-	 * @return Returns the separator.
-	 */
-	public String getSeparator() {
-		return separator;
-	}
+  /**
+   * @param tokens The tokens to set.
+   */
+  public void setTokens(List<StringBean> tokens) {
+    this.tokens = tokens;
+  }
 
-	/**
-	 * @param separator The separator to set.
-	 */
-	public void setSeparator(String separator) {
-		this.separator = separator;
-	}
+  /**
+   * @return Returns the separator.
+   */
+  public String getSeparator() {
+    return separator;
+  }
+
+  /**
+   * @param separator The separator to set.
+   */
+  public void setSeparator(String separator) {
+    this.separator = separator;
+  }
 }

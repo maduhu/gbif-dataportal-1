@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -17,31 +17,32 @@ package org.gbif.portal.util.workflow;
 import java.util.Map;
 
 /**
- * @author trobertson 
- * [based on the article by Steve Dodge: http://www.javaworld.com/javaworld/jw-04-2005/jw-0411-spring.html]
+ * @author trobertson
+ *         [based on the article by Steve Dodge: http://www.javaworld.com/javaworld/jw-04-2005/jw-0411-spring.html]
  */
 public interface ProcessContext extends Map {
-	
-	/**
-	 * 
-	 * @param key
-	 * @param expectedType
-	 * @param exceptionIfNull
-	 * @return
-	 * @throws ContextCorruptException
-	 */
-	public Object get(String key, Class expectedType, boolean exceptionIfNull) throws ContextCorruptException;
-    
-    /**
-     * Actively informs the workflow process to stop processing
-     * no further activities will be exeecuted 
-     * @return
-     */
-    public boolean isStopProcess();
-    
-    /**
-     * Sets the indication to stop processing at the next available point
-     * @param stopProcess To set
-     */
-    public void setStopProcess(boolean stopProcess);
+
+  /**
+   * @param key
+   * @param expectedType
+   * @param exceptionIfNull
+   * @return
+   * @throws ContextCorruptException
+   */
+  Object get(String key, Class expectedType, boolean exceptionIfNull) throws ContextCorruptException;
+
+  /**
+   * Actively informs the workflow process to stop processing
+   * no further activities will be exeecuted
+   *
+   * @return
+   */
+  boolean isStopProcess();
+
+  /**
+   * Sets the indication to stop processing at the next available point
+   *
+   * @param stopProcess To set
+   */
+  void setStopProcess(boolean stopProcess);
 }

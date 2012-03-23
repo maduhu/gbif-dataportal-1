@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -16,22 +16,23 @@ package org.gbif.portal.util.workflow;
 
 /**
  * Used to indicate that a context is corrupt
+ *
  * @author trobertson
  */
 @SuppressWarnings("serial")
 public class ContextCorruptException extends Exception {
-	/**
-	 * @param message To detail the error
-	 */
-	public ContextCorruptException(String message) {
-		super(message);
-	}
+  /**
+   * @param message To detail the error
+   */
+  public ContextCorruptException(String message) {
+    super(message);
+  }
 
-	/**
-	 * @param message To detail the error
-	 * @param t The cause
-	 */
-	public ContextCorruptException(String message, Throwable t) {
-		super(message, t);
-	}
+  /**
+   * @param message To detail the error
+   * @param t       The cause
+   */
+  public ContextCorruptException(String message, Throwable t) {
+    super(message, t);
+  }
 }

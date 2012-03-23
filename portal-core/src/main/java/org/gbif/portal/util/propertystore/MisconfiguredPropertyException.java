@@ -16,43 +16,47 @@ package org.gbif.portal.util.propertystore;
 
 
 /**
- * Used to indicate that a property is not declared in the PropertyStore 
+ * Used to indicate that a property is not declared in the PropertyStore
  * in the expected format
- * 
+ *
  * @author trobertson
  */
 public class MisconfiguredPropertyException extends Exception {
-	/**
-	 * Generated
-	 */
-	private static final long serialVersionUID = 8283377767768583868L;
+  /**
+   * Generated
+   */
+  private static final long serialVersionUID = 8283377767768583868L;
 
-	/**
-	 * Generates a logable message saying that the property found in the namespace is of
-	 * an invalid form
-	 * @param namespace That is being used
-	 * @param property Within the namespace that is of the wrong form
-	 * @param expected The type expected
-	 * @param received The type mapped
-	 */
-	public MisconfiguredPropertyException(String namespace, String property, Class expected, Class received) {		
-		super("Property [" + property + "] for namespace [" + namespace + "] in the property store is of invalid type. Expecting [" + expected + "] received[" + received + "]");
-	}
+  /**
+   * Generates a logable message saying that the property found in the namespace is of
+   * an invalid form
+   *
+   * @param namespace That is being used
+   * @param property  Within the namespace that is of the wrong form
+   * @param expected  The type expected
+   * @param received  The type mapped
+   */
+  public MisconfiguredPropertyException(String namespace, String property, Class expected, Class received) {
+    super("Property [" + property + "] for namespace [" + namespace + "] in the property store is of invalid type. " +
+      "Expecting [" + expected + "] received[" + received + "]");
+  }
 
-	/**
-	 * Takes the logable message
-	 * @param message To use for the exception
-	 */
-	public MisconfiguredPropertyException(String message) {
-		super(message);
-	}
+  /**
+   * Takes the logable message
+   *
+   * @param message To use for the exception
+   */
+  public MisconfiguredPropertyException(String message) {
+    super(message);
+  }
 
-	/**
-	 * Takes the message and cause
-	 * @param message To use for the exception
-	 * @param cause To signal
-	 */
-	public MisconfiguredPropertyException(String message, Throwable t) {
-		super(message, t);
-	}
+  /**
+   * Takes the message and cause
+   *
+   * @param message To use for the exception
+   * @param cause   To signal
+   */
+  public MisconfiguredPropertyException(String message, Throwable t) {
+    super(message, t);
+  }
 }

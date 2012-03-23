@@ -20,60 +20,60 @@ import java.util.List;
 
 /**
  * Bean to store information on mappings between REST URLs and maps of properties
- *  
+ *
  * @author dhobern
  */
 public class PathMapping {
-	
-	/**
-	 * String identifying final section of URL prior to section to rewrite (without slashes).
-	 * 
-	 * For example, consider URL rewriting between the forms:
-	 *   http://localhost/webapp/servlet/a/b/c
-	 *   http://localhost/webapp/servlet?alpha=a&second=b&value=c
-	 *   
-	 * In this case urlRoot could be "servlet"   
-	 */
-	protected String urlRoot;
-	
-	/**
-	 * List of patterns supported by URL mapping, each pattern being a list of Strings to be 
-	 * mapped against the URL
-	 * 
-	 * For example, consider URL rewriting between the forms:
-	 *   http://localhost/webapp/servlet/a/b/c
-	 *   http://localhost/webapp/servlet?alpha=a&second=b&value=c
-	 *   
-	 * In this case supportedPatters could include the list ("alpha", "second", "value").  
-	 */
-	protected List<List<String>> supportedPatterns;
 
-	/**
-	 * @return the supportedPatterns
-	 */
-	public List<List<String>> getSupportedPatterns() {
-		return supportedPatterns;
-	}
+  /**
+   * String identifying final section of URL prior to section to rewrite (without slashes).
+   * <p/>
+   * For example, consider URL rewriting between the forms:
+   * http://localhost/webapp/servlet/a/b/c
+   * http://localhost/webapp/servlet?alpha=a&second=b&value=c
+   * <p/>
+   * In this case urlRoot could be "servlet"
+   */
+  protected String urlRoot;
 
-	/**
-	 * @param supportedPatterns the supportedPatterns to set
-	 */
-	public void setSupportedPatterns(List<List<String>> supportedPatterns) {
-		this.supportedPatterns = supportedPatterns;
-	}
+  /**
+   * List of patterns supported by URL mapping, each pattern being a list of Strings to be
+   * mapped against the URL
+   * <p/>
+   * For example, consider URL rewriting between the forms:
+   * http://localhost/webapp/servlet/a/b/c
+   * http://localhost/webapp/servlet?alpha=a&second=b&value=c
+   * <p/>
+   * In this case supportedPatters could include the list ("alpha", "second", "value").
+   */
+  protected List<List<String>> supportedPatterns;
 
-	/**
-	 * @return the urlRoot
-	 */
-	public String getUrlRoot() {
-		return urlRoot;
-	}
+  /**
+   * @return the supportedPatterns
+   */
+  public List<List<String>> getSupportedPatterns() {
+    return supportedPatterns;
+  }
 
-	/**
-	 * @param urlRoot the urlRoot to set
-	 */
-	public void setUrlRoot(String urlRoot) {
-		this.urlRoot = urlRoot;
-	}
+  /**
+   * @param supportedPatterns the supportedPatterns to set
+   */
+  public void setSupportedPatterns(List<List<String>> supportedPatterns) {
+    this.supportedPatterns = supportedPatterns;
+  }
+
+  /**
+   * @return the urlRoot
+   */
+  public String getUrlRoot() {
+    return urlRoot;
+  }
+
+  /**
+   * @param urlRoot the urlRoot to set
+   */
+  public void setUrlRoot(String urlRoot) {
+    this.urlRoot = urlRoot;
+  }
 
 }

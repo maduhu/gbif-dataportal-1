@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.  
+ * Copyright (C) 2005 Global Biodiversity Information Facility Secretariat.
  * All Rights Reserved.
  *
  * The contents of this file are subject to the Mozilla Public
@@ -18,15 +18,17 @@ import org.springframework.beans.factory.BeanNameAware;
 
 /**
  * An defines an error handler, which is used to handle errors passed up from an activity
- * @author trobertson 
- * [based on the article by Steve Dodge: http://www.javaworld.com/javaworld/jw-04-2005/jw-0411-spring.html]
+ *
+ * @author trobertson
+ *         [based on the article by Steve Dodge: http://www.javaworld.com/javaworld/jw-04-2005/jw-0411-spring.html]
  */
 public interface ErrorHandler extends BeanNameAware {
-	/**
-	 * Attempts to handle the error and if it can't, it throws an exception
-	 * @param context That the workflow is working within
-	 * @param th That is being handles
-	 * @throws Exception If the handler can't handle the error
-	 */
-    public void handleError(ProcessContext context, Throwable th) throws Exception;
+  /**
+   * Attempts to handle the error and if it can't, it throws an exception
+   *
+   * @param context That the workflow is working within
+   * @param th      That is being handles
+   * @throws Exception If the handler can't handle the error
+   */
+  void handleError(ProcessContext context, Throwable th) throws Exception;
 }

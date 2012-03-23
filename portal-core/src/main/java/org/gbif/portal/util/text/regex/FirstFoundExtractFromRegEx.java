@@ -14,57 +14,57 @@
  ***************************************************************************/
 package org.gbif.portal.util.text.regex;
 
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.util.List;
+
 /**
  * A utility that will use a List of GroupExtractFromRegEx and the first
- * found will return the result. 
- * 
+ * found will return the result.
+ *
  * @author trobertson
  */
 public class FirstFoundExtractFromRegEx {
-	/**
-	 * Logger
-	 */
-	protected static Log log = LogFactory.getLog(FirstFoundExtractFromRegEx.class);
-	
-	/**
-	 * The list of extractors to use
-	 */
-	protected List<GroupExtractFromRegEx> extractors;
-	
-	/**
-	 * Iterates over the list of extractors in turn trying to extract
-	 * the String.  The first result found will be used or null if no
-	 * matches are found
-	 * 
-	 * @param test To extract
-	 * @return The String representing the groups or null 
-	 */
-	public String extract(String test) {
-		for (GroupExtractFromRegEx extractor : extractors) {
-			String result = extractor.extract(test);
-			if (result != null) {
-				return result;
-			}
-		}
-		return null;
-	}
+  /**
+   * Logger
+   */
+  protected static Log log = LogFactory.getLog(FirstFoundExtractFromRegEx.class);
 
-	/**
-	 * @return Returns the extractors.
-	 */
-	public List<GroupExtractFromRegEx> getExtractors() {
-		return extractors;
-	}
+  /**
+   * The list of extractors to use
+   */
+  protected List<GroupExtractFromRegEx> extractors;
 
-	/**
-	 * @param extractors The extractors to set.
-	 */
-	public void setExtractors(List<GroupExtractFromRegEx> extractors) {
-		this.extractors = extractors;
-	}
+  /**
+   * Iterates over the list of extractors in turn trying to extract
+   * the String.  The first result found will be used or null if no
+   * matches are found
+   *
+   * @param test To extract
+   * @return The String representing the groups or null
+   */
+  public String extract(String test) {
+    for (GroupExtractFromRegEx extractor : extractors) {
+      String result = extractor.extract(test);
+      if (result != null) {
+        return result;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * @return Returns the extractors.
+   */
+  public List<GroupExtractFromRegEx> getExtractors() {
+    return extractors;
+  }
+
+  /**
+   * @param extractors The extractors to set.
+   */
+  public void setExtractors(List<GroupExtractFromRegEx> extractors) {
+    this.extractors = extractors;
+  }
 }

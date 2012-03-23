@@ -14,93 +14,91 @@
  ***************************************************************************/
 package org.gbif.portal.util.workflow.errorhandler;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.gbif.portal.util.workflow.BaseActivity;
 import org.gbif.portal.util.workflow.ErrorHandler;
 import org.gbif.portal.util.workflow.ProcessContext;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Launches the configured workflow if the error is in the configured Set of Error Types.
+ *
  * @author trobertson
  */
 public class WorkflowLaunchingErrorHandler extends BaseActivity implements ErrorHandler {
-	/**
-	 * Set of Error classes that if the error is in, the workflow will launch
-	 */
-	protected Set<String> errorsWarrantingWorkflowLaunch = new HashSet<String>();
-	
-	/**
-	 * Should the error not be in the set, this controls whether it should be swallowed
-	 * or passed n
-	 */
-	protected boolean swallowOtherErrors = false;
-	
-	/**
-	 * Launches the configured workflow 
-	 * @see org.gbif.portal.util.workflow.ErrorHandler#handleError(org.gbif.portal.util.workflow.ProcessContext, java.lang.Throwable)
-	 */
-	public void handleError(ProcessContext context, Throwable th) throws Exception {
-		String errorThrown = th.getClass().getCanonicalName();
-		if (getErrorsWarrantingWorkflowLaunch().contains(errorThrown)) {
-			logger.debug("Handling error: " + errorThrown);
-			launchWorkflow(context, null);
-			context.setStopProcess(true);
-			
-		} else if (swallowOtherErrors) {
-			logger.info("Ignoring error [" + th.getClass() + "]");
-		} else {
-			if (th instanceof Exception) {
-				throw ((Exception) th);
-			}
-			throw new Exception(th);
-		}
-	}
+  /**
+   * Set of Error classes that if the error is in, the workflow will launch
+   */
+  protected Set<String> errorsWarrantingWorkflowLaunch = new HashSet<String>();
 
-	/**
-	 * Does nothing
-	 * @see org.gbif.portal.util.workflow.Activity#execute(org.gbif.portal.util.workflow.ProcessContext)
-	 */
-	public ProcessContext execute(ProcessContext context) throws Exception {
-		logger.warn("An error handler cannot be used as an activity!");
-		return context;
-	}
-	
-	/**
-	 * Does nothing, wihout calling super
-	 * @see org.gbif.portal.util.workflow.BaseActivity#afterPropertiesSet()
-	 */
-	@Override
-	public void afterPropertiesSet() throws Exception {
-	}
+  /**
+   * Should the error not be in the set, this controls whether it should be swallowed
+   * or passed n
+   */
+  protected boolean swallowOtherErrors = false;
 
-	/**
-	 * @return the errorsWarrantingWorkflowLaunch
-	 */
-	public Set<String> getErrorsWarrantingWorkflowLaunch() {
-		return errorsWarrantingWorkflowLaunch;
-	}
+  /**
+   * Launches the configured workflow
+   */
+  public void handleError(ProcessContext context, Throwable th) throws Exception {
+    String errorThrown = th.getClass().getCanonicalName();
+    if (getErrorsWarrantingWorkflowLaunch().contains(errorThrown)) {
+      logger.debug("Handling error: " + errorThrown);
+      launchWorkflow(context, null);
+      context.setStopProcess(true);
 
-	/**
-	 * @param errorsWarrantingWorkflowLaunch the errorsWarrantingWorkflowLaunch to set
-	 */
-	public void setErrorsWarrantingWorkflowLaunch(
-			Set<String> errorsWarrantingWorkflowLaunch) {
-		this.errorsWarrantingWorkflowLaunch = errorsWarrantingWorkflowLaunch;
-	}
+    } else if (swallowOtherErrors) {
+      logger.info("Ignoring error [" + th.getClass() + "]");
+    } else {
+      if (th instanceof Exception) {
+        throw ((Exception) th);
+      }
+      throw new Exception(th);
+    }
+  }
 
-	/**
-	 * @return the swallowOtherErrors
-	 */
-	public boolean isSwallowOtherErrors() {
-		return swallowOtherErrors;
-	}
+  /**
+   * Does nothing
+   */
+  public ProcessContext execute(ProcessContext context) throws Exception {
+    logger.warn("An error handler cannot be used as an activity!");
+    return context;
+  }
 
-	/**
-	 * @param swallowOtherErrors the swallowOtherErrors to set
-	 */
-	public void setSwallowOtherErrors(boolean swallowOtherErrors) {
-		this.swallowOtherErrors = swallowOtherErrors;
-	}
+  /**
+   * Does nothing, wihout calling super
+   */
+  @Override
+  public void afterPropertiesSet() throws Exception {
+  }
+
+  /**
+   * @return the errorsWarrantingWorkflowLaunch
+   */
+  public Set<String> getErrorsWarrantingWorkflowLaunch() {
+    return errorsWarrantingWorkflowLaunch;
+  }
+
+  /**
+   * @param errorsWarrantingWorkflowLaunch the errorsWarrantingWorkflowLaunch to set
+   */
+  public void setErrorsWarrantingWorkflowLaunch(
+    Set<String> errorsWarrantingWorkflowLaunch) {
+    this.errorsWarrantingWorkflowLaunch = errorsWarrantingWorkflowLaunch;
+  }
+
+  /**
+   * @return the swallowOtherErrors
+   */
+  public boolean isSwallowOtherErrors() {
+    return swallowOtherErrors;
+  }
+
+  /**
+   * @param swallowOtherErrors the swallowOtherErrors to set
+   */
+  public void setSwallowOtherErrors(boolean swallowOtherErrors) {
+    this.swallowOtherErrors = swallowOtherErrors;
+  }
 }

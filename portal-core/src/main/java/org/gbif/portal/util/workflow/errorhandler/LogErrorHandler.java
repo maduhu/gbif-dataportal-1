@@ -20,92 +20,86 @@ import org.gbif.portal.util.workflow.ErrorHandler;
 import org.gbif.portal.util.workflow.ProcessContext;
 
 
-
 /**
  * Simply logs the error
+ *
  * @author trobertson
  */
 public class LogErrorHandler implements ErrorHandler {
-	/**
-	 * Logger
-	 */
-    protected static Log log = LogFactory.getLog(LogErrorHandler.class);
-	
-	/**
-	 * Context key for the RequestConfiguration
-	 */
-	protected String contextKeyRequestConfiguration;    
-	
-	/**
-	 * Context key for the Report
-	 */
-	protected String contextKeyReport;
-	/**
-	 * The name of this bean
-	 */
-    protected String beanName;
-    
-    /**
-     * If the workflow should continue or not
-     */
-    protected boolean shouldStopOnError = true; 
+  /**
+   * Logger
+   */
+  protected static Log log = LogFactory.getLog(LogErrorHandler.class);
 
-    /**
-     *  @see org.gbif.portal.util.workflow.ErrorHandler#handleError(org.gbif.workflow.ProcessContext, java.lang.Throwable)
-     */
-    public void handleError(ProcessContext processContext, Throwable th) {
-    	log.error(th.getMessage(), th);
-    	processContext.setStopProcess(shouldStopOnError);
-    }
+  /**
+   * Context key for the RequestConfiguration
+   */
+  protected String contextKeyRequestConfiguration;
 
-    /**
-     * @see org.springframework.beans.factory.BeanNameAware#setBeanName(java.lang.String)
-     */
-    public void setBeanName(String beanName) {
-        this.beanName = beanName;
+  /**
+   * Context key for the Report
+   */
+  protected String contextKeyReport;
+  /**
+   * The name of this bean
+   */
+  protected String beanName;
 
-    }
+  /**
+   * If the workflow should continue or not
+   */
+  protected boolean shouldStopOnError = true;
 
-	/**
-	 * @return Returns the contextKeyRequestConfiguration.
-	 */
-	public String getContextKeyRequestConfiguration() {
-		return contextKeyRequestConfiguration;
-	}
+  public void handleError(ProcessContext processContext, Throwable th) {
+    log.error(th.getMessage(), th);
+    processContext.setStopProcess(shouldStopOnError);
+  }
 
-	/**
-	 * @param contextKeyRequestConfiguration The contextKeyRequestConfiguration to set.
-	 */
-	public void setContextKeyRequestConfiguration(
-			String contextKeyRequestConfiguration) {
-		this.contextKeyRequestConfiguration = contextKeyRequestConfiguration;
-	}
+  public void setBeanName(String beanName) {
+    this.beanName = beanName;
 
-	/**
-	 * @return Returns the contextKeyReport.
-	 */
-	public String getContextKeyReport() {
-		return contextKeyReport;
-	}
+  }
 
-	/**
-	 * @param contextKeyReport The contextKeyReport to set.
-	 */
-	public void setContextKeyReport(String contextKeyReport) {
-		this.contextKeyReport = contextKeyReport;
-	}
+  /**
+   * @return Returns the contextKeyRequestConfiguration.
+   */
+  public String getContextKeyRequestConfiguration() {
+    return contextKeyRequestConfiguration;
+  }
 
-	/**
-	 * @return Returns the shouldStopOnError.
-	 */
-	public boolean isShouldStopOnError() {
-		return shouldStopOnError;
-	}
+  /**
+   * @param contextKeyRequestConfiguration The contextKeyRequestConfiguration to set.
+   */
+  public void setContextKeyRequestConfiguration(
+    String contextKeyRequestConfiguration) {
+    this.contextKeyRequestConfiguration = contextKeyRequestConfiguration;
+  }
 
-	/**
-	 * @param shouldStopOnError The shouldStopOnError to set.
-	 */
-	public void setShouldStopOnError(boolean shouldStopOnError) {
-		this.shouldStopOnError = shouldStopOnError;
-	}
+  /**
+   * @return Returns the contextKeyReport.
+   */
+  public String getContextKeyReport() {
+    return contextKeyReport;
+  }
+
+  /**
+   * @param contextKeyReport The contextKeyReport to set.
+   */
+  public void setContextKeyReport(String contextKeyReport) {
+    this.contextKeyReport = contextKeyReport;
+  }
+
+  /**
+   * @return Returns the shouldStopOnError.
+   */
+  public boolean isShouldStopOnError() {
+    return shouldStopOnError;
+  }
+
+  /**
+   * @param shouldStopOnError The shouldStopOnError to set.
+   */
+  public void setShouldStopOnError(boolean shouldStopOnError) {
+    this.shouldStopOnError = shouldStopOnError;
+  }
 }

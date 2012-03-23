@@ -21,105 +21,102 @@ import org.gbif.portal.util.workflow.ErrorHandler;
 import org.gbif.portal.util.workflow.ProcessContext;
 
 
-
 /**
  * Will launch a single activity for any errors
+ *
  * @author trobertson
  */
 public class ActivityLaunchForUnmappedErrorHandler implements ErrorHandler {
-	/**
-	 * Logger
-	 */
-    protected Log logger = LogFactory.getLog(getClass());
-    
-    /**
-     * The bean name
-     */
-    protected String beanName;
-    
-    /**
-     * The context key to put the exception name in the context
-     */
-    protected String contextKeyExceptionName;
-    
-    /**
-     * Activity to launch
-     */
-    protected Activity activity;
-    
-    /**
-     * indicates if the handler should stop the workflow regardless of error found or not
-     */
-    protected boolean shouldStopProcess = true;
-    
-    /**
-	 * @see org.gbif.portal.util.workflow.ErrorHandler#handleError(org.gbif.portal.util.workflow.ProcessContext, java.lang.Throwable)
-	 */
-    @SuppressWarnings("unchecked")
-	public void handleError(ProcessContext context, Throwable th) throws Exception {
-    	String errorThrown = th.getClass().getCanonicalName();
-		logger.info("Error details: ", th);
-		logger.info("Handling: " + errorThrown + " by calling activity: " + activity.getClass());
-		context.put(getContextKeyExceptionName(), errorThrown);
-		activity.execute(context);    				
-		context.setStopProcess(isShouldStopProcess());
-		logger.info("Error successfully handled");
-	}
+  /**
+   * Logger
+   */
+  protected Log logger = LogFactory.getLog(getClass());
 
-	/**
-	 * @return Returns the activity.
-	 */
-	public Activity getActivity() {
-		return activity;
-	}
+  /**
+   * The bean name
+   */
+  protected String beanName;
 
-	/**
-	 * @param activity The activity to set.
-	 */
-	public void setActivity(Activity activity) {
-		this.activity = activity;
-	}
+  /**
+   * The context key to put the exception name in the context
+   */
+  protected String contextKeyExceptionName;
 
-	/**
-	 * @return Returns the beanName.
-	 */
-	public String getBeanName() {
-		return beanName;
-	}
+  /**
+   * Activity to launch
+   */
+  protected Activity activity;
 
-	/**
-	 * @param beanName The beanName to set.
-	 */
-	public void setBeanName(String beanName) {
-		this.beanName = beanName;
-	}
+  /**
+   * indicates if the handler should stop the workflow regardless of error found or not
+   */
+  protected boolean shouldStopProcess = true;
 
-	/**
-	 * @return Returns the contextKeyExceptionName.
-	 */
-	public String getContextKeyExceptionName() {
-		return contextKeyExceptionName;
-	}
+  @SuppressWarnings("unchecked")
+  public void handleError(ProcessContext context, Throwable th) throws Exception {
+    String errorThrown = th.getClass().getCanonicalName();
+    logger.info("Error details: ", th);
+    logger.info("Handling: " + errorThrown + " by calling activity: " + activity.getClass());
+    context.put(getContextKeyExceptionName(), errorThrown);
+    activity.execute(context);
+    context.setStopProcess(isShouldStopProcess());
+    logger.info("Error successfully handled");
+  }
 
-	/**
-	 * @param contextKeyExceptionName The contextKeyExceptionName to set.
-	 */
-	public void setContextKeyExceptionName(String contextKeyExceptionName) {
-		this.contextKeyExceptionName = contextKeyExceptionName;
-	}
+  /**
+   * @return Returns the activity.
+   */
+  public Activity getActivity() {
+    return activity;
+  }
 
-	/**
-	 * @return Returns the shouldStopProcess.
-	 */
-	public boolean isShouldStopProcess() {
-		return shouldStopProcess;
-	}
+  /**
+   * @param activity The activity to set.
+   */
+  public void setActivity(Activity activity) {
+    this.activity = activity;
+  }
 
-	/**
-	 * @param shouldStopProcess The shouldStopProcess to set.
-	 */
-	public void setShouldStopProcess(boolean shouldStopProcess) {
-		this.shouldStopProcess = shouldStopProcess;
-	}
+  /**
+   * @return Returns the beanName.
+   */
+  public String getBeanName() {
+    return beanName;
+  }
+
+  /**
+   * @param beanName The beanName to set.
+   */
+  public void setBeanName(String beanName) {
+    this.beanName = beanName;
+  }
+
+  /**
+   * @return Returns the contextKeyExceptionName.
+   */
+  public String getContextKeyExceptionName() {
+    return contextKeyExceptionName;
+  }
+
+  /**
+   * @param contextKeyExceptionName The contextKeyExceptionName to set.
+   */
+  public void setContextKeyExceptionName(String contextKeyExceptionName) {
+    this.contextKeyExceptionName = contextKeyExceptionName;
+  }
+
+  /**
+   * @return Returns the shouldStopProcess.
+   */
+  public boolean isShouldStopProcess() {
+    return shouldStopProcess;
+  }
+
+  /**
+   * @param shouldStopProcess The shouldStopProcess to set.
+   */
+  public void setShouldStopProcess(boolean shouldStopProcess) {
+    this.shouldStopProcess = shouldStopProcess;
+  }
 
 }

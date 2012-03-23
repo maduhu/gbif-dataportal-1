@@ -14,7 +14,6 @@
 package org.gbif.portal.util.image;
 
 import junit.framework.TestCase;
-
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 
@@ -47,11 +46,11 @@ public class ImageUtilsTest extends TestCase {
     try {
       String tmpDir = System.getProperty("java.io.tmpdir");
       assertTrue(ImageUtils.scaleImageAndWriteToFile("http://ukmoths.org.uk/images/02286_Borkhausenia_minutella_3.jpg",
-          20, 20, tmpDir + "/image.jpg", "JPEG"));
+        20, 20, tmpDir + "/image.jpg", "JPEG"));
       assertTrue(ImageUtils.scaleImageAndWriteToFile("http://ukmoths.org.uk/images/02286_Borkhausenia_minutella_3.jpg",
-          200, 200, tmpDir + "/image.jpg", "JPEG"));
+        200, 200, tmpDir + "/image.jpg", "JPEG"));
       assertTrue(ImageUtils.scaleImageAndWriteToFile("http://ukmoths.org.uk/images/02286_Borkhausenia_minutella_3.jpg",
-          150, 150, tmpDir + "/image.jpg", "JPEG")); // passes!
+        150, 150, tmpDir + "/image.jpg", "JPEG")); // passes!
       assertFalse(ImageUtils.isImageLoadable("http://www.gbif.org/"));
     } catch (Exception e) {
       fail(e.toString());

@@ -14,41 +14,41 @@
  ***************************************************************************/
 package org.gbif.portal.xml.xpath;
 
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
 import org.dom4j.xpath.DefaultXPath;
 
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * A quick tester
+ *
  * @author trobertson
  */
 public class XPathTest {
 
-	protected void orTest() {
-		SAXReader xmlReader = new SAXReader();
-		try {
-			InputStream is = getClass().getClassLoader().getResourceAsStream ("org/gbif/portal/xml/xpath/DigirResponse.xml");
-			Document doc = xmlReader.read(is);
-			DefaultXPath xpath = new DefaultXPath("//dwc:InstitutionCode | //dwc:CatalogNumber");
-			Map<String, String> ns = new HashMap<String, String>();
-			ns.put("dwc","http://digir.net/schema/conceptual/darwin/2003/1.0");
-			xpath.setNamespaceURIs(ns);
-			System.out.println("Result: " + xpath.valueOf(doc));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
-	}
-	
-	/**
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		XPathTest me = new XPathTest();
-		me.orTest();
-	}
+  protected void orTest() {
+    SAXReader xmlReader = new SAXReader();
+    try {
+      InputStream is = getClass().getClassLoader().getResourceAsStream("org/gbif/portal/xml/xpath/DigirResponse.xml");
+      Document doc = xmlReader.read(is);
+      DefaultXPath xpath = new DefaultXPath("//dwc:InstitutionCode | //dwc:CatalogNumber");
+      Map<String, String> ns = new HashMap<String, String>();
+      ns.put("dwc", "http://digir.net/schema/conceptual/darwin/2003/1.0");
+      xpath.setNamespaceURIs(ns);
+      System.out.println("Result: " + xpath.valueOf(doc));
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * @param args
+   */
+  public static void main(String[] args) {
+    XPathTest me = new XPathTest();
+    me.orTest();
+  }
 }

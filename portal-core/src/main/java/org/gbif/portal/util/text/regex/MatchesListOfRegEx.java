@@ -14,82 +14,84 @@
  ***************************************************************************/
 package org.gbif.portal.util.text.regex;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 /**
- * A utility that will test a String against a list of configured regular expressions, 
- * and determine if it matches a known type 
- * 
+ * A utility that will test a String against a list of configured regular expressions,
+ * and determine if it matches a known type
+ *
  * @author trobertson
  */
 public class MatchesListOfRegEx {
-	/**
-	 * Logger
-	 */
-	protected static Log log = LogFactory.getLog(MatchesListOfRegEx.class);
-	
-	/**
-	 * The list of valid expressions
-	 */
-	protected List<String> validFormats;
-	
-	/**
-	 * The list of valid expressions as a compiled set of patterns
-	 */
-	private List<Pattern> validPatterns;
-	
-	/**
-	 * Compares the test String against the known formats
-	 * @param test To match against known formats
-	 * @return True if the format is known, false otherwise
-	 */
-	public boolean matches(String test) {
-		for (Pattern pattern : getValidPatterns()) {
-			Matcher matcher = pattern.matcher(test);
-			if (matcher.matches()) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	/**
-	 * @return Returns the validFormats.
-	 */
-	public List<String> getValidFormats() {
-		return validFormats;
-	}
+  /**
+   * Logger
+   */
+  protected static Log log = LogFactory.getLog(MatchesListOfRegEx.class);
 
-	/**
-	 * Set's the formats and compiles them into the validPatterns
-	 * @param validFormats The validFormats to set.
-	 */
-	public void setValidFormats(List<String> validFormats) {
-		this.validFormats = validFormats;
-		List<Pattern> compiled = new LinkedList<Pattern>();
-		for(String format : validFormats) {
-			compiled.add(Pattern.compile(format));
-		}
-		setValidPatterns(compiled);
-	}
+  /**
+   * The list of valid expressions
+   */
+  protected List<String> validFormats;
 
-	/**
-	 * @return Returns the validPatterns.
-	 */
-	protected List<Pattern> getValidPatterns() {
-		return validPatterns;
-	}
+  /**
+   * The list of valid expressions as a compiled set of patterns
+   */
+  private List<Pattern> validPatterns;
 
-	/**
-	 * @param validPatterns The validPatterns to set.
-	 */
-	protected void setValidPatterns(List<Pattern> validPatterns) {
-		this.validPatterns = validPatterns;
-	}
+  /**
+   * Compares the test String against the known formats
+   *
+   * @param test To match against known formats
+   * @return True if the format is known, false otherwise
+   */
+  public boolean matches(String test) {
+    for (Pattern pattern : getValidPatterns()) {
+      Matcher matcher = pattern.matcher(test);
+      if (matcher.matches()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * @return Returns the validFormats.
+   */
+  public List<String> getValidFormats() {
+    return validFormats;
+  }
+
+  /**
+   * Set's the formats and compiles them into the validPatterns
+   *
+   * @param validFormats The validFormats to set.
+   */
+  public void setValidFormats(List<String> validFormats) {
+    this.validFormats = validFormats;
+    List<Pattern> compiled = new LinkedList<Pattern>();
+    for (String format : validFormats) {
+      compiled.add(Pattern.compile(format));
+    }
+    setValidPatterns(compiled);
+  }
+
+  /**
+   * @return Returns the validPatterns.
+   */
+  protected List<Pattern> getValidPatterns() {
+    return validPatterns;
+  }
+
+  /**
+   * @param validPatterns The validPatterns to set.
+   */
+  protected void setValidPatterns(List<Pattern> validPatterns) {
+    this.validPatterns = validPatterns;
+  }
 }

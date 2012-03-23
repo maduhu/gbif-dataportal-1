@@ -18,37 +18,41 @@ import java.util.List;
 
 /**
  * Used to indicate that a property is not declared in the PropertyStore
+ *
  * @author trobertson
  */
 public class PropertyNotFoundException extends RuntimeException {
-	/**
-	 * Generated
-	 */
-	private static final long serialVersionUID = -3021068230882147947L;
+  /**
+   * Generated
+   */
+  private static final long serialVersionUID = -3021068230882147947L;
 
-	/**
-	 * Generates a logable message saying that the property is not found  
-	 * @param namespace That is being located 
-	 */
-	public PropertyNotFoundException(String namespace) {
-		super("Namespace [" + namespace + "] is not found in the property store");		
-	}
+  /**
+   * Generates a logable message saying that the property is not found
+   *
+   * @param namespace That is being located
+   */
+  public PropertyNotFoundException(String namespace) {
+    super("Namespace [" + namespace + "] is not found in the property store");
+  }
 
-	/**
-	 * Generates a logable message saying that the property is not found in the namespace  
-	 * @param namespace That is being used
-	 * @param property Within the namespace that couldn't be found
-	 */
-	public PropertyNotFoundException(String namespace, String property) {
-		super("Property [" + property + "] is not mapped for namespace [" + namespace + "] in the property store");		
-	}
-	
-	/**
-	 * Generates a logable message saying that the property is not found in the namespaces  
-	 * @param namespace That is being used
-	 * @param property Within the namespace that couldn't be found
-	 */
-	public PropertyNotFoundException(List<String> namespaces, String property) {
-		super("Property [" + property + "] is not mapped for namespace list [" + namespaces + "]");		
-	}
+  /**
+   * Generates a logable message saying that the property is not found in the namespace
+   *
+   * @param namespace That is being used
+   * @param property  Within the namespace that couldn't be found
+   */
+  public PropertyNotFoundException(String namespace, String property) {
+    super("Property [" + property + "] is not mapped for namespace [" + namespace + "] in the property store");
+  }
+
+  /**
+   * Generates a logable message saying that the property is not found in the namespaces
+   *
+   * @param namespace That is being used
+   * @param property  Within the namespace that couldn't be found
+   */
+  public PropertyNotFoundException(List<String> namespaces, String property) {
+    super("Property [" + property + "] is not mapped for namespace list [" + namespaces + "]");
+  }
 }

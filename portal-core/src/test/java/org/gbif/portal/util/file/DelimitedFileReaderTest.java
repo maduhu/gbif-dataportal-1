@@ -7,13 +7,13 @@ import java.io.FileNotFoundException;
 
 /**
  * Little test cases
- * 
+ *
  * @author trobertson
  */
 public class DelimitedFileReaderTest extends TestCase {
   public void testTDF() throws FileNotFoundException {
     DelimitedFileReader dfr = new DelimitedFileReader((new FileInputStream(
-        "./src/test/java/org/gbif/portal/util/file/tdf.txt")), "\t", null, false);
+      "./src/test/java/org/gbif/portal/util/file/tdf.txt")), "\t", null, false);
     String[][] data = {{"1", "Tim"}, {"2", "Tim, tom"}};
     int i = 0;
     while (dfr.next()) {

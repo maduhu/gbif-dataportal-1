@@ -16,25 +16,26 @@ package org.gbif.portal.util.spring.config.string;
 
 /**
  * A simple String wrapper bean
+ *
  * @author trobertson
  */
 public class StringBean {
-	/**
-	 * Wrapped value
-	 */
-	protected String string;
+  /**
+   * Wrapped value
+   */
+  protected String string;
 
-	/**
-	 * @return Returns the string.
-	 */
-	public String getString() {
-		return string;
-	}
+  /**
+   * @return Returns the string.
+   */
+  public String getString() {
+    return string;
+  }
 
-	/**
-	 * @param string The string to set.
-	 */
-	public void setString(String string) {
-		this.string = string;
-	}
+  /**
+   * @param string The string to set.
+   */
+  public void setString(String string) {
+    this.string = string;
+  }
 }
