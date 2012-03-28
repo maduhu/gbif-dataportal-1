@@ -103,7 +103,7 @@ public class DataResourceDAOImpl extends HibernateDaoSupport implements DataReso
 			public Object doInHibernate(Session session) {
         Query query =
           session
-            .createQuery("from DataResource dr left join fetch dr.dataProvider order by dr.created desc");
+            .createQuery("from DataResource dr left join fetch dr.dataProvider where dr.deleted is null order by dr.created desc");
         query.setMaxResults(1);
         query.setCacheable(true);
 				return query.uniqueResult();
