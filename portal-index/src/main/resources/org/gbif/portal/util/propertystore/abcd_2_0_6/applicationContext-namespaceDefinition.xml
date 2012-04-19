@@ -22,7 +22,7 @@
 				<!-- Entities to build requests -->
 				<entry key="REQUEST.SCIENTIFIC.NAME" value="/DataSets/DataSet/Units/Unit/Identifications/Identification/Result/TaxonIdentified/ScientificName/FullScientificNameString"/>
 				<entry key="REQUEST.INSTITUTION.CODE" value="/DataSets/DataSet/Units/Unit/SourceInstitutionID"/> 
-				<entry key="REQUEST.COLLECTION.CODE" value="/DataSets/DataSet/Metadata/Description/Representation/Title"/> 
+				<entry key="REQUEST.COLLECTION.CODE" value="/DataSets/DataSet/Units/Unit/SourceID"/>
 				<entry key="REQUEST.CATALOGUE.NUMBER" value="/DataSets/DataSet/Units/Unit/UnitID"/> 
 				<entry key="REQUEST.DATE.LAST.MODIFIED" value="/DataSets/DataSet/Units/Unit/DateLastEdited"/>
 				<entry key="REQUEST.NAMESPACE.SCIENTIFIC.NAME" value="http://www.tdwg.org/schemas/abcd/2.06/DataSets/DataSet/Units/Unit/Identifications/Identification/Result/TaxonIdentified/ScientificName/FullScientificNameString"/>
