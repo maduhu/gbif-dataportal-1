@@ -44,7 +44,7 @@
       <select name="country" onchange="javascript:document.viewOptions.submit();">
         <option value="all" <c:if test="${empty param['country'] || param['country']=='all'}">selected="true"</c:if>><spring:message code="repat.select.option.all"/></option>
         <c:forEach items="${countryList}" var="country">
-        <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && country.isoCountryCode!='CN' && country.isoCountryCode!='IL'}">
+        <c:if test="${country.isoCountryCode!='TW' && country.isoCountryCode!='UK' && country.isoCountryCode!='IL'}">
          <option value="${country.isoCountryCode}" <c:if test="${param['country']==country.isoCountryCode}">selected="true"</c:if>>
           <spring:message code="country.${country.isoCountryCode}"/>
          </option>
