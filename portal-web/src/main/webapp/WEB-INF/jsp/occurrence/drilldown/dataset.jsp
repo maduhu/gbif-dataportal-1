@@ -207,7 +207,7 @@
 			<c:choose>
 				<c:when test="${not empty linkRecord.url}">
 					<c:choose>
-						<c:when test="${linkRecord.linkType==1}">
+						<c:when test="${linkRecord.linkType==1 || linkRecord.linkType==0}">
 							<a href="${linkRecord.url}">${linkRecord.url}</a>
 						</c:when>
 					</c:choose>	
