@@ -167,6 +167,9 @@ public class OccurrenceFilterController extends MultiActionController {
 	/** Model key for the criteria */
 	protected String criteriaRequestKey="criteria";
 	
+  /** Model key for one classification  */
+  protected String oneClassificationKey="oneClassification";	
+	
 	/** Model key for the points totals */
 	protected String pointsTotalRequestKey="pointsTotal";
 	
@@ -197,6 +200,9 @@ public class OccurrenceFilterController extends MultiActionController {
 	/** Number of sample results to display */
 	protected int maxSampleResults = 5;
 	
+	/** Filter value for 'classification' **/
+	protected String classificationFilterValue = "20";
+	
 	protected List<String> geoFormats;
 	
 	/**
@@ -212,6 +218,8 @@ public class OccurrenceFilterController extends MultiActionController {
 		CriteriaDTO criteria  = CriteriaUtil.getCriteria(request,occurrenceFilters.getFilters());
 		//fix criteria value
 		CriteriaUtil.fixEncoding(request, criteria);
+		
+		logger.debug("Criteria list: " + criteria);
 		
 		//check for data provider ids		
 		String[] dataProviderIds = request.getParameterValues(dataProviderParameterKey);
@@ -267,6 +275,29 @@ public class OccurrenceFilterController extends MultiActionController {
 			mav.addObject(resultsModelKey, searchResults.getResults());		
 		}
 		//construct the model
+		  boolean oneClassification = false;
+		  int classificationCount = 0;
+		  for(CriterionDTO criterion: criteria.getCriteria()){
+		    logger.debug("criterion: " + criterion);
+		    // search request contains a classification filter
+		    if(criterion.getSubject().equals(classificationFilterValue)) {
+          if(classificationCount<1) {
+            // check that classification contains a species level (or lower) taxon
+            if(taxonomyManager.getBriefTaxonConceptFor(criterion.getValue()).getRankValue()>=6000) {
+              logger.debug("Taxon included on the classification filter is species level or lower");
+              oneClassification = true;
+            }
+          }
+         // there is more than one classification
+          else {
+            oneClassification = false;
+            // no use to continue searching
+            break;              
+          }
+          classificationCount++;
+		    }
+		  }
+		  mav.addObject(oneClassificationKey, oneClassification);
     	mav.addObject(criteriaRequestKey, criteria);
     	mav.addObject(filtersRequestKey, occurrenceFilters.getFilters());
     	mav.addObject(messageSourceKey, messageSource);

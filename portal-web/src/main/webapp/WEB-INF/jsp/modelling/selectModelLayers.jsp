@@ -11,7 +11,8 @@
 This tools provides an integration between <a href="http://openmodeller.sourceforge.net">openModeller</a>
 and the occurrence point data available within the portal.<br/>
 Its main purpose is to demonstrate the integration of GBIF-mediated occurrence data with other applications like modelling tools.<br/> 
-Please be aware that the significance of the modelling result varies greatly with the selection of meaningful parameters.
+Please be aware that the significance of the modelling result varies greatly with the selection of meaningful parameters, 
+and also with volume, accuracy of georeferencing and geographical spread of the source data.
 <br/>
 </p>
 <p>

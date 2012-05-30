@@ -260,10 +260,12 @@ public class ClassificationSearchController extends NameSearchController {
 	
 	
 	private BriefTaxonConceptDTO getSelectedConcept(List<BriefTaxonConceptDTO> concepts, String conceptKey) {
-		for(BriefTaxonConceptDTO concept: concepts){
-			if(concept.getKey().equals(conceptKey))
-				return concept;
-		}
+	  if(concepts!=null) {
+		  for(BriefTaxonConceptDTO concept: concepts){
+		  	if(concept.getKey().equals(conceptKey))
+		  		return concept;
+		  }
+	  }
 		return null;
 	}
 

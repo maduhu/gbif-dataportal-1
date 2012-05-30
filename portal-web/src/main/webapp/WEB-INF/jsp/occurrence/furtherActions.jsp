@@ -69,9 +69,18 @@
         <td><b><spring:message code="actions.create" text="Create:"/></b></td>
         <td>  
           <ul class="actionsListInline">
-            <li> 
-              <c:if test="${viewName!='nicheModelling'}"><a href="${pageContext.request.contextPath}/occurrences/setupModel.htm?<gbif:criteria criteria="${criteria}"/>"></c:if><spring:message code="occurrence.search.filter.action.create.model" text="Niche Model"/><c:if test="${viewName!='nicheModelling'}"></a></c:if>
-            </li>
+          <c:choose>
+            <c:when test="${oneClassification}">
+              <li> 
+                <c:if test="${viewName!='nicheModelling'}"><a href="${pageContext.request.contextPath}/occurrences/setupModel.htm?<gbif:criteria criteria="${criteria}"/>"></c:if><spring:message code="occurrence.search.filter.action.create.model" text="Niche Model"/><c:if test="${viewName!='nicheModelling'}"></a></c:if>
+              </li>
+            </c:when>
+            <c:otherwise>
+              <li> 
+                <spring:message code="occurrence.search.filter.action.create.model" text="Niche Model"/> <i><spring:message code="occurrence.search.filter.action.create.model.disable" text="(only available for searches including exactly one classification at species level or below)"/></i>
+              </li>
+            </c:otherwise>
+          </c:choose>
           </ul>
         </td>
       </tr>
