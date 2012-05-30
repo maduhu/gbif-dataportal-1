@@ -77,7 +77,7 @@
             </c:when>
             <c:otherwise>
               <li> 
-                <spring:message code="occurrence.search.filter.action.create.model" text="Niche Model"/> <i><spring:message code="occurrence.search.filter.action.create.model.disable" text="(only available for searches including exactly one classification at species level or below)"/></i>
+                <spring:message code="occurrence.search.filter.action.create.model" text="Niche Model"/> <i><spring:message code="occurrence.search.filter.action.create.model.disable" text="(only available for searches including exactly one classification at genus level or below)"/></i>
               </li>
             </c:otherwise>
           </c:choose>
