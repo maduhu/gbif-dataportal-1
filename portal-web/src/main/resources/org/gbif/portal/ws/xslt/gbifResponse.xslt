@@ -186,7 +186,7 @@
 		<h3>Dataset: <xsl:value-of select="gbif:name"/></h3>
 		<div class="resource">
 			<xsl:for-each select="gbif:logoUrl">
-				<img><xsl:attribute name="src"><xsl:value-of select="."/></xsl:attribute></img><br/>
+				<img height="50"><xsl:attribute name="src"><xsl:value-of select="."/></xsl:attribute></img><br/>
 			</xsl:for-each>
 			<dl class="tablestyle">
 				<xsl:for-each select="*">
@@ -233,7 +233,7 @@
 		<h3>Data provider: <xsl:value-of select="gbif:name"/></h3>
 		<div class="provider">
 			<xsl:for-each select="gbif:logoUrl">
-				<img><xsl:attribute name="src"><xsl:value-of select="."/></xsl:attribute></img><br/>
+				<img height="50"><xsl:attribute name="src"><xsl:value-of select="."/></xsl:attribute></img><br/>
 			</xsl:for-each>
 			<dl class="tablestyle">
 				<xsl:for-each select="*">
@@ -260,7 +260,7 @@
 		<h3>Data network: <xsl:value-of select="gbif:name"/></h3>
 		<div class="network">
 			<xsl:for-each select="gbif:logoUrl">
-				<img><xsl:attribute name="src"><xsl:value-of select="."/></xsl:attribute></img><br/>
+				<img height="50"><xsl:attribute name="src"><xsl:value-of select="."/></xsl:attribute></img><br/>
 			</xsl:for-each>
 			<dl class="tablestyle">
 				<xsl:for-each select="*">
