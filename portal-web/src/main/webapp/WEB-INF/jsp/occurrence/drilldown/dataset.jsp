@@ -118,22 +118,21 @@
 
 	<!-- Date collected -->
 	<p>
-	<label for="dateCollected"><spring:message code="occurrence.record.dateCollected"/>:</label> 
-	<c:if test="${rawOccurrenceRecord.day!=null}">
-		${rawOccurrenceRecord.day}
-	</c:if>
-	<c:if test="${rawOccurrenceRecord.month!=null}">
-		<c:if test="${rawOccurrenceRecord.day!=null}">/</c:if>
-		${rawOccurrenceRecord.month}
-	</c:if>
-	<c:if test="${rawOccurrenceRecord.year!=null}">
-		<c:if test="${rawOccurrenceRecord.month!=null}">/</c:if>
-		${rawOccurrenceRecord.year}
-	</c:if>		
-	<c:if test="${occurrenceRecord.occurrenceDate!=null}">
-		<c:set var="interpretedDate"><fmt:formatDate value="${occurrenceRecord.occurrenceDate}"/></c:set>
-		<spring:message code="occurrence.record.interpreted.as" arguments="${interpretedDate}" argumentSeparator="xxx"/>	
-	</c:if>	
+	<label for="dateCollected"><spring:message code="occurrence.record.dateCollected"/>:</label>
+	<c:choose>
+	  <c:when test="${rawOccurrenceRecord.year!=null && rawOccurrenceRecord.month!=null && rawOccurrenceRecord.day!=null}" >
+	    ${rawOccurrenceRecord.day} / ${rawOccurrenceRecord.month} / ${rawOccurrenceRecord.year}
+        <c:if test="${occurrenceRecord.occurrenceDate!=null}">
+          <c:set var="interpretedDate"><fmt:formatDate value="${occurrenceRecord.occurrenceDate}"/></c:set>
+        <spring:message code="occurrence.record.interpreted.as" arguments="${interpretedDate}" argumentSeparator="xxx"/>  
+        </c:if>
+      </c:when>
+      <c:otherwise>
+        <c:if test="${rawOccurrenceRecord.year!=null}">
+          ${rawOccurrenceRecord.year} <spring:message code="occurrence.record.interpreted.value"/>
+        </c:if>   
+      </c:otherwise>
+    </c:choose>
 	</p>
 	
 	<!-- Image records -->
