@@ -23,6 +23,11 @@
 <p> 
 <input type="radio" name="locale" value="es" <c:if test="${settings.locale=='es'}">checked="true"</c:if>/>Español
 </p>
+<p> 
+<input type="radio" name="locale" value="pl" <c:if test="${settings.locale=='pl'}">checked="true"</c:if>/>Polski
+</p>
+<input type="radio" name="locale" value="jp" <c:if test="${settings.locale=='jp'}">checked="true"</c:if>/>日本語 
+</p>
 
 </spring:bind>
 <br/>
