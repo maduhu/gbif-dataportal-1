@@ -1,0 +1,1448 @@
+# i18n Message codes for the GBIF Portal=
+
+
+# Reusable constants=
+Y=
+N=
+create=作成
+delete=削除
+once=一度
+daily=毎日
+weekly=毎週
+biweekly=隔週
+monthly=毎月
+bimonthly=隔月
+yearly=毎年
+next=次
+second=秒
+seconds=秒
+minute=分
+minutes=分
+hour=時
+hours=時
+day=日
+days=日
+admin=管理
+edit=編集
+save=保存
+details=詳細
+view=見解
+show=表示
+hide=隠す
+minimum=最小
+maximum=最大
+day=日
+month=月
+year=年
+between=間
+and=および
+or=または
+start.date=開始日
+end.date=終了日
+all=すべて
+page=ページ
+of=～の
+new=新
+version=版
+version.features=バージョンの新機能
+bugs=バグの修正
+bugs.fixes=バグ修正/バージョンの機能強化
+
+
+# Accessibility=
+accessibility.title=ユーザー補助のオプション
+accessibility.skip.to.content=コンテンツにスキップ
+accessibility.skip.to.sidebar=サイドバーへスキップ
+
+
+# Breadcrumbs=
+breadcrumbs.title=最近閲覧
+
+
+# Reusable Taxonomic messages=
+taxon=分類
+rank=ランク
+author=著者
+accepted.name=承認名
+accepted=承認名
+scientificName=学名
+gbif.id=GBIF認証
+gbif.parent.id=GBIF親認証
+
+
+# Major ranks=
+taxonrank.kingdom=界
+taxonrank.phylum=門
+taxonrank.class=綱
+taxonrank.order=目
+taxonrank.family=科
+taxonrank.genus=属
+taxonrank.species=種
+taxonrank.subspecies=亜種
+generic=総称？
+specificEpithet=種小名
+
+
+# Non major ranks=
+taxonrank.suborder=亜目
+taxonrank.infraorder=下目
+taxonrank.superfamily=上科
+taxonrank.subfamily=亜科
+taxonrank.tribe=族
+taxonrank.subtribe=亜族
+taxonrank.nothogenus=雑属
+taxonrank.subgenus=亜属
+taxonrank.section=節
+taxonrank.subsection=亜節
+taxonrank.series=系
+taxonrank.subseries=亜系
+taxonrank.nothospecies=雑種
+taxonrank.subspecies=亜種
+taxonrank.nothosubspecies=雑亜種
+taxonrank.variety=変種
+taxonrank.nothovariety=雑変種
+taxonrank.form=品種　（形態？）
+taxonrank.nothoform=雑品種
+taxonrank.biovar=次亜種
+taxonrank.serovar=血液型亜型
+taxonrank.cultivar=栽培品種
+taxonrank.pathovar=病原型
+taxonrank.infraspecific=種内
+taxonrank.aberration=異常
+taxonrank.mutation=突然変異
+taxonrank.race=系統
+taxonrank.confersubspecies=付与亜種
+taxonrank.formaspecialis=分化型
+taxonrank.hybrid=雑種
+taxonrank.unranked=不明
+
+
+# Reusable Actions=
+search=検索
+refine.search=絞込検索
+actions.for=～の操作
+actions=操作
+explore.occurrences=出現探索
+moreactions=追加(その他）操作
+next=次の
+previous=前の
+interpreted.from=～と解釈
+
+
+# Reusable labels=
+name=名称
+description=種類
+role=役割
+address=アドレス
+country=国・地域・島
+email=Eメール
+telephone=電話
+website=ウェブサイト
+date.added=ポータルに追加
+last.modified=更新情報
+basis.of.record=基本レコード
+occurrences=オカレンス
+occurrence=オカレンス
+occurrence.record=オカレンスレコード
+dataset=データセット
+data.provider=データパブリシャ
+type.status=タイプ状態
+type.scientific.name=代表名
+catalogue.number=カタログ番号
+image=画像
+images=画像
+link=リンク
+links=リンク
+
+
+# Reusable error messages=
+errors.must.be.specified=必須
+errors.uddi.communication=技術的問題の発生（UDDIへ連絡）
+errors.invalid=無効
+errors.username.in.use=ユーザ名使用
+errors.tooshort=短すぎる
+errors.invalid.chars=無効文字を含む
+errors.invalid.latitude=無効な緯度
+errors.invalid.longitude=無効な経度
+errors.west.greater.east=東よりも西寄り
+errors.south.greater.north=北よりも南寄り
+
+
+# Reusable titles=
+occurrence.overview=Occurrence 概要
+occurrences.of=Occurrence は
+image.overview=画像
+
+
+# The decorators for dates=
+I18nDateDecorator.date.format=dd/MM/yyyy
+I18nDateTimeDecorator.date.format=dd/MM/yyyy - HH:mm
+
+
+# Page Header titles=
+portal.title=GBIFポータル
+portal.subtitle.welcome=ウエルカム
+portal.subtitle.search=検索
+portal.header.subtitle=生物多様性データへのフリー・オープンアクセス
+heading.stats1=～の分布レコード
+heading.stats2=データパブリシャ
+welcome.tip.of.the.day.title=GBIFデータポータルへようこそ 
+welcome.tip.of.the.day.1=GBIFネットワークを介して共有する {0} データレコード（{1}の座標）にアクセス
+welcome.tip.of.the.day.2=このサイトの使用方法については、 {0}を参照
+welcome.tip.of.the.day.3=このサイトを小さ いディスプレイにチューニングするには{0}を参照
+
+
+copyright.2=データパブリッシャは、データに対するすべての権利を保持
+contact.us=問合せ
+
+
+# Blanket Search=
+blanket.search=検索
+blanket.search.go=検索
+blanket.search.hint=種/国/データセット
+blanket.search.placeholder=新検索を開始
+blanket.search.header=検索結果
+blanket.search.names.title=名称
+blanket.search.scientific.names.title=学名
+blanket.search.common.names.title=普通名
+blanket.search.geographical.areas.title=国
+blanket.search.data.resources.title=データセット
+blanket.search.name.nomatches=名称一致なし
+blanket.search.scientific.name.nomatches=学名一致なし
+blanket.search.common.name.nomatches=一般名一致なし
+blanket.search.names.viewall=すべての一致名称を表示 
+blanket.search.scientific.names.viewall=すべての一致学名を表示 
+blanket.search.common.names.viewall=すべての一致普通名を表示 
+blanket.search.countries.viewall=すべての一致国名を表示 
+blanket.search.datasets.viewall=すべての一致データセットを表示 
+blanket.search.geospatial.nomatches=国名一致なし
+blanket.search.publication.nomatches=データセット一致なし
+blanket.search.name.did.you.mean=～ということですか？
+
+
+# Naming=
+ambiguous.synonym.for=曖昧な同義語
+misapplied.name.for=誤用名
+provisionally.applied.name=仮承認名
+synonym.for=同義語
+accepted.name=承認名
+specimen.types=タイプ標本
+
+
+# Top Menu=
+topmenu.home=ホーム
+topmenu.species=種
+topmenu.countries=国
+topmenu.datasets=データセット
+topmenu.occurrences=オカレンス
+topmenu.settings=設定
+topmenu.about=概要
+
+
+# Top Menu - titles=
+topmenu.home.title=GBIFホームページに戻る
+topmenu.species.title=分類内の種を見つける
+topmenu.countries.title=国、領土または島（ISO 3166規格に基づく）を見つける
+topmenu.datasets.title=データセット、データパブリシャまたはデータネットワークを見つける
+topmenu.occurrences.title=オカレンスレコードの検索
+topmenu.settings.title=このポータルの設定を調整する
+topmenu.about.title=このポータルについて
+
+
+# Introduction Sections=
+
+
+# Species pane=
+taxonomy.intro.heading=種を探索
+taxonomy.intro.description=種や生物の他グループのデータを検索
+taxonomy.intro.speciesoftheday=現代の種
+taxonomy.intro.latestspeciesadded=種の例
+taxonomy.intro.description1=種や植物、動物、菌類、微生物の他のグループに関するオカレンスレコードと分類、学名、普通名を含む情報
+taxonomy.intro.explore=探索
+taxonomy.intro.summary=種
+# Country pane=
+geography.intro.heading=国を探索
+geography.intro.description=特定の国、地域や島に記録されている種のデータを検索
+geography.intro.description1=GBIFネットワーク全体のパブリシャで共有される記録を含んだ、それぞれの国に記録されている種についての情報
+geography.intro.countryoftheday=現代の国
+geography.intro.ecoregionoftheday=現代の生態地域
+geography.intro.latestresourceadded=最新のデータセット追加
+geography.intro.explore=探索
+geography.intro.seedatafor=データ参照
+geography.intro.summary=国
+# Dataset pane=
+dataset.intro.heading=データセット探索
+dataset.intro.description=データ・パブリッシャ、データセットまたはデータ·ネットワークからデータを検索
+dataset.intro.description.counts=データ・パブリッシャ、データセットおよびデータネットワーク上の情報はGBIFを介して共有する（{1}データパブリシャからの{0} データセットのサマリー情報を含む）。
+dataset.intro.latestresourceadded=最新のデータセット追加
+dataset.intro.explore=探索
+dataset.intro.summary=データセット
+
+
+# Settings=
+settings.title=設定
+settings.apply.changes=変更を適用
+settings.lookandfeel=ルックアンドフィール
+settings.theme.standard=大型ディスプレイ（ディスプレイ1024x768以上を推奨） 
+settings.theme.800x600=小型ディスプレイ（800×600以上を推奨）
+settings.language=言語
+settings.language.english=英語
+settings.language.french=フランス語
+
+
+# Search Filter=
+search.filter.currentsearch.title=現在の検索
+search.filter.removefilter=このフィルタを削除
+search.filter.empty=現在検索は空です。
+search.filter.minus.signs=フィルタはマイナス記号をクリックして削除できます
+
+
+# Quick taxon search=
+quick.taxon.search=名称に移動
+quick.taxon.search.explanation=分類内{0}から学名を見つける
+quick.taxon.search.explanation.this.classification=この分類内で学名を見つける
+
+
+# Occurrence Search Filters=
+occurrence.search.filter.searchresults=検索結果
+occurrence.search.filter.max.results.exceeded=この検索は{0}以上の結果が返っています。
+occurrence.search.filter.nonefound=オカレンスレコードありません。.検索フィルターを調整してください。
+occurrence.search.filter.main.title=オカレンス検索
+occurrence.search.filter.view=表示
+occurrence.search.filter.add=追加
+occurrence.search.filter.tofilter=フィルタへ
+occurrence.search.filter.addfilter=新しいフィルタ追加
+occurrence.search.filter.removethisfilter=このフィルタ削除
+occurrence.search.filter.matchAll=一致
+occurrence.search.filter.matchAll.following=以下の規則
+occurrence.search.filter.matchAll.true=すべて
+occurrence.search.filter.matchAll.false=任意の
+occurrence.search.filter.retrievingcount=検索のカウントを取得する
+occurrence.search.filter.matched.over=この検索は{0}以上のオカレンスレコードと一致
+occurrence.search.filter.matched.one=この検索は１つのオカレンスレコードと一致
+occurrence.search.filter.matched.many=この検索は{0}のオカレンスレコードと一致
+
+
+occurrence.search.actions.retrievingcount=（カウント取得）
+occurrence.search.actions.matched.over=（ {0} 以上のレコード）
+occurrence.search.actions.matched.one=（1レコード）
+occurrence.search.actions.matched.many=（{0} レコード
+
+
+# Occurrence Search Results Table=
+occurrence.search.results=Occurrence 検索結果
+occurrence.search.details=検索詳細
+occurrence.search.description=検索説明
+occurrence.search.url=検索 URL
+occurrence.search.download.url=ダウンロードページURL
+occurrence.search.download.date=ダウンロード日付
+occurrence.search.results.provider=データセット
+occurrence.search.results.dataprovider=パブリシャ
+occurrence.search.results.dataresource=データセット
+occurrence.search.results.isocountrycode=ISO国コード
+occurrence.search.results.name=学名
+occurrence.search.results.institutioncode=機関コード
+occurrence.search.results.collectioncode=コレクションコード
+occurrence.search.results.catalogueno=カタログ番号
+occurrence.search.results.basisofrecord=記録の根拠
+occurrence.search.results.coordinates=座標
+occurrence.search.results.date=日付
+occurrence.search.results.country=国
+occurrence.search.results.url=URL
+occurrence.switchto.provider.countview=検索に含まれるデータパブリシャ
+occurrence.switchto.resources.countview=検索に含まれるデータセット
+occurrence.switchto.country.countview=検索に含まれる国
+occurrence.switchto.species.countview=種の結果
+
+
+# Occurrence Search Results Counts=
+occurrence.search.filter.results.countsheader.provider=検索に含めるにデータパブリシャを指定します。
+occurrence.search.filter.results.countsmessage.provider=以下は現在の検索条件に一致する観察記録を公開しているデータパブリシャのリストです。特定のパブリシャのレコードを表示したい場合は、正しいチェックボックスを選択し、 "検索絞込"をクリックしてください。
+occurrence.search.filter.results.countsheader.resource=検索に含めるにデータセットを指定します。
+occurrence.search.filter.results.countsmessage.resource=以下は現在の検索条件に一致する観察記録を公開しているデータセットのリストです。特定のデータセットのレコードを表示したい場合は、適切なチェックボックスを選択し、 "検索絞込"をクリックしてください。
+occurrence.search.filter.results.countsheader.country=検索に含めるに国を指定します。
+occurrence.search.filter.results.countsmessage.country=以下は現在の検索条件に一致する分布レコードがある国（ISO3166)のリストです。特定の国からのレコードを表示したい場合は、適切なチェックボックスを選択し、 "検索絞込"をクリックしてください。
+occurrence.search.filter.results.countsheader.species=種の結果リスト
+occurrence.search.filter.results.countsmessage.species=以下は現在の検索条件に一致する観察記録の種のリストです。特定の種のレコードだけを表示したい場合は、"{0}"をクリックしてください。
+occurrence.search.filter.results.countsmessage.species.justthis=分布表示
+occurrence.search.filter.results.table.counts.provider=パブリシャ
+occurrence.search.filter.results.table.counts.resource=データセット
+occurrence.search.filter.results.table.counts.country=国
+occurrence.search.filter.results.table.counts.species=種
+occurrence.search.filter.results.table.counts.include=含む
+occurrence.search.filter.option.show.georeferenced=ジオリファレンス・レコードのみ表示
+occurrence.search.filter.option.hide.geospatial.issues=地理空間のレコードを隠す
+occurrence.search.filter.option.hide.taxonomy.issues=分類学上の問題のレコードを隠す
+
+
+# Occurrence - Start your search=
+occurrence.search.filter.start.search=検索開始
+occurrence.search.filter.currentsearch.title=現在の検索
+occurrence.search.filter.example.searches=検索の例
+occurrence.search.filter.example.searches.strixaluco=ポーランドの<i>Strix aluco</i>の観察
+occurrence.search.filter.example.searches.pumaconcolor=北米の<i>Puma concolor</i>の観察
+
+
+# Occurrence filter editor=
+search.filter.editor.title=追加検索フィルタ
+occurrence.search.filter.furtheractions.title=さらにアクション
+occurrence.search.filter.whattodo.title=アクション
+occurrence.search.filter.resultsmap.title=結果地図
+occurrence.search.filter.resultsmap.this.search=この検索
+occurrence.search.filter.resultstable.title=結果の表
+occurrence.search.filter.sampleresults.title=サンプル結果
+
+
+# Occurrence actions=
+occurrence.search.filter.action.viewmap=地図上の一致レコード
+occurrence.search.filter.action.viewtable=表の一致レコード
+occurrence.search.filter.action.download.xml=XMLでの一致結果
+occurrence.search.filter.action.download.spreadsheet=結果のスプレッドシート
+occurrence.search.filter.action.create.model=ニッチモデル
+occurrence.search.filter.action.create.model.disable=属レベルかそれ以下で、正確に1つの分類を含む検索に対してのみ使用できます
+search.filter.action.changesearch=現在の検索変更
+search.filter.add.filter=フィルタ追加
+
+
+# Occurrence Record=
+occurrence.record.details.title=オカレンス 詳細
+occurrence.record.inferred=（推測）
+occurrence.record.interpreted.as=（{0}と解釈）
+occurrence.record.interpreted.coordinates=（緯度{0}、経度{1}{2}と解釈）
+occurrence.record.inferred.from.country=（国から推測）
+occurrence.record.inferred.from.coordinates=（座標から推測）
+occurrence.record.coordinate.issues=（座標上の問題検出可能)
+occurrence.record.dataset.legend=データセット
+occurrence.record.dataresource=データセット
+occurrence.record.dataresource.rights=データセット右側
+occurrence.record.dataprovider=データパブリシャ
+occurrence.record.taxonomy.legend=分類
+occurrence.record.scientificName=学名
+occurrence.record.continent=大陸
+occurrence.record.country=国
+occurrence.record.isocountrycode=ISO 国名コード
+occurrence.record.country=国
+occurrence.record.region=地域
+occurrence.record.providerIsoCountryCode=パブリシャ ISO国名コード
+occurrence.record.providerCountry=パブリシャ 国名
+occurrence.record.cellId=セルID
+occurrence.record.centiCellId=センチ セルID
+occurrence.record.county=国
+occurrence.record.state.or.province=州/地方
+occurrence.record.locality=地域
+occurrence.record.coordinates=座標
+occurrence.record.identifierName=識別子名
+occurrence.record.dateIdentified=日付識別
+occurrence.record.collectorName=コレクタ名
+occurrence.record.dateCollected=収集日
+occurrence.record.institutioncode=機関コード
+occurrence.record.collectioncode=コレクションコード
+occurrence.record.identifier=カタログ番号
+occurrence.record.modified=最終更新日
+occurrence.record.taxatreelink={1}よりの{0} の分類
+occurrence.record.dataprovider.findmore={1}から{0}のレコード
+occurrence.record.taxonomy.exploreall=全レコードの探索
+occurrence.record.taxonomy.search=分布の発見
+occurrence.record.taxonomy.global.search={0}の全分布探索
+occurrence.record.taxonomy.list.countries=分布している国
+occurrence.record.taxonomy.list.dataproviders=分布のデータセット
+occurrence.record.taxonomy.dataprovider.search=分布の発見
+occurrence.record.taxonomy.dataprovider.search1=～から
+occurrence.record.taxonomy.viewconcept={0}の情報表示
+occurrence.record.taxonomy.issues=分類
+occurrence.record.geospatial.legend=地理的空間
+occurrence.record.geospatial.altitude=高度
+occurrence.record.geospatial.latitude=緯度
+occurrence.record.geospatial.longitude=経度
+occurrence.record.geospatial.altitude.precision=高度の精度
+occurrence.record.geospatial.depth=深度
+occurrence.record.geospatial.latLongPrecision=精度調整
+occurrence.record.geospatial.altitudePrecision=高度の精度
+occurrence.record.geospatial.google.earth=この分布をGoogle Earth (KML)で取得する
+occurrence.record.geospatial.findmore.country=分布記録の検索
+occurrence.record.geospatial.findall.country={0}の全分布記録の検索
+occurrence.record.geospatial.findmore.latlong=より多くの検索
+occurrence.record.geospatial.findall.latlong=いずれかの種の全レコード
+occurrence.record.geospatial.locations=他の記録されている分布
+occurrence.record.geospatial.findall.onedeg=同じ1度 ({1})のセルからの全レコード
+occurrence.record.geospatial.findall.viewarea=表示領域内 ({1})の全分布記録 {0} の表示
+occurrence.record.geospatial.viewall.viewarea=表示領域内 ({0})の全分布記録の表示
+occurrence.record.geospatial.issues=地理上の問題
+occurrence.record.dynamic.legend=未加工のXMLデータを取得
+occurrence.record.dynamic.details=データパブリシャから元レコードを取得
+occurrence.record.dynamic.details.disclaimer=（この操作は利用可能なパブリシャ・システムに依存しています）
+occurrence.record.dynamic.link.request=要求の詳細
+occurrence.record.dynamic.failure=リクエストはこ現時点では実行できませんでした。後で再試行してください
+occurrence.record.link.record=パブリシャのポータルでレコードを表示
+occurrence.record.with.precision=正確に
+occurrence.record.portal.url=ポータル URL
+occurrence.record.webservice.url=GBIF Webサービス URL
+occurrence.record.gbif.taxonomy=GBIF 分類
+occurrence.record.parse.unavailable=このレコードの未処理データのみ現在利用可能です。
+occurrence.record.created=最初のインデックス
+occurrence.record.modified=最後のインデックス
+
+
+specimen.type.status=標本タイプの状態
+specimen.type.for= 
+
+
+occurrence.record.raw.kingdom=界
+occurrence.record.raw.phylum=門
+occurrence.record.raw.class=綱
+occurrence.record.raw.order=目
+occurrence.record.raw.family=科
+occurrence.record.raw.genus=属
+occurrence.record.raw.scientificname=学名
+occurrence.record.raw.author=著者
+occurrence.record.interpreted.scientificname=学名（別表記）
+occurrence.record.raw.continent.ocean=大陸または海洋
+occurrence.record.raw.country=国
+occurrence.record.raw.state.province=州/地方
+occurrence.record.interpreted.country=国（別表記）
+occurrence.record.raw.county=国
+occurrence.record.raw.locality=地域
+occurrence.record.raw.collector=コレクター
+occurrence.record.interpreted.depth=メートル深度（別表記）
+occurrence.record.raw.mindepth=最小深度
+occurrence.record.raw.maxdepth=最大深度
+occurrence.record.interpreted.altitude=メートル単位の標高（別表記）
+occurrence.record.raw.minaltitude=最小標高
+occurrence.record.raw.maxaltitude=最大標高
+occurrence.record.raw.identifiername=識別子
+occurrence.record.raw.identificationdate=同定日
+occurrence.record.typeStatus=タイプ状態
+occurrence.record.image.url=画像 URL
+occurrence.record.guid=GUID
+occurrence.record.field.number=フィールド番号
+occurrence.record.collector.number=コレクター番号
+
+
+# Taxonomy Browser=
+taxonomy.browser.heading=タクソノミーツリー·ブラウザ
+taxonomy.browser.tentative.concept=（未確認ネーム）
+taxonomy.browser.subtitle=タクソノミーブラウザ
+taxonomy.browser.notree.for=タクソノミーツリー使用不可
+taxonomy.browser.notree=タクソノミーツリー現在使用不可
+taxonomy.browser.overview.of=関連情報
+taxonomy.browser.classification=分類
+taxonomy.browser.compare.classifications=～の分類
+taxonomy.browser.title.accordingto=～による
+taxonomy.browser.title.classification=地球規模生物多様性情報機構：GBIFデータポータル分類（ <a href="{0}">Catalogue of Life Annual Checklist</a>に基き、標本や観測データリソースから暫定的な追加情報を含む）
+taxonomy.browser.classification.of=～の分類
+taxonomy.browser.overviewlink=概要ページ参照
+taxonomy.browser.overviewlink.title=概要（overview page)をクリック
+taxonomy.browser.numberofoccurrences=({0} オカレンス数)
+taxonomy.browser.nooccurrences=(オカレンス無し）
+taxonomy.browser.all.kingdom=全界
+taxonomy.browser.all.phylum=全門
+taxonomy.browser.all.class=全綱
+taxonomy.browser.all.order=全目
+taxonomy.browser.all.superfamily=全上科
+taxonomy.browser.all.family=全科
+taxonomy.browser.all.genus=全属
+taxonomy.browser.all.species=全種
+taxonomy.browser.all.subspecies=全亜種
+taxonomy.browser.all.highestranks=全最高位分類
+taxonomy.browser.all.unknown=全最高位分類？
+taxonomy.browser.all.expand.node=ノードの展開
+taxonomy.browser.species.recorded.in=記録された種
+taxonomy.browser.taxa.recorded.in=記録された分類
+taxonomy.browser.unconfirmed.names=未確認名
+taxonomy.browser.uncertain.positions=不確実な位置
+taxonomy.browser.url=タクソノミーツリー URL
+taxon.page.url=分類ページ URL
+
+
+# Taxonomy Concept=
+taxonconcept.details.title=分類学的概念の詳細
+taxonconcept.search.subtitle=分類学的概念の探索
+explore.occurrences=オカレンス
+taxonconcept.drilldown.explore.names=名称と分類
+taxonconcept.drilldown.warnings.title=警告
+taxonconcept.drilldown.warnings.ambiguous.name=名{0} は不明で、：（以下）を参照
+taxonconcept.drilldown.warnings.presentation.accepted=GBIFネットワークには、これらの分類群を区別するのに十分な情報のないレコードが含まれています。
+taxonconcept.drilldown.warnings.presentation.accepted.viewed.at=これらのレコードはこの提示からは除外されていますが、：（以下）から見ることができます。
+taxonconcept.drilldown.warnings.presentation.notaccepted=ここに表示されているレコードのみが、GBIFネットワークが正しい位置を確認できる十分な情報を持っていないものです
+taxonconcept.drilldown.resources=データセット
+taxonconcept.drilldown.distributions=分布
+taxonconcept.map.allsubspecies.species=マップには、種に含まれる全亜種の共有データが含まれる
+taxonconcept.map.allspecies.genus=マップには、属に含まれるすべての種の共有データが含まれてる
+taxonconcept.map.allsubspecies.species.title=種の{0}亜種を表示
+taxonconcept.map.allspecies.genus.title=属の中の{0}種を表示
+taxonconcept.map.allgenera.family.title=科の中の{0}属を表示
+taxonconcept.map.allgenera=マップには、～に含まれる全属の共有でーたが含まれる
+taxonconcept.genus=属
+taxonconcept.genera=属
+
+
+taxonomy.relatedconcepts=他の分類
+
+
+# Taxonomy Search Filters=
+taxonomy.search.searchTitle=分類学上の検索
+taxonomy.search.results=検索結果
+taxonomy.search.results.viewlink.message=表示
+taxonomy.search.results.viewlink.title=タクソノミーツリー内{1}の分類群{0}を表示
+taxonomy.search.filter.main.title=分類学上の検索
+taxonomy.search.filter.start.search=分類群検索の開始
+taxonomy.search.filter.pleaseadd=フィルタを追加し、{0}をクリックして分類の検索を実行してください。より正確な結果を得るために、複数フィルターを指定して検索を絞込みます。
+taxonomy.search.filter.download.help=必要なフィールドとフォーマットを選択してください。
+taxonomy.search.filter.example.searches=検索の例
+taxonomy.search.filter.example.searches.oenanthe.genus=<i>Oenanthe</i>属のランクの分類群検索
+taxonomy.search.filter.example.searches.pumaconcolor="Puma concolor"のような分類群検索
+taxonomy.search.filter.nonefound=コンセプトは見つかりません。
+taxonomy.search.filter.noofrecords=発見
+taxonomy.search.filter.singularrecord=コンセプト
+taxonomy.search.filter.pluralrecord=コンセプト
+taxonomy.search.filter.dataset.dataresource=データセット
+taxonomy.search.filter.dataset.dataprovider=データパブリシャ
+taxonomy.search.filter.accepted=承認状況
+taxonomy.search.filter.accepted.is.accepted=承認名
+taxonomy.search.filter.accepted.is.not.accepted=未承認名
+taxonomy.search.searchTitle.download.spreadsheet=分類学上の概念検索-スプレッドシートのダウンロード
+taxonomy.search.searchTitle.download.xml=分類学上の概念検索-XMLのダウンロード
+
+
+# Occurrence Search Filters=
+occurrence.search.filter.pleaseadd=オカレンスレコードの検索を実行するにはフィルタを追加し、{0}をクリックしてください。関心のある種、地域または期間のより正確な結果を得るために、複数フィルターを指定して検索を絞込みます。
+occurrence.search.searchTitle=オカレンス検索
+occurrence.search.searchTitle.map.view=オカレンス検索-地図表示
+occurrence.search.searchTitle.table.view=オカレンス検索-テーブルビュー
+occurrence.search.searchTitle.download.spreadsheet=オカレンス検索-スプレッドシートをダウンロード
+occurrence.search.searchTitle.download.xml=オカレンス検索-XMLをダウンロード
+occurrence.search.searchTitle.download.citation=オカレンス検索-引用をダウンロード
+occurrence.search.searchTitle.data.providers=オカレンス検索-データパブリシャ、レコードを含む
+occurrence.search.searchTitle.datasets=オカレンス検索-データセット、レコードを含む
+occurrence.search.searchTitle.species=オカレンス検索-生物種
+occurrence.search.searchTitle.countries=オカレンス検索-国、レコードを含む
+occurrence.search.filter.category.taxonomy=分類学（タクソノミー）
+occurrence.search.filter.category.geospatial=地理
+occurrence.search.filter.category.datasets=データセット
+occurrence.search.filter.category.other.details=その他詳細
+occurrence.search.filter.dataset.dataresource=データセット名
+occurrence.search.filter.dataset.dataprovider=データパブリシャ
+occurrence.search.filter.dataset.resourcenetwork=データネットワーク
+occurrence.search.filter.dataset.institutioncode=機関コード
+occurrence.search.filter.dataset.collectioncode=コレクションコード
+occurrence.search.filter.dataset.identifier=カタログナンバー
+occurrence.search.filter.dataset.basisofrecord=レコードの根拠
+occurrence.search.filter.dataset.occurrencedate=発現日(採集あるいは観測日)
+occurrence.search.filter.dataset.month=月
+occurrence.search.filter.dataset.year=年
+occurrence.search.filter.dataset.yearrange=年範囲
+occurrence.search.filter.dataset.restrictions=制限
+occurrence.search.filter.geospatial.boundingbox=バウンディングボックス（境界ボックス）
+occurrence.search.filter.geospatial.longitude=経度
+occurrence.search.filter.geospatial.latitude=緯度
+occurrence.search.filter.geospatial.country=国
+occurrence.search.filter.geospatial.isocountrycode=ISO国コード
+occurrence.search.filter.geospatial.hostcountrycode=ホスト国
+occurrence.search.filter.geospatial.continent=大陸
+occurrence.search.filter.geospatial.region=地方
+occurrence.search.filter.geospatial.altitude=高度
+occurrence.search.filter.geospatial.depth=深度
+occurrence.search.filter.geospatial.georegion=保護地域　
+occurrence.search.filter.taxonomy.scientificname=学名
+occurrence.search.filter.taxonomy.commonname=一般名
+occurrence.search.filter.taxonomy.classification=分類
+
+
+# Filter predicates=
+filter.predicate.includes=含む
+filter.predicate.of=of
+filter.predicate.are=are:
+filter.predicate.is=is
+filter.predicate.is.like=～のような
+filter.predicate.is.exactly=正確には
+filter.predicate.is.not=ではない
+filter.predicate.greater.than=以上の
+filter.predicate.less.than=以下の
+filter.predicate.before=～までの（を含む）
+filter.predicate.after=～から始まる(を含む）
+filter.or=または
+
+
+# Countries Browser=
+geography.list.main.title=国、地域及び諸島
+geography.list.title=国、地域及び島
+geography.list.subtitle=国、地域及び諸島
+geography.list.record.count=オカレンスレコード
+geography.list.species.count=種の数
+geography.list.browsecountry=国レコード参照
+geography.list.nonefound=現在索引付きの国はありません。
+
+
+# Countries Drilldown=
+geography.drilldown.main.title=国、地域及び諸島
+geography.drilldown.subtitle=国、地域及び島の詳細
+geography.drilldown.species=種
+geography.drilldown.species.count={1}からの{0} 種の記録（オカレンスデータや使用可能な国のチェックリストに基ずく）
+geography.drilldown.species.explore=オカレンス{0}の種
+geography.drilldown.list.providers=オカレンス{0}のパブリシャ
+geography.drilldown.list.resources=オカレンス{0}のデータセット
+geography.drilldown.list.exploreall=すべてのオカレンス{0}の探索
+geography.drilldown.findall.viewarea=表示エリア内（{1}）でのすべてのオカレンス{0}の表示
+geography.drilldown.view.taxonomy=記録されている種
+geography.drilldown.mapped.resources=マップ用のリソースのデータ提供
+geography.drilldown.mapped.countries=マップ用の国、地域及び諸島のデータ提供
+geography.list.iso.explaination=国、地域及び諸島は、ISO3166-1<a href="http://www.iso.org/iso/country_codes/iso_3166_code_lists/country_names_and_code_elements.htm">ISO 3166-1</a>標準に基づいています。
+
+
+# Datasets Browser=
+dataset.list.main.title=データセット
+dataset.list.subtitle=データセット
+dataset.list.title=データセット
+dataset.list.viewrecords=オカレンスレコードの探索
+dataset.networks.list.title=データネットワーク
+dataset.providers.list.title=データパブリシャ
+dataset.resources.list.title=データセット
+dataset.not.yet.indexed=まだ索引がありません
+dataset.not.applicable=適用されません
+dataset.provider.no.records.indexed.yet=このパブリシャのデータセットはまだ索引がありません。
+dataset.resource.no.records.indexed.yet=このデータセットはまだ索引がありません。
+
+
+# Dataset Drilldown=
+dataset.resource=データセット
+dataset.provider=データパブリシャ
+dataset.network=データネットワーク
+dataset.provider.resources=データセット
+dataset.drilldown.main.title=データセット
+dataset.drilldown.subtitle=データセット詳細
+dataset.legend=データセット詳細
+dataset.list.occurrence.count=オカレンス（ジオリファレンス）
+dataset.list.host.country=ホスト国
+dataset.list.taxonconcept.count=分類群
+dataset.recordCount=オカレンス
+dataset.kingdomCount=界
+dataset.phylumCount=門
+dataset.classCount=綱
+dataset.orderCount=目
+dataset.familyCount=科
+dataset.genusCount=属
+dataset.speciesCount=種
+dataset.taxonomytreelink=名称と分類
+dataset.providedby=～で公開
+dataset.accessPointUrl=アクセスポイントURL
+dataset.information=情報
+dataset.occurrences=オカレンス
+dataset.list.countries={0}を含むオカレンスを持つ国
+dataset.list.species={0}を含むオカレンスを持つ種
+dataset.findall.viewarea=表示エリア内（{1}）での{0}で公開されたすべてのオカレンスレコードの表示
+dataset.download.taxonomy=分類のスプレッドシート
+
+
+# Taxon Name Resolving=
+taxonnameresolve.subtitle=複数の名前が一致
+taxonnameresolve.clashes.for=分類群の名前がかち合う
+taxonnameresolve.heading=分類群の複数の名前がかち合う
+commonnameresolve.heading.nomatches=分類群の中に一致なし
+taxonnameresolve.text.linked=この学名は1つ以上の分類群にリンクしています。
+taxonnameresolve.text.select=下記リストから興味のある分類群を選択してください。
+taxonnameresolve.text.nomatches=名前の一致する分類群はありません。
+
+
+#Generic Name Resolving=
+nameresolve.text.nomatches.search=名前の全データポータルを検索
+
+
+# Common Name Resolving=
+commonnameresolve.subtitle=複数名が一致
+commonnameresolve.clashes.for=名前が普通名とかち合う
+commonnameresolve.heading=複数名が普通名とかち合う
+commonnameresolve.heading.nomatches=一般名との一致はありません
+commonnameresolve.text.linked=この一般名は複数の分類群にリンクされています。
+commonnameresolve.text.select=下記リストから興味のある分類群を選択してください。
+commonnameresolve.text.nomatches=名前の一致する分類群はありません。
+
+
+# maps=
+maps.no.georeferenced.points=現在利用可能な地理的情報レコードがありません
+maps.records.with.no.geospatial.issues=地理上情報のないレコードだけが プロットされます。
+maps.records.disclaimer=<b>お断り</b>:マップはGBIFネットワークインデックス内の登録データの密度を描いており、正確な種のオカレンス密度勾配であるとは限らない
+maps.records.with.coordinates.fullcount=マップは座標を持つレコードのみ示しています（合計{1}レコードから{0}のレコード）。
+maps.records.with.coordinates.fullcount.one=マップは座標を持つレコードのみ示しています（合計{0}レコードから１つのレコード）。
+maps.records.with.coordinates=マップは座標を持つレコードのみ示しています（座標を持つ{0}レコード）。
+maps.records.not.full.distribution=GBIFネットワークインデックスのデータは、{0}の完全な分布を表すことはできません。
+maps.records.provider.composite=データパブリッシャで共有される全データセットからのレコードが含まれています。
+maps.records.network.composite=ネットワークの全データセットからのレコードが含まれています。
+maps.points.total=検索結果は座標を持つ{0}オカレンス返されました。
+maps.points.total.one=検索結果は座標を持つオカレンス<span class='subject'>one</span>が返されました。
+maps.points.total.non.viewable=表示領域内のオカレンスは<span class='subject'>none</span> です。
+maps.points.total.non.viewable.one=表示領域内にこのオカレンスはありません。
+maps.points.total.all.viewable=これらのオカレンスはすべて表示領域内にあります。
+maps.points.viewed.area={0}オカレンスは表示領域内にあります。
+maps.points.viewed.area.one=表示領域内にこのオカレンスはありません。
+maps.count.pointone.cell=カウント/ 0.1度のセル
+maps.count.onedeg.cell=カウント/ 1度のセル
+maps.move.onedegree.north=1度北に移動
+maps.move.onedegree.east=1度東に移動
+maps.move.onedegree.west=1度西に移動
+maps.move.onedegree.south=1度南に移動
+maps.move.fivedegree.north=5度北に移動
+maps.move.fivedegree.east=5度東に移動
+maps.move.fivedegree.west=5度西に移動
+maps.move.fivedegree.south=5度南に移動
+maps.services=サービス
+
+
+# Registration=
+registration.title=登録
+registration.header=登録
+registration.provider.details=パブリシャ詳細
+registration.provider.list=パブリシャリスト
+registration.provider.selectprovider=更新パブリシャ選択
+registration.provider=パブリシャ
+registration.provider.name=名称
+registration.provider.country=国
+registration.provider.description=概要
+registration.provider.logoUrl=ロゴ URL
+registration.provider.primarycontact=一次連絡先
+registration.provider.secondarycontact=二次連絡先
+registration.provider.contact.useType=タイプ
+registration.provider.contact.administrative=管理者
+registration.provider.contact.technical=技術
+registration.provider.link.create.secondary=二次連絡先の追加
+registration.provider.resource.list=データセット
+registration.provider.resource.current.resources={0}により提供されている現在登録されたデータセット
+registration.provider.resource.no.resources={0}より公開されている現在登録されたデータセットはありません。
+registration.provider.issue.metadata.1=直接サービスに連絡し、詳細を事前入力することが可能です。
+registration.provider.issue.metadata.2=注：インターネット上で現在利用可能であるサービスに依存しています。
+registration.provider.issue.metadata.3=登録したいリソースのURLを入力し"コンタクトサービス"をクリックしてください
+registration.provider.issue.metadata.4=URL の例：
+registration.resource.url=リソースURLを入力してください。
+registration.resource.description=概要
+registration.resource.owner.name=オーナ名
+registration.resource.owner.address=オーナ住所
+registration.resource.owner.country=オーナ国
+registration.resource.already.registered=登録
+registration.resource.highestTaxa=分類群ルート「
+registration.register.resource=登録
+registration.header.resources.offered.by=登録されているリソース
+registration.contact.provider.for.metadata=サービスに連絡
+registration.metadata.resources=次のリソースレポートのサービスが利用可能(標本/観察リソースが示されたもののみ）
+registration.metdata.supplied=*
+registration.not.specified=指定されていません
+registration.not.applicable=適用されません
+
+
+# Login=
+admin.login=ログイン
+admin.login.name=名前
+admin.login.password=パスワード
+admin.login.error=ユーザー名またはパスワードの間違い
+
+
+# Download=
+download.google.earth.celldensity=Google Earthに1度セル密度のオーバーレイ
+download.google.earth.placemarks=Google Earthに目印（上限10,000）
+download.darwin.core=ダーウィンコアレコード
+download.darwin.core.from=～のダーウィンコアレコード
+download.metadata.for.providers=データパブリッシャのメタデータ
+download.darwin.core.from.served.by.providers=パブリッシャーからのデータのダーウィンコアレコード
+
+
+# Filter wizards=
+filter.wizard.loading=ウィザードをロード中…
+filter.wizard.nullvalue=....................................................
+
+
+# Actions=
+actions.specify=指定：
+actions.list=リスト：
+actions.download=ダウンロード：
+actions.retrieve=取得：
+actions.view=表示：
+actions.explore=探索：
+actions.select=選択：
+actions.find=検索：
+actions.send=送信：
+actions.create=作成：
+
+
+# Agents=
+agents.title=連絡先
+agents.role.technical=技術
+agents.role.administrative=管理
+agents.role.administrative.description=管理担当者：科学的データの内容、特定のデータセットの使用法またはデータパブリッシャに関するすべての事項について連絡する人。
+agents.role.technical.description=技術担当者：データセットまたはパブリッシャの技術的な可用性やリソースの構成の問題に関する事項について連絡する人
+
+
+# Resource/Provider/Network statistics=
+occurrences.indexed=索引付きオカレンスレコード
+occurrences.georeferenced=座標を持つオカレンス
+occurrences.no.geo.issues=地図情報を持たないオカレンス
+occurrences.resources=データセット
+provider.record.count=パブリシャで共有されるレコード数
+count.species=種の数
+count.taxa=分類群の数
+
+
+indexed.data=索引付きデータ
+view.event.logs.for=イベントログを表示する
+view.indexing.history.for=索引履歴を表示
+system.details=システム詳細
+
+
+rights=
+citation=引用
+how.to.cite=このデータセットの引用方法
+scope.country=国範囲
+scope.continent=大陸範囲
+scope.taxonomic=分類範囲
+gbif.participant=GBIF参加者
+
+
+# Logs=
+portal.logs=ポータルログ
+
+
+# Logging event=
+unknown=不明
+logGroupClose=ロググループ非公開
+harvestAll=収穫 - 全て
+harvestBegin=収穫 - 開始
+harvestEnd=収穫 - 終了
+harvestMultiplePreferredIdentifications=収穫 - 複数の優先識別
+harvestMultipleUnpreferredIdentifications=収穫 - 複数の非優先識別
+
+
+# Extracter messages=
+extractAll=処理 - 全て
+extractAllIssues=処理 - 全ての問題
+extractBegin=処理 - 開始
+extractEnd=処理 - 終了
+extractScientificNameParseIssue=処理 - 学名の問題解析
+extractScientificNameParseCount=処理 - 学名のカウント解析
+extractTaxonRankParseIssue=処理 - 分類群ランクの問題解析
+extractBasisOfRecordParseIssue=処理 - 基礎レコードの問題解析
+extractCountryNameParseIssue=処理 - 国名の問題解析
+extractGeospatialParseIssue=処理 - 地理的な問題解析
+extractDuplicateRemoteConceptId=処理 - リモートコンセプトIDを複製
+extractMissingParentTaxon=処理 - 上位分類群の欠落
+extractMissingAcceptedTaxon=処理 - 認められた分類群の欠落
+extractAmbiguousScientificName=処理 - あいまいな学名
+
+
+# User messages=
+userAll=ユーザ - 全て
+userSessionBegin=ユーザ - セッション開始
+userSessionEnd=ユーザ - セッション終了
+userFeedbackOccurrence=ユーザ - オカレンスフィードバック
+userFeedbackTaxon=ユーザ - 分類群フィードバック
+
+
+# Usage message=
+usageAll=用法 - 全て
+occurrenceSearch=用法 - オカレンス検索
+datasetMetadataView=用法 - データセットメタデータ表示
+taxonView=用法 - 分類群表示
+taxonBrowse=用法 - 分類ブラウズ
+occurrenceView=用法 - オカレンス詳細表示
+dataproviderMetadataView=用法 - データ提供者メタデータ
+datasetLogDownload=用法 - イベントログのダウンロード
+datasetOccurrenceDownload=用法 - オカレンスのダウンロード
+datasetTaxonomyDownload=用法 - 分類のダウンロード
+
+
+# Feedback messages=
+feedback=フィードバック
+feedback.link=このページのフィードバック提供
+feedback.to.provider.link=このオカレンスレコード{0}ついてのフィードバック
+feedback.to.provider.on.classification.link=分類{0}のフィードバック
+feedback.to.provider.on.classification.explanation=このフィードバックは命名法(名前関連)情報のパブリシャに届くことにご注意ください。フィードバックが標本や観察に関わる場合は、オカレンスページからのフィードバックリンクを使用してください。
+feedback.title=フィードバック
+feedback.blurb=お忙しいところ、データの品質を向上させるため推奨されるフィードバックを提供していただきありがとうございます--フィードバックが記述される前に、何らかの遅延が生じることがありますのでご注意ください。
+feedback.on.page=フィードバックに関する
+feedback.type=フィードバックタイプ
+feedback.type.taxon=学名や分類に関するフィードバック
+feedback.type.resource=データセットに関するフィードバック
+feedback.type.occurrence=標本や観察記録に関連するフィードバック
+feedback.type.other=一般的フィードバック
+feedback.data.provider.name=データパブリシャ
+feedback.data.resource.name=データセット
+feedback.taxon.scientific.name=学名
+feedback.data.resource.agent.name=連絡先
+feedback.data.resource.agent.email=Eメール
+feedback.occurrence.institution.code=機関コード
+feedback.occurrence.collection.code=コレクションコード
+feedback.occurrence.catalogue.number=カタログ番号
+feedback.submitter.name=あなたの名前
+feedback.submitter.email=あなたのEメールアドレス
+feedback.details=フィードバック
+feedback.submit=フィードバックを送信
+feedback.continue=続ける
+feedback.submitted=フィードバックを送信していただきありがとうございます、これはすぐに関連受取人に配られます
+feedback.verify=あなたのメールアドレスを確認するために指定されたアドレスに電子メールを送りました。一旦あなたがそれを確認すると、フィードバックメッセージが送信されます。
+verification.successful=メールアドレスをご確認いただきありがとうございます。保留中のフィードバックメッセージが代わって送信されています
+verification.unsuccessful=電子メールの確認に失敗しました。
+
+
+#Tutorial messages=
+tutorial.title=概要
+tutorial.introduction=このウェブサイトについて
+tutorial.tutorial=GBIF ポータルの紹介
+tutorial.country=国、地域や島についての情報の検索
+tutorial.dataset=データセットの情報検索
+tutorial.species=種に関しての検索
+tutorial.taxonomy=GBIFポータルにおける学名と分類
+tutorial.maps=GBIFポータルにおける地図
+tutorial.occurrence=オカレンスの検索
+tutorial.detail=オカレンスレコードの詳細表示
+tutorial.services=GBIFポータルからのデータ利用
+tutorial.provider=GBIFネットワークを通してデータを共有する
+tutorial.kangaroorat=Desert Kangaroo Rat (<i>Dipodomys deserti</i>)に関する情報の検索
+tutorial.ecuadorplants=エクアドルの植物に関する情報の検索
+tutorial.indonesiarecords=インドネシアからの記録を含むデータセットの情報を検索
+tutorial.denmarkproviders=デンマークのデータパブリシャの検索
+tutorial.migratorybirds= Barn Swallow (<i>Hirundo rustica</i>)の季節ごとの分布を比較する
+tutorial.hummingbirds=1度セルでハチドリの分布記録の密度を示す（Google Earth使用）
+tutorial.mimosa= <i>Mimosa</i>属の全種の分布を示す（Google Earth使用）
+tutorial.datauseagreement=GBIFデータ利用規約
+tutorial.datasharingagreement=GBIFデータ共有協約
+tutorial.deeplinking=マップへのディープリンク
+
+
+# Other messages=
+otherAll=その他 - 全て
+
+
+# Data resource wizard=
+dataresource.wizard.select.network.provider=データネットワークやデータパブリシャの選択：
+dataresource.wizard.select.dataset=データセットの選択
+dataresource.wizard.submit.search=このデータセットの使用
+dataresource.wizard.no.resources=使用可能データセット無し
+dataresource.wizard.select.resource=データセットの選択…
+
+
+# Protected areas wizard=
+protectedarea.wizard.description=国を選択、その国内に保護領域を選択します。（現時点では、一回に一領域だけ検索することが可能です）
+protectedarea.wizard.select.country=国の選択：
+protectedarea.wizard.select.georegion=保護領域の選択：
+protectedarea.wizard.submit.search=この保護領域の使用
+protectedarea.wizard.no.georegions=使用可能な保護領域は無し
+protectedarea.list.title=保護領域
+
+
+# Classification wizard=
+classification.wizard.help=下のツリーから分類群を選択し、{0}をクリック
+classification.wizard.tree.unavailable=GBIFタクソノミーツリーは現在使用できません。
+
+
+# Bounding box wizard=
+boundingbox.wizard.latitude=緯度
+boundingbox.wizard.longitude=経度
+boundingbox.wizard.min.latitude=最小緯度
+boundingbox.wizard.max.latitude=最大緯度
+boundingbox.wizard.min.longitude=最小経度
+boundingbox.wizard.max.longitude=最大経度
+
+
+# Remote concept types=
+remote.concept.localid=レコード識別子
+remote.concept.url=レコードURL
+remote.concept.specialist=によるレビュー
+remote.concept.scrutinydate=レビュー日付
+remote.concept.guid=グローバルユニーク識別子
+
+
+# Taxonomy-related strings=
+taxonomy.status=位
+taxonomy.classification=分類
+taxonomy.according.to=による
+taxonomy.synonyms=シノニム
+taxonomy.common.names=普通名
+
+
+# Filters=
+occurrence.search.filter.dataset.georeferenced=座標ステータス
+georeferenced=座標を含む
+not.georeferenced=座標を含まない
+
+
+occurrence.search.filter.dataset.geo.consistency=座標上の事象
+geo.consistent.with.country=検知された問題点は無し
+geo.not.consistent.with.country=検知された問題点
+
+
+occurrence.search.filter.other.details.imageurl=画像URL
+imageurl.with.url=使用可能
+imageurl.without.url=使用不可
+
+
+occurrence.search.filter.dataset.type.status=タイプ状態
+type.specimen=標本タイプ
+type.not.specimen=標本のないタイプ
+
+
+occurrencedate.use.specific.date=特定の日付を使用
+occurrencedate.last.month=先月
+occurrencedate.last.six.months=最終の６ヶ月
+occurrencedate.within.the.last.year=昨年以内
+occurrencedate.within.the.last.five.years=過去５年以内
+occurrencedate.within.the.last.ten.years=過去10年以内
+
+
+no.matches.with.taxonomy=この分類内に一致はありません。
+
+
+# Year range filter=
+year.filter.starting.from=から開始
+year.filter.and.including=(含んで）
+year.filter.up.to=まで
+year.filter.default.value=2000年から2007年の間
+occurrencedate.filter.default.value=2000年１月１日から200７年１月１日の間
+
+
+# Downloads=
+occurrence.record.download.xml.title=XML内の一致するレコードをダウンロード
+occurrence.record.download.spreadsheet.title=結果スプレッドシートをダウンロード
+occurrence.record.download.citation=これらの検索結果の引用テキストをダウンロードできます。
+occurrence.record.download.citation.here=ここに
+occurrence.record.download.your.query=クエリのレコードをダウンロード？
+occurrence.record.download.format.ge=Google Earthで（最大50,000）
+occurrence.record.download.format.species=結果の種
+occurrence.record.download.format.darwin.brief=ダーウィンコア（最大100,000）
+occurrence.record.download.format.darwin.full=全ダーウィンコア（XML、ブラウザで簡単に表示する形式、１ページ最大1,000レコード）
+occurrence.record.download.fields.to.include=含まれるフィールド：
+occurrence.record.download.maximum.message=このダウンロードは、最大250,000レコードを返します。ダウンロードは、zip形式になり、別のテキストファイルに検索結果のサイテーションが含まれます。
+occurrence.record.download.no.of.records=レコード数：
+occurrence.record.download.no.of.records.100=最初の一致100レコード
+occurrence.record.download.no.of.records.1000=最初の一致1,000レコード
+occurrence.record.download.no.of.records.10000=最初の一致10,000レコード(最大）
+
+
+occurrence.search.filter.action.download.xml=結果XMLレコード
+occurrence.search.filter.action.download.spreadsheet=結果スプレッドシート
+occurrence.search.filter.action.download.citation=結果のサイテーションテキスト
+
+
+# Generic download messages=
+download.now=今すぐダウンロード
+select.all=すべてを選択
+deselect.all=すべての選択解除
+download.format.options=フォーマットオプション
+download.format.tab=タブ区切り
+download.format.csv=コンマ区切り値
+download.format.excel=エクセル(最大65,535レコード）
+
+
+occurrence.record.raw.xml.title=パブリシャXMLメッセージ
+occurrence.record.view.large.map=大きい地図で表示
+occurrence.record.back.to.details=オカレンス詳細へ戻る
+occurrence.record.required.fields=必須フィールド
+occurrence.record.other.fields=その他フィールド
+
+
+geospatial.issues=地理上の問題
+geospatial.negated.latitude=緯度はおそらく無効
+geospatial.negated.longitude=経度はおそらく無効
+geospatial.inverted=緯度、経度はおそらく転置
+geospatial.zero.coordinates=提供座標(0.0, 0.0)
+geospatial.out.of.range=提供座標が範囲外
+geospatial.mismatch=座標は指定された国、地域や島の範囲外
+
+
+other.issues=種々の問題
+other.missing.catalogue.number=欠落カタログ番号
+other.missing.basis.of.record=不明なレコードの根拠
+other.invalid.date=無効な指定日
+other.country.inferred=座標から推測される国
+
+
+taxonomic.issues=分類学上の問題
+taxonomic.not.valid=有効な形式でない学名
+taxonomic.unknown.kingdom=レコードでは不明の界
+taxonomic.ambiguous=あいまいな提供名
+
+
+# Data Usage Agreement=
+dataagreement.title=データ利用規約
+dataagreement.cookie.warning=ブラウザの設定によっては、クッキーにこれらの項目の承認を保存できる
+dataagreement.accept=条項に同意する
+dataagreement.cancel=キャンセル
+
+
+# Filter Warnings=
+warnings.filter.title=警告
+warnings.filter.scientific.name.unsupportedrank=現在オカレンス検索<b>{0}</b>はサポートしておらず、従って<b>{0} {1}</b>は検索できません。
+warnings.filter.scientific.name.accepted=<b>{2}</b>と<b>{1}</b>はシノニムと認識されます。この検索は{2}と {1}の両方のレコードを見つけます。
+warnings.filter.scientific.name.synonym=<b>{1}</b>と<b>{0}</b>はシノニムと認識されます。この検索は{0}と {1}の両方のレコードを見つけます。
+warnings.filter.scientific.name.synonyms=<b>{0}</b>は、以下の<b>{1}</b>とシノニムと認識されます。この検索は{0}とこれらシノニムの両方のレコードを見つけます。
+
+
+# Occurrence Filter Help messages=
+occurrence.scientificName.help1=学名を入力し、{0}をクリックします
+occurrence.scientificName.help2=このフィルターは、生物の分類には関係なく、その名前に合致したあらゆる生物の記録を表示します。
+occurrence.basisOfRecord.help1=選択リストからの記録の根拠を選択し、{0}をクリックしてください。
+occurrence.basisOfRecord.help2=フィルターは、選択したタイプの生物や観察をもとに記録が表示されます。 
+occurrence.basisOfRecord.observation=観察
+occurrence.basisOfRecord.observation.description= - 既知のオブザーバーによる報告
+occurrence.basisOfRecord.specimen=標本
+occurrence.basisOfRecord.specimen.description= - 1つまたは複数を示す対象物
+occurrence.basisOfRecord.living=現存
+occurrence.basisOfRecord.living.description= - その自然発生場所から移され、現在飼育や栽培されている生物
+occurrence.basisOfRecord.germplasm=遺伝資源
+occurrence.basisOfRecord.germplasm.description= - 新生物の繁殖に利用する植物、動物、バクテリアの遺伝子材料
+occurrence.basisOfRecord.fossil=化石
+occurrence.basisOfRecord.fossil.description= - 1つか複数の化石生物
+occurrence.catalogueno.help1=カタログ番号を入力し、{0}をクリック。
+occurrence.catalogueno.help2=フィルターは、特定のカタログ番号を持った記録を表示します。
+occurrence.collectioncode.help1=コレクションコードと、"is"または "is like"を入力。
+occurrence.collectioncode.help2=フィルターは、特定のコレクションコードを伴う記録を表示します。
+occurrence.commonName.help1=普通名（または名前の一部）を入力し、{0}をクリック。
+occurrence.commonName.help2=このフィルターは特定された普通名に関連付けられる種の記録を表示します。
+occurrence.coordinateIssues.help="issues detected"を選択すると、疑わしい座標を持った記録の特定ができます。そうでない場合は、"issues not detected"を選択してください。
+occurrence.imageurl.help=関連した画像のURLを持つ記録を識別するために"{0}"を選択します
+occurrence.coordinateStatus.help="includes coordinates"を選択すると、地理的情報を持たない記録は除外されます。　"does not include coordinates"を選択すると、地理的情報を持った記録が除外されます。全ての記録閲覧するためには、このフィルターは使わないでください。
+occurrence.country.help1=該当するリストから国を選択して、1つまたは複数の国に検索の範囲を絞るため{0} をクリック。
+occurrence.country.help2=このフィルターは、それが座標を含んでいるかは関係なく、その国の記録を表示します。ただし、座標フィルター（バウンディングボックス、経度、緯度）を含んでいる場合は、結果は地理的記録に限定されるので、注意が必要です。
+occurrence.dataprovider.help=該当リストからデータパブリシャを選択して{0} をクリック。このフィルターは、特定のパブリシャの記録を表示します。
+occurrence.hostcountry.help1=該当リストから国を選択して{0} をクリック。
+occurrence.hostcountry.help2=このフィルターは、その国のデータパブリシャが共有している記録を表示します。
+occurrence.institutioncode.help=機関コードと"is"または、"is like"を入力。フィルターは、特定の機関コードの記録を表示します。
+occurrence.latitude.help=緯度を入力し、"is", "greater than"または、"less than"を選択。このフィルターは、その選択に一致した地理的記録のみを表示します。
+occurrence.longitude.help=経度を入力し、"is", "greater than"または、"less than"を選択。このフィルターは、その選択に一致した地理的記録のみを表示します。
+occurrence.altitude.help1=メートル高度を入力し、"is", "greater than"または、"less than"を選択。このフィルターは、その選択に一致した標高地の記録のみを表示します。このフィルタは、整数値のみサポートします。
+occurrence.altitude.help2=基本となる高度値は元データベースによりメートルで示されますが、すべてのデータソースがまだこの基準に準拠していないことに注意してください。自動変換は、測定ユニットが判っている場合のみできます。高度値に基づいて分析を計画している場合は、それが関連するデータ所有者に直接連絡し、そのデータセット内で使用される測定ユニットを確認することをお勧めします。
+occurrence.depth.help1=メートル深度を入力し、"is", "greater than"または、"less than"を選択。このフィルターは、その選択に一致した深度の記録のみを表示します。このフィルタは、小数点以下2桁までの値をサポートしています。
+occurrence.depth.help2=基本となる深度値は元データベースによりメートルで示されますが、すべてのデータソースがまだこの基準に準拠していないことに注意してください。自動変換は、測定ユニットが判っている場合のみできます。深度値に基づいて分析を計画している場合は、それが関連するデータ所有者に直接連絡し、そのデータセット内で使用される測定ユニットを確認することをお勧めします。
+occurrence.month.help=リストから月を選択し、{0}をクリックします。フィルタは、年に関係なく、特定の月の記録を表示します。
+occurrence.region.help=リストから地域を選択し、{0}をクリックします。このフィルタは、選択した大陸、海洋域などにあるすべての国の記録を表示します。
+occurrence.typeStatus.help=タイプとしてマークされた標本の検索には、このフィルタを使用します。実行は {0}をクリック。
+occurrence.year.help=年を入力し、{0}をクリック。フィルタは、選択に一致する年からの記録を表示します。
+
+
+# Taxonomy Filter Help messages=
+taxonomy.taxon.help1=分類群名を入力し、{0}をクリックします。
+taxonomy.taxon.help2=このフィルタは、特定の分類群に戻ってコンセプトを限定します。
+taxonomy.rank.help1=分類学上のランクを選択し、{0}をクリックします。
+taxonomy.rank.help2=このフィルタは、特定のランクに戻ってコンセプトを限定します。（例えば、"種"の選択で、種のコンセプトに戻る結果のみ）
+taxonomy.kingdom.help1=界の名前を入力し、{0}をクリックします。
+taxonomy.kingdom.help2=このフィルタは、特定の界に戻ってコンセプトを限定します。
+taxonomy.phylum.help1=門を入力し、{0}をクリックします。
+taxonomy.phylum.help2=このフィルタは、特定の門に戻ってコンセプトを限定します。
+taxonomy.class.help1=綱を入力し、{0}をクリックします。
+taxonomy.class.help2=このフィルタは、特定の綱に戻ってコンセプトを限定します。
+taxonomy.order.help1=目を入力し、{0}をクリックします。
+taxonomy.order.help2=このフィルタは、特定の目に戻ってコンセプトを限定します。
+taxonomy.family.help1=科名を入力し、{0}をクリックします。
+taxonomy.family.help2=このフィルタは、特定の科に戻ってコンセプトを限定します。
+taxonomy.genus.help1=属名を入力し、{0}をクリックします。
+taxonomy.genus.help2=このフィルタは、特定の属に戻ってコンセプトを限定します。
+taxonomy.species.help1=種名を入力し、{0}をクリックします。
+taxonomy.species.help2=このフィルタは、特定の種に戻ってコンセプトを限定します。
+taxonomy.provider.help1=分類データプロバイダを選択し、{0}をクリックします
+taxonomy.provider.help2=このフィルタは、特定の分類データプロバイダに戻ってコンセプトを限定します。
+taxonomy.accepted.help=認められたコンセプトに戻すには{0}を選択。
+taxonomy.country.help1=このフィルタは、特定の国の分類レコードに戻ってコンセプトを限定します。
+taxonomy.country.help2=例えば、米国内での分布記録の分類を選択する場合のみ"米国"を選択してください。
+taxonomy.country.help3=注：このフィルターはGBIF 分類上コンセプト検索のみの使用に限定します。
+
+
+# Log Table=
+log.console=コンソールログ
+all=全て
+log.console.dataset=データセット
+log.console.event=イベント
+log.console.harvesting=収穫
+log.console.extraction=処理
+log.console.user=利用者
+log.console.loggroup=ロググループ
+log.console.level=レベル
+log.console.start.date=開始日
+log.console.end.date=終了日
+log.console.submit=更新
+log.console.taxon=分類群
+log.console.message=メッセージ
+log.console.record=レコード
+log.console.count=カウント
+log.console.non.georef.count=地理参照無し（マップ上に表示されません）
+log.console.last.week=前週
+log.console.last.month=前月
+log.console.last.year=前年
+log.console.download=これらのログをダウンロード
+
+
+# Indexing history=
+harvesting=収穫
+harvesting.description=データ·パブリッシャからレコードを取得するプロセス
+extraction=処理
+extraction.description=学名解析、地理解析を含むレコードの拡大プロセス
+indexing.history.title=データ追跡
+indexing.history.summary=追跡の概要
+indexing.history.summary.total.time=索引作成時間の総計
+indexing.history.summary.processing.time=処理時間の総計
+indexing.history.summary.harvesting.time=収穫時間の総計
+indexing.history.log.messages.available=注：ログメッセージは現在、日付{0}から{1}の間にのみ利用できます。
+indexing.history.log.messages.earliest=概要は、この日付の間のレコードに保持されている情報を反映しています。したがって、{0}前のインデックスはここでは表示されません。
+indexing.history.view.unprocessed=未処理データの表示
+indexing.history.preview.indexed=索引付データをプレビュ
+indexing.history.preview.indexed.message=データポータル検索機能と地図表示に索引付けされたレコードの完全統合は、非公開インデックスデータベースから公開データポータルへのロールオーバー時にのみ、定期的に生じます。それまでは、ここで最近の索引付きデータのプレビューを見ることができます。
+indexing.history.processing.timeline=処理タイムライン
+indexing.history.processid=プロセスID
+indexing.history.event=イベント
+indexing.history.event.count=イベント数
+indexing.history.start=開始時間
+indexing.history.end=終了時間
+indexing.history.duration=期間
+indexing.history.no.available=このデータセットに対する使用可能なインデックス履歴はありません。
+indexing.history.manually.terminated=手動で終了
+
+
+# Raw data view=
+raw.data.title=未処理のオカレンスデータ
+raw.data.info=注：これは収穫プロセスの間にリソースから取得した未処理のデータです。
+raw.data.record.viewer=このレコードビューアは、一部或いはすべてが解析されていないレコードの、分類学および地理特性など非常に限られた検索情報を提供します。
+
+
+# Citation=
+citation.introduction=次のようにこのデータを引用し、文書化された権利に注意を払ってください。txt:\n\n
+citation.entry=（GBIFデータポータルを介してアクセス、{0}, {1}）
+citation.supplied=提供された引用
+
+
+# Rights=
+rights.introduction=ダウンロードにおいて各データセットに対して宣言されている権利を尊重してください：\n\n
+rights.entry=データセット： {0}, {1}
+rights.supplied=提供された権利：0}
+
+
+# Registration resource types=
+registration.resource.DiGIR=DiGIR エンドポイント
+registration.resource.TAPIR=TAPIR エンドポイント
+registration.resource.TabDelimitedData=タブ区切りデータ
+registration.resource.PDFDocument=PDFドキュメント
+registration.resource.HTMLDocument=ウェブページ
+
+
+# Charts=
+charts.georeferenced.with.coordinates=座標で
+charts.georeferenced.without.coordinates=座標なしで
+charts.country.other=その他
+charts.region.other=その他
+
+
+# Raw data=
+unprocessed=（処理されていない）
+
+
+# Downloads=
+download.preparing=ダウンロードの準備 .....
+download.preparing.subheader=ダウンロードが準備されています
+download.preparing.wait=ダウンロードが準備されていますのでしばらくお待ちください。これには最大30分かかる場合があります。
+download.preparing.check.back=コピーし、URLを保存した後で戻って確認してください。あるいはこのブラウザウィンドウを開いたままに。
+download.preparing.zip=結果は、zipファイルにまとめます。
+download.preparing.redirect=zipファイルが準備されたとき、このページが自動的にダウンロードページにリダイレクトされます。
+download.ready=ダウンロード準備
+download.ready.title=ダウンロード準備
+download.ready.subheader=ダウンロードの準備が整いました
+download.approx.file.size=およそのファイルサイズ
+download.start.download.link="<b>click the link</b>"をクリックして検索結果をダウンロードしてください。このリンクは<b>24時間</b>有効になります。
+download.generation.time=作成されたダウンロード
+download.file.type.occurrences=オカレンスのダウンロード
+download.file.type.taxonconcept=分類学コンセプトをダウンロード
+download.file.type.nichemodelling=openModellerのニッチ·モデリング
+download.file.type.log.messages=イベントログメッセージ
+download.original.search=元の検索
+download.expired=ダウンロードリンク期限切れ
+download.expired.detail=このダウンロードは現在有効期限が切れています。
+download.failed=ダウンロードすることができません。
+download.failed.subheader=このダウンロードを完了することができませんでした
+download.failed.follow.on=この問題の報告には、元のダウンロードリンクを提供する{0}にメールを送ってください。
+download.failed.title=ダウンロードすることができません。
+download.monitor=ダウンロードモニタ
+
+
+# Downloading Provider XML Message=
+provider.requesting =プロバイダからの要求データ ...
+provider.requesting.title =プロバイダの要求
+provider.requesting.subheader =要求が送信されています
+provider.requesting.wait =要求はプロバイダに送信されていますので しばらくお待ちください。この処理には最大30秒かかる場合があります。
+provider.offline =プロバイダー接続中にエラーです。
+provider.offline.subheader =プロバイダー利用不能かオフラインです。
+provider.offline.description =申し訳ありませんが、プロバイダとの接続の問題のために要求されたデータは、現時点では利用できません。
+provider.archive =レコードをダウンロード
+provider.archive.subheader =レコードは表示できません。
+provider.archive.description =未処理の個々のデータは利用できませんが、ここで完全なアーカイブをダウンロードすることはできます。
+
+
+#Open Modeller=
+model.create.title=ニッチモデルの作成
+model.select.environment=モデルの環境を選択してください。
+model.environment.land=陸地
+model.environment.marine=海洋
+model.land.layers.provided.by=陸地層 - から提供される
+model.marine.layers.provided.by=海洋層 - から提供される
+model.create.model=モデルの作成
+model.preparing.description=検索によるオカレンスデータを利用して、openModellerを用いたニッチモデルの作成：
+model.preparing=ニッチモデルの作成
+model.preparing.subheader=あなたのモデルは、現在作成されている
+model.preparing.check.back=コピーし、URLを保存した後で戻って確認してください。あるいはこのブラウザウィンドウを開いたままに。
+model.preparing.wait=モデルが作成されている間しばらくお待ちください。これには、最大5分かかる場合があります。
+model.preparing.redirect=モデルが作成されたら、このページは自動的にモデルを表示するページにリダイレクトされます。
+
+
+#Open Modeller - land layers=
+bio_1=年間平均気温
+bio_2=平均日潮差
+bio_3=等温性
+bio_4=温度の季節変動
+bio_5=最暖月の最高気温
+bio_6=最寒月の最低気温
+bio_7=温度年間範囲
+bio_8=最も湿った地域の平均温度
+bio_9=最も乾いた地域の平均温度
+bio_10=最暖地域の平均温度
+bio_11=最寒地域の平均温度
+bio_12=年間雨量
+bio_13=最も雨の多い月の降水量
+bio_14=最も乾燥した月の降水量
+bio_15=降水量の季節変動
+bio_16=最も雨の多い地域の降水量
+bio_17=最も乾燥した地域の降水量
+bio_18=最暖地域の降水量
+bio_19=最寒地域の降水量
+
+
+#Open Modeller - marine layers=
+depthmax=最大深度
+depthmin=最小深度
+iceconc=年間海氷密接度の平均
+landdist=陸までの年間距離の平均
+priprod=年間一次生産量（クロロフィルA）の平均
+salbottom=年間底部塩分濃度の平均
+salsurface=年間表面塩分濃度の平均
+tempbottom=年間底部温度の平均
+tempsurface=年間表面温度の平均
+
+
+#Repatriation table=
+repat.intl.networks=国際ネットワーク
+repat.title=原産国とのデータ共有
+repat.subtitle=GBIFネットワークで利用可能なデータレコードの概要
+repat.tabledescription=表は、他の国や国際ネットワークで共有されるレコード数や国（国内や場合によっては地域）を示しています。
+repat.how.to.search.title=検索実行の方法：
+repat.how.to.search.list.item1=ドロップダウンメニューを使って、関心のある国やそれらのデータをホスティングする国を選択します。
+repat.how.to.search.list.item2=データをホスティングする国：彼らが共有するデータの概要を取得するため、表の一番上の国（つまり列の）を選択します。
+repat.how.to.search.list.item3=データが適合している国：他の国または国際的なネットワークによって共有され、その国に適合するレコード数の概要については、左側の国（つまり行の）を選択します。
+repat.how.to.search.list.item4=<b>Intersecting</b>セルはホスティングレコード数を示し、国X /国際的ネットワーク と適合している国Yで共有される。
+repat.select.view=表示変更
+repat.select.view.option.concise=要約
+repat.select.view.option.iso=詳細表示
+repat.select.view.option.percent=パーセンテージ
+repat.select.view.option.full=詳細表示(国名）
+repat.select.host=ホスト
+repat.select.option.all=すべて
+repat.select.country=国
+repat.intl.networks.list.title=国際ネットワークとGBIFに参加しているその他：
+repat.abbr.intl.networks.line.separated=国際<br>ネットワーク
+repat.abbr.intl.networks=国際ネットワーク
+repat.networks=ネットワーク
+repat.download=タブファイルとしてダウンロード
+
+
+#Web service messages=
+webservice.title=ウェブサービス
+webservice.introduction=ウェブサービス

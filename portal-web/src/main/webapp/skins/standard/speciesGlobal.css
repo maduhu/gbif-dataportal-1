@@ -62,7 +62,7 @@ img.standalone { display: block; margin: 0.5em auto; width: auto; max-width: 100
 
 /* -- search form -- */
 #quickSearch { float: right; margin: -85px 0 0 0; padding: 0 17px 0 0;
-	width: 500px; height: 51px; text-align: right; 
+	width: 530px; height: 51px; text-align: right; 
 }
 #quickSearch fieldset, #quickSearch form { margin: 0; padding: 0; border: 0; }
 #quickSearch #query { float: right; margin: 6px 4px 0 5px; padding: 0;

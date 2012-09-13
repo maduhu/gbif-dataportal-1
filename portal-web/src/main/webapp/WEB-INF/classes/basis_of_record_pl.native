@@ -1,0 +1,25 @@
+#
+# Basis of Record types
+#
+basis.of.record.observation=Obserwacja
+basis.of.record.specimen=Okaz
+basis.of.record.living=Żywy
+basis.of.record.germplasm=Materiał genetyczny
+basis.of.record.fossil=Skamieniałość
+basis.of.record.unknown=Nieznany
+basis.of.record.taxonomy=Taksonomia
+basis.of.record.literature=Literatura
+basis.of.record.nomenclator=Nomenklator
+basis.of.record.regional_checklist=Wykaz regionalny
+basis.of.record.legislative_list=Lista legislacyjna
+
+#
+# Basis of Record descriptions
+#
+basis.of.record.description.unknown=Brak informacji, czy zapis dotyczy okazu zakonserwowanego, schwytanego w stanie żywym, jest dokumentacją obserwacji lub innego rodzaju świadectwem dotyczącym organizmu.
+basis.of.record.description.observation=Doniesienie uzyskane od znanego obserwatora lub z urządzeń monitorujących, że organizm był obecny w danym miejscu i czasie.
+basis.of.record.description.specimen=Obiekt fizyczny reprezentujący jeden lub więcej organizmów, część organizmu, lub wytwór organizmu.
+basis.of.record.description.living=Organizm przeniesiony z naturalnego miejsca występowania i obecnie trzymany w niewoli bądź hodowany.
+basis.of.record.description.germplasm=Materiał genetyczny pochodzenia roślinnego, zwierzęcego lub bakteryjnego, do wykorzystania w tworzeniu nowych organizmów lub dla zachowania istniejących gatunków.
+basis.of.record.description.fossil=Obiekt fizyczny reprezentujący jeden lub więcej organizmów kopalnych, część organizmu kopalnego, lub wytwór organizmu kopalnego.
+

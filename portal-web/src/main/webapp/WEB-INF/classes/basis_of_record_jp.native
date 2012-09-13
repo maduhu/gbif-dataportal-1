@@ -1,0 +1,24 @@
+#
+# Basis of Record types
+#
+basis.of.record.observation=
+basis.of.record.specimen=標本
+basis.of.record.living=現存
+basis.of.record.germplasm=遺伝資源
+basis.of.record.fossil=化石
+basis.of.record.unknown=不明
+basis.of.record.taxonomy=分類
+basis.of.record.literature=文献
+basis.of.record.nomenclator=学名
+basis.of.record.regional_checklist=地域チェックリスト
+basis.of.record.legislative_list=法的リスト
+
+#
+# Basis of Record descriptions
+#
+basis.of.record.description.unknown=保存されていたり、現存のものである記録、あるいは観察資料や他の生物表現など、情報はありません
+basis.of.record.description.observation=既知の観察者や観測装置による、生物が存在していた場所と時期の記録
+basis.of.record.description.specimen=1つか複数の生物、生物の一部または生物の人工物質
+basis.of.record.description.living=その自然発生場所から移され、現在飼育や栽培されている生物
+basis.of.record.description.germplasm=新生物の繁殖および既存の種の保全に使用するための植物、動物、バクテリアの遺伝子材料
+basis.of.record.description.fossil=1つか複数の化石生物、化石生物の一部、または化石生物の人工物質
