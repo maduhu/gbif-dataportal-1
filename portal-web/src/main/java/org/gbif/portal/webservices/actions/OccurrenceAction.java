@@ -533,6 +533,11 @@ public class OccurrenceAction extends Action {
 				List<ExtendedOccurrenceRecordDTO> resultsAsEOR = (List<ExtendedOccurrenceRecordDTO>) searchResultsDTO
 						.getResults();
 				
+				// sanitize list of records
+				for(ExtendedOccurrenceRecordDTO record: resultsAsEOR) {
+				  sanitizeDTO(record);
+				}
+				
 				headerMap = returnHeader(params, true, getCitationTextForExtendedOccurrences(resultsAsEOR, params.getPortalRoot(), false));
 				summaryMap = returnSummary(params, resultsAsEOR, true);
 				
