@@ -45,9 +45,19 @@
 #end
 #if($occurrence.getRawOccurrenceRecordDTO().getCountry())       <to:country>$occurrence.getRawOccurrenceRecordDTO().getCountry()</to:country>
 #end
-#if($occurrence.getRawOccurrenceRecordDTO().getLatitude())       <to:decimalLatitude>$occurrence.getRawOccurrenceRecordDTO().getLatitude()</to:decimalLatitude>
+#if("processed" == $parameterMap.get("mode"))
+  #if($occurrence.getLatitude())       <to:decimalLatitude>$occurrence.getLatitude()</to:decimalLatitude>
+  #end
+#else  
+  #if($occurrence.getRawOccurrenceRecordDTO().getLatitude())       <to:decimalLatitude>$occurrence.getRawOccurrenceRecordDTO().getLatitude()</to:decimalLatitude>
+  #end
 #end
-#if($occurrence.getRawOccurrenceRecordDTO().getLongitude())       <to:decimalLongitude>$occurrence.getRawOccurrenceRecordDTO().getLongitude()</to:decimalLongitude>
+#if("processed" == $parameterMap.get("mode"))
+  #if($occurrence.getLongitude())       <to:decimalLongitude>$occurrence.getLongitude()</to:decimalLongitude>
+  #end
+#else  
+  #if($occurrence.getRawOccurrenceRecordDTO().getLongitude())       <to:decimalLongitude>$occurrence.getRawOccurrenceRecordDTO().getLongitude()</to:decimalLongitude>
+  #end
 #end
 #if($occurrence.getRawOccurrenceRecordDTO().getOccurrenceDate())       <to:earliestDateCollected>$occurrence.getRawOccurrenceRecordDTO().getOccurrenceDate()</to:earliestDateCollected>
 #end

@@ -71,10 +71,20 @@
   #if($occurrence.getRawOccurrenceRecordDTO().getCountry())   <to:country>$occurrence.getRawOccurrenceRecordDTO().getCountry()</to:country>
   #end
  #end
-#if($occurrence.getRawOccurrenceRecordDTO().getLatitude())       <to:decimalLatitude>$occurrence.getRawOccurrenceRecordDTO().getLatitude()</to:decimalLatitude>
-#end
-#if($occurrence.getRawOccurrenceRecordDTO().getLongitude())       <to:decimalLongitude>$occurrence.getRawOccurrenceRecordDTO().getLongitude()</to:decimalLongitude>
-#end
+ #if("processed" == $parameterMap.get("mode"))
+   #if($occurrence.getLatitude())       <to:decimalLatitude>$occurrence.getLatitude()</to:decimalLatitude>
+   #end
+ #else  
+   #if($occurrence.getRawOccurrenceRecordDTO().getLatitude())       <to:decimalLatitude>$occurrence.getRawOccurrenceRecordDTO().getLatitude()</to:decimalLatitude>
+   #end
+ #end
+ #if("processed" == $parameterMap.get("mode"))
+   #if($occurrence.getLongitude())       <to:decimalLongitude>$occurrence.getLongitude()</to:decimalLongitude>
+   #end
+ #else  
+   #if($occurrence.getRawOccurrenceRecordDTO().getLongitude())       <to:decimalLongitude>$occurrence.getRawOccurrenceRecordDTO().getLongitude()</to:decimalLongitude>
+   #end
+ #end
 #if($occurrence.getRawOccurrenceRecordDTO().getInstitutionCode())       <to:institutionCode>$occurrence.getRawOccurrenceRecordDTO().getInstitutionCode()</to:institutionCode>
 #end
 #if($occurrence.getRawOccurrenceRecordDTO().getMaxAltitude())       <to:maximumElevationInMeters>$occurrence.getRawOccurrenceRecordDTO().getMaxAltitude()</to:maximumElevationInMeters>

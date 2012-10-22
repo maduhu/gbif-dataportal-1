@@ -1,4 +1,4 @@
-# i18n  Message codes for the GBIF Portal
+﻿# i18n  Message codes for the GBIF Portal
 
 # Reusable constants
 Y=T
@@ -84,19 +84,19 @@ taxonrank.superfamily=Nadrodzina
 taxonrank.subfamily=Podrodzina
 taxonrank.tribe=Plemię
 taxonrank.subtribe=Podplemię
-taxonrank.nothogenus
+taxonrank.nothogenus=Rodzaj hybrydowy
 taxonrank.subgenus=Podrodzaj
 taxonrank.section=Sekcja
 taxonrank.subsection=Podsekcja
 taxonrank.series=Dział
 taxonrank.subseries=Poddział
-taxonrank.nothospecies
+taxonrank.nothospecies=Gatunek hybrydowy
 taxonrank.subspecies=Podgatunek
-taxonrank.nothosubspecies
+taxonrank.nothosubspecies=Podgatunek hybrydowy
 taxonrank.variety=Odmiana
-taxonrank.nothovariety
+taxonrank.nothovariety=Odmiana hybrydowa
 taxonrank.form=Forma
-taxonrank.nothoform
+taxonrank.nothoform=Forma hybrydowa
 taxonrank.biovar=Biovar
 taxonrank.serovar=Serovar
 taxonrank.cultivar=Kultywar
@@ -106,16 +106,16 @@ taxonrank.aberration=Aberracja
 taxonrank.mutation=Mutacja
 taxonrank.race=Rasa
 taxonrank.confersubspecies=c.s.
-taxonrank.formaspecialis=Formaspecialis
+taxonrank.formaspecialis=Forma specialis
 taxonrank.hybrid=Hybryda
 taxonrank.unranked=Nieznany
 
 # Reusable Actions
 search=Szukaj
-refine.search=Zawęź
-actions.for=Opcje dla:
-actions=Opcje
-explore.occurrences=Przegląd występowania
+refine.search=Zmień kryteria
+actions.for=Akcje dla:
+actions=Akcje
+explore.occurrences=Przegląd wystąpień
 moreactions=Więcej opcji
 next=Następny
 previous=Poprzedni
@@ -139,7 +139,7 @@ occurrence.record=Doniesienie o wystąpieniu
 dataset=Zbiór danych
 data.provider=Publikujący
 type.status=Status typu
-type.scientific.name=@@@@
+type.scientific.name=Nazwa naukowa typu
 catalogue.number=Numer katalogowy
 image=Ilustracja
 images=Ilustracje
@@ -159,8 +159,8 @@ errors.west.greater.east=*dł. zachodnia wyższa od wschodniej
 errors.south.greater.north=*szer. południowa wyższa od północnej
 
 # Reusable titles
-occurrence.overview=Przegląd występowania
-occurrences.of=Przypadki występowania
+occurrence.overview=Przegląd wystąpień
+occurrences.of=Wystąpienia
 image.overview=Ilustracje
 
 # The decorators for dates
@@ -172,10 +172,10 @@ portal.title=Portal GBIF
 portal.subtitle.welcome=Witamy
 portal.subtitle.search=Szukaj
 portal.header.subtitle=… darmowy i otwarty dostęp do danych o bioróżnorodności
-heading.stats1=doniesień o występowaniu uzyskanych od
-heading.stats2=publikujących dane
+heading.stats1=rekordy wystąpień pochodzące od:
+heading.stats2=Publikujących Dane
 welcome.tip.of.the.day.title=Witamy w Portalu Danych GBIF
-welcome.tip.of.the.day.1=Dostęp do {0} rekordów danych ({1} ze współrzędnymi) udostępnianych przez sieć GBIF
+welcome.tip.of.the.day.1=Dostęp do {0} rekordów danych ({1} ze współrzędnymi) udostępnionych przez sieć GBIF
 welcome.tip.of.the.day.2=Aby nauczyć się korzystać z tej strony, przejdź do {0}
 welcome.tip.of.the.day.3=Aby dopasować stronę do mniejszego monitora, przejdź do {0}
 
@@ -226,8 +226,8 @@ topmenu.about=Informacje
 topmenu.home.title=Powrót na stronę główną GBIF
 topmenu.species.title=Znajdź gatunek w obrębie klasyfikacji
 topmenu.countries.title=Znajdź kraj, terytorium lub wyspę (zgodnie ze standardem ISO 3166)
-topmenu.datasets.title=Znajdź zbiór danych, PUBLISHER lub sieć danych
-topmenu.occurrences.title=Znajdź doniesienia o występowaniu
+topmenu.datasets.title=Znajdź zbiór danych, publikującego lub sieć danych
+topmenu.occurrences.title=Szukaj rekordów wystąpień
 topmenu.settings.title=Zmień własne ustawienia w portalu
 topmenu.about.title=Informacje o portalu
 
@@ -238,7 +238,7 @@ taxonomy.intro.heading=Przegląd gatunków
 taxonomy.intro.description=Wyszukiwanie danych na temat gatunku lub innej grupy organizmów
 taxonomy.intro.speciesoftheday=Gatunek dnia
 taxonomy.intro.latestspeciesadded=Przykładowy gatunek
-taxonomy.intro.description1=Informacje o gatunkach lub innych grupach roślin, zwierząt, grzybów czy mikroorganizmów, w tym doniesienia o występowaniu gatunków, klasyfikacja oraz nazwy naukowe oraz potoczne
+taxonomy.intro.description1=Informacje o gatunkach lub innych grupach roślin, zwierząt, grzybów czy mikroorganizmów, w tym rekordy wystąpień gatunków, klasyfikacja oraz nazwy naukowe oraz potoczne
 taxonomy.intro.explore=Przegląd
 taxonomy.intro.summary=Gatunki
 # Country pane
@@ -283,8 +283,8 @@ quick.taxon.search.explanation.this.classification=Znajdź nazwę naukową w obr
 # Occurrence Search Filters
 occurrence.search.filter.searchresults=Wyniki wyszukiwania:
 occurrence.search.filter.max.results.exceeded=Wyszukiwanie przyniosło {0} wyników.
-occurrence.search.filter.nonefound=Nie znaleziono rekordów występowania. Sprawdź filtr wyszukiwania.
-occurrence.search.filter.main.title=Szukaj występowania
+occurrence.search.filter.nonefound=Nie znaleziono rekordów wystąpień. Sprawdź filtr wyszukiwania.
+occurrence.search.filter.main.title=Szukaj wystąpień
 occurrence.search.filter.view=Widok
 occurrence.search.filter.add=Dodaj
 occurrence.search.filter.tofilter=do filtrów
@@ -305,7 +305,7 @@ occurrence.search.actions.matched.one=(1 rekord)
 occurrence.search.actions.matched.many=({0} rekordów)
 
 # Occurrence Search Results Table
-occurrence.search.results=Znalezione dane dot. występowania
+occurrence.search.results=Znalezione dane dot. wystąpień
 occurrence.search.details=Szczegóły wyszukiwania
 occurrence.search.description=Opis wyszukiwania
 occurrence.search.url=URL wyszukiwania
@@ -331,14 +331,14 @@ occurrence.switchto.species.countview=Gatunki uwzględnione w wynikach
 
 # Occurrence Search Results Counts
 occurrence.search.filter.results.countsheader.provider=Podaj publikujących dane, których chcesz uwzględnić w wyszukiwaniu
-occurrence.search.filter.results.countsmessage.provider=Poniższa lista przedstawia publikujących dane, którzy opublikowali rekordy występowania spełniające podane kryteria wyszukiwania. Jeżeli chcesz przejrzeć rekordy ze zbiorów konkretnych publikujących, zaznacz odpowiednie kratki i kliknij „Zawęź kryteria”.
+occurrence.search.filter.results.countsmessage.provider=Poniższa lista przedstawia publikujących dane, którzy opublikowali rekordy wystąpień spełniające podane kryteria wyszukiwania. Jeżeli chcesz przejrzeć rekordy ze zbiorów konkretnych publikujących, zaznacz odpowiednie kratki i kliknij „Zawęź kryteria”.
 occurrence.search.filter.results.countsheader.resource=Podaj zbiory danych, które chcesz uwzględnić w wyszukiwaniu.
-occurrence.search.filter.results.countsmessage.resource=Poniższa lista przedstawia zbiory danych, które zawierają rekordy występowania spełniające podane kryteria wyszukiwania. Jeżeli chcesz przejrzeć rekordy pochodzące z konkretnych zbiorów danych, zaznacz odpowiednie kratki i kliknij „Zawęź kryteria”.
+occurrence.search.filter.results.countsmessage.resource=Poniższa lista przedstawia zbiory danych, które zawierają rekordy wystąpień spełniające podane kryteria wyszukiwania. Jeżeli chcesz przejrzeć rekordy pochodzące z konkretnych zbiorów danych, zaznacz odpowiednie kratki i kliknij „Zawęź kryteria”.
 occurrence.search.filter.results.countsheader.country=Podaj kraje, które chcesz uwzględnić w wyszukiwaniu.
-occurrence.search.filter.results.countsmessage.country=Poniższa lista przedstawia publikujących dane, którzy opublikowali rekordy występowania spełniające podane kryteria wyszukiwania. Jeżeli chcesz przejrzeć rekordy ze zbiorów konkretnych publikujących, zaznacz odpowiednie kratki i kliknij „Zawęź kryteria”.
+occurrence.search.filter.results.countsmessage.country=Poniższa lista przedstawia publikujących dane, którzy opublikowali rekordy wystąpień spełniające podane kryteria wyszukiwania. Jeżeli chcesz przejrzeć rekordy ze zbiorów konkretnych publikujących, zaznacz odpowiednie kratki i kliknij „Zawęź kryteria”.
 occurrence.search.filter.results.countsheader.species=Wymień poszukiwane gatunki
-occurrence.search.filter.results.countsmessage.species=Poniższa lista przedstawia gatunki, dla których odnaleziono rekordy występowania spełniające podane kryteria. Jeżeli chcesz przejrzeć rekordy odnoszące się do konkretnego gatunku, kliknij "{0}"
-occurrence.search.filter.results.countsmessage.species.justthis=Przegląd przypadków występowania
+occurrence.search.filter.results.countsmessage.species=Poniższa lista przedstawia gatunki, dla których odnaleziono rekordy wystąpień spełniające podane kryteria. Jeżeli chcesz przejrzeć rekordy odnoszące się do konkretnego gatunku, kliknij "{0}"
+occurrence.search.filter.results.countsmessage.species.justthis=Przegląd wystąpień
 occurrence.search.filter.results.table.counts.provider=Publikujący
 occurrence.search.filter.results.table.counts.resource=Zbiór danych
 occurrence.search.filter.results.table.counts.country=Kraj
@@ -374,16 +374,16 @@ search.filter.action.changesearch=Zmień wyszukiwanie
 search.filter.add.filter=Dodaj filtr wyszukiwania
 
 # Occurrence Record
-occurrence.record.details.title=Szczegóły występowania:
-occurrence.record.inferred=(wnioskowany) @@@
+occurrence.record.details.title=Szczegóły wystąpień:
+occurrence.record.inferred=wywnioskowany
 occurrence.record.interpreted.as=(interpretowany jako {0})
 occurrence.record.interpreted.coordinates=(interpretowany jako szer. geograficzna: {0}, dł. geograficzna: {1} {2})
 occurrence.record.inferred.from.country=(wniosek na podstawie kraju)
 occurrence.record.inferred.from.coordinates=(wniosek na podstawie współrzędnych)
 occurrence.record.coordinate.issues=(możliwe wątpliwości co do współrzędnych)
 occurrence.record.dataset.legend=Zbiór danych
-occurrence.record.dataresource=Zbiór danych
-occurrence.record.dataresource.rights=Prawa do zbioru danych
+occurrence.record.dataresource=Zasób danych
+occurrence.record.dataresource.rights=Prawa do zasobu danych
 occurrence.record.dataprovider=Publikujący dane
 occurrence.record.taxonomy.legend=Taksonomia
 occurrence.record.scientificName=Nazwa naukowa
@@ -395,9 +395,9 @@ occurrence.record.region=Region
 occurrence.record.providerIsoCountryCode=Kod ISO kraju publikującego
 occurrence.record.providerCountry=Kraj publikującego
 occurrence.record.cellId=ID komórki
-occurrence.record.centiCellId=Centi cell id
+occurrence.record.centiCellId=Centicell id
 occurrence.record.county=Powiat/hrabstwo
-occurrence.record.state.or.province=Stan/Prowincja
+occurrence.record.state.or.province=Prowincja/województwo
 occurrence.record.locality=Miejscowość
 occurrence.record.coordinates=Współrzędne
 occurrence.record.identifierName=Nazwisko identyfikującego
@@ -411,11 +411,11 @@ occurrence.record.modified=Data ostatniej modyfikacji
 occurrence.record.taxatreelink=Klasyfikacja {0} zgodnie z {1}
 occurrence.record.dataprovider.findmore=Rekordy {1} od {0}
 occurrence.record.taxonomy.exploreall=Przeszukaj wszystkie rekordy pod kątem
-occurrence.record.taxonomy.search=Znajdź przypadki występowania
-occurrence.record.taxonomy.global.search=Przeszukaj wszystkie przypadki występowania pod kątem {0}
-occurrence.record.taxonomy.list.countries=Kraje, w których notowano występowanie
-occurrence.record.taxonomy.list.dataproviders=Zbiory danych zawierające przypadki występowania
-occurrence.record.taxonomy.dataprovider.search=Znajdź przypadki występowania
+occurrence.record.taxonomy.search=Znajdź wystąpienia
+occurrence.record.taxonomy.global.search=Przeszukaj wszystkie wystąpienia pod kątem {0}
+occurrence.record.taxonomy.list.countries=Kraje, w których notowano wystąpienia
+occurrence.record.taxonomy.list.dataproviders=Zbiory danych zawierające wystąpienia
+occurrence.record.taxonomy.dataprovider.search=Znajdź wystąpienia
 occurrence.record.taxonomy.dataprovider.search1=od
 occurrence.record.taxonomy.viewconcept=Przejrzyj informacje dla
 occurrence.record.taxonomy.issues=Wątpliwości co do taksonomii:
@@ -432,10 +432,10 @@ occurrence.record.geospatial.findmore.country=Znajdź więcej przypadków wystą
 occurrence.record.geospatial.findall.country=Znajdź wszystkie przypadki wystąpienia {0} w
 occurrence.record.geospatial.findmore.latlong=Znajdź więcej przypadków wystąpienia w
 occurrence.record.geospatial.findall.latlong=Wszystkie rekordy wszelkich gatunków w
-occurrence.record.geospatial.locations=Inne przypadki występowania odnotowano w
+occurrence.record.geospatial.locations=Inne wystąpienia odnotowano w
 occurrence.record.geospatial.findall.onedeg=Wszystkie rekordy {0} z tej samej 1-stopniowej komórki ({1})
-occurrence.record.geospatial.findall.viewarea=Pokaż wszystkie przypadki występowania {0} na przeglądanym obszarze ({1})
-occurrence.record.geospatial.viewall.viewarea=Pokaż wszystkie przypadki występowania na przeglądanym obszarze ({0})
+occurrence.record.geospatial.findall.viewarea=Pokaż wszystkie wystąpienia {0} na przeglądanym obszarze ({1})
+occurrence.record.geospatial.viewall.viewarea=Pokaż wszystkie wystąpienia na przeglądanym obszarze ({0})
 occurrence.record.geospatial.issues=Wątpliwości geoprzestrzenne:
 occurrence.record.dynamic.legend=Pobierz dane w formacie Raw XML
 occurrence.record.dynamic.details=Ściągnij oryginalny rekord od publikującego
@@ -467,7 +467,7 @@ occurrence.record.raw.continent.ocean=Kontynent lub ocean
 occurrence.record.raw.country=Kraj
 occurrence.record.raw.state.province=Stan / prowincja
 occurrence.record.interpreted.country=Kraj (zinterpretowany)
-occurrence.record.raw.county=Hrabstwo
+occurrence.record.raw.county=Okręg adm.
 occurrence.record.raw.locality=Miejscowość
 occurrence.record.raw.collector=Zbieracz
 occurrence.record.interpreted.depth=Głębokość w metrach (zinterpretowana)
@@ -494,12 +494,12 @@ taxonomy.browser.overview.of=Informacje na temat
 taxonomy.browser.classification=Klasyfikacja
 taxonomy.browser.compare.classifications=Klasyfikacje
 taxonomy.browser.title.accordingto=zgodnie z
-taxonomy.browser.title.classification={0}>Catalogue of Life Annual Checklist</a>, with provisional additions from specimen and observation data resources) [TO NIE JA, TO TU BYŁO – AGA]
-taxonomy.browser.classification.of=Klasyfikacja
+taxonomy.browser.title.classification=Klasyfikacja Portalu Danych GBIF (oparta na <a href="{0}">Catalogue of Life Annual Checklist</a>, z doraźnymi dodatkami poch. z zasobów danych o okazach i obserwacjach) 
+taxonomy.browser.classification.of=Klasyfikacja	
 taxonomy.browser.overviewlink=przejdź do strony przeglądu
 taxonomy.browser.overviewlink.title=Kliknij na przegląd
-taxonomy.browser.numberofoccurrences=({0} przypadków występowania)
-taxonomy.browser.nooccurrences=(brak przypadków występowania)
+taxonomy.browser.numberofoccurrences=({0} wystąpień)
+taxonomy.browser.nooccurrences=(brak wystąpień)
 taxonomy.browser.all.kingdom=Wszystkie królestwa
 taxonomy.browser.all.phylum=Wszystkie typy
 taxonomy.browser.all.class=Wszystkie gromady
@@ -522,7 +522,7 @@ taxon.page.url=url strony taksonu
 # Taxonomy Concept
 taxonconcept.details.title=Szczegóły konceptu taksonomicznego
 taxonconcept.search.subtitle=Poszukiwanie konceptu taksonomicznego
-explore.occurrences=Przypadki występowania
+explore.occurrences=Wystąpienia
 taxonconcept.drilldown.explore.names=Nazwy i klasyfikacja
 taxonconcept.drilldown.warnings.title=Ostrzeżenia
 taxonconcept.drilldown.warnings.ambiguous.name=Nazwa {0} jest niejednoznaczna i odnosi się również do:
@@ -552,7 +552,7 @@ taxonomy.search.filter.start.search=Rozpocznij wyszukiwanie taksonu
 taxonomy.search.filter.pleaseadd=Dodaj filtry i kliknij {0} aby rozpocząć wyszukiwanie taksonów. Im więcej filtrów określisz, tym dokładniejsze wyniki uzyskasz.
 taxonomy.search.filter.download.help=Wybierz pola i pożądany format.
 taxonomy.search.filter.example.searches=Przykłady wyszukiwania:
-taxonomy.search.filter.example.searches.oenanthe.genus=Szukaj taksonu  <i>Oenanthe</i> w kategorii rodzaju.
+taxonomy.search.filter.example.searches.oenanthe.genus=Szukaj taksonu <i>Oenanthe</i> w kategorii rodzaju.
 taxonomy.search.filter.example.searches.pumaconcolor=Szukaj taksonów takich jak „Puma concolor”
 taxonomy.search.filter.nonefound=Nie znaleziono konceptów
 taxonomy.search.filter.noofrecords=Znaleziono
@@ -567,17 +567,17 @@ taxonomy.search.searchTitle.download.spreadsheet=Poszukiwanie konceptu taksonomi
 taxonomy.search.searchTitle.download.xml=Poszukiwanie konceptu taksonomicznego – pobierz XML
 
 # Occurrence Search Filters
-occurrence.search.filter.pleaseadd=Dodaj filtry i kliknij {0} aby rozpocząć wyszukiwanie przypadków występowania. Podanie większej ilości filtrów pozwala zawęzić wyszukiwanie i uzyskać dokładniejsze wyniki co do interesujących Cię gatunków, obszaru lub okresu czasu.
-occurrence.search.searchTitle=Szukaj występowania
-occurrence.search.searchTitle.map.view=Szukaj występowania – widok mapy
-occurrence.search.searchTitle.table.view=Szukaj występowania – widok tabeli
-occurrence.search.searchTitle.download.spreadsheet=Szukaj występowania – pobierz arkusz
-occurrence.search.searchTitle.download.xml=Szukaj występowania – pobierz XML
-occurrence.search.searchTitle.download.citation=Szukaj występowania – pobierz cytat
-occurrence.search.searchTitle.data.providers=Szukaj występowania – nazwiska publikujących odpowiednie rekordy
-occurrence.search.searchTitle.datasets=Szukaj występowania – zbiory danych zawierające odpowiednie rekordy
-occurrence.search.searchTitle.species=Szukaj występowania – gatunki
-occurrence.search.searchTitle.countries=Szukaj występowania – kraje, dla których istnieją rekordy
+occurrence.search.filter.pleaseadd=Dodaj filtry i kliknij {0} aby rozpocząć wyszukiwanie wystąpień. Podanie większej ilości filtrów pozwala zawęzić wyszukiwanie i uzyskać dokładniejsze wyniki co do interesujących Cię gatunków, obszaru lub okresu czasu.
+occurrence.search.searchTitle=Szukaj wystąpień
+occurrence.search.searchTitle.map.view=Szukaj wystąpień – widok mapy
+occurrence.search.searchTitle.table.view=Szukaj wystąpień – widok tabeli
+occurrence.search.searchTitle.download.spreadsheet=Szukaj wystąpień – pobierz arkusz
+occurrence.search.searchTitle.download.xml=Szukaj wystąpień – pobierz XML
+occurrence.search.searchTitle.download.citation=Szukaj wystąpień – pobierz cytat
+occurrence.search.searchTitle.data.providers=Szukaj wystąpień – nazwiska publikujących odpowiednie rekordy
+occurrence.search.searchTitle.datasets=Szukaj wystąpień – zbiory danych zawierające odpowiednie rekordy
+occurrence.search.searchTitle.species=Szukaj wystąpień – gatunki
+occurrence.search.searchTitle.countries=Szukaj wystąpień – kraje, dla których istnieją rekordy
 occurrence.search.filter.category.taxonomy=Taksonomia
 occurrence.search.filter.category.geospatial=Geoprzestrzenne
 occurrence.search.filter.category.datasets=Zbiory danych
@@ -611,7 +611,7 @@ occurrence.search.filter.taxonomy.classification=Klasyfikacja
 
 # Filter predicates
 filter.predicate.includes=zawiera
-filter.predicate.of
+filter.predicate.of=z
 filter.predicate.are=są:
 filter.predicate.is=jest
 filter.predicate.is.like=jest podobny do
@@ -627,7 +627,7 @@ filter.or=lub
 geography.list.main.title=kraje, Terytoria i Wyspy
 geography.list.title=kraj, terytorium lub wyspa
 geography.list.subtitle=Kraje, terytoria i wyspy
-geography.list.record.count=Rekordy występowania
+geography.list.record.count=Rekordy wystąpień
 geography.list.species.count=Liczba gatunków
 geography.list.browsecountry=Przeglądaj rekordy z kraju
 geography.list.nonefound=Obecnie nie ma zaindeksowanych krajów.
@@ -636,12 +636,12 @@ geography.list.nonefound=Obecnie nie ma zaindeksowanych krajów.
 geography.drilldown.main.title=Kraje, terytoria i wyspy
 geography.drilldown.subtitle=Szczegóły kraju, terytorium lub wyspy
 geography.drilldown.species=Gatunki
-geography.drilldown.species.count={0} gatunków notowanych w {1} (na podstawie danych dot. występowania oraz dostępnych wykazów z poszczególnych krajów)
+geography.drilldown.species.count={0} gatunków notowanych w {1} (na podstawie danych dot. występowania oraz dostępnych wykazów (checklist) z poszczególnych krajów)
 geography.drilldown.species.explore=Gatunki występujące w {0}
-geography.drilldown.list.providers=Publikujący doniesienia o występowaniu w {0}
-geography.drilldown.list.resources=Zbiory danych zawierające przypadki występowania w {0}
-geography.drilldown.list.exploreall=Przeglądaj wszystkie doniesienia o występowaniu w {0}
-geography.drilldown.findall.viewarea=Zobacz wszystkie doniesienia o występowaniu w {0} w
+geography.drilldown.list.providers=Publikujący doniesienia o wystąpieniach w {0}
+geography.drilldown.list.resources=Zbiory danych zawierające wystąpienia w {0}
+geography.drilldown.list.exploreall=Przeglądaj wszystkie wystąpienia w {0}
+geography.drilldown.findall.viewarea=Zobacz wszystkie wystąpienia w {0} w
 geography.drilldown.view.taxonomy=Gatunek notowany w
 geography.drilldown.mapped.resources=Źródła dostarczające danych do Mapy
 geography.drilldown.mapped.countries=Kraje, terytoria bądź wyspy dostarczające danych do Mapy
@@ -651,7 +651,7 @@ geography.list.iso.explaination=http://www.iso.org/iso/country_codes/iso_3166_co
 dataset.list.main.title=Zbiory danych
 dataset.list.subtitle=Zbiory danych
 dataset.list.title=Zbiór danych
-dataset.list.viewrecords=Przeglądaj rekordy o występowaniu
+dataset.list.viewrecords=Przeglądaj rekordy wystąpień
 dataset.networks.list.title=Sieci danych
 dataset.providers.list.title=Publikujący dane
 dataset.resources.list.title=Zbiory danych
@@ -662,16 +662,16 @@ dataset.resource.no.records.indexed.yet=Ten zbiór danych jeszcze nie został za
 
 # Dataset Drilldown
 dataset.resource=Zbiór danych
-dataset.provider=Publikujący dane
-dataset.network=Sieć danych
-dataset.provider.resources=Zbiory danych
-dataset.drilldown.main.title=Zbiór danych
-dataset.drilldown.subtitle=Szczegóły zbioru danych
-dataset.legend=Szczegóły Zbioru Danych
-dataset.list.occurrence.count=Doniesienia o występowaniu (geokodowane)
-dataset.list.host.country=Kraj – host
+dataset.provider=Publikujący Dane
+dataset.network=Sieć
+dataset.provider.resources=Zasoby Danych
+dataset.drilldown.main.title=Zbiór Danych
+dataset.drilldown.subtitle=Szczegóły Zbioru Danych
+dataset.legend=Objaśnienia do Zbioru Danych
+dataset.list.occurrence.count=Wystąpienia (geokodowane)
+dataset.list.host.country=Kraj (host)
 dataset.list.taxonconcept.count=Taksony
-dataset.recordCount=Doniesienia o występowaniu
+dataset.recordCount=Rekordy
 dataset.kingdomCount=Królestwa
 dataset.phylumCount=Typy
 dataset.classCount=Gromady
@@ -683,11 +683,11 @@ dataset.taxonomytreelink=Nazwy i klasyfikacja
 dataset.providedby=opublikowane przez
 dataset.accessPointUrl=URL punktu dostępu
 dataset.information=Informacja
-dataset.occurrences=Doniesienia o występowaniu
-dataset.list.countries=Kraje z przypadkami występowania włączone w {0} @@@@@@
-dataset.list.species=Gatunki z przypadkami występowania włączone w {0} @@@@ [nie rozumiem sytuacji]
-dataset.findall.viewarea=Zobacz wszystkie rekordy dot. występowania opublikowane przez {0} dotyczące przeglądanego obszaru ({1}).
-dataset.download.taxonomy=Taksonomia w postaci arkusza
+dataset.occurrences=Wystąpienia
+dataset.list.countries=Kraje z wystąpieniami włączone w: {0} 
+dataset.list.species=Gatunki z wystąpieniami włączone w {0}
+dataset.findall.viewarea=Zobacz wszystkie rekordy opublikowane przez {0} w ramach widocznego obszaru ({1}).
+dataset.download.taxonomy=Taksonomia jako tabela
 
 # Taxon Name Resolving
 taxonnameresolve.subtitle=Wiele pasujących nazw
@@ -720,23 +720,23 @@ maps.records.with.coordinates=Mapa ukazuje wyłącznie rekordy ze współrzędny
 maps.records.not.full.distribution=Dane w indeksie sieci GBIF mogą nie odzwierciedlać pełnego rozmieszczenia {0}
 maps.records.provider.composite=Zawiera rekordy ze wszystkich zbiorów danych udostępnionych przez tego publikującego.
 maps.records.network.composite=Zawiera rekordy ze wszystkich zbiorów danych w sieci.
-maps.points.total=Znaleziono {0} przypadków występowania ze współrzędnymi.
-maps.points.total.one='subject'>one</span> occurrence with coordinates.
-maps.points.total.non.viewable='subject'>none</span> of these occurrences within the viewed area.
-maps.points.total.non.viewable.one=Ten przypadek wystąpienia jest poza przeglądanym obszarem.
-maps.points.total.all.viewable=Wszystkie te przypadki występowania mieszczą się w przeglądanym obszarze.
-maps.points.viewed.area=W przeglądanym obszarze mieści się {0} przypadków występowania.
-maps.points.viewed.area.one='subject'>one</span> occurrence within the viewed area.
-maps.count.pointone.cell=@@@@ - tutaj nie rozumiem sensu
-maps.count.onedeg.cell
-maps.move.onedegree.north
-maps.move.onedegree.east
-maps.move.onedegree.west
-maps.move.onedegree.south
-maps.move.fivedegree.north
-maps.move.fivedegree.east
-maps.move.fivedegree.west
-maps.move.fivedegree.south
+maps.points.total=Znaleziono {0} wystąpień ze współrzędnymi.
+maps.points.total.one= Wyszukiwanie zwróciło <span class='subject'>jedno</span> wystąpienie ze współrzędnymi.
+maps.points.total.non.viewable= <span class='subject'>Żadne</span> z tych wystąpień nie mieści się w widocznym obszarze.
+maps.points.total.non.viewable.one=To wystąpienie jest poza widocznym obszarem.
+maps.points.total.all.viewable=Wszystkie te wystąpienia mieszczą się w widocznym obszarze.
+maps.points.viewed.area=Widoczny obszar zawiera {0} wystąpień.
+maps.points.viewed.area.one= Jest <span class='subject'>jedno</span> wystąpienie w widocznym obszarze.
+maps.count.pointone.cell=Liczba / 0.1 stopnia kw.
+maps.count.onedeg.cell=Liczba / 1 stopień kw.
+maps.move.onedegree.north=Przesuń 1 stopień na północ
+maps.move.onedegree.east=Przesuń 1 stopień na wschód
+maps.move.onedegree.west=Przesuń 1 stopień na zachód
+maps.move.onedegree.south=Przesuń 1 stopień na południe
+maps.move.fivedegree.north=Przesuń 5 stopni na północ
+maps.move.fivedegree.east=Przesuń 5 stopni na wschód
+maps.move.fivedegree.west=Przesuń 5 stopni na zachód
+maps.move.fivedegree.south=Przesuń 5 stopni na południe
 maps.services=usługi
 
 # Registration
@@ -769,11 +769,11 @@ registration.resource.owner.name=Nazwisko właściciela
 registration.resource.owner.address=Adres właściciela
 registration.resource.owner.country=Kraj właściciela
 registration.resource.already.registered=Zarejestrowane
-registration.resource.highestTaxa=@@@@
+registration.resource.highestTaxa=Najwyższy takson
 registration.register.resource=Rejestr
 registration.header.resources.offered.by=Zasoby zarejestrowane na
 registration.contact.provider.for.metadata=Kontakt z obsługą
-registration.metadata.resources=Obsługa zgłasza dostępność następujących zasobów (podano jedynie gatunki / dane obserwacyjne):
+registration.metadata.resources=Informujemy, że dostępne są następujące zasobów (dotyczy tylko okazów / obserwacji):
 registration.metdata.supplied=*
 registration.not.specified=Nie wyszczególniono
 registration.not.applicable=Nie dotyczy
@@ -787,14 +787,14 @@ admin.login.error=Nieprawidłowa nazwa użytkownika lub hasło
 # Download
 download.google.earth.celldensity=Nakładka z siatki 1-stopniowej na Google Earth @@@
 download.google.earth.placemarks=Znaczniki miejsca w Google Earth (ograniczenie do 10.000)
-download.darwin.core=Rekordy Darwin Core @@@
+download.darwin.core=Rekordy Darwin Core
 download.darwin.core.from=Rekordy Darwin Core dla
 download.metadata.for.providers=Metadane publikujących w
 download.darwin.core.from.served.by.providers=Rekordy Darwin Core dot. danych od publikujących z
 
 # Filter wizards
 filter.wizard.loading=Trwa uruchamianie kreatora...
-filter.wizard.nullvalue
+filter.wizard.nullvalue=....................................................
 
 # Actions
 actions.specify=Podaj:
@@ -816,11 +816,11 @@ agents.role.administrative.description=Kontakt w sprawach administracyjnych: oso
 agents.role.technical.description=Kontakt w sprawach technicznych: osoba do kontaktu w kwestiach dostępności technicznej lub konfiguracji zasobów po stronie zbioru danych lub publikującego.
 
 # Resource/Provider/Network statistics
-occurrences.indexed=Zaindeksowane rekordy dot. występowania
-occurrences.georeferenced=Przypadki występowania ze współrzędnymi
-occurrences.no.geo.issues=Przypadki występowania bez danych geograficznych
+occurrences.indexed=Zindeksowane rekordy wystąpień
+occurrences.georeferenced=Wystąpienia ze współrzędnymi
+occurrences.no.geo.issues=Wystąpienia poprawne geograficznie
 occurrences.resources=Zbiory danych
-provider.record.count=Liczba rekordów udostępnionych przez publikującego
+provider.record.count=Liczba rekordów udostępnionych przez Publikującego
 count.species=Liczba gatunków
 count.taxa=Liczba taksonów
 
@@ -846,8 +846,8 @@ logGroupClose=Zamknięta grupa logów
 harvestAll=Pozyskiwanie – wszystko
 harvestBegin=Pozyskiwanie – rozpocznij
 harvestEnd=Pozyskiwanie – koniec
-harvestMultiplePreferredIdentifications=Pozyskiwanie – wielokrotne preferowane identyfikacje @@@
-harvestMultipleUnpreferredIdentifications=Pozyskiwanie – wielokrotne niepożądane identyfikacje @@@
+harvestMultiplePreferredIdentifications=Pozyskiwanie – wielokrotne preferowane identyfikacje
+harvestMultipleUnpreferredIdentifications=Pozyskiwanie – wielokrotne niepożądane identyfikacje
 
 # Extracter messages
 extractAll=Przetwarzanie – wszystko
@@ -869,27 +869,27 @@ extractAmbiguousScientificName=Przetwarzanie – wieloznaczna nazwa naukowa
 userAll=Użytkownik – wszyscy
 userSessionBegin=Użytkownik – początek sesji
 userSessionEnd=Użytkownik – koniec sesji
-userFeedbackOccurrence=Użytkownik – zwrotna informacja dot. występowania
+userFeedbackOccurrence=Użytkownik – zwrotna informacja dot. wystąpień
 userFeedbackTaxon=Użytkownik – zwrotna informacja dot. taksonów
 
 # Usage message
 usageAll=Użytkowanie - wszystko
-occurrenceSearch=Użytkowanie – szukaj występowania
+occurrenceSearch=Użytkowanie – szukaj wystąpień
 datasetMetadataView=Użytkowanie – przegląd metadanych zbioru danych
 taxonView=Użytkowanie – widok taksonu
 taxonBrowse=Użytkowanie – przeglądanie taksonomii
-occurrenceView=Użytkowanie – widok szczegółów występowania
-dataproviderMetadataView=Użytkowanie – metadane publikującego dane
+occurrenceView=Użytkowanie – widok szczegółów wystąpień
+dataproviderMetadataView=Użytkowanie – metadane Publikującego dane
 datasetLogDownload=Użytkowanie – pobranie logów zdarzeń
-datasetOccurrenceDownload=Użytkowanie – pobranie występowania
+datasetOccurrenceDownload=Użytkowanie – pobranie danych wystąpień
 datasetTaxonomyDownload=Użytkowanie – pobranie taksonomii
 
 # Feedback messages
 feedback=Komentarze
 feedback.link=Przekaż komentarz dotyczący strony
-feedback.to.provider.link=Komentarz dot. tego rekordu występowania dla {0}
+feedback.to.provider.link=Komentarz dot. tego rekordu dla {0}
 feedback.to.provider.on.classification.link=Komentarz dla {0} w sprawie klasyfikacji
-feedback.to.provider.on.classification.explanation=Uwaga: komentarz zostanie przesłany osobie publikującej informacje dot. nomenklatury (związane z nazewnictwem).  Jeżeli komentarz dotyczy okazów bądź obserwacji, prosimy skorzystać z linku komentarza na stronie Występowania.
+feedback.to.provider.on.classification.explanation=Uwaga: komentarz zostanie przesłany osobie publikującej informacje dot. nomenklatury (związane z nazewnictwem).  Jeżeli komentarz dotyczy okazów bądź obserwacji, prosimy skorzystać z linku komentarza na stronie Wystąpienia.
 feedback.title=Komentarze
 feedback.blurb=Dziękujemy za komentarz. Państwa uwagi przyczyniają się do poprawy jakości danych. Jednocześnie prosimy wziąć pod uwagę, że przekazanie komentarzy adresatom może nastąpić z pewnym opóźnieniem.
 feedback.on.page=Komentarz dotyczący
@@ -925,30 +925,30 @@ tutorial.dataset=Jak znaleźć informacje o zbiorze danych
 tutorial.species=Jak znaleźć informacje o gatunku
 tutorial.taxonomy=Nazwy naukowe i klasyfikacja w portalu GBIF
 tutorial.maps=Mapy w portalu GBIF
-tutorial.occurrence=Jak szukać występowania
-tutorial.detail=Jak sprawdzić szczegóły rekordu występowania
+tutorial.occurrence=Jak szukać wystąpień
+tutorial.detail=Jak sprawdzić szczegóły rekordu wystąpienia
 tutorial.services=Jak wykorzystywać dane z portalu GBIF
 tutorial.provider=Jak udostępniać dane poprzez sieć GBIF
 tutorial.kangaroorat=Jak znaleźć informacje o szczuroskoczku pustynnym (<i>Dipodomys deserti</i>)
 tutorial.ecuadorplants=Jak znaleźć informacje o roślinach Ekwadoru
 tutorial.indonesiarecords=Jak znaleźć informacje o zbiorach danych zawierających rekordy z Indonezji
-tutorial.denmarkproviders=Jak znaleźć publikujących z Danii
+tutorial.denmarkproviders=Jak znaleźć Publikujących z Danii
 tutorial.migratorybirds=Jak porównać rozmieszczenie jaskółki dymówki (<i>Hirundo rustica</i>) w różnych porach roku
-tutorial.hummingbirds=Jak uzyskać obraz zagęszczenia rekordów w 1-stopniowych komórkach @@@  (w Google Earth)
-tutorial.mimosa=Jak uzyskać mapę występowania wszystkich gatunków rodzaju <i>Mimosa</i> (Google Earth)
-tutorial.datauseagreement=Umowa o korzystanie z danych w sieci GBIF
-tutorial.datasharingagreement=Umowa o udostępnianie danych w sieci GBIF
+tutorial.hummingbirds=Jak pokazać zagęszczenia rekordów kolibrów w 1-stopniowej siatce (w Google Earth)
+tutorial.mimosa=Jak pokazać wystąpienia wszystkich gatunków rodzaju <i>Mimosa</i> (Google Earth)	
+tutorial.datauseagreement=Umowa o Wykorzystaniu Danych GBIF
+tutorial.datasharingagreement=Umowa o Udostępnianiu Danych GBIF
 tutorial.deeplinking=Głębokie linkowanie do map
 
 # Other messages
 otherAll=Pozostałe – wszystkie
 
 # Data resource wizard
-dataresource.wizard.select.network.provider=Wybierz sieć danych lub publikującego:
-dataresource.wizard.select.dataset=Wybierz zbiór danych:
-dataresource.wizard.submit.search=Użyj bieżącego zbioru danych
-dataresource.wizard.no.resources=Brak dostępnych zbiorów danych
-dataresource.wizard.select.resource=Wybierz zbiór danych...
+dataresource.wizard.select.network.provider=Wybierz Sieć lub Publikującego Dane:
+dataresource.wizard.select.dataset=Wybierz Zbiór Danych:
+dataresource.wizard.submit.search=Użyj bieżącego Zbioru Danych
+dataresource.wizard.no.resources=Brak dostępnych Zbiorów Danych
+dataresource.wizard.select.resource=Wybierz Zasób Danych...
 
 # Protected areas wizard
 protectedarea.wizard.description=Wybierz kraj, a następnie obszar chroniony w tym kraju. (Obecnie można wybrać tylko jeden obszar na raz).
@@ -997,9 +997,9 @@ occurrence.search.filter.other.details.imageurl=URL ilustracji
 imageurl.with.url=Dostępny
 imageurl.without.url=Niedostępny
 
-occurrence.search.filter.dataset.type.status=Status typu @@@@
-type.specimen=Okaz – typ
-type.not.specimen=Okaz nie-typ
+occurrence.search.filter.dataset.type.status=Status typu
+type.specimen=Okaz typowy
+type.not.specimen=Okaz nie-typowy
 
 occurrencedate.use.specific.date=podaj konkretną datę
 occurrencedate.last.month=W zeszłym miesiącu
@@ -1023,10 +1023,10 @@ occurrence.record.download.spreadsheet.title=Pobierz arkusz wyników
 occurrence.record.download.citation=Można pobrać tekst cytatu dla tych wyników
 occurrence.record.download.citation.here=dostępny tutaj
 occurrence.record.download.your.query=Zamierzasz pobrać rekordy dla zapytania:
-occurrence.record.download.format.ge=Google Earth (nie więcej niż 50.000)
-occurrence.record.download.format.species=Gatunki w wynikach @@@@ [przypadek!]
-occurrence.record.download.format.darwin.brief=@@@@ Darwin core (nie więcej niż 100.000)
-occurrence.record.download.format.darwin.full=Pełen @@@Darwin core (XML, sformatowany pod kątem wygodnego przeglądania, max. 1.000 rekordów na stronę)
+occurrence.record.download.format.ge=Google Earth (maks. 50.000)
+occurrence.record.download.format.species=Gatunków w wynikach
+occurrence.record.download.format.darwin.brief=Jako Darwin Core (maks. 100.000)
+occurrence.record.download.format.darwin.full=Jako pełny Darwin Core (XML, sformatowany pod kątem wygodnego przeglądania, maks. 1.000 rekordów na stronę)
 occurrence.record.download.fields.to.include=Włączyć pola:
 occurrence.record.download.maximum.message=Można pobrać nie więcej niż 250.000 rekordów.  Materiał zostanie pobrany w formacie .zip, z cytatem do wyników wyszukiwania załączonym w odrębnym pliku tekstowym.
 occurrence.record.download.no.of.records=Liczba rekordów:
@@ -1047,18 +1047,18 @@ download.format.tab=Rozdzielone tabulatorem
 download.format.csv=Wartości rozdzielone przecinkami
 download.format.excel=Format Excela (max. 65.535 rekordów)
 
-occurrence.record.raw.xml.title=@@@@
+occurrence.record.raw.xml.title=Nota XML Publikującego
 occurrence.record.view.large.map=Zobacz na dużej mapie
 occurrence.record.back.to.details=Powrót do szczegółów wystąpienia
 occurrence.record.required.fields=Wymagane pola
 occurrence.record.other.fields=Pozostałe pola
 
-geospatial.issues=Wątpliwości dot. danych geograficznych @
-geospatial.negated.latitude=przypuszczalnie błędna szer. geograficzna
-geospatial.negated.longitude=przypuszczalnie błędna dł. geograficzna
-geospatial.inverted=przypuszczalnie zamieniona długość z szerokością geograficzną @
+geospatial.issues=Problemy geokodowania
+geospatial.negated.latitude=szer. geogr. prawdop. odwrócona
+geospatial.negated.longitude=dł. geogr. prawdop. odwrócona
+geospatial.inverted=prawdop. zamianna długośi z szer. geogr.
 geospatial.zero.coordinates=współrzędne podane jako (0.0, 0.0)
-geospatial.out.of.range=podane współrzędne nie mieszczą się w zakresie
+geospatial.out.of.range=podane współrzędne poza zakresem
 geospatial.mismatch=współrzędne wskazują na punkt poza danym krajem, terytorium lub wyspą
 
 other.issues=Inne wątpliwości
@@ -1080,7 +1080,7 @@ dataagreement.cancel=Anuluj
 
 # Filter Warnings
 warnings.filter.title=Uwaga:
-warnings.filter.scientific.name.unsupportedrank=Obecnie nie jest możliwe szukanie występowania po <b>{0}</b>, dlatego nie można wyszukać <b>{0} {1}</b>
+warnings.filter.scientific.name.unsupportedrank=Obecnie nie jest możliwe szukanie wystąpień wg <b>{0}</b>, dlatego nie można wyszukać <b>{0} {1}</b>
 warnings.filter.scientific.name.accepted=Ponieważ <b>{1}</b> posiada uznany synonim <b>{2}</b>, wyniki wyszukiwania będą obejmować rekordy zarówno dla {1} jak i {2}.
 warnings.filter.scientific.name.synonym=Ponieważ <b>{0}</b> posiada uznany synonim <b>{1}</b>, wyniki wyszukiwania będą obejmować rekordy zarówno dla {0} jak i {1}.
 warnings.filter.scientific.name.synonyms=Ponieważ <b>{0}</b> posiada następujące uznane synonimy: <b>{1}</b>, wyniki wyszukiwania będą obejmować rekordy zarówno dla {0} jak i dla tych synonimów.
@@ -1095,7 +1095,7 @@ occurrence.basisOfRecord.observation.description=- Doniesienie znanego obserwato
 occurrence.basisOfRecord.specimen=Okaz
 occurrence.basisOfRecord.specimen.description=- Obiekt fizyczny składający się z jednego lub więcej organizmów
 occurrence.basisOfRecord.living=Żywy
-occurrence.basisOfRecord.living.description=- Organizm schwytany w naturalnym miejscu występowania i żyjący obecnie w niewoli lub w hodowli.
+occurrence.basisOfRecord.living.description=- Organizm przeniesiony z naturalnego miejsca występowania i żyjący obecnie w niewoli lub w hodowli.
 occurrence.basisOfRecord.germplasm=<i>Germplasm</i>
 occurrence.basisOfRecord.germplasm.description=- Roślinny, zwierzęcy lub bakteryjny materiał genetyczny do wykorzystania przy tworzeniu nowych organizmów.
 occurrence.basisOfRecord.fossil=Skamieniałość
@@ -1110,19 +1110,19 @@ occurrence.coordinateIssues.help=Wybierz „Istnieją wątpliwości”, aby rozp
 occurrence.imageurl.help=Wybierz "{0}" aby wybrać rekordy z załączonym URL ilustracji.
 occurrence.coordinateStatus.help=Wybierz „zawiera współrzędne”, aby wykluczyć rekordy bez danych geograficznych. W przeciwnym razie wybierz „nie zawiera współrzędnych”, aby wykluczyć rekordy zawierające dane geograficzne. Aby zobaczyć wszystkie rekordy, nie korzystaj z tego filtra.
 occurrence.country.help1=Wybierz kraj z listy rozwijanej i kliknij {0} aby zawęzić wyszukiwanie do jednego lub więcej krajów.
-occurrence.country.help2=Wyniki zawierać będą rekordy z wybranego kraju, niezależnie od tego, czy zawierają one współrzędne. Prosimy pamiętać, że dodanie filtra współrzędnych (Obszar zaznaczony Długość lub Szerokość geograficzna) ograniczy wyniki do rekordów zawierających współrzędne.
+occurrence.country.help2=Wyniki zawierać będą rekordy z wybranego kraju, niezależnie od tego, czy zawierają one współrzędne. Uwaga: dodanie filtra współrzędnych (Obszar zaznaczony, Długość lub Szerokość geograficzna) ograniczy wyniki do rekordów zawierających współrzędne.
 occurrence.dataprovider.help=Wybierz publikującego z listy rozwijanej i kliknij {0}. W wynikach pojawią się rekordy udostępnione przez tego publikującego.
 occurrence.hostcountry.help1=Wybierz kraj z listy rozwijanej i kliknij {0}.
 occurrence.hostcountry.help2=Wyniki zawierać będą rekordy udostępnione przez publikujących z tego kraju.
 occurrence.institutioncode.help=Podaj kod instytucji i wybierz „jest” lub „podobny do”.  Wyniki zawierać będą rekordy z podanym kodem instytucji.
-occurrence.latitude.help=Wprowadź szerokość geograficzną i wybierz „jest”, „większa niż”, „mniejsza niż” @@@ [przypadek!]. Wyniki zawierać będą wyłącznie  rekordy zawierające współrzędne spełniające te warunki.
-occurrence.longitude.help=Wprowadź długość geograficzną i wybierz „jest”, „większa niż”, „mniejsza niż” @@@ [przypadek!]. Wyniki zawierać będą wyłącznie  rekordy zawierające współrzędne spełniające te warunki.
-occurrence.altitude.help1=Wprowadź wysokość n.p.m. w metrach i wybierz „jest”, „większa niż”, „mniejsza niż” @@@ [przypadek!]. Wyniki zawierać będą wyłącznie  rekordy zawierające współrzędne spełniające te warunki. Filtr działa tylko dla liczb całkowitych.
-occurrence.altitude.help2=Uwaga: wartości wysokości n.p.m. powinny być podawane przez źródła w metrach, jednakże jak dotąd nie wszystkie źródła danych stosują się do tego wymagania.  Automatyczne przeliczanie jest możliwe tylko tam, gdzie podano jednostki miar. Jeżeli planują Państwo analizy z wykorzystaniem wysokości n.p.m., radzimy skontaktować się bezpośrednio z właścicielami odpowiednich danych i zweryfikować jednostki miar, których używali w swoich zbiorach danych.
-occurrence.depth.help1=Podaj głębokość w metrach i wybierz „jest”, „większa niż”, „mniejsza niż” @@@. Wyniki zawierać będą wyłącznie rekordy, w których wartość głębokości spełnia te warunki. Filtr działa dla liczb dziesiętnych do 2 miejsc po przecinku.
+occurrence.latitude.help=Wprowadź szerokość geograficzną i wybierz „jest”, „większa niż”, „mniejsza niż”. Wyniki zawierać będą wyłącznie rekordy zawierające współrzędne spełniające te warunki.
+occurrence.longitude.help=Wprowadź długość geograficzną i wybierz „jest”, „większa niż”, „mniejsza niż”. Wyniki zawierać będą wyłącznie rekordy zawierające współrzędne spełniające te warunki.
+occurrence.altitude.help1=Wprowadź wysokość n.p.m. w metrach i wybierz „jest”, „większa niż”, „mniejsza niż”. Wyniki zawierać będą wyłącznie  rekordy zawierające współrzędne spełniające te warunki. Filtr działa tylko dla liczb całkowitych.
+occurrence.altitude.help2=Uwaga: wartości wysokości n.p.m. powinny być podawane przez źródła w metrach, jednakże jak dotąd nie wszystkie źródła danych stosują się do tego wymagania.  Automatyczne przeliczanie jest możliwe tylko tam, gdzie podano jednostki miar. W przypadku planowania analiz z wykorzystaniem wysokości n.p.m., radzimy skontaktować się bezpośrednio z właścicielami odpowiednich danych i zweryfikować jednostki miar, których używali w swoich zbiorach danych.
+occurrence.depth.help1=Podaj głębokość w metrach i wybierz „jest”, „większa niż”, „mniejsza niż”. Wyniki zawierać będą wyłącznie rekordy, w których wartość głębokości spełnia te warunki. Filtr działa dla liczb dziesiętnych do 2 miejsc po przecinku.
 occurrence.depth.help2=Uwaga: wartości głębokości powinny być podawane przez źródła w metrach, jednakże jak dotąd nie wszystkie źródła danych stosują się do tego wymagania. Automatyczne przeliczanie jest możliwe tylko tam, gdzie podano jednostki miar. Jeżeli planują Państwo analizy z wykorzystaniem głębokości, radzimy skontaktować się bezpośrednio z właścicielami odpowiednich danych i zweryfikować jednostki miar, których używali w swoich zbiorach danych.
 occurrence.month.help=Wybierz miesiąc z listy rozwijanej i kliknij {0}.  Wyniki zawierać będą rekordy z wybranego miesiąca, niezależnie od roku.
-occurrence.region.help=Wybierz region geograficzny z listy rozwijanej i kliknij {0}. Wyniki zawierać będą rekordy ze wszystkich krajów na wybranym kontynencie, obszarze oceanicznym itp..
+occurrence.region.help=Wybierz region geograficzny z listy rozwijanej i kliknij {0}. Wyniki zawierać będą rekordy ze wszystkich krajów na wybranym kontynencie, obszarze oceanicznym itp.
 occurrence.typeStatus.help=Ten filtr pozwala znaleźć okazy oznaczone jako typy. Aby go użyć, kliknij {0}.
 occurrence.year.help=Podaj rok i kliknij {0}. Wyniki będą zawierać rekordy z roku lub lat, które spełniają podany warunek.
 
@@ -1146,7 +1146,7 @@ taxonomy.genus.help2=Ten filtr ograniczy wyniki do konceptów w obrębie konkret
 taxonomy.species.help1=Podaj gatunek i kliknij {0}.
 taxonomy.species.help2=Ten filtr ograniczy wyniki do konceptów w obrębie konkretnego gatunku.
 taxonomy.provider.help1=Wybierz dostawcę danych taksonomicznych i kliknij {0}.
-taxonomy.provider.help2=Ten filtr ograniczy wyniki do konceptów pochodzących od konkretnego dostawcy taksonomii @@@@@
+taxonomy.provider.help2=Ten filtr ograniczy wyniki do konceptów pochodzących od konkretnego dostawcy taksonomii.
 taxonomy.accepted.help=Wybierz {0} aby uzyskać wyłącznie przyjęte koncepty.
 taxonomy.country.help1=Ten filtr ograniczy koncepty w wynikach do taksonów notowanych w konkretnym kraju.
 taxonomy.country.help2=Na przykład wybierając „Stany Zjednoczone” uzyskasz taksony, których występowanie notowano na terenie Stanów Zjednoczonych.
@@ -1169,7 +1169,7 @@ log.console.taxon=Takson
 log.console.message=Wiadomość
 log.console.record=Rekord
 log.console.count=Licznik
-log.console.non.georef.count=Licznik nie-geokodowany @@@ (nie jest wyświetlany na mapie)
+log.console.non.georef.count=Liczba wyników bez współrzędnych (niewidocznych na mapie)
 log.console.last.week=W zeszłym tygodniu
 log.console.last.month=W zeszłym miesiącu
 log.console.last.year=W zeszłym roku
@@ -1201,14 +1201,14 @@ indexing.history.no.available=Brak dostępnej historii indeksowania dla tego zbi
 indexing.history.manually.terminated=Przerwane ręcznie
 
 # Raw data view
-raw.data.title=Nieprzetworzone dane dot. występowania
+raw.data.title=Nieprzetworzone dane wystąpień
 raw.data.info=Uwaga: są to nieprzetworzone dane pozyskane automatycznie ze źródeł.
 raw.data.record.viewer=Przeglądarka ta pozwala jedynie na bardzo ograniczone wyszukiwanie, ponieważ dane taksonomiczne i geoprzestrzenne w niektórych lub wszystkich rekordach nie zostały jeszcze przenanalizowane.
 
 # Citation
 citation.introduction=Mogą Państwo cytować poniższe dane, uwzględniając prawa wymienione w rights.txt:\n\n
 citation.entry=(uzyskane poprzez portal danych GBIF, {0}, {1})
-citation.supplied=Cytat zgodny z tekstem oryginalnym @@
+citation.supplied=Cytacja oryginalna
 
 # Rights
 rights.introduction=Prosimy przestrzegać praw  do każdego ze zbiorów danych zadeklarowanych w:\n\n
@@ -1244,7 +1244,7 @@ download.ready.subheader=Dane są w tej chwili gotowe do pobrania
 download.approx.file.size=przybliżony rozmiar pliku
 download.start.download.link=Prosimy <b>kliknąć w link</b> w celu pobrania wyników wyszukiwania. Link ten będzie dostępny przez najbliższe <b>24 godziny</b>.
 download.generation.time=Dane do pobrania przygotowane w ciągu
-download.file.type.occurrences=Pobieranie danych dot. występowania
+download.file.type.occurrences=Pobieranie danych wystąpień
 download.file.type.taxonconcept=Pobieranie danych dot. pojęć systematycznych @@
 download.file.type.nichemodelling=Modelowanie niszowe za pomocą NicheModeller @@@
 download.file.type.log.messages=Informacje w Event Logu
@@ -1274,7 +1274,7 @@ model.environment.marine=Ocean
 model.land.layers.provided.by=Warstwy lądowe – dostarczone przez
 model.marine.layers.provided.by=Warstwy oceaniczne – dostarczone przez
 model.create.model=Utwórz Model
-model.preparing.description=Generowanie Modelu Niszowego za pomocą openModeller, przy użyciu danych występowania z wyszukiwania:
+model.preparing.description=Generowanie Modelu Niszowego za pomocą openModeller, przy użyciu wystąpień z wyszukiwania:
 model.preparing=Generowanie Modelu Niszowego
 model.preparing.subheader=Trwa generowanie modelu
 model.preparing.check.back=Prosimy skopiować i zachować ten adres url i sprawdzić później. Można też zostawić otwarte okno przeglądarki.
@@ -1305,7 +1305,7 @@ bio_19=Suma opadów w najzimniejszym kwartale
 #Open Modeller - marine layers
 depthmax=Głębokość maksymalna
 depthmin=Głębokość minimalna
-iceconc=Średnia roczna zawartość lodu na morzu @@
+iceconc=Średnia roczna ilość lodu w morzu
 landdist=Średnia roczna odległość od lądu
 priprod=Średnia roczna produkcja zasadnicza (chlorofil A)
 salbottom=Średnie roczne zasolenie przy dnie
