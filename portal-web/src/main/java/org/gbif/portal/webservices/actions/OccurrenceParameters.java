@@ -123,6 +123,7 @@ public class OccurrenceParameters extends Parameters {
 	private static final String PREDICATE_G = "SERVICE.QUERY.PREDICATE.G";
 	private static final String PREDICATE_GE = "SERVICE.QUERY.PREDICATE.GE";
 	private static final String PREDICATE_ISNOTNULL = "SERVICE.QUERY.PREDICATE.ISNOTNULL";
+	private static final String PREDICATE_ISNULL = "SERVICE.QUERY.PREDICATE.ISNULL";
 	private static final String PREDICATE_LE = "SERVICE.QUERY.PREDICATE.LE";
 	private static final String PREDICATE_LIKE = "SERVICE.QUERY.PREDICATE.LIKE";
 	private static final String PREDICATE_NEQUAL = "SERVICE.QUERY.PREDICATE.NEQUAL";
@@ -1065,10 +1066,15 @@ public class OccurrenceParameters extends Parameters {
 		if (modifiedSince != null) {
 			addTriplet(triplets, SUBJECT_OCCURRENCEMODIFICATIONDATE, PREDICATE_GE, modifiedSince);
 		}
-		if (coordinateStatus != null) {
-			addTriplet(triplets, SUBJECT_LATITUDE, PREDICATE_ISNOTNULL, null);
-			addTriplet(triplets, SUBJECT_LONGITUDE, PREDICATE_ISNOTNULL, null);
-		}
+    if (coordinateStatus != null) {
+      if (coordinateStatus) {
+        addTriplet(triplets, SUBJECT_LATITUDE, PREDICATE_ISNOTNULL, null);
+        addTriplet(triplets, SUBJECT_LONGITUDE, PREDICATE_ISNOTNULL, null);
+      } else {
+        addTriplet(triplets, SUBJECT_LATITUDE, PREDICATE_ISNULL, null);
+        addTriplet(triplets, SUBJECT_LONGITUDE, PREDICATE_ISNULL, null);
+      }
+    }
 		if (coordinateIssues != null) {
 			addTriplet(triplets, SUBJECT_GEOSPATIALISSUES, coordinateIssues ? PREDICATE_NEQUAL : PREDICATE_EQUAL, new Integer(0));
 		}
