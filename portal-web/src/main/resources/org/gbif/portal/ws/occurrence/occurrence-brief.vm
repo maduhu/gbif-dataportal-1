@@ -66,7 +66,7 @@
        <to:identifiedTo>
         <to:Identification>
          <to:taxon>
-          <tc:TaxonConcept gbifKey="$occurrence.getTaxonConceptKey()" rdf:about="$wsroot/rest/taxon/get/$occurrence.getTaxonConceptKey()">
+          <tc:TaxonConcept gbifKey="$occurrence.getNubTaxonConceptKey()" rdf:about="$wsroot/rest/taxon/get/$occurrence.getNubTaxonConceptKey()">
            <tc:hasName>
             <tn:TaxonName>
 #if($occurrence.getRawOccurrenceRecordDTO().getScientificName())

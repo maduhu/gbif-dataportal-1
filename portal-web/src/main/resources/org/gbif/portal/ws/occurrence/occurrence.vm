@@ -94,7 +94,7 @@
        <to:identifiedTo>
         <to:Identification>
          <to:taxon>
-          <tc:TaxonConcept gbifKey="$occurrence.getTaxonConceptKey()" rdf:about="$wsroot/rest/taxon/get/$occurrenceRecord.getNubTaxonConceptKey()">
+          <tc:TaxonConcept gbifKey="$occurrence.getNubTaxonConceptKey()" rdf:about="$wsroot/rest/taxon/get/$occurrenceRecord.getNubTaxonConceptKey()">
            <tc:hasName>
             <tn:TaxonName>
              <tn:nameComplete>$occurrence.getTaxonName()</tn:nameComplete>

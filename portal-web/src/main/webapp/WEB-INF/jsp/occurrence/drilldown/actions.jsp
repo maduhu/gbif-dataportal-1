@@ -42,7 +42,7 @@
 						<c:set var="a1">
 							${occurrenceRecord.dataResourceName}
 						</c:set>
-						<li><a href="${pageContext.request.contextPath}/species/${occurrenceRecord.taxonConceptKey}"><spring:message code="occurrence.record.taxonomy.viewconcept" arguments="${a0}"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/species/${occurrenceRecord.nubTaxonConceptKey}"><spring:message code="occurrence.record.taxonomy.viewconcept" arguments="${a0}"/></a></li>
 						<li><a href="${pageContext.request.contextPath}/species/browse/taxon/${occurrenceRecord.taxonConceptKey}"><spring:message code="occurrence.record.taxatreelink" arguments="${a0},${a1}"/></a></li>
 					</ul>
 				</td>
