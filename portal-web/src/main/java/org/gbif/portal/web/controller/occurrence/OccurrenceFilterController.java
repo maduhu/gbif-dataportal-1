@@ -298,6 +298,7 @@ public class OccurrenceFilterController extends MultiActionController {
 		    }
 		  }
 		  mav.addObject(oneClassificationKey, oneClassification);
+		  sanitizeCriteriaValues(criteria);
     	mav.addObject(criteriaRequestKey, criteria);
     	mav.addObject(filtersRequestKey, occurrenceFilters.getFilters());
     	mav.addObject(messageSourceKey, messageSource);
@@ -305,7 +306,20 @@ public class OccurrenceFilterController extends MultiActionController {
     	return mav;
 	}
 	
-	/**
+  /**
+   * Sanitizes the values of each CriterionDTO. In case any value contains an ampersand (&),
+   * this value needs to be encoded.
+   * @param criteria The set of criteria
+   */	
+	private void sanitizeCriteriaValues(CriteriaDTO criteria) {
+    if(criteria!=null && !criteria.getCriteria().isEmpty()) {
+      for(CriterionDTO criterion: criteria.getCriteria()) {
+        criterion.setValue(criterion.getValue().replace("&", "%26"));
+      }
+    }
+  }
+
+  /**
 	 * Determines the view based on the map provided, and if none found defaults to the 
 	 * "occurrenceFilter" view.
 	 * @param request To get the view from

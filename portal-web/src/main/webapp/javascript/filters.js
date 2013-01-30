@@ -390,6 +390,7 @@ function addConstructedFilter(){
 			criteriaStr=criteriaStr+criteriaInputs[i].value;
 		}
 	}
+	value = value.replace("&", "%26");
 	var extraCriteria = "newSubject="+subject+"&newPredicate="+predicate+"&newValue="+value;
 	criteriaStr=criteriaStr+"&"+extraCriteria;
 	refreshFilters("addOrUpdateFilters", criteriaStr);		
@@ -503,7 +504,7 @@ function setWizardValues(filterIndex, theValue, theDisplayValue){
 	var filters = filtersDiv.getElementsByTagName("DIV");
 	//first span is subject, predicate and value
 	var span = filters[filterIndex].getElementsByTagName("SPAN")[2];
-	//get the link¤
+	//get the linkï¿½
 	var filterLink = span.getElementsByTagName("A")[0];
 	filterLink.innerHTML=theDisplayValue;
 	var hiddenInput = span.getElementsByTagName("INPUT")[0];
