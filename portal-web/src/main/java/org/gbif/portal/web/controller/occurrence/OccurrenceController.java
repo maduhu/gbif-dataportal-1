@@ -232,36 +232,42 @@ public class OccurrenceController extends RestController {
 	 * @param response
 	 * @return
 	 */
-	public ModelAndView retrieveProviderMessage(String occurrenceRecordKey, Map<String, String>properties, HttpServletRequest request, HttpServletResponse response) {
-	  ModelAndView mav = new ModelAndView();
+  public ModelAndView retrieveProviderMessage(String occurrenceRecordKey, Map<String, String> properties,
+    HttpServletRequest request, HttpServletResponse response) {
+    ModelAndView mav = new ModelAndView();
     mav.addObject("occurrenceRecordKey", occurrenceRecordKey);
-	  try {
-			String rawMessage = dataProviderServices.getOccurrence(occurrenceRecordKey);
-			response.setContentType("text/xml");
-			response.getWriter().write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-			response.getWriter().write("<?xml-stylesheet type=\"text/xsl\" href=\"");
-			response.getWriter().write(request.getContextPath());
-			response.getWriter().write("/");
-			response.getWriter().write(rawXmlStylesheet);
-			response.getWriter().write("\"?>");
-			response.getWriter().write(convertResponse(rawMessage));
-		} catch (Exception e) {
-		  // provider is offline or there is no single representation of a ROR
-      try {		  
-		  if(!dataProviderServices.hasRaw(occurrenceRecordKey)) {
-		      logger.debug("Showing the link to access the record. Raw representation not available");
-		      mav.setViewName(providerArchive);
+    try {
+      String rawMessage = dataProviderServices.getOccurrence(occurrenceRecordKey);
+      response.setContentType("text/xml");
+      response.getWriter().write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+      response.getWriter().write("<?xml-stylesheet type=\"text/xsl\" href=\"");
+      response.getWriter().write(request.getContextPath());
+      response.getWriter().write("/");
+      response.getWriter().write(rawXmlStylesheet);
+      response.getWriter().write("\"?>");
+      response.getWriter().write(convertResponse(rawMessage));
+    } catch (Exception e) {
+      // provider is offline or there is no single representation of a ROR
+      try {
+        if (!dataProviderServices.hasRaw(occurrenceRecordKey)) {
+          logger.debug("Showing the link to access the record. Raw representation not available");
+          mav.setViewName(providerArchive);
           String resourceUrl = dataProviderServices.getResourceUrl(occurrenceRecordKey);
           mav.addObject("resourceUrl", resourceUrl);
-        } 
-		  } catch (ServiceException e1) {
+        } else {
+          logger.debug("Unable to connect to the data publisher.");
+          mav.setViewName(providerOffline);
+          String resourceUrl = dataProviderServices.getResourceUrl(occurrenceRecordKey);
+          mav.addObject("resourceUrl", resourceUrl);
+        }
+      } catch (ServiceException e1) {
         logger.debug(e.getMessage(), e);
         mav.setViewName(providerOffline);
       }
-			return mav;
-		}
-		return null;		
-	}	
+      return mav;
+    }
+    return null;
+  }
 	
   /**
    * Convert special characters to their utf-8 encoding, so browsers won't complain when
@@ -276,31 +282,36 @@ public class OccurrenceController extends RestController {
     char[] responseArr = response.toCharArray();
 
     for (int i = 0; i < responseArr.length; i++) {
-      if (responseArr[i] == 'á') {
+      if (responseArr[i] == 'ß') {
+        sb.append("&#223;");
+      } else if (responseArr[i] == 'à') {
+        sb.append("&#224;");
+      } else if (responseArr[i] == 'á') {
         sb.append("&#225;");
+      } else if (responseArr[i] == 'ä') {
+        sb.append("&#228;");
+      } else if (responseArr[i] == 'ç') {
+        sb.append("&#231;");
+      } else if (responseArr[i] == 'è') {
+        sb.append("&#232;");
       } else if (responseArr[i] == 'é') {
         sb.append("&#233;");
       } else if (responseArr[i] == 'í') {
         sb.append("&#237;");
+      } else if (responseArr[i] == 'ñ') {
+        sb.append("&#241;");
       } else if (responseArr[i] == 'ó') {
         sb.append("&#243");
-      } else if (responseArr[i] == 'ú') {
-        sb.append("&#250;");
-      } else if (responseArr[i] == 'ä') {
-        sb.append("&#228;");
-      } else if (responseArr[i] == 'ü') {
-        sb.append("&#252;");
-      } else if (responseArr[i] == 'ß') {
-        sb.append("&#223;");
       } else if (responseArr[i] == 'ö') {
         sb.append("&#246;");
-      } else if (responseArr[i] == 'à') {
-        sb.append("&#224;");
-      } else if (responseArr[i] == 'è') {
-        sb.append("&#232;");
       } else if (responseArr[i] == 'ù') {
         sb.append("&#249;");
-      } else {
+      } else if (responseArr[i] == 'ú') {
+        sb.append("&#250;");
+      }  else if (responseArr[i] == 'ü') {
+        sb.append("&#252;");
+      } 
+      else {
         sb.append(response.charAt(i));
       }
     }
