@@ -415,28 +415,6 @@ public class RegistrationController extends MultiActionController {
 		return mav;
 	}
 	
-	
-//	public static void main(String[] args){
-//		try {
-//			String encrypted = encryptPassword("pass%^&£word__++1231:!!@£$", true);
-//		    System.out.println("Enter encryption password:  "+encrypted);
-//		    String decrypted = encryptPassword(encrypted, false);
-//		    System.out.println("Enter decryption password:  "+decrypted);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-	
-
-//	public static String decryptPassword(String password) throws Exception{
-//		java.security.MessageDigest d =null;
-//		d = java.security.MessageDigest.getInstance("SHA-1");
-//		d.reset();
-//		d.update(password.getBytes());
-//		return PasswordUtils.byteArrayToHexString(d.digest());
-//	}	
-	
 	/**
 	 * 
 	 * @param username
