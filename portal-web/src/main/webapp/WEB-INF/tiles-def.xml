@@ -121,7 +121,8 @@
 	<definition name="occurrenceSearch" extends="wizardSearchLayout">
 		<put name="headcontent" value="/WEB-INF/jsp/occurrence/headcontent.jsp"/>
 		<put name="searchTitle" value="occurrence.search.searchTitle"/>
-		<put name="searchHelp" value="occurrence.search.filter.pleaseadd"/>						
+		<put name="searchHelp" value="occurrence.search.filter.pleaseadd"/>
+    <put name="newPortal" value="/WEB-INF/jsp/occurrence/newPortalAlert.jsp"/>
 		<put name="filterHelp" value="/WEB-INF/jsp/occurrence/filterHelp.jsp"/>		
 		<put name="filterAction" value="/occurrences/search.htm"/>				
 	</definition>	

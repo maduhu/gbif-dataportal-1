@@ -48,8 +48,11 @@
 							<spring:message code="${searchHelp}" arguments="${searchButton}" argumentSeparator="$$$"/>						
 						</h3>
 					</div><!-- End twopartheader -->
-					
-					<div id="filtersContainer">
+
+          <!-- Try to redirect some traffic to new portal -->
+          <tiles:insert name="newPortal"/>
+
+          <div id="filtersContainer">
 					
 					<%//For the 2 columns %>
 					<%
