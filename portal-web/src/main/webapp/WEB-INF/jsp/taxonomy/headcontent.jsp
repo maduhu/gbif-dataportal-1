@@ -10,5 +10,4 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/<spring:theme code='autocomplete.css'/>"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/<spring:theme code='download.css'/>"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/<spring:theme code='speciesSpecial.css'/>"/>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/<spring:theme code='newPortal.css'/>"/>
 <tiles:insert page="/common/scripts.jsp"/>

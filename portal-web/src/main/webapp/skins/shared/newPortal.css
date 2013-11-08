@@ -1,5 +1,4 @@
 /* Added By Kyle to redirect some traffic to new portal */
-#uat { padding-top: 5px; padding-bottom: 10px; background-color: #1b1b1b; }
-#uat h4 { margin: 0px 0px 10px 5px; font-size: 1.1em; color: #01BCDF; }
+#uat { margin: 0px 14px 0px 14px; padding:5px; background-color: #1b1b1b; }
 #uat a { font-size: 1.1em; color: #01BCDF; }
-#uat p { margin: 0px 0px 5px 10px; color: #FFFFFF; }
+#uat p { margin: 0px; color: #FFFFFF; }

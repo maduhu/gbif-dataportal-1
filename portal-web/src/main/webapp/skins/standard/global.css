@@ -77,7 +77,7 @@ body>#cocoon { width: 762px; }
 
 #announce {
 	position: relative; left: 255px;
-	width: 460px; height: 77px;
+	width: 460px; height: 280px;
 	padding: 46px 35px 0 14px;
 	background: url("images/announceBg.gif") #EEE no-repeat top right ;
 	line-height: 1.04em;
@@ -88,6 +88,9 @@ body>#cocoon { width: 762px; }
 	color: #444 ;
     margin: -18px 0 5px 0; padding: 0;
 	font : bold 1.1em Arial, Helvetica, sans-serif;
+}
+#announce a {
+  color: #01BCDF;
 }
 
 

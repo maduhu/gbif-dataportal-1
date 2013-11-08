@@ -1,6 +1,11 @@
 <%@ include file="/common/taglibs.jsp"%>
 <div id="announce">
-<h3><spring:message code="welcome.tip.of.the.day.title"/></h3>
+  <h3><spring:message code="newportal.alert.header"/></h3>
+  <p>
+   <spring:message code="newportal.alert"/>
+  </p>
+  <p>&nbsp;</p>
+  <h3><spring:message code="welcome.tip.of.the.day.title"/></h3>
 <c:set var="link1">
 	<em><a href="${pageContext.request.contextPath}/tutorial/introduction"><spring:message code="topmenu.about"/></a></em>
 </c:set>

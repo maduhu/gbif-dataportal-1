@@ -49,9 +49,6 @@
 						</h3>
 					</div><!-- End twopartheader -->
 
-          <!-- Try to redirect some traffic to new portal -->
-          <tiles:insert name="newPortal"/>
-
           <div id="filtersContainer">
 					
 					<%//For the 2 columns %>
